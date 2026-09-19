@@ -780,7 +780,7 @@
   subject: carrier:mechanical-motion
   predicate: drives
   object: phenomenon:generator-action
-  conditions: [a shaft turning a rotor inside a stator, or a magnet moved past a coil]
+  conditions: ["a shaft turning a rotor inside a stator, or a magnet moved past a coil"]
   condition_tags: [medium-conductor, field-magnetic-required]
   energy: { input: mechanical, output: electrical, dissipation: thermal }
   evidence: [source:faraday-1832, source:dixon-hall-2014]
@@ -917,7 +917,7 @@
   subject: disequilibrium:radiative-sky-imbalance
   predicate: drives
   object: phenomenon:thermoradiative-effect
-  conditions: [a narrow-gap diode warmer than the sky it faces, emitting net radiation]
+  conditions: ["a narrow-gap diode warmer than the sky it faces, emitting net radiation"]
   condition_tags: [state-solid, medium-semiconductor]
   energy: { input: radiative, output: electrical, dissipation: radiative }
   evidence: [source:strandberg-2015]

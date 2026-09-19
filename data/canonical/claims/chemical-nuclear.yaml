@@ -94,7 +94,7 @@
   subject: disequilibrium:chemical-potential-difference
   predicate: drives
   object: phenomenon:combustion
-  conditions: [fuel, oxidiser and an ignition source; flame temperature 1500–2500 K]
+  conditions: ["fuel, oxidiser and an ignition source; flame temperature 1500–2500 K"]
   condition_tags: [state-gas, temp-high]
   energy: { input: chemical, output: thermal, dissipation: radiative }
   evidence: [source:bejan-2016]
@@ -397,7 +397,7 @@
   subject: carrier:beta-particles
   predicate: drives
   object: phenomenon:betavoltaic-effect
-  conditions: [a beta source (tritium, Ni-63, Pm-147) on or in a semiconductor junction; particle energy below the lattice-damage threshold]
+  conditions: ["a beta source (tritium, Ni-63, Pm-147) on or in a semiconductor junction; particle energy below the lattice-damage threshold"]
   condition_tags: [state-solid, medium-semiconductor, radioisotope-required]
   energy: { input: nuclear, output: electronic-excitation, dissipation: thermal }
   evidence: [source:rappaport-1954, source:prelas-2014]
@@ -461,7 +461,7 @@
   subject: disequilibrium:nuclear-binding-difference
   predicate: drives
   object: phenomenon:nuclear-fission
-  conditions: [a fissile isotope, a moderator or fast spectrum, and a critical geometry]
+  conditions: ["a fissile isotope, a moderator or fast spectrum, and a critical geometry"]
   condition_tags: [temp-high]
   energy: { input: nuclear, output: thermal, dissipation: radiative }
   evidence: [source:hahn-strassmann-1939]

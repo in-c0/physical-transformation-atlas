@@ -332,7 +332,7 @@
   subject: disequilibrium:magnetic-field-change
   predicate: drives
   object: phenomenon:electromagnetic-induction
-  conditions: [any time-varying flux through a loop, from motion or from an AC source]
+  conditions: ["any time-varying flux through a loop, from motion or from an AC source"]
   condition_tags: [medium-conductor, transient-only]
   energy: { input: magnetic, output: electrical, dissipation: thermal }
   evidence: [source:faraday-1832]
@@ -399,7 +399,7 @@
   subject: disequilibrium:magnetic-field-change
   predicate: drives
   object: phenomenon:magnetoelectric-coupling
-  conditions: [a magnetostrictive–piezoelectric laminate; the AC field strains the first layer, which stresses the second]
+  conditions: ["a magnetostrictive–piezoelectric laminate; the AC field strains the first layer, which stresses the second"]
   condition_tags: [state-solid]
   energy: { input: magnetic, output: electrical, dissipation: thermal }
   evidence: [source:nan-2008]
@@ -632,7 +632,7 @@
   subject: phenomenon:ocean-wave-motion
   predicate: produces
   object: carrier:mechanical-motion
-  conditions: [a buoy, flap or water column following the wave]
+  conditions: ["a buoy, flap or water column following the wave"]
   energy: { input: mechanical, output: mechanical }
   evidence: [source:salter-1974]
   status: demonstrated
@@ -734,7 +734,7 @@
   subject: phenomenon:evaporation
   predicate: produces
   object: carrier:mechanical-motion
-  conditions: [hygroscopic spores or films that swell and shrink with humidity, driving a piston or oscillator]
+  conditions: ["hygroscopic spores or films that swell and shrink with humidity, driving a piston or oscillator"]
   energy: { input: chemical, output: mechanical }
   evidence: [source:chen-2015-evaporation]
   status: demonstrated

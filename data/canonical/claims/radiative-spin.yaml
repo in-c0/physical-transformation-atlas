@@ -45,7 +45,7 @@
   subject: phenomenon:photovoltaic-effect
   predicate: bounded_by
   object: constraint:shockley-queisser-limit
-  conditions: [single junction, unconcentrated sunlight]
+  conditions: ["single junction, unconcentrated sunlight"]
   evidence: [source:shockley-queisser-1961]
   status: established
 - id: claim:pv-bounded-landsberg
@@ -70,7 +70,7 @@
   subject: carrier:photons
   predicate: drives
   object: phenomenon:photovoltaic-effect
-  conditions: [photons from any source, including a thermal emitter, absorbed above the gap]
+  conditions: ["photons from any source, including a thermal emitter, absorbed above the gap"]
   condition_tags: [state-solid, medium-semiconductor]
   energy: { input: radiative, output: electronic-excitation, dissipation: thermal }
   evidence: [source:lapotin-2022]
@@ -80,7 +80,7 @@
   subject: phenomenon:photovoltaic-effect
   predicate: implemented_by
   object: transducer:thermophotovoltaic-cell
-  conditions: [cell band gap matched to a > 2000 K emitter, with a back reflector returning sub-gap photons]
+  conditions: ["cell band gap matched to a > 2000 K emitter, with a back reflector returning sub-gap photons"]
   evidence: [source:lapotin-2022]
   status: demonstrated
 - id: claim:bpv-drives
@@ -110,7 +110,7 @@
   subject: phenomenon:bulk-photovoltaic-effect
   predicate: bounded_by
   object: constraint:landsberg-limit
-  conditions: [the Shockley–Queisser limit does not apply because there is no junction, but the Landsberg bound does]
+  conditions: ["the Shockley–Queisser limit does not apply because there is no junction, but the Landsberg bound does"]
   evidence: [source:spanier-2016, source:landsberg-tonge-1980]
   status: established
 
@@ -216,7 +216,7 @@
   subject: disequilibrium:radiation-flux
   predicate: drives
   object: phenomenon:photoelectrochemical-effect
-  conditions: [a semiconductor photoelectrode whose band edges straddle the water redox potentials, in an electrolyte, under illumination]
+  conditions: ["a semiconductor photoelectrode whose band edges straddle the water redox potentials, in an electrolyte, under illumination"]
   condition_tags: [env-aqueous, medium-semiconductor, illumination-required]
   energy: { input: radiative, output: chemical, dissipation: thermal }
   evidence: [source:fujishima-honda-1972]
@@ -255,7 +255,7 @@
   subject: disequilibrium:radiation-flux
   predicate: drives
   object: phenomenon:photosynthesis
-  conditions: [photosynthetically active radiation (400–700 nm), water, CO₂, temperatures roughly 0–45 °C]
+  conditions: ["photosynthetically active radiation (400–700 nm), water, CO₂, temperatures roughly 0–45 °C"]
   condition_tags: [env-aqueous, illumination-required, temp-room]
   energy: { input: radiative, output: chemical, dissipation: thermal }
   evidence: [source:blankenship-2011]
@@ -445,7 +445,7 @@
   subject: carrier:spin-current
   predicate: drives
   object: phenomenon:inverse-spin-hall-effect
-  conditions: [a heavy metal with strong spin–orbit coupling (Pt, Ta, W); works at room temperature]
+  conditions: ["a heavy metal with strong spin–orbit coupling (Pt, Ta, W); works at room temperature"]
   condition_tags: [state-solid, medium-conductor, temp-room]
   energy: { input: spin, output: electrical, dissipation: thermal }
   evidence: [source:saitoh-2006, source:sinova-2015]
