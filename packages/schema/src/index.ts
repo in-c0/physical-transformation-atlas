@@ -280,6 +280,8 @@ export const Relation = z.object({
   /** Unit of the coefficient linking them, e.g. "V/K". Used by the dimensional check. */
   coefficient_unit: z.string(),
   coefficient_name: z.string().optional(),
+  /** How the quantities and the sign are defined, when the formula alone does not say. */
+  conventions: z.string().optional(),
 });
 export type Relation = z.infer<typeof Relation>;
 
@@ -321,6 +323,17 @@ export type Claim = z.infer<typeof Claim>;
 // Pathways (named, reviewed compositions)
 // ---------------------------------------------------------------------------
 
+export const Measurement = z.object({
+  quantity: z.string(), // e.g. "module efficiency", "power density", "open-circuit voltage"
+  value: z.string(), // keep as written in the source, e.g. "12%", "1.2 W/cm²", "≈ 6 µV/K"
+  scope: z.enum(["material", "device", "module", "system", "plant", "laboratory", "field", "model"]),
+  conditions: z.string(), // regime: temperatures, load, irradiance, geometry
+  sources: z.array(SourceId).min(1),
+  year: z.number().int().optional(),
+  note: z.string().optional(),
+});
+export type Measurement = z.infer<typeof Measurement>;
+
 export const Pathway = z.object({
   id: PathwayId,
   name: z.string(),
@@ -337,6 +350,8 @@ export const Pathway = z.object({
       theoretical_limit: z.string().optional(),
       power_density: z.string().optional(),
       notes: z.string().optional(),
+      /** Auditable data: one record per number, with what was measured, under what regime, and where. */
+      measurements: z.array(Measurement).default([]),
     })
     .optional(),
   environment: z.array(Slug).default([]),
@@ -370,6 +385,8 @@ export const SearchRecord = z.object({
   result: z.enum(["demonstration-found", "no-demonstration-found", "inconclusive"]),
   reviewed_by: z.string().optional(),
   notes: z.string().optional(),
+  /** Set by the compiler: true when the record lives in data/canonical/searches (human-reviewed). */
+  reviewed: z.boolean().optional(),
 });
 export type SearchRecord = z.infer<typeof SearchRecord>;
 
@@ -385,7 +402,7 @@ export const CheckResult = z.object({
 });
 export type CheckResult = z.infer<typeof CheckResult>;
 
-export const FRONTIER_CLASSES = ["demonstrated", "candidate", "weak", "forbidden", "circular"] as const;
+export const FRONTIER_CLASSES = ["demonstrated", "candidate", "derived", "weak", "forbidden", "circular"] as const;
 export type FrontierClass = (typeof FRONTIER_CLASSES)[number];
 
 export const CompiledPath = z.object({
@@ -398,7 +415,7 @@ export const CompiledPath = z.object({
   evidence_status: z.enum(EVIDENCE_STATUSES),
   established_steps: z.number().int(),
   search_status: z.enum(SEARCH_STATUSES),
-  /** demonstrated · candidate (all constituents established, no fail) · weak (a constituent is theoretical or worse) · forbidden (a check fails) · circular (source and sink share an energy form) */
+  /** demonstrated · candidate (all constituents at least demonstrated, no fail, no recorded-pathway overlap) · derived (candidate that extends or truncates a recorded pathway) · weak (a constituent is theoretical or worse) · forbidden (a check fails) · circular (source and sink share an energy form) */
   frontier_class: z.enum(FRONTIER_CLASSES),
   knowledge_level: z.enum(KNOWLEDGE_LEVELS),
   pathway: PathwayId.optional(),
@@ -407,6 +424,21 @@ export const CompiledPath = z.object({
   domains: z.array(z.enum(DOMAINS)),
   last_searched: isoDate.optional(),
   literature: z.object({ supporting: z.number().int(), contradictory: z.number().int() }),
+  /** Sources cited by the constituent claims (never evidence for the composition itself). */
+  constituent_source_ids: z.array(SourceId),
+  /** Sources cited for the complete composition (named pathway evidence, reviewed search hits). */
+  composition_source_ids: z.array(SourceId),
+  /** Lowest knowledge level among the constituent claims; says nothing about the composition. */
+  constituent_floor: z.enum(KNOWLEDGE_LEVELS),
+  /** The recorded pathway this route most overlaps, if any. exact = same claim sequence. */
+  known_pathway_overlap: z
+    .object({
+      pathway: PathwayId,
+      relation: z.enum(["exact", "prefix", "suffix", "subsequence"]),
+      shared_claims: z.number().int(),
+      route_claims: z.number().int(),
+    })
+    .nullable(),
 });
 export type CompiledPath = z.infer<typeof CompiledPath>;
 

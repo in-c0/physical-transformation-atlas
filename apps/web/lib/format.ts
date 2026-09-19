@@ -54,9 +54,37 @@ export const SEARCH_LABEL: Record<SearchStatus, string> = {
 export const FRONTIER_LABEL: Record<FrontierClass, string> = {
   demonstrated: "demonstrated",
   candidate: "candidate",
+  derived: "extends a recorded pathway",
   weak: "weakly supported",
   forbidden: "fails a check",
   circular: "round trip",
+};
+
+/**
+ * The four-state language for a composition's search status. Never "none" or "no" for a route
+ * nobody has looked for: absence of a search is not absence of a demonstration.
+ */
+export function compositionState(status: SearchStatus, lastSearched?: string): { short: string; long: string } {
+  switch (status) {
+    case "demonstrated":
+      return { short: "demonstration found", long: "Direct demonstration found." };
+    case "searched-no-demonstration-found":
+      return { short: "no demonstration found", long: `No direct demonstration found in the recorded search${lastSearched ? ` through ${lastSearched}` : ""}.` };
+    case "search-incomplete":
+      return { short: "index query only", long: `Not reviewed — index query only${lastSearched ? ` · through ${lastSearched}` : ""}.` };
+    case "not-searched":
+    case "not-indexed":
+      return { short: "not assessed", long: "Not assessed — complete composition not searched." };
+    default:
+      return { short: SEARCH_LABEL[status], long: SEARCH_LABEL[status] };
+  }
+}
+
+export const OVERLAP_LABEL: Record<"exact" | "prefix" | "suffix" | "subsequence", string> = {
+  exact: "same relations",
+  prefix: "shares its opening relations with",
+  suffix: "shares its closing relations with",
+  subsequence: "shares relations, in order, with",
 };
 
 export const CHECK_ABBR: Record<CheckResult["id"], string> = {

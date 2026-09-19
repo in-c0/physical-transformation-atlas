@@ -705,3 +705,17 @@
   year: 2006
   venue: CRC Press
   doi: 10.1201/9781420038903
+- id: source:zhang-2017-segmented-teg
+  type: paper
+  title: "Realizing a thermoelectric conversion efficiency of 12% in bismuth telluride/skutterudite segmented modules through full-parameter optimization and energy-loss minimized integration"
+  authors: [Q. Zhang, J. Liao, Y. Tang, M. Gu, C. Ming, P. Qiu, S. Bai, X. Shi, C. Uher, L. Chen]
+  year: 2017
+  venue: Energy & Environmental Science 10, 956–963
+  doi: 10.1039/C7EE00447H
+- id: source:kraemer-2011-steg
+  type: paper
+  title: "High-performance flat-panel solar thermoelectric generators with high thermal concentration"
+  authors: [D. Kraemer, B. Poudel, H.-P. Feng, J. C. Caylor, B. Yu, X. Yan, Y. Ma, X. Wang, D. Wang, A. Muto, K. McEnaney, M. Chiesa, Z. Ren, G. Chen]
+  year: 2011
+  venue: Nature Materials 10, 532–538
+  doi: 10.1038/nmat3013

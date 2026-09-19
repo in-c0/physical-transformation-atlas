@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { MatrixAxis } from "@pta/schema";
 import type { MatrixCellLite } from "@/lib/data";
 import { useAtlas } from "@/lib/client-data";
-import { CELL_STATUS_LABEL, EVIDENCE_LABEL, SEARCH_LABEL, hrefFor } from "@/lib/format";
+import { CELL_STATUS_LABEL, EVIDENCE_LABEL, compositionState, hrefFor } from "@/lib/format";
 import { Drawer, DrawerSection, drawerStyles as s } from "./Drawer";
 import { ClaimLine } from "./ClaimLine";
 import { Checksum } from "./Checksum";
@@ -52,6 +52,8 @@ export function CellDrawer({ row, col, lite, bridgeIdx, onBridge, onClose }: { r
   const bridges = cell.bridge_paths.map((id) => index.path.get(id)!).filter(Boolean);
   const active = bridges[Math.min(bridgeIdx, Math.max(0, bridges.length - 1))];
   const searches = index.graph.searches.filter((x) => x.target.kind === "cell" && x.target.row === row.id && x.target.col === col.id);
+  const bridgeConstituent = active ? active.constituent_source_ids.map((id) => index.source.get(id)!).filter(Boolean) : [];
+  const bridgeComposition = active ? active.composition_source_ids.map((id) => index.source.get(id)!).filter(Boolean) : [];
   const rowEntity = index.entity.get(row.id);
   const forbidden = cell.status === "forbidden";
 
@@ -90,8 +92,9 @@ export function CellDrawer({ row, col, lite, bridgeIdx, onBridge, onClose }: { r
         <ol className={s.list}>
           {bridges.map((p, i) => {
             const isActive = active?.id === p.id;
-            const searched = p.search_status !== "not-searched";
-            const demonstrated = p.search_status === "demonstrated";
+            const comp = compositionState(p.search_status, p.last_searched);
+            const ov = p.known_pathway_overlap;
+            const ovName = ov ? index.pathway.get(ov.pathway)?.name : undefined;
             return (
               <li key={p.id} className={`${s.bridge} ${isActive ? s.bridgeActive : ""}`}>
                 <button type="button" className={s.bridgeHead} onClick={() => onBridge(i)} aria-pressed={isActive} style={{ width: "100%", textAlign: "left" }}>
@@ -113,19 +116,22 @@ export function CellDrawer({ row, col, lite, bridgeIdx, onBridge, onClose }: { r
                   <dd>
                     <b className={`ev-${p.evidence_status}`}>{EVIDENCE_LABEL[p.evidence_status]}</b>
                   </dd>
-                  <dt>complete composition searched</dt>
+                  <dt>constituent evidence floor</dt>
                   <dd>
-                    <b>{searched ? (p.search_status === "search-incomplete" ? "INDEX ONLY" : "YES") : "NO"}</b>
+                    <b>{p.constituent_floor}</b>
                   </dd>
-                  <dt>direct demonstration found</dt>
+                  <dt>exact composition</dt>
                   <dd>
-                    <b>{demonstrated ? "YES" : "NONE"}</b>
+                    <b>{comp.short.toUpperCase()}</b>
                   </dd>
-                  {p.pathway && (
+                  {ov && ovName && (
                     <>
-                      <dt>named pathway</dt>
+                      <dt>{ov.relation === "exact" ? "recorded pathway" : "overlaps recorded pathway"}</dt>
                       <dd>
-                        <b>{index.pathway.get(p.pathway)?.name}</b>
+                        <b>
+                          {ovName}
+                          {ov.relation !== "exact" ? ` · ${ov.shared_claims}/${ov.route_claims}` : ""}
+                        </b>
                       </dd>
                     </>
                   )}
@@ -165,6 +171,9 @@ export function CellDrawer({ row, col, lite, bridgeIdx, onBridge, onClose }: { r
               <div className="t-data secondary">
                 {x.works_found} works · {x.query}
               </div>
+              <div className="t-micro secondary">
+                {x.reviewed ? `human-reviewed${x.reviewed_by ? ` by ${x.reviewed_by}` : ""}` : "automated index query · not human-reviewed"}
+              </div>
               {x.top.length > 0 && (
                 <ul className={s.conditions}>
                   {x.top.slice(0, 3).map((t) => (
@@ -186,15 +195,33 @@ export function CellDrawer({ row, col, lite, bridgeIdx, onBridge, onClose }: { r
         </ul>
         {active && (
           <p className={s.stateSecondary} style={{ marginTop: 8 }}>
-            Bridge {String(bridges.indexOf(active) + 1).padStart(2, "0")}: {SEARCH_LABEL[active.search_status]}
-            {active.last_searched ? ` · through ${active.last_searched}` : ""}.
+            Bridge {String(bridges.indexOf(active) + 1).padStart(2, "0")}: {compositionState(active.search_status, active.last_searched).long}
           </p>
         )}
       </DrawerSection>
 
-      <DrawerSection title="Evidence" count={index.sourcesFor(direct).length}>
-        <EvidenceList sources={index.sourcesFor(direct)} verification={index.graph.source_verification} />
-      </DrawerSection>
+      {direct.length > 0 && (
+        <DrawerSection title="Direct relation evidence" count={index.sourcesFor(direct).length}>
+          <EvidenceList sources={index.sourcesFor(direct)} verification={index.graph.source_verification} />
+        </DrawerSection>
+      )}
+      {active && (
+        <DrawerSection title={`Selected bridge evidence · bridge ${String(bridges.indexOf(active) + 1).padStart(2, "0")}`} count={bridgeConstituent.length + bridgeComposition.length}>
+          <div className="label" style={{ marginBottom: 4 }}>
+            for the complete composition · {bridgeComposition.length}
+          </div>
+          {bridgeComposition.length === 0 ? <p className={s.stateSecondary}>No source on record for this exact composition.</p> : <EvidenceList sources={bridgeComposition} verification={index.graph.source_verification} />}
+          <div className="label" style={{ margin: "10px 0 4px" }}>
+            for the constituent relations · {bridgeConstituent.length}
+          </div>
+          <EvidenceList sources={bridgeConstituent} verification={index.graph.source_verification} />
+        </DrawerSection>
+      )}
+      {direct.length === 0 && !active && (
+        <DrawerSection title="Evidence" count={0}>
+          <p className={s.stateSecondary}>No direct relation and no bridge selected; nothing to cite for this cell.</p>
+        </DrawerSection>
+      )}
 
       <DrawerSection title="Coordinates">
         <div className={s.axisLinks}>

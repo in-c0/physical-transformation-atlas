@@ -4,7 +4,7 @@ import Link from "next/link";
 import type { CompiledPath, FrontierClass } from "@pta/schema";
 import { FRONTIER_CLASSES } from "@pta/schema";
 import { useAtlas } from "@/lib/client-data";
-import { EVIDENCE_LABEL, FRONTIER_LABEL, SEARCH_LABEL, hrefFor } from "@/lib/format";
+import { EVIDENCE_LABEL, FRONTIER_LABEL, OVERLAP_LABEL, compositionState, hrefFor } from "@/lib/format";
 import { CheckGlyph } from "./StatusMark";
 import styles from "./FrontierList.module.css";
 
@@ -162,7 +162,7 @@ export function FrontierList() {
             <li key={p.id} className={styles.item}>
               <div className={styles.itemHead}>
                 <span className={styles.num}>{String(i + 1).padStart(4, "0")}</span>
-                <span className={`t-micro st-${p.frontier_class === "forbidden" ? "contradicted" : p.frontier_class === "demonstrated" ? "demonstrated" : "candidate"}`}>{FRONTIER_LABEL[p.frontier_class].toUpperCase()}</span>
+                <span className={`t-micro st-${p.frontier_class === "forbidden" ? "contradicted" : p.frontier_class === "demonstrated" ? "demonstrated" : p.frontier_class === "derived" ? "search-incomplete" : "candidate"}`}>{FRONTIER_LABEL[p.frontier_class].toUpperCase()}</span>
                 <span className="t-micro secondary">{p.id}</span>
                 {named && <span className="t-micro secondary">· {named.name}</span>}
               </div>
@@ -176,10 +176,18 @@ export function FrontierList() {
               <dl className={styles.facts}>
                 <dt>constituents</dt>
                 <dd>
-                  {p.established_steps}/{p.length} established · weakest {EVIDENCE_LABEL[p.evidence_status]}
+                  {p.established_steps}/{p.length} established · weakest {EVIDENCE_LABEL[p.evidence_status]} · floor {p.constituent_floor}
                 </dd>
-                <dt>composition</dt>
-                <dd>{SEARCH_LABEL[p.search_status]}</dd>
+                <dt>exact composition</dt>
+                <dd>{compositionState(p.search_status, p.last_searched).long}</dd>
+                {p.known_pathway_overlap && p.known_pathway_overlap.relation !== "exact" && (
+                  <>
+                    <dt>recorded pathway</dt>
+                    <dd>
+                      {OVERLAP_LABEL[p.known_pathway_overlap.relation]} {index.pathway.get(p.known_pathway_overlap.pathway)?.name} · {p.known_pathway_overlap.shared_claims}/{p.known_pathway_overlap.route_claims} relations
+                    </dd>
+                  </>
+                )}
                 <dt>checks</dt>
                 <dd className={styles.checks}>
                   {p.checks.map((k) => (
@@ -188,8 +196,10 @@ export function FrontierList() {
                     </span>
                   ))}
                 </dd>
-                <dt>literature</dt>
-                <dd>{p.literature.supporting} supporting</dd>
+                <dt>sources</dt>
+                <dd>
+                  {p.composition_source_ids.length} for the composition · {p.constituent_source_ids.length} for the constituent relations
+                </dd>
               </dl>
               <div className={styles.actions}>
                 <Link className={styles.link} href={`/path/${p.id.slice(2)}`}>

@@ -11,8 +11,34 @@
   performance:
     efficiency_typical: 0.05
     efficiency_record: 0.12
-    theoretical_limit: "Carnot × (√(1+ZT) − 1)/(√(1+ZT) + T_c/T_h); ZT ≈ 1–2 in practice"
+    theoretical_limit: "η = η_Carnot · (√(1+ZT) − 1)/(√(1+ZT) + T_c/T_h), the ideal-module relation for a constant-property leg pair; with ZT ≈ 1 and T_h = 500 K, T_c = 300 K it gives ≈ 8%"
     power_density: "≈ 1 W/cm² of module at ΔT = 200 K"
+    measurements:
+      - quantity: module conversion efficiency
+        value: "12.0%"
+        scope: module
+        conditions: "Bi₂Te₃/skutterudite segmented 8-couple module, T_h = 850 K, T_c = 300 K (ΔT = 550 K), matched load; heat flow measured at the cold side"
+        sources: [source:zhang-2017-segmented-teg]
+        year: 2017
+        note: record for a segmented module at the time of publication
+      - quantity: module conversion efficiency
+        value: "≈ 4–6%"
+        scope: module
+        conditions: "commercial Bi₂Te₃ modules, T_h ≈ 500 K, T_c ≈ 300 K (ΔT ≈ 200 K), matched load"
+        sources: [source:rowe-2006, source:goldsmid-2016]
+        note: the working figure for waste-heat modules; handbook values, not one experiment
+      - quantity: system efficiency (solar-thermal to electric)
+        value: "4.6%"
+        scope: device
+        conditions: "flat-panel solar thermoelectric generator, nanostructured Bi₂Te₃ legs, AM1.5G 1 kW/m² with ~200× thermal concentration, vacuum enclosure, T_h ≈ 470 K"
+        sources: [source:kraemer-2011-steg]
+        year: 2011
+      - quantity: system efficiency (radioisotope heat to electric)
+        value: "≈ 6–7%"
+        scope: system
+        conditions: "Pu-238 RTGs (MMRTG-class), PbTe/TAGS couples, T_h ≈ 800 K, T_c ≈ 470 K, beginning of life"
+        sources: [source:prelas-2014, source:rowe-2006]
+        note: end-of-life output falls with isotope decay and couple degradation
   environment: [state-solid, temp-gradient-required]
   summary: Heat flows through n- and p-type legs; the Seebeck voltage drives the load. Used from radioisotope generators to waste-heat recovery.
 

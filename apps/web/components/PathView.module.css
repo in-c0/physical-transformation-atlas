@@ -28,3 +28,10 @@
   .facts dd { margin-bottom: 6px; }
   .stepStatus { margin-left: 0; }
 }
+
+.measurements > li { padding: 8px 0; border-top: var(--border); }
+.measurements > li:first-child { border-top: 0; }
+.mHead { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
+.mQuantity { font-size: var(--text-ui); line-height: var(--leading-ui); font-weight: var(--weight-medium); }
+.mValue { font-family: var(--font-mono); font-size: var(--text-body); font-weight: var(--weight-medium); font-variant-numeric: tabular-nums; }
+.limit { max-width: 72ch; }

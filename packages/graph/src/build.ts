@@ -151,23 +151,27 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
     else search_status = "not-searched";
     if (searches.length) last_searched = searches.map((s) => s.date).sort().at(-1);
 
+    // Recorded-pathway overlap: does a reviewed pathway share this claim sequence, or a prefix,
+    // suffix or ordered subsequence of it? A generated route that merely extends or truncates a
+    // recorded pathway is "derived", not a fresh candidate.
+    const known_pathway_overlap = pathwayOverlap(ids, pathway);
+
     const srcForm = entity.get(claims[0].subject)?.energy_form;
     const sinkForm = entity.get(claims[claims.length - 1].object)?.energy_form;
     let frontier_class: FrontierClass;
     if (failed) frontier_class = "forbidden";
     else if (search_status === "demonstrated") frontier_class = "demonstrated";
     else if (srcForm && sinkForm && srcForm === sinkForm) frontier_class = "circular";
-    else if (EVIDENCE_RANK[weakest] >= EVIDENCE_RANK.demonstrated) frontier_class = "candidate";
+    else if (EVIDENCE_RANK[weakest] >= EVIDENCE_RANK.demonstrated) frontier_class = known_pathway_overlap && known_pathway_overlap.shared_claims >= 2 ? "derived" : "candidate";
     else frontier_class = "weak";
 
+    // The constituent floor is a statement about the parts. The composition's own level exists only
+    // when a reviewed pathway records it.
+    const levels = claims.map((c) => c.knowledge_level ?? STATUS_TO_LEVEL[c.status]);
+    const constituent_floor = levels.reduce((a, b) => (LEVEL_RANK(b) < LEVEL_RANK(a) ? b : a));
     let knowledge_level: KnowledgeLevel;
     if (pathway) knowledge_level = pathway.knowledge_level;
-    else {
-      const levels = claims.map((c) => c.knowledge_level ?? STATUS_TO_LEVEL[c.status]);
-      const min = levels.reduce((a, b) => (LEVEL_RANK(b) < LEVEL_RANK(a) ? b : a));
-      // A composition nobody has demonstrated cannot be above "experimentally observed" for its parts.
-      knowledge_level = LEVEL_RANK(min) > 4 ? "K4" : min;
-    }
+    else knowledge_level = LEVEL_RANK(constituent_floor) > 4 ? "K4" : constituent_floor;
 
     const families = new Set<string>();
     const domains = new Set<string>();
@@ -181,6 +185,8 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
     const sources = new Set<string>();
     for (const c of claims) for (const s of c.evidence) sources.add(s);
     const contradictory = claims.filter((c) => c.status === "disputed" || c.status === "contradicted" || c.status === "invalid").length;
+    const compositionSources = new Set<string>(pathway?.evidence ?? []);
+    for (const m of pathway?.performance?.measurements ?? []) for (const src of m.sources) compositionSources.add(src);
 
     return {
       id,
@@ -200,7 +206,43 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
       domains: [...domains] as CompiledPath["domains"],
       last_searched,
       literature: { supporting: sources.size, contradictory },
+      constituent_source_ids: [...sources],
+      composition_source_ids: [...compositionSources],
+      constituent_floor,
+      known_pathway_overlap,
     };
+  }
+
+  /** Best overlap between a route's claim sequence and the recorded pathways. */
+  function pathwayOverlap(ids: string[], exact: Pathway | undefined): CompiledPath["known_pathway_overlap"] {
+    if (exact) return { pathway: exact.id, relation: "exact", shared_claims: ids.length, route_claims: ids.length };
+    let best: CompiledPath["known_pathway_overlap"] = null;
+    for (const p of canon.pathways) {
+      const steps = p.steps;
+      let relation: "prefix" | "suffix" | "subsequence" | null = null;
+      let shared = 0;
+      const isPrefix = steps.length < ids.length && steps.every((st, i) => ids[i] === st);
+      const routeIsPrefix = ids.length < steps.length && ids.every((st, i) => steps[i] === st);
+      const isSuffix = steps.length < ids.length && steps.every((st, i) => ids[ids.length - steps.length + i] === st);
+      const routeIsSuffix = ids.length < steps.length && ids.every((st, i) => steps[steps.length - ids.length + i] === st);
+      if (isPrefix || routeIsPrefix) {
+        relation = "prefix";
+        shared = Math.min(steps.length, ids.length);
+      } else if (isSuffix || routeIsSuffix) {
+        relation = "suffix";
+        shared = Math.min(steps.length, ids.length);
+      } else {
+        // ordered subsequence: how many of the pathway's steps appear in order inside the route
+        let j = 0;
+        for (const st of ids) if (j < steps.length && steps[j] === st) j++;
+        let k = 0;
+        for (const st of steps) if (k < ids.length && ids[k] === st) k++;
+        shared = Math.max(j, k);
+        if (shared >= 2) relation = "subsequence";
+      }
+      if (relation && (!best || shared > best.shared_claims)) best = { pathway: p.id, relation, shared_claims: shared, route_claims: ids.length };
+    }
+    return best;
   }
 
   // Sanity: every named pathway must correspond to an enumerated path ---------------
@@ -254,7 +296,7 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
         else status = "contradicted";
       } else if (forbiddenRows.has(r.id)) status = "forbidden";
       else if (reviewed.some((s) => s.result === "demonstration-found")) status = "demonstrated";
-      else if (bridges.some((b) => b.frontier_class === "candidate" || b.frontier_class === "demonstrated")) status = "candidate";
+      else if (bridges.some((b) => b.frontier_class === "candidate" || b.frontier_class === "derived" || b.frontier_class === "demonstrated")) status = "candidate";
       else if (reviewed.some((s) => s.result === "no-demonstration-found")) status = "searched-none";
       else if (searches.length) status = "search-incomplete";
       else status = "not-searched";
@@ -336,7 +378,7 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
     claims: canon.claims,
     sources: canon.sources,
     pathways: canon.pathways,
-    searches: allSearches,
+    searches: allSearches.map((x) => ({ ...x, reviewed: reviewedIds.has(x.id) })),
     paths,
     matrix: { rows, cols, cells },
     coverage,

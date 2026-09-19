@@ -418,5 +418,15 @@
     "verified": true,
     "checked_at": "2026-09-19T01:23:27.517Z",
     "crossref_title": "Thermoelectrics Handbook"
+  },
+  "source:zhang-2017-segmented-teg": {
+    "verified": true,
+    "checked_at": "2026-09-19T12:31:27.927Z",
+    "crossref_title": "Realizing a thermoelectric conversion efficiency of 12% in bismuth telluride/skutterudite segmented modules through full-parameter optimization and energy-loss minimized integration"
+  },
+  "source:kraemer-2011-steg": {
+    "verified": true,
+    "checked_at": "2026-09-19T12:31:28.897Z",
+    "crossref_title": "High-performance flat-panel solar thermoelectric generators with high thermal concentration"
   }
 }

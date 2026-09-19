@@ -3,15 +3,16 @@ import styles from "./EvidenceList.module.css";
 
 export type Verification = Record<string, { verified: boolean; checked_at: string; crossref_title?: string; note?: string }>;
 
-export function EvidenceList({ sources, verification = {} }: { sources: Source[]; verification?: Verification }) {
+export function EvidenceList({ sources, verification = {}, numbering }: { sources: Source[]; verification?: Verification; numbering?: (id: string) => number; startAt?: number }) {
   if (sources.length === 0) return <p className="t-data secondary">No source recorded.</p>;
   return (
     <ol className={styles.list}>
       {sources.map((s, i) => {
         const v = verification[s.id];
+        const n = numbering ? numbering(s.id) : i + 1;
         return (
           <li key={s.id} id={s.id.replace(":", "-")}>
-            <span className={styles.num}>[{i + 1}]</span>
+            <span className={styles.num}>[{n}]</span>
             <div>
               <div className={styles.title}>
                 {s.authors.length > 0 && <span>{s.authors.length > 3 ? `${s.authors[0]} et al.` : s.authors.join(", ")}. </span>}

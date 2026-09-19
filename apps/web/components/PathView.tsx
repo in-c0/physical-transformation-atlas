@@ -1,7 +1,7 @@
 import Link from "next/link";
-import type { CompiledPath } from "@pta/schema";
+import type { CompiledPath, Source } from "@pta/schema";
 import type { AtlasIndex } from "@pta/graph/query";
-import { EVIDENCE_LABEL, FRONTIER_LABEL, SEARCH_LABEL, hrefFor, kLabel, predicateLabel } from "@/lib/format";
+import { EVIDENCE_LABEL, FRONTIER_LABEL, OVERLAP_LABEL, compositionState, hrefFor, kLabel, predicateLabel } from "@/lib/format";
 import { Checksum } from "./Checksum";
 import { EvidenceList } from "./EvidenceList";
 import styles from "./PathView.module.css";
@@ -14,12 +14,19 @@ export function pathTitle(index: AtlasIndex, p: CompiledPath): string {
 export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPath }) {
   const claims = path.claims.map((id) => index.claim.get(id)!);
   const named = path.pathway ? index.pathway.get(path.pathway) : undefined;
-  const sources = index.sourcesFor(claims);
-  const extra = named ? named.evidence.map((s) => index.source.get(s)!).filter((s) => s && !sources.includes(s)) : [];
-  const all = [...sources, ...extra];
+  const constituentSources = path.constituent_source_ids.map((s) => index.source.get(s)).filter((s): s is Source => !!s);
+  const compositionSources = path.composition_source_ids.map((s) => index.source.get(s)).filter((s): s is Source => !!s);
+  // One numbering across both lists so step refs and measurement refs resolve unambiguously.
+  const all: Source[] = [...constituentSources];
+  for (const s of compositionSources) if (!all.includes(s)) all.push(s);
+  const refNo = (id: string) => all.findIndex((x) => x.id === id) + 1;
   const srcAxis = index.rowAxis(path.source);
   const families = path.coupling_families.map((f) => index.colAxis(f)).filter(Boolean);
-  const demonstrated = path.search_status === "demonstrated";
+  const comp = compositionState(path.search_status, path.last_searched);
+  const overlap = path.known_pathway_overlap;
+  const overlapPathway = overlap ? index.pathway.get(overlap.pathway) : undefined;
+  const overlapPath = overlapPathway ? index.graph.paths.find((p) => p.pathway === overlapPathway.id) : undefined;
+  const measurements = named?.performance?.measurements ?? [];
 
   return (
     <article className={styles.article}>
@@ -36,25 +43,44 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
           ))}
         </p>
         {named && <p className={styles.summary}>{named.summary}</p>}
+
+        <h2 className="label" style={{ marginTop: 16 }}>
+          Epistemic state of the route
+        </h2>
         <dl className={styles.facts}>
-          <dt>constituent relations established</dt>
+          <dt>known constituent relations</dt>
           <dd>
-            {path.established_steps} / {path.length}
+            {path.established_steps} / {path.length} established or replicated · weakest constituent{" "}
+            <span className={`ev-${path.evidence_status}`}>{EVIDENCE_LABEL[path.evidence_status]}</span>
           </dd>
-          <dt>weakest constituent</dt>
-          <dd className={`ev-${path.evidence_status}`}>{EVIDENCE_LABEL[path.evidence_status]}</dd>
-          <dt>complete composition</dt>
+          <dt>constituent evidence floor</dt>
+          <dd>{kLabel(path.constituent_floor)}</dd>
+          <dt>exact composition search</dt>
+          <dd>{comp.long}</dd>
+          {named && (
+            <>
+              <dt>composition level</dt>
+              <dd>
+                {kLabel(named.knowledge_level)}
+                {named.demonstrated_with.length ? ` — ${named.demonstrated_with.map((t) => index.entity.get(t)?.name).join(", ")}` : ""}
+              </dd>
+            </>
+          )}
+          <dt>recorded-pathway overlap</dt>
           <dd>
-            {SEARCH_LABEL[path.search_status]}
-            {path.last_searched ? ` · through ${path.last_searched}` : ""}
+            {!overlap && "none recorded"}
+            {overlap && overlap.relation === "exact" && `this route is the recorded pathway ${overlapPathway?.name ?? overlap.pathway}`}
+            {overlap && overlap.relation !== "exact" && overlapPathway && (
+              <>
+                {OVERLAP_LABEL[overlap.relation]}{" "}
+                {overlapPath ? <Link href={`/path/${overlapPath.id.slice(2)}`}>{overlapPathway.name}</Link> : overlapPathway.name} · {overlap.shared_claims}/{overlap.route_claims} relations shared
+              </>
+            )}
           </dd>
-          <dt>direct demonstration found</dt>
-          <dd>{demonstrated ? `yes${named?.demonstrated_with.length ? ` — ${named.demonstrated_with.map((t) => index.entity.get(t)?.name).join(", ")}` : ""}` : "none"}</dd>
-          <dt>knowledge level</dt>
-          <dd>{kLabel(path.knowledge_level)}</dd>
-          <dt>literature</dt>
+          <dt>route-level evidence</dt>
           <dd>
-            {path.literature.supporting} supporting source{path.literature.supporting === 1 ? "" : "s"} · {path.literature.contradictory} contradictory claim{path.literature.contradictory === 1 ? "" : "s"}
+            {compositionSources.length} source{compositionSources.length === 1 ? "" : "s"} for the complete composition · {constituentSources.length} cited by the constituent steps
+            {path.literature.contradictory ? ` · ${path.literature.contradictory} contradictory constituent claim${path.literature.contradictory === 1 ? "" : "s"}` : ""}
           </dd>
         </dl>
       </header>
@@ -65,29 +91,47 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
 
       {named?.performance && (
         <section className={styles.section}>
-          <h2 className="label">Performance on record</h2>
-          <dl className={styles.facts}>
+          <h2 className="label">Measured or reported performance</h2>
+          {measurements.length === 0 && (
+            <p className="t-ui secondary" style={{ fontWeight: 400 }}>
+              Summary figures only; no datum-level record yet. Each figure below is a reviewed summary, not a single measurement.
+            </p>
+          )}
+          {measurements.length > 0 && (
+            <ol className={styles.measurements}>
+              {measurements.map((m, i) => (
+                <li key={i}>
+                  <div className={styles.mHead}>
+                    <span className={styles.mQuantity}>{m.quantity}</span>
+                    <span className={styles.mValue}>{m.value}</span>
+                    <span className="t-micro secondary">{m.scope}</span>
+                    {m.year && <span className="t-micro secondary">{m.year}</span>}
+                  </div>
+                  <div className="t-ui secondary" style={{ fontWeight: 400 }}>
+                    {m.conditions}
+                    {m.note ? ` — ${m.note}` : ""}
+                  </div>
+                  <div className="t-data secondary">refs {m.sources.map((s) => `[${refNo(s)}]`).join(" ")}</div>
+                </li>
+              ))}
+            </ol>
+          )}
+          <dl className={styles.facts} style={{ marginTop: measurements.length ? 12 : 8 }}>
             {named.performance.efficiency_typical !== undefined && (
               <>
-                <dt>typical efficiency</dt>
+                <dt>typical efficiency (summary)</dt>
                 <dd>{(named.performance.efficiency_typical * 100).toFixed(1)}%</dd>
               </>
             )}
             {named.performance.efficiency_record !== undefined && (
               <>
-                <dt>record efficiency</dt>
+                <dt>record efficiency (summary)</dt>
                 <dd>{(named.performance.efficiency_record * 100).toFixed(1)}%</dd>
-              </>
-            )}
-            {named.performance.theoretical_limit && (
-              <>
-                <dt>theoretical limit</dt>
-                <dd>{named.performance.theoretical_limit}</dd>
               </>
             )}
             {named.performance.power_density && (
               <>
-                <dt>power density</dt>
+                <dt>power density (summary)</dt>
                 <dd>{named.performance.power_density}</dd>
               </>
             )}
@@ -98,6 +142,14 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
               </>
             )}
           </dl>
+          {named.performance.theoretical_limit && (
+            <>
+              <h2 className="label" style={{ marginTop: 14 }}>
+                Theoretical relation
+              </h2>
+              <p className={`${styles.limit} t-data`}>{named.performance.theoretical_limit}</p>
+            </>
+          )}
         </section>
       )}
 
@@ -107,7 +159,7 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
           {claims.map((c, i) => {
             const s = index.entity.get(c.subject);
             const o = index.entity.get(c.object);
-            const refs = c.evidence.map((e) => all.findIndex((x) => x.id === e) + 1).filter((n) => n > 0);
+            const refs = c.evidence.map(refNo).filter((n) => n > 0);
             return (
               <li key={c.id} className={styles.step} id={c.id.replace(":", "-")}>
                 <div className={styles.stepNum}>{String(i + 1).padStart(2, "0")}</div>
@@ -128,6 +180,7 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
                     <div className="t-data">
                       {c.relation.formula}
                       {c.relation.coefficient_name ? <span className="secondary"> · {c.relation.coefficient_name} [{c.relation.coefficient_unit}]</span> : null}
+                      {c.relation.conventions ? <div className="secondary">{c.relation.conventions}</div> : null}
                     </div>
                   )}
                   {c.conditions.length > 0 && (
@@ -163,8 +216,19 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
       </section>
 
       <section className={styles.section}>
-        <h2 className="label">Evidence</h2>
-        <EvidenceList sources={all} verification={index.graph.source_verification} />
+        <h2 className="label">Evidence for the complete composition · {compositionSources.length}</h2>
+        {compositionSources.length === 0 ? (
+          <p className="t-ui secondary" style={{ fontWeight: 400 }}>
+            No source on record for this exact composition. The sources below support the individual steps, not the route as a whole.
+          </p>
+        ) : (
+          <EvidenceList sources={compositionSources} verification={index.graph.source_verification} startAt={refNo(compositionSources[0].id)} numbering={refNo} />
+        )}
+      </section>
+
+      <section className={styles.section}>
+        <h2 className="label">Evidence for the constituent relations · {constituentSources.length}</h2>
+        <EvidenceList sources={constituentSources} verification={index.graph.source_verification} numbering={refNo} />
       </section>
     </article>
   );

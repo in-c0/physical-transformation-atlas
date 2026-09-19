@@ -18,6 +18,7 @@
     output: quantity:electric-potential
     coefficient_unit: V/K
     coefficient_name: Seebeck coefficient S
+    conventions: "Open-circuit voltage between the ends of one conductor (absolute S) or across a couple of two conductors (S_A − S_B); ΔV and ΔT measured from the same reference end; S < 0 for electron-dominated transport, S > 0 for hole-dominated, so the polarity is material- and convention-dependent."
   evidence: [source:seebeck-1826, source:goldsmid-2016, source:callen-1948]
   status: established
   knowledge_level: K8

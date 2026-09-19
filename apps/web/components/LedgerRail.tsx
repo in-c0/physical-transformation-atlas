@@ -48,7 +48,7 @@ export function homeReadouts(counts: {
     { value: `${counts.disequilibria} × ${counts.couplings}`, label: "DRIVERS × COUPLINGS", href: "/matrix" },
     { value: n(counts.paths_examined), label: "PATHS EXAMINED", href: "/frontier" },
     { value: n(counts.paths_demonstrated), label: "DEMONSTRATED" },
-    { value: n(counts.candidates), label: "CANDIDATES", href: "/frontier", tone: "frontier" },
+    { value: n(counts.candidates), label: "CANDIDATE COMPOSITIONS", href: "/frontier", tone: "frontier" },
     { value: n(counts.matrix_cells_unsearched), label: "UNSEARCHED CELLS", href: "/matrix", tone: "frontier" },
     { value: pct(counts.coverage_mean, 1), label: "COVERAGE", href: "/coverage" },
   ];

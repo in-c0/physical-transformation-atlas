@@ -10,7 +10,7 @@
   domain: condensed-matter
   year_first_reported: 1821
   condition_tags: [state-solid, medium-conductor, temp-gradient-required]
-  summary: A temperature difference along a conductor or across a junction of dissimilar conductors produces an electric potential difference, ΔV = S·ΔT, because charge carriers diffuse from the hot end and accumulate at the cold end.
+  summary: "At open circuit, temperature-driven carrier transport along a conductor is balanced by an electric field, producing a measurable thermoelectric voltage between the ends (or across a junction of dissimilar conductors). Its polarity depends on the transport coefficients, the dominant carriers and the stated sign convention."
 - id: phenomenon:peltier-effect
   type: phenomenon
   name: Peltier effect

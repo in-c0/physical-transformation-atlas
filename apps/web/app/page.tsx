@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <main>
       <h1 className="visually-hidden" style={{ position: "absolute", width: 1, height: 1, overflow: "hidden", clip: "rect(0 0 0 0)" }}>
-        Physical Transformation Atlas — the known and unexplored transformation space
+        Physical Transformation Atlas — recorded and not-yet-searched regions of the current atlas
       </h1>
       <LedgerRail items={homeReadouts({ ...c, candidates })} />
       <Matrix data={matrixPayload()} density="home" fill />
