@@ -1,0 +1,37 @@
+# Unit symbols the dimensional check understands. Dimensions are exponents over
+# M (mass), L (length), T (time), I (current), Th (temperature), N (amount), J (luminous intensity).
+# Add a unit here before using it in a claim's `relation.coefficient_unit`.
+- { symbol: "1", name: dimensionless, dimension: {} }
+- { symbol: kg, name: kilogram, dimension: { M: 1 } }
+- { symbol: g, name: gram, dimension: { M: 1 } }
+- { symbol: m, name: metre, dimension: { L: 1 } }
+- { symbol: cm, name: centimetre, dimension: { L: 1 } }
+- { symbol: nm, name: nanometre, dimension: { L: 1 } }
+- { symbol: s, name: second, dimension: { T: 1 } }
+- { symbol: A, name: ampere, dimension: { I: 1 } }
+- { symbol: K, name: kelvin, dimension: { Th: 1 } }
+- { symbol: mol, name: mole, dimension: { N: 1 } }
+- { symbol: cd, name: candela, dimension: { J: 1 } }
+- { symbol: Hz, name: hertz, dimension: { T: -1 } }
+- { symbol: N, name: newton, dimension: { M: 1, L: 1, T: -2 } }
+- { symbol: Pa, name: pascal, dimension: { M: 1, L: -1, T: -2 } }
+- { symbol: bar, name: bar, dimension: { M: 1, L: -1, T: -2 } }
+- { symbol: J, name: joule, dimension: { M: 1, L: 2, T: -2 } }
+- { symbol: eV, name: electronvolt, dimension: { M: 1, L: 2, T: -2 } }
+- { symbol: W, name: watt, dimension: { M: 1, L: 2, T: -3 } }
+- { symbol: C, name: coulomb, dimension: { I: 1, T: 1 } }
+- { symbol: V, name: volt, dimension: { M: 1, L: 2, T: -3, I: -1 } }
+- { symbol: F, name: farad, dimension: { M: -1, L: -2, T: 4, I: 2 } }
+- { symbol: Ω, name: ohm, dimension: { M: 1, L: 2, T: -3, I: -2 } }
+- { symbol: ohm, name: ohm, dimension: { M: 1, L: 2, T: -3, I: -2 } }
+- { symbol: S, name: siemens, dimension: { M: -1, L: -2, T: 3, I: 2 } }
+- { symbol: Wb, name: weber, dimension: { M: 1, L: 2, T: -2, I: -1 } }
+- { symbol: T, name: tesla, dimension: { M: 1, T: -2, I: -1 } }
+- { symbol: H, name: henry, dimension: { M: 1, L: 2, T: -2, I: -2 } }
+- { symbol: rad, name: radian, dimension: {} }
+- { symbol: sr, name: steradian, dimension: {} }
+- { symbol: lm, name: lumen, dimension: { J: 1 } }
+- { symbol: lx, name: lux, dimension: { J: 1, L: -2 } }
+- { symbol: Bq, name: becquerel, dimension: { T: -1 } }
+- { symbol: Gy, name: gray, dimension: { L: 2, T: -2 } }
+- { symbol: L, name: litre, dimension: { L: 3 } }

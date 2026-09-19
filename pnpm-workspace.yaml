@@ -1,0 +1,10 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+  - "pipelines"
+  - "worker"
+onlyBuiltDependencies:
+  - esbuild
+  - unrs-resolver
+  - workerd
+  - sharp

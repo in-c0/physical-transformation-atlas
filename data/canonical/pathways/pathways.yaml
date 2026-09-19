@@ -1,0 +1,516 @@
+# Named, reviewed conversion pathways. `steps` is the ordered list of process
+# claims from a disequilibrium to an output; the compiled path with the same
+# claim sequence inherits this record's status, level and performance.
+- id: pathway:thermoelectric-generator
+  name: Thermoelectric generator
+  steps: [claim:seebeck-drives, claim:seebeck-produces-carriers, claim:charge-carriers-convert-electricity]
+  demonstrated_with: [transducer:thermoelectric-generator]
+  evidence: [source:rowe-2006, source:snyder-toberer-2008, source:goldsmid-2016]
+  status: commercial
+  knowledge_level: K8
+  performance:
+    efficiency_typical: 0.05
+    efficiency_record: 0.12
+    theoretical_limit: "Carnot × (√(1+ZT) − 1)/(√(1+ZT) + T_c/T_h); ZT ≈ 1–2 in practice"
+    power_density: "≈ 1 W/cm² of module at ΔT = 200 K"
+  environment: [state-solid, temp-gradient-required]
+  summary: Heat flows through n- and p-type legs; the Seebeck voltage drives the load. Used from radioisotope generators to waste-heat recovery.
+
+- id: pathway:thermionic-converter
+  name: Thermionic converter
+  steps: [claim:thermionic-drives, claim:thermionic-produces-carriers, claim:charge-carriers-convert-electricity]
+  demonstrated_with: [transducer:thermionic-converter]
+  evidence: [source:hatsopoulos-gyftopoulos-1973]
+  status: prototype
+  knowledge_level: K7
+  performance:
+    efficiency_typical: 0.08
+    efficiency_record: 0.15
+    theoretical_limit: "Carnot; practically limited by space charge and radiative loss from the cathode"
+  environment: [env-vacuum, temp-high]
+  summary: A cathode above 1500 K emits electrons collected across a caesium-vapour gap; flown in space reactors.
+
+- id: pathway:thermoacoustic-generator
+  name: Thermoacoustic engine with linear alternator
+  steps: [claim:thermoacoustic-drives, claim:thermoacoustic-produces-sound, claim:acoustic-drives-linear-alternator, claim:linear-alternator-produces, claim:charge-carriers-convert-electricity]
+  demonstrated_with: [transducer:thermoacoustic-engine]
+  evidence: [source:swift-1988]
+  status: prototype
+  knowledge_level: K7
+  performance:
+    efficiency_typical: 0.15
+    efficiency_record: 0.32
+    theoretical_limit: "Carnot; travelling-wave engines have reached ≈ 40% of Carnot"
+  environment: [state-gas, temp-gradient-required]
+  summary: Heat makes a gas column oscillate; the oscillation drives a piston in a coil.
+
+- id: pathway:pyroelectric-harvester
+  name: Pyroelectric harvester
+  steps: [claim:pyro-drives, claim:pyro-produces-charge, claim:surface-charge-converts-electricity]
+  demonstrated_with: [transducer:pyroelectric-harvester]
+  evidence: [source:bowen-2014-pyro]
+  status: demonstrated
+  knowledge_level: K6
+  performance:
+    efficiency_typical: 0.01
+    theoretical_limit: "Carnot for the temperature swing; Olsen cycles reach a few per cent of Carnot"
+    power_density: "µW–mW/cm² under thermal cycling at ~1 Hz"
+  environment: [state-solid, transient-only]
+  summary: A polar film cycled in temperature releases surface charge into a load.
+
+- id: pathway:thermogalvanic-cell
+  name: Thermogalvanic cell
+  steps: [claim:thermogalvanic-drives, claim:thermogalvanic-produces-ions, claim:ionic-current-converts-electricity]
+  demonstrated_with: [transducer:thermocell]
+  evidence: [source:quickenden-mua-1995, source:dupont-2017]
+  status: demonstrated
+  knowledge_level: K6
+  performance:
+    efficiency_typical: 0.005
+    theoretical_limit: "Carnot; relative efficiency (η/η_Carnot) of a few per cent reported"
+    power_density: "≈ 1–10 W/m² of electrode"
+  environment: [env-aqueous, temp-gradient-required]
+  summary: Two identical electrodes at different temperatures in one redox electrolyte.
+
+- id: pathway:thermally-regenerative-electrochemical-cycle
+  name: Thermally regenerative electrochemical cycle
+  steps: [claim:trec-drives, claim:trec-produces-ions, claim:ionic-current-converts-electricity]
+  evidence: [source:lee-2014-trec]
+  status: demonstrated
+  knowledge_level: K5
+  performance:
+    efficiency_record: 0.057
+    theoretical_limit: "Carnot between the charge and discharge temperatures (≈ 13% for 10–60 °C)"
+  environment: [env-aqueous, temp-gradient-required]
+  summary: Charge cold, discharge warm; 5.7% efficiency between 10 and 60 °C with heat recuperation.
+
+- id: pathway:thermomagnetic-generator
+  name: Thermomagnetic generator
+  steps: [claim:thermomagnetic-drives, claim:thermomagnetic-produces-flux, claim:magnetic-flux-drives-induction, claim:induction-produces-carriers, claim:charge-carriers-convert-electricity]
+  demonstrated_with: [transducer:thermomagnetic-generator]
+  evidence: [source:kishore-priya-2018, source:waske-2019]
+  status: demonstrated
+  knowledge_level: K6
+  performance:
+    efficiency_typical: 0.001
+    theoretical_limit: "Carnot for the small ΔT around the Curie point; material limits are far below it"
+  environment: [state-solid, temp-gradient-required]
+  summary: A gadolinium element switching between hot and cold changes the flux through a coil.
+
+- id: pathway:thermophotovoltaic
+  name: Thermophotovoltaic conversion
+  steps: [claim:thermal-emission-drives, claim:thermal-emission-produces-photons, claim:photons-drive-pv, claim:pv-produces-pairs, claim:pairs-convert-electricity]
+  demonstrated_with: [transducer:thermophotovoltaic-cell]
+  evidence: [source:lapotin-2022]
+  status: demonstrated
+  knowledge_level: K7
+  performance:
+    efficiency_record: 0.40
+    theoretical_limit: "Carnot between emitter and cell; > 50% projected with better photon recycling"
+    power_density: "≈ 2 W/cm² at a 2400 °C emitter"
+  environment: [temp-high]
+  summary: A 2400 °C emitter radiates into a tandem III–V cell with a back reflector; 40% measured.
+
+- id: pathway:rankine-steam-plant
+  name: Steam Rankine plant
+  steps: [claim:expansion-drives, claim:expansion-produces-motion, claim:motion-drives-generator, claim:generator-produces-carriers, claim:charge-carriers-convert-electricity]
+  demonstrated_with: [transducer:rankine-cycle-plant]
+  evidence: [source:bejan-2016]
+  status: commercial
+  knowledge_level: K8
+  performance:
+    efficiency_typical: 0.38
+    efficiency_record: 0.47
+    theoretical_limit: "Carnot ≈ 65% for 873 K against 300 K; Curzon–Ahlborn ≈ 41% at maximum power"
+  environment: [temp-gradient-required]
+  summary: Heat raises steam; the turbine turns the generator. Most of the world's thermal electricity.
+
+- id: pathway:combustion-gas-turbine
+  name: Combustion gas-turbine plant
+  steps: [claim:combustion-drives, claim:combustion-produces-hot-gas, claim:hot-gas-drives-expansion, claim:expansion-produces-motion, claim:motion-drives-generator, claim:generator-produces-carriers, claim:charge-carriers-convert-electricity]
+  demonstrated_with: [transducer:rankine-cycle-plant]
+  evidence: [source:bejan-2016, source:dixon-hall-2014]
+  status: commercial
+  knowledge_level: K8
+  performance:
+    efficiency_typical: 0.40
+    efficiency_record: 0.64
+    theoretical_limit: "Carnot at the turbine inlet temperature (≈ 1900 K → 84%); combined cycles reach 64%"
+  environment: [state-gas, temp-high]
+  summary: Fuel burns, hot gas expands through the turbine, the shaft turns the alternator.
+
+- id: pathway:otec-plant
+  name: Ocean thermal energy conversion plant
+  steps: [claim:otec-drives, claim:otec-produces-motion, claim:motion-drives-generator, claim:generator-produces-carriers, claim:charge-carriers-convert-electricity]
+  evidence: [source:claude-1930, source:bejan-2016]
+  status: prototype
+  knowledge_level: K7
+  performance:
+    efficiency_typical: 0.03
+    theoretical_limit: "Carnot ≈ 6.7% for 300 K against 280 K"
+  environment: [state-liquid, temp-gradient-required]
+  summary: Warm surface water evaporates a working fluid condensed by deep cold water; 100 kW-class plants have run.
+
+- id: pathway:radiative-cooling-teg
+  name: Night-time radiative-cooling thermoelectric generator
+  steps: [claim:sky-drives-radiative-cooling, claim:radiative-cooling-produces-gradient, claim:seebeck-drives, claim:seebeck-produces-carriers, claim:charge-carriers-convert-electricity]
+  demonstrated_with: [transducer:radiative-cooler-teg]
+  evidence: [source:raman-2019-night]
+  status: demonstrated
+  knowledge_level: K4
+  performance:
+    power_density: "25 mW/m² measured; ≈ 0.5 W/m² projected"
+    theoretical_limit: "Carnot across a few kelvin; radiative cooling power ≲ 100 W/m²"
+  environment: [temp-gradient-required]
+  summary: A sky-facing emitter cools the cold side of a thermoelectric module below ambient at night.
+
+- id: pathway:piezoelectric-vibration-harvester
+  name: Piezoelectric vibration harvester
+  steps: [claim:vibration-drives-resonance, claim:resonance-produces-stress, claim:piezo-drives, claim:piezo-produces-charge, claim:surface-charge-converts-electricity]
+  demonstrated_with: [transducer:piezoelectric-harvester]
+  evidence: [source:anton-sodano-2007, source:erturk-inman-2011, source:roundy-2003]
+  status: commercial
+  knowledge_level: K8
+  performance:
+    efficiency_typical: 0.1
+    theoretical_limit: "k² of the stored strain energy per cycle (k² ≈ 0.1–0.5 for PZT)"
+    power_density: "10–100 µW/cm³ at ambient vibration levels"
+  environment: [state-solid]
+  summary: A tuned cantilever bends a piezoelectric layer; charge flows each half cycle.
+
+- id: pathway:triboelectric-nanogenerator
+  name: Triboelectric nanogenerator
+  steps: [claim:vibration-drives-tribo, claim:tribo-produces-charge, claim:surface-charge-converts-electricity]
+  demonstrated_with: [transducer:triboelectric-nanogenerator]
+  evidence: [source:fan-tian-wang-2012]
+  status: demonstrated
+  knowledge_level: K6
+  performance:
+    power_density: "up to ≈ 500 W/m² instantaneous in contact–separation mode; average far lower"
+    theoretical_limit: "set by surface charge density and dielectric breakdown"
+  environment: [state-solid, medium-dielectric]
+  summary: Two polymer films contact and separate; induced charge cycles through the load.
+
+- id: pathway:electrostatic-vibration-harvester
+  name: Electrostatic (electret) vibration harvester
+  steps: [claim:electrostatic-drives, claim:electrostatic-produces, claim:charge-carriers-convert-electricity]
+  demonstrated_with: [transducer:electrostatic-harvester]
+  evidence: [source:roundy-2003]
+  status: demonstrated
+  knowledge_level: K6
+  performance:
+    power_density: "≈ 10–100 µW/cm³"
+  environment: [state-solid, field-electric-required]
+  summary: A MEMS variable capacitor with an electret bias.
+
+- id: pathway:electromagnetic-vibration-harvester
+  name: Electromagnetic vibration harvester
+  steps: [claim:vibration-drives-resonance, claim:resonance-produces-motion, claim:motion-drives-induction, claim:induction-produces-carriers, claim:charge-carriers-convert-electricity]
+  demonstrated_with: [transducer:electromagnetic-vibration-harvester]
+  evidence: [source:beeby-2007]
+  status: commercial
+  knowledge_level: K8
+  performance:
+    power_density: "≈ 50–500 µW/cm³ at 50–100 Hz"
+  environment: [state-solid]
+  summary: A sprung magnet moves through a coil.
+
+- id: pathway:magnetostrictive-harvester
+  name: Magnetostrictive vibration harvester
+  steps: [claim:vibration-drives-resonance, claim:resonance-produces-stress, claim:villari-drives, claim:villari-produces-flux, claim:magnetic-flux-drives-induction, claim:induction-produces-carriers, claim:charge-carriers-convert-electricity]
+  demonstrated_with: [transducer:magnetostrictive-harvester]
+  evidence: [source:wang-yuan-2008]
+  status: demonstrated
+  knowledge_level: K6
+  performance:
+    power_density: "≈ 0.2 mW/cm³ reported for Galfenol at 58 Hz"
+  environment: [state-solid, medium-ferromagnet]
+  summary: Cyclic stress changes the magnetisation of a Galfenol rod inside a pickup coil.
+
+- id: pathway:magnetoelectric-field-harvester
+  name: Magnetoelectric stray-field harvester
+  steps: [claim:magnetoelectric-drives, claim:magnetoelectric-produces, claim:surface-charge-converts-electricity]
+  demonstrated_with: [transducer:magnetoelectric-composite]
+  evidence: [source:nan-2008]
+  status: demonstrated
+  knowledge_level: K6
+  performance:
+    power_density: "mW-scale from 50/60 Hz stray fields of a few oersted"
+  environment: [state-solid]
+  summary: An AC field strains the magnetostrictive layer, which stresses the bonded piezoelectric layer.
+
+- id: pathway:wind-turbine
+  name: Wind turbine
+  steps: [claim:flow-drives-lift, claim:lift-produces-motion, claim:motion-drives-generator, claim:generator-produces-carriers, claim:charge-carriers-convert-electricity]
+  demonstrated_with: [transducer:wind-turbine]
+  evidence: [source:betz-1920, source:dixon-hall-2014]
+  status: commercial
+  knowledge_level: K8
+  performance:
+    efficiency_typical: 0.45
+    efficiency_record: 0.52
+    theoretical_limit: "Betz: 59.3% of the kinetic power through the rotor disc"
+  environment: [flow-required]
+  summary: Blade lift turns the rotor; the rotor turns the generator.
+
+- id: pathway:hydroelectric-plant
+  name: Hydroelectric plant
+  steps: [claim:gravity-drives-descent, claim:descent-produces-pressure, claim:hydraulic-drives-lift, claim:lift-produces-motion, claim:motion-drives-generator, claim:generator-produces-carriers, claim:charge-carriers-convert-electricity]
+  demonstrated_with: [transducer:hydro-turbine]
+  evidence: [source:dixon-hall-2014]
+  status: commercial
+  knowledge_level: K8
+  performance:
+    efficiency_typical: 0.90
+    efficiency_record: 0.95
+    theoretical_limit: "no thermodynamic ceiling below 100%; losses are hydraulic and electrical"
+  environment: [state-liquid]
+  summary: Water falls through the penstock, spins the turbine, turns the generator.
+
+- id: pathway:reverse-electrodialysis-plant
+  name: Reverse electrodialysis plant
+  steps: [claim:salinity-drives-red, claim:red-produces-ions, claim:ionic-current-converts-electricity]
+  demonstrated_with: [transducer:reverse-electrodialysis-stack]
+  evidence: [source:post-2007, source:logan-elimelech-2012]
+  status: prototype
+  knowledge_level: K7
+  performance:
+    efficiency_typical: 0.3
+    theoretical_limit: "free energy of mixing, ≈ 0.8 kWh per m³ of river water"
+    power_density: "≈ 1–2 W/m² of membrane"
+  environment: [env-aqueous, medium-membrane]
+  summary: Ion-selective membranes turn the mixing of river and sea water into a stack voltage.
+
+- id: pathway:pressure-retarded-osmosis-plant
+  name: Pressure-retarded osmosis plant
+  steps: [claim:salinity-drives-pro, claim:pro-produces-pressure, claim:hydraulic-drives-lift, claim:lift-produces-motion, claim:motion-drives-generator, claim:generator-produces-carriers, claim:charge-carriers-convert-electricity]
+  demonstrated_with: [transducer:pressure-retarded-osmosis-plant]
+  evidence: [source:loeb-1975, source:logan-elimelech-2012]
+  status: prototype
+  knowledge_level: K7
+  performance:
+    power_density: "≈ 1–5 W/m² of membrane; 5 W/m² is the usual economic threshold"
+    theoretical_limit: "free energy of mixing, ≈ 0.8 kWh per m³ of river water"
+  environment: [env-aqueous, medium-membrane]
+  summary: Fresh water permeates into pressurised seawater; the extra volume drives a turbine.
+
+- id: pathway:photovoltaic-module
+  name: Photovoltaic module
+  steps: [claim:pv-drives, claim:pv-produces-pairs, claim:pairs-convert-electricity]
+  demonstrated_with: [transducer:photovoltaic-cell]
+  evidence: [source:chapin-1954, source:shockley-queisser-1961, source:green-2024-tables]
+  status: commercial
+  knowledge_level: K8
+  performance:
+    efficiency_typical: 0.22
+    efficiency_record: 0.27
+    theoretical_limit: "Shockley–Queisser 33.7% for one junction; Landsberg 93.3% overall"
+    power_density: "≈ 200 W/m² at 1000 W/m² irradiance"
+  environment: [state-solid, illumination-required]
+  summary: Photons make electron–hole pairs; the junction separates them.
+
+- id: pathway:solar-thermal-rankine
+  name: Concentrating solar-thermal plant
+  steps: [claim:photothermal-drives, claim:photothermal-produces-gradient, claim:expansion-drives, claim:expansion-produces-motion, claim:motion-drives-generator, claim:generator-produces-carriers, claim:charge-carriers-convert-electricity]
+  demonstrated_with: [transducer:solar-thermal-collector, transducer:rankine-cycle-plant]
+  evidence: [source:bejan-2016]
+  status: commercial
+  knowledge_level: K8
+  performance:
+    efficiency_typical: 0.16
+    theoretical_limit: "Landsberg 93.3% overall; Carnot at the receiver temperature"
+  environment: [illumination-required, temp-gradient-required]
+  summary: Mirrors heat a receiver; the receiver drives a steam cycle.
+
+- id: pathway:photoelectrochemical-water-splitting
+  name: Photoelectrochemical water splitting
+  steps: [claim:pec-drives, claim:pec-converts-fuel]
+  demonstrated_with: [transducer:photoelectrochemical-cell]
+  evidence: [source:fujishima-honda-1972]
+  status: demonstrated
+  knowledge_level: K5
+  performance:
+    efficiency_record: 0.19
+    theoretical_limit: "≈ 30% solar-to-hydrogen for a tandem absorber"
+  environment: [env-aqueous, illumination-required]
+  summary: Photogenerated carriers split water at a semiconductor–electrolyte interface.
+
+- id: pathway:betavoltaic-battery
+  name: Betavoltaic battery
+  steps: [claim:binding-drives-decay, claim:decay-produces-particles, claim:particles-drive-betavoltaic, claim:betavoltaic-produces-pairs, claim:pairs-convert-electricity]
+  demonstrated_with: [transducer:betavoltaic-cell]
+  evidence: [source:rappaport-1954, source:prelas-2014]
+  status: commercial
+  knowledge_level: K8
+  performance:
+    efficiency_typical: 0.02
+    efficiency_record: 0.06
+    power_density: "µW/cm² for tritium and Ni-63 sources; decades of life"
+  environment: [state-solid, radioisotope-required]
+  summary: Beta particles make carrier pairs in a junction for as long as the isotope lasts.
+
+- id: pathway:radioisotope-thermoelectric-generator
+  name: Radioisotope thermoelectric generator
+  steps: [claim:binding-drives-decay, claim:decay-produces-particles, claim:particles-drive-heating, claim:heating-produces-gradient, claim:seebeck-drives, claim:seebeck-produces-carriers, claim:charge-carriers-convert-electricity]
+  demonstrated_with: [transducer:radioisotope-thermoelectric-generator]
+  evidence: [source:prelas-2014, source:rowe-2006]
+  status: commercial
+  knowledge_level: K8
+  performance:
+    efficiency_typical: 0.06
+    power_density: "≈ 5 W(e) per kg for Pu-238 units"
+  environment: [state-solid, radioisotope-required]
+  summary: Decay heat across thermoelectric couples; powers deep-space probes.
+
+- id: pathway:spin-seebeck-thermopile
+  name: Spin Seebeck thermopile
+  steps: [claim:sse-drives, claim:sse-produces-spin-current, claim:spin-current-drives-ishe, claim:ishe-produces, claim:charge-carriers-convert-electricity]
+  demonstrated_with: [transducer:spin-seebeck-device]
+  evidence: [source:uchida-2008, source:uchida-2010-insulator, source:bauer-2012]
+  status: demonstrated
+  knowledge_level: K4
+  performance:
+    power_density: "nW–µW/cm² in laboratory films; far below thermoelectrics"
+    theoretical_limit: "Carnot; practical limit set by spin-mixing conductance and spin Hall angle"
+  environment: [state-solid, temp-gradient-required]
+  summary: Heat drives magnons in YIG; the Pt strip converts the pumped spin current to a voltage.
+
+- id: pathway:rectenna-microwave
+  name: Microwave rectenna
+  steps: [claim:radiation-drives-antenna, claim:antenna-couples-rectification, claim:rectification-produces, claim:charge-carriers-convert-electricity]
+  demonstrated_with: [transducer:rectenna]
+  evidence: [source:brown-1984]
+  status: prototype
+  knowledge_level: K7
+  performance:
+    efficiency_record: 0.84
+    theoretical_limit: "no thermodynamic ceiling below 100% for coherent radiation"
+  environment: [medium-conductor]
+  summary: An antenna array feeds Schottky diodes; 84% RF-to-DC at 2.45 GHz was shown in the 1970s.
+
+- id: pathway:hydrovoltaic-generator
+  name: Hydrovoltaic generator
+  steps: [claim:humidity-drives-evaporation, claim:evaporation-produces-capillary, claim:capillary-drives-hydrovoltaic, claim:hydrovoltaic-produces-ions, claim:ionic-current-converts-electricity]
+  demonstrated_with: [transducer:hydrovoltaic-generator]
+  evidence: [source:xue-2017-hydrovoltaic]
+  status: demonstrated
+  knowledge_level: K4
+  performance:
+    power_density: "≈ 10–100 µW/cm² sustained by evaporation"
+  environment: [env-aqueous, humidity-required]
+  summary: Evaporation pulls water through a carbon film and streams ions with it.
+
+- id: pathway:droplet-electricity-generator
+  name: Droplet-based electricity generator
+  steps: [claim:gravity-drives-droplet, claim:droplet-produces-charge, claim:surface-charge-converts-electricity]
+  demonstrated_with: [transducer:droplet-electricity-generator]
+  evidence: [source:xu-2020-droplet]
+  status: demonstrated
+  knowledge_level: K4
+  performance:
+    power_density: "≈ 50 W/m² instantaneous per impacting droplet"
+  environment: [state-liquid]
+  summary: A falling droplet bridges a charged PTFE surface to an electrode and discharges it through the load.
+
+- id: pathway:fuel-cell
+  name: Hydrogen fuel cell
+  steps: [claim:fuel-cell-drives, claim:fuel-cell-produces-ions, claim:ionic-current-converts-electricity]
+  demonstrated_with: [transducer:fuel-cell]
+  evidence: [source:grove-1839, source:bard-faulkner-2001]
+  status: commercial
+  knowledge_level: K8
+  performance:
+    efficiency_typical: 0.5
+    efficiency_record: 0.65
+    theoretical_limit: "ΔG/ΔH ≈ 83% for H₂/O₂ at 25 °C"
+  environment: [medium-membrane]
+  summary: Hydrogen is oxidised at the anode, oxygen reduced at the cathode; electrons go round the load.
+
+- id: pathway:galvanic-battery
+  name: Galvanic battery discharge
+  steps: [claim:galvanic-drives, claim:galvanic-produces-ions, claim:ionic-current-converts-electricity]
+  demonstrated_with: [transducer:galvanic-cell]
+  evidence: [source:bard-faulkner-2001]
+  status: commercial
+  knowledge_level: K8
+  performance:
+    efficiency_typical: 0.9
+    theoretical_limit: "−ΔG of the cell reaction"
+  environment: [env-aqueous]
+  summary: Stored reaction free energy delivered as current.
+
+- id: pathway:mhd-generator
+  name: Combustion MHD generator
+  steps: [claim:combustion-drives, claim:combustion-produces-hot-gas, claim:hot-gas-drives-mhd, claim:mhd-produces, claim:charge-carriers-convert-electricity]
+  demonstrated_with: [transducer:mhd-generator]
+  evidence: [source:rosa-1961-mhd]
+  status: prototype
+  knowledge_level: K7
+  performance:
+    efficiency_typical: 0.2
+    theoretical_limit: "Carnot at the plasma temperature; topping-cycle combinations projected at 50–60%"
+  environment: [state-plasma, temp-high, field-magnetic-required]
+  summary: Seeded combustion plasma crosses a magnet; electrodes collect the transverse current.
+
+- id: pathway:amtec
+  name: AMTEC cell
+  steps: [claim:amtec-drives, claim:amtec-produces-ions, claim:ionic-current-converts-electricity]
+  demonstrated_with: [transducer:amtec-cell]
+  evidence: [source:cole-1983-amtec]
+  status: prototype
+  knowledge_level: K6
+  performance:
+    efficiency_typical: 0.15
+    efficiency_record: 0.2
+    theoretical_limit: "Carnot between the evaporator and condenser temperatures"
+  environment: [temp-high, state-liquid]
+  summary: Sodium ions cross a solid electrolyte; electrons take the external circuit.
+
+- id: pathway:nuclear-steam-plant
+  name: Nuclear fission steam plant
+  steps: [claim:binding-drives-fission, claim:fission-produces-hot-gas, claim:hot-gas-drives-expansion, claim:expansion-produces-motion, claim:motion-drives-generator, claim:generator-produces-carriers, claim:charge-carriers-convert-electricity]
+  demonstrated_with: [transducer:nuclear-reactor-plant]
+  evidence: [source:bejan-2016]
+  status: commercial
+  knowledge_level: K8
+  performance:
+    efficiency_typical: 0.33
+    theoretical_limit: "Carnot at ~600 K steam ≈ 50%"
+  environment: [temp-high]
+  summary: Fission heat raises steam for a conventional turbine.
+
+- id: pathway:photosynthesis
+  name: Photosynthesis
+  steps: [claim:photosynthesis-drives, claim:photosynthesis-produces-carbon, claim:reduced-carbon-converts-fuel]
+  evidence: [source:blankenship-2011]
+  status: commercial
+  knowledge_level: K8
+  performance:
+    efficiency_typical: 0.01
+    efficiency_record: 0.045
+    theoretical_limit: "≈ 12% solar-to-biomass (two photosystems, 8 photons per CO₂)"
+  environment: [env-aqueous, illumination-required]
+  summary: Light-driven charge separation stores solar energy in sugars; the basis of every fossil fuel.
+
+- id: pathway:magnetocaloric-refrigeration
+  name: Magnetocaloric refrigeration
+  steps: [claim:magnetocaloric-drives, claim:magnetocaloric-converts-cooling]
+  demonstrated_with: [transducer:magnetocaloric-refrigerator]
+  evidence: [source:pecharsky-gschneidner-1997]
+  status: prototype
+  knowledge_level: K7
+  performance:
+    notes: "COP comparable to vapour-compression in prototypes; not a power path — magnetic work in, cooling out"
+  environment: [state-solid, field-magnetic-required]
+  summary: A regenerator of Gd cycled through a permanent-magnet field pumps heat.
+
+- id: pathway:peltier-cooler
+  name: Peltier cooler
+  steps: [claim:peltier-drives, claim:peltier-converts-cooling]
+  evidence: [source:ioffe-1957, source:goldsmid-2016]
+  status: commercial
+  knowledge_level: K8
+  performance:
+    notes: "COP ≈ 0.5–1 for small ΔT; electrical work in, cooling out"
+  environment: [state-solid]
+  summary: Current through a thermoelectric junction pumps heat from the cold side.

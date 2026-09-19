@@ -1,0 +1,345 @@
+/**
+ * Compile the canonical claims into the graph the site loads: enumerated
+ * conversion paths with physics checks, the disequilibrium × coupling matrix,
+ * coverage accounting and the headline counts. Everything numeric on the site
+ * comes from here.
+ */
+import { createHash } from "node:crypto";
+import {
+  EVIDENCE_RANK,
+  PROCESS_PREDICATES,
+  type Claim,
+  type CompiledPath,
+  type CoverageEntry,
+  type Entity,
+  type EvidenceStatus,
+  type FrontierClass,
+  type Graph,
+  type KnowledgeLevel,
+  type MatrixAxis,
+  type MatrixCell,
+  type MatrixCellStatus,
+  type Pathway,
+  type SearchRecord,
+  type SearchStatus,
+} from "@pta/schema";
+import { UnitTable, runAllChecks, type PhysicsContext } from "@pta/physics";
+import type { Canon } from "./load.js";
+
+export const MAX_PATH_STEPS = 7;
+export const MAX_PATHS_PER_SOURCE = 4000;
+
+const STATUS_TO_LEVEL: Record<EvidenceStatus, KnowledgeLevel> = {
+  established: "K4",
+  replicated: "K4",
+  demonstrated: "K4",
+  reported: "K4",
+  "theoretically-predicted": "K3",
+  hypothesised: "K2",
+  disputed: "K2",
+  contradicted: "K1",
+  invalid: "K0",
+};
+
+const LEVEL_RANK = (k: KnowledgeLevel) => Number(k.slice(1));
+
+function pathId(claimIds: string[]): string {
+  return "p-" + createHash("sha1").update(claimIds.join(">")).digest("hex").slice(0, 10);
+}
+
+export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: string } = {}): Graph {
+  const entity = new Map(canon.entities.map((e) => [e.id, e]));
+  const claimById = new Map(canon.claims.map((c) => [c.id, c]));
+  const units = new UnitTable(canon.units);
+
+  const boundedByIndex = new Map<string, { constraint: Entity; claim: Claim }[]>();
+  for (const c of canon.claims) {
+    if (c.predicate !== "bounded_by") continue;
+    const constraint = entity.get(c.object);
+    if (!constraint) continue;
+    const list = boundedByIndex.get(c.subject) ?? [];
+    list.push({ constraint, claim: c });
+    boundedByIndex.set(c.subject, list);
+  }
+  const ctx: PhysicsContext = {
+    entity: (id) => entity.get(id),
+    units,
+    conflicts: canon.conflicts,
+    boundedBy: (id) => boundedByIndex.get(id) ?? [],
+  };
+
+  // Adjacency over process claims ----------------------------------------------
+  const out = new Map<string, Claim[]>();
+  for (const c of canon.claims) {
+    if (!(PROCESS_PREDICATES as readonly string[]).includes(c.predicate)) continue;
+    const list = out.get(c.subject) ?? [];
+    list.push(c);
+    out.set(c.subject, list);
+  }
+  const memberOf = new Map<string, string[]>();
+  for (const c of canon.claims) {
+    if (c.predicate !== "member_of") continue;
+    const list = memberOf.get(c.subject) ?? [];
+    list.push(c.object);
+    memberOf.set(c.subject, list);
+  }
+
+  // Named pathway lookup by claim sequence ----------------------------------------
+  const pathwayBySeq = new Map<string, Pathway>();
+  for (const p of canon.pathways) pathwayBySeq.set(p.steps.join(">"), p);
+
+  // Search records ----------------------------------------------------------------
+  const cellSearches = new Map<string, SearchRecord[]>();
+  const pathSearches = new Map<string, SearchRecord[]>();
+  const allSearches = [...canon.searches, ...canon.searchRuns];
+  for (const s of allSearches) {
+    if (s.target.kind === "cell") {
+      const key = `${s.target.row}|${s.target.col}`;
+      cellSearches.set(key, [...(cellSearches.get(key) ?? []), s]);
+    } else if (s.target.kind === "path") {
+      pathSearches.set(s.target.path, [...(pathSearches.get(s.target.path) ?? []), s]);
+    }
+  }
+  const reviewedIds = new Set(canon.searches.map((s) => s.id));
+
+  // Path enumeration ---------------------------------------------------------------
+  const paths: CompiledPath[] = [];
+  const disequilibria = canon.entities.filter((e) => e.type === "disequilibrium");
+  for (const d of disequilibria) {
+    let count = 0;
+    const stack: Claim[] = [];
+    const visited = new Set<string>([d.id]);
+    const dfs = (node: string) => {
+      if (count >= MAX_PATHS_PER_SOURCE) return;
+      for (const c of out.get(node) ?? []) {
+        if (visited.has(c.object)) continue;
+        const target = entity.get(c.object)!;
+        stack.push(c);
+        if (target.type === "output") {
+          paths.push(compilePath(stack.slice()));
+          count++;
+        } else if (stack.length < MAX_PATH_STEPS) {
+          visited.add(c.object);
+          dfs(c.object);
+          visited.delete(c.object);
+        }
+        stack.pop();
+        if (count >= MAX_PATHS_PER_SOURCE) return;
+      }
+    };
+    dfs(d.id);
+  }
+
+  function compilePath(claims: Claim[]): CompiledPath {
+    const ids = claims.map((c) => c.id);
+    const id = pathId(ids);
+    const nodes = [claims[0].subject, ...claims.map((c) => c.object)];
+    const pathway = pathwayBySeq.get(ids.join(">"));
+    const checks = runAllChecks(ctx, claims, pathway);
+    const weakest = claims.reduce<EvidenceStatus>((acc, c) => (EVIDENCE_RANK[c.status] < EVIDENCE_RANK[acc] ? c.status : acc), "established");
+    const established = claims.filter((c) => c.status === "established" || c.status === "replicated").length;
+    const failed = checks.some((k) => k.result === "fail");
+
+    let search_status: SearchStatus;
+    let last_searched: string | undefined;
+    const searches = pathSearches.get(id) ?? [];
+    const reviewed = searches.filter((s) => reviewedIds.has(s.id));
+    if (pathway && pathway.status !== "proposed") search_status = "demonstrated";
+    else if (reviewed.some((s) => s.result === "demonstration-found")) search_status = "demonstrated";
+    else if (reviewed.some((s) => s.result === "no-demonstration-found")) search_status = "searched-no-demonstration-found";
+    else if (searches.length) search_status = "search-incomplete";
+    else search_status = "not-searched";
+    if (searches.length) last_searched = searches.map((s) => s.date).sort().at(-1);
+
+    const srcForm = entity.get(claims[0].subject)?.energy_form;
+    const sinkForm = entity.get(claims[claims.length - 1].object)?.energy_form;
+    let frontier_class: FrontierClass;
+    if (failed) frontier_class = "forbidden";
+    else if (search_status === "demonstrated") frontier_class = "demonstrated";
+    else if (srcForm && sinkForm && srcForm === sinkForm) frontier_class = "circular";
+    else if (EVIDENCE_RANK[weakest] >= EVIDENCE_RANK.demonstrated) frontier_class = "candidate";
+    else frontier_class = "weak";
+
+    let knowledge_level: KnowledgeLevel;
+    if (pathway) knowledge_level = pathway.knowledge_level;
+    else {
+      const levels = claims.map((c) => c.knowledge_level ?? STATUS_TO_LEVEL[c.status]);
+      const min = levels.reduce((a, b) => (LEVEL_RANK(b) < LEVEL_RANK(a) ? b : a));
+      // A composition nobody has demonstrated cannot be above "experimentally observed" for its parts.
+      knowledge_level = LEVEL_RANK(min) > 4 ? "K4" : min;
+    }
+
+    const families = new Set<string>();
+    const domains = new Set<string>();
+    for (const n of nodes) {
+      const e = entity.get(n)!;
+      if (e.type === "phenomenon") {
+        for (const f of memberOf.get(n) ?? []) families.add(f);
+        if (e.domain) domains.add(e.domain);
+      }
+    }
+    const sources = new Set<string>();
+    for (const c of claims) for (const s of c.evidence) sources.add(s);
+    const contradictory = claims.filter((c) => c.status === "disputed" || c.status === "contradicted" || c.status === "invalid").length;
+
+    return {
+      id,
+      nodes,
+      claims: ids,
+      source: claims[0].subject,
+      sink: claims[claims.length - 1].object,
+      length: claims.length,
+      evidence_status: weakest,
+      established_steps: established,
+      search_status,
+      frontier_class,
+      knowledge_level,
+      pathway: pathway?.id,
+      checks,
+      coupling_families: [...families],
+      domains: [...domains] as CompiledPath["domains"],
+      last_searched,
+      literature: { supporting: sources.size, contradictory },
+    };
+  }
+
+  // Sanity: every named pathway must correspond to an enumerated path ---------------
+  const pathIds = new Set(paths.map((p) => p.id));
+  for (const p of canon.pathways) {
+    const id = pathId(p.steps);
+    if (!pathIds.has(id)) {
+      // Not reachable by enumeration (e.g. a cooling path whose sink is an output reached from a non-disequilibrium start). Compile it directly.
+      const claims = p.steps.map((s) => claimById.get(s)!);
+      paths.push(compilePath(claims));
+      pathIds.add(id);
+    }
+  }
+
+  // Matrix ---------------------------------------------------------------------------
+  const pad = (n: number) => String(n).padStart(2, "0");
+  const rows: MatrixAxis[] = disequilibria.map((d, i) => ({ id: d.id, address: `D.${pad(i + 1)}`, name: d.name, family: d.domain ?? "other" }));
+  const couplings = canon.entities.filter((e) => e.type === "coupling");
+  const cols: MatrixAxis[] = couplings.map((c, i) => ({ id: c.id, address: `C.${pad(i + 1)}`, name: c.name, family: c.domain ?? "other" }));
+
+  const drives = new Map<string, Claim[]>();
+  for (const c of canon.claims) {
+    if (c.predicate !== "drives") continue;
+    drives.set(c.subject, [...(drives.get(c.subject) ?? []), c]);
+  }
+  const forbiddenRows = new Set<string>();
+  for (const c of canon.claims) {
+    if (c.predicate === "bounded_by" && c.object === "constraint:second-law" && entity.get(c.subject)?.type === "disequilibrium") forbiddenRows.add(c.subject);
+  }
+  const pathsBySource = new Map<string, CompiledPath[]>();
+  for (const p of paths) pathsBySource.set(p.source, [...(pathsBySource.get(p.source) ?? []), p]);
+
+  const cells: MatrixCell[] = [];
+  for (const r of rows) {
+    for (const c of cols) {
+      const direct = (drives.get(r.id) ?? []).filter((cl) => (memberOf.get(cl.object) ?? []).includes(c.id));
+      const directPhenomena = [...new Set(direct.map((cl) => cl.object))];
+      const bridges = (pathsBySource.get(r.id) ?? []).filter((p) => p.coupling_families.includes(c.id) && !directPhenomena.some((ph) => p.nodes[1] === ph));
+      const searches = cellSearches.get(`${r.id}|${c.id}`) ?? [];
+      const reviewed = searches.filter((s) => reviewedIds.has(s.id));
+      const works = searches.reduce((a, s) => a + s.works_found, 0);
+      const last = searches.map((s) => s.date).sort().at(-1);
+
+      let status: MatrixCellStatus;
+      if (direct.length) {
+        const best = direct.reduce<EvidenceStatus>((acc, cl) => (EVIDENCE_RANK[cl.status] > EVIDENCE_RANK[acc] ? cl.status : acc), "invalid");
+        if (direct.every((cl) => cl.evidence.length === 0)) status = "insufficient";
+        else if (best === "established" || best === "replicated") status = "established";
+        else if (best === "demonstrated" || best === "reported") status = "demonstrated";
+        else if (best === "theoretically-predicted" || best === "hypothesised") status = "theoretical";
+        else status = "contradicted";
+      } else if (forbiddenRows.has(r.id)) status = "forbidden";
+      else if (reviewed.some((s) => s.result === "demonstration-found")) status = "demonstrated";
+      else if (bridges.some((b) => b.frontier_class === "candidate" || b.frontier_class === "demonstrated")) status = "candidate";
+      else if (reviewed.some((s) => s.result === "no-demonstration-found")) status = "searched-none";
+      else if (searches.length) status = "search-incomplete";
+      else status = "not-searched";
+
+      cells.push({
+        row: r.id,
+        col: c.id,
+        status,
+        direct_claims: direct.map((cl) => cl.id),
+        direct_phenomena: directPhenomena,
+        bridge_paths: bridges
+          .sort((a, b) => a.length - b.length || b.established_steps - a.established_steps)
+          .slice(0, 12)
+          .map((b) => b.id),
+        address: `${r.address}:${c.address}`,
+        searched: searches.length > 0,
+        last_searched: last,
+        works_found: searches.length ? works : undefined,
+      });
+    }
+  }
+
+  // Coverage ---------------------------------------------------------------------------
+  const claimsBySubject = new Map<string, Claim[]>();
+  for (const c of canon.claims) claimsBySubject.set(c.subject, [...(claimsBySubject.get(c.subject) ?? []), c]);
+  const coverage: CoverageEntry[] = canon.domains.map((d) => {
+    const phen = canon.entities.filter((e) => e.type === "phenomenon" && e.domain === d.id && (claimsBySubject.get(e.id) ?? []).length > 0);
+    const phenIds = new Set(phen.map((p) => p.id));
+    const dclaims = canon.claims.filter((c) => phenIds.has(c.subject) || phenIds.has(c.object));
+    const withEvidence = dclaims.filter((c) => c.evidence.length > 0).length;
+    const unresolved = dclaims.filter((c) => ["hypothesised", "disputed", "theoretically-predicted", "reported"].includes(c.status)).length;
+    return {
+      domain: d.id,
+      name: d.name,
+      phenomena: phen.length,
+      target_phenomena: d.target_phenomena,
+      claims: dclaims.length,
+      claims_with_evidence: withEvidence,
+      ontology_coverage: Math.min(1, phen.length / d.target_phenomena),
+      literature_coverage: dclaims.length ? withEvidence / dclaims.length : 0,
+      unresolved_claims: unresolved,
+    };
+  });
+
+  // Meta ---------------------------------------------------------------------------------
+  const hash = createHash("sha256");
+  for (const f of [...canon.files].sort((a, b) => a.path.localeCompare(b.path))) hash.update(f.path).update("\0").update(f.text).update("\0");
+  const data_hash = hash.digest("hex").slice(0, 12);
+  const totalTargets = coverage.reduce((a, c) => a + c.target_phenomena, 0);
+  const coverage_mean = coverage.reduce((a, c) => a + c.ontology_coverage * c.target_phenomena, 0) / (totalTargets || 1);
+  const count = (t: Entity["type"]) => canon.entities.filter((e) => e.type === t).length;
+  const cellsEmpty = cells.filter((c) => c.direct_claims.length === 0).length;
+
+  return {
+    meta: {
+      version: opts.version ?? "0.1.0",
+      built_at: opts.builtAt ?? new Date().toISOString(),
+      data_hash,
+      counts: {
+        entities: canon.entities.length,
+        phenomena: count("phenomenon"),
+        disequilibria: count("disequilibrium"),
+        couplings: count("coupling"),
+        transducers: count("transducer"),
+        claims: canon.claims.length,
+        sources: canon.sources.length,
+        pathways_named: canon.pathways.length,
+        paths_examined: paths.length,
+        paths_demonstrated: paths.filter((p) => p.search_status === "demonstrated").length,
+        paths_no_demonstration_found: paths.filter((p) => p.search_status === "searched-no-demonstration-found").length,
+        paths_not_searched: paths.filter((p) => p.search_status === "not-searched").length,
+        matrix_cells: cells.length,
+        matrix_cells_empty: cellsEmpty,
+        matrix_cells_unsearched: cells.filter((c) => c.status === "not-searched").length,
+        coverage_mean,
+      },
+    },
+    entities: canon.entities,
+    claims: canon.claims,
+    sources: canon.sources,
+    pathways: canon.pathways,
+    searches: allSearches,
+    paths,
+    matrix: { rows, cols, cells },
+    coverage,
+    source_verification: canon.sourceVerification,
+  };
+}

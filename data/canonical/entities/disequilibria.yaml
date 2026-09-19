@@ -1,0 +1,234 @@
+# Disequilibria: differences or gradients capable of driving change. These are
+# the rows of the matrix. `exergy` says whether work is available relative to a
+# reference environment — "conditional" means it depends on what the environment is.
+- id: disequilibrium:temperature-gradient
+  type: disequilibrium
+  energy_form: thermal
+  name: Temperature gradient
+  symbol: ∇T
+  aliases: [temperature difference, thermal gradient, ΔT]
+  domain: thermodynamics
+  quantity: quantity:temperature
+  exergy: positive
+  condition_tags: [temp-gradient-required]
+  summary: Two regions at different temperatures. Heat flows down the gradient, and a fraction bounded by Carnot can be diverted into work.
+- id: disequilibrium:pressure-gradient
+  type: disequilibrium
+  energy_form: mechanical
+  name: Pressure gradient
+  symbol: ∇p
+  aliases: [pressure difference, Δp, head]
+  domain: fluid-mechanics
+  quantity: quantity:pressure
+  exergy: positive
+  summary: A pressure difference across a fluid, membrane or solid. Drives flow, deformation and, through turbomachinery, mechanical work.
+- id: disequilibrium:concentration-gradient
+  type: disequilibrium
+  energy_form: chemical
+  name: Concentration gradient
+  symbol: ∇c
+  aliases: [Δc, diffusion gradient]
+  domain: electrochemistry
+  quantity: quantity:concentration
+  exergy: positive
+  summary: Different concentrations of a species in two connected regions. Mixing releases free energy that a membrane or electrode can intercept.
+- id: disequilibrium:salinity-gradient
+  type: disequilibrium
+  energy_form: chemical
+  name: Salinity gradient
+  symbol: ΔS
+  aliases: [salinity difference, blue energy, river–sea mixing]
+  domain: electrochemistry
+  quantity: quantity:concentration
+  exergy: positive
+  condition_tags: [env-aqueous, state-liquid]
+  summary: Fresh water meeting seawater. About 0.8 kWh of free energy is released per cubic metre of fresh water mixed into the sea.
+- id: disequilibrium:chemical-potential-difference
+  type: disequilibrium
+  energy_form: chemical
+  name: Chemical potential difference
+  symbol: Δμ
+  aliases: [reaction free energy, ΔG, redox potential]
+  domain: chemistry
+  quantity: quantity:chemical-potential
+  exergy: positive
+  summary: A reaction or phase change with negative Gibbs free energy. Fuel plus oxidiser, a charged battery, an unstable phase.
+- id: disequilibrium:electric-potential-difference
+  type: disequilibrium
+  energy_form: electrical
+  name: Electric potential difference
+  symbol: ΔV
+  aliases: [voltage, charge separation]
+  domain: electromagnetism
+  quantity: quantity:electric-potential
+  exergy: positive
+  summary: Separated charge or an applied bias. Electrical work is the most directly usable form, so this is usually a destination rather than a source.
+- id: disequilibrium:magnetic-field-change
+  type: disequilibrium
+  energy_form: magnetic
+  name: Changing magnetic flux
+  symbol: dΦ/dt
+  aliases: [magnetic flux change, time-varying field, relative motion of magnet and coil]
+  domain: electromagnetism
+  quantity: quantity:magnetic-flux
+  exergy: positive
+  condition_tags: [transient-only]
+  summary: A magnetic flux that changes through a circuit, from motion or from a time-varying field. Only the change drives anything.
+- id: disequilibrium:mechanical-stress
+  type: disequilibrium
+  energy_form: mechanical
+  name: Mechanical stress or strain
+  symbol: σ, ε
+  aliases: [deformation, strain, compression, bending]
+  domain: classical-mechanics
+  quantity: quantity:stress
+  exergy: positive
+  condition_tags: [state-solid]
+  summary: A solid under load. Elastic energy can be released, and in polar or non-centrosymmetric materials the strain itself moves charge or magnetisation.
+- id: disequilibrium:mechanical-vibration
+  type: disequilibrium
+  energy_form: mechanical
+  name: Mechanical vibration
+  symbol: a(t)
+  aliases: [oscillation, ambient vibration, kinetic motion]
+  domain: classical-mechanics
+  quantity: quantity:displacement
+  exergy: positive
+  summary: Periodic or random motion of a structure. Ambient vibration in machines, vehicles and bodies is the classic small-scale harvesting source.
+- id: disequilibrium:fluid-flow
+  type: disequilibrium
+  energy_form: kinetic
+  name: Bulk fluid flow
+  symbol: v
+  aliases: [wind, current, river flow, shear flow, kinetic energy of fluid]
+  domain: fluid-mechanics
+  quantity: quantity:velocity
+  exergy: positive
+  condition_tags: [flow-required]
+  summary: Moving air or water. Its kinetic energy can be intercepted by a rotor bounded by the Betz limit, or by electrokinetic and flow-induced effects at small scale.
+- id: disequilibrium:radiation-flux
+  type: disequilibrium
+  energy_form: radiative
+  name: Incident radiation flux
+  symbol: G
+  aliases: [sunlight, solar irradiance, illumination, incident photons]
+  domain: optics-photonics
+  quantity: quantity:irradiance
+  exergy: positive
+  condition_tags: [illumination-required]
+  summary: Photons arriving from a hotter source, above all the Sun. Absorbable in one step into heat, charge, or chemical bonds.
+- id: disequilibrium:radiative-sky-imbalance
+  type: disequilibrium
+  energy_form: radiative
+  name: Radiative imbalance with the sky
+  symbol: T_surface − T_sky
+  aliases: [sky cooling, atmospheric window, night-sky radiation]
+  domain: optics-photonics
+  quantity: quantity:temperature
+  exergy: positive
+  summary: A surface at ambient temperature radiates to a colder sky through the 8–13 µm atmospheric window and drops below ambient. The resulting temperature difference is small but free.
+- id: disequilibrium:spin-accumulation
+  type: disequilibrium
+  energy_form: spin
+  name: Spin accumulation
+  symbol: μ_s
+  aliases: [spin imbalance, non-equilibrium spin polarisation, spin voltage]
+  domain: spin-systems
+  quantity: quantity:spin-current-density
+  exergy: positive
+  condition_tags: [state-solid]
+  summary: More spins of one orientation than equilibrium allows, usually created by a temperature gradient, a charge current or pumping. Relaxes into charge currents in spin–orbit materials.
+- id: disequilibrium:metastable-phase
+  type: disequilibrium
+  energy_form: chemical
+  name: Metastable phase
+  symbol: ΔG_phase
+  aliases: [phase instability, supercooled state, latent heat store]
+  domain: condensed-matter
+  quantity: quantity:chemical-potential
+  exergy: positive
+  summary: A material held in a phase that is not the equilibrium one. Its transformation releases latent heat, strain or magnetisation change.
+- id: disequilibrium:surface-energy-difference
+  type: disequilibrium
+  energy_form: surface
+  name: Surface energy difference
+  symbol: Δγ
+  aliases: [wetting, contact electrification potential, interfacial tension gradient]
+  domain: surface-interface
+  quantity: quantity:energy
+  exergy: positive
+  summary: Two surfaces or interfaces with different surface energy or work function. Contact, sliding and wetting can move charge across them.
+- id: disequilibrium:capillary-pressure
+  type: disequilibrium
+  energy_form: mechanical
+  name: Capillary pressure
+  symbol: p_c
+  aliases: [Laplace pressure, wicking, evaporation-driven flow]
+  domain: fluid-mechanics
+  quantity: quantity:pressure
+  exergy: positive
+  condition_tags: [state-liquid]
+  summary: Pressure produced by curved liquid interfaces in pores. Sustained by evaporation, it drives flow through nanoporous materials.
+- id: disequilibrium:humidity-gradient
+  type: disequilibrium
+  energy_form: chemical
+  name: Humidity gradient
+  symbol: ΔRH
+  aliases: [moisture gradient, evaporation potential, vapour pressure deficit]
+  domain: chemistry
+  quantity: quantity:relative-humidity
+  exergy: positive
+  condition_tags: [humidity-required]
+  summary: Air drier than a wet surface. Evaporation of water into unsaturated air is a large, mostly untapped ambient free-energy flux.
+- id: disequilibrium:osmotic-pressure-difference
+  type: disequilibrium
+  energy_form: osmotic
+  name: Osmotic pressure difference
+  symbol: ΔΠ
+  aliases: [osmotic gradient]
+  domain: electrochemistry
+  quantity: quantity:osmotic-pressure
+  exergy: positive
+  condition_tags: [env-aqueous, medium-membrane]
+  summary: Solutions of different solute concentration separated by a semipermeable membrane. Seawater against fresh water is about 27 bar.
+- id: disequilibrium:gravitational-potential-difference
+  type: disequilibrium
+  energy_form: gravitational
+  name: Gravitational potential difference
+  symbol: Δh
+  aliases: [head, elevation difference, falling water]
+  domain: classical-mechanics
+  quantity: quantity:height
+  exergy: positive
+  summary: Mass held above a lower level in a gravitational field. Water behind a dam or the tide against the shore.
+- id: disequilibrium:nuclear-binding-difference
+  type: disequilibrium
+  energy_form: nuclear
+  name: Nuclear binding-energy difference
+  symbol: ΔE_bind
+  aliases: [radioactive decay, fissile configuration, fusion fuel]
+  domain: nuclear-physics
+  quantity: quantity:energy
+  exergy: positive
+  condition_tags: [radioisotope-required]
+  summary: Nuclei that can decay, fission or fuse into more tightly bound ones. Energy per reaction is a million times chemical.
+- id: disequilibrium:uniform-thermal-energy
+  type: disequilibrium
+  energy_form: thermal
+  name: Thermal energy at uniform temperature
+  symbol: T = T₀
+  aliases: [ambient heat, single-reservoir heat]
+  domain: thermodynamics
+  quantity: quantity:temperature
+  exergy: none
+  summary: A body at the same temperature as its surroundings holds a great deal of energy and no exergy. Included so that the atlas can say so explicitly.
+- id: disequilibrium:quantum-vacuum-fluctuations
+  type: disequilibrium
+  energy_form: nuclear
+  name: Quantum vacuum fluctuations
+  symbol: ⟨0|E²|0⟩
+  aliases: [zero-point energy, vacuum energy]
+  domain: quantum-transport
+  quantity: quantity:energy
+  exergy: none
+  summary: The ground state of the quantum fields. It has measurable consequences (the Casimir force) but, being the ground state, no free energy can be continuously extracted from it.

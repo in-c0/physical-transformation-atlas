@@ -1,0 +1,840 @@
+# Claims: mechanical, fluid and gravitational disequilibria.
+
+# --- Piezoelectric ------------------------------------------------------------
+- id: claim:piezo-drives
+  subject: disequilibrium:mechanical-stress
+  predicate: drives
+  object: phenomenon:piezoelectric-effect
+  conditions:
+    - a non-centrosymmetric crystal or a poled ferroelectric ceramic or polymer
+    - stress below the depoling and fracture limits
+  condition_tags: [state-solid, medium-non-centrosymmetric]
+  energy: { input: mechanical, output: electrical, dissipation: thermal }
+  relation:
+    formula: "D = d · σ"
+    input: quantity:stress
+    output: quantity:surface-charge-density
+    coefficient_unit: C/N
+    coefficient_name: piezoelectric charge coefficient d
+  evidence: [source:curie-1880, source:nye-1985, source:erturk-inman-2011]
+  status: established
+  knowledge_level: K8
+- id: claim:piezo-produces-charge
+  subject: phenomenon:piezoelectric-effect
+  predicate: produces
+  object: carrier:surface-charge
+  energy: { input: electrical, output: electrical }
+  evidence: [source:nye-1985]
+  status: established
+- id: claim:piezo-member
+  subject: phenomenon:piezoelectric-effect
+  predicate: member_of
+  object: coupling:piezoelectric
+  evidence: [source:nye-1985]
+  status: established
+- id: claim:piezo-bounded-k2
+  subject: phenomenon:piezoelectric-effect
+  predicate: bounded_by
+  object: constraint:electromechanical-coupling-bound
+  evidence: [source:erturk-inman-2011]
+  status: established
+- id: claim:piezo-observed-quartz
+  subject: phenomenon:piezoelectric-effect
+  predicate: observed_in
+  object: material:quartz
+  evidence: [source:curie-1880]
+  status: established
+- id: claim:piezo-observed-pzt
+  subject: phenomenon:piezoelectric-effect
+  predicate: observed_in
+  object: material:pzt
+  evidence: [source:erturk-inman-2011]
+  status: established
+- id: claim:piezo-observed-pvdf
+  subject: phenomenon:piezoelectric-effect
+  predicate: observed_in
+  object: material:pvdf
+  evidence: [source:anton-sodano-2007]
+  status: established
+- id: claim:piezo-observed-zno
+  subject: phenomenon:piezoelectric-effect
+  predicate: observed_in
+  object: material:zinc-oxide
+  evidence: [source:wang-song-2006]
+  status: established
+- id: claim:piezo-implemented
+  subject: phenomenon:piezoelectric-effect
+  predicate: implemented_by
+  object: transducer:piezoelectric-harvester
+  evidence: [source:anton-sodano-2007, source:erturk-inman-2011]
+  status: established
+- id: claim:piezo-requires-noncentro
+  subject: phenomenon:piezoelectric-effect
+  predicate: requires
+  object: material:pzt
+  conditions: [any non-centrosymmetric material; PZT is the reference]
+  evidence: [source:nye-1985]
+  status: established
+- id: claim:converse-piezo-drives
+  subject: disequilibrium:electric-potential-difference
+  predicate: drives
+  object: phenomenon:converse-piezoelectric-effect
+  condition_tags: [state-solid, medium-non-centrosymmetric, field-electric-required]
+  energy: { input: electrical, output: mechanical, dissipation: thermal }
+  evidence: [source:nye-1985]
+  status: established
+- id: claim:converse-piezo-produces
+  subject: phenomenon:converse-piezoelectric-effect
+  predicate: produces
+  object: carrier:elastic-stress
+  energy: { input: mechanical, output: mechanical }
+  evidence: [source:nye-1985]
+  status: established
+- id: claim:converse-piezo-member
+  subject: phenomenon:converse-piezoelectric-effect
+  predicate: member_of
+  object: coupling:piezoelectric
+  evidence: [source:nye-1985]
+  status: established
+
+# --- Flexoelectric -----------------------------------------------------------------
+- id: claim:flexo-drives
+  subject: disequilibrium:mechanical-stress
+  predicate: drives
+  object: phenomenon:flexoelectric-effect
+  conditions:
+    - a strain gradient, e.g. bending; uniform strain produces nothing in a centrosymmetric dielectric
+    - coefficients are small in bulk (nC/m) and useful only at the nanoscale or in thin films
+  condition_tags: [state-solid, medium-dielectric]
+  energy: { input: mechanical, output: electrical, dissipation: thermal }
+  relation:
+    formula: "P = μ · ∇ε"
+    input: quantity:strain-gradient
+    output: quantity:polarisation
+    coefficient_unit: C/m
+    coefficient_name: flexoelectric coefficient μ
+  evidence: [source:zubko-2013]
+  status: established
+  knowledge_level: K4
+- id: claim:flexo-produces-charge
+  subject: phenomenon:flexoelectric-effect
+  predicate: produces
+  object: carrier:surface-charge
+  energy: { input: electrical, output: electrical }
+  evidence: [source:zubko-2013]
+  status: established
+- id: claim:flexo-member
+  subject: phenomenon:flexoelectric-effect
+  predicate: member_of
+  object: coupling:flexoelectric
+  evidence: [source:zubko-2013]
+  status: established
+
+# --- Triboelectric and droplets ------------------------------------------------------
+- id: claim:tribo-drives
+  subject: disequilibrium:surface-energy-difference
+  predicate: drives
+  object: phenomenon:triboelectric-effect
+  conditions:
+    - two materials far apart in the triboelectric series brought into contact and separated repeatedly
+    - dry conditions; humidity bleeds the charge
+  condition_tags: [state-solid, medium-dielectric]
+  energy: { input: surface, output: electrical, dissipation: thermal }
+  evidence: [source:fan-tian-wang-2012]
+  status: established
+  knowledge_level: K6
+- id: claim:vibration-drives-tribo
+  subject: disequilibrium:mechanical-vibration
+  predicate: drives
+  object: phenomenon:triboelectric-effect
+  conditions: [vibration or motion that repeatedly contacts and separates two dissimilar surfaces]
+  condition_tags: [state-solid, medium-dielectric]
+  energy: { input: mechanical, output: electrical, dissipation: thermal }
+  evidence: [source:fan-tian-wang-2012]
+  status: established
+  knowledge_level: K6
+- id: claim:tribo-produces-charge
+  subject: phenomenon:triboelectric-effect
+  predicate: produces
+  object: carrier:surface-charge
+  energy: { input: electrical, output: electrical }
+  evidence: [source:fan-tian-wang-2012]
+  status: established
+- id: claim:tribo-member
+  subject: phenomenon:triboelectric-effect
+  predicate: member_of
+  object: coupling:triboelectric
+  evidence: [source:fan-tian-wang-2012]
+  status: established
+- id: claim:tribo-implemented
+  subject: phenomenon:triboelectric-effect
+  predicate: implemented_by
+  object: transducer:triboelectric-nanogenerator
+  evidence: [source:fan-tian-wang-2012]
+  status: demonstrated
+- id: claim:tribo-observed-ptfe
+  subject: phenomenon:triboelectric-effect
+  predicate: observed_in
+  object: material:ptfe
+  evidence: [source:fan-tian-wang-2012]
+  status: established
+- id: claim:droplet-drives
+  subject: disequilibrium:surface-energy-difference
+  predicate: drives
+  object: phenomenon:droplet-charge-transfer
+  conditions: [water droplets impacting a pre-charged PTFE surface bridging to an electrode]
+  condition_tags: [state-liquid]
+  energy: { input: surface, output: electrical, dissipation: thermal }
+  evidence: [source:xu-2020-droplet, source:yin-2014-graphene-flow]
+  status: replicated
+  knowledge_level: K4
+- id: claim:gravity-drives-droplet
+  subject: disequilibrium:gravitational-potential-difference
+  predicate: drives
+  object: phenomenon:droplet-charge-transfer
+  conditions: [falling droplets (rain) supplying the impact and spreading]
+  condition_tags: [state-liquid]
+  energy: { input: gravitational, output: electrical, dissipation: thermal }
+  evidence: [source:xu-2020-droplet]
+  status: demonstrated
+  knowledge_level: K4
+- id: claim:droplet-produces-charge
+  subject: phenomenon:droplet-charge-transfer
+  predicate: produces
+  object: carrier:surface-charge
+  energy: { input: electrical, output: electrical }
+  evidence: [source:xu-2020-droplet]
+  status: replicated
+- id: claim:droplet-member
+  subject: phenomenon:droplet-charge-transfer
+  predicate: member_of
+  object: coupling:triboelectric
+  evidence: [source:xu-2020-droplet]
+  status: established
+- id: claim:droplet-implemented
+  subject: phenomenon:droplet-charge-transfer
+  predicate: implemented_by
+  object: transducer:droplet-electricity-generator
+  evidence: [source:xu-2020-droplet]
+  status: demonstrated
+
+# --- Electrostatic ------------------------------------------------------------------
+- id: claim:electrostatic-drives
+  subject: disequilibrium:mechanical-vibration
+  predicate: drives
+  object: phenomenon:electrostatic-induction
+  conditions: [a pre-charged or electret-biased variable capacitor whose plates the vibration moves]
+  condition_tags: [state-solid, field-electric-required]
+  energy: { input: mechanical, output: electrical, dissipation: thermal }
+  evidence: [source:roundy-2003]
+  status: established
+  knowledge_level: K6
+- id: claim:electrostatic-produces
+  subject: phenomenon:electrostatic-induction
+  predicate: produces
+  object: carrier:charge-carriers
+  energy: { input: electrical, output: electrical }
+  evidence: [source:roundy-2003]
+  status: established
+- id: claim:electrostatic-member
+  subject: phenomenon:electrostatic-induction
+  predicate: member_of
+  object: coupling:electrostatic
+  evidence: [source:roundy-2003]
+  status: established
+- id: claim:electrostatic-implemented
+  subject: phenomenon:electrostatic-induction
+  predicate: implemented_by
+  object: transducer:electrostatic-harvester
+  evidence: [source:roundy-2003]
+  status: demonstrated
+- id: claim:rew-drives
+  subject: disequilibrium:mechanical-vibration
+  predicate: drives
+  object: phenomenon:reverse-electrowetting
+  conditions: [conductive droplets moved across a biased dielectric-coated electrode array]
+  condition_tags: [state-liquid, field-electric-required]
+  energy: { input: mechanical, output: electrical, dissipation: thermal }
+  evidence: [source:krupenkin-taylor-2011]
+  status: demonstrated
+  knowledge_level: K4
+- id: claim:rew-produces
+  subject: phenomenon:reverse-electrowetting
+  predicate: produces
+  object: carrier:charge-carriers
+  energy: { input: electrical, output: electrical }
+  evidence: [source:krupenkin-taylor-2011]
+  status: demonstrated
+- id: claim:rew-member
+  subject: phenomenon:reverse-electrowetting
+  predicate: member_of
+  object: coupling:electrostatic
+  evidence: [source:krupenkin-taylor-2011]
+  status: established
+
+# --- Vibration → stress → piezo / magnetoelastic --------------------------------------
+- id: claim:vibration-drives-resonance
+  subject: disequilibrium:mechanical-vibration
+  predicate: drives
+  object: phenomenon:resonant-vibration
+  conditions: [a cantilever or seismic mass with natural frequency near the excitation]
+  condition_tags: [state-solid]
+  energy: { input: mechanical, output: mechanical, dissipation: thermal }
+  evidence: [source:roundy-2003, source:erturk-inman-2011]
+  status: established
+  knowledge_level: K8
+- id: claim:resonance-produces-stress
+  subject: phenomenon:resonant-vibration
+  predicate: produces
+  object: disequilibrium:mechanical-stress
+  conditions: [cyclic bending stress at the root of the cantilever]
+  condition_tags: [state-solid]
+  energy: { input: mechanical, output: mechanical }
+  evidence: [source:erturk-inman-2011]
+  status: established
+- id: claim:resonance-produces-motion
+  subject: phenomenon:resonant-vibration
+  predicate: produces
+  object: carrier:mechanical-motion
+  energy: { input: mechanical, output: mechanical }
+  evidence: [source:beeby-2007]
+  status: established
+- id: claim:resonance-member
+  subject: phenomenon:resonant-vibration
+  predicate: member_of
+  object: coupling:electromagnetic-induction
+  conditions: [as the mechanical front end of a vibration harvester of any transduction type]
+  evidence: [source:beeby-2007]
+  status: established
+- id: claim:motion-drives-induction
+  subject: carrier:mechanical-motion
+  predicate: drives
+  object: phenomenon:electromagnetic-induction
+  conditions: [a magnet moving relative to a coil]
+  condition_tags: [medium-conductor, field-magnetic-required]
+  energy: { input: mechanical, output: electrical, dissipation: thermal }
+  evidence: [source:faraday-1832, source:beeby-2007]
+  status: established
+  knowledge_level: K8
+- id: claim:induction-produces-carriers
+  subject: phenomenon:electromagnetic-induction
+  predicate: produces
+  object: carrier:charge-carriers
+  energy: { input: electrical, output: electrical, dissipation: thermal }
+  evidence: [source:faraday-1832]
+  status: established
+- id: claim:induction-member
+  subject: phenomenon:electromagnetic-induction
+  predicate: member_of
+  object: coupling:electromagnetic-induction
+  evidence: [source:faraday-1832]
+  status: established
+- id: claim:induction-implemented-vibration
+  subject: phenomenon:electromagnetic-induction
+  predicate: implemented_by
+  object: transducer:electromagnetic-vibration-harvester
+  evidence: [source:beeby-2007]
+  status: established
+- id: claim:flux-change-drives-induction
+  subject: disequilibrium:magnetic-field-change
+  predicate: drives
+  object: phenomenon:electromagnetic-induction
+  conditions: [any time-varying flux through a loop, from motion or from an AC source]
+  condition_tags: [medium-conductor, transient-only]
+  energy: { input: magnetic, output: electrical, dissipation: thermal }
+  evidence: [source:faraday-1832]
+  status: established
+  knowledge_level: K8
+- id: claim:villari-drives
+  subject: disequilibrium:mechanical-stress
+  predicate: drives
+  object: phenomenon:villari-effect
+  conditions: [a magnetostrictive material under a bias field and cyclic stress]
+  condition_tags: [state-solid, medium-ferromagnet]
+  energy: { input: mechanical, output: magnetic, dissipation: thermal }
+  evidence: [source:villari-1865, source:wang-yuan-2008]
+  status: established
+  knowledge_level: K6
+- id: claim:villari-produces-flux
+  subject: phenomenon:villari-effect
+  predicate: produces
+  object: carrier:magnetic-flux
+  energy: { input: magnetic, output: magnetic }
+  evidence: [source:wang-yuan-2008]
+  status: established
+- id: claim:villari-member
+  subject: phenomenon:villari-effect
+  predicate: member_of
+  object: coupling:magnetostrictive
+  evidence: [source:wang-yuan-2008]
+  status: established
+- id: claim:villari-implemented
+  subject: phenomenon:villari-effect
+  predicate: implemented_by
+  object: transducer:magnetostrictive-harvester
+  evidence: [source:wang-yuan-2008]
+  status: demonstrated
+- id: claim:villari-onsager
+  subject: phenomenon:villari-effect
+  predicate: bounded_by
+  object: constraint:onsager-reciprocity
+  conditions: [Villari and Joule magnetostriction are converse effects with equal coefficients]
+  evidence: [source:joule-1847, source:villari-1865]
+  status: established
+- id: claim:joule-ms-drives
+  subject: disequilibrium:magnetic-field-change
+  predicate: drives
+  object: phenomenon:joule-magnetostriction
+  condition_tags: [state-solid, medium-ferromagnet, field-magnetic-required]
+  energy: { input: magnetic, output: mechanical, dissipation: thermal }
+  evidence: [source:joule-1847]
+  status: established
+- id: claim:joule-ms-produces-stress
+  subject: phenomenon:joule-magnetostriction
+  predicate: produces
+  object: carrier:elastic-stress
+  energy: { input: mechanical, output: mechanical }
+  evidence: [source:joule-1847]
+  status: established
+- id: claim:joule-ms-member
+  subject: phenomenon:joule-magnetostriction
+  predicate: member_of
+  object: coupling:magnetostrictive
+  evidence: [source:joule-1847]
+  status: established
+- id: claim:magnetoelectric-drives
+  subject: disequilibrium:magnetic-field-change
+  predicate: drives
+  object: phenomenon:magnetoelectric-coupling
+  conditions: [a magnetostrictive–piezoelectric laminate; the AC field strains the first layer, which stresses the second]
+  condition_tags: [state-solid]
+  energy: { input: magnetic, output: electrical, dissipation: thermal }
+  evidence: [source:nan-2008]
+  status: established
+  knowledge_level: K6
+- id: claim:magnetoelectric-produces
+  subject: phenomenon:magnetoelectric-coupling
+  predicate: produces
+  object: carrier:surface-charge
+  energy: { input: electrical, output: electrical }
+  evidence: [source:nan-2008]
+  status: established
+- id: claim:magnetoelectric-member
+  subject: phenomenon:magnetoelectric-coupling
+  predicate: member_of
+  object: coupling:magnetoelectric
+  evidence: [source:nan-2008]
+  status: established
+- id: claim:magnetoelectric-implemented
+  subject: phenomenon:magnetoelectric-coupling
+  predicate: implemented_by
+  object: transducer:magnetoelectric-composite
+  evidence: [source:nan-2008]
+  status: demonstrated
+- id: claim:joule-ms-couples-piezo
+  subject: phenomenon:joule-magnetostriction
+  predicate: couples_to
+  object: phenomenon:piezoelectric-effect
+  conditions: [strain transferred across a bonded interface in a laminate composite]
+  condition_tags: [state-solid]
+  energy: { input: mechanical, output: electrical, dissipation: thermal }
+  evidence: [source:nan-2008]
+  status: established
+- id: claim:elastic-stress-drives-piezo
+  subject: carrier:elastic-stress
+  predicate: drives
+  object: phenomenon:piezoelectric-effect
+  conditions: [stress transmitted into a piezoelectric element]
+  condition_tags: [state-solid, medium-non-centrosymmetric]
+  energy: { input: mechanical, output: electrical, dissipation: thermal }
+  evidence: [source:erturk-inman-2011]
+  status: established
+- id: claim:elastic-stress-drives-villari
+  subject: carrier:elastic-stress
+  predicate: drives
+  object: phenomenon:villari-effect
+  condition_tags: [state-solid, medium-ferromagnet]
+  energy: { input: mechanical, output: magnetic, dissipation: thermal }
+  evidence: [source:wang-yuan-2008]
+  status: established
+- id: claim:stress-drives-elastic
+  subject: disequilibrium:mechanical-stress
+  predicate: drives
+  object: phenomenon:elastic-deformation
+  condition_tags: [state-solid]
+  energy: { input: mechanical, output: mechanical }
+  relation:
+    formula: "σ = E · ε"
+    input: quantity:strain
+    output: quantity:stress
+    coefficient_unit: Pa
+    coefficient_name: Young's modulus E
+  evidence: [source:nye-1985]
+  status: established
+- id: claim:elastic-produces-stress-carrier
+  subject: phenomenon:elastic-deformation
+  predicate: produces
+  object: carrier:elastic-stress
+  energy: { input: mechanical, output: mechanical }
+  evidence: [source:nye-1985]
+  status: established
+- id: claim:elastic-member
+  subject: phenomenon:elastic-deformation
+  predicate: member_of
+  object: coupling:piezoelectric
+  conditions: [as the mechanical front end of stress-driven transducers]
+  evidence: [source:erturk-inman-2011]
+  status: established
+
+# --- Fluid flow, wind, waves, tides, hydro -----------------------------------------------
+- id: claim:flow-drives-lift
+  subject: disequilibrium:fluid-flow
+  predicate: drives
+  object: phenomenon:aerodynamic-lift
+  conditions: [a rotor whose blades meet the stream at a working angle of attack]
+  condition_tags: [flow-required]
+  energy: { input: kinetic, output: mechanical, dissipation: thermal }
+  evidence: [source:betz-1920, source:dixon-hall-2014]
+  status: established
+  knowledge_level: K8
+- id: claim:lift-produces-motion
+  subject: phenomenon:aerodynamic-lift
+  predicate: produces
+  object: carrier:mechanical-motion
+  energy: { input: mechanical, output: mechanical }
+  evidence: [source:dixon-hall-2014]
+  status: established
+- id: claim:lift-member
+  subject: phenomenon:aerodynamic-lift
+  predicate: member_of
+  object: coupling:turbomachinery
+  evidence: [source:dixon-hall-2014]
+  status: established
+- id: claim:lift-bounded-betz
+  subject: phenomenon:aerodynamic-lift
+  predicate: bounded_by
+  object: constraint:betz-limit
+  conditions: [open rotor without a duct]
+  evidence: [source:betz-1920]
+  status: established
+- id: claim:lift-implemented-wind
+  subject: phenomenon:aerodynamic-lift
+  predicate: implemented_by
+  object: transducer:wind-turbine
+  evidence: [source:dixon-hall-2014]
+  status: established
+- id: claim:lift-implemented-tidal
+  subject: phenomenon:aerodynamic-lift
+  predicate: implemented_by
+  object: transducer:tidal-turbine
+  evidence: [source:dixon-hall-2014]
+  status: demonstrated
+- id: claim:flow-drives-fiv
+  subject: disequilibrium:fluid-flow
+  predicate: drives
+  object: phenomenon:flow-induced-vibration
+  conditions: [a bluff or flexible body in the stream at a Reynolds number where vortex shedding locks to a structural mode]
+  condition_tags: [flow-required]
+  energy: { input: kinetic, output: mechanical, dissipation: thermal }
+  evidence: [source:radousky-liang-2012]
+  status: established
+  knowledge_level: K5
+- id: claim:fiv-produces-vibration
+  subject: phenomenon:flow-induced-vibration
+  predicate: produces
+  object: disequilibrium:mechanical-vibration
+  energy: { input: mechanical, output: mechanical }
+  evidence: [source:radousky-liang-2012]
+  status: established
+- id: claim:fiv-member
+  subject: phenomenon:flow-induced-vibration
+  predicate: member_of
+  object: coupling:piezoelectric
+  conditions: [as the front end of bladeless flow harvesters]
+  evidence: [source:radousky-liang-2012]
+  status: established
+- id: claim:gravity-drives-descent
+  subject: disequilibrium:gravitational-potential-difference
+  predicate: drives
+  object: phenomenon:hydrostatic-descent
+  condition_tags: [state-liquid]
+  energy: { input: gravitational, output: mechanical }
+  evidence: [source:dixon-hall-2014]
+  status: established
+  knowledge_level: K8
+- id: claim:descent-produces-pressure
+  subject: phenomenon:hydrostatic-descent
+  predicate: produces
+  object: carrier:hydraulic-pressure
+  energy: { input: mechanical, output: mechanical }
+  evidence: [source:dixon-hall-2014]
+  status: established
+- id: claim:descent-produces-flow
+  subject: phenomenon:hydrostatic-descent
+  predicate: produces
+  object: disequilibrium:fluid-flow
+  energy: { input: mechanical, output: kinetic }
+  evidence: [source:dixon-hall-2014]
+  status: established
+- id: claim:descent-member
+  subject: phenomenon:hydrostatic-descent
+  predicate: member_of
+  object: coupling:turbomachinery
+  evidence: [source:dixon-hall-2014]
+  status: established
+- id: claim:descent-implemented-hydro
+  subject: phenomenon:hydrostatic-descent
+  predicate: implemented_by
+  object: transducer:hydro-turbine
+  evidence: [source:dixon-hall-2014]
+  status: established
+- id: claim:hydraulic-drives-lift
+  subject: carrier:hydraulic-pressure
+  predicate: drives
+  object: phenomenon:aerodynamic-lift
+  conditions: [pressurised water expanded through a reaction or impulse turbine]
+  condition_tags: [state-liquid, flow-required]
+  energy: { input: mechanical, output: mechanical, dissipation: thermal }
+  evidence: [source:dixon-hall-2014]
+  status: established
+- id: claim:pressure-drives-lift
+  subject: disequilibrium:pressure-gradient
+  predicate: drives
+  object: phenomenon:aerodynamic-lift
+  conditions: [a pressure difference driving flow through a turbine stage]
+  condition_tags: [flow-required]
+  energy: { input: mechanical, output: mechanical, dissipation: thermal }
+  evidence: [source:dixon-hall-2014]
+  status: established
+  knowledge_level: K8
+- id: claim:pressure-drives-elastic
+  subject: disequilibrium:pressure-gradient
+  predicate: drives
+  object: phenomenon:elastic-deformation
+  conditions: [pressure acting on a diaphragm or shell]
+  condition_tags: [state-solid]
+  energy: { input: mechanical, output: mechanical }
+  evidence: [source:nye-1985]
+  status: established
+- id: claim:tide-drives
+  subject: disequilibrium:gravitational-potential-difference
+  predicate: drives
+  object: phenomenon:tidal-flow
+  conditions: [coastal geometry that funnels the tidal range into a current or a head]
+  condition_tags: [state-liquid, flow-required]
+  energy: { input: gravitational, output: kinetic }
+  evidence: [source:dixon-hall-2014]
+  status: established
+  knowledge_level: K7
+- id: claim:tide-produces-flow
+  subject: phenomenon:tidal-flow
+  predicate: produces
+  object: disequilibrium:fluid-flow
+  energy: { input: kinetic, output: kinetic }
+  evidence: [source:dixon-hall-2014]
+  status: established
+- id: claim:tide-member
+  subject: phenomenon:tidal-flow
+  predicate: member_of
+  object: coupling:turbomachinery
+  evidence: [source:dixon-hall-2014]
+  status: established
+- id: claim:wave-drives
+  subject: disequilibrium:fluid-flow
+  predicate: drives
+  object: phenomenon:ocean-wave-motion
+  conditions: [wind fetch over open water]
+  condition_tags: [state-liquid]
+  energy: { input: kinetic, output: mechanical, dissipation: thermal }
+  evidence: [source:salter-1974]
+  status: established
+  knowledge_level: K7
+- id: claim:wave-produces-motion
+  subject: phenomenon:ocean-wave-motion
+  predicate: produces
+  object: carrier:mechanical-motion
+  conditions: [a buoy, flap or water column following the wave]
+  energy: { input: mechanical, output: mechanical }
+  evidence: [source:salter-1974]
+  status: demonstrated
+- id: claim:wave-produces-pressure
+  subject: phenomenon:ocean-wave-motion
+  predicate: produces
+  object: disequilibrium:pressure-gradient
+  energy: { input: mechanical, output: mechanical }
+  evidence: [source:salter-1974]
+  status: established
+- id: claim:wave-member
+  subject: phenomenon:ocean-wave-motion
+  predicate: member_of
+  object: coupling:turbomachinery
+  evidence: [source:salter-1974]
+  status: established
+- id: claim:wave-implemented
+  subject: phenomenon:ocean-wave-motion
+  predicate: implemented_by
+  object: transducer:wave-energy-converter
+  evidence: [source:salter-1974]
+  status: demonstrated
+
+# --- Electrokinetic and hydrovoltaic --------------------------------------------------
+- id: claim:pressure-drives-streaming
+  subject: disequilibrium:pressure-gradient
+  predicate: drives
+  object: phenomenon:streaming-potential
+  conditions: [electrolyte forced through a channel with charged walls; efficiency peaks when the Debye length is comparable to the channel width]
+  condition_tags: [env-aqueous, flow-required]
+  energy: { input: mechanical, output: electrical, dissipation: thermal }
+  evidence: [source:yang-2003-electrokinetic]
+  status: established
+  knowledge_level: K4
+- id: claim:streaming-produces-ions
+  subject: phenomenon:streaming-potential
+  predicate: produces
+  object: carrier:ionic-current
+  energy: { input: electrical, output: electrical }
+  evidence: [source:yang-2003-electrokinetic]
+  status: established
+- id: claim:streaming-member
+  subject: phenomenon:streaming-potential
+  predicate: member_of
+  object: coupling:electrokinetic
+  evidence: [source:yang-2003-electrokinetic]
+  status: established
+- id: claim:streaming-implemented
+  subject: phenomenon:streaming-potential
+  predicate: implemented_by
+  object: transducer:electrokinetic-microchannel
+  evidence: [source:yang-2003-electrokinetic]
+  status: demonstrated
+- id: claim:streaming-onsager
+  subject: phenomenon:streaming-potential
+  predicate: bounded_by
+  object: constraint:onsager-reciprocity
+  conditions: [streaming current and electro-osmosis are reciprocal]
+  evidence: [source:degroot-mazur-1962]
+  status: established
+- id: claim:flow-drives-streaming
+  subject: disequilibrium:fluid-flow
+  predicate: drives
+  object: phenomenon:streaming-potential
+  conditions: [flow past a charged surface]
+  condition_tags: [env-aqueous, flow-required]
+  energy: { input: kinetic, output: electrical, dissipation: thermal }
+  evidence: [source:yin-2014-graphene-flow]
+  status: replicated
+  knowledge_level: K4
+- id: claim:capillary-drives-hydrovoltaic
+  subject: disequilibrium:capillary-pressure
+  predicate: drives
+  object: phenomenon:hydrovoltaic-effect
+  conditions: [a porous carbon film wicking water with one end exposed to air]
+  condition_tags: [env-aqueous, humidity-required]
+  energy: { input: mechanical, output: electrical, dissipation: thermal }
+  evidence: [source:xue-2017-hydrovoltaic]
+  status: replicated
+  knowledge_level: K4
+- id: claim:humidity-drives-evaporation
+  subject: disequilibrium:humidity-gradient
+  predicate: drives
+  object: phenomenon:evaporation
+  condition_tags: [state-liquid, humidity-required]
+  energy: { input: chemical, output: chemical, dissipation: thermal }
+  evidence: [source:chen-2015-evaporation]
+  status: established
+  knowledge_level: K4
+- id: claim:evaporation-produces-capillary
+  subject: phenomenon:evaporation
+  predicate: produces
+  object: disequilibrium:capillary-pressure
+  conditions: [evaporation from a porous surface sustains capillary flow behind it]
+  energy: { input: chemical, output: mechanical }
+  evidence: [source:xue-2017-hydrovoltaic]
+  status: established
+- id: claim:evaporation-produces-motion
+  subject: phenomenon:evaporation
+  predicate: produces
+  object: carrier:mechanical-motion
+  conditions: [hygroscopic spores or films that swell and shrink with humidity, driving a piston or oscillator]
+  energy: { input: chemical, output: mechanical }
+  evidence: [source:chen-2015-evaporation]
+  status: demonstrated
+- id: claim:evaporation-member
+  subject: phenomenon:evaporation
+  predicate: member_of
+  object: coupling:electrokinetic
+  evidence: [source:xue-2017-hydrovoltaic]
+  status: established
+- id: claim:hydrovoltaic-produces-ions
+  subject: phenomenon:hydrovoltaic-effect
+  predicate: produces
+  object: carrier:ionic-current
+  energy: { input: electrical, output: electrical }
+  evidence: [source:xue-2017-hydrovoltaic]
+  status: replicated
+- id: claim:hydrovoltaic-member
+  subject: phenomenon:hydrovoltaic-effect
+  predicate: member_of
+  object: coupling:electrokinetic
+  evidence: [source:xue-2017-hydrovoltaic]
+  status: established
+- id: claim:hydrovoltaic-implemented
+  subject: phenomenon:hydrovoltaic-effect
+  predicate: implemented_by
+  object: transducer:hydrovoltaic-generator
+  evidence: [source:xue-2017-hydrovoltaic]
+  status: demonstrated
+- id: claim:hydrovoltaic-observed-carbon
+  subject: phenomenon:hydrovoltaic-effect
+  predicate: observed_in
+  object: material:carbon-black-film
+  evidence: [source:xue-2017-hydrovoltaic]
+  status: replicated
+
+# --- MHD --------------------------------------------------------------------------------
+- id: claim:flow-drives-mhd
+  subject: disequilibrium:fluid-flow
+  predicate: drives
+  object: phenomenon:magnetohydrodynamic-effect
+  conditions: [an electrically conducting fluid — seeded combustion plasma or liquid metal — crossing a strong magnetic field between electrodes]
+  condition_tags: [flow-required, field-magnetic-required]
+  energy: { input: kinetic, output: electrical, dissipation: thermal }
+  evidence: [source:rosa-1961-mhd]
+  status: established
+  knowledge_level: K7
+- id: claim:hot-gas-drives-mhd
+  subject: carrier:hot-gas
+  predicate: drives
+  object: phenomenon:magnetohydrodynamic-effect
+  conditions: [combustion gas above ~2500 K seeded with potassium to make it conducting]
+  condition_tags: [state-plasma, temp-high, field-magnetic-required, flow-required]
+  energy: { input: thermal, output: electrical, dissipation: thermal }
+  evidence: [source:rosa-1961-mhd]
+  status: demonstrated
+  knowledge_level: K7
+- id: claim:mhd-produces
+  subject: phenomenon:magnetohydrodynamic-effect
+  predicate: produces
+  object: carrier:charge-carriers
+  energy: { input: electrical, output: electrical }
+  evidence: [source:rosa-1961-mhd]
+  status: established
+- id: claim:mhd-member
+  subject: phenomenon:magnetohydrodynamic-effect
+  predicate: member_of
+  object: coupling:magnetohydrodynamic
+  evidence: [source:rosa-1961-mhd]
+  status: established
+- id: claim:mhd-implemented
+  subject: phenomenon:magnetohydrodynamic-effect
+  predicate: implemented_by
+  object: transducer:mhd-generator
+  evidence: [source:rosa-1961-mhd]
+  status: demonstrated
+- id: claim:mhd-bounded-carnot
+  subject: phenomenon:magnetohydrodynamic-effect
+  predicate: bounded_by
+  object: constraint:carnot-limit
+  conditions: [when the flow is produced by a thermal expansion]
+  evidence: [source:rosa-1961-mhd]
+  status: established

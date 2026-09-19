@@ -1,0 +1,1025 @@
+# Claims: thermal disequilibria and thermal effects.
+# Shape: subject —predicate→ object, under conditions, with evidence and a status.
+# Process claims (drives / produces / couples_to / converts_into) carry an energy ledger.
+
+# --- Seebeck / thermoelectric ------------------------------------------------
+- id: claim:seebeck-drives
+  subject: disequilibrium:temperature-gradient
+  predicate: drives
+  object: phenomenon:seebeck-effect
+  conditions:
+    - a spatial temperature difference across a conductor or semiconductor
+    - a closed circuit of dissimilar materials, or a single material with ends at different temperatures
+  condition_tags: [state-solid, medium-conductor, temp-gradient-required]
+  energy: { input: thermal, output: electrical, dissipation: thermal }
+  relation:
+    formula: "ΔV = S · ΔT"
+    input: quantity:temperature-difference
+    output: quantity:electric-potential
+    coefficient_unit: V/K
+    coefficient_name: Seebeck coefficient S
+  evidence: [source:seebeck-1826, source:goldsmid-2016, source:callen-1948]
+  status: established
+  knowledge_level: K8
+- id: claim:seebeck-produces-carriers
+  subject: phenomenon:seebeck-effect
+  predicate: produces
+  object: carrier:charge-carriers
+  conditions: [carriers diffuse from the hot end and accumulate at the cold end]
+  energy: { input: electrical, output: electrical, dissipation: thermal }
+  evidence: [source:goldsmid-2016, source:herring-1954]
+  status: established
+- id: claim:seebeck-member-thermoelectric
+  subject: phenomenon:seebeck-effect
+  predicate: member_of
+  object: coupling:thermoelectric
+  evidence: [source:goldsmid-2016]
+  status: established
+- id: claim:seebeck-bounded-carnot
+  subject: phenomenon:seebeck-effect
+  predicate: bounded_by
+  object: constraint:carnot-limit
+  evidence: [source:goldsmid-2016]
+  status: established
+- id: claim:seebeck-bounded-zt
+  subject: phenomenon:seebeck-effect
+  predicate: bounded_by
+  object: constraint:thermoelectric-zt-bound
+  evidence: [source:ioffe-1957, source:snyder-toberer-2008]
+  status: established
+- id: claim:seebeck-implemented-teg
+  subject: phenomenon:seebeck-effect
+  predicate: implemented_by
+  object: transducer:thermoelectric-generator
+  evidence: [source:rowe-2006, source:snyder-toberer-2008]
+  status: established
+- id: claim:seebeck-observed-bi2te3
+  subject: phenomenon:seebeck-effect
+  predicate: observed_in
+  object: material:bismuth-telluride
+  evidence: [source:goldsmid-2016]
+  status: established
+- id: claim:seebeck-observed-pbte
+  subject: phenomenon:seebeck-effect
+  predicate: observed_in
+  object: material:lead-telluride
+  evidence: [source:rowe-2006]
+  status: established
+- id: claim:seebeck-governed-em
+  subject: phenomenon:seebeck-effect
+  predicate: governed_by
+  object: interaction:lattice-electron
+  evidence: [source:herring-1954, source:ashcroft-mermin-1976]
+  status: established
+- id: claim:seebeck-conserves-onsager
+  subject: phenomenon:seebeck-effect
+  predicate: bounded_by
+  object: constraint:onsager-reciprocity
+  conditions: [Seebeck and Peltier coefficients are linked by Π = S·T]
+  evidence: [source:onsager-1931, source:callen-1948]
+  status: established
+- id: claim:peltier-drives
+  subject: disequilibrium:electric-potential-difference
+  predicate: drives
+  object: phenomenon:peltier-effect
+  conditions: [a current through a junction of dissimilar conductors]
+  condition_tags: [state-solid, medium-conductor]
+  energy: { input: electrical, output: thermal, dissipation: thermal }
+  evidence: [source:peltier-1834, source:goldsmid-2016]
+  status: established
+  knowledge_level: K8
+- id: claim:peltier-produces-gradient
+  subject: phenomenon:peltier-effect
+  predicate: produces
+  object: disequilibrium:temperature-gradient
+  energy: { input: thermal, output: thermal }
+  evidence: [source:goldsmid-2016]
+  status: established
+- id: claim:peltier-converts-cooling
+  subject: phenomenon:peltier-effect
+  predicate: converts_into
+  object: output:cooling
+  energy: { input: thermal, output: thermal, dissipation: thermal }
+  evidence: [source:ioffe-1957, source:goldsmid-2016]
+  status: established
+- id: claim:peltier-member-thermoelectric
+  subject: phenomenon:peltier-effect
+  predicate: member_of
+  object: coupling:thermoelectric
+  evidence: [source:goldsmid-2016]
+  status: established
+- id: claim:thomson-drives
+  subject: disequilibrium:temperature-gradient
+  predicate: drives
+  object: phenomenon:thomson-effect
+  conditions: [a current flowing along a temperature gradient in a single conductor]
+  condition_tags: [state-solid, medium-conductor]
+  energy: { input: thermal, output: thermal }
+  evidence: [source:thomson-1851, source:callen-1948]
+  status: established
+- id: claim:thomson-member-thermoelectric
+  subject: phenomenon:thomson-effect
+  predicate: member_of
+  object: coupling:thermoelectric
+  evidence: [source:goldsmid-2016]
+  status: established
+- id: claim:phonon-drag-drives
+  subject: carrier:phonons
+  predicate: drives
+  object: phenomenon:phonon-drag
+  conditions: [a phonon heat current in a semiconductor at low temperature]
+  condition_tags: [state-solid, medium-semiconductor, temp-cryogenic]
+  energy: { input: phonon, output: electrical, dissipation: thermal }
+  evidence: [source:herring-1954]
+  status: established
+- id: claim:phonon-drag-produces
+  subject: phenomenon:phonon-drag
+  predicate: produces
+  object: carrier:charge-carriers
+  energy: { input: electrical, output: electrical }
+  evidence: [source:herring-1954]
+  status: established
+- id: claim:phonon-drag-member
+  subject: phenomenon:phonon-drag
+  predicate: member_of
+  object: coupling:thermoelectric
+  evidence: [source:herring-1954]
+  status: established
+- id: claim:heat-conduction-drives
+  subject: disequilibrium:temperature-gradient
+  predicate: drives
+  object: phenomenon:heat-conduction
+  energy: { input: thermal, output: thermal }
+  relation:
+    formula: "q = −κ · ∇T"
+    input: quantity:temperature-gradient
+    output: quantity:heat-flux
+    coefficient_unit: W/(m K)
+    coefficient_name: thermal conductivity κ
+  evidence: [source:bejan-2016]
+  status: established
+- id: claim:heat-conduction-produces-phonons
+  subject: phenomenon:heat-conduction
+  predicate: produces
+  object: carrier:phonons
+  conditions: [in an electrically insulating or semiconducting solid the heat current is carried by phonons]
+  condition_tags: [state-solid]
+  energy: { input: thermal, output: phonon }
+  evidence: [source:kittel-2005]
+  status: established
+- id: claim:heat-conduction-produces-heat-flow
+  subject: phenomenon:heat-conduction
+  predicate: produces
+  object: carrier:heat-flow
+  energy: { input: thermal, output: thermal }
+  evidence: [source:bejan-2016]
+  status: established
+- id: claim:heat-flow-converts-useful-heat
+  subject: carrier:heat-flow
+  predicate: converts_into
+  object: output:useful-heat
+  conditions: [heat delivered at a temperature above the point of use]
+  energy: { input: thermal, output: thermal }
+  evidence: [source:bejan-2016]
+  status: established
+
+# --- Thermionic --------------------------------------------------------------
+- id: claim:thermionic-drives
+  subject: disequilibrium:temperature-gradient
+  predicate: drives
+  object: phenomenon:thermionic-emission
+  conditions:
+    - cathode hot enough that kT is a useful fraction of the work function (typically > 1500 K for metals, lower for low-work-function coatings)
+    - a cooler anode across a vacuum or caesium-vapour gap
+  condition_tags: [env-vacuum, temp-high, state-solid]
+  energy: { input: thermal, output: electrical, dissipation: radiative }
+  evidence: [source:richardson-1901, source:hatsopoulos-gyftopoulos-1973]
+  status: established
+  knowledge_level: K7
+- id: claim:thermionic-produces-carriers
+  subject: phenomenon:thermionic-emission
+  predicate: produces
+  object: carrier:charge-carriers
+  conditions: [emitted electrons collected at the anode at a potential difference set by the work-function difference]
+  energy: { input: electrical, output: electrical, dissipation: thermal }
+  evidence: [source:hatsopoulos-gyftopoulos-1973]
+  status: established
+- id: claim:thermionic-member
+  subject: phenomenon:thermionic-emission
+  predicate: member_of
+  object: coupling:thermionic
+  evidence: [source:hatsopoulos-gyftopoulos-1973]
+  status: established
+- id: claim:thermionic-bounded-space-charge
+  subject: phenomenon:thermionic-emission
+  predicate: bounded_by
+  object: constraint:space-charge-limit
+  evidence: [source:hatsopoulos-gyftopoulos-1973]
+  status: established
+- id: claim:thermionic-bounded-carnot
+  subject: phenomenon:thermionic-emission
+  predicate: bounded_by
+  object: constraint:carnot-limit
+  evidence: [source:hatsopoulos-gyftopoulos-1973]
+  status: established
+- id: claim:thermionic-implemented
+  subject: phenomenon:thermionic-emission
+  predicate: implemented_by
+  object: transducer:thermionic-converter
+  evidence: [source:hatsopoulos-gyftopoulos-1973]
+  status: demonstrated
+
+# --- Thermoacoustic ------------------------------------------------------------
+- id: claim:thermoacoustic-drives
+  subject: disequilibrium:temperature-gradient
+  predicate: drives
+  object: phenomenon:thermoacoustic-effect
+  conditions:
+    - temperature gradient along the stack steeper than the critical gradient set by the acoustic pressure and displacement amplitudes
+    - a resonant gas column
+  condition_tags: [state-gas, temp-gradient-required]
+  energy: { input: thermal, output: acoustic, dissipation: thermal }
+  evidence: [source:swift-1988]
+  status: established
+  knowledge_level: K7
+- id: claim:thermoacoustic-produces-sound
+  subject: phenomenon:thermoacoustic-effect
+  predicate: produces
+  object: carrier:acoustic-wave
+  energy: { input: acoustic, output: acoustic }
+  evidence: [source:swift-1988]
+  status: established
+- id: claim:acoustic-drives-linear-alternator
+  subject: carrier:acoustic-wave
+  predicate: drives
+  object: phenomenon:linear-alternator-action
+  conditions: [an acoustic pressure oscillation driving a piston attached to a magnet or coil]
+  condition_tags: [medium-conductor, field-magnetic-required]
+  energy: { input: acoustic, output: electrical, dissipation: thermal }
+  evidence: [source:swift-1988]
+  status: demonstrated
+- id: claim:linear-alternator-produces
+  subject: phenomenon:linear-alternator-action
+  predicate: produces
+  object: carrier:charge-carriers
+  energy: { input: electrical, output: electrical }
+  evidence: [source:swift-1988]
+  status: established
+- id: claim:linear-alternator-member
+  subject: phenomenon:linear-alternator-action
+  predicate: member_of
+  object: coupling:electromagnetic-induction
+  evidence: [source:swift-1988]
+  status: established
+- id: claim:thermoacoustic-member
+  subject: phenomenon:thermoacoustic-effect
+  predicate: member_of
+  object: coupling:thermoacoustic
+  evidence: [source:swift-1988]
+  status: established
+- id: claim:thermoacoustic-bounded-carnot
+  subject: phenomenon:thermoacoustic-effect
+  predicate: bounded_by
+  object: constraint:carnot-limit
+  evidence: [source:swift-1988]
+  status: established
+- id: claim:thermoacoustic-implemented
+  subject: phenomenon:thermoacoustic-effect
+  predicate: implemented_by
+  object: transducer:thermoacoustic-engine
+  evidence: [source:swift-1988]
+  status: demonstrated
+
+# --- Pyroelectric --------------------------------------------------------------
+- id: claim:pyro-drives
+  subject: disequilibrium:temperature-gradient
+  predicate: drives
+  object: phenomenon:pyroelectric-effect
+  conditions:
+    - the temperature of the polar crystal must change in time; a static gradient produces no current
+    - the material must be below its Curie temperature
+  condition_tags: [state-solid, medium-ferroelectric, transient-only]
+  energy: { input: thermal, output: electrical, dissipation: thermal }
+  relation:
+    formula: "ΔP = p · ΔT"
+    input: quantity:temperature-difference
+    output: quantity:polarisation
+    coefficient_unit: C/(m^2 K)
+    coefficient_name: pyroelectric coefficient p
+  evidence: [source:lang-2005, source:whatmore-1986, source:bowen-2014-pyro]
+  status: established
+  knowledge_level: K6
+  notes: The driver is a temperature change rather than a gradient; the atlas records it under the temperature-gradient row because a fluctuating gradient is the practical source.
+- id: claim:pyro-produces-charge
+  subject: phenomenon:pyroelectric-effect
+  predicate: produces
+  object: carrier:surface-charge
+  energy: { input: electrical, output: electrical }
+  evidence: [source:lang-2005]
+  status: established
+- id: claim:pyro-member
+  subject: phenomenon:pyroelectric-effect
+  predicate: member_of
+  object: coupling:pyroelectric
+  evidence: [source:lang-2005]
+  status: established
+- id: claim:pyro-observed-pzt
+  subject: phenomenon:pyroelectric-effect
+  predicate: observed_in
+  object: material:pzt
+  evidence: [source:whatmore-1986]
+  status: established
+- id: claim:pyro-observed-pvdf
+  subject: phenomenon:pyroelectric-effect
+  predicate: observed_in
+  object: material:pvdf
+  evidence: [source:bowen-2014-pyro]
+  status: established
+- id: claim:pyro-implemented
+  subject: phenomenon:pyroelectric-effect
+  predicate: implemented_by
+  object: transducer:pyroelectric-harvester
+  evidence: [source:bowen-2014-pyro]
+  status: demonstrated
+- id: claim:pyro-bounded-carnot
+  subject: phenomenon:pyroelectric-effect
+  predicate: bounded_by
+  object: constraint:carnot-limit
+  evidence: [source:bowen-2014-pyro]
+  status: established
+- id: claim:surface-charge-converts-electricity
+  subject: carrier:surface-charge
+  predicate: converts_into
+  object: output:electricity
+  conditions: [electrodes on the charged surfaces connected through a load]
+  energy: { input: electrical, output: electrical, dissipation: thermal }
+  evidence: [source:radousky-liang-2012]
+  status: established
+
+# --- Thermogalvanic ------------------------------------------------------------
+- id: claim:thermogalvanic-drives
+  subject: disequilibrium:temperature-gradient
+  predicate: drives
+  object: phenomenon:thermogalvanic-effect
+  conditions:
+    - two identical electrodes in one redox electrolyte held at different temperatures
+    - a redox couple with large reaction entropy (ferri/ferrocyanide gives ≈ −1.4 mV/K)
+  condition_tags: [state-liquid, env-aqueous, temp-gradient-required]
+  energy: { input: thermal, output: electrical, dissipation: thermal }
+  relation:
+    formula: "ΔE = (ΔS_rxn / nF) · ΔT"
+    input: quantity:temperature-difference
+    output: quantity:electric-potential
+    coefficient_unit: V/K
+    coefficient_name: thermogalvanic Seebeck coefficient
+  evidence: [source:quickenden-mua-1995, source:dupont-2017]
+  status: established
+  knowledge_level: K6
+- id: claim:thermogalvanic-produces-ions
+  subject: phenomenon:thermogalvanic-effect
+  predicate: produces
+  object: carrier:ionic-current
+  energy: { input: electrical, output: electrical, dissipation: thermal }
+  evidence: [source:dupont-2017]
+  status: established
+- id: claim:thermogalvanic-member
+  subject: phenomenon:thermogalvanic-effect
+  predicate: member_of
+  object: coupling:thermogalvanic
+  evidence: [source:dupont-2017]
+  status: established
+- id: claim:thermogalvanic-bounded-carnot
+  subject: phenomenon:thermogalvanic-effect
+  predicate: bounded_by
+  object: constraint:carnot-limit
+  evidence: [source:quickenden-mua-1995]
+  status: established
+- id: claim:thermogalvanic-implemented
+  subject: phenomenon:thermogalvanic-effect
+  predicate: implemented_by
+  object: transducer:thermocell
+  evidence: [source:dupont-2017]
+  status: demonstrated
+- id: claim:ionic-current-converts-electricity
+  subject: carrier:ionic-current
+  predicate: converts_into
+  object: output:electricity
+  conditions: [electrodes exchange the ionic current for an electronic current through the external load]
+  energy: { input: electrical, output: electrical, dissipation: thermal }
+  evidence: [source:bard-faulkner-2001]
+  status: established
+- id: claim:trec-drives
+  subject: disequilibrium:temperature-gradient
+  predicate: drives
+  object: phenomenon:thermally-regenerative-electrochemical-cycle
+  conditions:
+    - a battery chemistry whose open-circuit voltage changes with temperature by ≈ 1 mV/K
+    - charge at one temperature, discharge at the other, with heat recuperation between the two
+  condition_tags: [env-aqueous, temp-gradient-required]
+  energy: { input: thermal, output: electrical, dissipation: thermal }
+  evidence: [source:lee-2014-trec]
+  status: demonstrated
+  knowledge_level: K5
+- id: claim:trec-produces-ions
+  subject: phenomenon:thermally-regenerative-electrochemical-cycle
+  predicate: produces
+  object: carrier:ionic-current
+  energy: { input: electrical, output: electrical }
+  evidence: [source:lee-2014-trec]
+  status: demonstrated
+- id: claim:trec-member
+  subject: phenomenon:thermally-regenerative-electrochemical-cycle
+  predicate: member_of
+  object: coupling:thermogalvanic
+  evidence: [source:lee-2014-trec]
+  status: established
+- id: claim:trec-bounded-carnot
+  subject: phenomenon:thermally-regenerative-electrochemical-cycle
+  predicate: bounded_by
+  object: constraint:carnot-limit
+  evidence: [source:lee-2014-trec]
+  status: established
+
+# --- Soret --------------------------------------------------------------------
+- id: claim:soret-drives
+  subject: disequilibrium:temperature-gradient
+  predicate: drives
+  object: phenomenon:soret-effect
+  conditions: [a liquid mixture or solution under a steady temperature gradient]
+  condition_tags: [state-liquid, temp-gradient-required]
+  energy: { input: thermal, output: chemical, dissipation: thermal }
+  evidence: [source:soret-1879, source:degroot-mazur-1962]
+  status: established
+  knowledge_level: K4
+- id: claim:soret-produces-gradient
+  subject: phenomenon:soret-effect
+  predicate: produces
+  object: disequilibrium:concentration-gradient
+  energy: { input: chemical, output: chemical }
+  evidence: [source:degroot-mazur-1962]
+  status: established
+- id: claim:soret-onsager
+  subject: phenomenon:soret-effect
+  predicate: bounded_by
+  object: constraint:onsager-reciprocity
+  conditions: [the Soret and Dufour coefficients are Onsager-reciprocal]
+  evidence: [source:onsager-1931, source:degroot-mazur-1962]
+  status: established
+
+# --- Nernst / Ettingshausen / anomalous Nernst ---------------------------------
+- id: claim:nernst-drives
+  subject: disequilibrium:temperature-gradient
+  predicate: drives
+  object: phenomenon:nernst-effect
+  conditions: [a magnetic field perpendicular to the temperature gradient; the transverse field is proportional to B and ∇T]
+  condition_tags: [state-solid, medium-conductor, field-magnetic-required, temp-gradient-required]
+  energy: { input: thermal, output: electrical, dissipation: thermal }
+  relation:
+    formula: "E_y = N · B_z · ∇T_x"
+    input: quantity:temperature-gradient
+    output: quantity:electric-field
+    coefficient_unit: V/K
+    coefficient_name: N·B (Nernst coefficient × field), in V/K
+  evidence: [source:ettingshausen-nernst-1886, source:callen-1948]
+  status: established
+  knowledge_level: K4
+- id: claim:nernst-produces
+  subject: phenomenon:nernst-effect
+  predicate: produces
+  object: carrier:charge-carriers
+  energy: { input: electrical, output: electrical }
+  evidence: [source:callen-1948]
+  status: established
+- id: claim:nernst-member
+  subject: phenomenon:nernst-effect
+  predicate: member_of
+  object: coupling:thermoelectric
+  evidence: [source:callen-1948]
+  status: established
+- id: claim:anomalous-nernst-drives
+  subject: disequilibrium:temperature-gradient
+  predicate: drives
+  object: phenomenon:anomalous-nernst-effect
+  conditions: [a magnetised ferromagnet or topological semimetal; no external field needed once magnetised]
+  condition_tags: [state-solid, medium-ferromagnet, temp-gradient-required]
+  energy: { input: thermal, output: electrical, dissipation: thermal }
+  evidence: [source:sakai-2018, source:bauer-2012]
+  status: replicated
+  knowledge_level: K4
+- id: claim:anomalous-nernst-produces
+  subject: phenomenon:anomalous-nernst-effect
+  predicate: produces
+  object: carrier:charge-carriers
+  energy: { input: electrical, output: electrical }
+  evidence: [source:sakai-2018]
+  status: replicated
+- id: claim:anomalous-nernst-member
+  subject: phenomenon:anomalous-nernst-effect
+  predicate: member_of
+  object: coupling:spin-caloritronic
+  evidence: [source:bauer-2012]
+  status: established
+- id: claim:ettingshausen-drives
+  subject: disequilibrium:electric-potential-difference
+  predicate: drives
+  object: phenomenon:ettingshausen-effect
+  conditions: [a current in a conductor with a perpendicular magnetic field]
+  condition_tags: [state-solid, medium-conductor, field-magnetic-required]
+  energy: { input: electrical, output: thermal }
+  evidence: [source:ettingshausen-nernst-1886, source:callen-1948]
+  status: established
+- id: claim:ettingshausen-produces
+  subject: phenomenon:ettingshausen-effect
+  predicate: produces
+  object: disequilibrium:temperature-gradient
+  energy: { input: thermal, output: thermal }
+  evidence: [source:callen-1948]
+  status: established
+- id: claim:ettingshausen-member
+  subject: phenomenon:ettingshausen-effect
+  predicate: member_of
+  object: coupling:thermoelectric
+  evidence: [source:callen-1948]
+  status: established
+
+# --- Thermomagnetic and caloric -------------------------------------------------
+- id: claim:thermomagnetic-drives
+  subject: disequilibrium:temperature-gradient
+  predicate: drives
+  object: phenomenon:thermomagnetic-transition
+  conditions:
+    - a soft ferromagnet with its Curie temperature between the hot and cold reservoir temperatures (Gd ≈ 293 K)
+    - the element must be cycled between the reservoirs, so a heat-switch or motion is needed
+  condition_tags: [state-solid, medium-ferromagnet, temp-gradient-required]
+  energy: { input: thermal, output: magnetic, dissipation: thermal }
+  evidence: [source:tesla-1890-patent, source:kishore-priya-2018, source:waske-2019]
+  status: demonstrated
+  knowledge_level: K6
+- id: claim:thermomagnetic-produces-flux
+  subject: phenomenon:thermomagnetic-transition
+  predicate: produces
+  object: carrier:magnetic-flux
+  energy: { input: magnetic, output: magnetic }
+  evidence: [source:kishore-priya-2018]
+  status: established
+- id: claim:thermomagnetic-member
+  subject: phenomenon:thermomagnetic-transition
+  predicate: member_of
+  object: coupling:thermomagnetic
+  evidence: [source:kishore-priya-2018]
+  status: established
+- id: claim:thermomagnetic-implemented
+  subject: phenomenon:thermomagnetic-transition
+  predicate: implemented_by
+  object: transducer:thermomagnetic-generator
+  evidence: [source:waske-2019]
+  status: demonstrated
+- id: claim:thermomagnetic-observed-gd
+  subject: phenomenon:thermomagnetic-transition
+  predicate: observed_in
+  object: material:gadolinium
+  evidence: [source:waske-2019]
+  status: established
+- id: claim:thermomagnetic-bounded-carnot
+  subject: phenomenon:thermomagnetic-transition
+  predicate: bounded_by
+  object: constraint:carnot-limit
+  evidence: [source:kishore-priya-2018]
+  status: established
+- id: claim:magnetic-flux-drives-induction
+  subject: carrier:magnetic-flux
+  predicate: drives
+  object: phenomenon:electromagnetic-induction
+  conditions: [the changing flux threads a conducting loop]
+  condition_tags: [medium-conductor]
+  energy: { input: magnetic, output: electrical, dissipation: thermal }
+  relation:
+    formula: "ℰ = −dΦ/dt"
+    input: quantity:magnetic-flux
+    output: quantity:electric-potential
+    coefficient_unit: 1/s
+    coefficient_name: rate of change
+  evidence: [source:faraday-1832, source:landau-lifshitz-ecm]
+  status: established
+  knowledge_level: K8
+- id: claim:magnetocaloric-drives
+  subject: disequilibrium:magnetic-field-change
+  predicate: drives
+  object: phenomenon:magnetocaloric-effect
+  conditions: [adiabatic magnetisation or demagnetisation of a material near its ordering temperature]
+  condition_tags: [state-solid, medium-ferromagnet, field-magnetic-required]
+  energy: { input: magnetic, output: thermal }
+  evidence: [source:pecharsky-gschneidner-1997]
+  status: established
+  knowledge_level: K7
+- id: claim:magnetocaloric-produces
+  subject: phenomenon:magnetocaloric-effect
+  predicate: produces
+  object: disequilibrium:temperature-gradient
+  energy: { input: thermal, output: thermal }
+  evidence: [source:pecharsky-gschneidner-1997]
+  status: established
+- id: claim:magnetocaloric-converts-cooling
+  subject: phenomenon:magnetocaloric-effect
+  predicate: converts_into
+  object: output:cooling
+  conditions: [a regenerative cycle rejecting heat during magnetisation and absorbing it during demagnetisation]
+  energy: { input: thermal, output: thermal, dissipation: thermal }
+  evidence: [source:pecharsky-gschneidner-1997]
+  status: demonstrated
+- id: claim:magnetocaloric-member
+  subject: phenomenon:magnetocaloric-effect
+  predicate: member_of
+  object: coupling:caloric
+  evidence: [source:pecharsky-gschneidner-1997]
+  status: established
+- id: claim:magnetocaloric-implemented
+  subject: phenomenon:magnetocaloric-effect
+  predicate: implemented_by
+  object: transducer:magnetocaloric-refrigerator
+  evidence: [source:pecharsky-gschneidner-1997]
+  status: demonstrated
+- id: claim:magnetocaloric-observed-gd
+  subject: phenomenon:magnetocaloric-effect
+  predicate: observed_in
+  object: material:gadolinium
+  evidence: [source:pecharsky-gschneidner-1997]
+  status: established
+- id: claim:electrocaloric-drives
+  subject: disequilibrium:electric-potential-difference
+  predicate: drives
+  object: phenomenon:electrocaloric-effect
+  conditions: [a large field applied to a thin polar dielectric near its transition]
+  condition_tags: [state-solid, medium-ferroelectric, field-electric-required]
+  energy: { input: electrical, output: thermal }
+  evidence: [source:mischenko-2006]
+  status: replicated
+  knowledge_level: K4
+- id: claim:electrocaloric-produces
+  subject: phenomenon:electrocaloric-effect
+  predicate: produces
+  object: disequilibrium:temperature-gradient
+  energy: { input: thermal, output: thermal }
+  evidence: [source:mischenko-2006]
+  status: replicated
+- id: claim:electrocaloric-member
+  subject: phenomenon:electrocaloric-effect
+  predicate: member_of
+  object: coupling:caloric
+  evidence: [source:mischenko-2006]
+  status: established
+- id: claim:elastocaloric-drives
+  subject: disequilibrium:mechanical-stress
+  predicate: drives
+  object: phenomenon:elastocaloric-effect
+  conditions: [stress large enough to drive the martensitic transformation of a shape-memory alloy]
+  condition_tags: [state-solid]
+  energy: { input: mechanical, output: thermal }
+  evidence: [source:tusek-2016]
+  status: replicated
+  knowledge_level: K6
+- id: claim:elastocaloric-produces
+  subject: phenomenon:elastocaloric-effect
+  predicate: produces
+  object: disequilibrium:temperature-gradient
+  energy: { input: thermal, output: thermal }
+  evidence: [source:tusek-2016]
+  status: replicated
+- id: claim:elastocaloric-converts-cooling
+  subject: phenomenon:elastocaloric-effect
+  predicate: converts_into
+  object: output:cooling
+  energy: { input: thermal, output: thermal, dissipation: thermal }
+  evidence: [source:tusek-2016]
+  status: demonstrated
+- id: claim:elastocaloric-member
+  subject: phenomenon:elastocaloric-effect
+  predicate: member_of
+  object: coupling:caloric
+  evidence: [source:tusek-2016]
+  status: established
+- id: claim:elastocaloric-implemented
+  subject: phenomenon:elastocaloric-effect
+  predicate: implemented_by
+  object: transducer:elastocaloric-cooler
+  evidence: [source:tusek-2016]
+  status: demonstrated
+- id: claim:elastocaloric-observed-niti
+  subject: phenomenon:elastocaloric-effect
+  predicate: observed_in
+  object: material:nitinol
+  evidence: [source:tusek-2016]
+  status: established
+
+# --- Heat engines -----------------------------------------------------------------
+- id: claim:expansion-drives
+  subject: disequilibrium:temperature-gradient
+  predicate: drives
+  object: phenomenon:working-fluid-expansion
+  conditions: [a hot reservoir to heat the working fluid and a cold reservoir to condense or cool it]
+  condition_tags: [temp-gradient-required]
+  energy: { input: thermal, output: mechanical, dissipation: thermal }
+  evidence: [source:bejan-2016, source:walker-1980-stirling]
+  status: established
+  knowledge_level: K8
+- id: claim:hot-gas-drives-expansion
+  subject: carrier:hot-gas
+  predicate: drives
+  object: phenomenon:working-fluid-expansion
+  conditions: [the hot pressurised gas expands through a turbine or against a piston]
+  condition_tags: [state-gas, temp-high]
+  energy: { input: thermal, output: mechanical, dissipation: thermal }
+  evidence: [source:bejan-2016, source:dixon-hall-2014]
+  status: established
+  knowledge_level: K8
+- id: claim:expansion-produces-motion
+  subject: phenomenon:working-fluid-expansion
+  predicate: produces
+  object: carrier:mechanical-motion
+  energy: { input: mechanical, output: mechanical, dissipation: thermal }
+  evidence: [source:bejan-2016]
+  status: established
+- id: claim:expansion-member
+  subject: phenomenon:working-fluid-expansion
+  predicate: member_of
+  object: coupling:heat-engine
+  evidence: [source:bejan-2016]
+  status: established
+- id: claim:expansion-bounded-carnot
+  subject: phenomenon:working-fluid-expansion
+  predicate: bounded_by
+  object: constraint:carnot-limit
+  evidence: [source:bejan-2016]
+  status: established
+- id: claim:expansion-bounded-ca
+  subject: phenomenon:working-fluid-expansion
+  predicate: bounded_by
+  object: constraint:curzon-ahlborn-limit
+  evidence: [source:curzon-ahlborn-1975]
+  status: established
+- id: claim:expansion-implemented-rankine
+  subject: phenomenon:working-fluid-expansion
+  predicate: implemented_by
+  object: transducer:rankine-cycle-plant
+  evidence: [source:bejan-2016]
+  status: established
+- id: claim:expansion-implemented-stirling
+  subject: phenomenon:working-fluid-expansion
+  predicate: implemented_by
+  object: transducer:stirling-engine
+  evidence: [source:walker-1980-stirling]
+  status: established
+- id: claim:motion-converts-mechanical-work
+  subject: carrier:mechanical-motion
+  predicate: converts_into
+  object: output:mechanical-work
+  energy: { input: mechanical, output: mechanical, dissipation: thermal }
+  evidence: [source:bejan-2016]
+  status: established
+- id: claim:motion-drives-generator
+  subject: carrier:mechanical-motion
+  predicate: drives
+  object: phenomenon:generator-action
+  conditions: [a shaft turning a rotor inside a stator, or a magnet moved past a coil]
+  condition_tags: [medium-conductor, field-magnetic-required]
+  energy: { input: mechanical, output: electrical, dissipation: thermal }
+  evidence: [source:faraday-1832, source:dixon-hall-2014]
+  status: established
+  knowledge_level: K8
+- id: claim:generator-produces-carriers
+  subject: phenomenon:generator-action
+  predicate: produces
+  object: carrier:charge-carriers
+  energy: { input: electrical, output: electrical, dissipation: thermal }
+  evidence: [source:faraday-1832]
+  status: established
+- id: claim:generator-member
+  subject: phenomenon:generator-action
+  predicate: member_of
+  object: coupling:electromagnetic-induction
+  evidence: [source:faraday-1832]
+  status: established
+- id: claim:charge-carriers-convert-electricity
+  subject: carrier:charge-carriers
+  predicate: converts_into
+  object: output:electricity
+  conditions: [carriers driven through an external load at the potential difference the source maintains]
+  energy: { input: electrical, output: electrical, dissipation: thermal }
+  evidence: [source:ashcroft-mermin-1976]
+  status: established
+- id: claim:otec-drives
+  subject: disequilibrium:temperature-gradient
+  predicate: drives
+  object: phenomenon:ocean-thermal-gradient-conversion
+  conditions: [a ≈ 20 K difference between warm surface water and cold water from ~1000 m depth]
+  condition_tags: [state-liquid, temp-gradient-required]
+  energy: { input: thermal, output: mechanical, dissipation: thermal }
+  evidence: [source:claude-1930, source:bejan-2016]
+  status: demonstrated
+  knowledge_level: K7
+- id: claim:otec-produces-motion
+  subject: phenomenon:ocean-thermal-gradient-conversion
+  predicate: produces
+  object: carrier:mechanical-motion
+  energy: { input: mechanical, output: mechanical }
+  evidence: [source:claude-1930]
+  status: demonstrated
+- id: claim:otec-member
+  subject: phenomenon:ocean-thermal-gradient-conversion
+  predicate: member_of
+  object: coupling:heat-engine
+  evidence: [source:bejan-2016]
+  status: established
+- id: claim:otec-bounded-carnot
+  subject: phenomenon:ocean-thermal-gradient-conversion
+  predicate: bounded_by
+  object: constraint:carnot-limit
+  conditions: [Carnot efficiency ≈ 7% for 300 K against 280 K]
+  evidence: [source:bejan-2016]
+  status: established
+
+# --- Thermal radiation and sky cooling -----------------------------------------------
+- id: claim:thermal-emission-drives
+  subject: disequilibrium:temperature-gradient
+  predicate: drives
+  object: phenomenon:thermal-emission
+  conditions: [an emitter hotter than the surface it faces]
+  energy: { input: thermal, output: radiative }
+  evidence: [source:bejan-2016, source:landsberg-tonge-1980]
+  status: established
+  knowledge_level: K8
+- id: claim:thermal-emission-produces-photons
+  subject: phenomenon:thermal-emission
+  predicate: produces
+  object: carrier:photons
+  energy: { input: radiative, output: radiative }
+  evidence: [source:landsberg-tonge-1980]
+  status: established
+- id: claim:thermal-emission-member-tpv
+  subject: phenomenon:thermal-emission
+  predicate: member_of
+  object: coupling:thermophotovoltaic
+  evidence: [source:lapotin-2022]
+  status: established
+- id: claim:thermal-emission-converts-light
+  subject: phenomenon:thermal-emission
+  predicate: converts_into
+  object: output:light
+  conditions: [incandescence at > 2000 K]
+  energy: { input: radiative, output: radiative, dissipation: radiative }
+  evidence: [source:landsberg-tonge-1980]
+  status: established
+- id: claim:sky-drives-radiative-cooling
+  subject: disequilibrium:radiative-sky-imbalance
+  predicate: drives
+  object: phenomenon:radiative-cooling
+  conditions:
+    - an emitter with high emissivity in the 8–13 µm window and high solar reflectance
+    - a clear sky; humidity and cloud close the window
+  energy: { input: radiative, output: thermal }
+  evidence: [source:raman-2014]
+  status: replicated
+  knowledge_level: K7
+- id: claim:radiative-cooling-produces-gradient
+  subject: phenomenon:radiative-cooling
+  predicate: produces
+  object: disequilibrium:temperature-gradient
+  conditions: [the cooled surface sits a few kelvin below ambient air]
+  energy: { input: thermal, output: thermal }
+  evidence: [source:raman-2014, source:raman-2019-night]
+  status: replicated
+- id: claim:radiative-cooling-converts-cooling
+  subject: phenomenon:radiative-cooling
+  predicate: converts_into
+  object: output:cooling
+  energy: { input: thermal, output: thermal }
+  evidence: [source:raman-2014]
+  status: replicated
+- id: claim:radiative-cooling-member
+  subject: phenomenon:radiative-cooling
+  predicate: member_of
+  object: coupling:photothermal
+  evidence: [source:raman-2014]
+  status: established
+- id: claim:radiative-cooling-bounded
+  subject: phenomenon:radiative-cooling
+  predicate: bounded_by
+  object: constraint:radiative-cooling-power-bound
+  evidence: [source:raman-2014]
+  status: established
+- id: claim:radiative-cooling-implemented-teg
+  subject: phenomenon:radiative-cooling
+  predicate: implemented_by
+  object: transducer:radiative-cooler-teg
+  evidence: [source:raman-2019-night]
+  status: demonstrated
+- id: claim:thermoradiative-drives
+  subject: disequilibrium:radiative-sky-imbalance
+  predicate: drives
+  object: phenomenon:thermoradiative-effect
+  conditions: [a narrow-gap diode warmer than the sky it faces, emitting net radiation]
+  condition_tags: [state-solid, medium-semiconductor]
+  energy: { input: radiative, output: electrical, dissipation: radiative }
+  evidence: [source:strandberg-2015]
+  status: theoretically-predicted
+  knowledge_level: K3
+  notes: Theory is established; laboratory demonstrations report microwatt-scale currents, well short of the predicted limits.
+- id: claim:thermoradiative-produces
+  subject: phenomenon:thermoradiative-effect
+  predicate: produces
+  object: carrier:charge-carriers
+  energy: { input: electrical, output: electrical }
+  evidence: [source:strandberg-2015]
+  status: theoretically-predicted
+- id: claim:thermoradiative-member
+  subject: phenomenon:thermoradiative-effect
+  predicate: member_of
+  object: coupling:photovoltaic
+  evidence: [source:strandberg-2015]
+  status: established
+
+# --- Thermal expansion ----------------------------------------------------------------
+- id: claim:thermal-expansion-drives
+  subject: disequilibrium:temperature-gradient
+  predicate: drives
+  object: phenomenon:thermal-expansion
+  energy: { input: thermal, output: mechanical }
+  evidence: [source:bejan-2016]
+  status: established
+- id: claim:thermal-expansion-produces-stress
+  subject: phenomenon:thermal-expansion
+  predicate: produces
+  object: disequilibrium:mechanical-stress
+  conditions: [expansion constrained by a stiffer body]
+  condition_tags: [state-solid]
+  energy: { input: mechanical, output: mechanical }
+  evidence: [source:nye-1985]
+  status: established
+- id: claim:thermal-expansion-member
+  subject: phenomenon:thermal-expansion
+  predicate: member_of
+  object: coupling:heat-engine
+  evidence: [source:bejan-2016]
+  status: established
+
+# --- Negative entries: what a uniform bath and the vacuum cannot do ---------------------
+- id: claim:uniform-thermal-second-law
+  subject: disequilibrium:uniform-thermal-energy
+  predicate: bounded_by
+  object: constraint:second-law
+  conditions: [a single reservoir at one temperature]
+  evidence: [source:bejan-2016]
+  status: established
+  notes: No cyclic process extracts work from a single reservoir. Recorded so that the matrix row can show "forbidden" rather than "unknown".
+- id: claim:vacuum-second-law
+  subject: disequilibrium:quantum-vacuum-fluctuations
+  predicate: bounded_by
+  object: constraint:second-law
+  conditions: [the vacuum is the ground state; there is no lower state to relax into]
+  evidence: [source:lamoreaux-1997]
+  status: established
+- id: claim:vacuum-drives-casimir
+  subject: disequilibrium:quantum-vacuum-fluctuations
+  predicate: drives
+  object: phenomenon:casimir-effect
+  conditions: [two conducting plates closer than a micrometre; force measured to 5%]
+  condition_tags: [env-vacuum]
+  evidence: [source:lamoreaux-1997]
+  status: established
+  knowledge_level: K4
+  notes: The attraction is real and measured. It does one-off work while the plates approach; separating them again costs at least as much. No energy ledger is recorded because no continuous conversion exists.
+- id: claim:casimir-member
+  subject: phenomenon:casimir-effect
+  predicate: member_of
+  object: coupling:fluctuation-driven
+  evidence: [source:lamoreaux-1997]
+  status: established
+- id: claim:casimir-bounded-second-law
+  subject: phenomenon:casimir-effect
+  predicate: bounded_by
+  object: constraint:second-law
+  evidence: [source:lamoreaux-1997]
+  status: established
+- id: claim:uniform-thermal-drives-info
+  subject: disequilibrium:uniform-thermal-energy
+  predicate: drives
+  object: phenomenon:information-to-work-conversion
+  conditions: [feedback control based on measurement of a fluctuating particle; the work extracted is bounded by kT·ln2 per bit of information used]
+  condition_tags: [state-liquid, temp-room]
+  energy: { input: thermal, output: mechanical, dissipation: thermal }
+  evidence: [source:toyabe-2010]
+  status: demonstrated
+  knowledge_level: K4
+  notes: Not a violation of the second law — the measurement and erasure of the record cost at least the work extracted.
+- id: claim:info-conversion-member
+  subject: phenomenon:information-to-work-conversion
+  predicate: member_of
+  object: coupling:fluctuation-driven
+  evidence: [source:toyabe-2010]
+  status: established
+- id: claim:info-conversion-bounded
+  subject: phenomenon:information-to-work-conversion
+  predicate: bounded_by
+  object: constraint:second-law
+  evidence: [source:toyabe-2010]
+  status: established

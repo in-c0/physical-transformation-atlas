@@ -1,0 +1,62 @@
+# Physics domains used for coverage accounting.
+#
+# `target_phenomena` is the number of distinct, well-established phenomena a
+# thorough first full release of this domain would carry. It is a reviewed
+# editorial estimate, kept deliberately round, and it is what the coverage bars
+# divide by. It is NOT an estimate of how much physics humanity understands.
+- id: thermodynamics
+  name: Thermodynamics
+  target_phenomena: 40
+  summary: Heat, work, temperature and entropy; thermal-to-anything conversion and its bounds.
+- id: classical-mechanics
+  name: Classical mechanics
+  target_phenomena: 30
+  summary: Motion, stress, strain, vibration and the conversion of mechanical work.
+- id: electromagnetism
+  name: Electromagnetism
+  target_phenomena: 40
+  summary: Fields, induction, charge transport and electromechanical/electrothermal coupling.
+- id: electrochemistry
+  name: Electrochemistry
+  target_phenomena: 30
+  summary: Redox, ion transport, concentration and salinity gradients, thermogalvanic effects.
+- id: condensed-matter
+  name: Condensed matter
+  target_phenomena: 60
+  summary: Solid-state transport effects, ferroics, caloric effects, phonons and excitons.
+- id: fluid-mechanics
+  name: Fluid mechanics
+  target_phenomena: 25
+  summary: Flow, pressure, waves, capillarity and evaporation-driven transport.
+- id: optics-photonics
+  name: Optics and photonics
+  target_phenomena: 30
+  summary: Absorption, emission, photovoltaics, thermophotovoltaics and radiative exchange.
+- id: spin-systems
+  name: Spin systems
+  target_phenomena: 20
+  summary: Spin currents, magnons, spin caloritronics and spin–charge conversion.
+- id: nuclear-physics
+  name: Nuclear physics
+  target_phenomena: 20
+  summary: Decay, fission, fusion and direct conversion of nuclear radiation.
+- id: plasma-physics
+  name: Plasma physics
+  target_phenomena: 20
+  summary: Ionised media, magnetohydrodynamics and plasma-based conversion.
+- id: quantum-transport
+  name: Quantum transport
+  target_phenomena: 20
+  summary: Tunnelling, coherence and quantum-limited energy exchange.
+- id: biophysical-transduction
+  name: Biophysical transduction
+  target_phenomena: 15
+  summary: Photosynthesis, chemiosmosis, molecular motors and biological transducers.
+- id: surface-interface
+  name: Surfaces and interfaces
+  target_phenomena: 20
+  summary: Contact electrification, wetting, electrokinetics and interfacial energy.
+- id: chemistry
+  name: Chemistry
+  target_phenomena: 25
+  summary: Reaction free energy, catalysis, combustion and thermochemical cycles.

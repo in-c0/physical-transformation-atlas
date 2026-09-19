@@ -1,0 +1,19 @@
+{
+  "name": "physical-transformation-atlas",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A live map of known and unexplored pathways for converting physical disequilibria into useful work.",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@10.17.1",
+  "scripts": {
+    "build:graph": "pnpm --filter @pta/pipelines build-graph",
+    "validate": "pnpm --filter @pta/pipelines validate",
+    "test": "pnpm -r --if-present test",
+    "dev": "pnpm build:graph && pnpm --filter @pta/web dev",
+    "build": "pnpm build:graph && pnpm --filter @pta/web build",
+    "deploy": "pnpm build && pnpm --filter @pta/worker deploy"
+  }
+}

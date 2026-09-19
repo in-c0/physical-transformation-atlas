@@ -1,0 +1,447 @@
+# Outputs, transducers, constraints, interactions, materials and systems.
+
+# --- Outputs ---------------------------------------------------------------
+- id: output:electricity
+  type: output
+  name: Electrical work
+  aliases: [electricity, electrical output, DC power]
+  energy_form: electrical
+  summary: Charge driven through an external load at a potential difference. The most transportable and convertible form of work.
+- id: output:mechanical-work
+  type: output
+  name: Mechanical work
+  aliases: [shaft work, torque, motion]
+  energy_form: mechanical
+  summary: Force through a distance, torque through an angle.
+- id: output:useful-heat
+  type: output
+  name: Useful heat
+  aliases: [process heat, space heating, hot water]
+  energy_form: thermal
+  summary: Heat delivered at a temperature where it is wanted.
+- id: output:cooling
+  type: output
+  name: Cooling
+  aliases: [refrigeration, heat pumping below ambient]
+  energy_form: thermal
+  summary: Heat removed from a body below ambient temperature.
+- id: output:light
+  type: output
+  name: Light
+  aliases: [illumination, radiation output]
+  energy_form: radiative
+  summary: Electromagnetic radiation emitted where it is wanted.
+- id: output:chemical-fuel
+  type: output
+  name: Chemical fuel
+  aliases: [hydrogen, synthetic fuel, stored chemical energy, ATP]
+  energy_form: chemical
+  summary: Energy stored in chemical bonds for later release.
+
+# --- Transducers (real devices) --------------------------------------------
+- id: transducer:thermoelectric-generator
+  type: transducer
+  name: Thermoelectric generator
+  aliases: [TEG, thermopile]
+  knowledge_level: K8
+  summary: Series-connected n- and p-type semiconductor legs between a hot and a cold plate. Commercial since the 1960s (radioisotope generators, waste-heat modules).
+- id: transducer:thermionic-converter
+  type: transducer
+  name: Thermionic converter
+  knowledge_level: K7
+  summary: Hot cathode, cooler anode, vacuum or caesium-vapour gap. Flown on Soviet TOPAZ reactors; efficiency 5–15%.
+- id: transducer:thermoacoustic-engine
+  type: transducer
+  name: Thermoacoustic engine with linear alternator
+  knowledge_level: K7
+  summary: A travelling- or standing-wave thermoacoustic engine driving a linear alternator; 20–30% of Carnot demonstrated.
+- id: transducer:pyroelectric-harvester
+  type: transducer
+  name: Pyroelectric harvester
+  knowledge_level: K6
+  summary: A polar film cycled in temperature, sometimes with an Olsen cycle applying a field; microwatt-to-milliwatt laboratory devices.
+- id: transducer:thermocell
+  type: transducer
+  name: Thermogalvanic cell
+  aliases: [thermocell]
+  knowledge_level: K6
+  summary: Two electrodes in a ferri/ferrocyanide or ionic-liquid electrolyte at different temperatures; Seebeck coefficients above 1 mV/K, low power density.
+- id: transducer:thermomagnetic-generator
+  type: transducer
+  name: Thermomagnetic generator
+  knowledge_level: K6
+  summary: A gadolinium or La–Fe–Si element cycled through its Curie point inside a magnetic circuit and pickup coil; demonstrated near room temperature.
+- id: transducer:thermophotovoltaic-cell
+  type: transducer
+  name: Thermophotovoltaic cell
+  knowledge_level: K7
+  summary: A tandem III–V cell with a back reflector facing a >2000 K emitter; 40% heat-to-electricity efficiency reported in 2022.
+- id: transducer:stirling-engine
+  type: transducer
+  name: Stirling engine
+  knowledge_level: K8
+  summary: Closed-cycle regenerative gas engine; used in dish-solar and radioisotope generators.
+- id: transducer:rankine-cycle-plant
+  type: transducer
+  name: Rankine cycle plant
+  aliases: [steam turbine plant, ORC]
+  knowledge_level: K8
+  summary: Boiler, turbine, condenser, pump. The bulk of the world's thermal electricity.
+- id: transducer:magnetocaloric-refrigerator
+  type: transducer
+  name: Magnetocaloric refrigerator
+  knowledge_level: K7
+  summary: A regenerator of magnetocaloric material cycled through a permanent-magnet field; prototypes reach useful cooling powers without refrigerant gas.
+- id: transducer:piezoelectric-harvester
+  type: transducer
+  name: Piezoelectric vibration harvester
+  knowledge_level: K8
+  summary: A PZT or PVDF cantilever with a tip mass tuned to the ambient vibration; commercial for tyre-pressure sensors and industrial monitoring.
+- id: transducer:triboelectric-nanogenerator
+  type: transducer
+  name: Triboelectric nanogenerator
+  aliases: [TENG]
+  knowledge_level: K6
+  summary: Polymer films in contact–separation or sliding mode with electrodes; kilovolt open-circuit voltages, microwatt-to-watt bursts.
+- id: transducer:electrostatic-harvester
+  type: transducer
+  name: Electrostatic (electret) harvester
+  knowledge_level: K6
+  summary: A MEMS variable capacitor with an electret pre-charge, converting vibration to current.
+- id: transducer:electromagnetic-vibration-harvester
+  type: transducer
+  name: Electromagnetic vibration harvester
+  knowledge_level: K8
+  summary: A magnet on a spring moving through a coil; commercial in self-powered switches and industrial sensors.
+- id: transducer:magnetostrictive-harvester
+  type: transducer
+  name: Magnetostrictive harvester
+  knowledge_level: K6
+  summary: A Galfenol or Terfenol-D rod with bias magnets and a pickup coil under cyclic stress.
+- id: transducer:magnetoelectric-composite
+  type: transducer
+  name: Magnetoelectric laminate
+  knowledge_level: K6
+  summary: A magnetostrictive layer bonded to a piezoelectric layer; stray AC magnetic fields become voltage.
+- id: transducer:spin-seebeck-device
+  type: transducer
+  name: Spin Seebeck thermopile
+  knowledge_level: K4
+  summary: A YIG film with a Pt strip; a temperature gradient yields a transverse voltage. Laboratory demonstrations, microvolt-to-millivolt signals.
+- id: transducer:photovoltaic-cell
+  type: transducer
+  name: Photovoltaic cell
+  aliases: [solar cell, PV module]
+  knowledge_level: K8
+  summary: Silicon, thin-film or perovskite junctions; terawatt-scale deployment.
+- id: transducer:photoelectrochemical-cell
+  type: transducer
+  name: Photoelectrochemical cell
+  knowledge_level: K5
+  summary: Semiconductor photoelectrodes splitting water; solar-to-hydrogen efficiencies of ~10–20% in laboratory tandem devices.
+- id: transducer:solar-thermal-collector
+  type: transducer
+  name: Solar thermal collector
+  aliases: [flat-plate collector, parabolic trough]
+  knowledge_level: K8
+  summary: Absorber plate or receiver tube heating a working fluid; commercial for hot water and concentrating solar power.
+- id: transducer:galvanic-cell
+  type: transducer
+  name: Galvanic cell (battery)
+  knowledge_level: K8
+  summary: Two electrodes and an electrolyte delivering stored reaction free energy as current.
+- id: transducer:fuel-cell
+  type: transducer
+  name: Fuel cell
+  knowledge_level: K8
+  summary: Proton-exchange or solid-oxide cells oxidising hydrogen or hydrocarbons; commercial in vehicles and stationary power.
+- id: transducer:reverse-electrodialysis-stack
+  type: transducer
+  name: Reverse electrodialysis stack
+  knowledge_level: K7
+  summary: Hundreds of alternating ion-exchange membranes between river and sea water; pilot plants of tens of kilowatts.
+- id: transducer:pressure-retarded-osmosis-plant
+  type: transducer
+  name: Pressure-retarded osmosis plant
+  knowledge_level: K7
+  summary: Membrane modules and a turbine; a 4 kW prototype ran at Tofte, Norway, 2009–2013.
+- id: transducer:capmix-cell
+  type: transducer
+  name: Capacitive mixing cell
+  knowledge_level: K5
+  summary: Porous carbon electrodes cycled between salt and fresh water.
+- id: transducer:electrokinetic-microchannel
+  type: transducer
+  name: Electrokinetic microchannel generator
+  knowledge_level: K4
+  summary: Pressure-driven flow through a glass microchannel array producing a streaming current; laboratory-scale.
+- id: transducer:hydrovoltaic-generator
+  type: transducer
+  name: Hydrovoltaic generator
+  knowledge_level: K4
+  summary: A carbon-black or porous film half-immersed in water, generating ~1 V while evaporating; laboratory devices.
+- id: transducer:droplet-electricity-generator
+  type: transducer
+  name: Droplet-based electricity generator
+  knowledge_level: K4
+  summary: A PTFE-on-ITO surface with an aluminium electrode that a spreading droplet bridges; 140 V pulses per drop.
+- id: transducer:hydro-turbine
+  type: transducer
+  name: Hydroelectric turbine
+  aliases: [Francis, Pelton, Kaplan turbine]
+  knowledge_level: K8
+  summary: Water turbines coupled to synchronous generators; the largest renewable electricity source.
+- id: transducer:wind-turbine
+  type: transducer
+  name: Wind turbine
+  knowledge_level: K8
+  summary: Three-bladed horizontal-axis rotors on generators; gigawatt-scale fleets.
+- id: transducer:tidal-turbine
+  type: transducer
+  name: Tidal stream turbine
+  knowledge_level: K7
+  summary: Submerged rotors in tidal currents; multi-megawatt arrays operating.
+- id: transducer:wave-energy-converter
+  type: transducer
+  name: Wave energy converter
+  knowledge_level: K7
+  summary: Point absorbers, oscillating water columns and attenuators; prototypes and small arrays.
+- id: transducer:mhd-generator
+  type: transducer
+  name: MHD generator
+  knowledge_level: K7
+  summary: Seeded combustion plasma between magnet poles; the U-25 (USSR) and Mark V (USA) plants ran at megawatt scale.
+- id: transducer:betavoltaic-cell
+  type: transducer
+  name: Betavoltaic cell
+  knowledge_level: K8
+  summary: Tritium or Ni-63 sources on silicon or SiC junctions; microwatt commercial batteries with decade lifetimes.
+- id: transducer:radioisotope-thermoelectric-generator
+  type: transducer
+  name: Radioisotope thermoelectric generator
+  aliases: [RTG]
+  knowledge_level: K8
+  summary: Pu-238 decay heat across thermoelectric couples; powers Voyager, Curiosity and Perseverance.
+- id: transducer:rectenna
+  type: transducer
+  name: Rectenna
+  knowledge_level: K7
+  summary: Antenna plus Schottky diode; microwave power beaming demonstrated at >80% RF-to-DC.
+- id: transducer:amtec-cell
+  type: transducer
+  name: AMTEC cell
+  knowledge_level: K6
+  summary: Sodium beta-alumina electrolyte cells tested for space power; 15–20% efficiency demonstrated.
+- id: transducer:radiative-cooler-teg
+  type: transducer
+  name: Radiative-cooling thermoelectric generator
+  knowledge_level: K4
+  summary: A sky-facing emitter on the cold side of a thermoelectric module; tens of milliwatts per square metre at night.
+- id: transducer:elastocaloric-cooler
+  type: transducer
+  name: Elastocaloric cooler
+  knowledge_level: K6
+  summary: NiTi tubes or wires cycled in tension or compression with a regenerator; kilowatt-class prototypes.
+- id: transducer:nuclear-reactor-plant
+  type: transducer
+  name: Nuclear fission plant
+  knowledge_level: K8
+  summary: Fission heat raising steam for a Rankine cycle; ~10% of world electricity.
+
+# --- Constraints (bounds) --------------------------------------------------
+- id: constraint:carnot-limit
+  type: constraint
+  name: Carnot limit
+  bound: "η ≤ 1 − T_c/T_h for any heat engine between reservoirs at T_h and T_c"
+  summary: No engine taking heat from a hot reservoir and rejecting it to a cold one can beat the Carnot efficiency. Applies to every thermal-to-work path.
+- id: constraint:curzon-ahlborn-limit
+  type: constraint
+  name: Curzon–Ahlborn efficiency at maximum power
+  bound: "η_CA = 1 − √(T_c/T_h)"
+  summary: The efficiency of an endoreversible engine operated at maximum power rather than maximum efficiency; a better guide to real plant than Carnot.
+- id: constraint:thermoelectric-zt-bound
+  type: constraint
+  name: Thermoelectric figure-of-merit bound
+  bound: "η = η_Carnot · (√(1+ZT) − 1)/(√(1+ZT) + T_c/T_h)"
+  summary: A thermoelectric generator's efficiency is the Carnot value reduced by a factor set by the material figure of merit ZT = S²σT/κ.
+- id: constraint:shockley-queisser-limit
+  type: constraint
+  name: Shockley–Queisser limit
+  bound: "η ≤ 33.7% for a single p–n junction under unconcentrated AM1.5 sunlight"
+  max_efficiency: 0.337
+  applies_to_sources: [disequilibrium:radiation-flux]
+  summary: "Detailed-balance limit for one junction: sub-gap photons are lost and excess photon energy thermalises."
+- id: constraint:landsberg-limit
+  type: constraint
+  name: Landsberg limit
+  bound: "η ≤ 93.3% for conversion of blackbody solar radiation"
+  max_efficiency: 0.933
+  applies_to_sources: [disequilibrium:radiation-flux]
+  summary: The thermodynamic ceiling for converting 6000 K blackbody radiation to work with a 300 K sink.
+- id: constraint:betz-limit
+  type: constraint
+  name: Betz limit
+  bound: "C_p ≤ 16/27 ≈ 59.3% of the kinetic power through the rotor disc"
+  max_efficiency: 0.593
+  applies_to_sources: [disequilibrium:fluid-flow]
+  summary: An open rotor cannot capture more than 16/27 of the kinetic energy flux of the stream passing through its swept area.
+- id: constraint:second-law
+  type: constraint
+  name: Second law of thermodynamics
+  bound: "ΔS_universe ≥ 0; no cyclic device can extract work from a single reservoir"
+  summary: The reason uniform thermal energy and the quantum vacuum are not resources.
+- id: constraint:nernst-potential-bound
+  type: constraint
+  name: Nernst / Gibbs free-energy bound
+  bound: "W_electrical ≤ −ΔG = nFE_cell"
+  summary: Electrical work from a reaction cannot exceed its Gibbs free energy change.
+- id: constraint:electromechanical-coupling-bound
+  type: constraint
+  name: Electromechanical coupling factor
+  bound: "converted fraction per cycle ≤ k² = d²/(s·ε)"
+  summary: A piezoelectric element converts at most k² of the mechanical energy stored in it per cycle.
+- id: constraint:onsager-reciprocity
+  type: constraint
+  name: Onsager reciprocity
+  bound: "L_ij = L_ji for coupled linear transport coefficients"
+  summary: Cross-coefficients of coupled flows are equal; every direct effect has a converse of fixed magnitude.
+- id: constraint:radiative-cooling-power-bound
+  type: constraint
+  name: Radiative cooling power bound
+  bound: "net cooling power ≲ 100–150 W/m² under a clear sky"
+  summary: The net radiative flux a surface can send to space through the atmospheric window.
+- id: constraint:space-charge-limit
+  type: constraint
+  name: Space-charge limit
+  bound: "J ≤ (4ε₀/9)√(2e/m) V^{3/2}/d² (Child–Langmuir)"
+  summary: Electron cloud between thermionic electrodes limits the current unless the gap is microns or caesium is added.
+- id: constraint:mixing-free-energy-bound
+  type: constraint
+  name: Free energy of mixing
+  bound: "W ≤ −ΔG_mix ≈ 0.8 kWh per m³ of fresh water into seawater"
+  summary: The most work any salinity-gradient device can extract per unit of river water.
+
+# --- Interactions ----------------------------------------------------------
+- id: interaction:electromagnetic
+  type: interaction
+  name: Electromagnetic interaction
+  summary: The interaction behind chemistry, optics, electricity, magnetism and all of condensed matter.
+- id: interaction:gravitational
+  type: interaction
+  name: Gravitational interaction
+  summary: Mass attracting mass; hydro, tidal and the pressure of the atmosphere.
+- id: interaction:strong-nuclear
+  type: interaction
+  name: Strong nuclear interaction
+  summary: Binds nucleons; the source of fission and fusion energy.
+- id: interaction:weak-nuclear
+  type: interaction
+  name: Weak nuclear interaction
+  summary: Governs beta decay and the first step of solar fusion.
+- id: interaction:lattice-electron
+  type: interaction
+  name: Electron–phonon (effective) interaction
+  summary: The effective coupling between charge carriers and lattice vibrations that mediates thermoelectric transport.
+
+# --- Materials -------------------------------------------------------------
+- id: material:bismuth-telluride
+  type: material
+  name: Bismuth telluride (Bi₂Te₃)
+  condition_tags: [state-solid, medium-semiconductor]
+  summary: The standard room-temperature thermoelectric, ZT ≈ 1.
+- id: material:lead-telluride
+  type: material
+  name: Lead telluride (PbTe)
+  condition_tags: [state-solid, medium-semiconductor]
+  summary: Mid-temperature thermoelectric used in radioisotope generators.
+- id: material:pzt
+  type: material
+  name: Lead zirconate titanate (PZT)
+  condition_tags: [state-solid, medium-ferroelectric, medium-non-centrosymmetric]
+  summary: The workhorse piezoelectric and pyroelectric ceramic.
+- id: material:pvdf
+  type: material
+  name: Polyvinylidene fluoride (PVDF)
+  condition_tags: [state-solid, medium-ferroelectric, medium-non-centrosymmetric]
+  summary: Flexible piezoelectric and pyroelectric polymer.
+- id: material:quartz
+  type: material
+  name: Quartz (α-SiO₂)
+  condition_tags: [state-solid, medium-non-centrosymmetric]
+  summary: The crystal in which the Curies discovered piezoelectricity.
+- id: material:zinc-oxide
+  type: material
+  name: Zinc oxide (ZnO) nanowires
+  condition_tags: [state-solid, medium-semiconductor, medium-non-centrosymmetric]
+  summary: Piezoelectric semiconductor used in the first nanogenerators.
+- id: material:silicon
+  type: material
+  name: Crystalline silicon
+  condition_tags: [state-solid, medium-semiconductor]
+  summary: The dominant photovoltaic and betavoltaic junction material.
+- id: material:yig
+  type: material
+  name: Yttrium iron garnet (YIG)
+  condition_tags: [state-solid, medium-ferromagnet, medium-dielectric]
+  summary: Magnetic insulator with the lowest magnon damping known; the standard spin Seebeck medium.
+- id: material:platinum
+  type: material
+  name: Platinum
+  condition_tags: [state-solid, medium-conductor]
+  summary: Heavy metal with strong spin–orbit coupling; the standard inverse spin Hall detector and fuel-cell catalyst.
+- id: material:gadolinium
+  type: material
+  name: Gadolinium
+  condition_tags: [state-solid, medium-ferromagnet]
+  summary: Curie point at 293 K; the reference magnetocaloric and thermomagnetic material.
+- id: material:nitinol
+  type: material
+  name: Nickel–titanium (NiTi)
+  condition_tags: [state-solid]
+  summary: Shape-memory alloy with a large elastocaloric effect.
+- id: material:ion-exchange-membrane
+  type: material
+  name: Ion-exchange membrane
+  condition_tags: [medium-membrane, env-aqueous]
+  summary: Cation- or anion-selective polymer membranes for reverse electrodialysis and fuel cells.
+- id: material:beta-alumina
+  type: material
+  name: Sodium β″-alumina
+  condition_tags: [state-solid]
+  summary: Solid electrolyte conducting Na⁺ but not electrons; the heart of AMTEC.
+- id: material:carbon-black-film
+  type: material
+  name: Nanostructured carbon film
+  condition_tags: [state-solid]
+  summary: Porous carbon black or graphene oxide films used in hydrovoltaic generators.
+- id: material:ptfe
+  type: material
+  name: PTFE
+  condition_tags: [state-solid, medium-dielectric]
+  summary: The most electronegative common polymer; triboelectric and droplet-generator surface.
+
+# --- Systems (environments where disequilibria occur) ---------------------
+- id: system:sun
+  type: system
+  name: The Sun
+  summary: A 5800 K blackbody delivering about 1000 W/m² at the ground at noon.
+- id: system:night-sky
+  type: system
+  name: The night sky
+  summary: Space at 3 K seen through the 8–13 µm atmospheric window; effective sky temperature 20–40 K below ambient.
+- id: system:river-estuary
+  type: system
+  name: River estuary
+  summary: Where fresh water meets the sea; the site of salinity-gradient power.
+- id: system:atmosphere
+  type: system
+  name: The atmosphere
+  summary: Wind, humidity deficit, pressure and temperature differences driven by solar heating.
+- id: system:ocean
+  type: system
+  name: The ocean
+  summary: Waves, tides, currents and a 20 K vertical temperature difference in the tropics.
+- id: system:human-body
+  type: system
+  name: The human body
+  summary: A 100 W heat source at 37 °C with motion, breathing and a small temperature difference to the skin.

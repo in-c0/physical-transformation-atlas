@@ -1,0 +1,133 @@
+# Carriers: what physically moves the energy between two phenomena.
+- id: carrier:charge-carriers
+  type: carrier
+  name: Charge carriers
+  aliases: [electrons, holes, electric current in a solid]
+  energy_form: electrical
+  condition_tags: [state-solid]
+  summary: Electrons or holes redistributed or driven through a solid; their potential difference is the electrical output of most solid-state converters.
+- id: carrier:ionic-current
+  type: carrier
+  name: Ionic current
+  aliases: [ion flux, electrolyte current]
+  energy_form: electrical
+  condition_tags: [state-liquid]
+  summary: Charged ions moving through an electrolyte, membrane or channel.
+- id: carrier:phonons
+  type: carrier
+  name: Phonons
+  aliases: [lattice heat, heat current]
+  energy_form: phonon
+  condition_tags: [state-solid]
+  summary: Quantised lattice vibrations carrying heat through a solid.
+- id: carrier:heat-flow
+  type: carrier
+  name: Heat flow
+  aliases: [conductive heat, convective heat]
+  energy_form: thermal
+  summary: Thermal energy moving down a temperature gradient by conduction or convection.
+- id: carrier:photons
+  type: carrier
+  name: Photons
+  aliases: [light, electromagnetic radiation]
+  energy_form: radiative
+  summary: Quanta of the electromagnetic field, from radio to gamma; sunlight and thermal emission are both photon fluxes.
+- id: carrier:electron-hole-pairs
+  type: carrier
+  name: Electron–hole pairs
+  aliases: [photoexcited carriers, excitons]
+  energy_form: electronic-excitation
+  condition_tags: [state-solid, medium-semiconductor]
+  summary: Electrons promoted across a band gap and the holes they leave, before the junction separates them.
+- id: carrier:magnons
+  type: carrier
+  name: Magnons
+  aliases: [spin waves]
+  energy_form: spin
+  condition_tags: [state-solid, medium-ferromagnet]
+  summary: Quantised spin waves carrying angular momentum through a magnetically ordered solid.
+- id: carrier:spin-current
+  type: carrier
+  name: Spin current
+  energy_form: spin
+  condition_tags: [state-solid]
+  summary: A flow of spin angular momentum, with or without net charge flow.
+- id: carrier:acoustic-wave
+  type: carrier
+  name: Acoustic wave
+  aliases: [sound, pressure oscillation]
+  energy_form: acoustic
+  summary: A propagating pressure oscillation in a gas, liquid or solid.
+- id: carrier:mechanical-motion
+  type: carrier
+  name: Mechanical motion
+  aliases: [shaft rotation, oscillating mass, moving plate]
+  energy_form: mechanical
+  summary: Bulk motion of a solid part — a rotor, a cantilever, a piston.
+- id: carrier:elastic-stress
+  type: carrier
+  name: Elastic stress
+  aliases: [strain, cyclic stress]
+  energy_form: mechanical
+  condition_tags: [state-solid]
+  summary: Stress and strain stored in a deformed solid, the form in which vibration reaches a piezoelectric or magnetoelastic element.
+- id: carrier:fluid-flow
+  type: carrier
+  name: Fluid flow
+  aliases: [moving liquid or gas, jet, stream]
+  energy_form: kinetic
+  condition_tags: [flow-required]
+  summary: Bulk motion of a liquid or gas carrying kinetic energy and pressure.
+- id: carrier:magnetic-flux
+  type: carrier
+  name: Changing magnetic flux
+  energy_form: magnetic
+  summary: Magnetic flux that varies through a circuit and can therefore induce an EMF.
+- id: carrier:electromagnetic-wave
+  type: carrier
+  name: Electromagnetic wave
+  aliases: [radio waves, microwaves, RF]
+  energy_form: radiative
+  summary: Propagating electromagnetic field at radio or microwave frequency.
+- id: carrier:hot-gas
+  type: carrier
+  name: Hot pressurised gas
+  aliases: [combustion products, steam, working fluid]
+  energy_form: thermal
+  condition_tags: [state-gas, temp-high]
+  summary: A working fluid at high temperature and pressure, the intermediate of every combustion or nuclear heat engine.
+- id: carrier:beta-particles
+  type: carrier
+  name: Energetic decay particles
+  aliases: [beta particles, alpha particles, fission fragments]
+  energy_form: nuclear
+  summary: Charged particles emitted by decay or fission carrying MeV-scale kinetic energy.
+- id: carrier:water-vapour
+  type: carrier
+  name: Water vapour
+  energy_form: chemical
+  condition_tags: [state-gas]
+  summary: Evaporated water carrying latent heat away and sustaining the capillary flow behind it.
+- id: carrier:hydraulic-pressure
+  type: carrier
+  name: Hydraulic pressure
+  energy_form: mechanical
+  condition_tags: [state-liquid]
+  summary: Pressurised liquid volume that can be expanded through a turbine or piston.
+- id: carrier:surface-charge
+  type: carrier
+  name: Separated surface charge
+  energy_form: electrical
+  summary: Charge left on a surface by contact, temperature change or stress, which relaxes through an external circuit.
+- id: carrier:proton-gradient
+  type: carrier
+  name: Transmembrane proton gradient
+  energy_form: osmotic
+  condition_tags: [env-aqueous, medium-membrane]
+  summary: A proton concentration and potential difference across a biological membrane.
+- id: carrier:reduced-carbon
+  type: carrier
+  name: Reduced carbon compounds
+  aliases: [biomass, sugars]
+  energy_form: chemical
+  summary: Chemical energy stored in carbohydrate bonds by photosynthesis.

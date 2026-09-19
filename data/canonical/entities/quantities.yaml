@@ -1,0 +1,268 @@
+# Physical quantities. `dimension` uses exponents over M L T I Th N J and feeds
+# the dimensional check on constitutive relations.
+- id: quantity:temperature
+  type: quantity
+  name: Temperature
+  symbol: T
+  unit: K
+  dimension: { Th: 1 }
+  summary: Absolute temperature of a body or region.
+- id: quantity:temperature-difference
+  type: quantity
+  name: Temperature difference
+  symbol: ΔT
+  unit: K
+  dimension: { Th: 1 }
+  summary: Difference in temperature between two points or reservoirs.
+- id: quantity:temperature-gradient
+  type: quantity
+  name: Temperature gradient
+  symbol: ∇T
+  unit: K/m
+  dimension: { Th: 1, L: -1 }
+  summary: Spatial rate of change of temperature.
+- id: quantity:heat-flux
+  type: quantity
+  name: Heat flux
+  symbol: q
+  unit: W/m²
+  dimension: { M: 1, T: -3 }
+  summary: Thermal power crossing unit area.
+- id: quantity:pressure
+  type: quantity
+  name: Pressure
+  symbol: p
+  unit: Pa
+  dimension: { M: 1, L: -1, T: -2 }
+  summary: Normal force per unit area in a fluid or on a surface.
+- id: quantity:stress
+  type: quantity
+  name: Mechanical stress
+  symbol: σ
+  unit: Pa
+  dimension: { M: 1, L: -1, T: -2 }
+  summary: Force per unit area inside a solid.
+- id: quantity:strain
+  type: quantity
+  name: Strain
+  symbol: ε
+  unit: "1"
+  dimension: {}
+  summary: Dimensionless relative deformation.
+- id: quantity:strain-gradient
+  type: quantity
+  name: Strain gradient
+  symbol: ∇ε
+  unit: 1/m
+  dimension: { L: -1 }
+  summary: Spatial rate of change of strain.
+- id: quantity:electric-potential
+  type: quantity
+  name: Electric potential
+  symbol: V
+  unit: V
+  dimension: { M: 1, L: 2, T: -3, I: -1 }
+  summary: Electric potential; differences of it drive charge transport.
+- id: quantity:electric-field
+  type: quantity
+  name: Electric field
+  symbol: E
+  unit: V/m
+  dimension: { M: 1, L: 1, T: -3, I: -1 }
+  summary: Force per unit charge.
+- id: quantity:electric-current
+  type: quantity
+  name: Electric current
+  symbol: I
+  unit: A
+  dimension: { I: 1 }
+  summary: Rate of charge flow.
+- id: quantity:current-density
+  type: quantity
+  name: Current density
+  symbol: j
+  unit: A/m²
+  dimension: { I: 1, L: -2 }
+  summary: Current per unit cross-sectional area.
+- id: quantity:charge
+  type: quantity
+  name: Electric charge
+  symbol: Q
+  unit: C
+  dimension: { I: 1, T: 1 }
+  summary: Quantity of electricity.
+- id: quantity:surface-charge-density
+  type: quantity
+  name: Surface charge density
+  symbol: σ_q
+  unit: C/m²
+  dimension: { I: 1, T: 1, L: -2 }
+  summary: Charge per unit area on a surface.
+- id: quantity:polarisation
+  type: quantity
+  name: Electric polarisation
+  symbol: P
+  unit: C/m²
+  dimension: { I: 1, T: 1, L: -2 }
+  summary: Dipole moment per unit volume.
+- id: quantity:magnetic-flux-density
+  type: quantity
+  name: Magnetic flux density
+  symbol: B
+  unit: T
+  dimension: { M: 1, T: -2, I: -1 }
+  summary: Magnetic induction.
+- id: quantity:magnetic-flux
+  type: quantity
+  name: Magnetic flux
+  symbol: Φ
+  unit: Wb
+  dimension: { M: 1, L: 2, T: -2, I: -1 }
+  summary: Flux of B through a surface.
+- id: quantity:magnetic-field
+  type: quantity
+  name: Magnetic field strength
+  symbol: H
+  unit: A/m
+  dimension: { I: 1, L: -1 }
+  summary: Magnetising field.
+- id: quantity:magnetisation
+  type: quantity
+  name: Magnetisation
+  symbol: M
+  unit: A/m
+  dimension: { I: 1, L: -1 }
+  summary: Magnetic moment per unit volume.
+- id: quantity:spin-current-density
+  type: quantity
+  name: Spin current density
+  symbol: j_s
+  unit: A/m²
+  dimension: { I: 1, L: -2 }
+  summary: Flow of spin angular momentum, expressed in charge-current units.
+- id: quantity:concentration
+  type: quantity
+  name: Concentration
+  symbol: c
+  unit: mol/m³
+  dimension: { N: 1, L: -3 }
+  summary: Amount of substance per unit volume.
+- id: quantity:chemical-potential
+  type: quantity
+  name: Chemical potential
+  symbol: μ
+  unit: J/mol
+  dimension: { M: 1, L: 2, T: -2, N: -1 }
+  summary: Partial molar Gibbs free energy of a species.
+- id: quantity:osmotic-pressure
+  type: quantity
+  name: Osmotic pressure
+  symbol: Π
+  unit: Pa
+  dimension: { M: 1, L: -1, T: -2 }
+  summary: Pressure needed to stop solvent flow across a semipermeable membrane.
+- id: quantity:velocity
+  type: quantity
+  name: Velocity
+  symbol: v
+  unit: m/s
+  dimension: { L: 1, T: -1 }
+  summary: Rate of change of position.
+- id: quantity:volume-flow-rate
+  type: quantity
+  name: Volume flow rate
+  symbol: Q_v
+  unit: m³/s
+  dimension: { L: 3, T: -1 }
+  summary: Volume of fluid passing per unit time.
+- id: quantity:irradiance
+  type: quantity
+  name: Irradiance
+  symbol: G
+  unit: W/m²
+  dimension: { M: 1, T: -3 }
+  summary: Radiant power incident per unit area.
+- id: quantity:photon-flux
+  type: quantity
+  name: Photon flux
+  symbol: Φ_ph
+  unit: 1/(m² s)
+  dimension: { L: -2, T: -1 }
+  summary: Number of photons crossing unit area per unit time.
+- id: quantity:frequency
+  type: quantity
+  name: Frequency
+  symbol: f
+  unit: Hz
+  dimension: { T: -1 }
+  summary: Cycles per second.
+- id: quantity:force
+  type: quantity
+  name: Force
+  symbol: F
+  unit: N
+  dimension: { M: 1, L: 1, T: -2 }
+  summary: Rate of change of momentum.
+- id: quantity:displacement
+  type: quantity
+  name: Displacement
+  symbol: x
+  unit: m
+  dimension: { L: 1 }
+  summary: Change of position.
+- id: quantity:power
+  type: quantity
+  name: Power
+  symbol: P
+  unit: W
+  dimension: { M: 1, L: 2, T: -3 }
+  summary: Energy per unit time.
+- id: quantity:energy
+  type: quantity
+  name: Energy
+  symbol: E
+  unit: J
+  dimension: { M: 1, L: 2, T: -2 }
+  summary: The conserved quantity associated with time-translation symmetry.
+- id: quantity:entropy
+  type: quantity
+  name: Entropy
+  symbol: S
+  unit: J/K
+  dimension: { M: 1, L: 2, T: -2, Th: -1 }
+  summary: Measure of the number of microstates compatible with a macrostate.
+- id: quantity:height
+  type: quantity
+  name: Height
+  symbol: h
+  unit: m
+  dimension: { L: 1 }
+  summary: Vertical position in a gravitational field.
+- id: quantity:mass
+  type: quantity
+  name: Mass
+  symbol: m
+  unit: kg
+  dimension: { M: 1 }
+  summary: Inertial and gravitational mass.
+- id: quantity:relative-humidity
+  type: quantity
+  name: Relative humidity
+  symbol: RH
+  unit: "1"
+  dimension: {}
+  summary: Ratio of vapour partial pressure to saturation pressure.
+- id: quantity:activity-rate
+  type: quantity
+  name: Radioactivity
+  symbol: A
+  unit: Bq
+  dimension: { T: -1 }
+  summary: Decays per second.
+- id: quantity:sound-pressure
+  type: quantity
+  name: Acoustic pressure
+  symbol: p_a
+  unit: Pa
+  dimension: { M: 1, L: -1, T: -2 }
+  summary: Oscillating pressure of a sound wave.

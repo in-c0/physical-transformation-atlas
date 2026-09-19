@@ -1,0 +1,707 @@
+# Evidence sources. Every claim cites at least one of these by id.
+# DOIs are checked against Crossref by `pipelines/src/verify-sources.ts`; the result
+# is written to data/generated/source-verification.json and shown on the site.
+# A source without a DOI is a book, standard or historical paper predating DOIs.
+
+# --- Thermoelectric and thermal-to-electric ---------------------------------
+- id: source:seebeck-1826
+  type: paper
+  title: "Ueber die magnetische Polarisation der Metalle und Erze durch Temperatur-Differenz"
+  authors: [T. J. Seebeck]
+  year: 1826
+  venue: Annalen der Physik 82(2), 133–160
+  doi: 10.1002/andp.18260820202
+- id: source:peltier-1834
+  type: paper
+  title: "Nouvelles expériences sur la caloricité des courants électriques"
+  authors: [J. C. A. Peltier]
+  year: 1834
+  venue: Annales de Chimie et de Physique 56, 371–386
+- id: source:thomson-1851
+  type: paper
+  title: "On a mechanical theory of thermo-electric currents"
+  authors: [W. Thomson]
+  year: 1851
+  venue: Proceedings of the Royal Society of Edinburgh 3, 91–98
+  doi: 10.1017/S0370164600027310
+- id: source:goldsmid-2016
+  type: book
+  title: "Introduction to Thermoelectricity (2nd ed.)"
+  authors: [H. J. Goldsmid]
+  year: 2016
+  venue: Springer Series in Materials Science 121
+  doi: 10.1007/978-3-662-49256-7
+- id: source:snyder-toberer-2008
+  type: review
+  title: "Complex thermoelectric materials"
+  authors: [G. J. Snyder, E. S. Toberer]
+  year: 2008
+  venue: Nature Materials 7, 105–114
+  doi: 10.1038/nmat2090
+- id: source:callen-1948
+  type: paper
+  title: "The application of Onsager's reciprocal relations to thermoelectric, thermomagnetic, and galvanomagnetic effects"
+  authors: [H. B. Callen]
+  year: 1948
+  venue: Physical Review 73, 1349
+  doi: 10.1103/PhysRev.73.1349
+- id: source:onsager-1931
+  type: paper
+  title: "Reciprocal relations in irreversible processes. I."
+  authors: [L. Onsager]
+  year: 1931
+  venue: Physical Review 37, 405
+  doi: 10.1103/PhysRev.37.405
+- id: source:herring-1954
+  type: paper
+  title: "Theory of the thermoelectric power of semiconductors"
+  authors: [C. Herring]
+  year: 1954
+  venue: Physical Review 96, 1163
+  doi: 10.1103/PhysRev.96.1163
+- id: source:richardson-1901
+  type: paper
+  title: "On the negative radiation from hot platinum"
+  authors: [O. W. Richardson]
+  year: 1901
+  venue: Proceedings of the Cambridge Philosophical Society 11, 286–295
+- id: source:hatsopoulos-gyftopoulos-1973
+  type: book
+  title: "Thermionic Energy Conversion, Vol. 1: Processes and Devices"
+  authors: [G. N. Hatsopoulos, E. P. Gyftopoulos]
+  year: 1973
+  venue: MIT Press
+- id: source:schwede-2010
+  type: paper
+  title: "Photon-enhanced thermionic emission for solar concentrator systems"
+  authors: [J. W. Schwede, et al.]
+  year: 2010
+  venue: Nature Materials 9, 762–767
+  doi: 10.1038/nmat2814
+- id: source:swift-1988
+  type: review
+  title: "Thermoacoustic engines"
+  authors: [G. W. Swift]
+  year: 1988
+  venue: Journal of the Acoustical Society of America 84, 1145–1180
+  doi: 10.1121/1.396617
+- id: source:lang-2005
+  type: review
+  title: "Pyroelectricity: from ancient curiosity to modern imaging tool"
+  authors: [S. B. Lang]
+  year: 2005
+  venue: Physics Today 58(8), 31–36
+  doi: 10.1063/1.2062916
+- id: source:bowen-2014-pyro
+  type: review
+  title: "Pyroelectric materials and devices for energy harvesting applications"
+  authors: [C. R. Bowen, J. Taylor, E. LeBoulbar, D. Zabek, A. Chauhan, R. Vaish]
+  year: 2014
+  venue: Energy & Environmental Science 7, 3836–3856
+  doi: 10.1039/C4EE01759E
+- id: source:quickenden-mua-1995
+  type: review
+  title: "A review of power generation in aqueous thermogalvanic cells"
+  authors: [T. I. Quickenden, Y. Mua]
+  year: 1995
+  venue: Journal of the Electrochemical Society 142, 3985
+  doi: 10.1149/1.2048446
+- id: source:dupont-2017
+  type: review
+  title: "Thermo-electrochemical cells for waste heat harvesting – progress and perspectives"
+  authors: [M. F. Dupont, D. R. MacFarlane, J. M. Pringle]
+  year: 2017
+  venue: Chemical Communications 53, 6288–6302
+  doi: 10.1039/C7CC02160G
+- id: source:lee-2014-trec
+  type: paper
+  title: "An electrochemical system for efficiently harvesting low-grade heat energy"
+  authors: [S. W. Lee, Y. Yang, H.-W. Lee, H. Ghasemi, D. Kraemer, G. Chen, Y. Cui]
+  year: 2014
+  venue: Nature Communications 5, 3942
+  doi: 10.1038/ncomms4942
+- id: source:kishore-priya-2018
+  type: review
+  title: "A review on design and performance of thermomagnetic devices"
+  authors: [R. A. Kishore, S. Priya]
+  year: 2018
+  venue: Renewable and Sustainable Energy Reviews 81, 33–44
+  doi: 10.1016/j.rser.2017.07.035
+- id: source:waske-2019
+  type: paper
+  title: "Energy harvesting near room temperature using a thermomagnetic generator with a pretzel-like magnetic flux topology"
+  authors: [A. Waske, et al.]
+  year: 2019
+  venue: Nature Energy 4, 68–74
+  doi: 10.1038/s41560-018-0306-x
+- id: source:pecharsky-gschneidner-1997
+  type: paper
+  title: "Giant magnetocaloric effect in Gd5(Si2Ge2)"
+  authors: [V. K. Pecharsky, K. A. Gschneidner Jr.]
+  year: 1997
+  venue: Physical Review Letters 78, 4494
+  doi: 10.1103/PhysRevLett.78.4494
+- id: source:mischenko-2006
+  type: paper
+  title: "Giant electrocaloric effect in thin-film PbZr0.95Ti0.05O3"
+  authors: [A. S. Mischenko, Q. Zhang, J. F. Scott, R. W. Whatmore, N. D. Mathur]
+  year: 2006
+  venue: Science 311, 1270–1271
+  doi: 10.1126/science.1123811
+- id: source:tusek-2016
+  type: paper
+  title: "A regenerative elastocaloric heat pump"
+  authors: [J. Tušek, K. Engelbrecht, D. Eriksen, S. Dall'Olio, J. Tušek, N. Pryds]
+  year: 2016
+  venue: Nature Energy 1, 16134
+  doi: 10.1038/nenergy.2016.134
+- id: source:cole-1983-amtec
+  type: paper
+  title: "Thermoelectric energy conversion with solid electrolytes"
+  authors: [T. Cole]
+  year: 1983
+  venue: Science 221, 915–920
+  doi: 10.1126/science.221.4614.915
+- id: source:lapotin-2022
+  type: paper
+  title: "Thermophotovoltaic efficiency of 40%"
+  authors: [A. LaPotin, et al.]
+  year: 2022
+  venue: Nature 604, 287–291
+  doi: 10.1038/s41586-022-04473-y
+- id: source:strandberg-2015
+  type: paper
+  title: "Theoretical efficiency limits for thermoradiative energy conversion"
+  authors: [R. Strandberg]
+  year: 2015
+  venue: Journal of Applied Physics 117, 055105
+  doi: 10.1063/1.4907392
+- id: source:raman-2014
+  type: paper
+  title: "Passive radiative cooling below ambient air temperature under direct sunlight"
+  authors: [A. P. Raman, M. A. Anoma, L. Zhu, E. Rephaeli, S. Fan]
+  year: 2014
+  venue: Nature 515, 540–544
+  doi: 10.1038/nature13883
+- id: source:raman-2019-night
+  type: paper
+  title: "Generating light from darkness"
+  authors: [A. P. Raman, W. Li, S. Fan]
+  year: 2019
+  venue: Joule 3, 2679–2686
+  doi: 10.1016/j.joule.2019.08.009
+- id: source:curzon-ahlborn-1975
+  type: paper
+  title: "Efficiency of a Carnot engine at maximum power output"
+  authors: [F. L. Curzon, B. Ahlborn]
+  year: 1975
+  venue: American Journal of Physics 43, 22–24
+  doi: 10.1119/1.10023
+- id: source:bejan-2016
+  type: book
+  title: "Advanced Engineering Thermodynamics (4th ed.)"
+  authors: [A. Bejan]
+  year: 2016
+  venue: Wiley
+  doi: 10.1002/9781119245964
+- id: source:hermann-2006
+  type: paper
+  title: "Quantifying global exergy resources"
+  authors: [W. A. Hermann]
+  year: 2006
+  venue: Energy 31, 1685–1702
+  doi: 10.1016/j.energy.2005.09.006
+
+# --- Mechanical-to-electric ------------------------------------------------
+- id: source:curie-1880
+  type: paper
+  title: "Développement par compression de l'électricité polaire dans les cristaux hémièdres à faces inclinées"
+  authors: [J. Curie, P. Curie]
+  year: 1880
+  venue: Bulletin de la Société minéralogique de France 3, 90–93
+  doi: 10.3406/bulmi.1880.1564
+- id: source:anton-sodano-2007
+  type: review
+  title: "A review of power harvesting using piezoelectric materials (2003–2006)"
+  authors: [S. R. Anton, H. A. Sodano]
+  year: 2007
+  venue: Smart Materials and Structures 16, R1–R21
+  doi: 10.1088/0964-1726/16/3/R01
+- id: source:erturk-inman-2011
+  type: book
+  title: "Piezoelectric Energy Harvesting"
+  authors: [A. Erturk, D. J. Inman]
+  year: 2011
+  venue: Wiley
+  doi: 10.1002/9781119991151
+- id: source:wang-song-2006
+  type: paper
+  title: "Piezoelectric nanogenerators based on zinc oxide nanowire arrays"
+  authors: [Z. L. Wang, J. Song]
+  year: 2006
+  venue: Science 312, 242–246
+  doi: 10.1126/science.1124005
+- id: source:fan-tian-wang-2012
+  type: paper
+  title: "Flexible triboelectric generator"
+  authors: [F.-R. Fan, Z.-Q. Tian, Z. L. Wang]
+  year: 2012
+  venue: Nano Energy 1, 328–334
+  doi: 10.1016/j.nanoen.2012.01.004
+- id: source:zubko-2013
+  type: review
+  title: "Flexoelectric effect in solids"
+  authors: [P. Zubko, G. Catalan, A. K. Tagantsev]
+  year: 2013
+  venue: Annual Review of Materials Research 43, 387–421
+  doi: 10.1146/annurev-matsci-071312-121634
+- id: source:roundy-2003
+  type: paper
+  title: "A study of low level vibrations as a power source for wireless sensor nodes"
+  authors: [S. Roundy, P. K. Wright, J. Rabaey]
+  year: 2003
+  venue: Computer Communications 26, 1131–1144
+  doi: 10.1016/S0140-3664(02)00248-7
+- id: source:beeby-2007
+  type: paper
+  title: "A micro electromagnetic generator for vibration energy harvesting"
+  authors: [S. P. Beeby, et al.]
+  year: 2007
+  venue: Journal of Micromechanics and Microengineering 17, 1257
+  doi: 10.1088/0960-1317/17/7/007
+- id: source:faraday-1832
+  type: paper
+  title: "Experimental researches in electricity"
+  authors: [M. Faraday]
+  year: 1832
+  venue: Philosophical Transactions of the Royal Society 122, 125–162
+  doi: 10.1098/rstl.1832.0006
+- id: source:wang-yuan-2008
+  type: paper
+  title: "Vibration energy harvesting by magnetostrictive material"
+  authors: [L. Wang, F. G. Yuan]
+  year: 2008
+  venue: Smart Materials and Structures 17, 045009
+  doi: 10.1088/0964-1726/17/4/045009
+- id: source:nan-2008
+  type: review
+  title: "Multiferroic magnetoelectric composites: Historical perspective, status, and future directions"
+  authors: [C.-W. Nan, M. I. Bichurin, S. Dong, D. Viehland, G. Srinivasan]
+  year: 2008
+  venue: Journal of Applied Physics 103, 031101
+  doi: 10.1063/1.2836410
+- id: source:krupenkin-taylor-2011
+  type: paper
+  title: "Reverse electrowetting as a new approach to high-power energy harvesting"
+  authors: [T. Krupenkin, J. A. Taylor]
+  year: 2011
+  venue: Nature Communications 2, 448
+  doi: 10.1038/ncomms1454
+- id: source:betz-1920
+  type: paper
+  title: "Das Maximum der theoretisch möglichen Ausnützung des Windes durch Windmotoren"
+  authors: [A. Betz]
+  year: 1920
+  venue: Zeitschrift für das gesamte Turbinenwesen 26, 307–309
+- id: source:salter-1974
+  type: paper
+  title: "Wave power"
+  authors: [S. H. Salter]
+  year: 1974
+  venue: Nature 249, 720–724
+  doi: 10.1038/249720a0
+- id: source:kymissis-1998
+  type: paper
+  title: "Parasitic power harvesting in shoes"
+  authors: [J. Kymissis, C. Kendall, J. Paradiso, N. Gershenfeld]
+  year: 1998
+  venue: Digest of Papers, Second International Symposium on Wearable Computers, 132–139
+  doi: 10.1109/ISWC.1998.729539
+
+# --- Spin -------------------------------------------------------------------
+- id: source:uchida-2008
+  type: paper
+  title: "Observation of the spin Seebeck effect"
+  authors: [K. Uchida, et al.]
+  year: 2008
+  venue: Nature 455, 778–781
+  doi: 10.1038/nature07321
+- id: source:uchida-2010-insulator
+  type: paper
+  title: "Spin Seebeck insulator"
+  authors: [K. Uchida, et al.]
+  year: 2010
+  venue: Nature Materials 9, 894–897
+  doi: 10.1038/nmat2856
+- id: source:saitoh-2006
+  type: paper
+  title: "Conversion of spin current into charge current at room temperature: Inverse spin-Hall effect"
+  authors: [E. Saitoh, M. Ueda, H. Miyajima, G. Tatara]
+  year: 2006
+  venue: Applied Physics Letters 88, 182509
+  doi: 10.1063/1.2199473
+- id: source:bauer-2012
+  type: review
+  title: "Spin caloritronics"
+  authors: [G. E. W. Bauer, E. Saitoh, B. J. van Wees]
+  year: 2012
+  venue: Nature Materials 11, 391–399
+  doi: 10.1038/nmat3301
+- id: source:tserkovnyak-2002
+  type: paper
+  title: "Enhanced Gilbert damping in thin ferromagnetic films"
+  authors: [Y. Tserkovnyak, A. Brataas, G. E. W. Bauer]
+  year: 2002
+  venue: Physical Review Letters 88, 117601
+  doi: 10.1103/PhysRevLett.88.117601
+- id: source:sakai-2018
+  type: paper
+  title: "Giant anomalous Nernst effect and quantum-critical scaling in a ferromagnetic semimetal"
+  authors: [A. Sakai, et al.]
+  year: 2018
+  venue: Nature Physics 14, 1119–1124
+  doi: 10.1038/s41567-018-0225-6
+- id: source:ettingshausen-nernst-1886
+  type: paper
+  title: "Ueber das Auftreten electromotorischer Kräfte in Metallplatten, welche von einem Wärmestrome durchflossen werden und sich im magnetischen Felde befinden"
+  authors: [A. von Ettingshausen, W. Nernst]
+  year: 1886
+  venue: Annalen der Physik 265, 343–347
+  doi: 10.1002/andp.18862651010
+- id: source:hall-1879
+  type: paper
+  title: "On a new action of the magnet on electric currents"
+  authors: [E. H. Hall]
+  year: 1879
+  venue: American Journal of Mathematics 2, 287–292
+  doi: 10.2307/2369245
+- id: source:sinova-2015
+  type: review
+  title: "Spin Hall effects"
+  authors: [J. Sinova, S. O. Valenzuela, J. Wunderlich, C. H. Back, T. Jungwirth]
+  year: 2015
+  venue: Reviews of Modern Physics 87, 1213
+  doi: 10.1103/RevModPhys.87.1213
+
+# --- Optical / radiative ----------------------------------------------------
+- id: source:becquerel-1839
+  type: paper
+  title: "Mémoire sur les effets électriques produits sous l'influence des rayons solaires"
+  authors: [A. E. Becquerel]
+  year: 1839
+  venue: Comptes Rendus de l'Académie des Sciences 9, 561–567
+- id: source:shockley-queisser-1961
+  type: paper
+  title: "Detailed balance limit of efficiency of p-n junction solar cells"
+  authors: [W. Shockley, H. J. Queisser]
+  year: 1961
+  venue: Journal of Applied Physics 32, 510–519
+  doi: 10.1063/1.1736034
+- id: source:chapin-1954
+  type: paper
+  title: "A new silicon p-n junction photocell for converting solar radiation into electrical power"
+  authors: [D. M. Chapin, C. S. Fuller, G. L. Pearson]
+  year: 1954
+  venue: Journal of Applied Physics 25, 676–677
+  doi: 10.1063/1.1721711
+- id: source:green-2024-tables
+  type: review
+  title: "Solar cell efficiency tables (Version 63)"
+  authors: [M. A. Green, et al.]
+  year: 2024
+  venue: Progress in Photovoltaics 32, 3–13
+  doi: 10.1002/pip.3750
+- id: source:fujishima-honda-1972
+  type: paper
+  title: "Electrochemical photolysis of water at a semiconductor electrode"
+  authors: [A. Fujishima, K. Honda]
+  year: 1972
+  venue: Nature 238, 37–38
+  doi: 10.1038/238037a0
+- id: source:spanier-2016
+  type: paper
+  title: "Power conversion efficiency exceeding the Shockley–Queisser limit in a ferroelectric insulator"
+  authors: [J. E. Spanier, et al.]
+  year: 2016
+  venue: Nature Photonics 10, 611–616
+  doi: 10.1038/nphoton.2016.143
+- id: source:landsberg-tonge-1980
+  type: paper
+  title: "Thermodynamic energy conversion efficiencies"
+  authors: [P. T. Landsberg, G. Tonge]
+  year: 1980
+  venue: Journal of Applied Physics 51, R1–R20
+  doi: 10.1063/1.328187
+- id: source:sharma-2015-rectenna
+  type: paper
+  title: "A carbon nanotube optical rectenna"
+  authors: [A. Sharma, V. Singh, T. L. Bougher, B. A. Cola]
+  year: 2015
+  venue: Nature Nanotechnology 10, 1027–1032
+  doi: 10.1038/nnano.2015.220
+- id: source:brown-1984
+  type: review
+  title: "The history of power transmission by radio waves"
+  authors: [W. C. Brown]
+  year: 1984
+  venue: IEEE Transactions on Microwave Theory and Techniques 32, 1230–1242
+  doi: 10.1109/TMTT.1984.1132833
+- id: source:blankenship-2011
+  type: paper
+  title: "Comparing photosynthetic and photovoltaic efficiencies and recognizing the potential for improvement"
+  authors: [R. E. Blankenship, et al.]
+  year: 2011
+  venue: Science 332, 805–809
+  doi: 10.1126/science.1200165
+- id: source:mitchell-1961
+  type: paper
+  title: "Coupling of phosphorylation to electron and hydrogen transfer by a chemi-osmotic type of mechanism"
+  authors: [P. Mitchell]
+  year: 1961
+  venue: Nature 191, 144–148
+  doi: 10.1038/191144a0
+
+# --- Electrochemical / osmotic / interfacial --------------------------------
+- id: source:grove-1839
+  type: paper
+  title: "On voltaic series and the combination of gases by platinum"
+  authors: [W. R. Grove]
+  year: 1839
+  venue: Philosophical Magazine 14, 127–130
+  doi: 10.1080/14786443908649684
+- id: source:bard-faulkner-2001
+  type: book
+  title: "Electrochemical Methods: Fundamentals and Applications (2nd ed.)"
+  authors: [A. J. Bard, L. R. Faulkner]
+  year: 2001
+  venue: Wiley
+- id: source:pattle-1954
+  type: paper
+  title: "Production of electric power by mixing fresh and salt water in the hydroelectric pile"
+  authors: [R. E. Pattle]
+  year: 1954
+  venue: Nature 174, 660
+  doi: 10.1038/174660a0
+- id: source:loeb-1975
+  type: paper
+  title: "Osmotic power plants"
+  authors: [S. Loeb]
+  year: 1975
+  venue: Science 189, 654–655
+  doi: 10.1126/science.189.4203.654
+- id: source:logan-elimelech-2012
+  type: review
+  title: "Membrane-based processes for sustainable power generation using water"
+  authors: [B. E. Logan, M. Elimelech]
+  year: 2012
+  venue: Nature 488, 313–319
+  doi: 10.1038/nature11477
+- id: source:post-2007
+  type: paper
+  title: "Salinity-gradient power: Evaluation of pressure-retarded osmosis and reverse electrodialysis"
+  authors: [J. W. Post, et al.]
+  year: 2007
+  venue: Journal of Membrane Science 288, 218–230
+  doi: 10.1016/j.memsci.2006.11.018
+- id: source:brogioli-2009
+  type: paper
+  title: "Extracting renewable energy from a salinity difference using a capacitor"
+  authors: [D. Brogioli]
+  year: 2009
+  venue: Physical Review Letters 103, 058501
+  doi: 10.1103/PhysRevLett.103.058501
+- id: source:yang-2003-electrokinetic
+  type: paper
+  title: "Electrokinetic microchannel battery by means of electrokinetic and microfluidic phenomena"
+  authors: [J. Yang, F. Lu, L. W. Kostiuk, D. Y. Kwok]
+  year: 2003
+  venue: Journal of Micromechanics and Microengineering 13, 963
+  doi: 10.1088/0960-1317/13/6/320
+- id: source:xue-2017-hydrovoltaic
+  type: paper
+  title: "Water-evaporation-induced electricity with nanostructured carbon materials"
+  authors: [G. Xue, et al.]
+  year: 2017
+  venue: Nature Nanotechnology 12, 317–321
+  doi: 10.1038/nnano.2016.300
+- id: source:chen-2015-evaporation
+  type: paper
+  title: "Scaling up nanoscale water-driven energy conversion into evaporation-driven engines and generators"
+  authors: [X. Chen, D. Goodnight, Z. Gao, A. H. Cavusoglu, N. Sabharwal, M. DeLay, A. Driks, O. Sahin]
+  year: 2015
+  venue: Nature Communications 6, 7346
+  doi: 10.1038/ncomms8346
+- id: source:xu-2020-droplet
+  type: paper
+  title: "A droplet-based electricity generator with high instantaneous power density"
+  authors: [W. Xu, et al.]
+  year: 2020
+  venue: Nature 578, 392–396
+  doi: 10.1038/s41586-020-1985-6
+- id: source:yin-2014-graphene-flow
+  type: paper
+  title: "Generating electricity by moving a droplet of ionic liquid along graphene"
+  authors: [J. Yin, et al.]
+  year: 2014
+  venue: Nature Nanotechnology 9, 378–383
+  doi: 10.1038/nnano.2014.56
+
+# --- Fluids, gravity, thermal engines ---------------------------------------
+- id: source:dixon-hall-2014
+  type: book
+  title: "Fluid Mechanics and Thermodynamics of Turbomachinery (7th ed.)"
+  authors: [S. L. Dixon, C. A. Hall]
+  year: 2014
+  venue: Butterworth-Heinemann
+  doi: 10.1016/C2011-0-05059-7
+- id: source:claude-1930
+  type: paper
+  title: "Power from the tropical seas"
+  authors: [G. Claude]
+  year: 1930
+  venue: Mechanical Engineering 52, 1039–1044
+- id: source:rosa-1961-mhd
+  type: paper
+  title: "Physical principles of magnetohydrodynamic power generation"
+  authors: [R. J. Rosa]
+  year: 1961
+  venue: Physics of Fluids 4, 182–194
+  doi: 10.1063/1.1724226
+- id: source:walker-1980-stirling
+  type: book
+  title: "Stirling Engines"
+  authors: [G. Walker]
+  year: 1980
+  venue: Oxford University Press
+
+# --- Nuclear ----------------------------------------------------------------
+- id: source:rappaport-1954
+  type: paper
+  title: "The electron-voltaic effect in p-n junctions induced by beta-particle bombardment"
+  authors: [P. Rappaport]
+  year: 1954
+  venue: Physical Review 93, 246
+  doi: 10.1103/PhysRev.93.246.2
+- id: source:prelas-2014
+  type: review
+  title: "A review of nuclear batteries"
+  authors: [M. A. Prelas, et al.]
+  year: 2014
+  venue: Progress in Nuclear Energy 75, 117–148
+  doi: 10.1016/j.pnucene.2014.04.007
+- id: source:hahn-strassmann-1939
+  type: paper
+  title: "Über den Nachweis und das Verhalten der bei der Bestrahlung des Urans mittels Neutronen entstehenden Erdalkalimetalle"
+  authors: [O. Hahn, F. Strassmann]
+  year: 1939
+  venue: Naturwissenschaften 27, 11–15
+  doi: 10.1007/BF01488241
+- id: source:bethe-1939
+  type: paper
+  title: "Energy production in stars"
+  authors: [H. A. Bethe]
+  year: 1939
+  venue: Physical Review 55, 434
+  doi: 10.1103/PhysRev.55.434
+
+# --- Quantum / fluctuation --------------------------------------------------
+- id: source:lamoreaux-1997
+  type: paper
+  title: "Demonstration of the Casimir force in the 0.6 to 6 μm range"
+  authors: [S. K. Lamoreaux]
+  year: 1997
+  venue: Physical Review Letters 78, 5
+  doi: 10.1103/PhysRevLett.78.5
+- id: source:toyabe-2010
+  type: paper
+  title: "Experimental demonstration of information-to-energy conversion and validation of the generalized Jarzynski equality"
+  authors: [S. Toyabe, T. Sagawa, M. Ueda, E. Muneyuki, M. Sano]
+  year: 2010
+  venue: Nature Physics 6, 988–992
+  doi: 10.1038/nphys1821
+
+# --- General references -----------------------------------------------------
+- id: source:kittel-2005
+  type: book
+  title: "Introduction to Solid State Physics (8th ed.)"
+  authors: [C. Kittel]
+  year: 2005
+  venue: Wiley
+- id: source:ashcroft-mermin-1976
+  type: book
+  title: "Solid State Physics"
+  authors: [N. W. Ashcroft, N. D. Mermin]
+  year: 1976
+  venue: Holt, Rinehart and Winston
+- id: source:nye-1985
+  type: book
+  title: "Physical Properties of Crystals: Their Representation by Tensors and Matrices"
+  authors: [J. F. Nye]
+  year: 1985
+  venue: Oxford University Press
+- id: source:radousky-liang-2012
+  type: review
+  title: "Energy harvesting: an integrated view of materials, devices and applications"
+  authors: [H. B. Radousky, H. Liang]
+  year: 2012
+  venue: Nanotechnology 23, 502001
+  doi: 10.1088/0957-4484/23/50/502001
+- id: source:ioffe-1957
+  type: book
+  title: "Semiconductor Thermoelements and Thermoelectric Cooling"
+  authors: [A. F. Ioffe]
+  year: 1957
+  venue: Infosearch
+- id: source:landau-lifshitz-ecm
+  type: book
+  title: "Electrodynamics of Continuous Media (Course of Theoretical Physics, Vol. 8, 2nd ed.)"
+  authors: [L. D. Landau, E. M. Lifshitz, L. P. Pitaevskii]
+  year: 1984
+  venue: Pergamon
+- id: source:degroot-mazur-1962
+  type: book
+  title: "Non-Equilibrium Thermodynamics"
+  authors: [S. R. de Groot, P. Mazur]
+  year: 1962
+  venue: North-Holland
+- id: source:joule-1847
+  type: paper
+  title: "On the effects of magnetism upon the dimensions of iron and steel bars"
+  authors: [J. P. Joule]
+  year: 1847
+  venue: Philosophical Magazine 30, 76–87
+  doi: 10.1080/14786444708645656
+- id: source:villari-1865
+  type: paper
+  title: "Ueber die Aenderungen des magnetischen Moments, welche der Zug und das Hindurchleiten eines galvanischen Stroms in einem Stabe von Stahl oder Eisen hervorbringen"
+  authors: [E. Villari]
+  year: 1865
+  venue: Annalen der Physik 202, 87–122
+  doi: 10.1002/andp.18652020906
+- id: source:soret-1879
+  type: paper
+  title: "Sur l'état d'équilibre que prend au point de vue de sa concentration une dissolution saline primitivement homogène dont deux parties sont portées à des températures différentes"
+  authors: [C. Soret]
+  year: 1879
+  venue: Archives des Sciences Physiques et Naturelles 2, 48–61
+- id: source:whatmore-1986
+  type: review
+  title: "Pyroelectric devices and materials"
+  authors: [R. W. Whatmore]
+  year: 1986
+  venue: Reports on Progress in Physics 49, 1335
+  doi: 10.1088/0034-4885/49/12/002
+- id: source:tesla-1890-patent
+  type: patent
+  title: "Pyromagneto-electric generator (US Patent 428,057)"
+  authors: [N. Tesla]
+  year: 1890
+  venue: United States Patent Office
+  url: https://patents.google.com/patent/US428057A
+- id: source:rowe-2006
+  type: book
+  title: "Thermoelectrics Handbook: Macro to Nano"
+  authors: [D. M. Rowe (ed.)]
+  year: 2006
+  venue: CRC Press
+  doi: 10.1201/9781420038903

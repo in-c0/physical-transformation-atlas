@@ -1,0 +1,40 @@
+# Condition tags are short machine-checkable labels a claim or entity can carry.
+# The boundary-compatibility check unions the tags along a path and refuses any
+# pair listed under `conflicts`. Tags are namespaced: env, state, temp, field, medium.
+tags:
+  - { id: env-vacuum, description: requires vacuum or near-vacuum }
+  - { id: env-aqueous, description: requires an aqueous electrolyte or liquid water }
+  - { id: env-ambient, description: works at ordinary ambient conditions }
+  - { id: env-high-vacuum-gap, description: requires a vacuum gap between electrodes }
+  - { id: temp-cryogenic, description: requires cryogenic temperatures (< 120 K) }
+  - { id: temp-high, description: requires temperatures above ~700 K }
+  - { id: temp-room, description: operates around room temperature }
+  - { id: temp-gradient-required, description: requires a sustained temperature difference }
+  - { id: state-solid, description: the active medium is a solid }
+  - { id: state-liquid, description: the active medium is a liquid }
+  - { id: state-gas, description: the active medium is a gas }
+  - { id: state-plasma, description: the active medium is an ionised gas }
+  - { id: field-magnetic-required, description: requires an applied or intrinsic magnetic field }
+  - { id: field-electric-required, description: requires an applied electric field or bias }
+  - { id: medium-semiconductor, description: requires a semiconductor }
+  - { id: medium-conductor, description: requires an electrical conductor }
+  - { id: medium-dielectric, description: requires a dielectric / insulator }
+  - { id: medium-ferromagnet, description: requires a ferromagnetic material }
+  - { id: medium-ferroelectric, description: requires a ferroelectric / polar material }
+  - { id: medium-membrane, description: requires a selective membrane }
+  - { id: medium-non-centrosymmetric, description: requires a non-centrosymmetric crystal }
+  - { id: illumination-required, description: requires incident radiation }
+  - { id: radioisotope-required, description: requires a radioactive source }
+  - { id: flow-required, description: requires bulk fluid flow }
+  - { id: humidity-required, description: requires a humidity or moisture difference }
+  - { id: transient-only, description: produces output only while the driving quantity changes }
+conflicts:
+  - { a: env-vacuum, b: env-aqueous, reason: a vacuum step and an aqueous step cannot share one working medium }
+  - { a: env-vacuum, b: state-liquid, reason: liquid media are incompatible with a vacuum working region }
+  - { a: temp-cryogenic, b: temp-high, reason: a single continuous medium cannot be cryogenic and above 700 K }
+  - { a: temp-cryogenic, b: env-aqueous, reason: liquid water is not available at cryogenic temperatures }
+  - { a: temp-high, b: env-aqueous, reason: liquid water electrolytes do not survive above ~700 K at ordinary pressure }
+  - { a: temp-high, b: medium-ferroelectric, reason: common ferroelectrics lose polarisation above their Curie point (typically < 700 K) }
+  - { a: temp-high, b: medium-ferromagnet, reason: common ferromagnets lose ordering near their Curie temperature }
+  - { a: state-gas, b: state-solid, reason: one active medium cannot be both a gas and a solid; needs an explicit interface step }
+  - { a: state-plasma, b: env-aqueous, reason: a plasma working region and an aqueous region need an explicit interface step }

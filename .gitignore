@@ -1,0 +1,14 @@
+node_modules/
+.next/
+out/
+dist/
+.wrangler/
+*.log
+.DS_Store
+.env
+.env.*
+!.env.example
+design/current/*.png
+data/generated/graph.json
+data/generated/paths.json
+apps/web/generated/

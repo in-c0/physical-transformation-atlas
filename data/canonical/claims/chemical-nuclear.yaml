@@ -1,0 +1,559 @@
+# Claims: chemical, electrochemical, osmotic and nuclear conversions.
+
+# --- Galvanic / fuel cells / combustion ---------------------------------------------
+- id: claim:galvanic-drives
+  subject: disequilibrium:chemical-potential-difference
+  predicate: drives
+  object: phenomenon:galvanic-reaction
+  conditions: [a spontaneous redox couple split between two electrodes with an ion-conducting electrolyte between them]
+  condition_tags: [env-aqueous]
+  energy: { input: chemical, output: electrical, dissipation: thermal }
+  relation:
+    formula: "E_cell = −ΔG / nF"
+    input: quantity:chemical-potential
+    output: quantity:electric-potential
+    coefficient_unit: mol/C
+    coefficient_name: 1/(nF)
+  evidence: [source:bard-faulkner-2001]
+  status: established
+  knowledge_level: K8
+- id: claim:galvanic-produces-ions
+  subject: phenomenon:galvanic-reaction
+  predicate: produces
+  object: carrier:ionic-current
+  energy: { input: electrical, output: electrical, dissipation: thermal }
+  evidence: [source:bard-faulkner-2001]
+  status: established
+- id: claim:galvanic-member
+  subject: phenomenon:galvanic-reaction
+  predicate: member_of
+  object: coupling:electrochemical
+  evidence: [source:bard-faulkner-2001]
+  status: established
+- id: claim:galvanic-bounded-nernst
+  subject: phenomenon:galvanic-reaction
+  predicate: bounded_by
+  object: constraint:nernst-potential-bound
+  evidence: [source:bard-faulkner-2001]
+  status: established
+- id: claim:galvanic-implemented
+  subject: phenomenon:galvanic-reaction
+  predicate: implemented_by
+  object: transducer:galvanic-cell
+  evidence: [source:bard-faulkner-2001]
+  status: established
+- id: claim:fuel-cell-drives
+  subject: disequilibrium:chemical-potential-difference
+  predicate: drives
+  object: phenomenon:fuel-cell-reaction
+  conditions: [continuous supply of fuel and oxidant to catalysed electrodes separated by a proton- or oxide-conducting electrolyte]
+  condition_tags: [medium-membrane]
+  energy: { input: chemical, output: electrical, dissipation: thermal }
+  evidence: [source:grove-1839, source:bard-faulkner-2001]
+  status: established
+  knowledge_level: K8
+- id: claim:fuel-cell-produces-ions
+  subject: phenomenon:fuel-cell-reaction
+  predicate: produces
+  object: carrier:ionic-current
+  energy: { input: electrical, output: electrical, dissipation: thermal }
+  evidence: [source:bard-faulkner-2001]
+  status: established
+- id: claim:fuel-cell-member
+  subject: phenomenon:fuel-cell-reaction
+  predicate: member_of
+  object: coupling:electrochemical
+  evidence: [source:grove-1839]
+  status: established
+- id: claim:fuel-cell-bounded-nernst
+  subject: phenomenon:fuel-cell-reaction
+  predicate: bounded_by
+  object: constraint:nernst-potential-bound
+  conditions: [1.23 V reversible potential for H₂/O₂ at 25 °C]
+  evidence: [source:bard-faulkner-2001]
+  status: established
+- id: claim:fuel-cell-implemented
+  subject: phenomenon:fuel-cell-reaction
+  predicate: implemented_by
+  object: transducer:fuel-cell
+  evidence: [source:grove-1839]
+  status: established
+- id: claim:fuel-cell-observed-pt
+  subject: phenomenon:fuel-cell-reaction
+  predicate: observed_in
+  object: material:platinum
+  evidence: [source:grove-1839]
+  status: established
+- id: claim:fuel-cell-requires-membrane
+  subject: phenomenon:fuel-cell-reaction
+  predicate: requires
+  object: material:ion-exchange-membrane
+  evidence: [source:bard-faulkner-2001]
+  status: established
+- id: claim:combustion-drives
+  subject: disequilibrium:chemical-potential-difference
+  predicate: drives
+  object: phenomenon:combustion
+  conditions: [fuel, oxidiser and an ignition source; flame temperature 1500–2500 K]
+  condition_tags: [state-gas, temp-high]
+  energy: { input: chemical, output: thermal, dissipation: radiative }
+  evidence: [source:bejan-2016]
+  status: established
+  knowledge_level: K8
+- id: claim:combustion-produces-hot-gas
+  subject: phenomenon:combustion
+  predicate: produces
+  object: carrier:hot-gas
+  energy: { input: thermal, output: thermal }
+  evidence: [source:bejan-2016]
+  status: established
+- id: claim:combustion-produces-gradient
+  subject: phenomenon:combustion
+  predicate: produces
+  object: disequilibrium:temperature-gradient
+  energy: { input: thermal, output: thermal }
+  evidence: [source:bejan-2016]
+  status: established
+- id: claim:combustion-member
+  subject: phenomenon:combustion
+  predicate: member_of
+  object: coupling:thermochemical
+  evidence: [source:bejan-2016]
+  status: established
+- id: claim:combustion-converts-heat
+  subject: phenomenon:combustion
+  predicate: converts_into
+  object: output:useful-heat
+  energy: { input: thermal, output: thermal, dissipation: thermal }
+  evidence: [source:bejan-2016]
+  status: established
+- id: claim:hot-gas-drives-thermal-emission
+  subject: carrier:hot-gas
+  predicate: drives
+  object: phenomenon:thermal-emission
+  conditions: [a flame or a heated emitter radiating]
+  energy: { input: thermal, output: radiative }
+  evidence: [source:lapotin-2022]
+  status: established
+
+# --- Concentration, salinity, osmotic ----------------------------------------------------
+- id: claim:concentration-cell-drives
+  subject: disequilibrium:concentration-gradient
+  predicate: drives
+  object: phenomenon:concentration-cell-effect
+  conditions: [two electrodes of the same kind in solutions of different activity joined by a salt bridge or membrane]
+  condition_tags: [env-aqueous]
+  energy: { input: chemical, output: electrical, dissipation: thermal }
+  relation:
+    formula: "E = (RT/zF) · ln(a₁/a₂)"
+    input: quantity:temperature
+    output: quantity:electric-potential
+    coefficient_unit: V/K
+    coefficient_name: (R/zF)·ln(a₁/a₂), with the log ratio dimensionless
+  evidence: [source:bard-faulkner-2001]
+  status: established
+  knowledge_level: K4
+- id: claim:concentration-cell-produces
+  subject: phenomenon:concentration-cell-effect
+  predicate: produces
+  object: carrier:ionic-current
+  energy: { input: electrical, output: electrical }
+  evidence: [source:bard-faulkner-2001]
+  status: established
+- id: claim:concentration-cell-member
+  subject: phenomenon:concentration-cell-effect
+  predicate: member_of
+  object: coupling:electrochemical
+  evidence: [source:bard-faulkner-2001]
+  status: established
+- id: claim:concentration-cell-bounded
+  subject: phenomenon:concentration-cell-effect
+  predicate: bounded_by
+  object: constraint:mixing-free-energy-bound
+  evidence: [source:logan-elimelech-2012]
+  status: established
+- id: claim:salinity-drives-red
+  subject: disequilibrium:salinity-gradient
+  predicate: drives
+  object: phenomenon:reverse-electrodialysis
+  conditions: [alternating cation- and anion-exchange membranes with sea and river water in alternate compartments]
+  condition_tags: [env-aqueous, medium-membrane, state-liquid]
+  energy: { input: chemical, output: electrical, dissipation: thermal }
+  evidence: [source:pattle-1954, source:post-2007, source:logan-elimelech-2012]
+  status: established
+  knowledge_level: K7
+- id: claim:red-produces-ions
+  subject: phenomenon:reverse-electrodialysis
+  predicate: produces
+  object: carrier:ionic-current
+  energy: { input: electrical, output: electrical, dissipation: thermal }
+  evidence: [source:post-2007]
+  status: established
+- id: claim:red-member
+  subject: phenomenon:reverse-electrodialysis
+  predicate: member_of
+  object: coupling:osmotic
+  evidence: [source:logan-elimelech-2012]
+  status: established
+- id: claim:red-bounded-mixing
+  subject: phenomenon:reverse-electrodialysis
+  predicate: bounded_by
+  object: constraint:mixing-free-energy-bound
+  evidence: [source:logan-elimelech-2012]
+  status: established
+- id: claim:red-implemented
+  subject: phenomenon:reverse-electrodialysis
+  predicate: implemented_by
+  object: transducer:reverse-electrodialysis-stack
+  evidence: [source:post-2007]
+  status: demonstrated
+- id: claim:red-requires-membrane
+  subject: phenomenon:reverse-electrodialysis
+  predicate: requires
+  object: material:ion-exchange-membrane
+  evidence: [source:post-2007]
+  status: established
+- id: claim:salinity-drives-pro
+  subject: disequilibrium:salinity-gradient
+  predicate: drives
+  object: phenomenon:pressure-retarded-osmosis
+  conditions: [a semipermeable membrane with fresh water on one side and seawater pressurised below its osmotic pressure on the other]
+  condition_tags: [env-aqueous, medium-membrane, state-liquid]
+  energy: { input: chemical, output: mechanical, dissipation: thermal }
+  evidence: [source:loeb-1975, source:post-2007]
+  status: established
+  knowledge_level: K7
+- id: claim:osmotic-pressure-drives-pro
+  subject: disequilibrium:osmotic-pressure-difference
+  predicate: drives
+  object: phenomenon:pressure-retarded-osmosis
+  condition_tags: [env-aqueous, medium-membrane]
+  energy: { input: osmotic, output: mechanical, dissipation: thermal }
+  evidence: [source:loeb-1975]
+  status: established
+  knowledge_level: K7
+- id: claim:pro-produces-pressure
+  subject: phenomenon:pressure-retarded-osmosis
+  predicate: produces
+  object: carrier:hydraulic-pressure
+  energy: { input: mechanical, output: mechanical }
+  evidence: [source:loeb-1975]
+  status: established
+- id: claim:pro-member
+  subject: phenomenon:pressure-retarded-osmosis
+  predicate: member_of
+  object: coupling:osmotic
+  evidence: [source:logan-elimelech-2012]
+  status: established
+- id: claim:pro-bounded-mixing
+  subject: phenomenon:pressure-retarded-osmosis
+  predicate: bounded_by
+  object: constraint:mixing-free-energy-bound
+  evidence: [source:logan-elimelech-2012]
+  status: established
+- id: claim:pro-implemented
+  subject: phenomenon:pressure-retarded-osmosis
+  predicate: implemented_by
+  object: transducer:pressure-retarded-osmosis-plant
+  evidence: [source:logan-elimelech-2012]
+  status: demonstrated
+- id: claim:salinity-drives-capmix
+  subject: disequilibrium:salinity-gradient
+  predicate: drives
+  object: phenomenon:capacitive-mixing
+  conditions: [porous carbon electrodes charged in salt water and discharged in fresh water in a four-step cycle]
+  condition_tags: [env-aqueous, state-liquid]
+  energy: { input: chemical, output: electrical, dissipation: thermal }
+  evidence: [source:brogioli-2009]
+  status: replicated
+  knowledge_level: K5
+- id: claim:capmix-produces
+  subject: phenomenon:capacitive-mixing
+  predicate: produces
+  object: carrier:ionic-current
+  energy: { input: electrical, output: electrical }
+  evidence: [source:brogioli-2009]
+  status: replicated
+- id: claim:capmix-member
+  subject: phenomenon:capacitive-mixing
+  predicate: member_of
+  object: coupling:osmotic
+  evidence: [source:brogioli-2009]
+  status: established
+- id: claim:capmix-implemented
+  subject: phenomenon:capacitive-mixing
+  predicate: implemented_by
+  object: transducer:capmix-cell
+  evidence: [source:brogioli-2009]
+  status: demonstrated
+- id: claim:concentration-drives-osmosis
+  subject: disequilibrium:concentration-gradient
+  predicate: drives
+  object: phenomenon:osmosis
+  condition_tags: [env-aqueous, medium-membrane]
+  energy: { input: chemical, output: osmotic }
+  evidence: [source:bard-faulkner-2001]
+  status: established
+- id: claim:osmosis-produces
+  subject: phenomenon:osmosis
+  predicate: produces
+  object: disequilibrium:osmotic-pressure-difference
+  energy: { input: osmotic, output: osmotic }
+  evidence: [source:loeb-1975]
+  status: established
+- id: claim:osmosis-member
+  subject: phenomenon:osmosis
+  predicate: member_of
+  object: coupling:osmotic
+  evidence: [source:loeb-1975]
+  status: established
+- id: claim:concentration-drives-diffusion
+  subject: disequilibrium:concentration-gradient
+  predicate: drives
+  object: phenomenon:diffusion
+  energy: { input: chemical, output: thermal }
+  evidence: [source:degroot-mazur-1962]
+  status: established
+- id: claim:diffusion-dissipates
+  subject: phenomenon:diffusion
+  predicate: dissipates_to
+  object: output:useful-heat
+  conditions: [free mixing without a membrane dissipates the whole free energy as heat]
+  evidence: [source:degroot-mazur-1962]
+  status: established
+- id: claim:diffusion-member
+  subject: phenomenon:diffusion
+  predicate: member_of
+  object: coupling:osmotic
+  conditions: [as the loss channel every membrane process competes with]
+  evidence: [source:logan-elimelech-2012]
+  status: established
+- id: claim:amtec-drives
+  subject: disequilibrium:temperature-gradient
+  predicate: drives
+  object: phenomenon:alkali-metal-thermal-electric-conversion
+  conditions: [sodium at 900–1300 K on the hot side of a β″-alumina electrolyte and a condenser at 400–700 K]
+  condition_tags: [temp-high, state-liquid]
+  energy: { input: thermal, output: electrical, dissipation: thermal }
+  evidence: [source:cole-1983-amtec]
+  status: demonstrated
+  knowledge_level: K6
+- id: claim:amtec-produces-ions
+  subject: phenomenon:alkali-metal-thermal-electric-conversion
+  predicate: produces
+  object: carrier:ionic-current
+  energy: { input: electrical, output: electrical }
+  evidence: [source:cole-1983-amtec]
+  status: demonstrated
+- id: claim:amtec-member
+  subject: phenomenon:alkali-metal-thermal-electric-conversion
+  predicate: member_of
+  object: coupling:electrochemical
+  evidence: [source:cole-1983-amtec]
+  status: established
+- id: claim:amtec-bounded-carnot
+  subject: phenomenon:alkali-metal-thermal-electric-conversion
+  predicate: bounded_by
+  object: constraint:carnot-limit
+  evidence: [source:cole-1983-amtec]
+  status: established
+- id: claim:amtec-implemented
+  subject: phenomenon:alkali-metal-thermal-electric-conversion
+  predicate: implemented_by
+  object: transducer:amtec-cell
+  evidence: [source:cole-1983-amtec]
+  status: demonstrated
+- id: claim:amtec-requires-beta-alumina
+  subject: phenomenon:alkali-metal-thermal-electric-conversion
+  predicate: requires
+  object: material:beta-alumina
+  evidence: [source:cole-1983-amtec]
+  status: established
+
+# --- Nuclear ------------------------------------------------------------------------------
+- id: claim:binding-drives-decay
+  subject: disequilibrium:nuclear-binding-difference
+  predicate: drives
+  object: phenomenon:radioactive-decay
+  condition_tags: [radioisotope-required]
+  energy: { input: nuclear, output: nuclear }
+  evidence: [source:prelas-2014]
+  status: established
+  knowledge_level: K8
+- id: claim:decay-produces-particles
+  subject: phenomenon:radioactive-decay
+  predicate: produces
+  object: carrier:beta-particles
+  energy: { input: nuclear, output: nuclear }
+  evidence: [source:prelas-2014]
+  status: established
+- id: claim:decay-governed-weak
+  subject: phenomenon:radioactive-decay
+  predicate: governed_by
+  object: interaction:weak-nuclear
+  conditions: [beta decay]
+  evidence: [source:prelas-2014]
+  status: established
+- id: claim:decay-member
+  subject: phenomenon:radioactive-decay
+  predicate: member_of
+  object: coupling:radiovoltaic
+  evidence: [source:prelas-2014]
+  status: established
+- id: claim:particles-drive-betavoltaic
+  subject: carrier:beta-particles
+  predicate: drives
+  object: phenomenon:betavoltaic-effect
+  conditions: [a beta source (tritium, Ni-63, Pm-147) on or in a semiconductor junction; particle energy below the lattice-damage threshold]
+  condition_tags: [state-solid, medium-semiconductor, radioisotope-required]
+  energy: { input: nuclear, output: electronic-excitation, dissipation: thermal }
+  evidence: [source:rappaport-1954, source:prelas-2014]
+  status: established
+  knowledge_level: K8
+- id: claim:betavoltaic-produces-pairs
+  subject: phenomenon:betavoltaic-effect
+  predicate: produces
+  object: carrier:electron-hole-pairs
+  energy: { input: electronic-excitation, output: electronic-excitation }
+  evidence: [source:rappaport-1954]
+  status: established
+- id: claim:betavoltaic-member
+  subject: phenomenon:betavoltaic-effect
+  predicate: member_of
+  object: coupling:radiovoltaic
+  evidence: [source:prelas-2014]
+  status: established
+- id: claim:betavoltaic-implemented
+  subject: phenomenon:betavoltaic-effect
+  predicate: implemented_by
+  object: transducer:betavoltaic-cell
+  evidence: [source:prelas-2014]
+  status: established
+- id: claim:betavoltaic-observed-si
+  subject: phenomenon:betavoltaic-effect
+  predicate: observed_in
+  object: material:silicon
+  evidence: [source:rappaport-1954]
+  status: established
+- id: claim:particles-drive-heating
+  subject: carrier:beta-particles
+  predicate: drives
+  object: phenomenon:radioisotope-heating
+  conditions: [particles stopped within the source and its cladding]
+  condition_tags: [radioisotope-required]
+  energy: { input: nuclear, output: thermal }
+  evidence: [source:prelas-2014]
+  status: established
+  knowledge_level: K8
+- id: claim:heating-produces-gradient
+  subject: phenomenon:radioisotope-heating
+  predicate: produces
+  object: disequilibrium:temperature-gradient
+  energy: { input: thermal, output: thermal }
+  evidence: [source:prelas-2014]
+  status: established
+- id: claim:heating-member
+  subject: phenomenon:radioisotope-heating
+  predicate: member_of
+  object: coupling:thermoelectric
+  conditions: [as the heat source of radioisotope thermoelectric generators]
+  evidence: [source:prelas-2014]
+  status: established
+- id: claim:heating-implemented-rtg
+  subject: phenomenon:radioisotope-heating
+  predicate: implemented_by
+  object: transducer:radioisotope-thermoelectric-generator
+  evidence: [source:prelas-2014, source:rowe-2006]
+  status: established
+- id: claim:binding-drives-fission
+  subject: disequilibrium:nuclear-binding-difference
+  predicate: drives
+  object: phenomenon:nuclear-fission
+  conditions: [a fissile isotope, a moderator or fast spectrum, and a critical geometry]
+  condition_tags: [temp-high]
+  energy: { input: nuclear, output: thermal, dissipation: radiative }
+  evidence: [source:hahn-strassmann-1939]
+  status: established
+  knowledge_level: K8
+- id: claim:fission-produces-gradient
+  subject: phenomenon:nuclear-fission
+  predicate: produces
+  object: disequilibrium:temperature-gradient
+  energy: { input: thermal, output: thermal }
+  evidence: [source:hahn-strassmann-1939]
+  status: established
+- id: claim:fission-produces-hot-gas
+  subject: phenomenon:nuclear-fission
+  predicate: produces
+  object: carrier:hot-gas
+  conditions: [steam raised in a boiling- or pressurised-water reactor]
+  energy: { input: thermal, output: thermal }
+  evidence: [source:bejan-2016]
+  status: established
+- id: claim:fission-governed-strong
+  subject: phenomenon:nuclear-fission
+  predicate: governed_by
+  object: interaction:strong-nuclear
+  evidence: [source:hahn-strassmann-1939]
+  status: established
+- id: claim:fission-member
+  subject: phenomenon:nuclear-fission
+  predicate: member_of
+  object: coupling:thermochemical
+  conditions: [as a heat source for a conventional steam cycle]
+  evidence: [source:bejan-2016]
+  status: established
+- id: claim:fission-implemented
+  subject: phenomenon:nuclear-fission
+  predicate: implemented_by
+  object: transducer:nuclear-reactor-plant
+  evidence: [source:bejan-2016]
+  status: established
+- id: claim:binding-drives-fusion
+  subject: disequilibrium:nuclear-binding-difference
+  predicate: drives
+  object: phenomenon:nuclear-fusion
+  conditions: [ion temperatures above ~10 keV and sufficient density-confinement product]
+  condition_tags: [state-plasma, temp-high]
+  energy: { input: nuclear, output: thermal, dissipation: radiative }
+  evidence: [source:bethe-1939]
+  status: demonstrated
+  knowledge_level: K5
+  notes: Established as physics and as an energy release; net electrical output from a fusion plant has not been demonstrated.
+- id: claim:fusion-produces-gradient
+  subject: phenomenon:nuclear-fusion
+  predicate: produces
+  object: disequilibrium:temperature-gradient
+  energy: { input: thermal, output: thermal }
+  evidence: [source:bethe-1939]
+  status: demonstrated
+- id: claim:fusion-governed-strong
+  subject: phenomenon:nuclear-fusion
+  predicate: governed_by
+  object: interaction:strong-nuclear
+  evidence: [source:bethe-1939]
+  status: established
+- id: claim:fusion-member
+  subject: phenomenon:nuclear-fusion
+  predicate: member_of
+  object: coupling:thermochemical
+  evidence: [source:bethe-1939]
+  status: established
+- id: claim:hydrostatic-governed-gravity
+  subject: phenomenon:hydrostatic-descent
+  predicate: governed_by
+  object: interaction:gravitational
+  evidence: [source:dixon-hall-2014]
+  status: established
+- id: claim:pv-governed-em
+  subject: phenomenon:photovoltaic-effect
+  predicate: governed_by
+  object: interaction:electromagnetic
+  evidence: [source:shockley-queisser-1961]
+  status: established
+- id: claim:galvanic-governed-em
+  subject: phenomenon:galvanic-reaction
+  predicate: governed_by
+  object: interaction:electromagnetic
+  evidence: [source:bard-faulkner-2001]
+  status: established

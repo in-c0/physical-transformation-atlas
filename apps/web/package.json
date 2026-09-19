@@ -1,0 +1,29 @@
+{
+  "name": "@pta/web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "next": "16.3.5",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "cytoscape": "^3.33.0",
+    "@pta/graph": "workspace:*",
+    "@pta/schema": "workspace:*",
+    "@pta/physics": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.5",
+    "typescript": "^5",
+    "@types/cytoscape": "^3.21.0"
+  }
+}

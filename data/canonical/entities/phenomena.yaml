@@ -1,0 +1,634 @@
+# Physical phenomena: the effects that turn one kind of disequilibrium or carrier
+# into another. Relations to disequilibria, carriers, outputs and coupling families
+# live in claims/, not here.
+
+# --- Thermal ---------------------------------------------------------------
+- id: phenomenon:seebeck-effect
+  type: phenomenon
+  name: Seebeck effect
+  aliases: [thermoelectric effect, thermo-EMF]
+  domain: condensed-matter
+  year_first_reported: 1821
+  condition_tags: [state-solid, medium-conductor, temp-gradient-required]
+  summary: A temperature difference along a conductor or across a junction of dissimilar conductors produces an electric potential difference, ΔV = S·ΔT, because charge carriers diffuse from the hot end and accumulate at the cold end.
+- id: phenomenon:peltier-effect
+  type: phenomenon
+  name: Peltier effect
+  domain: condensed-matter
+  year_first_reported: 1834
+  condition_tags: [state-solid, medium-conductor]
+  summary: A current through a junction of dissimilar conductors absorbs or releases heat at the junction, the reverse of the Seebeck effect. Basis of thermoelectric cooling.
+- id: phenomenon:thomson-effect
+  type: phenomenon
+  name: Thomson effect
+  domain: condensed-matter
+  year_first_reported: 1851
+  condition_tags: [state-solid, medium-conductor]
+  summary: Reversible heating or cooling of a single conductor carrying a current along a temperature gradient. Links the Seebeck and Peltier coefficients through the Kelvin relations.
+- id: phenomenon:thermionic-emission
+  type: phenomenon
+  name: Thermionic emission
+  aliases: [Richardson emission, Edison effect]
+  domain: condensed-matter
+  year_first_reported: 1901
+  condition_tags: [env-vacuum, temp-high, state-solid]
+  summary: Electrons boil off a hot surface when their thermal energy exceeds the work function. Collected at a cooler electrode across a vacuum gap they carry current at a potential difference.
+- id: phenomenon:thermoacoustic-effect
+  type: phenomenon
+  name: Thermoacoustic effect
+  aliases: [Rijke tube, Sondhauss tube, thermoacoustic oscillation]
+  domain: thermodynamics
+  year_first_reported: 1850
+  condition_tags: [state-gas, temp-gradient-required]
+  summary: A sufficiently steep temperature gradient along a porous stack in a resonant gas column drives self-sustained acoustic oscillation. Heat becomes sound with no moving parts.
+- id: phenomenon:pyroelectric-effect
+  type: phenomenon
+  name: Pyroelectric effect
+  domain: condensed-matter
+  year_first_reported: 1824
+  condition_tags: [state-solid, medium-ferroelectric, transient-only]
+  summary: A change in temperature changes the spontaneous polarisation of a polar crystal, which releases surface charge. Only temperature change produces current, not a steady gradient.
+- id: phenomenon:thermogalvanic-effect
+  type: phenomenon
+  name: Thermogalvanic effect
+  aliases: [thermocell, thermo-electrochemical effect, Seebeck effect in electrolytes]
+  domain: electrochemistry
+  year_first_reported: 1950
+  condition_tags: [state-liquid, env-aqueous, temp-gradient-required]
+  summary: Two identical electrodes in the same redox electrolyte held at different temperatures develop a potential difference, because the reaction entropy makes the redox potential temperature-dependent. Coefficients of ~1 mV/K are typical, ten times a solid thermocouple.
+- id: phenomenon:soret-effect
+  type: phenomenon
+  name: Soret effect
+  aliases: [thermodiffusion, thermophoresis in liquids]
+  domain: thermodynamics
+  year_first_reported: 1856
+  condition_tags: [state-liquid, temp-gradient-required]
+  summary: A temperature gradient in a mixture drives a concentration gradient as species migrate toward the hot or cold side. A thermal disequilibrium becomes a chemical one.
+- id: phenomenon:nernst-effect
+  type: phenomenon
+  name: Nernst effect
+  aliases: [Nernst–Ettingshausen effect]
+  domain: condensed-matter
+  year_first_reported: 1886
+  condition_tags: [state-solid, medium-conductor, field-magnetic-required, temp-gradient-required]
+  summary: A temperature gradient in a conductor placed in a perpendicular magnetic field produces an electric field perpendicular to both. The transverse counterpart of the Seebeck effect.
+- id: phenomenon:anomalous-nernst-effect
+  type: phenomenon
+  name: Anomalous Nernst effect
+  domain: spin-systems
+  year_first_reported: 1886
+  condition_tags: [state-solid, medium-ferromagnet, temp-gradient-required]
+  summary: In a magnetised conductor a temperature gradient produces a transverse voltage proportional to the magnetisation rather than to an applied field. Allows thermopiles laid out as simple films.
+- id: phenomenon:ettingshausen-effect
+  type: phenomenon
+  name: Ettingshausen effect
+  domain: condensed-matter
+  year_first_reported: 1886
+  condition_tags: [state-solid, medium-conductor, field-magnetic-required]
+  summary: A current in a conductor in a perpendicular magnetic field produces a transverse temperature gradient; the reverse of the Nernst effect.
+- id: phenomenon:thermomagnetic-transition
+  type: phenomenon
+  name: Thermomagnetic (Curie-point) transition
+  aliases: [pyromagnetic effect, magnetisation change with temperature]
+  domain: condensed-matter
+  year_first_reported: 1887
+  condition_tags: [state-solid, medium-ferromagnet, temp-gradient-required]
+  summary: Heating a soft ferromagnet through its Curie temperature collapses its magnetisation; cooling restores it. Cycling a magnetic circuit between hot and cold regions changes the flux through a coil.
+- id: phenomenon:magnetocaloric-effect
+  type: phenomenon
+  name: Magnetocaloric effect
+  domain: condensed-matter
+  year_first_reported: 1881
+  condition_tags: [state-solid, medium-ferromagnet, field-magnetic-required]
+  summary: Magnetising a paramagnet or ferromagnet adiabatically raises its temperature; demagnetising lowers it. The entropy of the spin system is exchanged with the lattice.
+- id: phenomenon:electrocaloric-effect
+  type: phenomenon
+  name: Electrocaloric effect
+  domain: condensed-matter
+  year_first_reported: 1930
+  condition_tags: [state-solid, medium-ferroelectric, field-electric-required]
+  summary: An applied electric field changes the temperature of a polar dielectric by changing its dipolar entropy. The converse of the pyroelectric effect.
+- id: phenomenon:elastocaloric-effect
+  type: phenomenon
+  name: Elastocaloric effect
+  domain: condensed-matter
+  year_first_reported: 1980
+  condition_tags: [state-solid]
+  summary: Stressing a shape-memory alloy through its martensitic transformation releases latent heat; unloading absorbs it. Temperature changes of 20 K or more in NiTi.
+- id: phenomenon:thermal-expansion
+  type: phenomenon
+  name: Thermal expansion
+  domain: thermodynamics
+  year_first_reported: 1700
+  condition_tags: []
+  summary: Most materials expand when heated. A temperature change becomes a strain or a pressure, the working principle of gas engines, bimetal actuators and gas thermometers.
+- id: phenomenon:thermal-emission
+  type: phenomenon
+  name: Thermal emission
+  aliases: [blackbody radiation, incandescence, Planck radiation]
+  domain: optics-photonics
+  year_first_reported: 1900
+  condition_tags: []
+  summary: Every body above absolute zero emits electromagnetic radiation with a spectrum set by its temperature and emissivity. A hot emitter can feed a photovoltaic cell; a warm surface can radiate to the cold sky.
+- id: phenomenon:radiative-cooling
+  type: phenomenon
+  name: Radiative sky cooling
+  aliases: [passive radiative cooling, sky radiation]
+  domain: optics-photonics
+  year_first_reported: 1975
+  condition_tags: []
+  summary: A surface emitting strongly in the 8–13 µm atmospheric window and reflecting sunlight cools below ambient air temperature, even at noon, by radiating to space at ~3 K.
+- id: phenomenon:photothermal-effect
+  type: phenomenon
+  name: Photothermal absorption
+  aliases: [solar heating, optical absorption to heat]
+  domain: optics-photonics
+  year_first_reported: 1767
+  condition_tags: [illumination-required]
+  summary: Absorbed radiation thermalises within picoseconds into lattice heat. The simplest and highest-yield conversion of sunlight; it turns a radiative flux into a temperature difference.
+- id: phenomenon:thermoradiative-effect
+  type: phenomenon
+  name: Thermoradiative effect
+  aliases: [negative illumination, thermoradiative photovoltaics]
+  domain: optics-photonics
+  year_first_reported: 2015
+  condition_tags: [state-solid, medium-semiconductor]
+  summary: A warm semiconductor diode facing a colder sky emits net radiation and develops a negative-illumination photocurrent; the diode does work while radiating heat away.
+- id: phenomenon:phonon-drag
+  type: phenomenon
+  name: Phonon drag
+  domain: condensed-matter
+  year_first_reported: 1954
+  condition_tags: [state-solid, medium-semiconductor, temp-cryogenic]
+  summary: A heat current of phonons sweeps charge carriers along with it, adding a large low-temperature contribution to the thermopower of semiconductors.
+- id: phenomenon:heat-conduction
+  type: phenomenon
+  name: Heat conduction
+  aliases: [Fourier conduction]
+  domain: thermodynamics
+  year_first_reported: 1822
+  summary: Heat flows down a temperature gradient at a rate set by the thermal conductivity. The universal loss channel that competes with every thermal conversion.
+
+# --- Mechanical ------------------------------------------------------------
+- id: phenomenon:piezoelectric-effect
+  type: phenomenon
+  name: Direct piezoelectric effect
+  domain: condensed-matter
+  year_first_reported: 1880
+  condition_tags: [state-solid, medium-non-centrosymmetric]
+  summary: Mechanical stress on a non-centrosymmetric crystal displaces its charge centres and produces a surface charge proportional to stress, D = d·σ.
+- id: phenomenon:converse-piezoelectric-effect
+  type: phenomenon
+  name: Converse piezoelectric effect
+  domain: condensed-matter
+  year_first_reported: 1881
+  condition_tags: [state-solid, medium-non-centrosymmetric, field-electric-required]
+  summary: An applied electric field strains a piezoelectric crystal. Basis of actuators and ultrasonic transducers.
+- id: phenomenon:flexoelectric-effect
+  type: phenomenon
+  name: Flexoelectric effect
+  domain: condensed-matter
+  year_first_reported: 1964
+  condition_tags: [state-solid, medium-dielectric]
+  summary: A strain gradient, not strain itself, polarises any dielectric, including centrosymmetric ones. Weak in bulk, large at the nanoscale where gradients are steep.
+- id: phenomenon:triboelectric-effect
+  type: phenomenon
+  name: Triboelectric effect
+  aliases: [contact electrification, tribocharging]
+  domain: surface-interface
+  year_first_reported: -600
+  condition_tags: [state-solid, medium-dielectric]
+  summary: Contact and separation of two dissimilar surfaces leaves them oppositely charged. Repeated contact–separation across a gap drives charge back and forth through an external circuit.
+- id: phenomenon:electrostatic-induction
+  type: phenomenon
+  name: Electrostatic induction (variable capacitance)
+  aliases: [capacitive transduction, electret transduction]
+  domain: electromagnetism
+  year_first_reported: 1750
+  condition_tags: [state-solid, field-electric-required]
+  summary: Moving the plates of a charged capacitor against the electrostatic force changes its capacitance and pushes charge through the load. Needs a pre-charge or an electret.
+- id: phenomenon:electromagnetic-induction
+  type: phenomenon
+  name: Electromagnetic induction
+  aliases: [Faraday induction, motional EMF]
+  domain: electromagnetism
+  year_first_reported: 1831
+  condition_tags: [medium-conductor, field-magnetic-required]
+  summary: A changing magnetic flux through a circuit induces an electromotive force equal to the rate of change of flux. The working principle of every rotating generator.
+- id: phenomenon:villari-effect
+  type: phenomenon
+  name: Villari effect
+  aliases: [inverse magnetostriction, magnetoelastic effect]
+  domain: condensed-matter
+  year_first_reported: 1865
+  condition_tags: [state-solid, medium-ferromagnet]
+  summary: Stress changes the magnetisation of a magnetostrictive material. Combined with a pickup coil, vibration becomes a changing flux and hence a voltage.
+- id: phenomenon:joule-magnetostriction
+  type: phenomenon
+  name: Joule magnetostriction
+  aliases: [magnetostriction]
+  domain: condensed-matter
+  year_first_reported: 1842
+  condition_tags: [state-solid, medium-ferromagnet, field-magnetic-required]
+  summary: Magnetising a ferromagnet changes its dimensions. The converse of the Villari effect.
+- id: phenomenon:magnetoelectric-coupling
+  type: phenomenon
+  name: Magnetoelectric coupling
+  domain: condensed-matter
+  year_first_reported: 1960
+  condition_tags: [state-solid]
+  summary: A magnetic field induces electric polarisation (or an electric field induces magnetisation), intrinsically in a few multiferroics and strongly in laminated magnetostrictive–piezoelectric composites via strain.
+- id: phenomenon:elastic-deformation
+  type: phenomenon
+  name: Elastic deformation
+  aliases: [Hooke's law response, strain energy storage]
+  domain: classical-mechanics
+  year_first_reported: 1660
+  condition_tags: [state-solid]
+  summary: A stressed elastic solid stores recoverable strain energy. The intermediate step by which vibration, flow and pressure become the stress that piezoelectric and magnetoelastic materials respond to.
+- id: phenomenon:resonant-vibration
+  type: phenomenon
+  name: Resonant vibration
+  aliases: [base excitation, cantilever resonance]
+  domain: classical-mechanics
+  year_first_reported: 1700
+  condition_tags: [state-solid]
+  summary: A structure driven near its natural frequency stores and cycles mechanical energy; ambient vibration becomes cyclic stress in a cantilever or seismic mass.
+- id: phenomenon:aerodynamic-lift
+  type: phenomenon
+  name: Aerodynamic and hydrodynamic lift
+  aliases: [rotor torque, blade lift, turbine action]
+  domain: fluid-mechanics
+  year_first_reported: 1900
+  condition_tags: [flow-required]
+  summary: Fluid flowing over a shaped blade exerts a force with a component perpendicular to the flow. On a rotor this becomes torque; the kinetic energy of the stream becomes shaft work.
+- id: phenomenon:flow-induced-vibration
+  type: phenomenon
+  name: Flow-induced vibration
+  aliases: [vortex-induced vibration, galloping, flutter]
+  domain: fluid-mechanics
+  year_first_reported: 1878
+  condition_tags: [flow-required]
+  summary: A bluff body in a stream sheds vortices and oscillates; a flexible body can gallop or flutter. Steady flow becomes vibration with no rotor.
+- id: phenomenon:hydrostatic-descent
+  type: phenomenon
+  name: Gravitational descent of fluid
+  aliases: [head conversion, falling water]
+  domain: classical-mechanics
+  year_first_reported: -200
+  condition_tags: [state-liquid]
+  summary: Water falling through a height difference converts gravitational potential energy into pressure and kinetic energy at the turbine inlet.
+- id: phenomenon:tidal-flow
+  type: phenomenon
+  name: Tidal flow
+  domain: fluid-mechanics
+  year_first_reported: 1100
+  condition_tags: [state-liquid, flow-required]
+  summary: The gravitational potential of Moon and Sun raises and lowers the sea twice a day; the resulting head and currents are a periodic, predictable fluid flow.
+- id: phenomenon:ocean-wave-motion
+  type: phenomenon
+  name: Ocean wave motion
+  domain: fluid-mechanics
+  year_first_reported: 1799
+  condition_tags: [state-liquid]
+  summary: Wind transfers momentum to the sea surface; the resulting waves carry mechanical energy as oscillating pressure and orbital motion that a buoy or flap can follow.
+- id: phenomenon:reverse-electrowetting
+  type: phenomenon
+  name: Reverse electrowetting
+  domain: surface-interface
+  year_first_reported: 2011
+  condition_tags: [state-liquid, field-electric-required]
+  summary: Mechanically moving conductive droplets across a biased dielectric-coated electrode changes the overlap and drives charge through the load. Mechanical work becomes electrical work at high power density.
+
+# --- Electromagnetic and spin ----------------------------------------------
+- id: phenomenon:hall-effect
+  type: phenomenon
+  name: Hall effect
+  domain: condensed-matter
+  year_first_reported: 1879
+  condition_tags: [state-solid, medium-conductor, field-magnetic-required]
+  summary: A current in a magnetic field develops a transverse voltage from the Lorentz force on the carriers. A charge current and a field become a second potential difference.
+- id: phenomenon:spin-hall-effect
+  type: phenomenon
+  name: Spin Hall effect
+  domain: spin-systems
+  year_first_reported: 2004
+  condition_tags: [state-solid, medium-conductor]
+  summary: Spin–orbit coupling deflects up and down spins to opposite edges of a current-carrying conductor, converting a charge current into a transverse pure spin current.
+- id: phenomenon:inverse-spin-hall-effect
+  type: phenomenon
+  name: Inverse spin Hall effect
+  domain: spin-systems
+  year_first_reported: 2006
+  condition_tags: [state-solid, medium-conductor, temp-room]
+  summary: A pure spin current in a heavy metal such as Pt is converted by spin–orbit coupling into a transverse charge current. The standard detector for spin currents at room temperature.
+- id: phenomenon:spin-seebeck-effect
+  type: phenomenon
+  name: Spin Seebeck effect
+  domain: spin-systems
+  year_first_reported: 2008
+  condition_tags: [state-solid, medium-ferromagnet, temp-gradient-required]
+  summary: A temperature gradient in a magnet, including a magnetic insulator, drives a magnon current that pumps a spin current into an attached metal.
+- id: phenomenon:spin-pumping
+  type: phenomenon
+  name: Spin pumping
+  domain: spin-systems
+  year_first_reported: 2002
+  condition_tags: [state-solid, medium-ferromagnet, field-magnetic-required]
+  summary: Precessing magnetisation in a ferromagnet emits a spin current into an adjacent normal metal.
+- id: phenomenon:magnon-transport
+  type: phenomenon
+  name: Magnon transport
+  aliases: [spin-wave transport, magnon spin current]
+  domain: spin-systems
+  year_first_reported: 1930
+  condition_tags: [state-solid, medium-ferromagnet]
+  summary: Quantised spin waves carry angular momentum and heat through magnetic insulators without moving any charge.
+- id: phenomenon:rectification
+  type: phenomenon
+  name: Rectification
+  aliases: [diode rectification, RF-to-DC conversion]
+  domain: electromagnetism
+  year_first_reported: 1874
+  condition_tags: [state-solid, medium-semiconductor]
+  summary: A nonlinear junction passes current in one direction, turning an oscillating electromagnetic signal into direct current. In a rectenna the antenna current becomes DC power.
+- id: phenomenon:antenna-reception
+  type: phenomenon
+  name: Antenna reception
+  aliases: [electromagnetic wave absorption by a conductor]
+  domain: electromagnetism
+  year_first_reported: 1887
+  condition_tags: [medium-conductor]
+  summary: A propagating electromagnetic wave drives an oscillating current in a conductor of comparable dimensions. The radiative flux becomes a circuit current.
+- id: phenomenon:magnetohydrodynamic-effect
+  type: phenomenon
+  name: Magnetohydrodynamic generation
+  aliases: [MHD effect, Faraday MHD generator]
+  domain: plasma-physics
+  year_first_reported: 1832
+  condition_tags: [flow-required, field-magnetic-required]
+  summary: A conducting fluid, plasma or liquid metal, moving through a magnetic field experiences a transverse EMF across electrodes. A moving conductor with no solid rotor.
+
+# --- Optical / radiative ---------------------------------------------------
+- id: phenomenon:photovoltaic-effect
+  type: phenomenon
+  name: Photovoltaic effect
+  domain: optics-photonics
+  year_first_reported: 1839
+  condition_tags: [state-solid, medium-semiconductor, illumination-required]
+  summary: Photons absorbed near a p–n junction create electron–hole pairs that the built-in field separates, producing a photocurrent at a photovoltage.
+- id: phenomenon:photoelectric-effect
+  type: phenomenon
+  name: Photoelectric effect
+  domain: optics-photonics
+  year_first_reported: 1887
+  condition_tags: [env-vacuum, illumination-required]
+  summary: Photons above the work function eject electrons from a surface into vacuum. Historically decisive; as a converter it is a photon-driven thermionic emitter.
+- id: phenomenon:photon-enhanced-thermionic-emission
+  type: phenomenon
+  name: Photon-enhanced thermionic emission
+  domain: optics-photonics
+  year_first_reported: 2010
+  condition_tags: [env-vacuum, temp-high, medium-semiconductor, illumination-required]
+  summary: Photoexcitation raises electrons into the conduction band of a hot semiconductor cathode, which then emit thermionically. Combines photovoltaic and thermal conversion in one cathode.
+- id: phenomenon:photoelectrochemical-effect
+  type: phenomenon
+  name: Photoelectrochemical effect
+  aliases: [Fujishima–Honda effect, photoelectrolysis]
+  domain: electrochemistry
+  year_first_reported: 1972
+  condition_tags: [env-aqueous, medium-semiconductor, illumination-required]
+  summary: Photogenerated carriers at a semiconductor–electrolyte interface drive a redox reaction, splitting water into hydrogen and oxygen.
+- id: phenomenon:bulk-photovoltaic-effect
+  type: phenomenon
+  name: Bulk photovoltaic effect
+  aliases: [photogalvanic effect, shift current]
+  domain: optics-photonics
+  year_first_reported: 1974
+  condition_tags: [state-solid, medium-non-centrosymmetric, illumination-required]
+  summary: A homogeneous non-centrosymmetric crystal generates a steady photocurrent under uniform illumination, without a junction, and can produce photovoltages above the band gap.
+- id: phenomenon:photosynthesis
+  type: phenomenon
+  name: Photosynthesis
+  domain: biophysical-transduction
+  year_first_reported: 1779
+  condition_tags: [env-aqueous, illumination-required, temp-room]
+  summary: Chlorophyll complexes absorb photons, drive charge separation across a membrane and store the energy in reduced carbon compounds. Overall solar-to-biomass efficiency is a few per cent.
+- id: phenomenon:chemiosmosis
+  type: phenomenon
+  name: Chemiosmosis
+  domain: biophysical-transduction
+  year_first_reported: 1961
+  condition_tags: [env-aqueous, medium-membrane, temp-room]
+  summary: A proton concentration gradient across a membrane drives ATP synthase, a rotary molecular motor, to synthesise ATP. A concentration disequilibrium becomes chemical fuel.
+- id: phenomenon:photostriction
+  type: phenomenon
+  name: Photostriction
+  domain: condensed-matter
+  year_first_reported: 1966
+  condition_tags: [state-solid, illumination-required]
+  summary: Illumination strains a polar or photoactive solid, combining the photovoltaic and converse piezoelectric effects in one material.
+
+# --- Chemical and electrochemical ------------------------------------------
+- id: phenomenon:galvanic-reaction
+  type: phenomenon
+  name: Galvanic (redox) reaction
+  aliases: [electrochemical cell reaction, battery discharge]
+  domain: electrochemistry
+  year_first_reported: 1800
+  condition_tags: [env-aqueous]
+  summary: A spontaneous redox reaction split between two electrodes forces its electrons through the external circuit. Reaction free energy becomes electrical work at up to the Nernst potential.
+- id: phenomenon:fuel-cell-reaction
+  type: phenomenon
+  name: Fuel-cell electro-oxidation
+  domain: electrochemistry
+  year_first_reported: 1839
+  condition_tags: [medium-membrane]
+  summary: A fuel such as hydrogen is oxidised at one electrode and oxygen reduced at the other, continuously, with the electrons routed through a load. Chemical potential becomes electricity without combustion.
+- id: phenomenon:combustion
+  type: phenomenon
+  name: Combustion
+  domain: chemistry
+  year_first_reported: -400
+  condition_tags: [state-gas, temp-high]
+  summary: Rapid exothermic oxidation of a fuel releases reaction enthalpy as high-temperature gas. Chemical potential becomes a temperature difference for a heat engine.
+- id: phenomenon:concentration-cell-effect
+  type: phenomenon
+  name: Concentration cell effect
+  aliases: [Nernst potential, Donnan potential]
+  domain: electrochemistry
+  year_first_reported: 1889
+  condition_tags: [env-aqueous]
+  summary: Two electrodes of the same kind in solutions of different activity develop a potential difference (RT/zF)·ln(a₁/a₂). A concentration gradient becomes a voltage.
+- id: phenomenon:reverse-electrodialysis
+  type: phenomenon
+  name: Reverse electrodialysis
+  domain: electrochemistry
+  year_first_reported: 1954
+  condition_tags: [env-aqueous, medium-membrane]
+  summary: Alternating cation- and anion-selective membranes between salt and fresh water let each ion species cross in one direction only, so the mixing free energy appears as a voltage across the stack.
+- id: phenomenon:pressure-retarded-osmosis
+  type: phenomenon
+  name: Pressure-retarded osmosis
+  domain: electrochemistry
+  year_first_reported: 1975
+  condition_tags: [env-aqueous, medium-membrane]
+  summary: Fresh water permeates a semipermeable membrane into pressurised seawater; the extra volume at pressure is expanded through a turbine. Osmotic pressure becomes hydraulic pressure.
+- id: phenomenon:capacitive-mixing
+  type: phenomenon
+  name: Capacitive mixing
+  aliases: [CapMix, double-layer expansion]
+  domain: electrochemistry
+  year_first_reported: 2009
+  condition_tags: [env-aqueous]
+  summary: Electrodes charged in salt water and discharged in fresh water return more energy than they took, because the electric double layer expands as the salinity drops.
+- id: phenomenon:osmosis
+  type: phenomenon
+  name: Osmosis
+  domain: electrochemistry
+  year_first_reported: 1748
+  condition_tags: [env-aqueous, medium-membrane]
+  summary: Solvent flows across a semipermeable membrane toward the higher solute concentration until the osmotic pressure is balanced.
+- id: phenomenon:diffusion
+  type: phenomenon
+  name: Diffusion
+  domain: thermodynamics
+  year_first_reported: 1855
+  summary: Species move down a concentration gradient by random motion; free energy of mixing is dissipated unless a membrane or electrode intercepts it.
+- id: phenomenon:evaporation
+  type: phenomenon
+  name: Evaporation
+  domain: chemistry
+  year_first_reported: -300
+  condition_tags: [state-liquid, humidity-required]
+  summary: Water leaves a wet surface into unsaturated air, absorbing latent heat and sustaining capillary flow through the material behind it. The atmosphere's humidity deficit drives the flow.
+- id: phenomenon:streaming-potential
+  type: phenomenon
+  name: Streaming potential
+  aliases: [electrokinetic effect, streaming current]
+  domain: surface-interface
+  year_first_reported: 1859
+  condition_tags: [env-aqueous, flow-required]
+  summary: Pressure-driven flow of an electrolyte through a charged channel drags the diffuse counter-ion layer along and produces a potential difference between inlet and outlet.
+- id: phenomenon:hydrovoltaic-effect
+  type: phenomenon
+  name: Hydrovoltaic effect
+  aliases: [evaporation-induced electricity, water-flow-induced potential on carbon]
+  domain: surface-interface
+  year_first_reported: 2017
+  condition_tags: [env-aqueous, humidity-required]
+  summary: Water evaporating through a nanostructured carbon film drives ion streaming through its pores and sustains a voltage of about a volt across the film.
+- id: phenomenon:droplet-charge-transfer
+  type: phenomenon
+  name: Droplet contact electrification
+  aliases: [droplet-based electricity generation, solid–liquid triboelectrification]
+  domain: surface-interface
+  year_first_reported: 2014
+  condition_tags: [state-liquid]
+  summary: A water droplet contacting and spreading on a charged polymer surface closes a transient circuit through the droplet, releasing the surface charge as a current pulse.
+- id: phenomenon:thermally-regenerative-electrochemical-cycle
+  type: phenomenon
+  name: Thermally regenerative electrochemical cycle
+  aliases: [TREC]
+  domain: electrochemistry
+  year_first_reported: 2014
+  condition_tags: [env-aqueous, temp-gradient-required]
+  summary: A battery is charged at one temperature and discharged at another; because its open-circuit voltage depends on temperature, the cycle nets electrical work from heat. A Carnot-like engine made of electrodes.
+- id: phenomenon:alkali-metal-thermal-electric-conversion
+  type: phenomenon
+  name: Alkali-metal thermal-to-electric conversion
+  aliases: [AMTEC, sodium heat engine]
+  domain: electrochemistry
+  year_first_reported: 1968
+  condition_tags: [temp-high, state-liquid]
+  summary: Sodium vapour expands across a beta-alumina solid electrolyte that passes ions but not electrons; the electrons take the external circuit. A pressure–temperature difference becomes electricity electrochemically.
+
+# --- Nuclear ---------------------------------------------------------------
+- id: phenomenon:radioactive-decay
+  type: phenomenon
+  name: Radioactive decay
+  aliases: [alpha decay, beta decay]
+  domain: nuclear-physics
+  year_first_reported: 1896
+  condition_tags: [radioisotope-required]
+  summary: Unstable nuclei emit alpha or beta particles and gamma rays at a rate fixed by the half-life. The kinetic energy of the emitted particles is a steady, unstoppable flux.
+- id: phenomenon:radioisotope-heating
+  type: phenomenon
+  name: Radioisotope heating
+  aliases: [decay heat]
+  domain: nuclear-physics
+  year_first_reported: 1903
+  condition_tags: [radioisotope-required]
+  summary: Decay particles stopped inside the source and its cladding deposit their energy as heat, creating a temperature difference against the surroundings for decades.
+- id: phenomenon:betavoltaic-effect
+  type: phenomenon
+  name: Betavoltaic effect
+  aliases: [electron-voltaic effect, alphavoltaic effect]
+  domain: nuclear-physics
+  year_first_reported: 1954
+  condition_tags: [state-solid, medium-semiconductor, radioisotope-required]
+  summary: Beta particles absorbed in a semiconductor junction create thousands of electron–hole pairs each, which the junction separates. A nuclear flux becomes a small, decades-long current.
+- id: phenomenon:nuclear-fission
+  type: phenomenon
+  name: Nuclear fission
+  domain: nuclear-physics
+  year_first_reported: 1938
+  condition_tags: [temp-high]
+  summary: A heavy nucleus absorbing a neutron splits into fragments whose kinetic energy, ~200 MeV per event, thermalises into the surrounding fuel.
+- id: phenomenon:nuclear-fusion
+  type: phenomenon
+  name: Nuclear fusion
+  domain: nuclear-physics
+  year_first_reported: 1939
+  condition_tags: [state-plasma, temp-high]
+  summary: Light nuclei overcoming their Coulomb repulsion merge into a more tightly bound nucleus, releasing the binding-energy difference as particle kinetic energy.
+
+# --- Quantum / fluctuation --------------------------------------------------
+- id: phenomenon:casimir-effect
+  type: phenomenon
+  name: Casimir effect
+  domain: quantum-transport
+  year_first_reported: 1948
+  condition_tags: [env-vacuum]
+  summary: Two closely spaced conducting plates attract because the vacuum field modes between them are restricted. A static force from the ground state; it does one-off work while the plates close and none in a cycle.
+- id: phenomenon:information-to-work-conversion
+  type: phenomenon
+  name: Information-to-work conversion
+  aliases: [Szilard engine, feedback ratchet]
+  domain: quantum-transport
+  year_first_reported: 2010
+  condition_tags: [state-liquid, temp-room]
+  summary: Measuring a fluctuating Brownian particle and applying feedback extracts work from a single thermal bath, paid for by the entropy cost of the measurement record.
+
+# --- Engines (appended) ----------------------------------------------------
+- id: phenomenon:working-fluid-expansion
+  type: phenomenon
+  name: Working-fluid expansion (heat-engine cycle)
+  aliases: [Rankine cycle, Stirling cycle, Brayton cycle, gas expansion]
+  domain: thermodynamics
+  year_first_reported: 1712
+  condition_tags: [temp-gradient-required]
+  summary: A gas or vapour heated at high pressure expands against a piston or turbine blade and is cooled and recompressed, converting a fraction of the heat flow bounded by Carnot into shaft work.
+- id: phenomenon:generator-action
+  type: phenomenon
+  name: Rotating-machine generator action
+  aliases: [alternator, dynamo]
+  domain: electromagnetism
+  year_first_reported: 1832
+  condition_tags: [medium-conductor, field-magnetic-required]
+  summary: Shaft rotation moves conductors through a magnetic field (or a field past conductors), inducing an alternating EMF. Electromagnetic induction packaged as a machine.
+- id: phenomenon:linear-alternator-action
+  type: phenomenon
+  name: Linear alternator action
+  domain: electromagnetism
+  year_first_reported: 1970
+  condition_tags: [medium-conductor, field-magnetic-required]
+  summary: A reciprocating magnet or coil driven by a piston or acoustic wave induces an EMF without a rotor.
+- id: phenomenon:ocean-thermal-gradient-conversion
+  type: phenomenon
+  name: Ocean thermal energy conversion
+  aliases: [OTEC]
+  domain: thermodynamics
+  year_first_reported: 1881
+  condition_tags: [state-liquid, temp-gradient-required]
+  summary: Warm surface seawater boils a low-boiling working fluid (or itself under vacuum) that is condensed by cold deep water; a Rankine cycle across a 20 K difference.

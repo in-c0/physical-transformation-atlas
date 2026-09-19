@@ -1,0 +1,14 @@
+{
+  "name": "@pta/pipelines",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build-graph": "tsx src/build-graph.ts",
+    "validate": "tsx src/validate.ts",
+    "literature-search": "tsx src/literature-search.ts",
+    "test": "node --import tsx --test test/*.test.ts"
+  },
+  "dependencies": { "@pta/schema": "workspace:*", "@pta/graph": "workspace:*", "@pta/physics": "workspace:*", "yaml": "^2.8.0" },
+  "devDependencies": { "tsx": "^4.20.0", "typescript": "^5", "@types/node": "^22" }
+}
