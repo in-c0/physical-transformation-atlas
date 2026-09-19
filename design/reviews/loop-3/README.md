@@ -8,3 +8,4 @@ ground rules (design system, language rule, reply format).
 
 | pass | focus | verdict | applied |
 |---|---|---|---|
+| 1 | use the instrument as a physicist (browse) | PIVOT | four-state composition language; evidence split composition/constituent; recorded-pathway overlap + derived class; constituent floor; TEG measurements; Seebeck copy + conventions; scope copy; search provenance; route-state block — fb4b1fb |

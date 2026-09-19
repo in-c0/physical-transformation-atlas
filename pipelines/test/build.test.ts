@@ -67,3 +67,19 @@ test("negative control: a claim with a dangling entity is rejected by validation
   assert.equal(problems[0].id, "claim:dangling");
   assert.ok(new ValidationError(["x"]).message.includes("validation problem"));
 });
+
+test("a candidate never shares two or more relations with a recorded pathway; derived routes always do", () => {
+  for (const p of graph.paths) {
+    const shared = p.known_pathway_overlap?.shared_claims ?? 0;
+    if (p.frontier_class === "candidate") assert.ok(shared < 2, `${p.id} is a candidate but shares ${shared} relations with ${p.known_pathway_overlap?.pathway}`);
+    if (p.frontier_class === "derived") assert.ok(shared >= 2, `${p.id} is derived with only ${shared} shared relations`);
+    if (p.pathway) assert.equal(p.known_pathway_overlap?.relation, "exact", `${p.id} matches a pathway but overlap is not exact`);
+  }
+});
+
+test("composition evidence is never borrowed from constituent claims", () => {
+  for (const p of graph.paths) {
+    if (p.pathway) continue;
+    assert.equal(p.composition_source_ids.length, 0, `${p.id} has composition sources without a recorded pathway`);
+  }
+});
