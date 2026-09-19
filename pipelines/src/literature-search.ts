@@ -58,6 +58,9 @@ for (const cell of todo) {
   url.searchParams.set("per-page", "3");
   url.searchParams.set("sort", "cited_by_count:desc");
   url.searchParams.set("select", "title,publication_year,doi");
+  // OpenAlex serves its "polite pool" (faster, rarely throttled) to requests that carry a contact
+  // address. Set OPENALEX_MAILTO to opt in; the anonymous pool is throttled hard.
+  if (process.env.OPENALEX_MAILTO) url.searchParams.set("mailto", process.env.OPENALEX_MAILTO);
   const id = `search:${today}-${cell.address.toLowerCase().replace(/[.:]/g, "-")}` as SearchRecord["id"];
   try {
     const r = await fetch(url, { headers: { "User-Agent": "physical-transformation-atlas/0.1 (literature index pipeline)" }, signal: AbortSignal.timeout(20000) });
