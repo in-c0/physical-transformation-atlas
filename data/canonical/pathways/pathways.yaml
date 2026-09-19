@@ -377,7 +377,7 @@
 
 - id: pathway:radioisotope-thermoelectric-generator
   name: Radioisotope thermoelectric generator
-  steps: [claim:binding-drives-decay, claim:decay-produces-particles, claim:particles-drive-heating, claim:heating-produces-gradient, claim:seebeck-drives, claim:seebeck-produces-carriers, claim:charge-carriers-convert-electricity]
+  steps: [claim:binding-drives-decay, claim:decay-produces-alpha, claim:alpha-drives-heating, claim:heating-produces-gradient, claim:seebeck-drives, claim:seebeck-produces-carriers, claim:charge-carriers-convert-electricity]
   demonstrated_with: [transducer:radioisotope-thermoelectric-generator]
   evidence: [source:prelas-2014, source:rowe-2006]
   status: commercial

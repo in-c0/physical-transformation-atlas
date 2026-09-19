@@ -1,0 +1,478 @@
+# Claims for the phenomena added in loop-3 pass 3 (ontology-gap review), plus the
+# corrections that review exposed (alpha/beta split, Soret family, decay membership).
+
+# --- Radiation pressure and photon drag (photon momentum) -------------------------
+- id: claim:radiation-drives-pressure
+  subject: disequilibrium:radiation-flux
+  predicate: drives
+  object: phenomenon:radiation-pressure
+  conditions: ["radiation absorbed or reflected by a surface; force per unit area I/c absorbed, 2I/c reflected at normal incidence — about 9 µPa in full sunlight"]
+  energy: { input: radiative, output: mechanical, dissipation: thermal }
+  evidence: [source:nichols-hull-1901, source:trowbridge-2025-radiation-pressure, source:landau-lifshitz-ecm]
+  status: established
+  knowledge_level: K6
+  notes: "Solar sails (IKAROS 2010, LightSail 2 2019) convert this momentum flux into spacecraft kinetic energy in flight."
+- id: claim:radiation-pressure-produces-motion
+  subject: phenomenon:radiation-pressure
+  predicate: produces
+  object: carrier:mechanical-motion
+  energy: { input: mechanical, output: mechanical }
+  evidence: [source:trowbridge-2025-radiation-pressure]
+  status: established
+- id: claim:radiation-pressure-member
+  subject: phenomenon:radiation-pressure
+  predicate: member_of
+  object: coupling:photon-momentum
+  evidence: [source:trowbridge-2025-radiation-pressure]
+  status: established
+- id: claim:radiation-drives-photon-drag
+  subject: disequilibrium:radiation-flux
+  predicate: drives
+  object: phenomenon:photon-drag-effect
+  conditions: ["intense radiation absorbed by free carriers in a semiconductor or thin metal film; the induced EMF is along the propagation direction and scales with intensity"]
+  condition_tags: [state-solid, illumination-required]
+  energy: { input: radiative, output: electrical, dissipation: thermal }
+  evidence: [source:gibson-1970-photon-drag, source:strait-2019-photon-drag]
+  status: established
+  knowledge_level: K4
+- id: claim:photon-drag-produces
+  subject: phenomenon:photon-drag-effect
+  predicate: produces
+  object: carrier:charge-carriers
+  energy: { input: electrical, output: electrical }
+  evidence: [source:gibson-1970-photon-drag, source:strait-2019-photon-drag]
+  status: established
+- id: claim:photon-drag-member
+  subject: phenomenon:photon-drag-effect
+  predicate: member_of
+  object: coupling:photon-momentum
+  evidence: [source:strait-2019-photon-drag]
+  status: established
+
+# --- Dufour, Soret family, ionic thermoelectric (thermodiffusive) ------------------
+- id: claim:concentration-drives-dufour
+  subject: disequilibrium:concentration-gradient
+  predicate: drives
+  object: phenomenon:dufour-effect
+  conditions: ["a composition gradient in a liquid or gas mixture; the heat flux is the Onsager-reciprocal partner of Soret thermodiffusion"]
+  condition_tags: [state-liquid]
+  energy: { input: chemical, output: thermal }
+  evidence: [source:rowley-horne-1978-dufour, source:degroot-mazur-1962]
+  status: established
+  knowledge_level: K4
+- id: claim:dufour-produces-heat
+  subject: phenomenon:dufour-effect
+  predicate: produces
+  object: carrier:heat-flow
+  energy: { input: thermal, output: thermal }
+  evidence: [source:rowley-horne-1978-dufour]
+  status: established
+- id: claim:dufour-member
+  subject: phenomenon:dufour-effect
+  predicate: member_of
+  object: coupling:thermodiffusive
+  evidence: [source:degroot-mazur-1962]
+  status: established
+- id: claim:dufour-onsager
+  subject: phenomenon:dufour-effect
+  predicate: bounded_by
+  object: constraint:onsager-reciprocity
+  conditions: ["Dufour and Soret coefficients are equal by Onsager reciprocity (confirmed experimentally by Rowley and Horne)"]
+  evidence: [source:rowley-horne-1978-dufour, source:onsager-1931]
+  status: established
+- id: claim:soret-member
+  subject: phenomenon:soret-effect
+  predicate: member_of
+  object: coupling:thermodiffusive
+  evidence: [source:degroot-mazur-1962]
+  status: established
+- id: claim:ionic-te-drives
+  subject: disequilibrium:temperature-gradient
+  predicate: drives
+  object: phenomenon:ionic-thermoelectric-effect
+  conditions: ["an electrolyte (liquid, gel or polymer) under a temperature difference; ionic Seebeck coefficients of 1–10 mV/K arise from differential thermodiffusion of cations and anions, without electrode redox entropy"]
+  condition_tags: [temp-gradient-required]
+  energy: { input: thermal, output: electrical, dissipation: thermal }
+  evidence: [source:bonetti-2011-ionic-seebeck, source:zhao-wurger-crispin-2021-ionic-te]
+  status: established
+  knowledge_level: K5
+- id: claim:ionic-te-produces
+  subject: phenomenon:ionic-thermoelectric-effect
+  predicate: produces
+  object: carrier:ionic-current
+  energy: { input: electrical, output: electrical }
+  evidence: [source:zhao-wurger-crispin-2021-ionic-te]
+  status: established
+- id: claim:ionic-te-member
+  subject: phenomenon:ionic-thermoelectric-effect
+  predicate: member_of
+  object: coupling:thermodiffusive
+  evidence: [source:zhao-wurger-crispin-2021-ionic-te]
+  status: established
+- id: claim:ionic-te-bounded-carnot
+  subject: phenomenon:ionic-thermoelectric-effect
+  predicate: bounded_by
+  object: constraint:carnot-limit
+  evidence: [source:zhao-wurger-crispin-2021-ionic-te]
+  status: established
+
+# --- Marangoni ------------------------------------------------------------------------
+- id: claim:surface-drives-marangoni
+  subject: disequilibrium:surface-energy-difference
+  predicate: drives
+  object: phenomenon:marangoni-effect
+  conditions: ["a gradient of surface tension along a free liquid interface, from composition (solutocapillary) or temperature (thermocapillary)"]
+  condition_tags: [state-liquid]
+  energy: { input: surface, output: kinetic, dissipation: thermal }
+  evidence: [source:scriven-sternling-1960, source:marangoni-review-2021]
+  status: established
+  knowledge_level: K4
+- id: claim:temperature-drives-marangoni
+  subject: disequilibrium:temperature-gradient
+  predicate: drives
+  object: phenomenon:marangoni-effect
+  conditions: ["thermocapillary case: surface tension falls with temperature, so a temperature gradient along the interface drives flow toward the cold side"]
+  condition_tags: [state-liquid, temp-gradient-required]
+  energy: { input: thermal, output: kinetic, dissipation: thermal }
+  evidence: [source:scriven-sternling-1960, source:marangoni-review-2021]
+  status: established
+  knowledge_level: K4
+- id: claim:marangoni-produces-flow
+  subject: phenomenon:marangoni-effect
+  predicate: produces
+  object: carrier:fluid-flow
+  energy: { input: kinetic, output: kinetic }
+  evidence: [source:scriven-sternling-1960]
+  status: established
+- id: claim:marangoni-member
+  subject: phenomenon:marangoni-effect
+  predicate: member_of
+  object: coupling:marangoni
+  evidence: [source:marangoni-review-2021]
+  status: established
+
+# --- Acoustoelectric ------------------------------------------------------------------
+- id: claim:acoustic-drives-acoustoelectric
+  subject: disequilibrium:acoustic-field
+  predicate: drives
+  object: phenomenon:acoustoelectric-effect
+  conditions: ["a travelling acoustic wave in a piezoelectric semiconductor (CdS, GaAs) or a metal; the dc current follows the wave's direction and is proportional to the absorbed acoustic power"]
+  condition_tags: [state-solid, medium-semiconductor]
+  energy: { input: acoustic, output: electrical, dissipation: thermal }
+  evidence: [source:parmenter-1953, source:weinreich-white-1957]
+  status: established
+  knowledge_level: K4
+- id: claim:acoustic-wave-drives-acoustoelectric
+  subject: carrier:acoustic-wave
+  predicate: drives
+  object: phenomenon:acoustoelectric-effect
+  condition_tags: [state-solid, medium-semiconductor]
+  energy: { input: acoustic, output: electrical, dissipation: thermal }
+  evidence: [source:weinreich-white-1957]
+  status: established
+- id: claim:acoustoelectric-produces
+  subject: phenomenon:acoustoelectric-effect
+  predicate: produces
+  object: carrier:charge-carriers
+  energy: { input: electrical, output: electrical }
+  evidence: [source:weinreich-white-1957]
+  status: established
+- id: claim:acoustoelectric-member
+  subject: phenomenon:acoustoelectric-effect
+  predicate: member_of
+  object: coupling:acoustoelectric
+  evidence: [source:parmenter-1953]
+  status: established
+- id: claim:acoustic-field-drives-piezo
+  subject: disequilibrium:acoustic-field
+  predicate: drives
+  object: phenomenon:piezoelectric-effect
+  conditions: ["sound or ultrasound stressing a piezoelectric element — the working principle of every microphone and ultrasonic receiver"]
+  condition_tags: [state-solid, medium-non-centrosymmetric]
+  energy: { input: acoustic, output: electrical, dissipation: thermal }
+  evidence: [source:nye-1985, source:erturk-inman-2011]
+  status: established
+  knowledge_level: K8
+
+# --- Spin Nernst ------------------------------------------------------------------------
+- id: claim:temperature-drives-spin-nernst
+  subject: disequilibrium:temperature-gradient
+  predicate: drives
+  object: phenomenon:spin-nernst-effect
+  conditions: ["a heavy metal with strong spin–orbit coupling (Pt, W) under a longitudinal temperature gradient; detected through the magnetoresistance of an adjacent magnetic insulator"]
+  condition_tags: [state-solid, medium-conductor, temp-gradient-required]
+  energy: { input: thermal, output: spin, dissipation: thermal }
+  evidence: [source:meyer-2017-spin-nernst, source:bose-tulapurkar-2019-spin-nernst]
+  status: established
+  knowledge_level: K4
+- id: claim:spin-nernst-produces
+  subject: phenomenon:spin-nernst-effect
+  predicate: produces
+  object: carrier:spin-current
+  energy: { input: spin, output: spin }
+  evidence: [source:meyer-2017-spin-nernst]
+  status: established
+- id: claim:spin-nernst-member
+  subject: phenomenon:spin-nernst-effect
+  predicate: member_of
+  object: coupling:spin-caloritronic
+  evidence: [source:bose-tulapurkar-2019-spin-nernst]
+  status: established
+
+# --- Photo-Dember -----------------------------------------------------------------------
+- id: claim:radiation-drives-dember
+  subject: disequilibrium:radiation-flux
+  predicate: drives
+  object: phenomenon:photo-dember-effect
+  conditions: ["pulsed above-gap illumination of a semiconductor surface with a large electron–hole mobility difference (InAs, InSb); the response is transient"]
+  condition_tags: [state-solid, medium-semiconductor, illumination-required, transient-only]
+  energy: { input: radiative, output: electrical, dissipation: thermal }
+  evidence: [source:johnston-2002-dember, source:apostolopoulos-barnes-2014-dember]
+  status: established
+  knowledge_level: K4
+- id: claim:dember-produces-charge
+  subject: phenomenon:photo-dember-effect
+  predicate: produces
+  object: carrier:surface-charge
+  energy: { input: electrical, output: electrical }
+  evidence: [source:apostolopoulos-barnes-2014-dember]
+  status: established
+- id: claim:dember-member
+  subject: phenomenon:photo-dember-effect
+  predicate: member_of
+  object: coupling:photodiffusive
+  evidence: [source:apostolopoulos-barnes-2014-dember]
+  status: established
+
+# --- Thermo-osmosis --------------------------------------------------------------------
+- id: claim:temperature-drives-thermo-osmosis
+  subject: disequilibrium:temperature-gradient
+  predicate: drives
+  object: phenomenon:thermo-osmosis
+  conditions: ["a membrane separating two reservoirs of the same liquid at different temperatures; the flow direction depends on the membrane–liquid interaction"]
+  condition_tags: [medium-membrane, temp-gradient-required, state-liquid]
+  energy: { input: thermal, output: kinetic, dissipation: thermal }
+  evidence: [source:barragan-kjelstrup-2017-thermo-osmosis, source:degroot-mazur-1962]
+  status: established
+  knowledge_level: K4
+- id: claim:thermo-osmosis-produces-flow
+  subject: phenomenon:thermo-osmosis
+  predicate: produces
+  object: carrier:fluid-flow
+  energy: { input: kinetic, output: kinetic }
+  evidence: [source:barragan-kjelstrup-2017-thermo-osmosis]
+  status: established
+- id: claim:thermo-osmosis-member
+  subject: phenomenon:thermo-osmosis
+  predicate: member_of
+  object: coupling:thermo-osmotic
+  evidence: [source:barragan-kjelstrup-2017-thermo-osmosis]
+  status: established
+
+# --- Electrohydrodynamic -----------------------------------------------------------------
+- id: claim:flow-drives-ehd
+  subject: disequilibrium:fluid-flow
+  predicate: drives
+  object: phenomenon:electrohydrodynamic-generation
+  conditions: ["a dielectric fluid carrying injected charge is driven by the flow against an electric field to a collector electrode"]
+  condition_tags: [flow-required, field-electric-required]
+  energy: { input: kinetic, output: electrical, dissipation: thermal }
+  evidence: [source:ehd-generator-1977, source:ehd-review-2025]
+  status: established
+  knowledge_level: K5
+- id: claim:ehd-produces
+  subject: phenomenon:electrohydrodynamic-generation
+  predicate: produces
+  object: carrier:charge-carriers
+  energy: { input: electrical, output: electrical }
+  evidence: [source:ehd-generator-1977]
+  status: established
+- id: claim:ehd-member
+  subject: phenomenon:electrohydrodynamic-generation
+  predicate: member_of
+  object: coupling:electrohydrodynamic
+  evidence: [source:ehd-review-2025]
+  status: established
+
+# --- Thermomagnetic convection ------------------------------------------------------------
+- id: claim:temperature-drives-ferrofluid-convection
+  subject: disequilibrium:temperature-gradient
+  predicate: drives
+  object: phenomenon:thermomagnetic-ferrofluid-convection
+  conditions: ["a ferrofluid whose magnetisation decreases with temperature, in a non-uniform magnetic field aligned with the temperature gradient"]
+  condition_tags: [state-liquid, field-magnetic-required, temp-gradient-required]
+  energy: { input: thermal, output: kinetic, dissipation: thermal }
+  evidence: [source:rosensweig-1985, source:suslov-2022-ferrofluid]
+  status: established
+  knowledge_level: K4
+- id: claim:ferrofluid-convection-produces-flow
+  subject: phenomenon:thermomagnetic-ferrofluid-convection
+  predicate: produces
+  object: carrier:fluid-flow
+  energy: { input: kinetic, output: kinetic }
+  evidence: [source:rosensweig-1985]
+  status: established
+- id: claim:ferrofluid-convection-member
+  subject: phenomenon:thermomagnetic-ferrofluid-convection
+  predicate: member_of
+  object: coupling:thermomagnetic
+  evidence: [source:suslov-2022-ferrofluid]
+  status: established
+
+# --- Shape memory ---------------------------------------------------------------------------
+- id: claim:temperature-drives-shape-memory
+  subject: disequilibrium:temperature-gradient
+  predicate: drives
+  object: phenomenon:thermally-driven-shape-memory-effect
+  conditions: ["a shape-memory alloy (NiTi) cycled between a hot reservoir above its austenite finish temperature and a cold one below its martensite finish temperature, under load"]
+  condition_tags: [state-solid, temp-gradient-required]
+  energy: { input: thermal, output: mechanical, dissipation: thermal }
+  evidence: [source:otsuka-wayman-1998, source:sma-heat-engine-2019]
+  status: established
+  knowledge_level: K6
+- id: claim:shape-memory-produces-motion
+  subject: phenomenon:thermally-driven-shape-memory-effect
+  predicate: produces
+  object: carrier:mechanical-motion
+  energy: { input: mechanical, output: mechanical }
+  evidence: [source:sma-heat-engine-2019]
+  status: established
+- id: claim:shape-memory-member
+  subject: phenomenon:thermally-driven-shape-memory-effect
+  predicate: member_of
+  object: coupling:caloric
+  evidence: [source:otsuka-wayman-1998]
+  status: established
+- id: claim:shape-memory-bounded-carnot
+  subject: phenomenon:thermally-driven-shape-memory-effect
+  predicate: bounded_by
+  object: constraint:carnot-limit
+  evidence: [source:sma-heat-engine-2019]
+  status: established
+- id: claim:shape-memory-observed-niti
+  subject: phenomenon:thermally-driven-shape-memory-effect
+  predicate: observed_in
+  object: material:nitinol
+  evidence: [source:otsuka-wayman-1998]
+  status: established
+
+# --- Thermochemical redox cycle ------------------------------------------------------------
+- id: claim:temperature-drives-thermochemical-cycle
+  subject: disequilibrium:temperature-gradient
+  predicate: drives
+  object: phenomenon:thermochemical-redox-cycle
+  conditions: ["a redox-active metal oxide (ceria, ferrites) reduced at 1400–1800 K, typically in a solar receiver, and re-oxidised by H₂O or CO₂ at 800–1200 K"]
+  condition_tags: [temp-high]
+  energy: { input: thermal, output: chemical, dissipation: thermal }
+  evidence: [source:steinfeld-2005-thermochemical, source:abanades-2022-thermochemical]
+  status: established
+  knowledge_level: K7
+- id: claim:thermochemical-cycle-produces-fuel
+  subject: phenomenon:thermochemical-redox-cycle
+  predicate: produces
+  object: carrier:chemical-fuel
+  energy: { input: chemical, output: chemical }
+  evidence: [source:abanades-2022-thermochemical]
+  status: established
+- id: claim:chemical-fuel-converts-output
+  subject: carrier:chemical-fuel
+  predicate: converts_into
+  object: output:chemical-fuel
+  energy: { input: chemical, output: chemical }
+  evidence: [source:steinfeld-2005-thermochemical]
+  status: established
+- id: claim:thermochemical-cycle-member
+  subject: phenomenon:thermochemical-redox-cycle
+  predicate: member_of
+  object: coupling:thermochemical
+  evidence: [source:abanades-2022-thermochemical]
+  status: established
+- id: claim:thermochemical-cycle-bounded-carnot
+  subject: phenomenon:thermochemical-redox-cycle
+  predicate: bounded_by
+  object: constraint:carnot-limit
+  conditions: ["solar-to-fuel efficiency is bounded by the Carnot factor between receiver and re-oxidation temperatures times the absorption efficiency of the receiver"]
+  evidence: [source:steinfeld-2005-thermochemical]
+  status: established
+
+# --- Alpha / beta split, radioluminescence ---------------------------------------------------
+- id: claim:decay-produces-alpha
+  subject: phenomenon:radioactive-decay
+  predicate: produces
+  object: carrier:alpha-particles
+  conditions: ["alpha emitters such as Pu-238, Am-241, Po-210"]
+  energy: { input: nuclear, output: nuclear }
+  evidence: [source:prelas-2014, source:spencer-alam-2019-alphavoltaic]
+  status: established
+- id: claim:alpha-drives-alphavoltaic
+  subject: carrier:alpha-particles
+  predicate: drives
+  object: phenomenon:alphavoltaic-effect
+  conditions: ["alpha particles stopped within tens of micrometres of a semiconductor junction; displacement damage degrades output far faster than for beta sources"]
+  condition_tags: [state-solid, medium-semiconductor, radioisotope-required]
+  energy: { input: nuclear, output: electronic-excitation, dissipation: thermal }
+  evidence: [source:spencer-alam-2019-alphavoltaic, source:prelas-2014]
+  status: established
+  knowledge_level: K5
+- id: claim:alphavoltaic-produces-pairs
+  subject: phenomenon:alphavoltaic-effect
+  predicate: produces
+  object: carrier:electron-hole-pairs
+  energy: { input: electronic-excitation, output: electronic-excitation }
+  evidence: [source:spencer-alam-2019-alphavoltaic]
+  status: established
+- id: claim:alphavoltaic-member
+  subject: phenomenon:alphavoltaic-effect
+  predicate: member_of
+  object: coupling:radiovoltaic
+  evidence: [source:prelas-2014]
+  status: established
+- id: claim:alpha-drives-heating
+  subject: carrier:alpha-particles
+  predicate: drives
+  object: phenomenon:radioisotope-heating
+  conditions: ["alpha particles stopped within the source pellet and its cladding (the RTG case)"]
+  condition_tags: [radioisotope-required]
+  energy: { input: nuclear, output: thermal }
+  evidence: [source:prelas-2014]
+  status: established
+  knowledge_level: K8
+- id: claim:beta-drives-radioluminescence
+  subject: carrier:beta-particles
+  predicate: drives
+  object: phenomenon:radioluminescence
+  conditions: ["a phosphor or scintillator (ZnS:Cu, plastic scintillator) excited by beta particles; tritium and Ni-63 sources are the usual choice for lifetime and shielding"]
+  condition_tags: [state-solid, radioisotope-required]
+  energy: { input: nuclear, output: radiative, dissipation: thermal }
+  evidence: [source:iwan-2021-radioluminescence, source:prelas-2014]
+  status: established
+  knowledge_level: K6
+- id: claim:alpha-drives-radioluminescence
+  subject: carrier:alpha-particles
+  predicate: drives
+  object: phenomenon:radioluminescence
+  condition_tags: [state-solid, radioisotope-required]
+  energy: { input: nuclear, output: radiative, dissipation: thermal }
+  evidence: [source:iwan-2021-radioluminescence, source:prelas-2014]
+  status: established
+- id: claim:radioluminescence-produces-photons
+  subject: phenomenon:radioluminescence
+  predicate: produces
+  object: carrier:photons
+  energy: { input: radiative, output: radiative }
+  evidence: [source:iwan-2021-radioluminescence]
+  status: established
+- id: claim:radioluminescence-converts-light
+  subject: phenomenon:radioluminescence
+  predicate: converts_into
+  object: output:light
+  conditions: ["self-powered exit signs, watch dials and gun sights (tritium light sources)"]
+  energy: { input: radiative, output: radiative }
+  evidence: [source:iwan-2021-radioluminescence]
+  status: established
+- id: claim:radioluminescence-member
+  subject: phenomenon:radioluminescence
+  predicate: member_of
+  object: coupling:radioluminescent
+  evidence: [source:iwan-2021-radioluminescence]
+  status: established

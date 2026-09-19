@@ -153,7 +153,7 @@
   energy_form: surface
   name: Surface energy difference
   symbol: Δγ
-  aliases: [wetting, contact electrification potential, interfacial tension gradient]
+  aliases: [wetting, contact electrification potential, interfacial tension gradient, surface-tension gradient, Marangoni stress]
   domain: surface-interface
   quantity: quantity:energy
   exergy: positive
@@ -232,3 +232,13 @@
   quantity: quantity:energy
   exergy: none
   summary: The ground state of the quantum fields. It has measurable consequences (the Casimir force) but, being the ground state, no free energy can be continuously extracted from it.
+- id: disequilibrium:acoustic-field
+  type: disequilibrium
+  name: Acoustic field
+  symbol: p′(t)
+  aliases: [sound, ultrasound, acoustic wave, pressure oscillation, noise]
+  domain: classical-mechanics
+  quantity: quantity:sound-pressure
+  energy_form: acoustic
+  exergy: positive
+  summary: An externally available sound or ultrasound field — an oscillating pressure and particle velocity in a medium. Its intensity can be intercepted by a diaphragm, a piezoelectric element or the carriers in a solid.

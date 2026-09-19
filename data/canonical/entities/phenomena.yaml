@@ -563,7 +563,7 @@
 - id: phenomenon:betavoltaic-effect
   type: phenomenon
   name: Betavoltaic effect
-  aliases: [electron-voltaic effect, alphavoltaic effect]
+  aliases: [electron-voltaic effect]
   domain: nuclear-physics
   year_first_reported: 1954
   condition_tags: [state-solid, medium-semiconductor, radioisotope-required]

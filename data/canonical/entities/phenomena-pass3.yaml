@@ -1,0 +1,121 @@
+# Phenomena added in loop-3 pass 3 (ontology-gap review). Appended file so the
+# matrix addresses of earlier entities do not move.
+- id: phenomenon:radiation-pressure
+  type: phenomenon
+  name: Radiation pressure
+  aliases: [photon momentum transfer, light pressure, solar sail thrust]
+  domain: optics-photonics
+  year_first_reported: 1901
+  condition_tags: []
+  summary: Electromagnetic radiation carries momentum; absorbing or reflecting it exerts a force on matter (2I/c for a perfect mirror at normal incidence), which can do mechanical work — the principle of the solar sail.
+- id: phenomenon:dufour-effect
+  type: phenomenon
+  name: Dufour effect
+  aliases: [diffusion thermoeffect]
+  domain: thermodynamics
+  year_first_reported: 1872
+  condition_tags: [state-liquid]
+  summary: A concentration gradient in a mixture drives a heat flux, the Onsager-reciprocal partner of the Soret effect. A chemical disequilibrium becomes a thermal one.
+- id: phenomenon:marangoni-effect
+  type: phenomenon
+  name: Marangoni effect
+  aliases: [surface-tension-driven flow, thermocapillary flow, solutocapillary flow]
+  domain: fluid-mechanics
+  year_first_reported: 1865
+  condition_tags: [state-liquid]
+  summary: A gradient of surface tension along a liquid interface exerts a tangential stress that drives bulk flow. Temperature or composition gradients along the surface are the usual causes.
+- id: phenomenon:acoustoelectric-effect
+  type: phenomenon
+  name: Acoustoelectric effect
+  aliases: [acoustoelectric current, phonon drag by a travelling wave]
+  domain: condensed-matter
+  year_first_reported: 1957
+  condition_tags: [state-solid, medium-semiconductor]
+  summary: A travelling acoustic wave transfers momentum to mobile charge carriers in a semiconductor or metal, producing a direct current or voltage along the direction of propagation.
+- id: phenomenon:photon-drag-effect
+  type: phenomenon
+  name: Photon drag effect
+  aliases: [optical drag current]
+  domain: optics-photonics
+  year_first_reported: 1970
+  condition_tags: [state-solid, illumination-required]
+  summary: Absorbed photon momentum is transferred to charge carriers and drives a directed current or EMF along the light's direction of travel. A momentum-transfer effect, distinct from the photovoltaic effect.
+- id: phenomenon:spin-nernst-effect
+  type: phenomenon
+  name: Spin Nernst effect
+  aliases: [thermal spin Hall effect]
+  domain: spin-systems
+  year_first_reported: 2017
+  condition_tags: [state-solid, medium-conductor, temp-gradient-required]
+  summary: A longitudinal temperature gradient in a spin–orbit-coupled conductor generates a transverse pure spin current, the thermal analogue of the spin Hall effect.
+- id: phenomenon:photo-dember-effect
+  type: phenomenon
+  name: Photo-Dember effect
+  aliases: [photodiffusion voltage, surface photocurrent]
+  domain: optics-photonics
+  year_first_reported: 1931
+  condition_tags: [state-solid, medium-semiconductor, illumination-required, transient-only]
+  summary: After photoexcitation near a surface, electrons and holes diffuse at different rates and separate, creating a transient dipole and current; the basis of many terahertz emitters.
+- id: phenomenon:thermo-osmosis
+  type: phenomenon
+  name: Thermo-osmosis
+  aliases: [thermal osmosis, thermo-osmotic flow]
+  domain: thermodynamics
+  year_first_reported: 1907
+  condition_tags: [medium-membrane, temp-gradient-required, state-liquid]
+  summary: A temperature difference across a membrane drives a net volume flow of solvent, distinct from the Soret effect, which separates species without net volume transport.
+- id: phenomenon:electrohydrodynamic-generation
+  type: phenomenon
+  name: Electrohydrodynamic generation
+  aliases: [EHD generator, electrogasdynamic generation, charged-fluid flow against a field]
+  domain: fluid-mechanics
+  year_first_reported: 1977
+  condition_tags: [flow-required, field-electric-required]
+  summary: Charge carried by a flowing dielectric fluid is transported against an electric field, converting the fluid's kinetic energy directly into electrical work at a collector.
+- id: phenomenon:ionic-thermoelectric-effect
+  type: phenomenon
+  name: Ionic thermoelectric effect
+  aliases: [ionic Seebeck effect, thermodiffusion of ions]
+  domain: electrochemistry
+  year_first_reported: 2011
+  condition_tags: [temp-gradient-required]
+  summary: A temperature gradient drives differential thermodiffusion of cations and anions in an electrolyte, building an ionic space charge and a thermovoltage of millivolts per kelvin without any electrode redox entropy.
+- id: phenomenon:thermomagnetic-ferrofluid-convection
+  type: phenomenon
+  name: Thermomagnetic convection
+  aliases: [ferrofluid convection, magnetocaloric pumping in ferrofluids]
+  domain: fluid-mechanics
+  year_first_reported: 1970
+  condition_tags: [state-liquid, field-magnetic-required, temp-gradient-required]
+  summary: In a magnetic fluid whose magnetisation falls with temperature, a magnetic field gradient pulls cooler, more strongly magnetised fluid toward the field, driving convection without gravity or pumps.
+- id: phenomenon:thermally-driven-shape-memory-effect
+  type: phenomenon
+  name: Thermal shape-memory effect
+  aliases: [shape-memory transformation, martensitic thermal actuation]
+  domain: condensed-matter
+  year_first_reported: 1951
+  condition_tags: [state-solid, temp-gradient-required]
+  summary: Heating a deformed shape-memory alloy through its martensite–austenite transformation recovers strain and exerts large stress; cycling between a hot and a cold reservoir gives cyclic mechanical motion.
+- id: phenomenon:thermochemical-redox-cycle
+  type: phenomenon
+  name: Thermochemical redox cycle
+  aliases: [solar thermochemical water splitting, two-step metal-oxide cycle]
+  domain: chemistry
+  year_first_reported: 1977
+  condition_tags: [temp-high]
+  summary: A metal oxide is reduced endothermically at high temperature and re-oxidised by water or carbon dioxide at a lower temperature, storing thermal exergy as hydrogen or carbon monoxide.
+- id: phenomenon:alphavoltaic-effect
+  type: phenomenon
+  name: Alphavoltaic effect
+  domain: nuclear-physics
+  year_first_reported: 1954
+  condition_tags: [state-solid, medium-semiconductor, radioisotope-required]
+  summary: Alpha particles stopped in a semiconductor junction create dense tracks of electron–hole pairs that the junction separates; short range and heavy lattice damage distinguish it from the betavoltaic effect.
+- id: phenomenon:radioluminescence
+  type: phenomenon
+  name: Radioluminescence
+  aliases: [scintillation, radiophotoluminescence, tritium light]
+  domain: nuclear-physics
+  year_first_reported: 1903
+  condition_tags: [state-solid, radioisotope-required]
+  summary: Ionising decay radiation excites a scintillator or phosphor, which emits visible or ultraviolet photons; those photons can drive a photovoltaic cell in a two-stage nuclear battery.

@@ -373,6 +373,7 @@
   subject: phenomenon:radioactive-decay
   predicate: produces
   object: carrier:beta-particles
+  conditions: ["beta emitters such as tritium, Ni-63, Pm-147, Sr-90"]
   energy: { input: nuclear, output: nuclear }
   evidence: [source:prelas-2014]
   status: established
@@ -381,12 +382,6 @@
   predicate: governed_by
   object: interaction:weak-nuclear
   conditions: [beta decay]
-  evidence: [source:prelas-2014]
-  status: established
-- id: claim:decay-member
-  subject: phenomenon:radioactive-decay
-  predicate: member_of
-  object: coupling:radiovoltaic
   evidence: [source:prelas-2014]
   status: established
 - id: claim:particles-drive-betavoltaic
@@ -428,7 +423,7 @@
   subject: carrier:beta-particles
   predicate: drives
   object: phenomenon:radioisotope-heating
-  conditions: [particles stopped within the source and its cladding]
+  conditions: ["beta particles stopped within the source and its cladding; in practice RTG heat comes from alpha emitters (see the alpha claim)"]
   condition_tags: [radioisotope-required]
   energy: { input: nuclear, output: thermal }
   evidence: [source:prelas-2014]

@@ -4,7 +4,7 @@ A live map of known and unexplored pathways for converting physical disequilibri
 
 The atlas does not list energy sources. It records evidence-backed claims about physics — a temperature gradient drives the Seebeck effect, under these conditions, according to these sources, with this status — and compiles them into every conversion route they compose. Each route is passed through seven physics checks and marked with what has actually been searched. The interesting part of the map is the empty squares: disequilibrium × coupling-family pairs where every constituent relation is established and nobody appears to have demonstrated the composition.
 
-The current build examines 459 routes from 22 disequilibria across 31 coupling families, built from 384 claims citing 100 sources (all 84 DOIs matched against Crossref). 62 routes are demonstrated; 319 are candidate compositions with no demonstration on record.
+The current build examines 459 routes from 22 disequilibria across 31 coupling families, built from 383 claims citing 124 sources (every DOI matched against Crossref). 62 routes are demonstrated, 56 are candidate compositions whose exact composition has not been assessed, and 263 more extend or truncate a recorded pathway.
 
 ## Layout
 

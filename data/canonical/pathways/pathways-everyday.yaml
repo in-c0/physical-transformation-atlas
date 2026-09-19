@@ -258,7 +258,7 @@
 
 - id: pathway:radioisotope-heater-unit
   name: Radioisotope heater unit
-  steps: [claim:binding-drives-decay, claim:decay-produces-particles, claim:particles-drive-heating, claim:heating-produces-gradient, claim:heat-conduction-drives, claim:heat-conduction-produces-heat-flow, claim:heat-flow-converts-useful-heat]
+  steps: [claim:binding-drives-decay, claim:decay-produces-alpha, claim:alpha-drives-heating, claim:heating-produces-gradient, claim:heat-conduction-drives, claim:heat-conduction-produces-heat-flow, claim:heat-flow-converts-useful-heat]
   evidence: [source:prelas-2014]
   status: commercial
   knowledge_level: K8

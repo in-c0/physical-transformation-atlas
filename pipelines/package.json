@@ -9,7 +9,8 @@
     "literature-search": "tsx src/literature-search.ts",
     "test": "node --import tsx --test test/*.test.ts",
     "verify-sources": "tsx src/verify-sources.ts",
-    "inspect": "tsx src/inspect.ts"
+    "inspect": "tsx src/inspect.ts",
+    "source-from-doi": "tsx src/source-from-doi.ts"
   },
   "dependencies": {
     "@pta/schema": "workspace:*",

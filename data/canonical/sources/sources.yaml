@@ -876,3 +876,185 @@
   year: 2009
   venue: Nature Materials 8, 83–85
   doi: 10.1038/nmat2361
+
+# --- Added in loop-3 pass 3 (ontology gaps) ---------------------------------
+- id: source:trowbridge-2025-radiation-pressure
+  type: review
+  title: "Radiation pressure revisited: historical context and the role of structured light"
+  authors: [A. C. Trowbridge, E. M. Wright, K. Dholakia]
+  year: 2025
+  venue: "Journal of Optics 27, 075402"
+  doi: 10.1088/2040-8986/ade8fb
+- id: source:rowley-horne-1978-dufour
+  type: paper
+  title: "The Dufour effect. II. Experimental confirmation of the Onsager heat–mass reciprocal relation for a binary liquid mixture"
+  authors: [R. L. Rowley, F. H. Horne]
+  year: 1978
+  venue: "The Journal of Chemical Physics 68, 325-326"
+  doi: 10.1063/1.435458
+- id: source:marangoni-review-2021
+  type: review
+  title: "Directional interfacial motion of liquids: Fundamentals, evaluations, and manipulation strategies"
+  authors: [Q. Dai, W. Huang, X. Wang, M. Khonsari]
+  year: 2021
+  venue: "Tribology International 154, 106749"
+  doi: 10.1016/j.triboint.2020.106749
+- id: source:weinreich-white-1957
+  type: paper
+  title: "Observation of the Acoustoelectric Effect"
+  authors: [G. Weinreich, H. G. White]
+  year: 1957
+  venue: "Physical Review 106, 1104-1106"
+  doi: 10.1103/PhysRev.106.1104
+- id: source:strait-2019-photon-drag
+  type: paper
+  title: "Revisiting the Photon-Drag Effect in Metal Films"
+  authors: [J. H. Strait, G. Holland, W. Zhu, C. Zhang, B. R. Ilic, A. Agrawal, D. Pacifici, H. J. Lezec]
+  year: 2019
+  venue: "Physical Review Letters 123, 053903"
+  doi: 10.1103/PhysRevLett.123.053903
+- id: source:bose-tulapurkar-2019-spin-nernst
+  type: review
+  title: "Recent advances in the spin Nernst effect"
+  authors: [A. Bose, A. A. Tulapurkar]
+  year: 2019
+  venue: "Journal of Magnetism and Magnetic Materials 491, 165526"
+  doi: 10.1016/j.jmmm.2019.165526
+- id: source:apostolopoulos-barnes-2014-dember
+  type: review
+  title: "THz emitters based on the photo-Dember effect"
+  authors: [V. Apostolopoulos, M. E. Barnes]
+  year: 2014
+  venue: "Journal of Physics D: Applied Physics 47, 374002"
+  doi: 10.1088/0022-3727/47/37/374002
+- id: source:barragan-kjelstrup-2017-thermo-osmosis
+  type: review
+  title: "Thermo-osmosis in Membrane Systems: A Review"
+  authors: [V. M. Barragán, S. Kjelstrup]
+  year: 2017
+  venue: "Journal of Non-Equilibrium Thermodynamics, 42"
+  doi: 10.1515/jnet-2016-0088
+- id: source:ehd-review-2025
+  type: review
+  title: "Interfacial electro-hydrodynamics inspired micro/nano-fluidic energy conversion: from mechanism to applications"
+  authors: [L. Hao, M. I. Khan, Y. Lei, S. Zhou, B. Fan]
+  year: 2025
+  venue: "Lab on a Chip 25, 4161-4220"
+  doi: 10.1039/D5LC00321K
+- id: source:ehd-generator-1977
+  type: paper
+  title: "Fundamental characteristics of liquid-filled electrohydrodynamic generator"
+  authors: [S. Fujimoto, T. Terado]
+  year: 1977
+  venue: "Journal of Electrostatics 2, 257-267"
+  doi: 10.1016/0304-3886(77)90058-4
+- id: source:zhao-wurger-crispin-2021-ionic-te
+  type: review
+  title: "Ionic thermoelectric materials and devices"
+  authors: [D. Zhao, A. Würger, X. Crispin]
+  year: 2021
+  venue: "Journal of Energy Chemistry 61, 88-103"
+  doi: 10.1016/j.jechem.2021.02.022
+- id: source:suslov-2022-ferrofluid
+  type: review
+  title: "Peculiarities of Convective Heat and Mass Transfer in Magnetic Nanofluids"
+  authors: [S. A. Suslov]
+  year: 2022
+  venue: "ASME Journal of Heat and Mass Transfer 145, 030801"
+  doi: 10.1115/1.4055343
+- id: source:sma-heat-engine-2019
+  type: paper
+  title: "Shape memory alloy engine for high efficiency low-temperature gradient thermal to electrical conversion"
+  authors: [P. Kumar, R. A. Kishore, D. Maurya, C. J. Stewart, R. Mirzaeifar, E. Quandt, S. Priya]
+  year: 2019
+  venue: "Applied Energy 251, 113277"
+  doi: 10.1016/j.apenergy.2019.05.080
+- id: source:abanades-2022-thermochemical
+  type: review
+  title: "Redox Cycles, Active Materials, and Reactors Applied to Water and Carbon Dioxide Splitting for Solar Thermochemical Fuel Production: A Review"
+  authors: [S. Abanades]
+  year: 2022
+  venue: "Energies 15, 7061"
+  doi: 10.3390/en15197061
+- id: source:spencer-alam-2019-alphavoltaic
+  type: review
+  title: "High power direct energy conversion by nuclear batteries"
+  authors: [M. G. Spencer, T. Alam]
+  year: 2019
+  venue: "Applied Physics Reviews 6, 031305"
+  doi: 10.1063/1.5123163
+- id: source:iwan-2021-radioluminescence
+  type: review
+  title: "Conversion of Radiophotoluminescence Irradiation into Electricity in Photovoltaic Cells. A Review of Theoretical Considerations and Practical Solutions"
+  authors: [A. Iwan, W. Pellowski, K. A. Bogdanowicz]
+  year: 2021
+  venue: "Energies 14, 6186"
+  doi: 10.3390/en14196186
+- id: source:scriven-sternling-1960
+  type: paper
+  title: "The Marangoni Effects"
+  authors: [L. E. Scriven, C. V. Sternling]
+  year: 1960
+  venue: "Nature 187, 186-188"
+  doi: 10.1038/187186a0
+- id: source:parmenter-1953
+  type: paper
+  title: "The Acousto-Electric Effect"
+  authors: [R. H. Parmenter]
+  year: 1953
+  venue: "Physical Review 89, 990-998"
+  doi: 10.1103/PhysRev.89.990
+- id: source:gibson-1970-photon-drag
+  type: paper
+  title: "Photon drag in germanium"
+  authors: [A. F. Gibson, M. F. Kimmitt, A. C. Walker]
+  year: 1970
+  venue: "Applied Physics Letters 17, 75-77"
+  doi: 10.1063/1.1653315
+- id: source:meyer-2017-spin-nernst
+  type: paper
+  title: "Observation of the spin Nernst effect"
+  authors: [S. Meyer, Y. T. Chen, S. Wimmer, M. Althammer, T. Wimmer, R. Schlitz, S. Geprägs, H. Huebl, et al.]
+  year: 2017
+  venue: "Nature Materials 16, 977-981"
+  doi: 10.1038/nmat4964
+- id: source:johnston-2002-dember
+  type: paper
+  title: "Simulation of terahertz generation at semiconductor surfaces"
+  authors: [M. B. Johnston, D. M. Whittaker, A. Corchia, A. G. Davies, E. H. Linfield]
+  year: 2002
+  venue: "Physical Review B 65, 165301"
+  doi: 10.1103/PhysRevB.65.165301
+- id: source:bonetti-2011-ionic-seebeck
+  type: paper
+  title: "Huge Seebeck coefficients in nonaqueous electrolytes"
+  authors: [M. Bonetti, S. Nakamae, M. Roger, P. Guenoun]
+  year: 2011
+  venue: "The Journal of Chemical Physics 134, 114513"
+  doi: 10.1063/1.3561735
+- id: source:steinfeld-2005-thermochemical
+  type: review
+  title: "Solar thermochemical production of hydrogen––a review"
+  authors: [A. Steinfeld]
+  year: 2005
+  venue: "Solar Energy 78, 603-615"
+  doi: 10.1016/j.solener.2003.12.012
+- id: source:nichols-hull-1901
+  type: paper
+  title: "A Preliminary Communication on the Pressure of Heat and Light Radiation"
+  authors: [E. F. Nichols, G. F. Hull]
+  year: 1901
+  venue: "Physical Review (Series I) 13, 307-320"
+  doi: 10.1103/PhysRevSeriesI.13.307
+- id: source:rosensweig-1985
+  type: book
+  title: "Ferrohydrodynamics"
+  authors: [R. E. Rosensweig]
+  year: 1985
+  venue: Cambridge University Press
+- id: source:otsuka-wayman-1998
+  type: book
+  title: "Shape Memory Materials"
+  authors: [K. Otsuka (ed.), C. M. Wayman (ed.)]
+  year: 1998
+  venue: Cambridge University Press

@@ -22,7 +22,8 @@ established · replicated · demonstrated · reported · theoretically-predicted
 | class | rule |
 |---|---|
 | `demonstrated` | search status demonstrated |
-| `candidate` | every constituent claim at least demonstrated, no check fails, source and sink differ in energy form |
+| `candidate` | every constituent claim at least demonstrated, no check fails, source and sink differ in energy form, and the route shares fewer than two relations with any recorded pathway |
+| `derived` | as candidate, but the route extends, truncates or re-orders a recorded pathway (≥ 2 shared relations); shown separately on the frontier |
 | `weak` | a constituent is theoretical or worse |
 | `forbidden` | a check fails (typed chain, energy continuity, conservation, bound, dimensional, or a within-step boundary conflict) |
 | `circular` | source and sink share an energy form |
@@ -45,4 +46,4 @@ established · replicated · demonstrated · reported · theoretically-predicted
 | K7 | engineering prototype |
 | K8 | commercial technology |
 
-A named pathway sets its own level. A composed route with no demonstration takes the lowest level of its claims, capped at K4.
+A named pathway sets its own level. A composed route with no demonstration has no level of its own: the site shows its *constituent evidence floor* (the lowest level among its claims) and, separately, its composition search state. Saying "K4 · experimentally observed" of an unassessed composition would be an overclaim.

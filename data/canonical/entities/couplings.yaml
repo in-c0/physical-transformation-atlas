@@ -36,7 +36,7 @@
   name: Thermomagnetic
   aliases: [thermomagnetic, pyromagnetic, Curie point generator]
   domain: condensed-matter
-  summary: Temperature-driven change of magnetisation moving flux through a coil or a magnet.
+  summary: Temperature-dependent magnetisation doing work — flux swept through a coil at a Curie-point transition, or a magnetic body force driving a ferrofluid.
 - id: coupling:thermophotovoltaic
   type: coupling
   name: Thermophotovoltaic
@@ -54,7 +54,7 @@
   name: Caloric (magneto/electro/elasto)
   aliases: [magnetocaloric, electrocaloric, elastocaloric, caloric effect]
   domain: condensed-matter
-  summary: Field- or stress-driven entropy change of a solid, used for heat pumping or its inverse.
+  summary: Reciprocal coupling of temperature with stress, strain or field at a solid-state transition — caloric heat pumping in one direction, shape-memory and thermomechanical work in the other.
 - id: coupling:piezoelectric
   type: coupling
   name: Piezoelectric
@@ -174,7 +174,7 @@
   name: Thermochemical
   aliases: [combustion, thermochemical cycle, reaction enthalpy]
   domain: chemistry
-  summary: Reaction enthalpy released as heat for a downstream thermal converter.
+  summary: Thermal ↔ chemical free-energy conversion — combustion releasing heat, or high-temperature redox cycles storing heat as fuel.
 - id: coupling:biological
   type: coupling
   name: Biological
@@ -187,3 +187,51 @@
   aliases: [Brownian ratchet, Maxwell demon, Casimir, fluctuation theorem]
   domain: quantum-transport
   summary: Work extracted by exploiting fluctuations or ground-state forces, always paid for elsewhere.
+- id: coupling:photon-momentum
+  type: coupling
+  name: Photon momentum
+  aliases: [radiation pressure, photon drag, optical momentum transfer]
+  domain: optics-photonics
+  summary: Momentum, not energy, of radiation transferred to matter or to charge carriers.
+- id: coupling:thermodiffusive
+  type: coupling
+  name: Thermodiffusive
+  aliases: [Soret effect, Dufour effect, thermodiffusion, ionic thermoelectric]
+  domain: thermodynamics
+  summary: Coupled heat and mass transport in mixtures and electrolytes — the Soret and Dufour cross-effects and ionic thermodiffusion.
+- id: coupling:marangoni
+  type: coupling
+  name: Marangoni
+  aliases: [surface-tension-driven flow, thermocapillary, solutocapillary]
+  domain: fluid-mechanics
+  summary: Interfacial tension gradients driving bulk flow.
+- id: coupling:acoustoelectric
+  type: coupling
+  name: Acoustoelectric
+  aliases: [acoustoelectric effect, acoustic charge transport]
+  domain: condensed-matter
+  summary: Acoustic-wave momentum transferred to mobile charge carriers.
+- id: coupling:photodiffusive
+  type: coupling
+  name: Photodiffusive
+  aliases: [photo-Dember effect, surface photocurrent]
+  domain: optics-photonics
+  summary: Charge separation from unequal diffusion of photoexcited carriers, without a junction.
+- id: coupling:thermo-osmotic
+  type: coupling
+  name: Thermo-osmotic
+  aliases: [thermo-osmosis, thermal osmosis]
+  domain: thermodynamics
+  summary: Volume flow through a membrane driven by a temperature difference.
+- id: coupling:electrohydrodynamic
+  type: coupling
+  name: Electrohydrodynamic
+  aliases: [EHD generator, electrogasdynamic, charged fluid flow]
+  domain: fluid-mechanics
+  summary: Charged fluid moving against an electric field, or a field driving fluid motion.
+- id: coupling:radioluminescent
+  type: coupling
+  name: Radioluminescent
+  aliases: [scintillation, radioluminescence, indirect nuclear battery]
+  domain: nuclear-physics
+  summary: Decay radiation converted to photons by a scintillator, for optical or photovoltaic use.

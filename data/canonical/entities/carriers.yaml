@@ -98,10 +98,10 @@
   summary: A working fluid at high temperature and pressure, the intermediate of every combustion or nuclear heat engine.
 - id: carrier:beta-particles
   type: carrier
-  name: Energetic decay particles
-  aliases: [beta particles, alpha particles, fission fragments]
+  name: Beta particles
+  aliases: [energetic electrons from beta decay]
   energy_form: nuclear
-  summary: Charged particles emitted by decay or fission carrying MeV-scale kinetic energy.
+  summary: Electrons (or positrons) emitted by beta decay with keV–MeV kinetic energy; ranges of millimetres in solids.
 - id: carrier:water-vapour
   type: carrier
   name: Water vapour
@@ -131,3 +131,14 @@
   aliases: [biomass, sugars]
   energy_form: chemical
   summary: Chemical energy stored in carbohydrate bonds by photosynthesis.
+- id: carrier:alpha-particles
+  type: carrier
+  name: Alpha particles
+  energy_form: nuclear
+  summary: Helium nuclei emitted by alpha decay with a few MeV each; stopped within tens of micrometres in a solid.
+- id: carrier:chemical-fuel
+  type: carrier
+  name: Chemical fuel (H₂, CO, syngas)
+  aliases: [hydrogen, carbon monoxide, syngas, stored chemical free energy]
+  energy_form: chemical
+  summary: Reduced chemical products carrying free energy for later oxidation.
