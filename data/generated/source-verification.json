@@ -428,5 +428,110 @@
     "verified": true,
     "checked_at": "2026-09-19T12:31:28.897Z",
     "crossref_title": "High-performance flat-panel solar thermoelectric generators with high thermal concentration"
+  },
+  "source:frisch-1939-fission": {
+    "verified": true,
+    "checked_at": "2026-09-19T12:49:47.986Z",
+    "crossref_title": "Physical Evidence for the Division of Heavy Nuclei under Neutron Bombardment"
+  },
+  "source:lawson-1957": {
+    "verified": true,
+    "checked_at": "2026-09-19T12:49:48.886Z",
+    "crossref_title": "Some Criteria for a Power Producing Thermonuclear Reactor"
+  },
+  "source:nif-2024": {
+    "verified": true,
+    "checked_at": "2026-09-19T12:49:49.244Z",
+    "crossref_title": "Achievement of Target Gain Larger than Unity in an Inertial Fusion Experiment"
+  },
+  "source:fridkin-1984-bpv": {
+    "verified": true,
+    "checked_at": "2026-09-19T12:49:49.848Z",
+    "crossref_title": "Review of recent work on the bulk photovoltaic effect in ferro and piezoelectrics"
+  },
+  "source:zhai-2017-radiative": {
+    "verified": true,
+    "checked_at": "2026-09-19T12:49:50.206Z",
+    "crossref_title": "Scalable-manufactured randomized glass-polymer hybrid metamaterial for daytime radiative cooling"
+  },
+  "source:kou-2017-radiative": {
+    "verified": true,
+    "checked_at": "2026-09-19T12:49:50.563Z",
+    "crossref_title": "Daytime Radiative Cooling Using Near-Black Infrared Emitters"
+  },
+  "source:weiler-2013": {
+    "verified": true,
+    "checked_at": "2026-09-19T12:49:50.917Z",
+    "crossref_title": "Experimental Test of the Spin Mixing Interface Conductivity Concept"
+  },
+  "source:tserkovnyak-2005-review": {
+    "verified": true,
+    "checked_at": "2026-09-19T12:49:51.278Z",
+    "crossref_title": "Nonlocal magnetization dynamics in ferromagnetic heterostructures"
+  },
+  "source:mosendz-2010": {
+    "verified": true,
+    "checked_at": "2026-09-19T12:49:51.646Z",
+    "crossref_title": "Quantifying Spin Hall Angles from Spin Pumping: Experiments and Theory"
+  },
+  "source:qasem-2024-fuel-cells": {
+    "verified": true,
+    "checked_at": "2026-09-19T12:49:52.018Z",
+    "crossref_title": "A Recent Comprehensive Review of Fuel Cells: History, Types, and Applications"
+  },
+  "source:gratzel-2001": {
+    "verified": true,
+    "checked_at": "2026-09-19T12:56:00.361Z",
+    "crossref_title": "Photoelectrochemical cells"
+  },
+  "source:moya-2014": {
+    "verified": true,
+    "checked_at": "2026-09-19T12:56:01.386Z",
+    "crossref_title": "Caloric materials near ferroic phase transitions"
+  },
+  "source:gschneidner-2005": {
+    "verified": true,
+    "checked_at": "2026-09-19T12:56:01.760Z",
+    "crossref_title": "Recent developments in magnetocaloric materials"
+  },
+  "source:lacks-shinbrot-2019": {
+    "verified": true,
+    "checked_at": "2026-09-19T12:56:02.118Z",
+    "crossref_title": "Long-standing and unresolved issues in triboelectric charging"
+  },
+  "source:wu-2019-teng": {
+    "verified": true,
+    "checked_at": "2026-09-19T12:56:02.496Z",
+    "crossref_title": "Triboelectric Nanogenerator: A Foundation of the Energy for the New Era"
+  },
+  "source:bordag-2001": {
+    "verified": true,
+    "checked_at": "2026-09-19T12:56:02.854Z",
+    "crossref_title": "New developments in the Casimir effect"
+  },
+  "source:parrondo-2015": {
+    "verified": true,
+    "checked_at": "2026-09-19T12:56:03.230Z",
+    "crossref_title": "Thermodynamics of information"
+  },
+  "source:falnes-2002": {
+    "verified": true,
+    "checked_at": "2026-09-19T12:56:03.588Z",
+    "crossref_title": "Ocean Waves and Oscillating Systems"
+  },
+  "source:nicholls-ferguson-2013": {
+    "verified": true,
+    "checked_at": "2026-09-19T12:56:03.946Z",
+    "crossref_title": "Bioenergetics"
+  },
+  "source:hunter-1981": {
+    "verified": true,
+    "checked_at": "2026-09-19T12:56:04.322Z",
+    "crossref_title": "Zeta Potential in Colloid Science"
+  },
+  "source:vining-2009": {
+    "verified": true,
+    "checked_at": "2026-09-19T12:56:04.682Z",
+    "crossref_title": "An inconvenient truth about thermoelectrics"
   }
 }

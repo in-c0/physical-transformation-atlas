@@ -259,6 +259,13 @@
   unit: Bq
   dimension: { T: -1 }
   summary: Decays per second.
+- id: quantity:activity-ratio
+  type: quantity
+  name: Activity ratio
+  symbol: a₁/a₂
+  unit: "1"
+  dimension: {}
+  summary: Ratio of the activities (effective concentrations) of a species in two half-cells; the dimensionless argument of the Nernst logarithm.
 - id: quantity:sound-pressure
   type: quantity
   name: Acoustic pressure

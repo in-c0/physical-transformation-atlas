@@ -43,8 +43,8 @@
   status: demonstrated
   knowledge_level: K7
   performance:
-    power_density: "≈ 40 W/m² net cooling under direct sunlight, 4.9 °C below ambient (Raman 2014); ~100 W/m² at night"
-    theoretical_limit: "net radiative flux through the atmospheric window, ≲ 100–150 W/m²"
+    power_density: "40.1 W/m² net cooling at ambient surface temperature under > 850 W/m² direct sunlight; 4.9 °C sub-ambient equilibrium temperature (Raman 2014)"
+    theoretical_limit: "site- and atmosphere-dependent; of order 100–150 W/m² near ambient under favourable clear, dry conditions — not a universal constant"
   environment: []
   summary: A photonic multilayer reflects sunlight and emits in the 8–13 µm window, cooling below ambient at noon.
 

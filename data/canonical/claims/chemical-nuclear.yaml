@@ -49,7 +49,7 @@
   conditions: [continuous supply of fuel and oxidant to catalysed electrodes separated by a proton- or oxide-conducting electrolyte]
   condition_tags: [medium-membrane]
   energy: { input: chemical, output: electrical, dissipation: thermal }
-  evidence: [source:grove-1839, source:bard-faulkner-2001]
+  evidence: [source:grove-1839, source:bard-faulkner-2001, source:qasem-2024-fuel-cells]
   status: established
   knowledge_level: K8
 - id: claim:fuel-cell-produces-ions
@@ -63,7 +63,7 @@
   subject: phenomenon:fuel-cell-reaction
   predicate: member_of
   object: coupling:electrochemical
-  evidence: [source:grove-1839]
+  evidence: [source:grove-1839, source:qasem-2024-fuel-cells]
   status: established
 - id: claim:fuel-cell-bounded-nernst
   subject: phenomenon:fuel-cell-reaction
@@ -76,19 +76,13 @@
   subject: phenomenon:fuel-cell-reaction
   predicate: implemented_by
   object: transducer:fuel-cell
-  evidence: [source:grove-1839]
+  evidence: [source:grove-1839, source:qasem-2024-fuel-cells]
   status: established
 - id: claim:fuel-cell-observed-pt
   subject: phenomenon:fuel-cell-reaction
   predicate: observed_in
   object: material:platinum
-  evidence: [source:grove-1839]
-  status: established
-- id: claim:fuel-cell-requires-membrane
-  subject: phenomenon:fuel-cell-reaction
-  predicate: requires
-  object: material:ion-exchange-membrane
-  evidence: [source:bard-faulkner-2001]
+  evidence: [source:grove-1839, source:qasem-2024-fuel-cells]
   status: established
 - id: claim:combustion-drives
   subject: disequilibrium:chemical-potential-difference
@@ -133,7 +127,7 @@
   object: phenomenon:thermal-emission
   conditions: [a flame or a heated emitter radiating]
   energy: { input: thermal, output: radiative }
-  evidence: [source:lapotin-2022]
+  evidence: [source:lapotin-2022, source:bejan-2016]
   status: established
 
 # --- Concentration, salinity, osmotic ----------------------------------------------------
@@ -146,10 +140,11 @@
   energy: { input: chemical, output: electrical, dissipation: thermal }
   relation:
     formula: "E = (RT/zF) · ln(a₁/a₂)"
-    input: quantity:temperature
+    input: quantity:activity-ratio
     output: quantity:electric-potential
-    coefficient_unit: V/K
-    coefficient_name: (R/zF)·ln(a₁/a₂), with the log ratio dimensionless
+    coefficient_unit: V
+    coefficient_name: RT/(zF), multiplying the dimensionless logarithm of the activity ratio (25.7 mV/z at 25 °C)
+    conventions: "Temperature is a parameter of the coefficient, not the driving quantity; the cell is driven by the activity (concentration) ratio between the two half-cells."
   evidence: [source:bard-faulkner-2001]
   status: established
   knowledge_level: K4
@@ -187,7 +182,7 @@
   predicate: produces
   object: carrier:ionic-current
   energy: { input: electrical, output: electrical, dissipation: thermal }
-  evidence: [source:post-2007]
+  evidence: [source:post-2007, source:logan-elimelech-2012]
   status: established
 - id: claim:red-member
   subject: phenomenon:reverse-electrodialysis
@@ -211,7 +206,7 @@
   subject: phenomenon:reverse-electrodialysis
   predicate: requires
   object: material:ion-exchange-membrane
-  evidence: [source:post-2007]
+  evidence: [source:post-2007, source:logan-elimelech-2012]
   status: established
 - id: claim:salinity-drives-pro
   subject: disequilibrium:salinity-gradient
@@ -229,7 +224,7 @@
   object: phenomenon:pressure-retarded-osmosis
   condition_tags: [env-aqueous, medium-membrane]
   energy: { input: osmotic, output: mechanical, dissipation: thermal }
-  evidence: [source:loeb-1975]
+  evidence: [source:loeb-1975, source:logan-elimelech-2012]
   status: established
   knowledge_level: K7
 - id: claim:pro-produces-pressure
@@ -237,7 +232,7 @@
   predicate: produces
   object: carrier:hydraulic-pressure
   energy: { input: mechanical, output: mechanical }
-  evidence: [source:loeb-1975]
+  evidence: [source:loeb-1975, source:logan-elimelech-2012]
   status: established
 - id: claim:pro-member
   subject: phenomenon:pressure-retarded-osmosis
@@ -265,21 +260,22 @@
   condition_tags: [env-aqueous, state-liquid]
   energy: { input: chemical, output: electrical, dissipation: thermal }
   evidence: [source:brogioli-2009]
-  status: replicated
+  status: demonstrated
   knowledge_level: K5
+  notes: "One primary experiment on record in this atlas; later replications exist in the literature but are not yet recorded here."
 - id: claim:capmix-produces
   subject: phenomenon:capacitive-mixing
   predicate: produces
   object: carrier:ionic-current
   energy: { input: electrical, output: electrical }
   evidence: [source:brogioli-2009]
-  status: replicated
+  status: demonstrated
 - id: claim:capmix-member
   subject: phenomenon:capacitive-mixing
   predicate: member_of
   object: coupling:osmotic
   evidence: [source:brogioli-2009]
-  status: established
+  status: demonstrated
 - id: claim:capmix-implemented
   subject: phenomenon:capacitive-mixing
   predicate: implemented_by
@@ -299,13 +295,13 @@
   predicate: produces
   object: disequilibrium:osmotic-pressure-difference
   energy: { input: osmotic, output: osmotic }
-  evidence: [source:loeb-1975]
+  evidence: [source:loeb-1975, source:bard-faulkner-2001]
   status: established
 - id: claim:osmosis-member
   subject: phenomenon:osmosis
   predicate: member_of
   object: coupling:osmotic
-  evidence: [source:loeb-1975]
+  evidence: [source:loeb-1975, source:logan-elimelech-2012]
   status: established
 - id: claim:concentration-drives-diffusion
   subject: disequilibrium:concentration-gradient
@@ -343,13 +339,13 @@
   predicate: member_of
   object: coupling:electrochemical
   evidence: [source:cole-1983-amtec]
-  status: established
+  status: demonstrated
 - id: claim:amtec-bounded-carnot
   subject: phenomenon:alkali-metal-thermal-electric-conversion
   predicate: bounded_by
   object: constraint:carnot-limit
   evidence: [source:cole-1983-amtec]
-  status: established
+  status: demonstrated
 - id: claim:amtec-implemented
   subject: phenomenon:alkali-metal-thermal-electric-conversion
   predicate: implemented_by
@@ -361,7 +357,7 @@
   predicate: requires
   object: material:beta-alumina
   evidence: [source:cole-1983-amtec]
-  status: established
+  status: demonstrated
 
 # --- Nuclear ------------------------------------------------------------------------------
 - id: claim:binding-drives-decay
@@ -408,7 +404,7 @@
   predicate: produces
   object: carrier:electron-hole-pairs
   energy: { input: electronic-excitation, output: electronic-excitation }
-  evidence: [source:rappaport-1954]
+  evidence: [source:rappaport-1954, source:prelas-2014]
   status: established
 - id: claim:betavoltaic-member
   subject: phenomenon:betavoltaic-effect
@@ -426,7 +422,7 @@
   subject: phenomenon:betavoltaic-effect
   predicate: observed_in
   object: material:silicon
-  evidence: [source:rappaport-1954]
+  evidence: [source:rappaport-1954, source:prelas-2014]
   status: established
 - id: claim:particles-drive-heating
   subject: carrier:beta-particles
@@ -461,32 +457,35 @@
   subject: disequilibrium:nuclear-binding-difference
   predicate: drives
   object: phenomenon:nuclear-fission
-  conditions: ["a fissile isotope, a moderator or fast spectrum, and a critical geometry"]
-  condition_tags: [temp-high]
-  energy: { input: nuclear, output: thermal, dissipation: radiative }
-  evidence: [source:hahn-strassmann-1939]
+  conditions:
+    - "for neutron-induced fission: a fissionable nuclide and an incident neutron in an energy range with non-zero fission cross-section"
+    - "critical geometry is required only for a self-sustaining chain reaction; a moderator is reactor-design dependent"
+  energy: { input: nuclear, output: kinetic, dissipation: radiative }
+  evidence: [source:hahn-strassmann-1939, source:frisch-1939-fission]
   status: established
   knowledge_level: K8
+  notes: "About 200 MeV per event, almost all as fragment kinetic energy (Frisch 1939); thermalisation is a separate step."
 - id: claim:fission-produces-gradient
   subject: phenomenon:nuclear-fission
   predicate: produces
   object: disequilibrium:temperature-gradient
-  energy: { input: thermal, output: thermal }
-  evidence: [source:hahn-strassmann-1939]
+  conditions: ["fragment and neutron kinetic energy thermalised in the fuel; the fuel runs hotter than the coolant"]
+  energy: { input: kinetic, output: thermal, dissipation: radiative }
+  evidence: [source:frisch-1939-fission, source:bejan-2016]
   status: established
 - id: claim:fission-produces-hot-gas
   subject: phenomenon:nuclear-fission
   predicate: produces
   object: carrier:hot-gas
-  conditions: [steam raised in a boiling- or pressurised-water reactor]
-  energy: { input: thermal, output: thermal }
+  conditions: ["fission-fragment and neutron kinetic energy is thermalised in the fuel and coolant; in a BWR this raises steam directly, in a PWR heat passes to a secondary steam circuit"]
+  energy: { input: kinetic, output: thermal, dissipation: radiative }
   evidence: [source:bejan-2016]
   status: established
 - id: claim:fission-governed-strong
   subject: phenomenon:nuclear-fission
   predicate: governed_by
   object: interaction:strong-nuclear
-  evidence: [source:hahn-strassmann-1939]
+  evidence: [source:hahn-strassmann-1939, source:frisch-1939-fission]
   status: established
 - id: claim:fission-member
   subject: phenomenon:nuclear-fission
@@ -505,31 +504,32 @@
   subject: disequilibrium:nuclear-binding-difference
   predicate: drives
   object: phenomenon:nuclear-fusion
-  conditions: [ion temperatures above ~10 keV and sufficient density-confinement product]
+  conditions: ["for a power-producing D–T thermonuclear plasma: ion temperatures of order 10 keV and a sufficient density–confinement product (Lawson); these are power-balance conditions, not prerequisites for an individual fusion reaction"]
   condition_tags: [state-plasma, temp-high]
-  energy: { input: nuclear, output: thermal, dissipation: radiative }
-  evidence: [source:bethe-1939]
+  energy: { input: nuclear, output: kinetic, dissipation: radiative }
+  evidence: [source:bethe-1939, source:lawson-1957, source:nif-2024]
   status: demonstrated
   knowledge_level: K5
-  notes: Established as physics and as an energy release; net electrical output from a fusion plant has not been demonstrated.
+  notes: "Fusion reactions and target-level fusion energy release are experimentally demonstrated (target gain > 1 at NIF, 2022–2024); net electrical output from a fusion power plant is not."
 - id: claim:fusion-produces-gradient
   subject: phenomenon:nuclear-fusion
   predicate: produces
   object: disequilibrium:temperature-gradient
-  energy: { input: thermal, output: thermal }
-  evidence: [source:bethe-1939]
+  conditions: ["energetic products (neutrons, alphas) deposit their kinetic energy in a blanket or the plasma, which then runs hotter than its surroundings"]
+  energy: { input: kinetic, output: thermal, dissipation: radiative }
+  evidence: [source:lawson-1957, source:nif-2024]
   status: demonstrated
 - id: claim:fusion-governed-strong
   subject: phenomenon:nuclear-fusion
   predicate: governed_by
   object: interaction:strong-nuclear
-  evidence: [source:bethe-1939]
+  evidence: [source:bethe-1939, source:lawson-1957]
   status: established
 - id: claim:fusion-member
   subject: phenomenon:nuclear-fusion
   predicate: member_of
   object: coupling:nuclear-thermal
-  evidence: [source:bethe-1939]
+  evidence: [source:bethe-1939, source:lawson-1957]
   status: established
 - id: claim:hydrostatic-governed-gravity
   subject: phenomenon:hydrostatic-descent
@@ -541,7 +541,7 @@
   subject: phenomenon:photovoltaic-effect
   predicate: governed_by
   object: interaction:electromagnetic
-  evidence: [source:shockley-queisser-1961]
+  evidence: [source:shockley-queisser-1961, source:kittel-2005]
   status: established
 - id: claim:galvanic-governed-em
   subject: phenomenon:galvanic-reaction

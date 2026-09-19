@@ -131,20 +131,20 @@
   conditions: [a phonon heat current in a semiconductor at low temperature]
   condition_tags: [state-solid, medium-semiconductor, temp-cryogenic]
   energy: { input: phonon, output: electrical, dissipation: thermal }
-  evidence: [source:herring-1954]
+  evidence: [source:herring-1954, source:goldsmid-2016]
   status: established
 - id: claim:phonon-drag-produces
   subject: phenomenon:phonon-drag
   predicate: produces
   object: carrier:charge-carriers
   energy: { input: electrical, output: electrical }
-  evidence: [source:herring-1954]
+  evidence: [source:herring-1954, source:goldsmid-2016]
   status: established
 - id: claim:phonon-drag-member
   subject: phenomenon:phonon-drag
   predicate: member_of
   object: coupling:thermoelectric
-  evidence: [source:herring-1954]
+  evidence: [source:herring-1954, source:goldsmid-2016]
   status: established
 - id: claim:heat-conduction-drives
   subject: disequilibrium:temperature-gradient
@@ -297,7 +297,7 @@
   predicate: drives
   object: phenomenon:pyroelectric-effect
   conditions:
-    - the temperature of the polar crystal must change in time; a static gradient produces no current
+    - "the temperature of the polar material must change in time (dT/dt ≠ 0); a static spatial temperature gradient alone produces no pyroelectric current"
     - the material must be below its Curie temperature
   condition_tags: [state-solid, medium-ferroelectric, transient-only]
   energy: { input: thermal, output: electrical, dissipation: thermal }
@@ -307,10 +307,11 @@
     output: quantity:polarisation
     coefficient_unit: C/(m^2 K)
     coefficient_name: pyroelectric coefficient p
+    conventions: "ΔT is the material's temperature change between two times, not a spatial temperature difference."
   evidence: [source:lang-2005, source:whatmore-1986, source:bowen-2014-pyro]
   status: established
   knowledge_level: K6
-  notes: The driver is a temperature change rather than a gradient; the atlas records it under the temperature-gradient row because a fluctuating gradient is the practical source.
+  notes: "Indexed under the temperature-gradient row for atlas routing (a fluctuating gradient is the practical source). This is an atlas indexing compromise, not a statement that ∇T is the physical driver."
 - id: claim:pyro-produces-charge
   subject: phenomenon:pyroelectric-effect
   predicate: produces
@@ -433,12 +434,12 @@
   predicate: member_of
   object: coupling:thermogalvanic
   evidence: [source:lee-2014-trec]
-  status: established
+  status: demonstrated
 - id: claim:trec-bounded-carnot
   subject: phenomenon:thermally-regenerative-electrochemical-cycle
   predicate: bounded_by
   object: constraint:carnot-limit
-  evidence: [source:lee-2014-trec]
+  evidence: [source:lee-2014-trec, source:bejan-2016]
   status: established
 
 # --- Soret --------------------------------------------------------------------
@@ -489,13 +490,13 @@
   predicate: produces
   object: carrier:charge-carriers
   energy: { input: electrical, output: electrical }
-  evidence: [source:callen-1948]
+  evidence: [source:callen-1948, source:goldsmid-2016]
   status: established
 - id: claim:nernst-member
   subject: phenomenon:nernst-effect
   predicate: member_of
   object: coupling:thermoelectric
-  evidence: [source:callen-1948]
+  evidence: [source:callen-1948, source:goldsmid-2016]
   status: established
 - id: claim:anomalous-nernst-drives
   subject: disequilibrium:temperature-gradient
@@ -512,7 +513,7 @@
   predicate: produces
   object: carrier:charge-carriers
   energy: { input: electrical, output: electrical }
-  evidence: [source:sakai-2018]
+  evidence: [source:sakai-2018, source:bauer-2012]
   status: replicated
 - id: claim:anomalous-nernst-member
   subject: phenomenon:anomalous-nernst-effect
@@ -534,13 +535,13 @@
   predicate: produces
   object: disequilibrium:temperature-gradient
   energy: { input: thermal, output: thermal }
-  evidence: [source:callen-1948]
+  evidence: [source:callen-1948, source:goldsmid-2016]
   status: established
 - id: claim:ettingshausen-member
   subject: phenomenon:ettingshausen-effect
   predicate: member_of
   object: coupling:thermoelectric
-  evidence: [source:callen-1948]
+  evidence: [source:callen-1948, source:goldsmid-2016]
   status: established
 
 # --- Thermomagnetic and caloric -------------------------------------------------
@@ -580,7 +581,7 @@
   predicate: observed_in
   object: material:gadolinium
   evidence: [source:waske-2019]
-  status: established
+  status: demonstrated
 - id: claim:thermomagnetic-bounded-carnot
   subject: phenomenon:thermomagnetic-transition
   predicate: bounded_by
@@ -610,7 +611,7 @@
   conditions: [adiabatic magnetisation or demagnetisation of a material near its ordering temperature]
   condition_tags: [state-solid, medium-ferromagnet, field-magnetic-required]
   energy: { input: magnetic, output: thermal }
-  evidence: [source:pecharsky-gschneidner-1997]
+  evidence: [source:pecharsky-gschneidner-1997, source:gschneidner-2005, source:moya-2014]
   status: established
   knowledge_level: K7
 - id: claim:magnetocaloric-produces
@@ -618,7 +619,7 @@
   predicate: produces
   object: disequilibrium:temperature-gradient
   energy: { input: thermal, output: thermal }
-  evidence: [source:pecharsky-gschneidner-1997]
+  evidence: [source:pecharsky-gschneidner-1997, source:gschneidner-2005]
   status: established
 - id: claim:magnetocaloric-converts-cooling
   subject: phenomenon:magnetocaloric-effect
@@ -632,7 +633,7 @@
   subject: phenomenon:magnetocaloric-effect
   predicate: member_of
   object: coupling:caloric
-  evidence: [source:pecharsky-gschneidner-1997]
+  evidence: [source:pecharsky-gschneidner-1997, source:moya-2014]
   status: established
 - id: claim:magnetocaloric-implemented
   subject: phenomenon:magnetocaloric-effect
@@ -644,7 +645,7 @@
   subject: phenomenon:magnetocaloric-effect
   predicate: observed_in
   object: material:gadolinium
-  evidence: [source:pecharsky-gschneidner-1997]
+  evidence: [source:pecharsky-gschneidner-1997, source:gschneidner-2005]
   status: established
 - id: claim:electrocaloric-drives
   subject: disequilibrium:electric-potential-difference
@@ -653,7 +654,7 @@
   conditions: [a large field applied to a thin polar dielectric near its transition]
   condition_tags: [state-solid, medium-ferroelectric, field-electric-required]
   energy: { input: electrical, output: thermal }
-  evidence: [source:mischenko-2006]
+  evidence: [source:mischenko-2006, source:moya-2014]
   status: replicated
   knowledge_level: K4
 - id: claim:electrocaloric-produces
@@ -661,13 +662,13 @@
   predicate: produces
   object: disequilibrium:temperature-gradient
   energy: { input: thermal, output: thermal }
-  evidence: [source:mischenko-2006]
+  evidence: [source:mischenko-2006, source:moya-2014]
   status: replicated
 - id: claim:electrocaloric-member
   subject: phenomenon:electrocaloric-effect
   predicate: member_of
   object: coupling:caloric
-  evidence: [source:mischenko-2006]
+  evidence: [source:mischenko-2006, source:moya-2014]
   status: established
 - id: claim:elastocaloric-drives
   subject: disequilibrium:mechanical-stress
@@ -676,7 +677,7 @@
   conditions: [stress large enough to drive the martensitic transformation of a shape-memory alloy]
   condition_tags: [state-solid]
   energy: { input: mechanical, output: thermal }
-  evidence: [source:tusek-2016]
+  evidence: [source:tusek-2016, source:moya-2014]
   status: replicated
   knowledge_level: K6
 - id: claim:elastocaloric-produces
@@ -684,7 +685,7 @@
   predicate: produces
   object: disequilibrium:temperature-gradient
   energy: { input: thermal, output: thermal }
-  evidence: [source:tusek-2016]
+  evidence: [source:tusek-2016, source:moya-2014]
   status: replicated
 - id: claim:elastocaloric-converts-cooling
   subject: phenomenon:elastocaloric-effect
@@ -697,7 +698,7 @@
   subject: phenomenon:elastocaloric-effect
   predicate: member_of
   object: coupling:caloric
-  evidence: [source:tusek-2016]
+  evidence: [source:tusek-2016, source:moya-2014]
   status: established
 - id: claim:elastocaloric-implemented
   subject: phenomenon:elastocaloric-effect
@@ -709,7 +710,7 @@
   subject: phenomenon:elastocaloric-effect
   predicate: observed_in
   object: material:nitinol
-  evidence: [source:tusek-2016]
+  evidence: [source:tusek-2016, source:moya-2014]
   status: established
 
 # --- Heat engines -----------------------------------------------------------------
@@ -756,7 +757,7 @@
   subject: phenomenon:working-fluid-expansion
   predicate: bounded_by
   object: constraint:curzon-ahlborn-limit
-  evidence: [source:curzon-ahlborn-1975]
+  evidence: [source:curzon-ahlborn-1975, source:bejan-2016]
   status: established
 - id: claim:expansion-implemented-rankine
   subject: phenomenon:working-fluid-expansion
@@ -792,13 +793,13 @@
   predicate: produces
   object: carrier:charge-carriers
   energy: { input: electrical, output: electrical, dissipation: thermal }
-  evidence: [source:faraday-1832]
+  evidence: [source:faraday-1832, source:landau-lifshitz-ecm]
   status: established
 - id: claim:generator-member
   subject: phenomenon:generator-action
   predicate: member_of
   object: coupling:electromagnetic-induction
-  evidence: [source:faraday-1832]
+  evidence: [source:faraday-1832, source:landau-lifshitz-ecm]
   status: established
 - id: claim:charge-carriers-convert-electricity
   subject: carrier:charge-carriers
@@ -854,13 +855,13 @@
   predicate: produces
   object: carrier:photons
   energy: { input: radiative, output: radiative }
-  evidence: [source:landsberg-tonge-1980]
+  evidence: [source:landsberg-tonge-1980, source:bejan-2016]
   status: established
 - id: claim:thermal-emission-member-tpv
   subject: phenomenon:thermal-emission
   predicate: member_of
   object: coupling:thermophotovoltaic
-  evidence: [source:lapotin-2022]
+  evidence: [source:lapotin-2022, source:landsberg-tonge-1980]
   status: established
 - id: claim:thermal-emission-converts-light
   subject: phenomenon:thermal-emission
@@ -868,7 +869,7 @@
   object: output:light
   conditions: [incandescence at > 2000 K]
   energy: { input: radiative, output: radiative, dissipation: radiative }
-  evidence: [source:landsberg-tonge-1980]
+  evidence: [source:landsberg-tonge-1980, source:bejan-2016]
   status: established
 - id: claim:sky-drives-radiative-cooling
   subject: disequilibrium:radiative-sky-imbalance
@@ -878,7 +879,7 @@
     - an emitter with high emissivity in the 8–13 µm window and high solar reflectance
     - a clear sky; humidity and cloud close the window
   energy: { input: radiative, output: thermal }
-  evidence: [source:raman-2014]
+  evidence: [source:raman-2014, source:zhai-2017-radiative, source:kou-2017-radiative]
   status: replicated
   knowledge_level: K7
 - id: claim:radiative-cooling-produces-gradient
@@ -887,26 +888,26 @@
   object: disequilibrium:temperature-gradient
   conditions: [the cooled surface sits a few kelvin below ambient air]
   energy: { input: thermal, output: thermal }
-  evidence: [source:raman-2014, source:raman-2019-night]
+  evidence: [source:raman-2014, source:raman-2019-night, source:kou-2017-radiative]
   status: replicated
 - id: claim:radiative-cooling-converts-cooling
   subject: phenomenon:radiative-cooling
   predicate: converts_into
   object: output:cooling
   energy: { input: thermal, output: thermal }
-  evidence: [source:raman-2014]
+  evidence: [source:raman-2014, source:zhai-2017-radiative, source:kou-2017-radiative]
   status: replicated
 - id: claim:radiative-cooling-member
   subject: phenomenon:radiative-cooling
   predicate: member_of
   object: coupling:photothermal
-  evidence: [source:raman-2014]
+  evidence: [source:raman-2014, source:zhai-2017-radiative]
   status: established
 - id: claim:radiative-cooling-bounded
   subject: phenomenon:radiative-cooling
   predicate: bounded_by
   object: constraint:radiative-cooling-power-bound
-  evidence: [source:raman-2014]
+  evidence: [source:raman-2014, source:zhai-2017-radiative]
   status: established
 - id: claim:radiative-cooling-implemented-teg
   subject: phenomenon:radiative-cooling
@@ -936,7 +937,7 @@
   subject: phenomenon:thermoradiative-effect
   predicate: member_of
   object: coupling:photovoltaic
-  evidence: [source:strandberg-2015]
+  evidence: [source:strandberg-2015, source:landsberg-tonge-1980]
   status: established
 
 # --- Thermal expansion ----------------------------------------------------------------
@@ -977,7 +978,7 @@
   predicate: bounded_by
   object: constraint:second-law
   conditions: [the vacuum is the ground state; there is no lower state to relax into]
-  evidence: [source:lamoreaux-1997]
+  evidence: [source:lamoreaux-1997, source:bordag-2001]
   status: established
 - id: claim:vacuum-drives-casimir
   subject: disequilibrium:quantum-vacuum-fluctuations
@@ -985,7 +986,7 @@
   object: phenomenon:casimir-effect
   conditions: [two conducting plates closer than a micrometre; force measured to 5%]
   condition_tags: [env-vacuum]
-  evidence: [source:lamoreaux-1997]
+  evidence: [source:lamoreaux-1997, source:bordag-2001]
   status: established
   knowledge_level: K4
   notes: The attraction is real and measured. It does one-off work while the plates approach; separating them again costs at least as much. No energy ledger is recorded because no continuous conversion exists.
@@ -993,13 +994,13 @@
   subject: phenomenon:casimir-effect
   predicate: member_of
   object: coupling:fluctuation-driven
-  evidence: [source:lamoreaux-1997]
+  evidence: [source:lamoreaux-1997, source:bordag-2001]
   status: established
 - id: claim:casimir-bounded-second-law
   subject: phenomenon:casimir-effect
   predicate: bounded_by
   object: constraint:second-law
-  evidence: [source:lamoreaux-1997]
+  evidence: [source:lamoreaux-1997, source:bordag-2001]
   status: established
 - id: claim:uniform-thermal-drives-info
   subject: disequilibrium:uniform-thermal-energy
@@ -1016,11 +1017,11 @@
   subject: phenomenon:information-to-work-conversion
   predicate: member_of
   object: coupling:fluctuation-driven
-  evidence: [source:toyabe-2010]
+  evidence: [source:toyabe-2010, source:parrondo-2015]
   status: established
 - id: claim:info-conversion-bounded
   subject: phenomenon:information-to-work-conversion
   predicate: bounded_by
   object: constraint:second-law
-  evidence: [source:toyabe-2010]
+  evidence: [source:toyabe-2010, source:parrondo-2015]
   status: established

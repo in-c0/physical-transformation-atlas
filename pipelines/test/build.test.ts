@@ -83,3 +83,16 @@ test("composition evidence is never borrowed from constituent claims", () => {
     assert.equal(p.composition_source_ids.length, 0, `${p.id} has composition sources without a recorded pathway`);
   }
 });
+
+test("evidence-model rule: replicated needs two groups; established needs two groups or a review/book", () => {
+  const src = new Map(canon.sources.map((s) => [s.id, s]));
+  const firstAuthor = (id: string) => (src.get(id)?.authors[0] ?? id).split(",")[0].trim().toLowerCase();
+  const problems: string[] = [];
+  for (const c of canon.claims) {
+    const groups = new Set(c.evidence.map(firstAuthor));
+    const reviewOrBook = c.evidence.some((e) => ["review", "book"].includes(src.get(e)?.type ?? ""));
+    if (c.status === "replicated" && groups.size < 2) problems.push(`${c.id}: replicated with ${groups.size} group`);
+    if (c.status === "established" && groups.size < 2 && !reviewOrBook) problems.push(`${c.id}: established on one primary source`);
+  }
+  assert.deepEqual(problems, []);
+});

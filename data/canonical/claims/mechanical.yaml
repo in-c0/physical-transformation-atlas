@@ -42,7 +42,7 @@
   subject: phenomenon:piezoelectric-effect
   predicate: observed_in
   object: material:quartz
-  evidence: [source:curie-1880]
+  evidence: [source:curie-1880, source:nye-1985]
   status: established
 - id: claim:piezo-observed-pzt
   subject: phenomenon:piezoelectric-effect
@@ -60,7 +60,7 @@
   subject: phenomenon:piezoelectric-effect
   predicate: observed_in
   object: material:zinc-oxide
-  evidence: [source:wang-song-2006]
+  evidence: [source:wang-song-2006, source:erturk-inman-2011]
   status: established
 - id: claim:piezo-implemented
   subject: phenomenon:piezoelectric-effect
@@ -140,7 +140,7 @@
     - dry conditions; humidity bleeds the charge
   condition_tags: [state-solid, medium-dielectric]
   energy: { input: surface, output: electrical, dissipation: thermal }
-  evidence: [source:fan-tian-wang-2012]
+  evidence: [source:fan-tian-wang-2012, source:lacks-shinbrot-2019, source:wu-2019-teng]
   status: established
   knowledge_level: K6
 - id: claim:vibration-drives-tribo
@@ -150,7 +150,7 @@
   conditions: [vibration or motion that repeatedly contacts and separates two dissimilar surfaces]
   condition_tags: [state-solid, medium-dielectric]
   energy: { input: mechanical, output: electrical, dissipation: thermal }
-  evidence: [source:fan-tian-wang-2012]
+  evidence: [source:fan-tian-wang-2012, source:wu-2019-teng]
   status: established
   knowledge_level: K6
 - id: claim:tribo-produces-charge
@@ -158,13 +158,13 @@
   predicate: produces
   object: carrier:surface-charge
   energy: { input: electrical, output: electrical }
-  evidence: [source:fan-tian-wang-2012]
+  evidence: [source:fan-tian-wang-2012, source:lacks-shinbrot-2019]
   status: established
 - id: claim:tribo-member
   subject: phenomenon:triboelectric-effect
   predicate: member_of
   object: coupling:triboelectric
-  evidence: [source:fan-tian-wang-2012]
+  evidence: [source:fan-tian-wang-2012, source:wu-2019-teng]
   status: established
 - id: claim:tribo-implemented
   subject: phenomenon:triboelectric-effect
@@ -176,7 +176,7 @@
   subject: phenomenon:triboelectric-effect
   predicate: observed_in
   object: material:ptfe
-  evidence: [source:fan-tian-wang-2012]
+  evidence: [source:fan-tian-wang-2012, source:lacks-shinbrot-2019]
   status: established
 - id: claim:droplet-drives
   subject: disequilibrium:surface-energy-difference
@@ -203,14 +203,14 @@
   predicate: produces
   object: carrier:surface-charge
   energy: { input: electrical, output: electrical }
-  evidence: [source:xu-2020-droplet]
+  evidence: [source:xu-2020-droplet, source:yin-2014-graphene-flow]
   status: replicated
 - id: claim:droplet-member
   subject: phenomenon:droplet-charge-transfer
   predicate: member_of
   object: coupling:triboelectric
   evidence: [source:xu-2020-droplet]
-  status: established
+  status: demonstrated
 - id: claim:droplet-implemented
   subject: phenomenon:droplet-charge-transfer
   predicate: implemented_by
@@ -226,7 +226,7 @@
   conditions: [a pre-charged or electret-biased variable capacitor whose plates the vibration moves]
   condition_tags: [state-solid, field-electric-required]
   energy: { input: mechanical, output: electrical, dissipation: thermal }
-  evidence: [source:roundy-2003]
+  evidence: [source:roundy-2003, source:radousky-liang-2012]
   status: established
   knowledge_level: K6
 - id: claim:electrostatic-produces
@@ -234,13 +234,13 @@
   predicate: produces
   object: carrier:charge-carriers
   energy: { input: electrical, output: electrical }
-  evidence: [source:roundy-2003]
+  evidence: [source:roundy-2003, source:radousky-liang-2012]
   status: established
 - id: claim:electrostatic-member
   subject: phenomenon:electrostatic-induction
   predicate: member_of
   object: coupling:electrostatic
-  evidence: [source:roundy-2003]
+  evidence: [source:roundy-2003, source:radousky-liang-2012]
   status: established
 - id: claim:electrostatic-implemented
   subject: phenomenon:electrostatic-induction
@@ -270,7 +270,7 @@
   predicate: member_of
   object: coupling:electrostatic
   evidence: [source:krupenkin-taylor-2011]
-  status: established
+  status: demonstrated
 
 # --- Vibration → stress → piezo / magnetoelastic --------------------------------------
 - id: claim:vibration-drives-resonance
@@ -297,7 +297,7 @@
   predicate: produces
   object: carrier:mechanical-motion
   energy: { input: mechanical, output: mechanical }
-  evidence: [source:beeby-2007]
+  evidence: [source:beeby-2007, source:erturk-inman-2011]
   status: established
 - id: claim:motion-drives-induction
   subject: carrier:mechanical-motion
@@ -314,19 +314,19 @@
   predicate: produces
   object: carrier:charge-carriers
   energy: { input: electrical, output: electrical, dissipation: thermal }
-  evidence: [source:faraday-1832]
+  evidence: [source:faraday-1832, source:landau-lifshitz-ecm]
   status: established
 - id: claim:induction-member
   subject: phenomenon:electromagnetic-induction
   predicate: member_of
   object: coupling:electromagnetic-induction
-  evidence: [source:faraday-1832]
+  evidence: [source:faraday-1832, source:landau-lifshitz-ecm]
   status: established
 - id: claim:induction-implemented-vibration
   subject: phenomenon:electromagnetic-induction
   predicate: implemented_by
   object: transducer:electromagnetic-vibration-harvester
-  evidence: [source:beeby-2007]
+  evidence: [source:beeby-2007, source:radousky-liang-2012]
   status: established
 - id: claim:flux-change-drives-induction
   subject: disequilibrium:magnetic-field-change
@@ -335,7 +335,7 @@
   conditions: ["any time-varying flux through a loop, from motion or from an AC source"]
   condition_tags: [medium-conductor, transient-only]
   energy: { input: magnetic, output: electrical, dissipation: thermal }
-  evidence: [source:faraday-1832]
+  evidence: [source:faraday-1832, source:landau-lifshitz-ecm]
   status: established
   knowledge_level: K8
 - id: claim:villari-drives
@@ -353,13 +353,13 @@
   predicate: produces
   object: carrier:magnetic-flux
   energy: { input: magnetic, output: magnetic }
-  evidence: [source:wang-yuan-2008]
+  evidence: [source:wang-yuan-2008, source:landau-lifshitz-ecm]
   status: established
 - id: claim:villari-member
   subject: phenomenon:villari-effect
   predicate: member_of
   object: coupling:magnetostrictive
-  evidence: [source:wang-yuan-2008]
+  evidence: [source:wang-yuan-2008, source:landau-lifshitz-ecm]
   status: established
 - id: claim:villari-implemented
   subject: phenomenon:villari-effect
@@ -380,20 +380,20 @@
   object: phenomenon:joule-magnetostriction
   condition_tags: [state-solid, medium-ferromagnet, field-magnetic-required]
   energy: { input: magnetic, output: mechanical, dissipation: thermal }
-  evidence: [source:joule-1847]
+  evidence: [source:joule-1847, source:landau-lifshitz-ecm]
   status: established
 - id: claim:joule-ms-produces-stress
   subject: phenomenon:joule-magnetostriction
   predicate: produces
   object: carrier:elastic-stress
   energy: { input: mechanical, output: mechanical }
-  evidence: [source:joule-1847]
+  evidence: [source:joule-1847, source:landau-lifshitz-ecm]
   status: established
 - id: claim:joule-ms-member
   subject: phenomenon:joule-magnetostriction
   predicate: member_of
   object: coupling:magnetostrictive
-  evidence: [source:joule-1847]
+  evidence: [source:joule-1847, source:landau-lifshitz-ecm]
   status: established
 - id: claim:magnetoelectric-drives
   subject: disequilibrium:magnetic-field-change
@@ -448,7 +448,7 @@
   object: phenomenon:villari-effect
   condition_tags: [state-solid, medium-ferromagnet]
   energy: { input: mechanical, output: magnetic, dissipation: thermal }
-  evidence: [source:wang-yuan-2008]
+  evidence: [source:wang-yuan-2008, source:landau-lifshitz-ecm]
   status: established
 - id: claim:stress-drives-elastic
   subject: disequilibrium:mechanical-stress
@@ -501,7 +501,7 @@
   predicate: bounded_by
   object: constraint:betz-limit
   conditions: [open rotor without a duct]
-  evidence: [source:betz-1920]
+  evidence: [source:betz-1920, source:dixon-hall-2014]
   status: established
 - id: claim:lift-implemented-wind
   subject: phenomenon:aerodynamic-lift
@@ -625,7 +625,7 @@
   conditions: [wind fetch over open water]
   condition_tags: [state-liquid]
   energy: { input: kinetic, output: mechanical, dissipation: thermal }
-  evidence: [source:salter-1974]
+  evidence: [source:salter-1974, source:falnes-2002]
   status: established
   knowledge_level: K7
 - id: claim:wave-produces-motion
@@ -641,13 +641,13 @@
   predicate: produces
   object: disequilibrium:pressure-gradient
   energy: { input: mechanical, output: mechanical }
-  evidence: [source:salter-1974]
+  evidence: [source:salter-1974, source:falnes-2002]
   status: established
 - id: claim:wave-member
   subject: phenomenon:ocean-wave-motion
   predicate: member_of
   object: coupling:turbomachinery
-  evidence: [source:salter-1974]
+  evidence: [source:salter-1974, source:falnes-2002]
   status: established
 - id: claim:wave-implemented
   subject: phenomenon:ocean-wave-motion
@@ -664,7 +664,7 @@
   conditions: [electrolyte forced through a channel with charged walls; efficiency peaks when the Debye length is comparable to the channel width]
   condition_tags: [env-aqueous, flow-required]
   energy: { input: mechanical, output: electrical, dissipation: thermal }
-  evidence: [source:yang-2003-electrokinetic]
+  evidence: [source:yang-2003-electrokinetic, source:hunter-1981]
   status: established
   knowledge_level: K4
 - id: claim:streaming-produces-ions
@@ -672,13 +672,13 @@
   predicate: produces
   object: carrier:ionic-current
   energy: { input: electrical, output: electrical }
-  evidence: [source:yang-2003-electrokinetic]
+  evidence: [source:yang-2003-electrokinetic, source:hunter-1981]
   status: established
 - id: claim:streaming-member
   subject: phenomenon:streaming-potential
   predicate: member_of
   object: coupling:electrokinetic
-  evidence: [source:yang-2003-electrokinetic]
+  evidence: [source:yang-2003-electrokinetic, source:hunter-1981]
   status: established
 - id: claim:streaming-implemented
   subject: phenomenon:streaming-potential
@@ -700,7 +700,7 @@
   conditions: [flow past a charged surface]
   condition_tags: [env-aqueous, flow-required]
   energy: { input: kinetic, output: electrical, dissipation: thermal }
-  evidence: [source:yin-2014-graphene-flow]
+  evidence: [source:yin-2014-graphene-flow, source:yang-2003-electrokinetic]
   status: replicated
   knowledge_level: K4
 - id: claim:capillary-drives-hydrovoltaic
@@ -711,7 +711,7 @@
   condition_tags: [env-aqueous, humidity-required]
   energy: { input: mechanical, output: electrical, dissipation: thermal }
   evidence: [source:xue-2017-hydrovoltaic]
-  status: replicated
+  status: demonstrated
   knowledge_level: K4
 - id: claim:humidity-drives-evaporation
   subject: disequilibrium:humidity-gradient
@@ -719,7 +719,7 @@
   object: phenomenon:evaporation
   condition_tags: [state-liquid, humidity-required]
   energy: { input: chemical, output: chemical, dissipation: thermal }
-  evidence: [source:chen-2015-evaporation]
+  evidence: [source:chen-2015-evaporation, source:bejan-2016]
   status: established
   knowledge_level: K4
 - id: claim:evaporation-produces-capillary
@@ -729,7 +729,7 @@
   conditions: [evaporation from a porous surface sustains capillary flow behind it]
   energy: { input: chemical, output: mechanical }
   evidence: [source:xue-2017-hydrovoltaic]
-  status: established
+  status: demonstrated
 - id: claim:evaporation-produces-motion
   subject: phenomenon:evaporation
   predicate: produces
@@ -743,20 +743,20 @@
   predicate: member_of
   object: coupling:electrokinetic
   evidence: [source:xue-2017-hydrovoltaic]
-  status: established
+  status: demonstrated
 - id: claim:hydrovoltaic-produces-ions
   subject: phenomenon:hydrovoltaic-effect
   predicate: produces
   object: carrier:ionic-current
   energy: { input: electrical, output: electrical }
   evidence: [source:xue-2017-hydrovoltaic]
-  status: replicated
+  status: demonstrated
 - id: claim:hydrovoltaic-member
   subject: phenomenon:hydrovoltaic-effect
   predicate: member_of
   object: coupling:electrokinetic
   evidence: [source:xue-2017-hydrovoltaic]
-  status: established
+  status: demonstrated
 - id: claim:hydrovoltaic-implemented
   subject: phenomenon:hydrovoltaic-effect
   predicate: implemented_by
@@ -768,7 +768,7 @@
   predicate: observed_in
   object: material:carbon-black-film
   evidence: [source:xue-2017-hydrovoltaic]
-  status: replicated
+  status: demonstrated
 
 # --- MHD --------------------------------------------------------------------------------
 - id: claim:flow-drives-mhd
@@ -778,7 +778,7 @@
   conditions: [an electrically conducting fluid — seeded combustion plasma or liquid metal — crossing a strong magnetic field between electrodes]
   condition_tags: [flow-required, field-magnetic-required]
   energy: { input: kinetic, output: electrical, dissipation: thermal }
-  evidence: [source:rosa-1961-mhd]
+  evidence: [source:rosa-1961-mhd, source:landau-lifshitz-ecm]
   status: established
   knowledge_level: K7
 - id: claim:hot-gas-drives-mhd
@@ -796,13 +796,13 @@
   predicate: produces
   object: carrier:charge-carriers
   energy: { input: electrical, output: electrical }
-  evidence: [source:rosa-1961-mhd]
+  evidence: [source:rosa-1961-mhd, source:landau-lifshitz-ecm]
   status: established
 - id: claim:mhd-member
   subject: phenomenon:magnetohydrodynamic-effect
   predicate: member_of
   object: coupling:magnetohydrodynamic
-  evidence: [source:rosa-1961-mhd]
+  evidence: [source:rosa-1961-mhd, source:landau-lifshitz-ecm]
   status: established
 - id: claim:mhd-implemented
   subject: phenomenon:magnetohydrodynamic-effect
@@ -815,5 +815,5 @@
   predicate: bounded_by
   object: constraint:carnot-limit
   conditions: [when the flow is produced by a thermal expansion]
-  evidence: [source:rosa-1961-mhd]
+  evidence: [source:rosa-1961-mhd, source:bejan-2016]
   status: established

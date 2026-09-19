@@ -719,3 +719,160 @@
   year: 2011
   venue: Nature Materials 10, 532–538
   doi: 10.1038/nmat3013
+
+# --- Added in loop-3 pass 2 (data audit) -----------------------------------
+- id: source:frisch-1939-fission
+  type: paper
+  title: "Physical evidence for the division of heavy nuclei under neutron bombardment"
+  authors: [O. R. Frisch]
+  year: 1939
+  venue: Nature 143, 276
+  doi: 10.1038/143276a0
+- id: source:lawson-1957
+  type: paper
+  title: "Some criteria for a power producing thermonuclear reactor"
+  authors: [J. D. Lawson]
+  year: 1957
+  venue: Proceedings of the Physical Society B 70, 6–10
+  doi: 10.1088/0370-1301/70/1/303
+- id: source:nif-2024
+  type: paper
+  title: "Achievement of target gain larger than unity in an inertial fusion experiment"
+  authors: [H. Abu-Shawareb, et al. (Indirect Drive ICF Collaboration)]
+  year: 2024
+  venue: Physical Review Letters 132, 065102
+  doi: 10.1103/PhysRevLett.132.065102
+- id: source:fridkin-1984-bpv
+  type: review
+  title: "Review of recent work on the bulk photovoltaic effect in ferro and piezoelectrics"
+  authors: [V. M. Fridkin]
+  year: 1984
+  venue: Ferroelectrics 53, 169–187
+  doi: 10.1080/00150198408245047
+- id: source:zhai-2017-radiative
+  type: paper
+  title: "Scalable-manufactured randomized glass-polymer hybrid metamaterial for daytime radiative cooling"
+  authors: [Y. Zhai, Y. Ma, S. N. David, D. Zhao, R. Lou, G. Tan, R. Yang, X. Yin]
+  year: 2017
+  venue: Science 355, 1062–1066
+  doi: 10.1126/science.aai7899
+- id: source:kou-2017-radiative
+  type: paper
+  title: "Daytime radiative cooling using near-black infrared emitters"
+  authors: [J.-l. Kou, Z. Jurado, Z. Chen, S. Fan, A. J. Minnich]
+  year: 2017
+  venue: ACS Photonics 4, 626–630
+  doi: 10.1021/acsphotonics.6b00991
+- id: source:weiler-2013
+  type: paper
+  title: "Experimental test of the spin mixing interface conductivity concept"
+  authors: [M. Weiler, M. Althammer, M. Schreier, J. Lotze, M. Pernpeintner, S. Meyer, H. Huebl, R. Gross, A. Kamra, J. Xiao, Y.-T. Chen, H. Jiao, G. E. W. Bauer, S. T. B. Goennenwein]
+  year: 2013
+  venue: Physical Review Letters 111, 176601
+  doi: 10.1103/PhysRevLett.111.176601
+- id: source:tserkovnyak-2005-review
+  type: review
+  title: "Nonlocal magnetization dynamics in ferromagnetic heterostructures"
+  authors: [Y. Tserkovnyak, A. Brataas, G. E. W. Bauer, B. I. Halperin]
+  year: 2005
+  venue: Reviews of Modern Physics 77, 1375
+  doi: 10.1103/RevModPhys.77.1375
+- id: source:mosendz-2010
+  type: paper
+  title: "Quantifying spin Hall angles from spin pumping: Experiments and theory"
+  authors: [O. Mosendz, J. E. Pearson, F. Y. Fradin, G. E. W. Bauer, S. D. Bader, A. Hoffmann]
+  year: 2010
+  venue: Physical Review Letters 104, 046601
+  doi: 10.1103/PhysRevLett.104.046601
+- id: source:qasem-2024-fuel-cells
+  type: review
+  title: "A recent comprehensive review of fuel cells: history, types, and applications"
+  authors: [N. A. A. Qasem, G. A. Q. Abdulrahman]
+  year: 2024
+  venue: International Journal of Energy Research 2024, 7271748
+  doi: 10.1155/2024/7271748
+
+# --- Added in loop-3 pass 2 (evidence-strengthening sweep) --------------------
+- id: source:gratzel-2001
+  type: review
+  title: "Photoelectrochemical cells"
+  authors: [M. Grätzel]
+  year: 2001
+  venue: Nature 414, 338–344
+  doi: 10.1038/35104607
+- id: source:moya-2014
+  type: review
+  title: "Caloric materials near ferroic phase transitions"
+  authors: [X. Moya, S. Kar-Narayan, N. D. Mathur]
+  year: 2014
+  venue: Nature Materials 13, 439–450
+  doi: 10.1038/nmat3951
+- id: source:gschneidner-2005
+  type: review
+  title: "Recent developments in magnetocaloric materials"
+  authors: [K. A. Gschneidner Jr, V. K. Pecharsky, A. O. Tsokol]
+  year: 2005
+  venue: Reports on Progress in Physics 68, 1479–1539
+  doi: 10.1088/0034-4885/68/6/R04
+- id: source:lacks-shinbrot-2019
+  type: review
+  title: "Long-standing and unresolved issues in triboelectric charging"
+  authors: [D. J. Lacks, T. Shinbrot]
+  year: 2019
+  venue: Nature Reviews Chemistry 3, 465–476
+  doi: 10.1038/s41570-019-0115-1
+- id: source:wu-2019-teng
+  type: review
+  title: "Triboelectric nanogenerator: a foundation of the energy for the new era"
+  authors: [C. Wu, A. C. Wang, W. Ding, H. Guo, Z. L. Wang]
+  year: 2019
+  venue: Advanced Energy Materials 9, 1802906
+  doi: 10.1002/aenm.201802906
+- id: source:bordag-2001
+  type: review
+  title: "New developments in the Casimir effect"
+  authors: [M. Bordag, U. Mohideen, V. M. Mostepanenko]
+  year: 2001
+  venue: Physics Reports 353, 1–205
+  doi: 10.1016/S0370-1573(01)00015-1
+- id: source:parrondo-2015
+  type: review
+  title: "Thermodynamics of information"
+  authors: [J. M. R. Parrondo, J. M. Horowitz, T. Sagawa]
+  year: 2015
+  venue: Nature Physics 11, 131–139
+  doi: 10.1038/nphys3230
+- id: source:falnes-2002
+  type: book
+  title: "Ocean Waves and Oscillating Systems: Linear Interactions Including Wave-Energy Extraction"
+  authors: [J. Falnes]
+  year: 2002
+  venue: Cambridge University Press
+  doi: 10.1017/CBO9780511754630
+- id: source:blankenship-2014-book
+  type: book
+  title: "Molecular Mechanisms of Photosynthesis (2nd ed.)"
+  authors: [R. E. Blankenship]
+  year: 2014
+  venue: Wiley-Blackwell
+- id: source:nicholls-ferguson-2013
+  type: book
+  title: "Bioenergetics (4th ed.)"
+  authors: [D. G. Nicholls, S. J. Ferguson]
+  year: 2013
+  venue: Academic Press
+  doi: 10.1016/C2010-0-64902-9
+- id: source:hunter-1981
+  type: book
+  title: "Zeta Potential in Colloid Science: Principles and Applications"
+  authors: [R. J. Hunter]
+  year: 1981
+  venue: Academic Press
+  doi: 10.1016/C2013-0-07389-6
+- id: source:vining-2009
+  type: review
+  title: "An inconvenient truth about thermoelectrics"
+  authors: [C. B. Vining]
+  year: 2009
+  venue: Nature Materials 8, 83–85
+  doi: 10.1038/nmat2361

@@ -9,3 +9,4 @@ ground rules (design system, language rule, reply format).
 | pass | focus | verdict | applied |
 |---|---|---|---|
 | 1 | use the instrument as a physicist (browse) | PIVOT | four-state composition language; evidence split composition/constituent; recorded-pathway overlap + derived class; constituent floor; TEG measurements; Seebeck copy + conventions; scope copy; search provenance; route-state block — fb4b1fb |
+| 2 | data audit of claims, ledgers, sources, figures | PIVOT | 15 audit changes (fuel-cell membrane deleted; Nernst relation input; fission/fusion ledgers + Frisch/Lawson/NIF; pyro dT/dt; BPV established; capmix demonstrated; radiative-cooling + spin sources; rectenna 90.6%; cooler figures) + repo-wide evidence sweep: 121 citations appended, 14 statuses downgraded, rule now a test |

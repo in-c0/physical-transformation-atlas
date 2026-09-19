@@ -24,7 +24,7 @@
   predicate: produces
   object: carrier:electron-hole-pairs
   energy: { input: electronic-excitation, output: electronic-excitation, dissipation: thermal }
-  evidence: [source:shockley-queisser-1961]
+  evidence: [source:shockley-queisser-1961, source:kittel-2005, source:green-2024-tables]
   status: established
 - id: claim:pairs-convert-electricity
   subject: carrier:electron-hole-pairs
@@ -33,26 +33,26 @@
   conditions: [the junction field separates the pair and the carriers reach the contacts before recombining]
   condition_tags: [state-solid, medium-semiconductor]
   energy: { input: electronic-excitation, output: electrical, dissipation: thermal }
-  evidence: [source:shockley-queisser-1961]
+  evidence: [source:shockley-queisser-1961, source:kittel-2005]
   status: established
 - id: claim:pv-member
   subject: phenomenon:photovoltaic-effect
   predicate: member_of
   object: coupling:photovoltaic
-  evidence: [source:shockley-queisser-1961]
+  evidence: [source:shockley-queisser-1961, source:green-2024-tables]
   status: established
 - id: claim:pv-bounded-sq
   subject: phenomenon:photovoltaic-effect
   predicate: bounded_by
   object: constraint:shockley-queisser-limit
   conditions: ["single junction, unconcentrated sunlight"]
-  evidence: [source:shockley-queisser-1961]
+  evidence: [source:shockley-queisser-1961, source:green-2024-tables]
   status: established
 - id: claim:pv-bounded-landsberg
   subject: phenomenon:photovoltaic-effect
   predicate: bounded_by
   object: constraint:landsberg-limit
-  evidence: [source:landsberg-tonge-1980]
+  evidence: [source:landsberg-tonge-1980, source:shockley-queisser-1961]
   status: established
 - id: claim:pv-implemented
   subject: phenomenon:photovoltaic-effect
@@ -64,7 +64,7 @@
   subject: phenomenon:photovoltaic-effect
   predicate: observed_in
   object: material:silicon
-  evidence: [source:chapin-1954]
+  evidence: [source:chapin-1954, source:green-2024-tables]
   status: established
 - id: claim:photons-drive-pv
   subject: carrier:photons
@@ -73,7 +73,7 @@
   conditions: ["photons from any source, including a thermal emitter, absorbed above the gap"]
   condition_tags: [state-solid, medium-semiconductor]
   energy: { input: radiative, output: electronic-excitation, dissipation: thermal }
-  evidence: [source:lapotin-2022]
+  evidence: [source:lapotin-2022, source:shockley-queisser-1961]
   status: established
   knowledge_level: K7
 - id: claim:pv-implemented-tpv
@@ -90,21 +90,21 @@
   conditions: [a homogeneous non-centrosymmetric crystal under uniform illumination; no junction]
   condition_tags: [state-solid, medium-non-centrosymmetric, illumination-required]
   energy: { input: radiative, output: electrical, dissipation: thermal }
-  evidence: [source:spanier-2016]
-  status: replicated
+  evidence: [source:fridkin-1984-bpv, source:spanier-2016]
+  status: established
   knowledge_level: K4
 - id: claim:bpv-produces
   subject: phenomenon:bulk-photovoltaic-effect
   predicate: produces
   object: carrier:charge-carriers
   energy: { input: electrical, output: electrical }
-  evidence: [source:spanier-2016]
-  status: replicated
+  evidence: [source:fridkin-1984-bpv, source:spanier-2016]
+  status: established
 - id: claim:bpv-member
   subject: phenomenon:bulk-photovoltaic-effect
   predicate: member_of
   object: coupling:photovoltaic
-  evidence: [source:spanier-2016]
+  evidence: [source:spanier-2016, source:fridkin-1984-bpv]
   status: established
 - id: claim:bpv-bounded-landsberg
   subject: phenomenon:bulk-photovoltaic-effect
@@ -155,7 +155,7 @@
   subject: phenomenon:photothermal-effect
   predicate: bounded_by
   object: constraint:landsberg-limit
-  evidence: [source:landsberg-tonge-1980]
+  evidence: [source:landsberg-tonge-1980, source:bejan-2016]
   status: established
 - id: claim:photons-drive-photothermal
   subject: carrier:photons
@@ -187,7 +187,7 @@
   subject: phenomenon:photoelectric-effect
   predicate: member_of
   object: coupling:thermionic
-  evidence: [source:schwede-2010]
+  evidence: [source:schwede-2010, source:kittel-2005]
   status: established
 - id: claim:pete-drives
   subject: disequilibrium:radiation-flux
@@ -210,7 +210,7 @@
   subject: phenomenon:photon-enhanced-thermionic-emission
   predicate: member_of
   object: coupling:thermionic
-  evidence: [source:schwede-2010]
+  evidence: [source:schwede-2010, source:hatsopoulos-gyftopoulos-1973]
   status: established
 - id: claim:pec-drives
   subject: disequilibrium:radiation-flux
@@ -219,7 +219,7 @@
   conditions: ["a semiconductor photoelectrode whose band edges straddle the water redox potentials, in an electrolyte, under illumination"]
   condition_tags: [env-aqueous, medium-semiconductor, illumination-required]
   energy: { input: radiative, output: chemical, dissipation: thermal }
-  evidence: [source:fujishima-honda-1972]
+  evidence: [source:fujishima-honda-1972, source:gratzel-2001]
   status: established
   knowledge_level: K5
 - id: claim:pec-converts-fuel
@@ -228,13 +228,13 @@
   object: output:chemical-fuel
   conditions: [hydrogen evolved at the counter-electrode]
   energy: { input: chemical, output: chemical, dissipation: thermal }
-  evidence: [source:fujishima-honda-1972]
+  evidence: [source:fujishima-honda-1972, source:gratzel-2001]
   status: established
 - id: claim:pec-member
   subject: phenomenon:photoelectrochemical-effect
   predicate: member_of
   object: coupling:photoelectrochemical
-  evidence: [source:fujishima-honda-1972]
+  evidence: [source:fujishima-honda-1972, source:gratzel-2001]
   status: established
 - id: claim:pec-implemented
   subject: phenomenon:photoelectrochemical-effect
@@ -247,7 +247,7 @@
   predicate: bounded_by
   object: constraint:nernst-potential-bound
   conditions: [1.23 V minimum for water splitting]
-  evidence: [source:fujishima-honda-1972]
+  evidence: [source:fujishima-honda-1972, source:gratzel-2001]
   status: established
 
 # --- Photosynthesis and chemiosmosis -----------------------------------------------------
@@ -258,7 +258,7 @@
   conditions: ["photosynthetically active radiation (400–700 nm), water, CO₂, temperatures roughly 0–45 °C"]
   condition_tags: [env-aqueous, illumination-required, temp-room]
   energy: { input: radiative, output: chemical, dissipation: thermal }
-  evidence: [source:blankenship-2011]
+  evidence: [source:blankenship-2011, source:blankenship-2014-book]
   status: established
   knowledge_level: K8
 - id: claim:photosynthesis-produces-carbon
@@ -266,26 +266,26 @@
   predicate: produces
   object: carrier:reduced-carbon
   energy: { input: chemical, output: chemical }
-  evidence: [source:blankenship-2011]
+  evidence: [source:blankenship-2011, source:blankenship-2014-book]
   status: established
 - id: claim:reduced-carbon-converts-fuel
   subject: carrier:reduced-carbon
   predicate: converts_into
   object: output:chemical-fuel
   energy: { input: chemical, output: chemical }
-  evidence: [source:blankenship-2011]
+  evidence: [source:blankenship-2011, source:blankenship-2014-book]
   status: established
 - id: claim:photosynthesis-member
   subject: phenomenon:photosynthesis
   predicate: member_of
   object: coupling:biological
-  evidence: [source:blankenship-2011]
+  evidence: [source:blankenship-2011, source:blankenship-2014-book]
   status: established
 - id: claim:photosynthesis-bounded-landsberg
   subject: phenomenon:photosynthesis
   predicate: bounded_by
   object: constraint:landsberg-limit
-  evidence: [source:blankenship-2011]
+  evidence: [source:blankenship-2011, source:landsberg-tonge-1980]
   status: established
 - id: claim:chemiosmosis-drives
   subject: disequilibrium:concentration-gradient
@@ -294,7 +294,7 @@
   conditions: [a proton gradient across a membrane containing ATP synthase]
   condition_tags: [env-aqueous, medium-membrane, temp-room]
   energy: { input: chemical, output: chemical, dissipation: thermal }
-  evidence: [source:mitchell-1961]
+  evidence: [source:mitchell-1961, source:nicholls-ferguson-2013]
   status: established
   knowledge_level: K4
 - id: claim:chemiosmosis-converts-fuel
@@ -303,13 +303,13 @@
   object: output:chemical-fuel
   conditions: [ATP synthesised from ADP and phosphate]
   energy: { input: chemical, output: chemical, dissipation: thermal }
-  evidence: [source:mitchell-1961]
+  evidence: [source:mitchell-1961, source:nicholls-ferguson-2013]
   status: established
 - id: claim:chemiosmosis-member
   subject: phenomenon:chemiosmosis
   predicate: member_of
   object: coupling:biological
-  evidence: [source:mitchell-1961]
+  evidence: [source:mitchell-1961, source:nicholls-ferguson-2013]
   status: established
 
 # --- Rectenna / RF -------------------------------------------------------------------------
@@ -374,10 +374,10 @@
   object: phenomenon:spin-seebeck-effect
   conditions:
     - a magnetised ferromagnet, metallic or insulating (YIG), under a temperature gradient
-    - an attached heavy-metal detector strip
+    - "an adjacent spin sink (heavy-metal layer) is needed for the usual electrical detection through inverse spin Hall conversion, not for the spin-Seebeck response itself"
   condition_tags: [state-solid, medium-ferromagnet, temp-gradient-required]
   energy: { input: thermal, output: spin, dissipation: thermal }
-  evidence: [source:uchida-2008, source:uchida-2010-insulator, source:bauer-2012]
+  evidence: [source:uchida-2008, source:uchida-2010-insulator, source:bauer-2012, source:weiler-2013]
   status: replicated
   knowledge_level: K4
 - id: claim:sse-produces-magnons
@@ -393,7 +393,7 @@
   object: carrier:spin-current
   conditions: [magnon current pumps a spin current into the adjacent metal across the interface]
   energy: { input: spin, output: spin, dissipation: thermal }
-  evidence: [source:uchida-2010-insulator]
+  evidence: [source:uchida-2010-insulator, source:weiler-2013]
   status: replicated
 - id: claim:sse-member
   subject: phenomenon:spin-seebeck-effect
@@ -405,7 +405,7 @@
   subject: phenomenon:spin-seebeck-effect
   predicate: observed_in
   object: material:yig
-  evidence: [source:uchida-2010-insulator]
+  evidence: [source:uchida-2010-insulator, source:weiler-2013]
   status: replicated
 - id: claim:sse-implemented
   subject: phenomenon:spin-seebeck-effect
@@ -457,7 +457,7 @@
   object: phenomenon:inverse-spin-hall-effect
   condition_tags: [state-solid, medium-conductor]
   energy: { input: spin, output: electrical, dissipation: thermal }
-  evidence: [source:saitoh-2006]
+  evidence: [source:saitoh-2006, source:sinova-2015]
   status: established
   knowledge_level: K4
 - id: claim:ishe-produces
@@ -465,7 +465,7 @@
   predicate: produces
   object: carrier:charge-carriers
   energy: { input: electrical, output: electrical }
-  evidence: [source:saitoh-2006]
+  evidence: [source:saitoh-2006, source:sinova-2015]
   status: established
 - id: claim:ishe-member
   subject: phenomenon:inverse-spin-hall-effect
@@ -477,7 +477,7 @@
   subject: phenomenon:inverse-spin-hall-effect
   predicate: observed_in
   object: material:platinum
-  evidence: [source:saitoh-2006]
+  evidence: [source:saitoh-2006, source:sinova-2015, source:mosendz-2010]
   status: established
 - id: claim:ishe-onsager
   subject: phenomenon:inverse-spin-hall-effect
@@ -514,7 +514,7 @@
   conditions: [magnetisation driven into precession (ferromagnetic resonance) next to a normal metal]
   condition_tags: [state-solid, medium-ferromagnet, field-magnetic-required]
   energy: { input: magnetic, output: spin, dissipation: thermal }
-  evidence: [source:tserkovnyak-2002]
+  evidence: [source:tserkovnyak-2002, source:tserkovnyak-2005-review, source:mosendz-2010]
   status: established
   knowledge_level: K4
 - id: claim:spin-pumping-produces
@@ -522,13 +522,13 @@
   predicate: produces
   object: carrier:spin-current
   energy: { input: spin, output: spin }
-  evidence: [source:tserkovnyak-2002, source:saitoh-2006]
+  evidence: [source:tserkovnyak-2002, source:saitoh-2006, source:mosendz-2010]
   status: established
 - id: claim:spin-pumping-member
   subject: phenomenon:spin-pumping
   predicate: member_of
   object: coupling:spin-caloritronic
-  evidence: [source:tserkovnyak-2002]
+  evidence: [source:tserkovnyak-2002, source:tserkovnyak-2005-review]
   status: established
 - id: claim:hall-drives
   subject: disequilibrium:electric-potential-difference
@@ -536,20 +536,20 @@
   object: phenomenon:hall-effect
   condition_tags: [state-solid, medium-conductor, field-magnetic-required]
   energy: { input: electrical, output: electrical, dissipation: thermal }
-  evidence: [source:hall-1879]
+  evidence: [source:hall-1879, source:ashcroft-mermin-1976]
   status: established
 - id: claim:hall-produces
   subject: phenomenon:hall-effect
   predicate: produces
   object: carrier:charge-carriers
   energy: { input: electrical, output: electrical }
-  evidence: [source:hall-1879]
+  evidence: [source:hall-1879, source:ashcroft-mermin-1976]
   status: established
 - id: claim:hall-member
   subject: phenomenon:hall-effect
   predicate: member_of
   object: coupling:electromagnetic-induction
-  evidence: [source:hall-1879]
+  evidence: [source:hall-1879, source:ashcroft-mermin-1976]
   status: established
 - id: claim:photostriction-drives
   subject: disequilibrium:radiation-flux

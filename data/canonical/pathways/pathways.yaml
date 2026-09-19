@@ -409,10 +409,11 @@
   status: prototype
   knowledge_level: K7
   performance:
-    efficiency_record: 0.84
+    efficiency_record: 0.906
     theoretical_limit: "no thermodynamic ceiling below 100% for coherent radiation"
+    notes: "90.6% RF-to-DC for a single 2.45 GHz rectenna element at 8 W microwave input (Brown 1977, reported in Brown 1984); large-array capture-plus-rectification demonstrations were about 82–84% at the rectenna boundary. Do not compare either with end-to-end DC-to-DC beaming efficiency."
   environment: [medium-conductor]
-  summary: An antenna array feeds Schottky diodes; 84% RF-to-DC at 2.45 GHz was shown in the 1970s.
+  summary: "Brown's 1977 2.45 GHz rectenna element reached 90.6% RF-to-DC conversion; large-array demonstrations were approximately 82–84% at the rectenna boundary."
 
 - id: pathway:hydrovoltaic-generator
   name: Hydrovoltaic generator
@@ -434,7 +435,7 @@
   status: demonstrated
   knowledge_level: K4
   performance:
-    power_density: "≈ 50 W/m² instantaneous per impacting droplet"
+    power_density: "50.1 W/m² instantaneous peak at a 332 kΩ load in the reported droplet-impact experiment"
   environment: [state-liquid]
   summary: A falling droplet bridges a charged PTFE surface to an electrode and discharges it through the load.
 
