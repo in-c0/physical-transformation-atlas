@@ -33,15 +33,37 @@ export function AtlasGraph({ initial }: { initial?: string }) {
   const host = useRef<HTMLDivElement>(null);
   const cyRef = useRef<Core | null>(null);
   const [sel, setSel] = useState<Selection>(initial ? { kind: "entity", id: initial } : null);
-  const [types, setTypes] = useState<Set<Entity["type"]>>(() => new Set(GRAPH_TYPES));
+  const [types, setTypes] = useState<Set<Entity["type"]>>(() => new Set(GRAPH_TYPES.filter((t) => t !== "coupling")));
   const [layoutDone, setLayoutDone] = useState(false);
+  const [layoutMode, setLayoutMode] = useState<"layered" | "force">("layered");
 
   const elements = useMemo<ElementDefinition[] | null>(() => {
     if (atlas.status !== "ready") return null;
     const g = atlas.index.graph;
+    // Layered positions: drivers left, phenomena centre (grouped by domain), carriers, outputs right,
+    // coupling families in a thin column at the far right. Energy reads left to right.
+    // Phenomena fill four sub-columns (column-major, grouped by domain) so the field is about as
+    // tall as the driver column and every label has room.
+    const COL_X: Record<string, number> = { disequilibrium: 0, carrier: 1180, output: 1420, coupling: 1600 };
+    const PHEN_X = [380, 580, 780, 980];
+    const STEP = 34;
+    const byType = new Map<string, Entity[]>();
+    for (const e of g.entities) if (types.has(e.type)) byType.set(e.type, [...(byType.get(e.type) ?? []), e]);
+    const pos = new Map<string, { x: number; y: number }>();
+    for (const [type, list] of byType) {
+      const sorted = [...list].sort((p, q) => (p.domain ?? "").localeCompare(q.domain ?? "") || (p.energy_form ?? "").localeCompare(q.energy_form ?? "") || p.name.localeCompare(q.name));
+      if (type === "phenomenon") {
+        const rows = Math.ceil(sorted.length / PHEN_X.length);
+        const height = (rows - 1) * STEP;
+        sorted.forEach((e, i) => pos.set(e.id, { x: PHEN_X[Math.floor(i / rows)], y: (i % rows) * STEP - height / 2 }));
+      } else {
+        const height = (sorted.length - 1) * STEP;
+        sorted.forEach((e, i) => pos.set(e.id, { x: COL_X[type], y: i * STEP - height / 2 }));
+      }
+    }
     const nodes: ElementDefinition[] = g.entities
       .filter((e) => types.has(e.type))
-      .map((e) => ({ data: { id: e.id, label: e.name, type: e.type } }));
+      .map((e) => ({ data: { id: e.id, label: e.name, type: e.type }, position: pos.get(e.id) }));
     const present = new Set(nodes.map((n) => n.data.id));
     const edges: ElementDefinition[] = g.claims
       .filter((c) => ((PROCESS_PREDICATES as readonly string[]).includes(c.predicate) || c.predicate === "member_of") && present.has(c.subject) && present.has(c.object))
@@ -77,13 +99,17 @@ export function AtlasGraph({ initial }: { initial?: string }) {
               "font-family": "IBM Plex Mono, monospace",
               "font-size": 8,
               color: "#1b1a18",
-              "text-margin-y": -3,
-              "text-valign": "top",
-              "text-halign": "center",
+              "text-margin-y": layoutMode === "layered" ? 0 : -3,
+              "text-margin-x": layoutMode === "layered" ? 4 : 0,
+              "text-valign": layoutMode === "layered" ? "center" : "top",
+              "text-halign": layoutMode === "layered" ? "right" : "center",
               "text-wrap": "ellipsis",
               "text-max-width": "110px",
               // Phenomenon and carrier labels appear as you zoom in; drivers and outputs are always named.
-              "min-zoomed-font-size": 8,
+              "min-zoomed-font-size": layoutMode === "layered" ? 5 : 8,
+              "text-background-color": "#f6f3ec",
+              "text-background-opacity": 0.85,
+              "text-background-padding": "1px",
             },
           },
           { selector: 'node[type = "disequilibrium"]', style: { shape: "rectangle", width: 16, height: 16, "background-color": "#1b1a18", color: "#1b1a18", "font-size": 10, "font-weight": 500, "min-zoomed-font-size": 5 } },
@@ -94,6 +120,7 @@ export function AtlasGraph({ initial }: { initial?: string }) {
             selector: "edge",
             style: {
               width: 1,
+              opacity: 0.6,
               "line-color": "#1b1a18",
               "target-arrow-color": "#1b1a18",
               "target-arrow-shape": "triangle",
@@ -108,7 +135,10 @@ export function AtlasGraph({ initial }: { initial?: string }) {
           { selector: "node.sel", style: { "border-width": 3, "border-color": "#1b1a18", "background-color": "#f6f3ec" } },
           { selector: "edge.sel", style: { width: 2.5 } },
         ],
-        layout: { name: "cose", animate: false, nodeRepulsion: () => 60000, idealEdgeLength: () => 120, edgeElasticity: () => 60, gravity: 0.08, numIter: 1500, nodeOverlap: 24, padding: 40, randomize: true } as never,
+        layout:
+          layoutMode === "layered"
+            ? ({ name: "preset", padding: 40, fit: true } as never)
+            : ({ name: "cose", animate: false, nodeRepulsion: () => 60000, idealEdgeLength: () => 120, edgeElasticity: () => 60, gravity: 0.08, numIter: 1500, nodeOverlap: 24, padding: 40, randomize: true } as never),
       });
       cyRef.current = cy;
       cy.on("tap", "node", (ev) => setSel({ kind: "entity", id: ev.target.id() }));
@@ -129,7 +159,7 @@ export function AtlasGraph({ initial }: { initial?: string }) {
       cy?.destroy();
       cyRef.current = null;
     };
-  }, [elements, initial]);
+  }, [elements, initial, layoutMode]);
 
   // Highlight the selection's neighbourhood; camera moves only on user selection.
   useEffect(() => {
@@ -164,6 +194,15 @@ export function AtlasGraph({ initial }: { initial?: string }) {
               {t}
             </button>
           ))}
+          <span className="label" style={{ marginLeft: 8 }}>
+            Layout
+          </span>
+          <button type="button" className={`${styles.chip} ${layoutMode === "layered" ? styles.chipOn : ""}`} aria-pressed={layoutMode === "layered" ? "true" : "false"} onClick={() => setLayoutMode("layered")}>
+            layered · drivers → effects → carriers → outputs
+          </button>
+          <button type="button" className={`${styles.chip} ${layoutMode === "force" ? styles.chipOn : ""}`} aria-pressed={layoutMode === "force" ? "true" : "false"} onClick={() => setLayoutMode("force")}>
+            force-directed
+          </button>
           <button
             type="button"
             className={styles.chip}
