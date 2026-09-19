@@ -299,13 +299,6 @@
   energy: { input: mechanical, output: mechanical }
   evidence: [source:beeby-2007]
   status: established
-- id: claim:resonance-member
-  subject: phenomenon:resonant-vibration
-  predicate: member_of
-  object: coupling:electromagnetic-induction
-  conditions: [as the mechanical front end of a vibration harvester of any transduction type]
-  evidence: [source:beeby-2007]
-  status: established
 - id: claim:motion-drives-induction
   subject: carrier:mechanical-motion
   predicate: drives
@@ -478,13 +471,6 @@
   energy: { input: mechanical, output: mechanical }
   evidence: [source:nye-1985]
   status: established
-- id: claim:elastic-member
-  subject: phenomenon:elastic-deformation
-  predicate: member_of
-  object: coupling:piezoelectric
-  conditions: [as the mechanical front end of stress-driven transducers]
-  evidence: [source:erturk-inman-2011]
-  status: established
 
 # --- Fluid flow, wind, waves, tides, hydro -----------------------------------------------
 - id: claim:flow-drives-lift
@@ -544,13 +530,6 @@
   predicate: produces
   object: disequilibrium:mechanical-vibration
   energy: { input: mechanical, output: mechanical }
-  evidence: [source:radousky-liang-2012]
-  status: established
-- id: claim:fiv-member
-  subject: phenomenon:flow-induced-vibration
-  predicate: member_of
-  object: coupling:piezoelectric
-  conditions: [as the front end of bladeless flow harvesters]
   evidence: [source:radousky-liang-2012]
   status: established
 - id: claim:gravity-drives-descent

@@ -1,0 +1,268 @@
+# Named pathways for conversions so familiar that leaving them "not searched"
+# would mislead: lamps, boilers, water wheels, heat exchangers, and the
+# laboratory demonstrations behind the newer effects.
+- id: pathway:incandescent-lamp
+  name: Incandescent lamp
+  steps: [claim:thermal-emission-drives, claim:thermal-emission-converts-light]
+  evidence: [source:landsberg-tonge-1980]
+  status: commercial
+  knowledge_level: K8
+  performance:
+    efficiency_typical: 0.02
+    theoretical_limit: "set by the fraction of the Planck spectrum that is visible at the filament temperature"
+  environment: [temp-high]
+  summary: A filament at ~2800 K radiates; a few per cent of the power lands in the visible band.
+
+- id: pathway:combustion-heater
+  name: Combustion heater (boiler, furnace)
+  steps: [claim:combustion-drives, claim:combustion-converts-heat]
+  evidence: [source:bejan-2016]
+  status: commercial
+  knowledge_level: K8
+  performance:
+    efficiency_typical: 0.9
+    theoretical_limit: "the higher heating value of the fuel"
+  environment: [state-gas, temp-high]
+  summary: Fuel burns; the hot gas gives its enthalpy to water, air or a process stream.
+
+- id: pathway:heat-exchanger
+  name: Heat exchanger
+  steps: [claim:heat-conduction-drives, claim:heat-conduction-produces-heat-flow, claim:heat-flow-converts-useful-heat]
+  evidence: [source:bejan-2016]
+  status: commercial
+  knowledge_level: K8
+  performance:
+    notes: "effectiveness 0.6–0.95 for counterflow designs; no thermodynamic ceiling on heat delivered, only on its temperature"
+  environment: [temp-gradient-required]
+  summary: Heat conducts through a wall from the hot stream to the cold one.
+
+- id: pathway:passive-radiative-cooler
+  name: Passive daytime radiative cooler
+  steps: [claim:sky-drives-radiative-cooling, claim:radiative-cooling-converts-cooling]
+  evidence: [source:raman-2014]
+  status: demonstrated
+  knowledge_level: K7
+  performance:
+    power_density: "≈ 40 W/m² net cooling under direct sunlight, 4.9 °C below ambient (Raman 2014); ~100 W/m² at night"
+    theoretical_limit: "net radiative flux through the atmospheric window, ≲ 100–150 W/m²"
+  environment: []
+  summary: A photonic multilayer reflects sunlight and emits in the 8–13 µm window, cooling below ambient at noon.
+
+- id: pathway:solar-water-heater
+  name: Solar thermal collector (hot water)
+  steps: [claim:photothermal-drives, claim:photothermal-produces-heat, claim:heat-flow-converts-useful-heat]
+  demonstrated_with: [transducer:solar-thermal-collector]
+  evidence: [source:bejan-2016]
+  status: commercial
+  knowledge_level: K8
+  performance:
+    efficiency_typical: 0.5
+    theoretical_limit: "absorptance of the surface minus its re-emission; selective surfaces reach ~0.9"
+  environment: [illumination-required]
+  summary: A dark absorber under glass heats water in tubes.
+
+- id: pathway:vacuum-photocell
+  name: Vacuum photocell
+  steps: [claim:photoelectric-drives, claim:photoelectric-produces, claim:charge-carriers-convert-electricity]
+  evidence: [source:kittel-2005]
+  status: demonstrated
+  knowledge_level: K6
+  performance:
+    notes: "used as a detector for a century; as a power converter its efficiency is limited by the work-function threshold and space charge"
+  environment: [env-vacuum, illumination-required]
+  summary: Photons above the work function eject electrons to a collector across a vacuum gap.
+
+- id: pathway:photon-enhanced-thermionic-converter
+  name: Photon-enhanced thermionic converter
+  steps: [claim:pete-drives, claim:pete-produces, claim:charge-carriers-convert-electricity]
+  evidence: [source:schwede-2010]
+  status: demonstrated
+  knowledge_level: K4
+  performance:
+    theoretical_limit: "> 40% projected for concentrated sunlight with a thermal bottoming cycle"
+  environment: [env-vacuum, temp-high, illumination-required]
+  summary: Concentrated sunlight photoexcites a hot GaN cathode that then emits thermionically; laboratory demonstration.
+
+- id: pathway:anomalous-nernst-thermopile
+  name: Anomalous Nernst thermopile
+  steps: [claim:anomalous-nernst-drives, claim:anomalous-nernst-produces, claim:charge-carriers-convert-electricity]
+  evidence: [source:sakai-2018]
+  status: demonstrated
+  knowledge_level: K4
+  performance:
+    notes: "transverse thermopower of ~6 µV/K in Co₂MnGa; device power densities not yet competitive"
+  environment: [state-solid, medium-ferromagnet, temp-gradient-required]
+  summary: A magnetised film develops a transverse voltage along a temperature gradient; laid out as a thermopile without junctions.
+
+- id: pathway:nernst-ettingshausen-generator
+  name: Nernst–Ettingshausen generator
+  steps: [claim:nernst-drives, claim:nernst-produces, claim:charge-carriers-convert-electricity]
+  evidence: [source:rowe-2006, source:callen-1948]
+  status: demonstrated
+  knowledge_level: K4
+  performance:
+    notes: "Bi–Sb alloys in fields of a few tesla at cryogenic temperatures; laboratory devices only"
+  environment: [state-solid, field-magnetic-required, temp-gradient-required]
+  summary: A transverse thermomagnetic generator; needs a strong field and works best cold.
+
+- id: pathway:spin-pumping-ishe-detector
+  name: Spin pumping with inverse spin Hall detection
+  steps: [claim:spin-pumping-drives, claim:spin-pumping-produces, claim:spin-current-drives-ishe, claim:ishe-produces, claim:charge-carriers-convert-electricity]
+  evidence: [source:saitoh-2006, source:tserkovnyak-2002]
+  status: demonstrated
+  knowledge_level: K4
+  performance:
+    notes: "microvolt DC signals from a permalloy/Pt bilayer at ferromagnetic resonance (Saitoh 2006); a measurement, not a power source"
+  environment: [state-solid, medium-ferromagnet, field-magnetic-required]
+  summary: Precessing magnetisation pumps a spin current into Pt, where the inverse spin Hall effect converts it to a voltage.
+
+- id: pathway:electrokinetic-microchannel-generator
+  name: Electrokinetic microchannel generator
+  steps: [claim:pressure-drives-streaming, claim:streaming-produces-ions, claim:ionic-current-converts-electricity]
+  demonstrated_with: [transducer:electrokinetic-microchannel]
+  evidence: [source:yang-2003-electrokinetic]
+  status: demonstrated
+  knowledge_level: K4
+  performance:
+    efficiency_typical: 0.01
+    notes: "streaming current from water forced through a glass microchannel array; efficiencies below 1%"
+  environment: [env-aqueous, flow-required]
+  summary: Pressure-driven electrolyte flow through charged channels produces a streaming current.
+
+- id: pathway:reverse-electrowetting-harvester
+  name: Reverse-electrowetting harvester
+  steps: [claim:rew-drives, claim:rew-produces, claim:charge-carriers-convert-electricity]
+  evidence: [source:krupenkin-taylor-2011]
+  status: demonstrated
+  knowledge_level: K4
+  performance:
+    power_density: "≈ 1 mW per droplet-electrode reported; ~1 kW/m² projected"
+  environment: [state-liquid, field-electric-required]
+  summary: Droplets forced across biased dielectric-coated electrodes pump charge through the load.
+
+- id: pathway:concentration-cell
+  name: Concentration cell
+  steps: [claim:concentration-cell-drives, claim:concentration-cell-produces, claim:ionic-current-converts-electricity]
+  evidence: [source:bard-faulkner-2001]
+  status: demonstrated
+  knowledge_level: K6
+  performance:
+    theoretical_limit: "(RT/zF)·ln(a₁/a₂) per cell; 59 mV per decade of activity ratio at 25 °C"
+  environment: [env-aqueous]
+  summary: Two identical electrodes in solutions of different activity; a textbook cell and the principle of reverse electrodialysis.
+
+- id: pathway:capacitive-mixing-cell
+  name: Capacitive mixing cell
+  steps: [claim:salinity-drives-capmix, claim:capmix-produces, claim:ionic-current-converts-electricity]
+  demonstrated_with: [transducer:capmix-cell]
+  evidence: [source:brogioli-2009]
+  status: demonstrated
+  knowledge_level: K5
+  performance:
+    power_density: "≈ 0.01–0.1 W/m² of electrode in early cells"
+    theoretical_limit: "free energy of mixing, ≈ 0.8 kWh per m³ of river water"
+  environment: [env-aqueous]
+  summary: Carbon electrodes charged in salt water and discharged in fresh water return net energy.
+
+- id: pathway:evaporation-driven-engine
+  name: Evaporation-driven engine
+  steps: [claim:humidity-drives-evaporation, claim:evaporation-produces-motion, claim:motion-converts-mechanical-work]
+  evidence: [source:chen-2015-evaporation]
+  status: demonstrated
+  knowledge_level: K4
+  performance:
+    power_density: "≈ 60 mW per kilogram of hygroscopic material in a laboratory oscillator (Chen 2015)"
+  environment: [humidity-required]
+  summary: Bacterial spores swell and shrink with humidity, driving a piston or a rotary engine.
+
+- id: pathway:chemiosmotic-atp-synthesis
+  name: Chemiosmotic ATP synthesis
+  steps: [claim:chemiosmosis-drives, claim:chemiosmosis-converts-fuel]
+  evidence: [source:mitchell-1961]
+  status: demonstrated
+  knowledge_level: K6
+  performance:
+    notes: "≈ 3–4 protons per ATP; the rotary motor runs at ~100 revolutions per second in vivo"
+  environment: [env-aqueous, medium-membrane]
+  summary: A proton gradient across the membrane drives ATP synthase; the working transducer of every cell.
+
+- id: pathway:steam-engine
+  name: Steam engine (shaft work)
+  steps: [claim:expansion-drives, claim:expansion-produces-motion, claim:motion-converts-mechanical-work]
+  demonstrated_with: [transducer:rankine-cycle-plant, transducer:stirling-engine]
+  evidence: [source:bejan-2016, source:walker-1980-stirling]
+  status: commercial
+  knowledge_level: K8
+  performance:
+    efficiency_typical: 0.1
+    theoretical_limit: "Carnot between boiler and condenser"
+  environment: [temp-gradient-required]
+  summary: Heat raises steam; the piston or turbine delivers shaft work.
+
+- id: pathway:windmill
+  name: Windmill (mechanical)
+  steps: [claim:flow-drives-lift, claim:lift-produces-motion, claim:motion-converts-mechanical-work]
+  evidence: [source:betz-1920, source:dixon-hall-2014]
+  status: commercial
+  knowledge_level: K8
+  performance:
+    theoretical_limit: "Betz: 59.3% of the kinetic power through the rotor disc"
+  environment: [flow-required]
+  summary: Wind turns a rotor that grinds, pumps or saws.
+
+- id: pathway:waterwheel
+  name: Waterwheel (mechanical)
+  steps: [claim:gravity-drives-descent, claim:descent-produces-pressure, claim:hydraulic-drives-lift, claim:lift-produces-motion, claim:motion-converts-mechanical-work]
+  evidence: [source:dixon-hall-2014]
+  status: commercial
+  knowledge_level: K8
+  performance:
+    efficiency_typical: 0.6
+  environment: [state-liquid]
+  summary: Falling water turns a wheel; the wheel turns a millstone.
+
+- id: pathway:wave-energy-plant
+  name: Wave energy converter
+  steps: [claim:wave-drives, claim:wave-produces-motion, claim:motion-drives-generator, claim:generator-produces-carriers, claim:charge-carriers-convert-electricity]
+  demonstrated_with: [transducer:wave-energy-converter]
+  evidence: [source:salter-1974]
+  status: prototype
+  knowledge_level: K7
+  performance:
+    notes: "point absorbers and oscillating water columns of 100 kW–1 MW have run at sea for years; no converged design"
+  environment: [state-liquid]
+  summary: A buoy or flap follows the wave and drives a generator through a hydraulic or direct-drive power take-off.
+
+- id: pathway:tidal-stream-plant
+  name: Tidal stream plant
+  steps: [claim:tide-drives, claim:tide-produces-flow, claim:flow-drives-lift, claim:lift-produces-motion, claim:motion-drives-generator, claim:generator-produces-carriers, claim:charge-carriers-convert-electricity]
+  demonstrated_with: [transducer:tidal-turbine]
+  evidence: [source:dixon-hall-2014]
+  status: prototype
+  knowledge_level: K7
+  performance:
+    notes: "MeyGen (Scotland) has exported tens of GWh from 1.5 MW submerged turbines since 2017"
+  environment: [state-liquid, flow-required]
+  summary: Tidal currents turn submerged rotors on generators.
+
+- id: pathway:flow-induced-vibration-harvester
+  name: Flow-induced-vibration piezoelectric harvester
+  steps: [claim:flow-drives-fiv, claim:fiv-produces-vibration, claim:vibration-drives-resonance, claim:resonance-produces-stress, claim:piezo-drives, claim:piezo-produces-charge, claim:surface-charge-converts-electricity]
+  evidence: [source:radousky-liang-2012, source:erturk-inman-2011]
+  status: demonstrated
+  knowledge_level: K5
+  performance:
+    power_density: "µW–mW per device in wind tunnels and water channels"
+  environment: [flow-required, state-solid]
+  summary: A bluff body sheds vortices, a flexible piezoelectric stalk oscillates in its wake; bladeless flow harvesting.
+
+- id: pathway:radioisotope-heater-unit
+  name: Radioisotope heater unit
+  steps: [claim:binding-drives-decay, claim:decay-produces-particles, claim:particles-drive-heating, claim:heating-produces-gradient, claim:heat-conduction-drives, claim:heat-conduction-produces-heat-flow, claim:heat-flow-converts-useful-heat]
+  evidence: [source:prelas-2014]
+  status: commercial
+  knowledge_level: K8
+  performance:
+    notes: "1 W thermal from 2.7 g of Pu-238 oxide; dozens flown on spacecraft to keep instruments warm"
+  environment: [radioisotope-required]
+  summary: Decay heat conducts out of a small pellet to keep spacecraft electronics above their minimum temperature.

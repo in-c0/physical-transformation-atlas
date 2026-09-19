@@ -1,0 +1,8 @@
+.head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; padding: 16px var(--gutter) 12px; border-bottom: var(--border-strong); }
+.note { max-width: 60ch; font-size: var(--text-ui); line-height: var(--leading-ui); color: var(--ink-secondary); }
+.index { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding: 20px var(--gutter) 48px; border-top: var(--border-strong); }
+.index h2 { margin-bottom: 6px; }
+.list { columns: 2; column-gap: 24px; font-size: var(--text-ui); line-height: 18px; }
+.list li { break-inside: avoid; display: flex; gap: 8px; }
+@media (max-width: 900px) { .list { columns: 1; } }
+@media (max-width: 640px) { .head { flex-direction: column; align-items: flex-start; gap: 8px; } .index { grid-template-columns: 1fr; } }

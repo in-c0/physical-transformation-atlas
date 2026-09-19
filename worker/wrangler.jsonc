@@ -1,0 +1,13 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // Static-assets Worker: the Next.js export in apps/web/out, with /api/*.json
+  // served as plain files. No server code; the atlas is compiled at build time.
+  "name": "physical-transformation-atlas",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "../apps/web/out",
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash"
+  },
+  "observability": { "enabled": true }
+}

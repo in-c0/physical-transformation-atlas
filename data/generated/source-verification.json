@@ -1,0 +1,422 @@
+{
+  "source:seebeck-1826": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:22:54.606Z",
+    "crossref_title": "Ueber die magnetische Polarisation der Metalle und Erze durch Temperatur‐Differenz"
+  },
+  "source:thomson-1851": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:22:55.601Z",
+    "crossref_title": "4. On a Mechanical Theory of Thermo-Electric Currents"
+  },
+  "source:goldsmid-2016": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:22:55.982Z",
+    "crossref_title": "Introduction to Thermoelectricity"
+  },
+  "source:snyder-toberer-2008": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:22:56.363Z",
+    "crossref_title": "Complex thermoelectric materials"
+  },
+  "source:callen-1948": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:22:56.749Z",
+    "crossref_title": "The Application of Onsager's Reciprocal Relations to Thermoelectric, Thermomagnetic, and Galvanomagnetic Effects"
+  },
+  "source:onsager-1931": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:22:57.134Z",
+    "crossref_title": "Reciprocal Relations in Irreversible Processes. I."
+  },
+  "source:herring-1954": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:22:57.515Z",
+    "crossref_title": "Theory of the Thermoelectric Power of Semiconductors"
+  },
+  "source:schwede-2010": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:22:57.897Z",
+    "crossref_title": "Photon-enhanced thermionic emission for solar concentrator systems"
+  },
+  "source:swift-1988": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:22:58.278Z",
+    "crossref_title": "Thermoacoustic engines"
+  },
+  "source:lang-2005": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:22:58.660Z",
+    "crossref_title": "Pyroelectricity: From Ancient Curiosity to Modern Imaging Tool"
+  },
+  "source:bowen-2014-pyro": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:22:59.040Z",
+    "crossref_title": "Pyroelectric materials and devices for energy harvesting applications"
+  },
+  "source:quickenden-mua-1995": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:22:59.433Z",
+    "crossref_title": "A Review of Power Generation in Aqueous Thermogalvanic Cells"
+  },
+  "source:dupont-2017": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:22:59.814Z",
+    "crossref_title": "Thermo-electrochemical cells for waste heat harvesting – progress and perspectives"
+  },
+  "source:lee-2014-trec": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:00.200Z",
+    "crossref_title": "An electrochemical system for efficiently harvesting low-grade heat energy"
+  },
+  "source:kishore-priya-2018": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:00.594Z",
+    "crossref_title": "A review on design and performance of thermomagnetic devices"
+  },
+  "source:waske-2019": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:00.990Z",
+    "crossref_title": "Energy harvesting near room temperature using a thermomagnetic generator with a pretzel-like magnetic flux topology"
+  },
+  "source:pecharsky-gschneidner-1997": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:01.369Z",
+    "crossref_title": "Giant Magnetocaloric Effect in\n                    <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\">\n                      <mml:mrow>\n                        <mml:msub>\n                          <mml:mrow>\n                            <mml:mi>Gd</mml:mi>\n                          </mml:mrow>\n                          <mml:mrow>\n                            <mml:mn>5</mml:mn>\n                          </mml:mrow>\n                        </mml:msub>\n                      </mml:mrow>\n                      <mml:mo>(</mml:mo>\n                      <mml:mrow>\n                        <mml:msub>\n                          <mml:mrow>\n                            <mml:mi>Si</mml:mi>\n                          </mml:mrow>\n                          <mml:mrow>\n                            <mml:mn>2</mml:mn>\n                          </mml:mrow>\n                        </mml:msub>\n                      </mml:mrow>\n                      <mml:mrow>\n                        <mml:msub>\n                          <mml:mrow>\n                            <mml:mi>Ge</mml:mi>\n                          </mml:mrow>\n                          <mml:mrow>\n                            <mml:mn>2</mml:mn>\n                          </mml:mrow>\n                        </mml:msub>\n                      </mml:mrow>\n                      <mml:mo>)</mml:mo>\n                    </mml:math>"
+  },
+  "source:mischenko-2006": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:01.748Z",
+    "crossref_title": "Giant Electrocaloric Effect in Thin-Film PbZr\n                    <sub>0.95</sub>\n                    Ti\n                    <sub>0.05</sub>\n                    O\n                    <sub>3</sub>"
+  },
+  "source:tusek-2016": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:02.143Z",
+    "crossref_title": "A regenerative elastocaloric heat pump"
+  },
+  "source:cole-1983-amtec": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:02.523Z",
+    "crossref_title": "Thermoelectric Energy Conversion with Solid Electrolytes"
+  },
+  "source:lapotin-2022": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:02.924Z",
+    "crossref_title": "Thermophotovoltaic efficiency of 40%"
+  },
+  "source:strandberg-2015": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:03.320Z",
+    "crossref_title": "Theoretical efficiency limits for thermoradiative energy conversion"
+  },
+  "source:raman-2014": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:03.715Z",
+    "crossref_title": "Passive radiative cooling below ambient air temperature under direct sunlight"
+  },
+  "source:raman-2019-night": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:04.099Z",
+    "crossref_title": "Generating Light from Darkness"
+  },
+  "source:curzon-ahlborn-1975": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:04.481Z",
+    "crossref_title": "Efficiency of a Carnot engine at maximum power output"
+  },
+  "source:bejan-2016": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:04.863Z",
+    "crossref_title": "Advanced Engineering Thermodynamics"
+  },
+  "source:hermann-2006": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:05.262Z",
+    "crossref_title": "Quantifying global exergy resources"
+  },
+  "source:curie-1880": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:05.648Z",
+    "crossref_title": "Développement par compression de l'électricité polaire dans les cristaux hémièdres à faces inclinées"
+  },
+  "source:anton-sodano-2007": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:06.031Z",
+    "crossref_title": "A review of power harvesting using piezoelectric materials (2003–2006)"
+  },
+  "source:erturk-inman-2011": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:06.414Z",
+    "crossref_title": "Piezoelectric Energy Harvesting"
+  },
+  "source:wang-song-2006": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:06.796Z",
+    "crossref_title": "Piezoelectric Nanogenerators Based on Zinc Oxide Nanowire Arrays"
+  },
+  "source:fan-tian-wang-2012": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:07.209Z",
+    "crossref_title": "Flexible triboelectric generator"
+  },
+  "source:zubko-2013": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:07.607Z",
+    "crossref_title": "Flexoelectric Effect in Solids"
+  },
+  "source:roundy-2003": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:08.003Z",
+    "crossref_title": "A study of low level vibrations as a power source for wireless sensor nodes"
+  },
+  "source:beeby-2007": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:08.384Z",
+    "crossref_title": "A micro electromagnetic generator for vibration energy harvesting"
+  },
+  "source:faraday-1832": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:08.763Z",
+    "crossref_title": "V. Experimental researches in electricity"
+  },
+  "source:wang-yuan-2008": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:09.156Z",
+    "crossref_title": "Vibration energy harvesting by magnetostrictive material"
+  },
+  "source:nan-2008": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:09.554Z",
+    "crossref_title": "Multiferroic magnetoelectric composites: Historical perspective, status, and future directions"
+  },
+  "source:krupenkin-taylor-2011": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:09.954Z",
+    "crossref_title": "Reverse electrowetting as a new approach to high-power energy harvesting"
+  },
+  "source:salter-1974": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:10.350Z",
+    "crossref_title": "Wave power"
+  },
+  "source:kymissis-1998": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:10.744Z",
+    "crossref_title": "Parasitic power harvesting in shoes"
+  },
+  "source:uchida-2008": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:11.125Z",
+    "crossref_title": "Observation of the spin Seebeck effect"
+  },
+  "source:uchida-2010-insulator": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:11.518Z",
+    "crossref_title": "Spin Seebeck insulator"
+  },
+  "source:saitoh-2006": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:11.916Z",
+    "crossref_title": "Conversion of spin current into charge current at room temperature: Inverse spin-Hall effect"
+  },
+  "source:bauer-2012": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:12.312Z",
+    "crossref_title": "Spin caloritronics"
+  },
+  "source:tserkovnyak-2002": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:12.695Z",
+    "crossref_title": "Enhanced Gilbert Damping in Thin Ferromagnetic Films"
+  },
+  "source:sakai-2018": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:13.075Z",
+    "crossref_title": "Giant anomalous Nernst effect and quantum-critical scaling in a ferromagnetic semimetal"
+  },
+  "source:ettingshausen-nernst-1886": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:13.459Z",
+    "crossref_title": "Ueber das Auftreten electromotorischer Kräfte in Metallplatten, welche von einem Wärmestrome durchflossen werden und sich im magnetischen Felde befinden"
+  },
+  "source:hall-1879": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:13.856Z",
+    "crossref_title": "On a New Action of the Magnet on Electric Currents"
+  },
+  "source:sinova-2015": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:14.238Z",
+    "crossref_title": "Spin Hall effects"
+  },
+  "source:shockley-queisser-1961": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:14.637Z",
+    "crossref_title": "Detailed Balance Limit of Efficiency of\n                    <i>p-n</i>\n                    Junction Solar Cells"
+  },
+  "source:chapin-1954": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:15.032Z",
+    "crossref_title": "A New Silicon <i>p-n</i> Junction Photocell for Converting Solar Radiation into Electrical Power"
+  },
+  "source:green-2024-tables": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:15.413Z",
+    "crossref_title": "Solar cell efficiency tables (Version 63)"
+  },
+  "source:fujishima-honda-1972": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:15.807Z",
+    "crossref_title": "Electrochemical Photolysis of Water at a Semiconductor Electrode"
+  },
+  "source:spanier-2016": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:16.188Z",
+    "crossref_title": "Power conversion efficiency exceeding the Shockley–Queisser limit in a ferroelectric insulator"
+  },
+  "source:landsberg-tonge-1980": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:16.600Z",
+    "crossref_title": "Thermodynamic energy conversion efficiencies"
+  },
+  "source:sharma-2015-rectenna": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:16.996Z",
+    "crossref_title": "A carbon nanotube optical rectenna"
+  },
+  "source:brown-1984": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:17.396Z",
+    "crossref_title": "The History of Power Transmission by Radio Waves"
+  },
+  "source:blankenship-2011": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:17.780Z",
+    "crossref_title": "Comparing Photosynthetic and Photovoltaic Efficiencies and Recognizing the Potential for Improvement"
+  },
+  "source:mitchell-1961": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:18.174Z",
+    "crossref_title": "Coupling of Phosphorylation to Electron and Hydrogen Transfer by a Chemi-Osmotic type of Mechanism"
+  },
+  "source:grove-1839": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:18.557Z",
+    "crossref_title": "XXIV. <i>On voltaic series and the combination of gases by platinum</i>"
+  },
+  "source:pattle-1954": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:18.937Z",
+    "crossref_title": "Production of Electric Power by mixing Fresh and Salt Water in the Hydroelectric Pile"
+  },
+  "source:loeb-1975": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:19.318Z",
+    "crossref_title": "Osmotic Power Plants"
+  },
+  "source:logan-elimelech-2012": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:19.704Z",
+    "crossref_title": "Membrane-based processes for sustainable power generation using water"
+  },
+  "source:post-2007": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:20.088Z",
+    "crossref_title": "Salinity-gradient power: Evaluation of pressure-retarded osmosis and reverse electrodialysis"
+  },
+  "source:brogioli-2009": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:20.470Z",
+    "crossref_title": "Extracting Renewable Energy from a Salinity Difference Using a Capacitor"
+  },
+  "source:yang-2003-electrokinetic": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:20.852Z",
+    "crossref_title": "Electrokinetic microchannel battery by means of electrokinetic and microfluidic phenomena"
+  },
+  "source:xue-2017-hydrovoltaic": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:21.233Z",
+    "crossref_title": "Water-evaporation-induced electricity with nanostructured carbon materials"
+  },
+  "source:chen-2015-evaporation": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:21.614Z",
+    "crossref_title": "Scaling up nanoscale water-driven energy conversion into evaporation-driven engines and generators"
+  },
+  "source:xu-2020-droplet": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:21.998Z",
+    "crossref_title": "A droplet-based electricity generator with high instantaneous power density"
+  },
+  "source:yin-2014-graphene-flow": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:22.392Z",
+    "crossref_title": "Generating electricity by moving a droplet of ionic liquid along graphene"
+  },
+  "source:dixon-hall-2014": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:22.787Z",
+    "crossref_title": "Fluid Mechanics and Thermodynamics of Turbomachinery"
+  },
+  "source:rosa-1961-mhd": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:49.032Z",
+    "crossref_title": "Physical Principles of Magnetohydrodynamic Power Generation"
+  },
+  "source:rappaport-1954": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:23.555Z",
+    "crossref_title": "The Electron-Voltaic Effect in\n                    <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\">\n                      <mml:mi>p</mml:mi>\n                      <mml:mo>−</mml:mo>\n                      <mml:mi>n</mml:mi>\n                    </mml:math>\n                    Junctions Induced by Beta-Particle Bombardment"
+  },
+  "source:prelas-2014": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:23.938Z",
+    "crossref_title": "A review of nuclear batteries"
+  },
+  "source:hahn-strassmann-1939": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:24.335Z",
+    "crossref_title": "�ber den Nachweis und das Verhalten der bei der Bestrahlung des Urans mittels Neutronen entstehenden Erdalkalimetalle"
+  },
+  "source:bethe-1939": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:24.732Z",
+    "crossref_title": "Energy Production in Stars"
+  },
+  "source:lamoreaux-1997": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:25.116Z",
+    "crossref_title": "Demonstration of the Casimir Force in the 0.6 to\n                    <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\">\n                      <mml:mn>6</mml:mn>\n                      <mml:mi/>\n                      <mml:mi>μ</mml:mi>\n                      <mml:mi>m</mml:mi>\n                    </mml:math>\n                    Range"
+  },
+  "source:toyabe-2010": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:25.529Z",
+    "crossref_title": "Experimental demonstration of information-to-energy conversion and validation of the generalized Jarzynski equality"
+  },
+  "source:radousky-liang-2012": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:25.925Z",
+    "crossref_title": "Energy harvesting: an integrated view of materials, devices and applications"
+  },
+  "source:joule-1847": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:26.353Z",
+    "crossref_title": "XVII. <i>On the effects of magnetism upon the dimensions of iron and steel bars</i>"
+  },
+  "source:villari-1865": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:26.737Z",
+    "crossref_title": "Ueber die Aenderungen des magnetischen Moments, welche der Zug und das Hindurchleiten eines galvanischen Stroms in einem Stabe von Stahl oder Eisen hervorbringen"
+  },
+  "source:whatmore-1986": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:27.134Z",
+    "crossref_title": "Pyroelectric devices and materials"
+  },
+  "source:rowe-2006": {
+    "verified": true,
+    "checked_at": "2026-09-19T01:23:27.517Z",
+    "crossref_title": "Thermoelectrics Handbook"
+  }
+}

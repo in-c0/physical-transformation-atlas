@@ -1,0 +1,30 @@
+.article { max-width: 900px; margin: 0 auto; padding: 24px var(--gutter) 48px; }
+.header { padding-bottom: 20px; }
+.header h1 { margin: 6px 0 10px; }
+.chain { font-size: var(--text-ui); line-height: var(--leading-ui); }
+.chain span + span::before { content: " → "; color: var(--ink-secondary); }
+.chain a { text-decoration: underline; text-underline-offset: 2px; text-decoration-color: var(--hairline); }
+.summary { margin-top: 12px; max-width: 70ch; }
+.facts { display: grid; grid-template-columns: max-content 1fr; gap: 4px 20px; margin-top: 14px; font-size: var(--text-ui); line-height: var(--leading-ui); }
+.facts dt { color: var(--ink-secondary); font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: 0.04em; text-transform: uppercase; padding-top: 2px; }
+.facts dd { margin: 0; }
+.section { padding: 16px 0; border-top: var(--border); }
+.section h2 { margin-bottom: 8px; }
+.steps > li + li { border-top: var(--border); }
+.step { display: grid; grid-template-columns: 32px 1fr; gap: 8px; padding: 10px 0; }
+.stepNum { font-family: var(--font-mono); font-size: var(--text-micro); font-weight: var(--weight-medium); color: var(--ink-secondary); padding-top: 3px; }
+.stepBody > * + * { margin-top: 4px; }
+.stepLine { display: flex; flex-wrap: wrap; gap: 4px 6px; align-items: baseline; }
+.stepLine a { font-weight: var(--weight-medium); }
+.stepStatus { margin-left: auto; font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: 0.04em; text-transform: uppercase; }
+.conditions { padding-left: 14px; list-style: "· "; color: var(--ink-secondary); font-size: var(--text-ui); line-height: var(--leading-ui); }
+.note { font-size: var(--text-ui); line-height: var(--leading-ui); }
+.coords { display: flex; flex-direction: column; gap: 4px; }
+.coord { font-family: var(--font-mono); font-size: var(--text-data); text-decoration: underline; text-underline-offset: 2px; }
+@media (max-width: 640px) {
+  .article { padding-top: 16px; }
+  .header h1 { font-size: 26px; line-height: 31px; }
+  .facts { grid-template-columns: 1fr; gap: 2px; }
+  .facts dd { margin-bottom: 6px; }
+  .stepStatus { margin-left: 0; }
+}

@@ -4,165 +4,186 @@
 - id: coupling:thermoelectric
   type: coupling
   name: Thermoelectric
-  aliases: [Seebeck–Peltier, thermocouple]
+  aliases: [thermoelectric, Seebeck, thermocouple, thermopile]
   domain: condensed-matter
   summary: Solid-state coupling of heat flow and charge flow through carrier diffusion in a conductor.
 - id: coupling:thermionic
   type: coupling
   name: Thermionic
+  aliases: [thermionic, thermionic emission, thermionic converter]
   domain: condensed-matter
   summary: Electron emission from a hot cathode across a vacuum gap.
 - id: coupling:thermoacoustic
   type: coupling
   name: Thermoacoustic
+  aliases: [thermoacoustic, thermoacoustic engine]
   domain: thermodynamics
   summary: Heat driving self-sustained sound, then sound driving a piston or linear alternator.
 - id: coupling:pyroelectric
   type: coupling
   name: Pyroelectric
+  aliases: [pyroelectric, pyroelectricity]
   domain: condensed-matter
   summary: Temperature change altering polarisation in a polar crystal.
 - id: coupling:thermogalvanic
   type: coupling
   name: Thermogalvanic
-  aliases: [thermo-electrochemical]
+  aliases: [thermogalvanic, thermocell, thermo-electrochemical]
   domain: electrochemistry
   summary: Temperature dependence of an electrode potential in a redox electrolyte.
 - id: coupling:thermomagnetic
   type: coupling
   name: Thermomagnetic
-  aliases: [Curie-point, pyromagnetic]
+  aliases: [thermomagnetic, pyromagnetic, Curie point generator]
   domain: condensed-matter
   summary: Temperature-driven change of magnetisation moving flux through a coil or a magnet.
 - id: coupling:thermophotovoltaic
   type: coupling
   name: Thermophotovoltaic
+  aliases: [thermophotovoltaic]
   domain: optics-photonics
   summary: A hot emitter radiating into a photovoltaic cell tuned to its spectrum.
 - id: coupling:heat-engine
   type: coupling
   name: Heat engine (thermomechanical)
-  aliases: [Rankine, Stirling, Brayton, Otto]
+  aliases: [heat engine, Rankine cycle, Stirling engine, Brayton cycle]
   domain: thermodynamics
   summary: A working fluid cycled between hot and cold reservoirs to produce shaft work.
 - id: coupling:caloric
   type: coupling
   name: Caloric (magneto/electro/elasto)
+  aliases: [magnetocaloric, electrocaloric, elastocaloric, caloric effect]
   domain: condensed-matter
   summary: Field- or stress-driven entropy change of a solid, used for heat pumping or its inverse.
 - id: coupling:piezoelectric
   type: coupling
   name: Piezoelectric
+  aliases: [piezoelectric, piezoelectricity]
   domain: condensed-matter
   summary: Stress producing polarisation in a non-centrosymmetric crystal.
 - id: coupling:flexoelectric
   type: coupling
   name: Flexoelectric
+  aliases: [flexoelectric, flexoelectricity]
   domain: condensed-matter
   summary: Strain gradient producing polarisation in any dielectric.
 - id: coupling:triboelectric
   type: coupling
   name: Triboelectric
+  aliases: [triboelectric, contact electrification, triboelectric nanogenerator]
   domain: surface-interface
   summary: Contact electrification and electrostatic induction between separating surfaces.
 - id: coupling:electrostatic
   type: coupling
   name: Electrostatic (variable capacitance)
+  aliases: [electrostatic energy harvesting, variable capacitance, electret generator]
   domain: electromagnetism
   summary: Mechanical change of capacitance against an electrostatic force.
 - id: coupling:electromagnetic-induction
   type: coupling
   name: Electromagnetic induction
+  aliases: [electromagnetic induction, electromagnetic generator, inductive generator]
   domain: electromagnetism
   summary: Relative motion of conductor and magnetic field inducing an EMF.
 - id: coupling:magnetostrictive
   type: coupling
   name: Magnetostrictive
-  aliases: [magnetoelastic]
+  aliases: [magnetostrictive, magnetoelastic, Villari effect]
   domain: condensed-matter
   summary: Stress changing magnetisation, read out by a coil.
 - id: coupling:magnetoelectric
   type: coupling
   name: Magnetoelectric
+  aliases: [magnetoelectric, magnetoelectric composite]
   domain: condensed-matter
   summary: Magnetic field producing polarisation, directly or via strain in a composite.
 - id: coupling:spin-caloritronic
   type: coupling
   name: Spin caloritronic
-  aliases: [spintronic, spin Seebeck]
+  aliases: [spin caloritronics, spin Seebeck, spintronic, inverse spin Hall]
   domain: spin-systems
   summary: Heat or charge driving spin currents, converted to charge by spin–orbit coupling.
 - id: coupling:photovoltaic
   type: coupling
   name: Photovoltaic
+  aliases: [photovoltaic, solar cell]
   domain: optics-photonics
   summary: Photon absorption creating carriers separated by a junction or by crystal asymmetry.
 - id: coupling:photoelectrochemical
   type: coupling
   name: Photoelectrochemical
+  aliases: [photoelectrochemical, photoelectrolysis]
   domain: electrochemistry
   summary: Photogenerated carriers driving a redox reaction at an electrolyte interface.
 - id: coupling:photothermal
   type: coupling
   name: Photothermal
+  aliases: [photothermal, solar thermal]
   domain: optics-photonics
   summary: Absorbed radiation becoming heat, then any thermal coupling.
 - id: coupling:electrochemical
   type: coupling
   name: Electrochemical
-  aliases: [galvanic, fuel cell, battery]
+  aliases: [electrochemical, galvanic cell, fuel cell, battery]
   domain: electrochemistry
   summary: Redox free energy delivered as electrons through an external circuit.
 - id: coupling:osmotic
   type: coupling
   name: Osmotic / salinity-gradient
-  aliases: [blue energy, membrane power]
+  aliases: [osmotic power, salinity gradient, blue energy, reverse electrodialysis]
   domain: electrochemistry
   summary: Mixing free energy of solutions intercepted by selective membranes or electrodes.
 - id: coupling:electrokinetic
   type: coupling
   name: Electrokinetic
-  aliases: [streaming potential, hydrovoltaic]
+  aliases: [electrokinetic, streaming potential, hydrovoltaic]
   domain: surface-interface
   summary: Fluid flow past a charged surface dragging counter-ions into a current.
 - id: coupling:turbomachinery
   type: coupling
   name: Turbomachinery
-  aliases: [turbine, rotor, waterwheel]
+  aliases: [turbine, rotor, waterwheel, turbomachinery]
   domain: fluid-mechanics
   summary: A rotor extracting shaft work from a moving or falling fluid.
 - id: coupling:magnetohydrodynamic
   type: coupling
   name: Magnetohydrodynamic
+  aliases: [magnetohydrodynamic, MHD generator]
   domain: plasma-physics
   summary: A conducting fluid moving through a magnetic field acting as its own armature.
 - id: coupling:radiovoltaic
   type: coupling
   name: Radiovoltaic
-  aliases: [betavoltaic, alphavoltaic, nuclear battery]
+  aliases: [betavoltaic, radiovoltaic, nuclear battery, alphavoltaic]
   domain: nuclear-physics
   summary: Decay particles creating carrier pairs in a junction.
+- id: coupling:nuclear-thermal
+  type: coupling
+  name: Nuclear heat
+  aliases: [decay heat, radioisotope heater, nuclear heat]
+  domain: nuclear-physics
+  summary: Decay, fission or fusion energy thermalised into a temperature difference for a downstream thermal converter.
 - id: coupling:rectenna
   type: coupling
   name: Rectenna
-  aliases: [RF harvesting, optical rectenna]
+  aliases: [rectenna, RF energy harvesting, microwave power transmission]
   domain: electromagnetism
   summary: An antenna feeding a rectifier to turn radiation into direct current.
 - id: coupling:thermochemical
   type: coupling
   name: Thermochemical
-  aliases: [combustion, chemical looping]
+  aliases: [combustion, thermochemical cycle, reaction enthalpy]
   domain: chemistry
   summary: Reaction enthalpy released as heat for a downstream thermal converter.
 - id: coupling:biological
   type: coupling
   name: Biological
-  aliases: [photosynthetic, chemiosmotic]
+  aliases: [photosynthetic, chemiosmotic, biological energy conversion]
   domain: biophysical-transduction
   summary: Protein machinery converting light or gradients into chemical fuel.
 - id: coupling:fluctuation-driven
   type: coupling
   name: Fluctuation / information-driven
-  aliases: [Brownian ratchet, Maxwell demon, Casimir]
+  aliases: [Brownian ratchet, Maxwell demon, Casimir, fluctuation theorem]
   domain: quantum-transport
   summary: Work extracted by exploiting fluctuations or ground-state forces, always paid for elsewhere.

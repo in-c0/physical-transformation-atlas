@@ -1,0 +1,8 @@
+.list > li { padding: 6px 0; border-top: var(--border); display: grid; grid-template-columns: 28px 1fr; gap: 8px; }
+.list > li:first-child { border-top: 0; }
+.num { font-family: var(--font-mono); font-size: var(--text-micro); color: var(--ink-secondary); font-variant-numeric: tabular-nums; padding-top: 2px; }
+.title { font-size: var(--text-ui); line-height: var(--leading-ui); }
+.meta { font-family: var(--font-mono); font-size: var(--text-micro); line-height: var(--leading-micro); color: var(--ink-secondary); word-break: break-word; }
+.meta a { text-decoration: underline; text-underline-offset: 2px; }
+.verified { color: var(--status-demonstrated); }
+.unverified { color: var(--status-searched-none); }

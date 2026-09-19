@@ -321,13 +321,6 @@
   conditions: [free mixing without a membrane dissipates the whole free energy as heat]
   evidence: [source:degroot-mazur-1962]
   status: established
-- id: claim:diffusion-member
-  subject: phenomenon:diffusion
-  predicate: member_of
-  object: coupling:osmotic
-  conditions: [as the loss channel every membrane process competes with]
-  evidence: [source:logan-elimelech-2012]
-  status: established
 - id: claim:amtec-drives
   subject: disequilibrium:temperature-gradient
   predicate: drives
@@ -455,8 +448,7 @@
 - id: claim:heating-member
   subject: phenomenon:radioisotope-heating
   predicate: member_of
-  object: coupling:thermoelectric
-  conditions: [as the heat source of radioisotope thermoelectric generators]
+  object: coupling:nuclear-thermal
   evidence: [source:prelas-2014]
   status: established
 - id: claim:heating-implemented-rtg
@@ -499,7 +491,7 @@
 - id: claim:fission-member
   subject: phenomenon:nuclear-fission
   predicate: member_of
-  object: coupling:thermochemical
+  object: coupling:nuclear-thermal
   conditions: [as a heat source for a conventional steam cycle]
   evidence: [source:bejan-2016]
   status: established
@@ -536,7 +528,7 @@
 - id: claim:fusion-member
   subject: phenomenon:nuclear-fusion
   predicate: member_of
-  object: coupling:thermochemical
+  object: coupling:nuclear-thermal
   evidence: [source:bethe-1939]
   status: established
 - id: claim:hydrostatic-governed-gravity
