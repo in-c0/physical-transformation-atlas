@@ -1,5 +1,5 @@
 # Design log
-Stage: 7 — awaiting owner review (review 2 PASS 19/09 ~2:50 pm). Stage 2 renders not run (open question).
+Stage: 7 — awaiting owner review (review 2 PASS 19/09 ~11:55 am). Stage 2 renders not run (open question).
 Direction: Calibrated Ledger (chosen 19/09/2026, ChatGPT concept A + C's checksum strip + B's addresses)
 
 ## Components
@@ -21,11 +21,11 @@ Direction: Calibrated Ledger (chosen 19/09/2026, ChatGPT concept A + C's checksu
 
 ## Session history
 - 19 Sep 2026 ~10:20 am — Stage 0: BRIEF.md derived from the owner's ChatGPT thread (owner asked for implementation).
-- 19 Sep ~10:35 am — Stage 1: temporary chat, three directions (reviews/concept-1.md).
-- 19 Sep ~10:50 am — Critique + resolution (reviews/concept-2.md) → DESIGN.md.
-- 19 Sep ~11:00 am–1:50 pm — Stage 3 build; headless verification at 1440 and 375 (tools/verify.mjs → design/current/).
-- 19 Sep ~1:55 pm — first deploy to https://physical-transformation-atlas.wldud5192.workers.dev.
-- 19 Sep ~2:20 pm — Review 1 (temporary chat, 5 images): VERDICT PIVOT, 8 concrete changes (reviews/ui-review-1.md). All applied; rebuilt; redeployed.
-- 19 Sep ~2:45 pm — Review 2 sent with the rebuilt matrix/drawer and phone home.
-- 19 Sep ~2:50 pm — Review 2: VERDICT PASS (reviews/ui-review-2.md). Stage 6 checklist run; stage 7 awaits the owner.
+- 19 Sep ~10:30 am — Stage 1: temporary chat, three directions (reviews/concept-1.md).
+- 19 Sep ~10:45 am — Critique + resolution (reviews/concept-2.md) → DESIGN.md.
+- 19 Sep ~10:55–11:30 am — Stage 3 build; headless verification at 1440 and 375 (tools/verify.mjs → design/current/).
+- 19 Sep ~11:35 am — first deploy to https://physical-transformation-atlas.wldud5192.workers.dev.
+- 19 Sep ~11:45 am — Review 1 (temporary chat, 5 images): VERDICT PIVOT, 8 concrete changes (reviews/ui-review-1.md). All applied; rebuilt; redeployed.
+- 19 Sep ~11:50 am — Review 2 sent with the rebuilt matrix/drawer and phone home.
+- 19 Sep ~11:55 am — Review 2: VERDICT PASS (reviews/ui-review-2.md). Stage 6 checklist run; stage 7 awaits the owner.
 - Mechanics: `upload_image` uploads the *scaled* capture, so take review screenshots at scale 1; the image tab froze once on `captureScreenshot` — retry once; serve screenshots through a small viewer page (tools/serve-dir.mjs + a fit-to-viewport HTML) rather than opening the PNG directly.

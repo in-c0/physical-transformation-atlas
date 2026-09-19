@@ -1,4 +1,4 @@
-# Concept review 2 — critique and resolution (same temporary chat, 19/09/2026 ~10:55 am Sydney)
+# Concept review 2 — critique and resolution (same temporary chat, 19/09/2026 ~10:45 am Sydney)
 
 Claude's pushback: (1) home first viewport = ledger rail + compact matrix, graph on /atlas; (2) distinct marks for not-searched vs searched-no-demonstration vs candidate, forbidden vs contradicted; (3) adopt C's pathway checksum strip for the seven computed checks; (4) adopt B's row/column addresses for the probe readout. Plus phone compositions, state language, focus ring, final token list. Verbatim reply below; transcribed into DESIGN.md.
 

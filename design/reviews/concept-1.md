@@ -1,4 +1,4 @@
-# Concept review 1 — three directions (ChatGPT temporary chat, 19/09/2026 ~10:40 am Sydney)
+# Concept review 1 — three directions (ChatGPT temporary chat, 19/09/2026 ~10:30 am Sydney)
 
 Stage 1 of the UI/UX workflow. Prompt: design/BRIEF.md + the banned-defaults list, asking for three directions. Verbatim reply below. Claude's critique and the resolved direction are in concept-2.md and DESIGN.md.
 
