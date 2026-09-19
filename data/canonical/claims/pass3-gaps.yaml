@@ -46,7 +46,7 @@
   subject: phenomenon:photon-drag-effect
   predicate: member_of
   object: coupling:photon-momentum
-  evidence: [source:strait-2019-photon-drag]
+  evidence: [source:strait-2019-photon-drag, source:gibson-1970-photon-drag]
   status: established
 
 # --- Dufour, Soret family, ionic thermoelectric (thermodiffusive) ------------------
@@ -65,7 +65,7 @@
   predicate: produces
   object: carrier:heat-flow
   energy: { input: thermal, output: thermal }
-  evidence: [source:rowley-horne-1978-dufour]
+  evidence: [source:rowley-horne-1978-dufour, source:degroot-mazur-1962]
   status: established
 - id: claim:dufour-member
   subject: phenomenon:dufour-effect
@@ -142,7 +142,7 @@
   predicate: produces
   object: carrier:fluid-flow
   energy: { input: kinetic, output: kinetic }
-  evidence: [source:scriven-sternling-1960]
+  evidence: [source:scriven-sternling-1960, source:marangoni-review-2021]
   status: established
 - id: claim:marangoni-member
   subject: phenomenon:marangoni-effect
