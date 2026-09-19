@@ -32,7 +32,7 @@ export function StatusMark({ status, size = 12 }: { status: MatrixCellStatus; si
       body = <path d={`M${c - 5} ${c + 1} V${c + 5} H${c - 1}`} fill="none" stroke="var(--ink-secondary)" strokeWidth={1} />;
       break;
     case "not-searched":
-      body = <path d={`M${c - 5} ${c + 1} V${c + 5} H${c - 1}`} fill="none" stroke="var(--status-not-searched)" strokeWidth={1} />;
+      body = <path d={`M${c - 5} ${c + 1} V${c + 5} H${c - 1}`} fill="none" stroke="var(--status-not-searched-mark)" strokeWidth={1} />;
       break;
     case "forbidden":
       body = (

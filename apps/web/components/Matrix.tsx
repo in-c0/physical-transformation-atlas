@@ -178,8 +178,9 @@ export function Matrix({ data, density, fill = false, filters = false }: { data:
     return bands;
   }, [cols]);
 
-  const cellW = density === "home" ? "var(--matrix-cell-home-w)" : "var(--matrix-cell-w)";
-  const cellH = density === "home" ? "var(--matrix-cell-home-h)" : "var(--matrix-cell-h)";
+  // Home density fills the available width between 24×20 and 40×32; /matrix is fixed at 40×32.
+  const cellW = density === "home" ? "clamp(var(--matrix-cell-home-w), calc((100vw - var(--matrix-row-axis) - 2 * var(--gutter) - 12px) / var(--cols)), var(--matrix-cell-w))" : "var(--matrix-cell-w)";
+  const cellH = density === "home" ? "clamp(var(--matrix-cell-home-h), calc(0.8 * (100vw - var(--matrix-row-axis) - 2 * var(--gutter) - 12px) / var(--cols)), var(--matrix-cell-h))" : "var(--matrix-cell-h)";
 
   return (
     <div className={`${styles.wrap} ${selected ? styles.withDrawer : ""} ${fill ? styles.fill : ""}`}>

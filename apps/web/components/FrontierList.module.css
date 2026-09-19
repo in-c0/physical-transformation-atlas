@@ -11,9 +11,9 @@
 .check { flex-direction: row !important; align-items: center; gap: 6px !important; height: 26px; }
 .check input { margin: 0; accent-color: var(--ink); }
 .classes { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
-.chip { height: 22px; padding: 0 8px; border: var(--border); border-radius: var(--radius-control); font-size: var(--text-ui); color: var(--ink-secondary); }
-.chip:hover { border-color: var(--ink); }
-.chipOn { color: var(--ink); border-color: var(--ink); }
+.chip { height: 22px; padding: 0 12px 0 0; margin-right: 12px; border: 0; border-right: 1px solid var(--hairline); border-radius: 0; background: transparent; font-size: var(--text-ui); color: var(--ink-secondary); text-decoration: line-through; text-decoration-color: var(--ink-secondary); }
+.chip:hover { color: var(--ink); }
+.chipOn { color: var(--ink); text-decoration: none; }
 .count { padding: 8px 0; border-bottom: var(--border); }
 .list > li { border-bottom: var(--border); }
 .item { padding: 12px 0; }

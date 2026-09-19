@@ -44,7 +44,7 @@
 .bridge { padding: 8px 0; }
 .bridgeHead { display: flex; align-items: baseline; gap: 8px; }
 .bridgeNum { font-family: var(--font-mono); font-size: var(--text-micro); font-weight: var(--weight-medium); color: var(--ink-secondary); width: 18px; }
-.bridgeChain { flex: 1 1 auto; font-size: var(--text-ui); line-height: var(--leading-ui); }
+.bridgeChain { flex: 1 1 auto; min-width: 0; font-size: var(--text-ui); line-height: 1.45; white-space: normal; overflow: visible; text-overflow: clip; overflow-wrap: anywhere; }
 .bridgeChain span + span::before { content: " → "; color: var(--ink-secondary); }
 .bridgeFacts { display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; margin: 6px 0 0 26px; font-family: var(--font-mono); font-size: var(--text-micro); line-height: var(--leading-micro); color: var(--ink-secondary); }
 .bridgeFacts b { font-weight: var(--weight-medium); color: var(--ink); text-align: right; }

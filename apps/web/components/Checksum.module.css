@@ -1,5 +1,5 @@
 .wrap { border-top: var(--border); border-bottom: var(--border); }
-.strip { display: grid; grid-template-columns: repeat(7, 1fr); height: 66px; }
+.strip { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); height: 66px; }
 .cell {
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
   border-left: var(--border); padding: 4px 2px; min-width: 0;
@@ -14,8 +14,11 @@
 .detail { padding: 10px 0 12px; border-top: var(--border); }
 .detail dl { display: grid; grid-template-columns: 64px 1fr; gap: 4px 12px; font-size: var(--text-ui); line-height: var(--leading-ui); }
 .detail dd { margin: 0; }
-.compact .strip { height: 56px; }
+.compact .strip { height: auto; min-height: 58px; }
 .compact .fact { display: none; }
+.compact .abbrDesk { display: none; }
+.compact .abbrPhone { display: inline; }
+.compact .abbr { font: 500 8px/10px var(--font-mono); letter-spacing: 0.02em; overflow-wrap: anywhere; white-space: normal; text-align: center; }
 @media (max-width: 640px) {
   .strip { height: 48px; }
   .abbrDesk { display: none; }

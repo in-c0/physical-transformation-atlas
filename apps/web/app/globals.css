@@ -14,6 +14,7 @@
   --status-candidate: #1b1a18;
   --status-searched-none: #8a5a16;
   --status-not-searched: #d7d3ca;
+  --status-not-searched-mark: #bdb8ae; /* review 1: a 1px corner at #D7D3CA vanished against the surface */
   --status-forbidden: #1b1a18;
   --status-contradicted: #9c3b31;
   --status-insufficient: #66635d;

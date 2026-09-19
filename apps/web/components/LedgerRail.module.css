@@ -23,7 +23,10 @@
 .frontier { text-decoration: underline; text-decoration-color: var(--status-searched-none); text-underline-offset: 4px; text-decoration-thickness: 1px; }
 .label { font-family: var(--font-mono); font-size: var(--text-micro); line-height: var(--leading-micro); font-weight: var(--weight-medium); letter-spacing: 0.06em; color: var(--ink-secondary); }
 @media (max-width: 640px) {
-  .rail { height: auto; padding: 8px var(--gutter); flex-wrap: wrap; gap: 6px 0; white-space: normal; }
-  .item { padding-right: 12px; margin-right: 12px; }
+  .rail { display: grid; grid-auto-flow: column; grid-template-rows: 28px 28px; grid-auto-columns: max-content; height: 56px; padding: 0 var(--gutter); overflow-x: auto; overflow-y: hidden; scrollbar-width: none; }
+  .rail::-webkit-scrollbar { display: none; }
+  .item { padding-right: 12px; margin-right: 12px; border-right: 0; }
+  .item:nth-child(6) { order: 8; }
+  .item:nth-child(7) { order: 9; }
   .value { font-size: 14px; line-height: 18px; }
 }

@@ -189,15 +189,19 @@
   .colHeads { height: 28px; top: 20px; }
   .rowHead { padding-left: 8px; grid-template-columns: 36px 1fr; }
   .probe { height: 32px; gap: 8px; }
-  .probeNames { display: none; }
+  .probeLabel { display: none; }
+  .probeStatus { display: none; }
   .rail { height: auto; padding: 6px var(--gutter); flex-wrap: wrap; }
   .stamp { margin-left: 0; }
 }
 
 /* Filters ------------------------------------------------------------------- */
-.filters { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; padding: 8px var(--gutter); border-bottom: var(--border); }
-.filter { display: inline-flex; align-items: center; gap: 5px; height: 22px; padding: 0 7px; border: var(--border); border-radius: var(--radius-control); font-size: var(--text-ui); line-height: var(--leading-ui); color: var(--ink-secondary); }
-.filter:hover { border-color: var(--ink); }
-.filterOn { color: var(--ink); border-color: var(--ink); }
+.filters { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 0; padding: 6px var(--gutter); border-bottom: var(--border); }
+.filters > :global(.label) { padding-right: 14px; }
+.filter { display: inline-flex; align-items: center; gap: 6px; height: 22px; padding: 0 14px 0 0; margin-right: 14px; border: 0; border-right: 1px solid var(--hairline); border-radius: 0; background: transparent; box-shadow: none; font-size: var(--text-ui); line-height: var(--leading-ui); color: var(--ink-secondary); }
+.filter:hover { color: var(--ink); }
+.filter:last-of-type { border-right: 0; }
+.filterOn { color: var(--ink); }
+.filter:not(.filterOn) > span { text-decoration: line-through; text-decoration-color: var(--ink-secondary); }
 .filterReset { font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-secondary); text-decoration: underline; text-underline-offset: 2px; margin-left: 4px; }
 .dimmed { opacity: 0.18; }

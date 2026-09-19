@@ -75,19 +75,20 @@ export function AtlasGraph({ initial }: { initial?: string }) {
               "border-width": 1,
               label: "data(label)",
               "font-family": "IBM Plex Mono, monospace",
-              "font-size": 9,
+              "font-size": 8,
               color: "#1b1a18",
               "text-margin-y": -3,
               "text-valign": "top",
               "text-halign": "center",
               "text-wrap": "ellipsis",
               "text-max-width": "110px",
-              "min-zoomed-font-size": 7,
+              // Phenomenon and carrier labels appear as you zoom in; drivers and outputs are always named.
+              "min-zoomed-font-size": 8,
             },
           },
-          { selector: 'node[type = "disequilibrium"]', style: { shape: "rectangle", width: 16, height: 16, "background-color": "#1b1a18", color: "#1b1a18" } },
+          { selector: 'node[type = "disequilibrium"]', style: { shape: "rectangle", width: 16, height: 16, "background-color": "#1b1a18", color: "#1b1a18", "font-size": 10, "font-weight": 500, "min-zoomed-font-size": 5 } },
           { selector: 'node[type = "carrier"]', style: { shape: "diamond", width: 14, height: 14 } },
-          { selector: 'node[type = "output"]', style: { shape: "hexagon", width: 20, height: 20, "border-width": 2 } },
+          { selector: 'node[type = "output"]', style: { shape: "hexagon", width: 20, height: 20, "border-width": 2, "font-size": 10, "font-weight": 500, "min-zoomed-font-size": 5 } },
           { selector: 'node[type = "coupling"]', style: { shape: "round-rectangle", width: 22, height: 12, "border-style": "dashed", color: "#5d5a54" } },
           {
             selector: "edge",
@@ -107,7 +108,7 @@ export function AtlasGraph({ initial }: { initial?: string }) {
           { selector: "node.sel", style: { "border-width": 3, "border-color": "#1b1a18", "background-color": "#f6f3ec" } },
           { selector: "edge.sel", style: { width: 2.5 } },
         ],
-        layout: { name: "cose", animate: false, nodeRepulsion: () => 9000, idealEdgeLength: () => 60, gravity: 0.25, numIter: 800, padding: 30 } as never,
+        layout: { name: "cose", animate: false, nodeRepulsion: () => 60000, idealEdgeLength: () => 120, edgeElasticity: () => 60, gravity: 0.08, numIter: 1500, nodeOverlap: 24, padding: 40, randomize: true } as never,
       });
       cyRef.current = cy;
       cy.on("tap", "node", (ev) => setSel({ kind: "entity", id: ev.target.id() }));
@@ -159,7 +160,7 @@ export function AtlasGraph({ initial }: { initial?: string }) {
         <div className={styles.toolbar}>
           <span className="label">Show</span>
           {GRAPH_TYPES.map((t) => (
-            <button key={t} type="button" className={`${styles.chip} ${types.has(t) ? styles.chipOn : ""}`} aria-pressed={types.has(t)} onClick={() => toggleType(t)}>
+            <button key={t} type="button" className={`${styles.chip} ${types.has(t) ? styles.chipOn : ""}`} aria-pressed={types.has(t) ? "true" : "false"} onClick={() => toggleType(t)}>
               {t}
             </button>
           ))}

@@ -44,9 +44,11 @@
 .navItem[aria-current="page"] { color: var(--ink); border-bottom-color: var(--ink); }
 
 @media (max-width: 640px) {
-  .header { height: 40px; }
+  .header { height: auto; flex-wrap: wrap; }
   .brandLong { display: none; }
   .brandShort { display: inline; }
-  .brand { padding-right: 12px; }
-  .navItem { padding: 0 8px; }
+  .brand { height: 40px; padding-right: 12px; }
+  .nav { height: 40px; flex: 1 1 auto; overflow-x: auto; white-space: nowrap; scrollbar-width: none; }
+  .nav::-webkit-scrollbar { display: none; }
+  .navItem { padding: 0 10px; font-size: 11px; }
 }
