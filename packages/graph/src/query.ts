@@ -4,6 +4,8 @@
  */
 import type { Claim, CompiledPath, Entity, Graph, MatrixCell, Pathway, Source } from "@pta/schema";
 
+const STOP = new Set(["the", "and", "for", "with", "from", "into", "that", "this", "what", "which", "how", "can", "does", "are", "was", "were", "has", "have", "you", "your", "its", "than", "then", "when", "where", "about", "using", "use", "via", "any", "all", "one", "two", "energy", "effect"]);
+
 export class AtlasIndex {
   readonly entity: Map<string, Entity>;
   readonly claim: Map<string, Claim>;
@@ -15,7 +17,7 @@ export class AtlasIndex {
   private bySubject = new Map<string, Claim[]>();
   private byObject = new Map<string, Claim[]>();
   private pathsByNode = new Map<string, CompiledPath[]>();
-  private searchDocs: { id: string; text: string; name: string; type: string }[];
+  private searchDocs: { id: string; name: string; nameWords: string[]; textWords: string[]; type: string }[];
 
   constructor(public readonly graph: Graph) {
     this.entity = new Map(graph.entities.map((e) => [e.id, e]));
@@ -32,11 +34,13 @@ export class AtlasIndex {
     for (const p of graph.paths) {
       for (const n of new Set(p.nodes)) this.pathsByNode.set(n, [...(this.pathsByNode.get(n) ?? []), p]);
     }
+    const words = (s: string) => s.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
     this.searchDocs = graph.entities.map((e) => ({
       id: e.id,
-      name: e.name,
+      name: e.name.toLowerCase(),
+      nameWords: words([e.name, ...(e.aliases ?? [])].join(" ")),
+      textWords: words([e.summary, e.symbol ?? ""].join(" ")),
       type: e.type,
-      text: [e.name, ...(e.aliases ?? []), e.symbol ?? "", e.summary].join(" ").toLowerCase(),
     }));
   }
 
@@ -85,24 +89,38 @@ export class AtlasIndex {
     }
     return out;
   }
-  /** Concept search: tokens must all appear in name/aliases/summary. Names weigh more. */
+  /**
+   * Concept search. A phrase like "window heated by sunlight" should resolve to the
+   * disequilibria and phenomena it touches, so any token may match; results rank by
+   * how many tokens matched, with name and alias matches weighted above summary text.
+   * Stop words are dropped; tokens shorter than three characters are ignored.
+   */
   search(query: string, limit = 20): { entity: Entity; score: number }[] {
     const q = query.toLowerCase().trim();
     if (!q) return [];
-    const tokens = q.split(/\s+/).filter(Boolean);
+    const tokens = q.split(/[\s,;.()/]+/).filter((t) => t.length >= 3 && !STOP.has(t));
+    if (tokens.length === 0) return [];
     const hits: { entity: Entity; score: number }[] = [];
+    // A token matches a word when the word starts with it ("heat" ⊂ "heated"), never mid-word
+    // ("rain" must not match "strain").
+    const wordHit = (words: string[], t: string) => words.some((w) => w === t || (t.length >= 4 && w.startsWith(t)) || (w.length >= 5 && t.startsWith(w)));
     for (const d of this.searchDocs) {
       let score = 0;
+      let matched = 0;
       for (const t of tokens) {
-        if (!d.text.includes(t)) {
-          score = -1;
-          break;
+        if (wordHit(d.nameWords, t)) {
+          score += 4;
+          matched++;
+        } else if (wordHit(d.textWords, t)) {
+          score += 1;
+          matched++;
         }
-        if (d.name.toLowerCase().includes(t)) score += 3;
-        else score += 1;
       }
-      if (score < 0) continue;
-      if (d.name.toLowerCase() === q) score += 10;
+      if (matched === 0) continue;
+      if (matched === tokens.length) score += 2;
+      if (d.name === q) score += 10;
+      // A concept search is for drivers and effects; quantities and materials rank below.
+      if (d.type === "disequilibrium" || d.type === "phenomenon") score += 1;
       hits.push({ entity: this.entity.get(d.id)!, score });
     }
     return hits.sort((a, b) => b.score - a.score || a.entity.name.localeCompare(b.entity.name)).slice(0, limit);

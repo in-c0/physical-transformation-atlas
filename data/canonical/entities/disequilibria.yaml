@@ -6,7 +6,7 @@
   energy_form: thermal
   name: Temperature gradient
   symbol: ∇T
-  aliases: [temperature difference, thermal gradient, ΔT]
+  aliases: [temperature difference, thermal gradient, ΔT, waste heat, body heat, hot and cold]
   domain: thermodynamics
   quantity: quantity:temperature
   exergy: positive
@@ -100,7 +100,7 @@
   energy_form: kinetic
   name: Bulk fluid flow
   symbol: v
-  aliases: [wind, current, river flow, shear flow, kinetic energy of fluid]
+  aliases: [wind, breeze, current, river flow, shear flow, kinetic energy of fluid]
   domain: fluid-mechanics
   quantity: quantity:velocity
   exergy: positive
@@ -196,7 +196,7 @@
   energy_form: gravitational
   name: Gravitational potential difference
   symbol: Δh
-  aliases: [head, elevation difference, falling water]
+  aliases: [head, elevation difference, falling water, rain, waterfall]
   domain: classical-mechanics
   quantity: quantity:height
   exergy: positive

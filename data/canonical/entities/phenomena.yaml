@@ -141,7 +141,7 @@
 - id: phenomenon:photothermal-effect
   type: phenomenon
   name: Photothermal absorption
-  aliases: [solar heating, optical absorption to heat]
+  aliases: [solar heating, optical absorption to heat, sunlit surface, window heated by sunlight]
   domain: optics-photonics
   year_first_reported: 1767
   condition_tags: [illumination-required]
@@ -521,7 +521,7 @@
 - id: phenomenon:droplet-charge-transfer
   type: phenomenon
   name: Droplet contact electrification
-  aliases: [droplet-based electricity generation, solid–liquid triboelectrification]
+  aliases: [droplet-based electricity generation, solid–liquid triboelectrification, rain, raindrop electricity]
   domain: surface-interface
   year_first_reported: 2014
   condition_tags: [state-liquid]

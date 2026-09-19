@@ -21,7 +21,7 @@ if (!origin) {
   server = await startServer(5178);
   origin = "http://127.0.0.1:5178";
 }
-const PAGES = ["/", "/matrix?cell=D.02:C.10", "/atlas", "/frontier", "/coverage", "/methods", "/phenomenon/seebeck-effect", "/e/disequilibrium/temperature-gradient"];
+const PAGES = ["/", "/matrix?cell=D.02:C.10", "/atlas", "/frontier", "/coverage", "/methods", "/phenomenon/seebeck-effect", "/e/disequilibrium/temperature-gradient", "/path/d4b83f7f17", "/path/87c18f5e4c"];
 const VIEWPORTS = [
   { name: "desktop", width: 1440, height: 900, mobile: false },
   { name: "phone", width: 375, height: 812, mobile: true },
