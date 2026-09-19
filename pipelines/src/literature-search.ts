@@ -8,7 +8,7 @@
  *
  *   pnpm --filter @pta/pipelines literature-search           # cells not yet queried
  *   pnpm --filter @pta/pipelines literature-search --all     # re-query everything
- *   pnpm --filter @pta/pipelines literature-search --limit 20
+ *   pnpm --filter @pta/pipelines literature-search --limit 20 --delay 2000
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve, join } from "node:path";
@@ -20,6 +20,9 @@ const outFile = join(root, "data", "generated", "search-runs.json");
 const all = process.argv.includes("--all");
 const limitArg = process.argv.indexOf("--limit");
 const limit = limitArg >= 0 ? Number(process.argv[limitArg + 1]) : Infinity;
+const delayArg = process.argv.indexOf("--delay");
+/** Pause between requests. OpenAlex documents 10 req/s but throttles the anonymous pool well below that. */
+const delayMs = delayArg >= 0 ? Number(process.argv[delayArg + 1]) : 1500;
 const today = new Date().toISOString().slice(0, 10);
 
 const prev: SearchRecord[] = existsSync(outFile) ? JSON.parse(readFileSync(outFile, "utf8")) : [];
@@ -39,6 +42,12 @@ const forbidden = new Set(graph.matrix.cells.filter((c) => c.status === "forbidd
 const todo = graph.matrix.cells.filter((c) => c.direct_claims.length === 0 && !forbidden.has(`${c.row}|${c.col}`) && (all || !byKey.has(`${c.row}|${c.col}`))).slice(0, limit);
 console.log(`${todo.length} cell(s) to query`);
 
+function save() {
+  const outList = [...byKey.values()].sort((a, b) => a.id.localeCompare(b.id));
+  mkdirSync(join(root, "data", "generated"), { recursive: true });
+  writeFileSync(outFile, JSON.stringify(outList, null, 1) + "\n");
+}
+
 let n = 0;
 for (const cell of todo) {
   const row = entity.get(cell.row)!;
@@ -51,10 +60,10 @@ for (const cell of todo) {
   url.searchParams.set("select", "title,publication_year,doi");
   const id = `search:${today}-${cell.address.toLowerCase().replace(/[.:]/g, "-")}` as SearchRecord["id"];
   try {
-    const r = await fetch(url, { headers: { "User-Agent": "physical-transformation-atlas/0.1 (literature index pipeline)" } });
+    const r = await fetch(url, { headers: { "User-Agent": "physical-transformation-atlas/0.1 (literature index pipeline)" }, signal: AbortSignal.timeout(20000) });
     if (!r.ok) {
       console.log(`  ? ${cell.address}: HTTP ${r.status}`);
-      if (r.status === 429) await new Promise((res) => setTimeout(res, 5000));
+      if (r.status === 429) await new Promise((res) => setTimeout(res, 30000));
       continue;
     }
     const j = (await r.json()) as { meta: { count: number }; results: { title: string; publication_year?: number; doi?: string | null }[] };
@@ -71,13 +80,12 @@ for (const cell of todo) {
     };
     byKey.set(`${cell.row}|${cell.col}`, rec);
     n++;
+    if (n % 10 === 0) save(); // partial progress survives a killed run
     if (n % 25 === 0) console.log(`  … ${n}/${todo.length} (${cell.address}: ${j.meta.count} works)`);
   } catch (e) {
     console.log(`  ? ${cell.address}: ${(e as Error).message}`);
   }
-  await new Promise((res) => setTimeout(res, 400));
+  await new Promise((res) => setTimeout(res, delayMs));
 }
-const outList = [...byKey.values()].sort((a, b) => a.id.localeCompare(b.id));
-mkdirSync(join(root, "data", "generated"), { recursive: true });
-writeFileSync(outFile, JSON.stringify(outList, null, 1) + "\n");
-console.log(`queried ${n} cell(s); ${outList.length} automated run(s) on file`);
+save();
+console.log(`queried ${n} cell(s); ${byKey.size} automated run(s) on file`);

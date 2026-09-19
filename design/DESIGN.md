@@ -107,7 +107,7 @@ document flow below the probe.
 | theoretical | ◇ 7×7 outline diamond | violet |
 | candidate composition | □ 7×7 double-outline square | ink |
 | searched, no demonstration found | ○ 7px open circle | amber |
-| not searched | no glyph; 1px inset corner └ in #D7D3CA | pale grey |
+| not searched | no glyph; 1px inset corner └ stroked #BDB8AE (review 1: #D7D3CA vanished on the surface) | pale grey |
 | forbidden by known physics | ⊘ 8px circle-bar | ink |
 | contradicted / failed validation | ╱ 9px diagonal | red |
 | insufficient evidence | 45° hatch, 1px / 5px | #66635D reduced opacity |
@@ -162,6 +162,12 @@ Header 40px, ledger hidden. `/phenomenon/[id]`: PHENOMENON / id (mono 10/13), na
 Serif 26/31 600, definition, one status line, then full-width ruled sections. `/path/[id]`:
 pathway first, vertical chain one step per ruled section, checksum compressed. Matrix stays a
 matrix: 112px sticky row rail, 32×28 cells, 48px sticky column header, 32px probe.
+
+## Toggles (review 1)
+
+Filter and type toggles (matrix SHOW, atlas toolbar, frontier status) are plain inline ledger toggles:
+no border, no radius, transparent, separated by a 1px hairline `border-right`, secondary ink when
+inactive with a strike-through, primary ink when active. Never chips.
 
 ## Do / don't
 
