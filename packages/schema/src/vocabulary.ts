@@ -3,7 +3,7 @@
  * machine-readable vocabulary behind /api/vocabulary.json and docs/vocabulary.md; both are
  * generated from it, so the documentation cannot drift from the code.
  */
-import { AVAILABILITY, DOMAINS, ENERGY_FORMS, ENTITY_TYPES, EVIDENCE_STATUSES, FRONTIER_CLASSES, KNOWLEDGE_LEVELS, KNOWLEDGE_LEVEL_LABEL, MATRIX_CELL_STATUSES, PREDICATES, SEARCH_STATUSES, STRUCTURAL_KINDS } from "./index.js";
+import { AVAILABILITY, DOMAINS, ENERGY_FORMS, ENTITY_TYPES, EVIDENCE_STATUSES, FRONTIER_CLASSES, KNOWLEDGE_LEVELS, KNOWLEDGE_LEVEL_LABEL, MATRIX_CELL_STATUSES, PREDICATES, SEARCH_STATUSES, STRUCTURAL_KINDS } from "@pta/schema";
 
 export interface VocabularyTerm {
   id: string;
