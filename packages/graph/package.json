@@ -7,7 +7,9 @@
   "types": "./src/index.ts",
   "exports": {
     ".": "./src/index.ts",
-    "./query": "./src/query.ts"
+    "./query": "./src/query.ts",
+    "./order": "./src/order.ts",
+    "./structure": "./src/structure.ts"
   },
   "dependencies": {
     "@pta/schema": "workspace:*",

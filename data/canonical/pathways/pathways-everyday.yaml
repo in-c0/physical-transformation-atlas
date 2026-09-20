@@ -266,3 +266,31 @@
     notes: "1 W thermal from 2.7 g of Pu-238 oxide; dozens flown on spacecraft to keep instruments warm"
   environment: [radioisotope-required]
   summary: Decay heat conducts out of a small pellet to keep spacecraft electronics above their minimum temperature.
+
+- id: pathway:shape-memory-heat-engine
+  name: Shape-memory alloy heat engine
+  steps: [claim:temperature-drives-shape-memory, claim:shape-memory-produces-motion, claim:motion-drives-generator, claim:generator-produces-carriers, claim:charge-carriers-convert-electricity]
+  demonstrated_with: [transducer:shape-memory-heat-engine]
+  evidence: [source:sma-heat-engine-2019]
+  status: demonstrated
+  knowledge_level: K6
+  performance:
+    theoretical_limit: "Carnot between the hot and cold baths; ≈ 6% for 320 K against 300 K"
+    measurements:
+      - quantity: thermal-to-electrical efficiency
+        value: "≈ 1–2% (about 30% of Carnot at low ΔT)"
+        scope: laboratory
+        conditions: "NiTi SMA engine driving a generator between water baths with ΔT of 20–40 K"
+        sources: [source:sma-heat-engine-2019]
+        year: 2019
+  environment: [state-solid, temp-gradient-required]
+  summary: NiTi elements cycled between warm and cold baths turn a shaft that drives a generator; a low-grade-heat engine with no working fluid.
+- id: pathway:shape-memory-actuator
+  name: Shape-memory heat engine (mechanical)
+  steps: [claim:temperature-drives-shape-memory, claim:shape-memory-produces-motion, claim:motion-converts-mechanical-work]
+  demonstrated_with: [transducer:shape-memory-heat-engine]
+  evidence: [source:otsuka-wayman-1998, source:sma-heat-engine-2019]
+  status: demonstrated
+  knowledge_level: K6
+  environment: [state-solid, temp-gradient-required]
+  summary: The same engine delivering shaft work directly (Banks engine, 1973, and successors).

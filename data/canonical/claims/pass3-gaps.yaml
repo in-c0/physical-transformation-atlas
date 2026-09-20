@@ -476,3 +476,9 @@
   object: coupling:radioluminescent
   evidence: [source:iwan-2021-radioluminescence]
   status: established
+- id: claim:shape-memory-implemented
+  subject: phenomenon:thermally-driven-shape-memory-effect
+  predicate: implemented_by
+  object: transducer:shape-memory-heat-engine
+  evidence: [source:sma-heat-engine-2019, source:otsuka-wayman-1998]
+  status: demonstrated

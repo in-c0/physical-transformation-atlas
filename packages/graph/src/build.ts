@@ -26,6 +26,7 @@ import {
 import { UnitTable, boundaryReport, runAllChecks, type PhysicsContext } from "@pta/physics";
 import type { Canon } from "./load.js";
 import { classify, collapseForms, familySeams, signature, type RouteCore } from "./structure.js";
+import { researchOrder } from "./order.js";
 
 export const MAX_PATH_STEPS = 7;
 export const MAX_PATHS_PER_SOURCE = 4000;
@@ -364,7 +365,7 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
         else status = "contradicted";
       } else if (forbiddenRows.has(r.id)) status = "forbidden";
       else if (reviewed.some((s) => s.result === "demonstration-found")) status = "demonstrated";
-      else if (bridges.some((b) => b.frontier_class === "candidate" || b.frontier_class === "derived" || b.frontier_class === "demonstrated")) status = "candidate";
+      else if (bridges.some((b) => b.structural_kind === "composition" && (b.frontier_class === "candidate" || b.frontier_class === "derived" || b.frontier_class === "demonstrated"))) status = "candidate";
       else if (reviewed.some((s) => s.result === "no-demonstration-found")) status = "searched-none";
       else if (searches.length) status = "search-incomplete";
       else status = "not-searched";
@@ -376,7 +377,7 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
         direct_claims: direct.map((cl) => cl.id),
         direct_phenomena: directPhenomena,
         bridge_paths: bridges
-          .sort((a, b) => a.length - b.length || b.established_steps - a.established_steps)
+          .sort(researchOrder)
           .slice(0, 12)
           .map((b) => b.id),
         address: `${r.address}:${c.address}`,

@@ -445,3 +445,8 @@
   type: system
   name: The human body
   summary: A 100 W heat source at 37 °C with motion, breathing and a small temperature difference to the skin.
+- id: transducer:shape-memory-heat-engine
+  type: transducer
+  name: Shape-memory alloy heat engine
+  knowledge_level: K6
+  summary: NiTi wires or springs cycled between warm and cold water (ΔT of 20–60 K) turning a crank or driving a linear generator; laboratory engines of watts to tens of watts.

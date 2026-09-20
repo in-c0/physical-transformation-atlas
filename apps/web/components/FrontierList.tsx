@@ -2,9 +2,10 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import type { CompiledPath, FrontierClass, StructuralKind } from "@pta/schema";
-import { AVAILABILITY, EVIDENCE_RANK, FRONTIER_CLASSES, STRUCTURAL_KINDS } from "@pta/schema";
+import { FRONTIER_CLASSES, STRUCTURAL_KINDS } from "@pta/schema";
+import { researchOrder } from "@pta/graph/order";
 import { useAtlas } from "@/lib/client-data";
-import { EVIDENCE_LABEL, FRONTIER_LABEL, OVERLAP_LABEL, compositionState, hrefFor } from "@/lib/format";
+import { EVIDENCE_LABEL, FRONTIER_LABEL, OVERLAP_LABEL, STRUCTURE_LABEL, compositionState, hrefFor } from "@/lib/format";
 import { CheckGlyph } from "./StatusMark";
 import styles from "./FrontierList.module.css";
 
@@ -12,41 +13,6 @@ type Filters = { source: string; sink: string; establishedOnly: boolean; minLen:
 
 const DEFAULT: Filters = { source: "", sink: "", establishedOnly: false, minLen: 1, maxLen: 7, env: "", classes: new Set<FrontierClass>(["candidate"]), kinds: new Set<StructuralKind>(["composition"]), family: "", q: "" };
 
-export const STRUCTURE_LABEL: Record<StructuralKind, string> = {
-  composition: "composition",
-  "known-device-likely": "known device likely",
-  "energy-backtracking": "energy backtracking",
-  "representation-dominated": "carrier-expanded copy",
-  "representation-equivalent": "recorded pathway at another resolution",
-  atomic: "one effect plus bookkeeping",
-};
-const KIND_RANK: Record<StructuralKind, number> = { composition: 0, "known-device-likely": 1, "energy-backtracking": 2, "representation-dominated": 3, "representation-equivalent": 4, atomic: 5 };
-const SEARCH_RANK: Record<string, number> = { "searched-no-demonstration-found": 0, "search-incomplete": 1, "not-searched": 2, "not-indexed": 2 };
-const AVAIL_RANK: Record<string, number> = Object.fromEntries(AVAILABILITY.map((a, i) => [a, i]));
-/** One or two genuine seams rank first; zero-seam chains and long seam ladders below. */
-const seamScore = (n: number) => (n === 1 ? 0 : n === 2 ? 1 : n === 0 ? 2 : 3);
-
-/**
- * Research-priority order (loop-3 pass 4): structure → core-check resolution → evidence floor →
- * mechanism novelty → composition-search strength → source availability → effective length →
- * overlap with recorded pathways → id. Lexicographic; never a synthetic score.
- */
-export function researchOrder(a: CompiledPath, b: CompiledPath): number {
-  const nonEst = (p: CompiledPath) => p.length - p.established_steps;
-  return (
-    KIND_RANK[a.structural_kind] - KIND_RANK[b.structural_kind] ||
-    a.core_unresolved_count - b.core_unresolved_count ||
-    EVIDENCE_RANK[b.evidence_status] - EVIDENCE_RANK[a.evidence_status] ||
-    nonEst(a) - nonEst(b) ||
-    seamScore(a.family_seam_count) - seamScore(b.family_seam_count) ||
-    (a.energy_transition_count === 0 ? 1 : 0) - (b.energy_transition_count === 0 ? 1 : 0) ||
-    (SEARCH_RANK[a.search_status] ?? 3) - (SEARCH_RANK[b.search_status] ?? 3) ||
-    (a.source_availability ? AVAIL_RANK[a.source_availability] : 9) - (b.source_availability ? AVAIL_RANK[b.source_availability] : 9) ||
-    a.effective_length - b.effective_length ||
-    (a.known_pathway_overlap?.shared_claims ?? 0) - (b.known_pathway_overlap?.shared_claims ?? 0) ||
-    a.id.localeCompare(b.id)
-  );
-}
 
 export function FrontierList() {
   const atlas = useAtlas();

@@ -28,7 +28,7 @@ const EDGE_COLOUR: Record<string, string> = {
 
 type Selection = { kind: "entity"; id: string } | { kind: "claim"; id: string } | null;
 
-export function AtlasGraph({ initial }: { initial?: string }) {
+export function AtlasGraph({ initial, route }: { initial?: string; route?: string }) {
   const atlas = useAtlas();
   const host = useRef<HTMLDivElement>(null);
   const cyRef = useRef<Core | null>(null);
@@ -134,6 +134,8 @@ export function AtlasGraph({ initial }: { initial?: string }) {
           { selector: ".dim", style: { opacity: 0.12 } },
           { selector: "node.sel", style: { "border-width": 3, "border-color": "#1b1a18", "background-color": "#f6f3ec" } },
           { selector: "edge.sel", style: { width: 2.5 } },
+          { selector: "node.route", style: { "border-width": 2, "border-color": "#1b1a18", "background-color": "#fbf9f4", "font-size": 10, "font-weight": 500, "min-zoomed-font-size": 4 } },
+          { selector: "edge.route", style: { width: 2.5, opacity: 1 } },
         ],
         layout:
           layoutMode === "layered"
@@ -148,6 +150,18 @@ export function AtlasGraph({ initial }: { initial?: string }) {
       });
       cy.ready(() => {
         setLayoutDone(true);
+        if (route && atlas.status === "ready") {
+          const p = atlas.index.path.get(route);
+          if (p) {
+            const ids = [...p.nodes, ...p.claims];
+            let eles = cy!.collection();
+            for (const id of ids) eles = eles.union(cy!.getElementById(id));
+            cy!.elements().difference(eles).addClass("dim");
+            eles.addClass("route");
+            cy!.animate({ fit: { eles, padding: 80 } }, { duration: reduce ? 0 : 280, easing: "ease-out-cubic" });
+            return;
+          }
+        }
         if (initial) {
           const n = cy!.getElementById(initial);
           if (n.nonempty()) cy!.animate({ fit: { eles: n.closedNeighborhood(), padding: 60 } }, { duration: reduce ? 0 : 280, easing: "ease-out-cubic" });
@@ -159,14 +173,17 @@ export function AtlasGraph({ initial }: { initial?: string }) {
       cy?.destroy();
       cyRef.current = null;
     };
-  }, [elements, initial, layoutMode]);
+  }, [elements, initial, layoutMode, route]);
 
   // Highlight the selection's neighbourhood; camera moves only on user selection.
   useEffect(() => {
     const cy = cyRef.current;
     if (!cy) return;
-    cy.elements().removeClass("dim sel");
-    if (!sel) return;
+    if (!sel) {
+      if (!route) cy.elements().removeClass("dim sel");
+      return;
+    }
+    cy.elements().removeClass("dim sel route");
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const target = cy.getElementById(sel.id);
     if (target.empty()) return;
@@ -174,7 +191,7 @@ export function AtlasGraph({ initial }: { initial?: string }) {
     cy.elements().difference(hood).addClass("dim");
     target.addClass("sel");
     cy.animate({ fit: { eles: hood, padding: 80 } }, { duration: reduce ? 0 : 280, easing: "ease-out-cubic" });
-  }, [sel, layoutDone]);
+  }, [sel, layoutDone, route]);
 
   const toggleType = (t: Entity["type"]) =>
     setTypes((prev) => {
@@ -213,6 +230,11 @@ export function AtlasGraph({ initial }: { initial?: string }) {
           >
             reset view
           </button>
+          {route && atlas.status === "ready" && atlas.index.path.get(route) && (
+            <span className="t-data" style={{ marginLeft: 8 }}>
+              route {route} highlighted · <Link href={`/path/${route.slice(2)}`}>open path</Link>
+            </span>
+          )}
           <span className={`t-micro secondary ${styles.legend}`}>■ disequilibrium · ● phenomenon · ◆ carrier · ⬢ output · ▭ coupling family · edge colour = evidence status</span>
         </div>
         <div className={styles.canvasWrap}>

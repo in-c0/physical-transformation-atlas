@@ -46,8 +46,9 @@
 .bridgeNum { font-family: var(--font-mono); font-size: var(--text-micro); font-weight: var(--weight-medium); color: var(--ink-secondary); width: 18px; }
 .bridgeChain { flex: 1 1 auto; min-width: 0; font-size: var(--text-ui); line-height: 1.45; white-space: normal; overflow: visible; text-overflow: clip; overflow-wrap: anywhere; }
 .bridgeChain span + span::before { content: " → "; color: var(--ink-secondary); }
-.bridgeFacts { display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; margin: 6px 0 0 26px; font-family: var(--font-mono); font-size: var(--text-micro); line-height: var(--leading-micro); color: var(--ink-secondary); }
-.bridgeFacts b { font-weight: var(--weight-medium); color: var(--ink); text-align: right; }
+.bridgeFacts { display: grid; grid-template-columns: max-content 1fr; gap: 2px 12px; margin: 6px 0 0 26px; font-family: var(--font-mono); font-size: var(--text-micro); line-height: var(--leading-micro); color: var(--ink-secondary); }
+.bridgeFacts dt { white-space: nowrap; }
+.bridgeFacts b { font-weight: var(--weight-medium); color: var(--ink); }
 .bridgeActions { margin: 6px 0 0 26px; display: flex; gap: 12px; }
 .linkBtn { font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
 .bridgeActive { background: var(--surface-raised); margin: 0 calc(-1 * var(--gutter)); padding-left: var(--gutter); padding-right: var(--gutter); }

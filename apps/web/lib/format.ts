@@ -1,4 +1,4 @@
-import type { CheckResult, EvidenceStatus, FrontierClass, KnowledgeLevel, MatrixCellStatus, SearchStatus } from "@pta/schema";
+import type { CheckResult, EvidenceStatus, FrontierClass, KnowledgeLevel, MatrixCellStatus, SearchStatus, StructuralKind } from "@pta/schema";
 import { KNOWLEDGE_LEVEL_LABEL } from "@pta/schema";
 
 export const CELL_STATUS_LABEL: Record<MatrixCellStatus, string> = {
@@ -138,3 +138,26 @@ export function hrefFor(id: string): string {
 export function predicateLabel(p: string): string {
   return p.replace(/_/g, " ");
 }
+
+/** The status-transition contract: what record would change a matrix cell. Generated from status, never hand-authored per cell. */
+export const CELL_TRANSITION: Record<MatrixCellStatus, string> = {
+  established: "This cell would change if the recorded direct relation no longer met the atlas's established or replicated evidence threshold.",
+  demonstrated: "An independent replication or review could raise this direct relation to established; contrary evidence could lower its recorded status.",
+  theoretical: "A credible experimental observation of this direct relation would move the cell from theoretical evidence to demonstrated evidence.",
+  candidate: "A qualifying direct relation would replace the candidate status; otherwise this remains a composition of recorded constituent physics, not a recorded direct relation.",
+  "searched-none": "A qualifying direct demonstration, or a newly recorded composition through this coupling, would change this cell.",
+  "search-incomplete": "Human review of the recorded search can resolve this to a demonstration found or no direct demonstration found; a qualifying bridge can also make it a candidate composition.",
+  "not-searched": "A recorded literature search, direct relation, or qualifying composed bridge would change this cell.",
+  forbidden: "This cell would change only if the recorded constraint or source-exergy assessment supporting the exclusion were revised; a search result alone is not sufficient.",
+  contradicted: "New or re-reviewed evidence supporting a direct relation could change the recorded status; the current direct claim is contradicted in the atlas.",
+  insufficient: "Adding qualifying evidence to the recorded direct claim would determine whether this cell is theoretical, demonstrated, established, or contradicted.",
+};
+
+export const STRUCTURE_LABEL: Record<StructuralKind, string> = {
+  composition: "composition",
+  "known-device-likely": "known device likely",
+  "energy-backtracking": "energy backtracking",
+  "representation-dominated": "carrier-expanded copy",
+  "representation-equivalent": "recorded pathway at another resolution",
+  atomic: "one effect plus bookkeeping",
+};
