@@ -14,7 +14,7 @@ These are allowed vocabulary values; a value need not occur in every dataset rev
 |---|---|
 | `not-searched` | no record of anyone looking |
 | `search-incomplete` | an automated index query has run; hits not reviewed |
-| `searched-no-demonstration-found` | a reviewed search found no qualifying direct demonstration, as of the record's date |
+| `searched-no-demonstration-found` | a reviewed search that completed the `cell-search-v1` protocol (three discovery engines, three query forms, citation chase) found no qualifying direct demonstration, as of the record's date; the loader refuses the value otherwise |
 | `candidate` | reserved for reviewed candidates (not yet used) |
 | `under-review`, `experiment-proposed`, `experiment-tested` | reserved for the review queue |
 | `demonstrated` | a named pathway or a reviewed search says a demonstration exists |

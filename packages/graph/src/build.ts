@@ -21,6 +21,10 @@ import {
   type MatrixCellStatus,
   type Pathway,
   type SearchRecord,
+  type AutomatedSearchRun,
+  searchDate,
+  type AutomatedSearchRun,
+  searchDate,
   type SearchStatus,
 } from "@pta/schema";
 import { CORE_CHECK_IDS, UnitTable, boundaryReport, runAllChecks, type PhysicsContext } from "@pta/physics";
@@ -129,9 +133,20 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
   for (const p of canon.pathways) pathwayBySeq.set(p.steps.join(">"), p);
 
   // Search records ----------------------------------------------------------------
-  const cellSearches = new Map<string, SearchRecord[]>();
-  const pathSearches = new Map<string, SearchRecord[]>();
-  const allSearches = [...canon.searches, ...canon.searchRuns];
+  // A cell or route sees both kinds of search: reviewed records (statements) and automated runs
+  // (frozen result lists). Only the reviewed kind can change a status.
+  type AnySearch = SearchRecord | AutomatedSearchRun;
+  const isReviewed = (s: AnySearch): s is SearchRecord => "reviewed_by" in s;
+  const dateOf = (s: AnySearch) =>
+    isReviewed(s)
+      ? searchDate(s)
+      : s.runs
+          .map((r) => r.executed_at.slice(0, 10))
+          .sort()
+          .at(-1)!;
+  const cellSearches = new Map<string, AnySearch[]>();
+  const pathSearches = new Map<string, AnySearch[]>();
+  const allSearches: AnySearch[] = [...canon.searches, ...canon.searchRuns];
   for (const s of allSearches) {
     if (s.target.kind === "cell") {
       const key = `${s.target.row}|${s.target.col}`;
@@ -183,17 +198,13 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
     let search_status: SearchStatus;
     let last_searched: string | undefined;
     const searches = pathSearches.get(id) ?? [];
-    const reviewed = searches.filter((s) => reviewedIds.has(s.id));
+    const reviewed = searches.filter(isReviewed);
     if (pathway && pathway.status !== "proposed") search_status = "demonstrated";
     else if (reviewed.some((s) => s.result === "demonstration-found")) search_status = "demonstrated";
     else if (reviewed.some((s) => s.result === "no-demonstration-found")) search_status = "searched-no-demonstration-found";
     else if (searches.length) search_status = "search-incomplete";
     else search_status = "not-searched";
-    if (searches.length)
-      last_searched = searches
-        .map((s) => s.date)
-        .sort()
-        .at(-1);
+    if (searches.length) last_searched = searches.map(dateOf).sort().at(-1);
 
     // Recorded-pathway overlap: does a reviewed pathway share this claim sequence, or a prefix,
     // suffix or ordered subsequence of it? A generated route that merely extends or truncates a
@@ -473,12 +484,10 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
       const directPhenomena = [...new Set(direct.map((cl) => cl.object))];
       const bridges = (pathsBySource.get(r.id) ?? []).filter((p) => p.coupling_families.includes(c.id) && !directPhenomena.some((ph) => p.nodes[1] === ph));
       const searches = cellSearches.get(`${r.id}|${c.id}`) ?? [];
-      const reviewed = searches.filter((s) => reviewedIds.has(s.id));
-      const works = searches.reduce((a, s) => a + s.works_found, 0);
-      const last = searches
-        .map((s) => s.date)
-        .sort()
-        .at(-1);
+      const reviewed = searches.filter(isReviewed);
+      // "works" = unique records a reviewer screened, or the index-reported total for an automated run.
+      const works = searches.reduce((a, s) => a + (isReviewed(s) ? s.screening.unique_records : s.runs.reduce((n, run) => n + (run.result_count_reported ?? 0), 0)), 0);
+      const last = searches.map(dateOf).sort().at(-1);
 
       let status: MatrixCellStatus;
       if (direct.length) {
@@ -570,10 +579,7 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
     for (const x of xs) m[key(x)] = (m[key(x)] ?? 0) + 1;
     return Object.fromEntries(Object.entries(m).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])));
   };
-  const searchDates = allSearches
-    .map((x) => x.date)
-    .filter(Boolean)
-    .sort();
+  const searchDates = allSearches.map(dateOf).filter(Boolean).sort();
   // Route ids are ten hex characters of a SHA-1 over the ordered claim ids; a collision between two
   // different claim sequences would silently merge two routes, so it is a build failure.
   const seenIds = new Map<string, string>();
@@ -630,7 +636,8 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
     claims: canon.claims,
     sources: canon.sources,
     pathways: canon.pathways,
-    searches: allSearches.map((x) => ({ ...x, reviewed: reviewedIds.has(x.id) })),
+    searches: canon.searches.map((x) => ({ ...x, reviewed: true })),
+    search_runs: canon.searchRuns,
     paths,
     matrix: { rows, cols, cells },
     coverage,

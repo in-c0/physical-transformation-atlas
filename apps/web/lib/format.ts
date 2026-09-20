@@ -66,9 +66,12 @@ export const FRONTIER_LABEL: Record<FrontierClass, string> = {
 export function compositionState(status: SearchStatus, lastSearched?: string): { short: string; long: string } {
   switch (status) {
     case "demonstrated":
-      return { short: "demonstration found", long: "Direct demonstration found." };
+      return { short: `${lastSearched ? `reviewed ${lastSearched} · ` : ""}demonstration found`, long: "A recorded pathway or a reviewed search records a demonstration of this composition." };
     case "searched-no-demonstration-found":
-      return { short: "no demonstration found", long: `No direct demonstration found in the recorded search${lastSearched ? ` through ${lastSearched}` : ""}.` };
+      return {
+        short: `reviewed${lastSearched ? ` ${lastSearched}` : ""} · no demonstration found`,
+        long: `Reviewed search${lastSearched ? ` on ${lastSearched}` : ""}: no qualifying demonstration found in the recorded protocol. This is search provenance, not evidence that the composition is absent from nature.`,
+      };
     case "search-incomplete":
       return { short: "index query only", long: `Not reviewed — index query only${lastSearched ? ` · through ${lastSearched}` : ""}.` };
     case "not-searched":
@@ -207,7 +210,7 @@ export function claimSentence(
 /** The status-transition contract: what record would change a matrix cell. Generated from status, never hand-authored per cell. */
 export const CELL_TRANSITION: Record<MatrixCellStatus, string> = {
   established: "This cell would change if the recorded direct relation no longer met the atlas's established or replicated evidence threshold.",
-  demonstrated: "An independent replication or review could raise this direct relation to established; contrary evidence could lower its recorded status.",
+  demonstrated: "If a direct claim is recorded: an independent replication or review could raise it to established, contrary evidence could lower it. If the status comes from a reviewed search alone: recording the demonstrated relation as a canonical claim is the pending step.",
   theoretical: "A credible experimental observation of this direct relation would move the cell from theoretical evidence to demonstrated evidence.",
   candidate: "A qualifying direct relation would replace the candidate status; otherwise this remains a composition of recorded constituent physics, not a recorded direct relation.",
   "searched-none": "A qualifying direct demonstration, or a newly recorded composition through this coupling, would change this cell.",

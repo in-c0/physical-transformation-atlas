@@ -394,21 +394,136 @@ export const SearchTarget = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("claim"), claim: ClaimId }),
 ]);
 
+const isoDateTime = z.string().regex(/^\d{4}-\d{2}-\d{2}(T\d{2}:\d{2}(:\d{2})?([+-]\d{2}:\d{2}|Z))?$/, "ISO 8601 date or date-time");
+
+export const SEARCH_ENGINES = ["openalex", "semantic-scholar", "google-scholar", "crossref", "manual"] as const;
+export const QUERY_FORMS = ["driver-family", "driver-phenomenon", "demonstration-precision", "citation-chase"] as const;
+export const HIT_DECISIONS = [
+  "qualifies",
+  "theory-only",
+  "simulation-only",
+  "proposal-only",
+  "review-only",
+  "wrong-driver",
+  "wrong-coupling",
+  "driver-only-modifies",
+  "duplicate",
+  "insufficient-information",
+] as const;
+
+/** One query submitted to one engine: the literal syntax, when, how many came back and how many were looked at. */
+export const SearchRun = z.object({
+  id: z.string(),
+  engine: z.enum(SEARCH_ENGINES),
+  query_form: z.enum(QUERY_FORMS),
+  /** The literal syntax actually submitted; never reconstructed later from aliases. */
+  query: z.string(),
+  executed_at: isoDateTime,
+  /** The request URL with any private mailto removed. */
+  request_url: z.string().optional(),
+  engine_version: z.string().nullable().optional(),
+  index_snapshot: z.string().nullable().optional(),
+  sort: z.string().optional(),
+  filters: z.record(z.string(), z.union([z.string(), z.array(z.string()), z.number(), z.null()])).optional(),
+  result_count_reported: z.number().int().nullable(),
+  records_retrieved: z.number().int().nonnegative(),
+  records_screened: z.number().int().nonnegative(),
+  records_read: z.number().int().nonnegative(),
+});
+export type SearchRun = z.infer<typeof SearchRun>;
+
+/** One record a reviewer looked at, with the decision and the reason. */
+export const ReviewedHit = z.object({
+  title: z.string(),
+  year: z.number().int().optional(),
+  doi: z.string().optional(),
+  url: z.string().optional(),
+  external_ids: z.record(z.string(), z.string()).optional(),
+  found_by: z.array(z.string()).default([]),
+  access: z.enum(["full-text", "abstract", "metadata-only"]),
+  decision: z.enum(HIT_DECISIONS),
+  reason: z.string(),
+});
+export type ReviewedHit = z.infer<typeof ReviewedHit>;
+
+/**
+ * A reviewed literature search: a review package, not one query. Only a record with
+ * completeness protocol-complete-negative, a reviewer, every mandatory query form and discovery
+ * engine completed and no qualifying hit may say no-demonstration-found; the loader enforces it.
+ * A positive may stop early: one unambiguous qualifying experiment, read, is conclusive.
+ */
 export const SearchRecord = z.object({
   id: SearchId,
   target: SearchTarget,
-  date: isoDate,
-  engine: z.enum(["openalex", "crossref", "manual", "google-scholar", "semantic-scholar"]),
-  query: z.string(),
-  works_found: z.number().int().nonnegative(),
-  top: z.array(z.object({ title: z.string(), year: z.number().int().optional(), doi: z.string().optional(), url: z.string().optional() })).default([]),
+  protocol_version: z.string(),
+  started_at: isoDateTime,
+  completed_at: isoDateTime,
+  objective: z.enum(["direct-relation", "exact-composition", "claim-verification"]),
+  inclusion_criteria: z.array(z.string()).min(1),
+  exclusion_criteria: z.array(z.string()).min(1),
+  runs: z.array(SearchRun).min(1),
+  screening: z.object({
+    records_retrieved: z.number().int().nonnegative(),
+    unique_records: z.number().int().nonnegative(),
+    title_abstract_screened: z.number().int().nonnegative(),
+    full_text_read: z.number().int().nonnegative(),
+  }),
+  hits: z.array(ReviewedHit).default([]),
   result: z.enum(["demonstration-found", "no-demonstration-found", "inconclusive"]),
-  reviewed_by: z.string().optional(),
-  notes: z.string().optional(),
+  completeness: z.enum(["conclusive-positive", "protocol-complete-negative", "partial", "blocked"]),
+  reviewed_by: z.string().min(1),
+  reviewed_on: isoDate,
+  limitations: z.array(z.string()).default([]),
+  conclusion: z.string(),
+  /** Automated runs (data/generated/search-runs.json) whose frozen result lists the reviewer screened. */
+  source_run_ids: z.array(z.string()).default([]),
+  /** For demonstration-found: whether the hit has been turned into canonical ontology yet. */
+  follow_up: z
+    .object({
+      canonical_claim_review: z.enum(["needed", "completed", "not-applicable"]),
+      candidate_source_ids: z.array(SourceId).default([]),
+      candidate_claim: z.object({ subject: EntityId, predicate: z.literal("drives"), object: EntityId }).optional(),
+    })
+    .optional(),
   /** Set by the compiler: true when the record lives in data/canonical/searches (human-reviewed). */
   reviewed: z.boolean().optional(),
 });
 export type SearchRecord = z.infer<typeof SearchRecord>;
+
+/** The date a search record speaks for: the day it was completed. */
+export const searchDate = (s: { completed_at: string }) => s.completed_at.slice(0, 10);
+
+/**
+ * An automated index run (data/generated/search-runs.json): a frozen result list a person can later
+ * screen and promote to a SearchRecord without re-running the query. Never a reviewed statement.
+ */
+export const AutomatedSearchRun = z.object({
+  id: z.string(),
+  target: SearchTarget,
+  dataset_hash: z.string(),
+  driver_terms: z.array(z.string()),
+  family_terms: z.array(z.string()),
+  phenomenon_terms: z.record(z.string(), z.array(z.string())).default({}),
+  runs: z.array(SearchRun).min(1),
+  works: z
+    .array(
+      z.object({
+        openalex_id: z.string().optional(),
+        doi: z.string().optional(),
+        title: z.string(),
+        year: z.number().int().optional(),
+        type: z.string().optional(),
+        cited_by_count: z.number().int().optional(),
+        open_access_url: z.string().optional(),
+        found_by: z.array(z.string()).default([]),
+      }),
+    )
+    .default([]),
+  screening_status: z.literal("not-reviewed"),
+  result: z.literal("inconclusive"),
+  notes: z.string().optional(),
+});
+export type AutomatedSearchRun = z.infer<typeof AutomatedSearchRun>;
 
 // ---------------------------------------------------------------------------
 // Compiled graph (what the site loads)
@@ -630,7 +745,10 @@ export type Graph = {
   claims: Claim[];
   sources: Source[];
   pathways: Pathway[];
+  /** Reviewed search records (statements). */
   searches: SearchRecord[];
+  /** Automated index runs (frozen result lists a person can promote). */
+  search_runs: AutomatedSearchRun[];
   paths: CompiledPath[];
   matrix: { rows: MatrixAxis[]; cols: MatrixAxis[]; cells: MatrixCell[] };
   coverage: CoverageEntry[];

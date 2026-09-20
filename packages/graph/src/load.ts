@@ -14,6 +14,9 @@ import {
   Entity,
   Pathway,
   SearchRecord,
+  AutomatedSearchRun,
+  AutomatedSearchRun,
+  AutomatedSearchRun,
   Source,
   UnitDef,
   type Claim as ClaimT,
@@ -22,6 +25,9 @@ import {
   type Entity as EntityT,
   type Pathway as PathwayT,
   type SearchRecord as SearchT,
+  type AutomatedSearchRun as RunT,
+  type AutomatedSearchRun as RunT,
+  type AutomatedSearchRun as RunT,
   type Source as SourceT,
   type UnitDef as UnitT,
 } from "@pta/schema";
@@ -37,8 +43,8 @@ export interface Canon {
   domains: DomainT[];
   conditionTags: { id: string; description: string; label?: string }[];
   conflicts: ConflictT[];
-  /** Automated search runs from pipelines (data/generated/search-runs.json). */
-  searchRuns: SearchT[];
+  /** Automated index runs from pipelines (data/generated/search-runs.json): frozen result lists, never reviewed statements. */
+  searchRuns: RunT[];
   sourceVerification: Record<string, { verified: boolean; checked_at: string; crossref_title?: string; note?: string }>;
   /** Every file read, for hashing. */
   files: { path: string; text: string }[];
@@ -106,16 +112,37 @@ export function loadCanon(root: string): Canon {
   });
   const conditionTags = condRaw.tags ?? [];
 
-  let searchRuns: SearchT[] = [];
+  let searchRuns: RunT[] = [];
   const runsFile = join(generated, "search-runs.json");
   if (existsSync(runsFile)) {
     const raw = JSON.parse(readFileSync(runsFile, "utf8")) as unknown[];
     searchRuns = raw.flatMap((r, i) => {
-      const p = SearchRecord.safeParse(r);
+      const p = AutomatedSearchRun.safeParse(r);
       if (p.success) return [p.data];
       problems.push(`generated/search-runs.json #${i}: ${p.error.issues.map((x) => x.message).join("; ")}`);
       return [];
     });
+  }
+  // The negative gate: "no demonstration found" is a schema-level privilege, not a reviewer's choice.
+  const MANDATORY_ENGINES = ["openalex", "semantic-scholar", "google-scholar"];
+  const MANDATORY_FORMS = ["driver-family", "driver-phenomenon", "demonstration-precision"];
+  for (const s of searches) {
+    const qualifies = s.hits.some((h) => h.decision === "qualifies");
+    if (s.result === "demonstration-found" && !qualifies) problems.push(`${s.id}: demonstration-found without a hit whose decision is "qualifies"`);
+    if (s.result === "no-demonstration-found") {
+      const engines = new Set(s.runs.map((r) => r.engine));
+      const forms = new Set(s.runs.map((r) => r.query_form));
+      const missingE = MANDATORY_ENGINES.filter((e) => !engines.has(e as never));
+      const missingF = MANDATORY_FORMS.filter((f) => !forms.has(f as never));
+      if (s.completeness !== "protocol-complete-negative") problems.push(`${s.id}: no-demonstration-found requires completeness protocol-complete-negative (got ${s.completeness})`);
+      if (qualifies) problems.push(`${s.id}: no-demonstration-found but a hit qualifies`);
+      if (missingE.length) problems.push(`${s.id}: no-demonstration-found requires every discovery engine; missing ${missingE.join(", ")}`);
+      if (missingF.length) problems.push(`${s.id}: no-demonstration-found requires every mandatory query form; missing ${missingF.join(", ")}`);
+    }
+    if (s.result === "demonstration-found" && s.completeness !== "conclusive-positive") problems.push(`${s.id}: demonstration-found should carry completeness conclusive-positive`);
+    if (s.result === "demonstration-found" && !s.follow_up) problems.push(`${s.id}: demonstration-found needs follow_up.canonical_claim_review`);
+    if (s.screening.full_text_read > s.screening.title_abstract_screened || s.screening.unique_records > s.screening.records_retrieved) problems.push(`${s.id}: screening counts are inconsistent`);
+    for (const runId of s.source_run_ids) if (!searchRuns.some((r) => r.id === runId)) problems.push(`${s.id}: source run ${runId} is not in data/generated/search-runs.json`);
   }
   let sourceVerification: Canon["sourceVerification"] = {};
   const verFile = join(generated, "source-verification.json");

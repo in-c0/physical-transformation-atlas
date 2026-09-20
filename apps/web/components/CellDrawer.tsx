@@ -10,6 +10,7 @@ import { Drawer, DrawerSection, drawerStyles as s } from "./Drawer";
 import { ClaimLine } from "./ClaimLine";
 import { Checksum } from "./Checksum";
 import { EvidenceList } from "./EvidenceList";
+import { AutomatedRunView, SearchRecordView, searchCompact } from "./SearchRecordView";
 import { CORE_CHECK_IDS } from "@pta/physics/definitions";
 
 /** Search terms a reviewer would use: row and column names plus their aliases, quoted. */
@@ -105,6 +106,7 @@ export function CellDrawer({
   const excluded = allBridges.length - bridges.length;
   const active = bridges[Math.min(bridgeIdx, Math.max(0, bridges.length - 1))];
   const searches = index.graph.searches.filter((x) => x.target.kind === "cell" && x.target.row === row.id && x.target.col === col.id);
+  const runs = (index.graph.search_runs ?? []).filter((x) => x.target.kind === "cell" && x.target.row === row.id && x.target.col === col.id);
   const bridgeConstituent = active ? active.constituent_source_ids.map((id) => index.source.get(id)!).filter(Boolean) : [];
   const bridgeComposition = active ? active.composition_source_ids.map((id) => index.source.get(id)!).filter(Boolean) : [];
   const rowEntity = index.entity.get(row.id);
@@ -124,7 +126,7 @@ export function CellDrawer({
       question,
       direct_claims: direct.length,
       qualifying_compositions: bridges.length,
-      search: searches.length ? searches.map((x) => `${x.engine} ${x.date}: ${x.result.replace(/-/g, " ")}${x.reviewed ? " (reviewed)" : " (index only)"}`) : "not searched",
+      search: searches.length ? searches.map(searchCompact) : runs.length ? `${runs.length} automated index run(s), not reviewed` : "not searched",
       what_would_change: CELL_TRANSITION[cell.status],
     };
     const md = `**${snapshot.coordinate} · ${snapshot.driver} × ${snapshot.coupling}** — ${snapshot.status} (dataset ${snapshot.dataset})\n\n${snapshot.question}\n\n- direct relations recorded: ${snapshot.direct_claims}\n- qualifying compositions: ${snapshot.qualifying_compositions}\n- search: ${Array.isArray(snapshot.search) ? snapshot.search.join("; ") : snapshot.search}\n- what would change it: ${snapshot.what_would_change}\n\n${url}`;
@@ -294,44 +296,21 @@ export function CellDrawer({
         </DrawerSection>
       )}
 
-      <DrawerSection title="Search record" count={searches.length}>
-        {searches.length === 0 && (
+      <DrawerSection title="Search record" count={searches.length + runs.length}>
+        {searches.length === 0 && runs.length === 0 && (
           <>
             <p className={s.state}>Not searched.</p>
             <p className={s.stateSecondary}>No recorded search for this direct relation.</p>
           </>
         )}
-        <ul className={s.list}>
+        <div className={s.list}>
           {searches.map((x) => (
-            <li key={x.id} className={s.claim}>
-              <div className={s.claimLine}>
-                <span className="t-data">{x.date}</span>
-                <span className="t-data secondary">{x.engine}</span>
-                <span className={s.status}>{x.result.replace(/-/g, " ")}</span>
-              </div>
-              <div className="t-data secondary">
-                {x.works_found} works · {x.query}
-              </div>
-              <div className="t-micro secondary">{x.reviewed ? `human-reviewed${x.reviewed_by ? ` by ${x.reviewed_by}` : ""}` : "automated index query · not human-reviewed"}</div>
-              {x.top.length > 0 && (
-                <ul className={s.conditions}>
-                  {x.top.slice(0, 3).map((t) => (
-                    <li key={t.title}>
-                      {t.doi ? (
-                        <a href={`https://doi.org/${t.doi}`} target="_blank" rel="noopener">
-                          {t.title}
-                        </a>
-                      ) : (
-                        t.title
-                      )}
-                      {t.year ? ` (${t.year})` : ""}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </li>
+            <SearchRecordView key={x.id} record={x} />
           ))}
-        </ul>
+          {runs.map((x) => (
+            <AutomatedRunView key={x.id} run={x} />
+          ))}
+        </div>
         {active && (
           <p className={s.stateSecondary} style={{ marginTop: 8 }}>
             Bridge {String(bridges.indexOf(active) + 1).padStart(2, "0")}: {compositionState(active.search_status, active.last_searched).long}

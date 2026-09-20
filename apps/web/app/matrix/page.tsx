@@ -21,7 +21,7 @@ export default function MatrixPage() {
           </h1>
         </div>
         <p className={styles.note}>
-          {c.matrix_cells - c.matrix_cells_empty} cells carry a recorded direct relation. {c.matrix_cells_empty} do not; of those, {c.matrix_cells_unsearched} have no recorded search. Click any cell — an empty one is a question about what this atlas has recorded, not a statement about nature. Arrow keys move, Enter opens, Escape closes; Ctrl+arrows jump families.
+          {c.matrix_cells_with_direct_relation} cells carry a recorded direct relation. {c.matrix_cells_without_direct_relation} do not. {c.matrix_cells_without_search_record} of all {c.matrix_cells} cells have no search record of any kind; {c.searches_reviewed} reviewed search{c.searches_reviewed === 1 ? "" : "es"} exist. Click any cell — an empty one is a question about what this atlas has recorded, not a statement about nature. Arrow keys move, Enter opens, Escape closes; Ctrl+arrows jump families.
         </p>
       </div>
       <Matrix data={data} density="full" filters />

@@ -1,0 +1,101 @@
+# The atlas's first reviewed search. Loop-3 pass 12 (20/09/2026): the cell was expected to be the
+# first "no demonstration found"; the review found a physical positive instead. Every DOI below was
+# resolved against Crossref and the qualifying paper's method was read in its open-access full text
+# (PMC9419229) before this record was written.
+- id: search:2026-09-20-d-01-c-23
+  target: { kind: cell, row: disequilibrium:temperature-gradient, col: coupling:electrokinetic }
+  protocol_version: cell-search-v1
+  started_at: "2026-09-20T20:40:00+10:00"
+  completed_at: "2026-09-20T21:20:00+10:00"
+  objective: direct-relation
+  inclusion_criteria:
+    - a temperature difference or gradient is an imposed causal driver
+    - an electrokinetic-family electrical or ionic response is measured
+    - a physical experiment or operating device
+    - the result is not powered primarily by another imposed disequilibrium
+  exclusion_criteria:
+    - theory or analytical model only
+    - numerical or molecular-dynamics simulation only
+    - temperature only modifies a pressure- or electric-field-driven experiment
+    - thermo-osmotic flow without an electrokinetic electrical output
+    - review, proposal or device concept without experimental measurement
+  runs:
+    - id: run:web-01
+      engine: manual
+      query_form: driver-family
+      query: '("temperature gradient" OR "temperature difference" OR "thermal gradient" OR "waste heat") AND (electrokinetic OR "streaming potential" OR hydrovoltaic)'
+      executed_at: "2026-09-20T20:45:00+10:00"
+      engine_version: null
+      index_snapshot: null
+      result_count_reported: null
+      records_retrieved: 6
+      records_screened: 6
+      records_read: 6
+    - id: run:s2-01
+      engine: semantic-scholar
+      query_form: demonstration-precision
+      query: 'DOI:10.1039/D0NA00429D (abstract and open-access status retrieved to confirm the experimental method)'
+      executed_at: "2026-09-20T21:05:00+10:00"
+      request_url: "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1039/D0NA00429D?fields=title,abstract,openAccessPdf,externalIds"
+      engine_version: null
+      index_snapshot: null
+      result_count_reported: 1
+      records_retrieved: 1
+      records_screened: 1
+      records_read: 1
+  screening:
+    records_retrieved: 7
+    unique_records: 6
+    title_abstract_screened: 6
+    full_text_read: 2
+  hits:
+    - title: pH-regulated thermo-driven nanofluidics for nanoconfined mass transport and energy conversion
+      year: 2020
+      doi: 10.1039/D0NA00429D
+      url: https://pmc.ncbi.nlm.nih.gov/articles/PMC9419229/
+      external_ids: { openalex: W3042301273, pmc: PMC9419229, pubmed: "36132795" }
+      found_by: [run:web-01, run:s2-01]
+      access: full-text
+      decision: qualifies
+      reason: "An ion-track-etched polyimide membrane with conical nanochannels (base ~750 nm, tip ~180 nm, polydopamine-coated) was placed between hot and cold electrolyte reservoirs and a steady streaming current was measured, rising linearly with the imposed temperature difference to 14 nA at ΔT = 47.5 °C through 0.5 cm² of membrane; the paper states the current depends on the temperature gradient rather than a pressure difference."
+    - title: Flow and streaming potential of an electrolyte in a channel with an axial temperature gradient
+      year: 2017
+      doi: 10.1017/jfm.2016.844
+      found_by: [run:web-01]
+      access: abstract
+      decision: theory-only
+      reason: Analytical non-isothermal streaming-potential treatment (Dietzel and Hardt); no physical demonstration.
+    - title: Electrohydrodynamics within the electrical double layer in the presence of finite temperature gradients
+      year: 2013
+      doi: 10.1103/PhysRevE.88.053020
+      found_by: [run:web-01]
+      access: abstract
+      decision: theory-only
+      reason: Model study in which a temperature gradient modifies a streaming-potential system; no experiment is reported.
+    - title: Non-isothermal flow of an electrolyte in a charged nanochannel
+      year: 2020
+      doi: 10.1088/1361-6528/ab8fe4
+      found_by: [run:web-01]
+      access: abstract
+      decision: simulation-only
+      reason: Molecular-dynamics simulation, not an experimental demonstration.
+    - title: Thermo-Osmotic Flow in Thin Films
+      year: 2016
+      doi: 10.1103/PhysRevLett.116.188303
+      found_by: [run:web-01]
+      access: abstract
+      decision: wrong-coupling
+      reason: An experiment in which a temperature gradient drives fluid flow, but no electrokinetic electrical output is measured; it supports the thermo-osmotic family, not this cell.
+  result: demonstration-found
+  completeness: conclusive-positive
+  reviewed_by: "Ava Kim (loop-3 pass 12; hits proposed by the ChatGPT review, each DOI resolved and the qualifying paper's method read by the lane)"
+  reviewed_on: 2026-09-20
+  limitations:
+    - The search stopped once an unambiguous qualifying experimental demonstration was verified; this is not an exhaustive bibliography of the relation.
+    - Only one manual web run and one Semantic Scholar lookup were made; a protocol-complete negative would have required OpenAlex, Semantic Scholar and Google Scholar with all query forms.
+  conclusion: A physical temperature-gradient-driven electrokinetic demonstration is recorded in Zhao et al. 2020; this cell must not be described as unsearched or as having no demonstration found. Whether the observation warrants a canonical direct-relation claim is a separate data review.
+  source_run_ids: []
+  follow_up:
+    canonical_claim_review: needed
+    candidate_source_ids: []
+    candidate_claim: { subject: disequilibrium:temperature-gradient, predicate: drives, object: phenomenon:streaming-potential }

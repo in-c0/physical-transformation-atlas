@@ -6,29 +6,59 @@
    "row": "disequilibrium:temperature-gradient",
    "col": "coupling:caloric"
   },
-  "date": "2026-09-19",
-  "engine": "openalex",
-  "query": "(\"temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\") AND (caloric)",
-  "works_found": 103,
-  "top": [
+  "dataset_hash": "unknown-pre-v0.2",
+  "driver_terms": [],
+  "family_terms": [],
+  "phenomenon_terms": {},
+  "runs": [
+   {
+    "id": "search:2026-09-19-d-01-c-09/oa-family",
+    "engine": "openalex",
+    "query_form": "driver-family",
+    "query": "(\"temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\") AND (caloric)",
+    "executed_at": "2026-09-19",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "cited_by_count:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\") AND (caloric)",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 103,
+    "records_retrieved": 3,
+    "records_screened": 0,
+    "records_read": 0
+   }
+  ],
+  "works": [
    {
     "title": "Existence of Caloric Equations of State in Thermodynamics",
     "year": 1964,
-    "doi": "10.1063/1.1725257"
+    "doi": "10.1063/1.1725257",
+    "found_by": [
+     "search:2026-09-19-d-01-c-09/oa-family"
+    ]
    },
    {
     "title": "Domain Wall Motion by the Magnonic Spin Seebeck Effect",
     "year": 2011,
-    "doi": "10.1103/physrevlett.107.027205"
+    "doi": "10.1103/physrevlett.107.027205",
+    "found_by": [
+     "search:2026-09-19-d-01-c-09/oa-family"
+    ]
    },
    {
     "title": "The use of tDCS and CVS as methods of non-invasive brain stimulation",
     "year": 2007,
-    "doi": "10.1016/j.brainresrev.2007.08.001"
+    "doi": "10.1016/j.brainresrev.2007.08.001",
+    "found_by": [
+     "search:2026-09-19-d-01-c-09/oa-family"
+    ]
    }
   ],
+  "screening_status": "not-reviewed",
   "result": "inconclusive",
-  "notes": "Automated title/abstract co-occurrence query; hits not reviewed for a qualifying demonstration."
+  "notes": "Migrated from the v0.1 runner (top three by citation count only); re-run with the v0.2 bundle before screening."
  },
  {
   "id": "search:2026-09-19-d-01-c-10",
@@ -37,29 +67,59 @@
    "row": "disequilibrium:temperature-gradient",
    "col": "coupling:piezoelectric"
   },
-  "date": "2026-09-19",
-  "engine": "openalex",
-  "query": "(\"temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\") AND (piezoelectric)",
-  "works_found": 482,
-  "top": [
+  "dataset_hash": "unknown-pre-v0.2",
+  "driver_terms": [],
+  "family_terms": [],
+  "phenomenon_terms": {},
+  "runs": [
+   {
+    "id": "search:2026-09-19-d-01-c-10/oa-family",
+    "engine": "openalex",
+    "query_form": "driver-family",
+    "query": "(\"temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\") AND (piezoelectric)",
+    "executed_at": "2026-09-19",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "cited_by_count:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\") AND (piezoelectric)",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 482,
+    "records_retrieved": 3,
+    "records_screened": 0,
+    "records_read": 0
+   }
+  ],
+  "works": [
    {
     "title": "Electric polarization in crystals and its response to thermal and elastic perturbations",
     "year": 1991,
-    "doi": "10.1080/01411599108213201"
+    "doi": "10.1080/01411599108213201",
+    "found_by": [
+     "search:2026-09-19-d-01-c-10/oa-family"
+    ]
    },
    {
     "title": "Recent Advances of Green Electricity Generation: Potential in Solar Interfacial Evaporation System",
     "year": 2024,
-    "doi": "10.1002/adma.202311151"
+    "doi": "10.1002/adma.202311151",
+    "found_by": [
+     "search:2026-09-19-d-01-c-10/oa-family"
+    ]
    },
    {
     "title": "Conjuncted Pyro‐Piezoelectric Effect for Self‐Powered Simultaneous Temperature and Pressure Sensing",
     "year": 2019,
-    "doi": "10.1002/adma.201902831"
+    "doi": "10.1002/adma.201902831",
+    "found_by": [
+     "search:2026-09-19-d-01-c-10/oa-family"
+    ]
    }
   ],
+  "screening_status": "not-reviewed",
   "result": "inconclusive",
-  "notes": "Automated title/abstract co-occurrence query; hits not reviewed for a qualifying demonstration."
+  "notes": "Migrated from the v0.1 runner (top three by citation count only); re-run with the v0.2 bundle before screening."
  },
  {
   "id": "search:2026-09-19-d-01-c-11",
@@ -68,28 +128,58 @@
    "row": "disequilibrium:temperature-gradient",
    "col": "coupling:flexoelectric"
   },
-  "date": "2026-09-19",
-  "engine": "openalex",
-  "query": "(\"temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\") AND (flexoelectric)",
-  "works_found": 17,
-  "top": [
+  "dataset_hash": "unknown-pre-v0.2",
+  "driver_terms": [],
+  "family_terms": [],
+  "phenomenon_terms": {},
+  "runs": [
+   {
+    "id": "search:2026-09-19-d-01-c-11/oa-family",
+    "engine": "openalex",
+    "query_form": "driver-family",
+    "query": "(\"temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\") AND (flexoelectric)",
+    "executed_at": "2026-09-19",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "cited_by_count:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\") AND (flexoelectric)",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 17,
+    "records_retrieved": 3,
+    "records_screened": 0,
+    "records_read": 0
+   }
+  ],
+  "works": [
    {
     "title": "Electric polarization in crystals and its response to thermal and elastic perturbations",
     "year": 1991,
-    "doi": "10.1080/01411599108213201"
+    "doi": "10.1080/01411599108213201",
+    "found_by": [
+     "search:2026-09-19-d-01-c-11/oa-family"
+    ]
    },
    {
     "title": "Anomalous thermoelectricity in strained Bi2Te3 films",
     "year": 2016,
-    "doi": "10.1038/srep32661"
+    "doi": "10.1038/srep32661",
+    "found_by": [
+     "search:2026-09-19-d-01-c-11/oa-family"
+    ]
    },
    {
     "title": "Thermal gradient induced flexoelectric effects in bulk Ba0.67Sr0.33TiO3",
     "year": 2016,
-    "doi": "10.1063/1.4949358"
+    "doi": "10.1063/1.4949358",
+    "found_by": [
+     "search:2026-09-19-d-01-c-11/oa-family"
+    ]
    }
   ],
+  "screening_status": "not-reviewed",
   "result": "inconclusive",
-  "notes": "Automated title/abstract co-occurrence query; hits not reviewed for a qualifying demonstration."
+  "notes": "Migrated from the v0.1 runner (top three by citation count only); re-run with the v0.2 bundle before screening."
  }
 ]

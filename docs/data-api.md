@@ -136,8 +136,15 @@ disputed; the older name `unresolved_claims` is kept), `contradicted_claims`, `n
 `matrix_cells`, `matrix_cells_without_search_record`, `matrix_cells_unsearched` (status count),
 `reviewed_searches`, `index_only_searches`, `newest_source_year`.
 
-**SearchRecord** — the only record that may say *no demonstration found*; see
-`data/canonical/searches/README.md`.
+**SearchRecord** — a reviewed literature search as a review package: `protocol_version`,
+`started_at`/`completed_at`, `objective`, inclusion and exclusion criteria, `runs[]` (one per
+engine × query form, with the literal query, timestamp, request URL, reported count, and how many
+records were retrieved, screened and read), de-duplicated `screening` totals, `hits[]` (each with
+`decision` and `reason`), `result`, `completeness`, `reviewed_by`, `reviewed_on`, `limitations`,
+`conclusion`, `source_run_ids` and, for a positive, `follow_up`. The only record that may say *no
+demonstration found*, and only when the protocol gate passes; see
+`data/canonical/searches/README.md`. Automated index runs are a different type, `AutomatedSearchRun`
+(`graph.search_runs`): frozen result lists with `screening_status: not-reviewed`.
 
 ## Provenance and null semantics
 

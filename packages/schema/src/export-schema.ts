@@ -12,6 +12,7 @@ import {
   MatrixCell,
   Pathway,
   SearchRecord,
+  AutomatedSearchRun,
   Source,
   CheckResult,
   DOMAINS,
@@ -121,6 +122,7 @@ export const GraphCoreExport = z.object({
     sources: z.array(Source),
     pathways: z.array(Pathway),
     searches: z.array(SearchRecord.extend({ reviewed: z.boolean() })),
+    search_runs: z.array(AutomatedSearchRun),
     matrix: z.object({ rows: z.array(MatrixAxis), cols: z.array(MatrixAxis), cells: z.array(MatrixCellRecord) }),
     coverage: z.array(CoverageEntry),
     source_verification: Verification,
@@ -168,6 +170,7 @@ export function exportJsonSchema(version: string, siteUrl: string) {
   add("Source", SourceRecord);
   add("Pathway", PathwayRecord);
   add("SearchRecord", SearchRecord);
+  add("AutomatedSearchRun", AutomatedSearchRun);
   add("CompiledPath", PathRecord);
   add("MatrixCell", MatrixCellRecord);
   add("MatrixAxis", MatrixAxis);

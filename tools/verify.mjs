@@ -24,6 +24,7 @@ if (!origin) {
 const PAGES = [
   "/",
   "/matrix?cell=D.02:C.10",
+  "/matrix?cell=D.01:C.23",
   "/matrix?cell=D.11:C.17",
   "/matrix?cell=D.23:C.01",
   "/atlas",
