@@ -13,8 +13,8 @@
       - claim:streaming-produces-ions
       - claim:ionic-current-converts-electricity
   protocol_version: route-search-v1
-  started_at: 2026-09-20T22:45:00+10:00
-  completed_at: 2026-09-21T03:20:00+10:00
+  started_at: 2026-09-20T21:05:00+10:00
+  completed_at: 2026-09-21T00:05:00+10:00
   objective: exact-composition
   inclusion_criteria:
     - a physical experiment or device in which the route's driver is imposed or naturally present, every conversion phenomenon occurs in the recorded order, the carrier crosses every handoff, and an electrical response (streaming voltage, current or power) is measured (route-search-v1 §3)
@@ -113,7 +113,7 @@
       query_form: citation-chase
       query_key: citation-chase:pini-2015
       query: referenced_works of W3102446872 (Energy conversion by surface-tension-driven charge separation) and filter=cites:W3102446872
-      executed_at: 2026-09-20T23:40:00+10:00
+      executed_at: 2026-09-20T21:10:00+10:00
       request_url: https://api.openalex.org/works?filter=cites:W3102446872
       engine_version: null
       index_snapshot: null
@@ -127,7 +127,7 @@
       query_form: citation-chase
       query_key: citation-chase:massing-2019
       query: referenced_works of W2902890555 (Thermocapillary convection during hydrogen evolution at microelectrodes) and filter=cites:W2902890555
-      executed_at: 2026-09-20T23:40:00+10:00
+      executed_at: 2026-09-20T21:10:00+10:00
       request_url: https://api.openalex.org/works?filter=cites:W2902890555
       engine_version: null
       index_snapshot: null
@@ -141,7 +141,7 @@
       query_form: route-driver-mechanism
       query_key: driver-mechanism:1
       query: ("temperature gradient" OR "temperature difference" OR "thermal gradient" OR "waste heat") ("Marangoni effect" OR thermocapillary OR solutocapillary OR destillocapillarity)
-      executed_at: 2026-09-21T03:20:00+10:00
+      executed_at: 2026-09-20T23:50:00+10:00
       request_url: https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=(%22temperature%20gradient%22%20OR%20%22temperature%20difference%22%20OR%20%22thermal%20gradient%22%20OR%20%22waste%20heat%22)%20(%22Marangoni%20effect%22%20OR%20thermocapillary%20OR%20solutocapillary%20OR%20destillocapillarity)
       engine_version: null
       index_snapshot: null
@@ -158,7 +158,7 @@
       query_form: route-mechanism-pair
       query_key: mechanism-pair:1-2
       query: ("Marangoni effect" OR thermocapillary OR solutocapillary OR destillocapillarity) ("streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming")
-      executed_at: 2026-09-21T03:20:00+10:00
+      executed_at: 2026-09-20T23:50:00+10:00
       request_url: https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=(%22Marangoni%20effect%22%20OR%20thermocapillary%20OR%20solutocapillary%20OR%20destillocapillarity)%20(%22streaming%20potential%22%20OR%20%22streaming%20current%22%20OR%20%22electrokinetic%20effect%22%20OR%20%22electrokinetic%20streaming%22)
       engine_version: null
       index_snapshot: null
@@ -175,7 +175,7 @@
       query_form: route-whole-chain
       query_key: whole-chain
       query: ("temperature gradient" OR "temperature difference" OR "thermal gradient" OR "waste heat") ("Marangoni effect" OR thermocapillary OR solutocapillary OR destillocapillarity) ("streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming") electricity
-      executed_at: 2026-09-21T03:20:00+10:00
+      executed_at: 2026-09-20T23:50:00+10:00
       request_url: https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=(%22temperature%20gradient%22%20OR%20%22temperature%20difference%22%20OR%20%22thermal%20gradient%22%20OR%20%22waste%20heat%22)%20(%22Marangoni%20effect%22%20OR%20thermocapillary%20OR%20solutocapillary%20OR%20destillocapillarity)%20(%22streaming%20potential%22%20OR%20%22streaming%20current%22%20OR%20%22electrokinetic%20effect%22%20OR%20%22electrokinetic%20streaming%22)%20electricity
       engine_version: null
       index_snapshot: null
@@ -192,7 +192,7 @@
       query_form: route-demonstration-precision
       query_key: demonstration-precision
       query: ("temperature gradient" OR "temperature difference" OR "thermal gradient" OR "waste heat") ("Marangoni effect" OR thermocapillary OR solutocapillary OR destillocapillarity) ("streaming potential" OR "streaming current") electricity (experiment OR measured OR device OR prototype)
-      executed_at: 2026-09-21T03:20:00+10:00
+      executed_at: 2026-09-20T23:50:00+10:00
       request_url: https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=(%22temperature%20gradient%22%20OR%20%22temperature%20difference%22%20OR%20%22thermal%20gradient%22%20OR%20%22waste%20heat%22)%20(%22Marangoni%20effect%22%20OR%20thermocapillary%20OR%20solutocapillary%20OR%20destillocapillarity)%20(%22streaming%20potential%22%20OR%20%22streaming%20current%22)%20electricity%20(experiment%20OR%20measured%20OR%20device%20OR%20prototype)
       engine_version: null
       index_snapshot: null
@@ -359,8 +359,8 @@
       - claim:streaming-produces-ions
       - claim:ionic-current-converts-electricity
   protocol_version: route-search-v1
-  started_at: 2026-09-20T22:45:00+10:00
-  completed_at: 2026-09-21T05:40:00+10:00
+  started_at: 2026-09-20T21:05:00+10:00
+  completed_at: 2026-09-21T00:30:00+10:00
   objective: exact-composition
   inclusion_criteria:
     - a physical experiment or device in which the route's driver is imposed or naturally present, every conversion phenomenon occurs in the recorded order, the carrier crosses every handoff, and an electrical response (streaming voltage, current or power) is measured (route-search-v1 §3)
@@ -459,7 +459,7 @@
       query_form: citation-chase
       query_key: citation-chase:pini-2015
       query: referenced_works of W3102446872 (Energy conversion by surface-tension-driven charge separation) and filter=cites:W3102446872
-      executed_at: 2026-09-20T23:40:00+10:00
+      executed_at: 2026-09-20T21:10:00+10:00
       request_url: https://api.openalex.org/works?filter=cites:W3102446872
       engine_version: null
       index_snapshot: null
@@ -473,7 +473,7 @@
       query_form: citation-chase
       query_key: citation-chase:kim-2017
       query: referenced_works of W2742148709 (Solutal Marangoni flows of miscible liquids drive transport without surface contamination) and filter=cites:W2742148709
-      executed_at: 2026-09-20T23:40:00+10:00
+      executed_at: 2026-09-20T21:10:00+10:00
       request_url: https://api.openalex.org/works?filter=cites:W2742148709
       engine_version: null
       index_snapshot: null
@@ -489,7 +489,7 @@
       query: ("surface energy difference" OR "surface-tension gradient" OR "interfacial tension gradient" OR "Marangoni stress") ("Marangoni effect" OR solutocapillary OR destillocapillarity OR thermocapillary)
       query_compacted: true
       expanded_query: ("Surface energy difference" OR "surface-tension gradient" OR "interfacial tension gradient" OR "Marangoni stress") AND ("Marangoni effect" OR "surface-tension-driven flow" OR "thermocapillary flow" OR "solutocapillary flow" OR thermocapillary OR solutocapillary OR destillocapillarity)
-      executed_at: 2026-09-21T05:40:00+10:00
+      executed_at: 2026-09-21T00:25:00+10:00
       request_url: https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=(%22surface%20energy%20difference%22%20OR%20%22surface-tension%20gradient%22%20OR%20%22interfacial%20tension%20gradient%22%20OR%20%22Marangoni%20stress%22)%20(%22Marangoni%20effect%22%20OR%20solutocapillary%20OR%20destillocapillarity%20OR%20thermocapillary)
       engine_version: null
       index_snapshot: null
@@ -506,7 +506,7 @@
       query: ("Marangoni effect" OR solutocapillary OR destillocapillarity OR thermocapillary) ("streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming")
       query_compacted: true
       expanded_query: ("Marangoni effect" OR "surface-tension-driven flow" OR "thermocapillary flow" OR "solutocapillary flow" OR thermocapillary OR solutocapillary OR destillocapillarity) AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming")
-      executed_at: 2026-09-21T05:40:00+10:00
+      executed_at: 2026-09-21T00:25:00+10:00
       request_url: https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=(%22Marangoni%20effect%22%20OR%20solutocapillary%20OR%20destillocapillarity%20OR%20thermocapillary)%20(%22streaming%20potential%22%20OR%20%22streaming%20current%22%20OR%20%22electrokinetic%20effect%22%20OR%20%22electrokinetic%20streaming%22)
       engine_version: null
       index_snapshot: null
@@ -523,7 +523,7 @@
       query: ("surface energy difference" OR "surface-tension gradient" OR "interfacial tension gradient" OR "Marangoni stress") ("Marangoni effect" OR solutocapillary OR destillocapillarity OR thermocapillary) ("streaming potential" OR "streaming current" OR "electrokinetic effect") electricity
       query_compacted: true
       expanded_query: ("Surface energy difference" OR "surface-tension gradient" OR "interfacial tension gradient" OR "Marangoni stress") AND ("Marangoni effect" OR "surface-tension-driven flow" OR "thermocapillary flow" OR "solutocapillary flow" OR thermocapillary OR solutocapillary OR destillocapillarity) AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power")
-      executed_at: 2026-09-21T05:40:00+10:00
+      executed_at: 2026-09-21T00:25:00+10:00
       request_url: https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=(%22surface%20energy%20difference%22%20OR%20%22surface-tension%20gradient%22%20OR%20%22interfacial%20tension%20gradient%22%20OR%20%22Marangoni%20stress%22)%20(%22Marangoni%20effect%22%20OR%20solutocapillary%20OR%20destillocapillarity%20OR%20thermocapillary)%20(%22streaming%20potential%22%20OR%20%22streaming%20current%22%20OR%20%22electrokinetic%20effect%22)%20electricity
       engine_version: null
       index_snapshot: null
@@ -540,7 +540,7 @@
       query: ("surface energy difference" OR "surface-tension gradient" OR "interfacial tension gradient" OR "Marangoni stress") ("Marangoni effect" OR solutocapillary OR destillocapillarity OR thermocapillary) ("streaming potential" OR "streaming current") electricity (experiment OR measured OR device)
       query_compacted: true
       expanded_query: ("Surface energy difference" OR "surface-tension gradient" OR "interfacial tension gradient" OR "Marangoni stress") AND ("Marangoni effect" OR "surface-tension-driven flow" OR "thermocapillary flow" OR "solutocapillary flow" OR thermocapillary OR solutocapillary OR destillocapillarity) AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power") AND (experiment OR experimental OR measured OR device OR prototype)
-      executed_at: 2026-09-21T05:40:00+10:00
+      executed_at: 2026-09-21T00:25:00+10:00
       request_url: https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=(%22surface%20energy%20difference%22%20OR%20%22surface-tension%20gradient%22%20OR%20%22interfacial%20tension%20gradient%22%20OR%20%22Marangoni%20stress%22)%20(%22Marangoni%20effect%22%20OR%20solutocapillary%20OR%20destillocapillarity%20OR%20thermocapillary)%20(%22streaming%20potential%22%20OR%20%22streaming%20current%22)%20electricity%20(experiment%20OR%20measured%20OR%20device)
       engine_version: null
       index_snapshot: null
@@ -673,8 +673,8 @@
       - claim:streaming-produces-ions
       - claim:ionic-current-converts-electricity
   protocol_version: route-search-v1
-  started_at: 2026-09-20T22:45:00+10:00
-  completed_at: 2026-09-21T05:40:00+10:00
+  started_at: 2026-09-20T21:05:00+10:00
+  completed_at: 2026-09-21T00:30:00+10:00
   objective: exact-composition
   inclusion_criteria:
     - a physical experiment or device in which the route's driver is imposed or naturally present, every conversion phenomenon occurs in the recorded order, the carrier crosses every handoff, and an electrical response (streaming voltage, current or power) is measured (route-search-v1 §3)
@@ -773,7 +773,7 @@
       query_form: citation-chase
       query_key: citation-chase:pal-2011
       query: referenced_works of W2092862595 (Characterization of a ferrofluid-based thermomagnetic pump for microfluidic applications) and filter=cites:W2092862595
-      executed_at: 2026-09-20T23:40:00+10:00
+      executed_at: 2026-09-20T21:10:00+10:00
       request_url: https://api.openalex.org/works?filter=cites:W2092862595
       engine_version: null
       index_snapshot: null
@@ -787,7 +787,7 @@
       query_form: citation-chase
       query_key: citation-chase:nguyen-2012
       query: "referenced_works of W1967669309 (Micro-magnetofluidics: interactions between magnetism and fluid flow on the microscale) and filter=cites:W1967669309"
-      executed_at: 2026-09-20T23:40:00+10:00
+      executed_at: 2026-09-20T21:10:00+10:00
       request_url: https://api.openalex.org/works?filter=cites:W1967669309
       engine_version: null
       index_snapshot: null
@@ -803,7 +803,7 @@
       query: ("temperature gradient" OR "temperature difference" OR "thermal gradient" OR "waste heat") ("thermomagnetic convection" OR "ferrofluid convection" OR "thermomagnetic pumping" OR "thermomagnetic pump")
       query_compacted: true
       expanded_query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermomagnetic convection" OR "ferrofluid convection" OR "magnetocaloric pumping in ferrofluids" OR "thermomagnetic pumping" OR "thermomagnetic pump")
-      executed_at: 2026-09-21T05:40:00+10:00
+      executed_at: 2026-09-21T00:25:00+10:00
       request_url: https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=(%22temperature%20gradient%22%20OR%20%22temperature%20difference%22%20OR%20%22thermal%20gradient%22%20OR%20%22waste%20heat%22)%20(%22thermomagnetic%20convection%22%20OR%20%22ferrofluid%20convection%22%20OR%20%22thermomagnetic%20pumping%22%20OR%20%22thermomagnetic%20pump%22)
       engine_version: null
       index_snapshot: null
@@ -823,7 +823,7 @@
       query: ("thermomagnetic convection" OR "ferrofluid convection" OR "thermomagnetic pumping" OR "thermomagnetic pump") ("streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming")
       query_compacted: true
       expanded_query: ("Thermomagnetic convection" OR "ferrofluid convection" OR "magnetocaloric pumping in ferrofluids" OR "thermomagnetic pumping" OR "thermomagnetic pump") AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming")
-      executed_at: 2026-09-21T05:40:00+10:00
+      executed_at: 2026-09-21T00:25:00+10:00
       request_url: https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=(%22thermomagnetic%20convection%22%20OR%20%22ferrofluid%20convection%22%20OR%20%22thermomagnetic%20pumping%22%20OR%20%22thermomagnetic%20pump%22)%20(%22streaming%20potential%22%20OR%20%22streaming%20current%22%20OR%20%22electrokinetic%20effect%22%20OR%20%22electrokinetic%20streaming%22)
       engine_version: null
       index_snapshot: null
@@ -840,7 +840,7 @@
       query: ("temperature gradient" OR "temperature difference" OR "thermal gradient") ("thermomagnetic convection" OR "ferrofluid convection" OR "thermomagnetic pumping" OR "thermomagnetic pump") ("streaming potential" OR "streaming current" OR "electrokinetic effect") electricity
       query_compacted: true
       expanded_query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermomagnetic convection" OR "ferrofluid convection" OR "magnetocaloric pumping in ferrofluids" OR "thermomagnetic pumping" OR "thermomagnetic pump") AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power")
-      executed_at: 2026-09-21T05:40:00+10:00
+      executed_at: 2026-09-21T00:25:00+10:00
       request_url: https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=(%22temperature%20gradient%22%20OR%20%22temperature%20difference%22%20OR%20%22thermal%20gradient%22)%20(%22thermomagnetic%20convection%22%20OR%20%22ferrofluid%20convection%22%20OR%20%22thermomagnetic%20pumping%22%20OR%20%22thermomagnetic%20pump%22)%20(%22streaming%20potential%22%20OR%20%22streaming%20current%22%20OR%20%22electrokinetic%20effect%22)%20electricity
       engine_version: null
       index_snapshot: null
@@ -857,7 +857,7 @@
       query: ("temperature gradient" OR "temperature difference" OR "thermal gradient") ("thermomagnetic convection" OR "ferrofluid convection" OR "thermomagnetic pumping" OR "thermomagnetic pump") ("streaming potential" OR "streaming current") electricity (experiment OR measured OR device)
       query_compacted: true
       expanded_query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermomagnetic convection" OR "ferrofluid convection" OR "magnetocaloric pumping in ferrofluids" OR "thermomagnetic pumping" OR "thermomagnetic pump") AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power") AND (experiment OR experimental OR measured OR device OR prototype)
-      executed_at: 2026-09-21T05:40:00+10:00
+      executed_at: 2026-09-21T00:25:00+10:00
       request_url: https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=(%22temperature%20gradient%22%20OR%20%22temperature%20difference%22%20OR%20%22thermal%20gradient%22)%20(%22thermomagnetic%20convection%22%20OR%20%22ferrofluid%20convection%22%20OR%20%22thermomagnetic%20pumping%22%20OR%20%22thermomagnetic%20pump%22)%20(%22streaming%20potential%22%20OR%20%22streaming%20current%22)%20electricity%20(experiment%20OR%20measured%20OR%20device)
       engine_version: null
       index_snapshot: null

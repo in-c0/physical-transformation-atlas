@@ -2,7 +2,9 @@
 # electrical work (p-a093d7ecc5), an honest partial. The 2026 thermopolarization preprint observes the whole
 # composition as a polarization and its displacement current, with no load — recorded sink-variant, the route's
 # output being electrical work. OpenAlex runs and two chases recorded; Google Scholar was captcha-blocked this
-# sitting and Semantic Scholar is keyless.
+# sitting and Semantic Scholar is keyless. After the second reader's review the composition is also recorded as the
+# observed pathway pathway:thermal-expansion-flexoelectric-response (status observed), three reviewer-named works are
+# hits, and the field's own name — the thermoflexoelectric effect — is an alias whose OpenAlex rerun is pending.
 - id: search:2026-09-21-p-a093d7ecc5-partial
   target:
     kind: path
@@ -14,8 +16,8 @@
       - claim:flexo-produces-charge
       - claim:surface-charge-converts-electricity
   protocol_version: route-search-v1
-  started_at: 2026-09-21T08:20:00+10:00
-  completed_at: 2026-09-21T09:20:00+10:00
+  started_at: 2026-09-21T00:55:00+10:00
+  completed_at: 2026-09-21T01:05:00+10:00
   objective: exact-composition
   inclusion_criteria:
     - a physical experiment or device in which an imposed temperature gradient's non-uniform thermal expansion produces a strain gradient whose flexoelectric polarization delivers electrical work to a load (route-search-v1 §3, output Electrical work)
@@ -114,7 +116,7 @@
       query_form: citation-chase
       query_key: citation-chase:zubko-2013
       query: referenced_works of W2121809600 (Flexoelectric Effect in Solids) and filter=cites:W2121809600
-      executed_at: 2026-09-21T09:20:00+10:00
+      executed_at: 2026-09-21T01:00:00+10:00
       request_url: https://api.openalex.org/works?filter=cites:W2121809600
       engine_version: null
       index_snapshot: null
@@ -129,7 +131,7 @@
       query_form: citation-chase
       query_key: citation-chase:tagantsev-1986
       query: referenced_works of W2051617107 (Piezoelectricity and flexoelectricity in crystalline dielectrics) and filter=cites:W2051617107
-      executed_at: 2026-09-21T09:20:00+10:00
+      executed_at: 2026-09-21T01:00:00+10:00
       request_url: https://api.openalex.org/works?filter=cites:W2051617107
       engine_version: null
       index_snapshot: null
@@ -139,10 +141,23 @@
       records_screened: 740
       records_read: 0
       note: "formal seed 2: Tagantsev's 1986 theory of piezoelectricity and flexoelectricity in crystalline dielectrics, the origin of the thermal-polarization prediction; 9 references, 731 citers screened at title level"
+    - id: search:2026-09-21-p-a093d7ecc5/reviewer-web
+      engine: manual
+      query_form: route-demonstration-precision
+      query_key: demonstration-precision
+      query: "second reader's web search (ChatGPT with browsing, pass 24): any thermal-flexoelectric device with a load and measured power; the field's names for the composition beyond thermopolarization"
+      executed_at: 2026-09-21T01:20:00+10:00
+      engine_version: null
+      index_snapshot: null
+      result_count_reported: null
+      records_retrieved: 3
+      records_screened: 3
+      records_read: 3
+      note: "the three works the reviewer named, each verified by the lane on Crossref and OpenAlex and read at abstract level (Han 2026 and Yurkov 2019 on the publishers' pages); none was in the frozen OpenAlex bundle, which predates the thermoflexoelectric aliases"
   screening:
-    records_retrieved: 158
-    unique_records: 158
-    title_abstract_screened: 158
+    records_retrieved: 161
+    unique_records: 161
+    title_abstract_screened: 161
     full_text_read: 1
   hits:
     - title: Observation of universal thermopolarization effect in insulators
@@ -225,6 +240,30 @@
       access: metadata-only
       decision: theory-only
       reason: Tagantsev's review including the thermal-polarization prediction the 2026 preprint tests; theory (title and the preprint's citation of it).
+    - title: Dual-Mode Flexoelectric Nanogenerators Activated by Light and Heat for Broad-Spectral Photodetection and Thermal Response
+      year: 2026
+      doi: 10.1002/adfm.75910
+      found_by:
+        - search:2026-09-21-p-a093d7ecc5/reviewer-web
+      access: abstract
+      decision: insufficient-information
+      reason: "Experimental heat-driven flexoelectric nanogenerator (Han et al. 2026, Adv. Funct. Mater.): under temperature variation the heterojunction components deform differentially, the interfacial strain gradient drives flexoelectric polarization and a measured current (effective pyroelectric coefficient up to 7518 μC m⁻² K⁻¹). The accessible record does not establish electrical work delivered to a load, and whether the imposed thermal field is the route's spatial temperature gradient (rather than a temperature change with a coefficient-of-expansion mismatch) must be checked in the full text, which is paywalled — an owner read is requested. If the full text confirms the driver and still reports no load: sink-variant; if it reports load power attributable to thermal-mode flexoelectric generation, it may supersede Iwakiri 2026 as the qualifying hit."
+    - title: Exact solutions for thermally induced electromechanical fields of PN junctions in centrosymmetric semiconductors
+      year: 2024
+      doi: 10.1063/5.0218259
+      found_by:
+        - search:2026-09-21-p-a093d7ecc5/reviewer-web
+      access: abstract
+      decision: theory-only
+      reason: "Wei et al. 2024 (J. Appl. Phys.) define the thermoflexoelectric effect — temperature gradients generate inhomogeneous strains and induce flexoelectric polarizations — and solve a one-dimensional PN-junction model; theory, no experiment, no output. Its name for the composition is now an alias of the flexoelectric effect."
+    - title: Flexoelectric polarization induced by inhomogeneous heating and implications for energy harvesting
+      year: 2019
+      doi: 10.1016/j.ijsolstr.2018.12.003
+      found_by:
+        - search:2026-09-21-p-a093d7ecc5/reviewer-web
+      access: abstract
+      decision: theory-only
+      reason: "Yurkov, Dejneka & Yudin 2019 (Int. J. Solids Struct.): a variational theory of the polarization of an inhomogeneously heated thin plate, with a calculated waste-heat-to-electricity bound of up to tens of watts per kilogram of flexoelectric material; theory, no device — a citation-chase seed for the next sitting."
   result: inconclusive
   completeness: partial
   reviewed_by: Ava Kim's loop-3 lane (Claude Opus 5); abstracts, the 2026 preprint's full text and the citation-chase titles read by the lane; ChatGPT (GPT-5 Thinking) as second reader in pass 24
@@ -234,11 +273,14 @@
     - "OpenAlex driver-mechanism query: 2,185 works reported, the first 100 by relevance and the first 50 newest screened at title level (protocol depth), the rest unscreened; the whole-chain and demonstration-precision queries returned 0"
     - "citation chase on OpenAlex reference lists and citing works only (Zubko 2013: 137 of 143 references, the first 1,000 of 1,102 citers; Tagantsev 1986: 9, 731), screened at title level with a thermal / heat / temperature filter"
     - the preprint is not peer-reviewed and reports no output power; its signal magnitudes (second-harmonic displacement currents at 1 kHz heater drive) are not recorded as measurements
-  conclusion: "The exact composition has been observed but not converted: Iwakiri, Miyata & Mori 2026 impose a temperature gradient whose thermal expansion produces a strain gradient whose flexoelectric polarization is detected (voltage and displacement current) in eight centrosymmetric insulators, scaling with the expansion coefficient — every mechanism in order, no electrical work delivered. Nothing in the OpenAlex runs or the two chases puts a load on such a device; the thermal-flexoelectric literature otherwise concerns the converse effect, bending-imposed gradients, uniform-temperature conduction effects and flexo-induced pyroelectricity. Inconclusive as a route search until the Scholar and Semantic Scholar runs exist; the open question is now narrow: has anyone extracted work."
+    - "the term bundle lacked the field's name for the composition — the thermoflexoelectric effect (Wei et al. 2024) — when the OpenAlex runs were made; the aliases thermoflexoelectric effect / thermo-flexoelectric effect / thermoflexoelectricity were added after the second reader's review and the driver-mechanism and mechanism-pair forms are to be rerun with them (OpenAlex's shared anonymous daily budget was exhausted on 21/09; rerun pending)"
+    - Han et al. 2026 is paywalled; its thermal-mode driver and any load measurement are unverified pending an owner read
+  conclusion: "The exact composition has been observed but not converted: Iwakiri, Miyata & Mori 2026 impose a temperature gradient whose thermal expansion produces a strain gradient whose flexoelectric polarization is detected (voltage and displacement current) in eight centrosymmetric insulators, scaling with the expansion coefficient — every mechanism in order, no electrical work delivered. Nothing in the OpenAlex runs or the two chases puts a load on such a device; the thermal-flexoelectric literature otherwise concerns the converse effect, bending-imposed gradients, uniform-temperature conduction effects and flexo-induced pyroelectricity. Inconclusive as a route search until the Scholar and Semantic Scholar runs exist; the open question is now narrow: has anyone extracted work. After the second reader's review (pass 24) the composition is recorded as the observed pathway pathway:thermal-expansion-flexoelectric-response — status observed, observed_through the flexoelectric charge step, the final conversion to work unsupported — and the route reads observed · output not delivered while its class stays candidate. The reviewer's nearest additional hit, Han et al. 2026 (a heat-driven flexoelectric nanogenerator whose differential thermal deformation supplies the strain gradient; current response only in the accessible record), stays insufficient-information pending its full text."
   source_run_ids:
     - search:2026-09-20-p-a093d7ecc5
   follow_up:
-    canonical_claim_review: not-applicable
-    canonical_pathway_review: needed
+    canonical_claim_review: completed
+    canonical_pathway_review: completed
     candidate_source_ids:
       - source:iwakiri-2026-thermopolarization
+      - source:han-2026-dual-mode-flexoelectric-nanogenerator

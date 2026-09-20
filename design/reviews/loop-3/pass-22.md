@@ -1,4 +1,4 @@
-# Pass 22 — Scholar runs for the thermocapillary streaming route, the parallel-driver rule, and the head rule (21/09/2026 ~2:50–5:00 am Sydney)
+# Pass 22 — Scholar runs for the thermocapillary streaming route, the parallel-driver rule, and the head rule (20/09/2026 11:17 pm – 21/09/2026 12:12 am Sydney)
 
 Focus sent: (A) the four Google Scholar forms for p-423a19acdd run by hand (100 screened per form; Scholar
 returns nothing beyond about 32 words, so compact strings from the frozen bundles), what Scholar's full-text
@@ -8,7 +8,7 @@ thermocapillary micro heat engine, Dietzel & Hardt 2011, and a capillary-wicking
 "surface-tension-driven flow"; (B) decisions, a co-driver rule, alias hygiene, a Scholar exception for the
 protocol, and what to do with the micro heat engine; (C) the rule pass 21 exposed — 24 of the 32 derived
 compositions were derived by the shared-head clause alone and every one diverges at the second mechanism —
-with three options; (D) pass 23. ChatGPT (High, ~25 min). Verdict: PIVOT — 14 findings.
+with three options; (D) pass 23. ChatGPT (High, ~4 min). Verdict: PIVOT — 14 findings.
 
 Verification before recording: Zhang 2025 (CEJ 172116) and Lei 2025 (Composites B 113111) abstracts on the
 publishers' pages (the 0.3 V is attributed to the engineered salt gradient; Lei's Marangoni discussion is in

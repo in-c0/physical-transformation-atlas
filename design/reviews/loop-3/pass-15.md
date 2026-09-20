@@ -1,4 +1,4 @@
-# Pass 15 — the methods page as the trust document (20/09/2026 ~5:50–7:20 pm Sydney)
+# Pass 15 — the methods page as the trust document (20/09/2026 ~6:15–7:06 pm Sydney)
 
 Focus sent: /methods read as the document a sceptical physicist uses to decide whether to trust any
 number on the site — stale sentences against the deployed revision, section order, the language

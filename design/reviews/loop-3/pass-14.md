@@ -1,4 +1,4 @@
-# Pass 14 — the phone (21/09/2026 ~12:15–2:40 am Sydney)
+# Pass 14 — the phone (20/09/2026 ~5:09–6:15 pm Sydney)
 
 Focus sent: nothing had reviewed the site at phone width. Eight pages at 375 × 812 and 390 × 844,
 judged as a physicist on a train: what breaks, what collapses versus what must stay (the cell as a

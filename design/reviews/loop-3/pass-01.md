@@ -1,4 +1,4 @@
-# Pass 1 — use the instrument as a working physicist (19/09/2026 ~12:30 pm Sydney)
+# Pass 1 — use the instrument as a working physicist (19/09/2026 ~10:35 pm Sydney)
 
 Focus sent: browse home, /matrix?cell=D.02:C.10, /path/d4b83f7f17, /path/87c18f5e4c, /frontier,
 /phenomenon/seebeck-effect, /methods; report (a) where the instrument failed, (b) the five most valuable

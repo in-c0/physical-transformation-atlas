@@ -406,14 +406,33 @@ export const Measurement = z.object({
 });
 export type Measurement = z.infer<typeof Measurement>;
 
-export const Pathway = z.object({
+/**
+ * Pathway statuses. demonstrated / prototype / commercial are demonstrations of the composition and
+ * make the exact route demonstrated; proposed (a design or simulation in the literature) and observed
+ * (loop-3 pass 24: one physical experiment traversed every conversion phenomenon and handoff in order
+ * but the route's terminal output criterion was not met — a polarization, current, force or flow was
+ * measured, no work delivered) are attached to their route but never make it demonstrated and are
+ * ignored when other routes are classified as derived.
+ */
+export const PATHWAY_STATUSES = ["demonstrated", "prototype", "commercial", "proposed", "observed"] as const;
+export type PathwayStatus = (typeof PATHWAY_STATUSES)[number];
+export const DEMONSTRATED_PATHWAY_STATUSES = ["demonstrated", "prototype", "commercial"] as const;
+export const isDemonstratedPathway = (p: { status: PathwayStatus }): boolean => (DEMONSTRATED_PATHWAY_STATUSES as readonly string[]).includes(p.status);
+
+const PathwayBase = z.object({
   id: PathwayId,
   name: z.string(),
   /** Ordered process claims, first subject must be a disequilibrium, last object an output. */
   steps: z.array(ClaimId).min(1),
   demonstrated_with: z.array(EntityId).default([]),
   evidence: z.array(SourceId).default([]),
-  status: z.enum(["demonstrated", "prototype", "commercial", "proposed"]),
+  status: z.enum(PATHWAY_STATUSES),
+  /**
+   * Required iff status is observed: the last route claim the pathway's evidence physically
+   * established, so an observed pathway never silently implies that every listed step was shown.
+   * Must be one of the steps and not the final one (a final step established would be a demonstration).
+   */
+  observed_through: ClaimId.optional(),
   knowledge_level: z.enum(KNOWLEDGE_LEVELS),
   performance: z
     .object({
@@ -429,6 +448,15 @@ export const Pathway = z.object({
   environment: z.array(Slug).default([]),
   summary: z.string(),
   review: ReviewMeta.default({ canonical: true, last_reviewed: null }),
+});
+export const Pathway = PathwayBase.superRefine((p, ctx) => {
+  if (p.status === "observed") {
+    if (!p.observed_through) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["observed_through"], message: "an observed pathway must name observed_through, the last step its evidence physically established" });
+    else if (!p.steps.includes(p.observed_through)) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["observed_through"], message: "observed_through must be one of the pathway's steps" });
+    else if (p.observed_through === p.steps[p.steps.length - 1]) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["observed_through"], message: "observed_through cannot be the final step: a final step established is a demonstration, not an observation" });
+  } else if (p.observed_through) {
+    ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["observed_through"], message: "observed_through is only recorded on a pathway with status observed" });
+  }
 });
 export type Pathway = z.infer<typeof Pathway>;
 
@@ -718,6 +746,12 @@ export const CompiledPath = z.object({
       route_claims: z.number().int(),
     })
     .nullable(),
+  /**
+   * observed-not-converted when the exact route carries a pathway with status observed (loop-3 pass
+   * 24): the composition's conversion physics has been traversed in one physical experiment, its
+   * recorded output not delivered. The frontier class and search status are unchanged by it.
+   */
+  composition_observation: z.enum(["observed-not-converted"]).nullable(),
 });
 export type CompiledPath = z.infer<typeof CompiledPath>;
 

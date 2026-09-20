@@ -103,7 +103,7 @@
   predicate: drives
   object: phenomenon:flexoelectric-effect
   conditions:
-    - a strain gradient, e.g. bending; uniform strain produces nothing in a centrosymmetric dielectric
+    - "the required strain gradient may be generated mechanically (e.g. bending) or by spatially non-uniform thermal expansion; uniform strain alone does not produce bulk flexoelectric polarization in a centrosymmetric dielectric"
     - coefficients are small in bulk (nC/m) and useful only at the nanoscale or in thin films
   condition_tags: [state-solid, medium-dielectric]
   energy: { input: mechanical, output: electrical, dissipation: thermal }
@@ -113,16 +113,18 @@
     output: quantity:polarisation
     coefficient_unit: C/m
     coefficient_name: flexoelectric coefficient μ
-  evidence: [source:zubko-2013]
+  evidence: [source:zubko-2013, source:iwakiri-2026-thermopolarization]
   status: established
   knowledge_level: K4
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 24 (thermal strain gradients named as a source of the gradient; Iwakiri 2026 added as constituent evidence)" }
 - id: claim:flexo-produces-charge
   subject: phenomenon:flexoelectric-effect
   predicate: produces
   object: carrier:surface-charge
   energy: { input: electrical, output: electrical }
-  evidence: [source:zubko-2013]
+  evidence: [source:zubko-2013, source:iwakiri-2026-thermopolarization]
   status: established
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 24 (Iwakiri 2026 added as constituent evidence: the polarization read as a screening current)" }
 - id: claim:flexo-member
   subject: phenomenon:flexoelectric-effect
   predicate: member_of

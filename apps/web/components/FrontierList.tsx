@@ -6,7 +6,7 @@ import { FRONTIER_CLASSES, STRUCTURAL_KINDS } from "@pta/schema";
 import { researchOrder } from "@pta/graph/order";
 import { useAtlas } from "@/lib/client-data";
 import { useWide } from "@/lib/useWide";
-import { EVIDENCE_LABEL, FRONTIER_LABEL, OVERLAP_LABEL, STRUCTURE_LABEL, compositionState, hrefFor } from "@/lib/format";
+import { EVIDENCE_LABEL, FRONTIER_LABEL, OVERLAP_LABEL, PATHWAY_STATUS_LABEL, STRUCTURE_LABEL, compositionState, hrefFor } from "@/lib/format";
 import { CheckGlyph } from "./StatusMark";
 import styles from "./FrontierList.module.css";
 
@@ -210,14 +210,17 @@ export function FrontierList() {
                 <span className={styles.num}>{String(i + 1).padStart(4, "0")}</span>
                 <span
                   className={`t-micro st-${p.frontier_class === "forbidden" ? "contradicted" : p.frontier_class === "demonstrated" ? "demonstrated" : p.frontier_class === "derived" || p.frontier_class === "incomplete-handoff" ? "search-incomplete" : "candidate"}`}
+                  title={p.composition_observation ? `compiler class: ${FRONTIER_LABEL[p.frontier_class]} — the composition has been physically observed, its recorded output not delivered` : undefined}
                 >
-                  {FRONTIER_LABEL[p.frontier_class].toUpperCase()}
+                  {/* An observed composition leads with its scientific state; the compiler class (candidate) stays in the title and the row body. */}
+                  {p.composition_observation === "observed-not-converted" ? "OBSERVED · OUTPUT NOT DELIVERED" : FRONTIER_LABEL[p.frontier_class].toUpperCase()}
                 </span>
                 <span className="t-micro secondary">{p.id}</span>
                 {named && (
                   <span className="t-micro secondary">
                     · {named.name}
-                    {named.status === "proposed" ? " (proposed in the literature, not demonstrated)" : ""}
+                    {named.status === "proposed" ? ` (${PATHWAY_STATUS_LABEL.proposed})` : ""}
+                    {named.status === "observed" ? ` (${FRONTIER_LABEL[p.frontier_class]}: one experiment traversed every conversion in order; the route's output was not delivered)` : ""}
                   </span>
                 )}
               </div>

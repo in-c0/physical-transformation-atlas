@@ -1,4 +1,4 @@
-# Pass 2 — data audit (19/09/2026 ~12:55 pm Sydney)
+# Pass 2 — data audit (19/09/2026 ~11:00 pm Sydney)
 
 Focus sent: audit /api/claims.json, /api/pathways.json, /api/sources.json — ten-plus claims across domains
 for status honesty, conditions, energy ledger, source support; three pathway figures. ChatGPT could not

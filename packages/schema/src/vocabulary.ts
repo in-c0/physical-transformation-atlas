@@ -14,6 +14,7 @@ import {
   KNOWLEDGE_LEVELS,
   KNOWLEDGE_LEVEL_LABEL,
   MATRIX_CELL_STATUSES,
+  PATHWAY_STATUSES,
   PREDICATES,
   QUERY_FORMS,
   SEARCH_ENGINES,
@@ -104,8 +105,31 @@ export const VOCABULARY: VocabularyEnum[] = [
       "under-review": "reserved; not produced by the current compiler (no review queue exists in this release)",
       "experiment-proposed": "reserved; not produced by the current compiler (no review queue exists in this release)",
       "experiment-tested": "reserved; not produced by the current compiler (no review queue exists in this release)",
-      demonstrated: "a recorded pathway with a status other than proposed has exactly this claim sequence, or a reviewed search of the whole composition found a demonstration",
+      demonstrated: "a recorded pathway with a demonstrated status (demonstrated, prototype or commercial) has exactly this claim sequence, or a reviewed search of the whole composition found a demonstration",
     }),
+  },
+  {
+    name: "pathway.status",
+    used_in: ["pathways[].status"],
+    terms: define(PATHWAY_STATUSES, {
+      demonstrated: "the composition has been shown end to end in at least one physical experiment or device that delivered the route's recorded output",
+      prototype: "demonstrated and built as an engineering prototype",
+      commercial: "demonstrated and sold or operated as a product or plant",
+      proposed: "a design, calculation or simulation in the literature; attached to its exact route and shown as a proposal, never a demonstration; ignored when other routes are classified as derived",
+      observed:
+        "one physical experiment or device has traversed every recorded conversion phenomenon and every inter-phenomenon handoff in order, but the route's terminal output criterion has not been met: a voltage, current, charge, displacement, force, flow or other terminal response may be measured, but the pathway has not delivered the work or output represented by the route's sink; observed_through names the last step its evidence established; an observed pathway does not make a route demonstrated and is ignored when classifying other routes as derived from demonstrated pathways",
+    }),
+  },
+  {
+    name: "path.composition_observation",
+    used_in: ["paths[].composition_observation"],
+    terms: [
+      {
+        id: "observed-not-converted",
+        definition:
+          "the exact route carries a pathway with status observed: the composition's conversion physics was traversed in one physical experiment and its recorded output was not delivered; the frontier class and the search status are unchanged by it (null otherwise)",
+      },
+    ],
   },
   {
     name: "knowledge_level",
@@ -202,9 +226,9 @@ export const VOCABULARY: VocabularyEnum[] = [
     terms: define(FRONTIER_CLASSES, {
       demonstrated: "search_status is demonstrated: a recorded pathway or a reviewed search covers the whole route",
       candidate:
-        "no check fails, the source and the sink do not share an energy form, every constituent is at least demonstrated, every declared carrier handoff is provided, and neither claim-level overlap nor a phenomena-level variant of a demonstrated pathway makes it derived; a pathway with status proposed does not change the class",
+        "no check fails, the source and the sink do not share an energy form, every constituent is at least demonstrated, every declared carrier handoff is provided, and neither claim-level overlap nor a phenomena-level variant of a demonstrated pathway makes it derived; a pathway with status proposed or observed does not change the class",
       derived:
-        "otherwise candidate-quality, but the route shares with a demonstrated pathway (status other than proposed) either ordered claims that contain the whole pathway, form a strict prefix or suffix of it, span two or more of its phenomena, or share its driver step and first conversion with the next conversion phenomenon in the same coupling family at the first divergence (known_pathway_overlap), or two or more phenomena as a source-variant or sink-variant (closest_known_pathway): it extends, truncates or re-drives something known; a shared head whose first divergence changes coupling family leaves the route a candidate",
+        "otherwise candidate-quality, but the route shares with a demonstrated pathway (status demonstrated, prototype or commercial) either ordered claims that contain the whole pathway, form a strict prefix or suffix of it, span two or more of its phenomena, or share its driver step and first conversion with the next conversion phenomenon in the same coupling family at the first divergence (known_pathway_overlap), or two or more phenomena as a source-variant or sink-variant (closest_known_pathway): it extends, truncates or re-drives something known; a shared head whose first divergence changes coupling family leaves the route a candidate",
       "incomplete-handoff":
         "otherwise candidate-quality, but a consuming step declares a carrier requirement (handoff.requires_all / requires_any) that no earlier step on the route provides; the composition is not research-ready until the interface is recorded",
       weak: "at least one constituent claim is below demonstrated (reported, theoretical, hypothesised, disputed …)",

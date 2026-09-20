@@ -100,15 +100,17 @@ from; the rest are descriptive (vocabulary `claim.predicate`).
 export in `verification`, not on the record.
 
 **Pathway** — a named, reviewed composition: ordered `steps` (claim ids), `demonstrated_with`
-(transducer ids), `evidence`, `status` (`demonstrated`, `prototype`, `commercial`, `proposed`),
+(transducer ids), `evidence`, `status` (`demonstrated`, `prototype`, `commercial`, `proposed`,
+`observed` — vocabulary `pathway.status`), `observed_through` (required iff `status: observed`: the
+last step the evidence physically established, never the final one),
 `knowledge_level`, `performance` (`efficiency_typical`, `efficiency_record`, `theoretical_limit`,
 `power_density`, `notes`, and `measurements[]` — one record per number with the quantity, the value
 as written in the source, the scope, the regime, the sources and the year, and optionally its
 structured form: `value_numeric`, `unit`, `metric` (which bounded quantity it is), `basis` (what the
 number is defined on) and `parameters` (the inputs a formula bound needs, such as `T_h_K` and
 `T_c_K`) — only a structured datum is ever compared with a bound), `environment`, `summary`,
-`review`. A pathway with `status: proposed` is attached to its route but never makes it
-demonstrated.
+`review`. A pathway with `status: proposed` or `status: observed` is attached to its route but never
+makes it demonstrated and is ignored when other routes are classified as derived.
 
 **CompiledPath** (generated) — `id` is `p-` plus ten hex characters of a SHA-1 over the ordered
 claim ids; `nodes`, `claims`, `source`, `sink`, `length`; `evidence_status` (the weakest
@@ -132,8 +134,9 @@ carrier-handoff requirements nothing earlier on the route provides — unresolve
 covers the whole composition, `bounded` when every conversion step carries a constitutive relation,
 `missing` otherwise; `incompatible` is reserved for a recorded contradiction), `magnitude_data_coverage`, `representation_signature`,
 `semantic_overlap`, `structural_kind`, `dominated_by`, `source_availability`,
-`known_pathway_overlap`. Enumerations: vocabulary `path.search_status`, `path.frontier_class`,
-`path.structural_kind`, `check.result`.
+`known_pathway_overlap`, `composition_observation` (`observed-not-converted` when the exact route
+carries an `observed` pathway, else null). Enumerations: vocabulary `path.search_status`,
+`path.frontier_class`, `path.structural_kind`, `path.composition_observation`, `check.result`.
 
 **MatrixCell** (generated) — `row` and `col` entity ids, `address` (`D.nn:C.nn`), `status`
 (vocabulary `matrix.cell.status`), `direct_claims`, `direct_phenomena`, `bridge_paths` (route ids),
@@ -209,4 +212,4 @@ per-source cap); nothing renamed or removed, so a v0.2.0 reader can ignore the n
 `applies_to_outputs` and `applies_to_phenomena`; measurements gain `value_numeric`, `unit`, `metric`,
 `basis` and `parameters`; claims gain `relation_requirement`; the check labels for `conservation`
 (now "Source work availability") and `practical-magnitude` (now "Measured performance coverage")
-change while their ids stay. Nothing renamed or removed. Within v0.4.0, additive changes dated 21/09/2026 (loop-3 passes 22–24): search runs gain the optional fields `query_compacted`, `expanded_query` (route-search-v1's Google Scholar compaction exception), `segment`, `positions_screened` and `interruption` (the continuation rule); `Source.type` gains `preprint`. Nothing renamed or removed; a v0.4.0 reader that ignores unknown fields and unknown enum values is unaffected, one that validates `type` strictly must accept the new value.
+change while their ids stay. Nothing renamed or removed. Within v0.4.0, additive changes dated 21/09/2026 (loop-3 passes 22–24): search runs gain the optional fields `query_compacted`, `expanded_query` (route-search-v1's Google Scholar compaction exception), `segment`, `positions_screened` and `interruption` (the continuation rule); `Source.type` gains `preprint`; `Pathway.status` gains `observed` with the companion field `observed_through`, and CompiledPath gains `composition_observation` (pass 24). Nothing renamed or removed; a v0.4.0 reader that ignores unknown fields and unknown enum values is unaffected, one that validates `type` or `status` strictly must accept the new values.

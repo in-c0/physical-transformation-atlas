@@ -1,4 +1,4 @@
-# Pass 13 — closing the loop the first search opened (20/09/2026 ~10:20 pm – 21/09 ~12:10 am Sydney)
+# Pass 13 — closing the loop the first search opened (20/09/2026 ~4:36–5:09 pm Sydney)
 
 Focus sent, in two parts: (A) the follow-up data review the first reviewed search left pending —
 does Zhao et al. 2020 warrant a canonical claim, and which phenomenon is it really; (B) the first

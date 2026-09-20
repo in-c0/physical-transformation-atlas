@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { resolve } from "node:path";
 import { loadCanon, buildGraph, ValidationError } from "@pta/graph";
-import { Claim } from "@pta/schema";
+import { Claim, isDemonstratedPathway } from "@pta/schema";
 
 const root = resolve(import.meta.dirname, "..", "..");
 const canon = loadCanon(root);
@@ -14,7 +14,13 @@ test("every named pathway compiles to a demonstrated path with the same claim se
     const p = bySeq.get(pw.steps.join(">"));
     assert.ok(p, `${pw.id} has no compiled path`);
     assert.equal(p.pathway, pw.id);
-    if (pw.status !== "proposed") assert.equal(p.search_status, "demonstrated", pw.id);
+    if (isDemonstratedPathway(pw)) assert.equal(p.search_status, "demonstrated", pw.id);
+    else assert.notEqual(p.search_status, "demonstrated", `${pw.id} (${pw.status}) must not make its route demonstrated`);
+    // loop-3 pass 24: an observed pathway names the last step it established, never the final one, and marks its route
+    if (pw.status === "observed") {
+      assert.ok(pw.observed_through && pw.steps.includes(pw.observed_through) && pw.observed_through !== pw.steps.at(-1), `${pw.id} observed_through`);
+      assert.equal(p.composition_observation, "observed-not-converted", `${pw.id} route annotation`);
+    } else assert.equal(p.composition_observation, null, `${pw.id} route carries no observation`);
     assert.equal(p.checks.find((k) => k.id === "type-chain")?.result, "pass", `${pw.id} typed chain`);
   }
 });
@@ -118,9 +124,17 @@ test("derived means mechanism overlap with a demonstrated pathway: the whole pat
     if (p.frontier_class === "derived") assert.ok(byClaims || variant, `${p.id} is derived with only a generic overlap`);
     if (p.frontier_class === "incomplete-handoff") assert.ok(p.handoff_unresolved_count > 0, `${p.id} is incomplete-handoff with nothing unresolved`);
     if (p.search_status === "demonstrated") assert.equal(p.handoff_unresolved_count, 0, `${p.id} is demonstrated yet a handoff is unresolved: the tokens are wrong`);
-    // A proposed pathway is attached to its route but never counts as overlap with a demonstrated one.
-    if (p.pathway && pathwayById.get(p.pathway)?.status !== "proposed") assert.equal(ov?.relation, "exact", `${p.id} matches a pathway but overlap is not exact`);
-    if (p.pathway && pathwayById.get(p.pathway)?.status === "proposed") assert.notEqual(p.search_status, "demonstrated", `${p.id}: a proposal made a route demonstrated`);
+    // A proposed or observed pathway is attached to its route but never counts as overlap with a demonstrated one.
+    const own = p.pathway ? pathwayById.get(p.pathway) : undefined;
+    if (own && isDemonstratedPathway(own)) assert.equal(ov?.relation, "exact", `${p.id} matches a pathway but overlap is not exact`);
+    if (own && !isDemonstratedPathway(own)) {
+      assert.notEqual(p.search_status, "demonstrated", `${p.id}: a ${own.status} pathway made a route demonstrated`);
+      assert.ok(!ov || ov.pathway !== own.id, `${p.id}: its ${own.status} pathway counted as overlap`);
+    }
+    if (!p.pathway) assert.equal(p.composition_observation, null, `${p.id} carries an observation without a pathway`);
+    // No route may be derived through a pathway that is not a demonstration.
+    if (ov) assert.ok(isDemonstratedPathway(pathwayById.get(ov.pathway)!), `${p.id} overlaps the non-demonstrated pathway ${ov.pathway}`);
+    if (ck) assert.ok(isDemonstratedPathway(pathwayById.get(ck.pathway)!), `${p.id} is closest to the non-demonstrated pathway ${ck.pathway}`);
     if (p.pathway) assert.equal(p.dominated_by, null, `${p.id} is a recorded pathway shown as dominated`);
   }
 });

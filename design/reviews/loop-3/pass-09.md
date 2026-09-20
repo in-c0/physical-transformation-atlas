@@ -1,4 +1,4 @@
-# Pass 9 — arrival pages and search (20/09/2026 ~2:40–4:10 pm Sydney)
+# Pass 9 — arrival pages and search (20/09/2026 ~1:50–2:30 pm Sydney)
 
 Focus sent: a physicist lands from a search engine on one entity, claim, source or route page with
 no context. Ten live pages named. Judge first-screen order (what · how sure · what next), whether the

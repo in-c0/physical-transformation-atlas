@@ -29,8 +29,8 @@ is `hypothesised`; a test refuses `replicated` without two independent first-aut
 
 ## Search status (per route), in precedence order
 
-1. `demonstrated` — a recorded pathway whose status is not `proposed` has exactly this claim
-   sequence, **or** a reviewed search of the whole composition has `result: demonstration-found`;
+1. `demonstrated` — a recorded pathway with a demonstrated status (`demonstrated`, `prototype`
+   or `commercial`) has exactly this claim sequence, **or** a reviewed search of the whole composition has `result: demonstration-found`;
 2. `searched-no-demonstration-found` — a reviewed search of the whole composition has
    `result: no-demonstration-found` (the loader accepts that value only from a record that passed
    the protocol gate: `completeness: protocol-complete-negative`, a reviewer, no qualifying hit,
@@ -52,8 +52,8 @@ current compiler never assigns them; there is no review queue in this release.
      (`handoff.requires_all` / `requires_any`) that no earlier step provides
      (`handoff_unresolved_count > 0`): the composition is not research-ready until the interface
      is recorded;
-   - otherwise `derived` when the route overlaps a **demonstrated** pathway (status other than
-     `proposed`) in one of two ways: by claims — at least two ordered claims shared
+   - otherwise `derived` when the route overlaps a **demonstrated** pathway (status `demonstrated`,
+     `prototype` or `commercial`) in one of two ways: by claims — at least two ordered claims shared
      (`known_pathway_overlap`) such that (a) the route contains the pathway's complete ordered
      claim sequence, (b) the route is a strict ordered prefix or suffix of the pathway, or the
      pathway of the route, (c) the ordered shared claims span two or more distinct conversion
@@ -66,7 +66,13 @@ current compiler never assigns them; there is no review queue in this release.
      phenomena — at least two shared as a `source-variant` or `sink-variant` of the closest
      demonstrated pathway (`closest_known_pathway`; a `mechanism-subsequence` does not count);
    - otherwise `candidate`. A pathway with status `proposed` is attached to its exact route
-     (`p.pathway`) and shown as a proposal, but is ignored for overlap and never changes the class;
+     (`p.pathway`) and shown as a proposal, but is ignored for overlap and never changes the class.
+     A pathway with status `observed` (loop-3 pass 24) is likewise attached and ignored for
+     overlap: one physical experiment traversed every conversion phenomenon and handoff in order
+     but the route's terminal output was not delivered (a polarization, current, force or flow was
+     measured, no work); `observed_through` names the last step its evidence established, and the
+     route carries `composition_observation: observed-not-converted` so the frontier can lead with
+     the scientific state ("observed · output not delivered") while the class stays `candidate`;
 5. `weak` — a constituent claim is below `demonstrated`.
 
 So a candidate is: no physics check fails, source and sink do not collapse to the same energy form,

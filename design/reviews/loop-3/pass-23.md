@@ -1,4 +1,4 @@
-# Pass 23 — the remaining Scholar runs, the micro heat engine's spelling, and the twelve released candidates triaged (21/09/2026 ~5:10 am – 8:10 am Sydney)
+# Pass 23 — the remaining Scholar runs, the micro heat engine's spelling, and the twelve released candidates triaged (21/09/2026 ~12:12–12:55 am Sydney)
 
 Focus sent: (A) Google Scholar by hand for p-41cb505083 (all four forms; 11,800 / 261 / 68 / 53 reported) and
 p-1043a15e01 (three narrow forms complete — 4, 1, 1 — and the driver-mechanism form cut off by a captcha
@@ -6,7 +6,7 @@ after one page, Scholar tolerating about 110 page loads in a sitting), with the 
 new hits; (B) the thermocapillary micro heat engine's spelling (a fluid-flow → elastic claim, or the
 plug's compression as a pressure gradient; whether a confined plug provides bulk flow; what to record);
 (C) the twelve candidate compositions the head rule released, one verdict each; (D) pass 24 and whether
-Scholar's driver-mechanism form should become optional above 1,000 hits. ChatGPT (High, ~75 min, with
+Scholar's driver-mechanism form should become optional above 1,000 hits. ChatGPT (High, ~7 min, with
 web and repository searches). Verdict: PIVOT — 20 findings.
 
 Verification before recording: Chen et al. 2015 (Nat Commun 6:7346) read in full from the open-access

@@ -1,4 +1,4 @@
-import type { CheckResult, EvidenceStatus, FrontierClass, KnowledgeLevel, MatrixCellStatus, SearchStatus, StructuralKind } from "@pta/schema";
+import type { CheckResult, EvidenceStatus, FrontierClass, KnowledgeLevel, MatrixCellStatus, PathwayStatus, SearchStatus, StructuralKind } from "@pta/schema";
 import { KNOWLEDGE_LEVEL_LABEL } from "@pta/schema";
 
 export const CELL_STATUS_LABEL: Record<MatrixCellStatus, string> = {
@@ -48,6 +48,15 @@ export const SEARCH_LABEL: Record<SearchStatus, string> = {
   "experiment-proposed": "experiment proposed",
   "experiment-tested": "experiment tested",
   demonstrated: "demonstrated",
+};
+
+/** Pathway statuses as shown on routes, claims and the frontier; observed never reads as a demonstration. */
+export const PATHWAY_STATUS_LABEL: Record<PathwayStatus, string> = {
+  demonstrated: "demonstrated",
+  prototype: "prototype",
+  commercial: "commercial",
+  proposed: "proposed in the literature, not demonstrated",
+  observed: "observed · output not delivered",
 };
 
 export const FRONTIER_LABEL: Record<FrontierClass, string> = {

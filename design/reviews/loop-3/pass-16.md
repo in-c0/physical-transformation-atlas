@@ -1,4 +1,4 @@
-# Pass 16 — the frontier's thirteen candidate compositions, audited as physics (20/09/2026 ~7:40–9:35 pm Sydney)
+# Pass 16 — the frontier's thirteen candidate compositions, audited as physics (20/09/2026 ~7:06–8:05 pm Sydney)
 
 Focus sent: the thirteen routes the default frontier presented as candidate compositions, each with
 its claims, tags, ledgers, counters and handoff issues, and for each a verdict from GENUINE / KNOWN

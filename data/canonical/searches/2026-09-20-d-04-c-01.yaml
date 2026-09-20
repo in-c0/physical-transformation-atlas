@@ -9,8 +9,8 @@
 - id: search:2026-09-20-d-04-c-01-partial
   target: { kind: cell, row: disequilibrium:salinity-gradient, col: coupling:thermoelectric }
   protocol_version: cell-search-v1
-  started_at: "2026-09-20T22:30:00+10:00"
-  completed_at: "2026-09-20T23:40:00+10:00"
+  started_at: "2026-09-20T16:40:00+10:00"
+  completed_at: "2026-09-20T17:05:00+10:00"
   objective: direct-relation
   inclusion_criteria:
     - the salinity or concentration difference is the imposed causal energy source
@@ -27,7 +27,7 @@
       engine: openalex
       query_form: driver-family
       query: '("salinity gradient" OR "salinity difference" OR "blue energy" OR "river–sea mixing" OR "osmotic power") AND (thermoelectric OR seebeck OR thermocouple OR thermopile)'
-      executed_at: "2026-09-20T22:35:00+10:00"
+      executed_at: "2026-09-20T16:45:00+10:00"
       request_url: "frozen bundle search:2026-09-20-d-04-c-01 in data/generated/search-runs.json (8 queries: family, six per-phenomenon, precision)"
       engine_version: null
       index_snapshot: null
@@ -40,7 +40,7 @@
       engine: manual
       query_form: driver-family
       query: '("salinity gradient" OR "salinity difference" OR "blue energy" OR "river-sea mixing" OR "osmotic power" OR "salinity-gradient power") AND (thermoelectric OR Seebeck OR thermocouple OR thermopile)'
-      executed_at: "2026-09-20T22:50:00+10:00"
+      executed_at: "2026-09-20T16:50:00+10:00"
       result_count_reported: null
       records_retrieved: 8
       records_screened: 8
@@ -49,7 +49,7 @@
       engine: manual
       query_form: driver-phenomenon
       query: '("salinity gradient" OR "salinity difference" OR "blue energy" OR "river-sea mixing" OR "osmotic power" OR "salinity-gradient power") AND ("Seebeck effect" OR "thermoelectric effect" OR "thermo-EMF" OR "Peltier effect" OR "Thomson effect")'
-      executed_at: "2026-09-20T23:00:00+10:00"
+      executed_at: "2026-09-20T16:55:00+10:00"
       result_count_reported: null
       records_retrieved: 8
       records_screened: 8
@@ -58,7 +58,7 @@
       engine: manual
       query_form: demonstration-precision
       query: '("salinity gradient" OR "salinity difference" OR "blue energy" OR "river-sea mixing" OR "osmotic power" OR "salinity-gradient power") AND (thermoelectric OR Seebeck OR thermocouple OR thermopile OR "Seebeck effect" OR "thermoelectric effect" OR "thermo-EMF" OR "Peltier effect" OR "Thomson effect") AND (experiment OR experimental OR measured OR device OR prototype)'
-      executed_at: "2026-09-20T23:10:00+10:00"
+      executed_at: "2026-09-20T17:00:00+10:00"
       result_count_reported: null
       records_retrieved: 8
       records_screened: 8

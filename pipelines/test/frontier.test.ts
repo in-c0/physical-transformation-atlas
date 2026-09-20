@@ -167,3 +167,23 @@ test("a shared head makes a route derived only when the first divergence stays i
   assert.ok(fission, "fission → expansion compiled");
   assert.equal(fission!.frontier_class, "derived");
 });
+
+test("an observed pathway (loop-3 pass 24) leads its route with the observation and changes nothing else: the thermal expansion → flexoelectric route stays a search-incomplete candidate", () => {
+  const p = byId.get("p-a093d7ecc5");
+  if (!p) return; // content-derived id; the synthetic build test covers the rule if the data changes
+  assert.equal(p.pathway, "pathway:thermal-expansion-flexoelectric-response");
+  assert.equal(p.composition_observation, "observed-not-converted");
+  assert.equal(p.frontier_class, "candidate");
+  assert.equal(p.search_status, "search-incomplete");
+  assert.equal(p.structural_kind, "composition");
+  // the observation is not evidence for anything else: no route is derived through the observed pathway
+  for (const q of paths) {
+    assert.notEqual(q.known_pathway_overlap?.pathway, p.pathway, `${q.id} overlaps the observed pathway`);
+    assert.notEqual(q.closest_known_pathway?.pathway, p.pathway, `${q.id} is a variant of the observed pathway`);
+  }
+  // the reviewed record still holds the preprint as a sink-variant hit, never as qualifying
+  const rec = graph.searches.find((s) => s.target.kind === "path" && s.target.path === "p-a093d7ecc5");
+  assert.ok(rec && rec.result === "inconclusive");
+  assert.ok(rec!.hits.some((h) => h.decision === "sink-variant"));
+  assert.ok(!rec!.hits.some((h) => h.decision === "qualifies"));
+});

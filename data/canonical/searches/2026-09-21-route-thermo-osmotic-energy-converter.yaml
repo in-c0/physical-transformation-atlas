@@ -15,8 +15,8 @@
       - claim:lift-produces-motion
       - claim:motion-converts-mechanical-work
   protocol_version: route-search-v1
-  started_at: 2026-09-20T22:20:00+10:00
-  completed_at: 2026-09-21T01:55:00+10:00
+  started_at: 2026-09-20T22:30:00+10:00
+  completed_at: 2026-09-20T23:15:00+10:00
   objective: exact-composition
   inclusion_criteria:
     - a physical experiment or device in which a temperature difference drives thermo-osmotic (vapour-gap) transport that pressurises or moves a liquid, that liquid loads a turbine (aerodynamic or hydrodynamic lift) directly, and shaft work is measured or delivered (route-search-v1 §3)
@@ -115,7 +115,7 @@
       query_form: citation-chase
       query_key: citation-chase:straub-2016
       query: referenced_works of W2471760349 (Harvesting low-grade heat energy using thermo-osmotic vapour transport through nanoporous membranes) and filter=cites:W2471760349
-      executed_at: 2026-09-21T01:55:00+10:00
+      executed_at: 2026-09-20T23:12:00+10:00
       request_url: https://api.openalex.org/works?filter=cites:W2471760349
       engine_version: null
       index_snapshot: null
@@ -130,7 +130,7 @@
       query_form: citation-chase
       query_key: citation-chase:straub-2017
       query: referenced_works of W2761315865 (Energy Efficiency and Performance Limiting Effects in Thermo-Osmotic Energy Conversion from Low-Grade Heat) and filter=cites:W2761315865
-      executed_at: 2026-09-21T01:55:00+10:00
+      executed_at: 2026-09-20T23:12:00+10:00
       request_url: https://api.openalex.org/works?filter=cites:W2761315865
       engine_version: null
       index_snapshot: null
@@ -145,7 +145,7 @@
       query_form: citation-chase
       query_key: citation-chase:luo-2024
       query: "referenced_works of W4392203423 (Thermal-driven osmosis utilizing hollow fiber membranes: Sustainable dye water treatment and electricity extraction) and filter=cites:W4392203423"
-      executed_at: 2026-09-21T01:55:00+10:00
+      executed_at: 2026-09-20T23:12:00+10:00
       request_url: https://api.openalex.org/works?filter=cites:W4392203423
       engine_version: null
       index_snapshot: null
@@ -160,7 +160,7 @@
       query_form: citation-chase
       query_key: citation-chase:xiao-2024
       query: referenced_works of W4399457699 (Permeate gap thermo-osmotic system for simultaneous freshwater production, energy storage, and power generation) and filter=cites:W4399457699
-      executed_at: 2026-09-21T01:55:00+10:00
+      executed_at: 2026-09-20T23:12:00+10:00
       request_url: https://api.openalex.org/works?filter=cites:W4399457699
       engine_version: null
       index_snapshot: null

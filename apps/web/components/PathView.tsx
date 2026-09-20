@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { CompiledPath, Source } from "@pta/schema";
 import type { AtlasIndex } from "@pta/graph/query";
-import { EVIDENCE_LABEL, FRONTIER_LABEL, OVERLAP_LABEL, claimHref, compositionState, hrefFor, kLabel, predicateLabel } from "@/lib/format";
+import { EVIDENCE_LABEL, FRONTIER_LABEL, OVERLAP_LABEL, PATHWAY_STATUS_LABEL, claimHref, compositionState, hrefFor, kLabel, predicateLabel } from "@/lib/format";
 import { Checksum } from "./Checksum";
 import { EvidenceList } from "./EvidenceList";
 import { CiteBlock } from "./CiteBlock";
@@ -70,8 +70,26 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
             <>
               <dt>recorded pathway</dt>
               <dd>
-                {named.name} · {named.status}
+                {named.name} · {PATHWAY_STATUS_LABEL[named.status]}
                 {named.status === "proposed" ? " — a proposal in the literature, not a demonstration; the route stays a candidate and its search state is unchanged by the proposal" : ""}
+                {named.status === "observed" && (
+                  <>
+                    {" — one physical experiment traversed every conversion phenomenon and handoff in order, established through "}
+                    {named.observed_through ? (
+                      <Link href={claimHref(named.observed_through)}>
+                        {(() => {
+                          const c = index.claim.get(named.observed_through);
+                          return c ? `${index.entity.get(c.subject)?.name ?? c.subject} → ${index.entity.get(c.object)?.name ?? c.object}` : named.observed_through;
+                        })()}
+                      </Link>
+                    ) : (
+                      "an unnamed step"
+                    )}
+                    {"; the later step(s) and the route's recorded output are not shown by it. The route stays a "}
+                    {FRONTIER_LABEL[path.frontier_class]}
+                    {" and its search state is unchanged by the observation."}
+                  </>
+                )}
               </dd>
               <dt>composition maturity</dt>
               <dd>

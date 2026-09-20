@@ -1,9 +1,9 @@
-# Pass 20 — the last two unaudited candidate compositions, as physics (21/09/2026 ~2:00–3:05 am Sydney)
+# Pass 20 — the last two unaudited candidate compositions, as physics (20/09/2026 ~9:58–10:25 pm Sydney)
 
 Focus sent: the resonant flexoelectric harvester (p-eb27612d17) and the vibration-driven
 elastocaloric cooler (p-4e0ffe1336), judged as in pass 16 (GENUINE / KNOWN DEVICE / ARTEFACT /
 BLOCKED with the concrete data change), plus which candidate to search next. ChatGPT (High,
-~9 min). Verdict: PIVOT — 12 findings; both routes ARTEFACTS of a missing direct spelling, each with
+~10 min). Verdict: PIVOT — 12 findings; both routes ARTEFACTS of a missing direct spelling, each with
 a real device or proposal underneath.
 
 Verification before recording: Yang et al. 2025 read in full on the publisher's page (unpolarised

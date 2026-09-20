@@ -8,6 +8,7 @@ import { createHash } from "node:crypto";
 import {
   EVIDENCE_RANK,
   PROCESS_PREDICATES,
+  isDemonstratedPathway,
   type Claim,
   type CompiledPath,
   type CoverageEntry,
@@ -155,9 +156,10 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
   }
   const reviewedIds = new Set(canon.searches.map((s) => s.id));
   const pathwayById = new Map(canon.pathways.map((p) => [p.id, p]));
-  // Only pathways with a demonstration (status other than proposed) can make a route "derived"; a
-  // proposal is recorded on the route (p.pathway) but leaves it a candidate.
-  const recordedPathways = canon.pathways.filter((p) => p.status !== "proposed");
+  // Only pathways with a demonstration (demonstrated, prototype, commercial) can make a route "derived";
+  // a proposal, or an observation whose output was never delivered (status observed, loop-3 pass 24),
+  // is recorded on the route (p.pathway) but leaves it a candidate.
+  const recordedPathways = canon.pathways.filter(isDemonstratedPathway);
 
   // Path enumeration ---------------------------------------------------------------
   const paths: CompiledPath[] = [];
@@ -203,7 +205,7 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
     let last_searched: string | undefined;
     const searches = pathSearches.get(id) ?? [];
     const reviewed = searches.filter(isReviewed);
-    if (pathway && pathway.status !== "proposed") search_status = "demonstrated";
+    if (pathway && isDemonstratedPathway(pathway)) search_status = "demonstrated";
     else if (reviewed.some((s) => s.result === "demonstration-found")) search_status = "demonstrated";
     else if (reviewed.some((s) => s.result === "no-demonstration-found")) search_status = "searched-no-demonstration-found";
     else if (searches.length) search_status = "search-incomplete";
@@ -355,6 +357,7 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
       frontier_class,
       knowledge_level,
       pathway: pathway?.id,
+      composition_observation: pathway?.status === "observed" ? "observed-not-converted" : null,
       checks,
       coupling_families: [...families],
       domains: [...domains] as CompiledPath["domains"],
@@ -369,7 +372,7 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
 
   /** Best overlap between a route's claim sequence and the recorded pathways. */
   function pathwayOverlap(ids: string[], exact: Pathway | undefined): CompiledPath["known_pathway_overlap"] {
-    if (exact && exact.status !== "proposed") return { pathway: exact.id, relation: "exact", shared_claims: ids.length, route_claims: ids.length };
+    if (exact && isDemonstratedPathway(exact)) return { pathway: exact.id, relation: "exact", shared_claims: ids.length, route_claims: ids.length };
     let best: CompiledPath["known_pathway_overlap"] = null;
     for (const p of recordedPathways) {
       const steps = p.steps;
@@ -406,7 +409,7 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
     return dp[a.length][b.length];
   }
   function closestPathway(ids: string[], phen: string[], exact: Pathway | undefined): CompiledPath["closest_known_pathway"] {
-    if (exact && exact.status !== "proposed") return { pathway: exact.id, relation: "exact", shared_claims: ids.length, shared_phenomena: phen.length, route_phenomena: phen.length };
+    if (exact && isDemonstratedPathway(exact)) return { pathway: exact.id, relation: "exact", shared_claims: ids.length, shared_phenomena: phen.length, route_phenomena: phen.length };
     let best: CompiledPath["closest_known_pathway"] = null;
     for (const p of recordedPathways) {
       const pp = pathwayPhenomena.get(p.id)!;

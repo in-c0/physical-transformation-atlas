@@ -7,8 +7,8 @@
 - id: search:2026-09-20-d-01-c-23
   target: { kind: cell, row: disequilibrium:temperature-gradient, col: coupling:electrokinetic }
   protocol_version: cell-search-v1
-  started_at: "2026-09-20T20:40:00+10:00"
-  completed_at: "2026-09-20T21:20:00+10:00"
+  started_at: "2026-09-20T16:00:00+10:00"
+  completed_at: "2026-09-20T16:30:00+10:00"
   objective: direct-relation
   inclusion_criteria:
     - a temperature difference or gradient is an imposed causal driver
@@ -26,7 +26,7 @@
       engine: manual
       query_form: driver-family
       query: '("temperature gradient" OR "temperature difference" OR "thermal gradient" OR "waste heat") AND (electrokinetic OR "streaming potential" OR hydrovoltaic)'
-      executed_at: "2026-09-20T20:45:00+10:00"
+      executed_at: "2026-09-20T16:05:00+10:00"
       engine_version: null
       index_snapshot: null
       result_count_reported: null
@@ -37,7 +37,7 @@
       engine: semantic-scholar
       query_form: demonstration-precision
       query: 'DOI:10.1039/D0NA00429D (abstract and open-access status retrieved to confirm the experimental method)'
-      executed_at: "2026-09-20T21:05:00+10:00"
+      executed_at: "2026-09-20T16:20:00+10:00"
       request_url: "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1039/D0NA00429D?fields=title,abstract,openAccessPdf,externalIds"
       engine_version: null
       index_snapshot: null

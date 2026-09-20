@@ -1,4 +1,4 @@
-# Pass 21 — the TOEC route search: one hit through a turbine, ruled a longer chain (21/09/2026 ~0:30–2:45 am Sydney)
+# Pass 21 — the TOEC route search: one hit through a turbine, ruled a longer chain (20/09/2026 ~10:25–11:17 pm Sydney)
 
 Focus sent: the first route search whose target carries a proposed pathway — p-8fba925ce8, Temperature
 gradient → Thermo-osmosis → Fluid flow → Aerodynamic and hydrodynamic lift → Mechanical motion →
@@ -7,7 +7,7 @@ was written under route-search-v1 from the recorded names after adding the spell
 thermoosmosis / thermo-osmotic / thermo-osmotic energy conversion and hydraulic turbine / turbine, run on
 OpenAlex (198 reported, 100 + 50 newest; pair 4; whole-chain 1; precision 0; 136 works), screened by the
 lane, and sent with the qualification question about the one hit that seemed to close the chain.
-ChatGPT (High, ~11 min). Verdict: PIVOT — 11 findings.
+ChatGPT (High, ~6 min). Verdict: PIVOT — 11 findings.
 
 Verification before sending: Xiao, Yan, Liu, Liu & Aziz 2024 (Energy Conversion and Management
 314:118636) read in full — an author-shared copy located through Google Scholar, read in Chrome's Drive

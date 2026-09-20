@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Claim } from "@pta/schema";
 import type { AtlasIndex } from "@pta/graph/query";
-import { CELL_STATUS_LABEL, EVIDENCE_LABEL, FRONTIER_LABEL, claimSentence, hrefFor, kLabel, predicateLabel } from "@/lib/format";
+import { CELL_STATUS_LABEL, EVIDENCE_LABEL, FRONTIER_LABEL, PATHWAY_STATUS_LABEL, claimSentence, hrefFor, kLabel, predicateLabel } from "@/lib/format";
 import { EvidenceList } from "./EvidenceList";
 import { StatusMark } from "./StatusMark";
 import { pathTitle } from "./PathView";
@@ -222,7 +222,7 @@ export function ClaimView({ index, claim }: { index: AtlasIndex; claim: Claim })
                     <li key={p.id}>
                       {route ? <Link href={`/path/${route.id.slice(2)}`}>{p.name}</Link> : <span>{p.name}</span>}
                       <span className={styles.pathMeta}>
-                        {p.status} · {p.steps.length} steps
+                        {PATHWAY_STATUS_LABEL[p.status]} · {p.steps.length} steps
                       </span>
                     </li>
                   );

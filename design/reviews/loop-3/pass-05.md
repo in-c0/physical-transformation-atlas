@@ -1,4 +1,4 @@
-# Pass 5 — the drawer as a scientific question (20/09/2026 ~12:40 am Sydney)
+# Pass 5 — the drawer as a scientific question (20/09/2026 ~10:50 am Sydney)
 
 Focus sent: read three cells (D.01×C.23 no bridge; D.11×C.17 bridges; D.23×C.01 no bridge) and judge whether
 the drawer poses a well-formed question, what a physicist cannot yet do from it, one-line "what would

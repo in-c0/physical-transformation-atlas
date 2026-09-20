@@ -1,4 +1,4 @@
-# Pass 18 — screening the frozen route-search lists (20/09/2026 ~11:15 pm – 21/09 ~12:20 am Sydney)
+# Pass 18 — screening the frozen route-search lists (20/09/2026 ~8:47–9:24 pm Sydney)
 
 Focus sent (new regular chat, ground rules restated): the three frozen OpenAlex lists from pass 17 —
 101, 101 and 39 titles with years and DOIs — screened as the second reader under route-search-v1:

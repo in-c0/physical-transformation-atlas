@@ -1328,3 +1328,28 @@
   venue: "arXiv:2605.17224 (17 May 2026), National Institute for Materials Science, Tsukuba"
   url: https://arxiv.org/abs/2605.17224
   notes: "Preprint, not peer-reviewed; read in full. An on-chip heater driven at 1 kHz imposes a temperature gradient (≈ 0.5 K modulation) across 0.25–1 mm substrates; the non-uniform thermal expansion's strain gradient produces an out-of-plane flexoelectric polarization, detected as a second-harmonic voltage and as the screening current in a detector electrode, in MgO, Al₂O₃, MnO, mica, PET, PEN, polyimide and soda-lime glass; the heat-to-charge ratio collapses onto one trend against the coefficient of thermal expansion, reproduced by finite-element thermo-mechanics; 1/thickness scaling and an order-of-magnitude enhancement at the glass and antiferromagnetic transitions. No load is driven and no output power is reported: the composition observed, the work not extracted."
+# Loop-3 pass 24: three works the second reader named for the thermal-expansion → flexoelectric route, verified on Crossref/OpenAlex.
+- id: source:han-2026-dual-mode-flexoelectric-nanogenerator
+  type: paper
+  title: "Dual-Mode Flexoelectric Nanogenerators Activated by Light and Heat for Broad-Spectral Photodetection and Thermal Response"
+  authors: [G. Han, A. Berbille, Y. Zhang, X. Luo, L. Li, L.-D. Liu, Z. L. Wang, L. Zhu]
+  year: 2026
+  venue: "Advanced Functional Materials 36 (49), e75910"
+  doi: 10.1002/adfm.75910
+  notes: "Abstract read on the publisher's page (full text paywalled; owner read requested). A heterojunction-based flexoelectric nanogenerator driven by light and heat with no external mechanical or electrical input: under illumination or temperature variation the heterojunction components deform differentially, producing an interfacial strain gradient that drives flexoelectric polarization and flexo-photovoltaic currents; photodetection mode 250–600 nm with peak responsivity 2.2 mA W⁻¹; thermal response mode with an effective pyroelectric coefficient up to 7518 μC m⁻² K⁻¹. The accessible record reports current responses, not a load curve or output power, and describes the thermal driver as a temperature variation (differential deformation of the two components), so whether the imposed field is the route's spatial temperature gradient is unverified."
+- id: source:wei-2024-thermoflexoelectric-pn-junction
+  type: paper
+  title: "Exact solutions for thermally induced electromechanical fields of PN junctions in centrosymmetric semiconductors"
+  authors: [C. Wei, Z. Guo, J. Tang, W. Huang]
+  year: 2024
+  venue: "Journal of Applied Physics 136 (4), 045703"
+  doi: 10.1063/5.0218259
+  notes: "Abstract read (hybrid open access). Theory: defines the thermoflexoelectric effect — temperature gradients generate inhomogeneous strains and further induce flexoelectric polarizations — and solves a one-dimensional PN-junction model under a temperature gradient, showing the temperature-gradient-induced flexoelectric field tunes the potential barrier. Recorded as the source of the thermoflexoelectric alias; not an experiment."
+- id: source:yurkov-2019-flexoelectric-inhomogeneous-heating
+  type: paper
+  title: "Flexoelectric polarization induced by inhomogeneous heating and implications for energy harvesting"
+  authors: [A. S. Yurkov, A. Dejneka, P. V. Yudin]
+  year: 2019
+  venue: "International Journal of Solids and Structures 162, 96–104"
+  doi: 10.1016/j.ijsolstr.2018.12.003
+  notes: "Abstract read on the publisher's page (open archive). Theory by variational principles of the polarization response of an inhomogeneously heated thin plate; the authors estimate that the effect could convert waste heat into electric power at up to tens of watts per kilogram of flexoelectric material — a calculated bound, no device. A citation-chase seed for the route."

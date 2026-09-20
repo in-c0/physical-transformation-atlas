@@ -1,4 +1,4 @@
-# Pass 17 — the first route-level literature search: protocol and queries (20/09/2026 ~9:55–11:05 pm Sydney)
+# Pass 17 — the first route-level literature search: protocol and queries (20/09/2026 ~8:05–8:47 pm Sydney)
 
 Focus sent: the atlas had a reviewed-search protocol for a matrix cell but none for a route (an exact
 composition), although the schema allowed `target.kind: path` and `objective: exact-composition`.

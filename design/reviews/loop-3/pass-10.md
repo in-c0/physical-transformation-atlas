@@ -1,4 +1,4 @@
-# Pass 10 — the frontier as a research instrument (20/09/2026 ~4:15–6:30 pm Sydney)
+# Pass 10 — the frontier as a research instrument (20/09/2026 ~2:30–3:25 pm Sydney)
 
 Focus sent: after the fluid-flow carrier change (589 → 681 routes), judge the frontier as a physicist
 deciding what to spend a month on — are the top ten right, which ordering key is wrong, classify

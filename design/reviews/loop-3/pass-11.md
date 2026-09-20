@@ -1,4 +1,4 @@
-# Pass 11 — the coverage page and the honesty of the whole-atlas numbers (20/09/2026 ~6:35–8:20 pm Sydney)
+# Pass 11 — the coverage page and the honesty of the whole-atlas numbers (20/09/2026 ~3:25–3:55 pm Sydney)
 
 Focus sent: does each number on /coverage mean what its label says; are the domain targets
 defensible; which whole-atlas numbers read as statements about nature; what a physicist wants from a

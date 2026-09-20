@@ -459,3 +459,17 @@
   environment: [state-liquid]
   summary: Water falling through a small head turns an undershot waterwheel whose shaft directly turns an electrical generator — the oldest hydroelectric spelling, distinct from the turbine's blade lift, recorded on the direct waterwheel-to-induction route with a pico-hydro rig that ran household loads.
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 23 (triage of the released candidates; Asim 2022 read on the publisher's page)" }
+# Loop-3 pass 24: the first pathway with status observed — the composition traversed in one experiment, its output not delivered.
+- id: pathway:thermal-expansion-flexoelectric-response
+  name: Thermal-expansion flexoelectric thermopolarization
+  steps: [claim:thermal-expansion-drives, claim:thermal-expansion-produces-stress, claim:flexo-drives, claim:flexo-produces-charge, claim:surface-charge-converts-electricity]
+  demonstrated_with: []
+  evidence: [source:iwakiri-2026-thermopolarization]
+  status: observed
+  observed_through: claim:flexo-produces-charge
+  knowledge_level: K4
+  performance:
+    notes: "No output power, efficiency or harvested energy is reported; the finite-element temperature modulation (≈ 0.5 K at the 1 kHz heater drive) is model scope and is not recorded as a measurement."
+  environment: [state-solid, medium-dielectric, temp-gradient-required]
+  summary: A spatial temperature gradient produces non-uniform thermal expansion and a strain gradient that drives flexoelectric polarization in insulating solids. Voltage and polarization-screening current were experimentally detected, but no electrical load or output power was reported, so heat-to-charge conversion is observed while electrical-work conversion remains undemonstrated.
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 24 (the second reader's status (a) — observed, observed_through the flexoelectric charge step; the final step remains unsupported by the evidence)" }

@@ -1,4 +1,4 @@
-# Pass 3 — ontology gaps (19/09/2026 ~1:45 pm Sydney)
+# Pass 3 — ontology gaps (19/09/2026 ~11:20 pm Sydney)
 
 Focus sent: name the fifteen most important missing well-established phenomena, with driver, carrier,
 family, status and a DOI each; missing rows/columns. ChatGPT browsed the repo YAML (7m 49s). Verdict: PIVOT.

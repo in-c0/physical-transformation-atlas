@@ -1,4 +1,4 @@
-# Pass 4 — the frontier as a research tool (20/09/2026 ~12:10 am Sydney)
+# Pass 4 — the frontier as a research tool (20/09/2026 ~10:35 am Sydney)
 
 Focus sent: a better default ordering using compiler fields; the missing fields per entry; compiler-detectable
 uninteresting candidates (rules, not a list). ChatGPT (3m 15s; the Worker JSON was unreachable from its

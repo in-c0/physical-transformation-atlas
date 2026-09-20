@@ -950,17 +950,20 @@
   predicate: drives
   object: phenomenon:thermal-expansion
   energy: { input: thermal, output: mechanical }
-  evidence: [source:bejan-2016]
+  evidence: [source:bejan-2016, source:iwakiri-2026-thermopolarization]
   status: established
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 24 (Iwakiri 2026 added as constituent evidence: an imposed temperature gradient's non-uniform thermal expansion, read in full)" }
 - id: claim:thermal-expansion-produces-stress
   subject: phenomenon:thermal-expansion
   predicate: produces
   object: disequilibrium:mechanical-stress
-  conditions: [expansion constrained by a stiffer body]
+  conditions:
+    - "non-uniform thermal expansion is mechanically incompatible across adjacent regions of a solid, or is constrained by an adjoining material or structure, producing a strain or stress gradient; the constraining region may be the cooler part of the same continuous specimen rather than a separate stiffer body"
   condition_tags: [state-solid]
   energy: { input: mechanical, output: mechanical }
-  evidence: [source:nye-1985]
+  evidence: [source:nye-1985, source:iwakiri-2026-thermopolarization]
   status: established
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 24 (condition widened from 'expansion constrained by a stiffer body' after the second reader's review; Iwakiri 2026 added as constituent evidence)" }
 - id: claim:thermal-expansion-member
   subject: phenomenon:thermal-expansion
   predicate: member_of
