@@ -2,10 +2,8 @@
  * The research-priority order for compositions, shared by the frontier and the matrix
  * drawer so that "which composition should I look at first" has one answer everywhere.
  *
- * Lexicographic: structure → resolution of the four core checks → evidence floor → number of
- * non-established constituents → mechanism novelty (one or two seams first) → at least one
- * energy-form transition → composition-search strength → source availability → effective
- * length → overlap with recorded pathways → id. Never a synthetic score.
+ * The order is the one documented on researchOrder below (and in docs/candidate-generation.md);
+ * it is lexicographic and never a synthetic score.
  */
 import { AVAILABILITY, EVIDENCE_RANK, type CompiledPath, type StructuralKind } from "@pta/schema";
 

@@ -3,7 +3,7 @@
 How to reuse the atlas without reading the site. Everything public is a static file under
 `https://physical-transformation-atlas.wldud5192.workers.dev/api/`; there is no query API, no
 authentication and no rate limit beyond the CDN's. The machine-readable form of this page is the
-JSON Schema at `/api/schema/v0.2.0.json`; every export names its own `$defs` entry in `meta.schema`.
+JSON Schema at `/api/schema/v0.3.0.json`; every export names its own `$defs` entry in `meta.schema`.
 
 Reuse terms: none declared yet — see [licensing.md](licensing.md). How to cite: `CITATION.cff` at
 the repository root, plus the `data_hash` you used.
@@ -22,6 +22,7 @@ Every JSON export is `{ "meta": {...}, "data": ... }`, sometimes with one extra 
 | `generated_at` | when the graph was compiled (ISO 8601). Provenance only; it says nothing about literature currency |
 | `source_commit` | git commit of the canonical files; `-dirty` suffix when uncommitted edits were present; `null` when the build ran outside the repository |
 | `search_indexed_through` | the latest date any search record (reviewed or automated) covers; `null` when there are none. This is the literature-currency date |
+| `enumeration` | the bounds the route enumerator ran under (`max_claims_per_route`, `max_routes_per_source`) and `sources_at_cap`, every disequilibrium whose route set was truncated by the per-source cap (empty means no truncation in this revision) |
 | `record_kind` | `canonical` (rows written by a person in `data/canonical`), `generated` (compiled from canonical rows at this `data_hash`), `mixed`, or `none` |
 | `records` | number of rows in `data`, when `data` is a list |
 | `counts` | dataset-wide counts and occurrence maps (below) |
@@ -46,7 +47,7 @@ vocabulary may occur zero times in a given revision.
 | file | `data` | record kind | notes |
 |---|---|---|---|
 | `/api/stats.json` | `{ endpoints: [...] }` | none | the meta block alone, plus this list |
-| `/api/graph.json` | `{ entities, claims, sources, pathways, searches, matrix, coverage, source_verification }` | mixed | the whole atlas except compiled routes; `links.paths` points at them |
+| `/api/graph.json` | `{ entities, claims, sources, pathways, searches, search_runs, matrix, coverage, source_verification, ontology }` | mixed | the whole atlas except compiled routes; `links.paths` points at them. `searches` are reviewed records (`reviewed: true`); `search_runs` are frozen automated index runs, never reviewed statements; `ontology.condition_tags` is the tag list |
 | `/api/entities.json` | `Entity[]` | canonical | |
 | `/api/claims.json` | `Claim[]` | canonical | the scientific unit of the atlas |
 | `/api/claims.ndjson` | one JSON object per line | canonical | first line is `{ kind: "meta", … }`; each claim line carries `kind: "claim"`, `data_hash` and `canonical_url` |
@@ -58,7 +59,8 @@ vocabulary may occur zero times in a given revision.
 | `/api/coverage.json` | `CoverageEntry[]` | generated | per-domain coverage against the target ontology |
 | `/api/checks.json` | `CheckDefinition[]` | none | the seven physics checks: id, label, definition, when each result is given, fields read, implementation |
 | `/api/vocabulary.json` | `VocabularyEnum[]` | none | every enumeration with one definition per value and where it is used |
-| `/api/schema/v0.2.0.json` | JSON Schema (draft 2020-12) | none | `$defs` per export and per record type, generated from the zod definitions |
+| `/api/schema/v0.3.0.json` | JSON Schema (draft 2020-12) | none | `$defs` per export and per record type, generated from the zod definitions |
+| `/api/schema/v0.2.0.json` | JSON Schema (draft 2020-12) | none | frozen copy of the previous export format, kept so that older exports' `meta.schema` URLs still resolve |
 
 `claims.csv` columns, in order: `data_hash, id, subject, predicate, object, status, conditions_json,
 condition_tags_json, energy_input, energy_output, energy_dissipation, relation_formula,
@@ -187,3 +189,8 @@ and removed, and the pass logs that explain the scientific changes.
 
 The export format has its own `version`. Adding a field is a minor bump; renaming or removing one is
 a major bump, and the old schema URL keeps resolving.
+
+Format history: **v0.2.0** — the `{meta, data}` envelope, canonical URLs, counts and occurrence maps,
+JSON Schema, vocabulary and checks registries (revisions r58d98b9384c9 to r787a4f923ee5).
+**v0.3.0** — adds `meta.enumeration` (the enumerator's bounds and the sources truncated by the
+per-source cap); nothing renamed or removed, so a v0.2.0 reader can ignore the new field.

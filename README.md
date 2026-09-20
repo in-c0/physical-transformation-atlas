@@ -24,11 +24,11 @@ pipelines/           validate · build-graph · verify-sources · literature-sea
 apps/web             Next.js static site: /, /atlas, /matrix, /path/[id], /phenomenon/[id], /frontier, /coverage, /methods, /api/*.json
 worker/              Cloudflare Worker serving the static export
 design/              brief, design system, review transcripts, current screenshots
-docs/                ontology, evidence model, status model, candidate generation, generated vocabulary
+docs/                ontology, evidence model, status model (derivation and precedence), candidate generation, worked example, generated vocabulary
 tools/               static server and headless verification (screenshots, keyboard model, axe-core)
 ```
 
-Dataset contract: [docs/data-api.md](docs/data-api.md) · machine schema: `/api/schema/v0.2.0.json` · revision history: [docs/dataset-changelog.md](docs/dataset-changelog.md) · reuse terms: [docs/licensing.md](docs/licensing.md) (none declared yet) · how to cite: [CITATION.cff](CITATION.cff).
+Dataset contract: [docs/data-api.md](docs/data-api.md) · machine schema: `/api/schema/v0.3.0.json` · revision history: [docs/dataset-changelog.md](docs/dataset-changelog.md) · reuse terms: [docs/licensing.md](docs/licensing.md) (none declared yet) · how to cite: [CITATION.cff](CITATION.cff).
 
 ## Run it
 
@@ -63,7 +63,7 @@ Rows and columns of the matrix are numbered in file order. Append; do not reorde
 
 ## What "not searched" means
 
-The atlas separates how well a relation's physics is known from whether anyone has looked for a demonstration of a composition. A cell can only say *no direct demonstration found* when a reviewed search record in `data/canonical/searches` says so. Automated OpenAlex queries are stored separately, marked *index queried, not reviewed*, and are never promoted without a person reading the hits. Everything else says *not searched*.
+The atlas separates how well a relation's physics is known from whether anyone has looked for a demonstration of a composition. A cell can only say *no direct demonstration found* when a reviewed search record in `data/canonical/searches` says so. Automated index runs are stored separately as frozen result lists and are never promoted without a person reading the hits; a cell or route with such a run, or with a reviewed search left partial or blocked, says *search incomplete, not decided*. Everything else says *not searched*. How every public state is derived: [/methods](https://physical-transformation-atlas.wldud5192.workers.dev/methods).
 
 ## Status
 

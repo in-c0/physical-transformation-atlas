@@ -148,6 +148,7 @@ glow; numbers never count up. Reduced motion: every duration 0ms, drawer appears
 
 - Not searched. / No recorded search for this direct relation.
 - No direct demonstration found. / Searched in indexed evidence through {date}.
+- Search incomplete · not decided. / A record exists (an automated index run, or a reviewed search left partial or blocked) but no reviewed result decides it.
 - No canonical relation currently recorded. / This does not imply the relation is impossible.
 - No composed pathway currently recorded. / No qualifying bridge is present in the current claim graph.
 - No relations match these filters. / The underlying atlas has not changed.

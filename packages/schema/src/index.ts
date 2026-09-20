@@ -701,6 +701,8 @@ export type Graph = {
     source_commit: string | null;
     /** Latest date any search record (reviewed or automated) covers; null when none exists. */
     search_indexed_through: string | null;
+    /** The bounds the route enumerator ran under, and every disequilibrium whose enumeration stopped at the cap (its route set is truncated). */
+    enumeration: { max_claims_per_route: number; max_routes_per_source: number; sources_at_cap: EntityId[] };
     counts: {
       entities: number;
       phenomena: number;

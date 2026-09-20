@@ -72,6 +72,13 @@ export const ExportMeta = z.object({
   generated_at: z.string().describe("ISO 8601 time the graph was compiled"),
   source_commit: z.string().nullable().describe("git commit of the canonical files; suffixed -dirty when uncommitted edits were present"),
   search_indexed_through: isoDate.nullable().describe("latest date any search record covers; null when no search record exists"),
+  enumeration: z
+    .object({
+      max_claims_per_route: z.number().int(),
+      max_routes_per_source: z.number().int(),
+      sources_at_cap: z.array(z.string()),
+    })
+    .describe("the bounds the route enumerator ran under; sources_at_cap lists every disequilibrium whose route set was truncated by the per-source cap"),
   record_kind: z.enum(["canonical", "generated", "mixed", "none"]).describe("canonical = written by a person in data/canonical; generated = compiled from canonical records at this data_hash"),
   records: z.number().int().optional(),
   counts: Counts,

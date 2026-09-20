@@ -14,6 +14,7 @@ One section per published revision, newest first. A revision is a `data_hash` (s
 - sources added (1): source:zhao-2020-thermo-nanofluidics
 - pathways: no ids added or removed (edits in place are visible in git history of data/canonical)
 - notes: Pass 13: claim:thermo-osmosis-couples-streaming (demonstrated; Zhao et al. 2020) records what the first reviewed search actually found; the first search record is now an honest partial (route-only hit); a partial negative for Salinity gradient × Thermoelectric is recorded with its frozen OpenAlex bundle.
+- export format (pass 15, same data): this revision is now served as v0.3.0 — `meta.enumeration` added (enumerator bounds, sources at the per-source cap); nothing renamed or removed. The v0.2.0 schema stays at /api/schema/v0.2.0.json.
 
 ## r036254f3a7d2
 

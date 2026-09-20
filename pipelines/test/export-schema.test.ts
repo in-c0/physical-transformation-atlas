@@ -12,10 +12,10 @@ const site = "https://example.test";
 const url = (kind: string, id: string) => `${site}/${kind}/${id.split(":")[1] ?? id}`;
 
 test("the JSON Schema generates with a $defs entry per export and per record type", () => {
-  const js = exportJsonSchema("0.2.0", site);
+  const js = exportJsonSchema("0.3.0", site);
   for (const name of Object.keys(EXPORTS)) assert.ok(js.$defs[name], `missing $defs.${name}`);
   for (const name of ["Entity", "Claim", "Source", "Pathway", "CompiledPath", "MatrixCell", "CoverageEntry", "CheckDefinition", "ExportMeta"]) assert.ok(js.$defs[name], `missing $defs.${name}`);
-  assert.equal(js.$id, `${site}/api/schema/v0.2.0.json`);
+  assert.equal(js.$id, `${site}/api/schema/v0.3.0.json`);
 });
 
 test("every compiled record validates against the export record schema it will be served under", () => {
@@ -33,15 +33,16 @@ test("the export meta the site emits has every field the schema requires", () =>
   const meta = {
     dataset: "physical-transformation-atlas",
     endpoint: "claims",
-    version: "0.2.0",
+    version: "0.3.0",
     data_hash: m.data_hash,
     generated_at: m.built_at,
     source_commit: m.source_commit,
     search_indexed_through: m.search_indexed_through,
+    enumeration: m.enumeration,
     record_kind: "canonical",
     records: graph.claims.length,
     counts: m.counts,
-    schema: `${site}/api/schema/v0.2.0.json#/$defs/ClaimsExport`,
+    schema: `${site}/api/schema/v0.3.0.json#/$defs/ClaimsExport`,
     license: { spdx: null, status: "PENDING_OWNER_RULING", note: "x" },
     citation: `${site}/CITATION.cff`,
     contract: `${site}/docs/data-api.md`,

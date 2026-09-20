@@ -1,16 +1,81 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { atlas } from "@/lib/data";
-import { CHECK_NAME } from "@/lib/format";
-import { KNOWLEDGE_LEVEL_LABEL, KNOWLEDGE_LEVELS, PREDICATES } from "@pta/schema";
+import { ENDPOINTS, REPO, SCHEMA_VERSION } from "@/lib/api";
+import { claimHref, hrefFor, sourceHref } from "@/lib/format";
+import { KNOWLEDGE_LEVEL_LABEL, KNOWLEDGE_LEVELS, PREDICATES, PROCESS_PREDICATES } from "@pta/schema";
+import { VOCABULARY } from "@pta/schema/vocabulary";
+import { CHECK_DEFINITIONS } from "@pta/physics/definitions";
 import styles from "./methods.module.css";
 
-export const metadata: Metadata = { title: "Methods", description: "The ontology, the evidence model, the status model and how paths are checked." };
+export const metadata: Metadata = {
+  title: "Methods",
+  description: "How every public state of the atlas is derived: claims, route construction, the seven checks, the five state layers, search records, counts, a worked example and the limits.",
+};
+
+const DOCS = `${REPO}/blob/main`;
+
+/** The worked example is built from the live records; if they change, the build fails rather than publishing a stale example. */
+const EXAMPLE = {
+  claim: "claim:seebeck-drives",
+  member: "claim:seebeck-member-thermoelectric",
+  sequence: ["claim:seebeck-drives", "claim:seebeck-produces-carriers", "claim:charge-carriers-convert-electricity"],
+  pathway: "pathway:thermoelectric-generator",
+  family: "coupling:thermoelectric",
+};
+
+function vocab(name: string) {
+  const e = VOCABULARY.find((v) => v.name === name);
+  if (!e) throw new Error(`methods: vocabulary enumeration ${name} is missing`);
+  return e;
+}
 
 export default function MethodsPage() {
   const a = atlas();
-  const tags = a.graph.claims.reduce((s, c) => s + (c.condition_tags.length ? 1 : 0), 0);
-  const relations = a.graph.claims.filter((c) => c.relation).length;
+  const g = a.graph;
+  const m = g.meta;
+  const c = m.counts;
+  const tags = g.claims.reduce((s, cl) => s + (cl.condition_tags.length ? 1 : 0), 0);
+  const relations = g.claims.filter((cl) => cl.relation).length;
+  const ledgers = g.claims.filter((cl) => (PROCESS_PREDICATES as readonly string[]).includes(cl.predicate)).length;
+  const ledgersMissing = g.claims.filter((cl) => (PROCESS_PREDICATES as readonly string[]).includes(cl.predicate) && !cl.energy).length;
+  const candidates = g.paths.filter((p) => p.frontier_class === "candidate" && p.structural_kind === "composition").length;
+
+  // Worked example records.
+  const exClaim = a.claim.get(EXAMPLE.claim);
+  const exMember = a.claim.get(EXAMPLE.member);
+  const exRoute = g.paths.find((p) => p.claims.length === EXAMPLE.sequence.length && p.claims.every((id, i) => id === EXAMPLE.sequence[i]));
+  const exPathway = a.pathway.get(EXAMPLE.pathway);
+  const exCell = exClaim ? a.cell.get(`${exClaim.subject}|${EXAMPLE.family}`) : undefined;
+  if (!exClaim || !exMember || !exRoute || !exPathway || !exCell || exRoute.pathway !== EXAMPLE.pathway || !exCell.direct_claims.includes(EXAMPLE.claim)) {
+    throw new Error("methods: the worked example no longer matches the records; update EXAMPLE in apps/web/app/methods/page.tsx");
+  }
+  const exSubject = a.entity.get(exClaim.subject)!;
+  const exObject = a.entity.get(exClaim.object)!;
+  const exFamily = a.entity.get(EXAMPLE.family)!;
+  const exRow = g.matrix.rows.find((r) => r.id === exClaim.subject)!;
+  const exCol = g.matrix.cols.find((col) => col.id === EXAMPLE.family)!;
+  const exChecks = exRoute.checks.map((k) => `${k.label}: ${k.result}`).join(" · ");
+
+  const occurrence = (map: Record<string, number>, id: string) => map[id] ?? 0;
+  const layers: { field: string; question: string; enumName: string; counts: Record<string, number> }[] = [
+    { field: "claim.status", question: "how well is this one relation known?", enumName: "claim.status", counts: c.claims_by_status },
+    { field: "path.search_status", question: "has anyone looked for a demonstration of this whole composition?", enumName: "path.search_status", counts: c.paths_by_search_status },
+    {
+      field: "path.frontier_class",
+      question: "how does this enumerated route compare with evidence, checks and recorded pathways?",
+      enumName: "path.frontier_class",
+      counts: c.paths_by_frontier_class,
+    },
+    {
+      field: "path.structural_kind",
+      question: "is the route a genuine composition or a representational or engineering variant?",
+      enumName: "path.structural_kind",
+      counts: c.paths_by_structural_kind,
+    },
+    { field: "matrix.cells[].status", question: "what is on record for one driver × coupling-family coordinate?", enumName: "matrix.cell.status", counts: c.matrix_cells_by_status },
+  ];
+
   return (
     <main className={styles.main}>
       <div className="label">Methods</div>
@@ -18,59 +83,187 @@ export default function MethodsPage() {
         How the atlas is built
       </h1>
       <p className={styles.lead}>
-        The atlas is a set of reviewed claims about physics, compiled into a graph that can be searched for conversion pathways nobody has demonstrated. This page explains what a claim is, how a
-        pathway inherits a status from its claims, what the seven checks test, and where the language on the site comes from.
+        The atlas records reviewed claims about physics and compiles those claims into routes, matrix cells and coverage counts. It reports the state of those records, never the state of nature: an
+        absent claim means not recorded, an absent search means not searched by the atlas, and a negative search means only that the recorded protocol found no qualifying demonstration through its
+        stated date. This page explains how each public state is derived.
       </p>
+      <nav aria-label="Sections" className={styles.toc}>
+        <ol>
+          <li>
+            <a href="#claims">Claims and ontology</a>
+          </li>
+          <li>
+            <a href="#routes">Route construction</a>
+          </li>
+          <li>
+            <a href="#checks">The seven checks</a>
+          </li>
+          <li>
+            <a href="#states">Five state layers</a>
+          </li>
+          <li>
+            <a href="#candidate">What “candidate” means</a>
+          </li>
+          <li>
+            <a href="#searches">Search records</a>
+          </li>
+          <li>
+            <a href="#counts">Matrix and home-page counts</a>
+          </li>
+          <li>
+            <a href="#example">Worked example</a>
+          </li>
+          <li>
+            <a href="#evidence">Evidence thresholds and provenance</a>
+          </li>
+          <li>
+            <a href="#limits">Enumeration limits</a>
+          </li>
+          <li>
+            <a href="#non-goals">What the atlas deliberately does not do</a>
+          </li>
+          <li>
+            <a href="#governance">Governance and revisions</a>
+          </li>
+          <li>
+            <a href="#cite">Citation and data access</a>
+          </li>
+        </ol>
+      </nav>
 
-      <section className={styles.section} id="ontology">
-        <h2 className="t-section">1. Ontology</h2>
+      <section className={styles.section} id="claims">
+        <h2 className="t-section">1. Claims and ontology</h2>
         <div className="prose">
           <p>
-            The canonical object is not an energy source. It is a physical transformation: a disequilibrium (a temperature difference, a salinity difference, a stressed solid) driving a phenomenon
-            (the Seebeck effect, reverse electrodialysis, piezoelectricity) that hands its energy to a carrier (charge carriers, ionic current, a spin current) and eventually to an output (electrical
-            work, mechanical work, cooling, fuel).
+            The canonical scientific unit is a claim: subject —predicate→ object, with conditions, evidence, evidence status and review provenance. Process claims may additionally record an energy
+            ledger, a constitutive relation and explicit handoff tokens. Entities provide the things those claims refer to: disequilibria, phenomena, carriers, outputs, quantities, materials,
+            constraints, coupling families and devices.
           </p>
           <p>
             Entities come in these types: system, quantity, disequilibrium, state, interaction, phenomenon, transition, carrier, coupling family, transducer, material, constraint and output. Only four
-            of them can sit in a conversion path — disequilibrium, phenomenon, carrier and output. The rest describe conditions, bounds, materials and devices.
+            of them can sit in a route — disequilibrium, phenomenon, carrier and output. The rest describe conditions, bounds, materials and devices. A coupling family (thermoelectric, piezoelectric,
+            osmotic, …) is a column of the matrix; a phenomenon belongs to a family through a <code>member_of</code> claim; a disequilibrium is a row.
           </p>
-          <p>
-            A coupling family (thermoelectric, piezoelectric, osmotic, …) is the column of the matrix. A phenomenon belongs to a family through a <code>member_of</code> claim. A disequilibrium is a
-            row. The cell is whatever the claims say about that pair.
-          </p>
-        </div>
-      </section>
-
-      <section className={styles.section} id="claims">
-        <h2 className="t-section">2. Claims, not edges</h2>
-        <div className="prose">
-          <p>
-            Nothing in the graph is an unquestioned edge. Every relation is stored as a claim with a subject, a predicate, an object, the conditions under which it holds, the sources that support it
-            and a review status. The predicates are:
-          </p>
+          <p>The predicates are:</p>
           <p className={styles.mono}>{PREDICATES.join(" · ")}</p>
           <p>
-            Four of them — <code>drives</code>, <code>produces</code>, <code>couples_to</code> and <code>converts_into</code> — carry energy from one node to the next and are the only ones the path
-            search follows. Process claims also carry an energy ledger (input form, output form, where the loss goes) and, where a constitutive relation exists, its formula with the unit of its
-            coefficient. In this release {relations} claims carry a relation and {tags} carry machine-checkable condition tags.
+            Four of them —{" "}
+            {PROCESS_PREDICATES.map((p, i) => (
+              <span key={p}>
+                {i > 0 ? ", " : ""}
+                <code>{p}</code>
+              </span>
+            ))}{" "}
+            — carry energy from one node to the next and are the only ones route construction follows. Process claims are expected to record an energy ledger; missing ledgers are permitted by the
+            schema and cause the relevant physics checks to return unresolved or unknown rather than being silently inferred. In this revision {ledgers} claims are process claims
+            {ledgersMissing ? ` (${ledgersMissing} without a ledger)` : " and every one of them records its ledger"}; {relations} claims carry a constitutive relation and {tags} carry
+            machine-checkable condition tags.
           </p>
           <p>
-            A claim's status is one of: established, replicated, demonstrated, reported, theoretically predicted, hypothesised, disputed, contradicted, invalid. A path takes the status of its weakest
-            claim.
+            Definitions of every enumerated value — entity types, predicates, statuses, energy forms, domains — are generated from one source file and served as{" "}
+            <Link href="/api/vocabulary.json">/api/vocabulary.json</Link> (<a href={`${DOCS}/docs/vocabulary.md`}>docs/vocabulary.md</a>). This page renders those definitions where it needs them
+            rather than restating them. The ontology itself is described in <a href={`${DOCS}/docs/ontology.md`}>docs/ontology.md</a>.
           </p>
         </div>
       </section>
 
-      <section className={styles.section} id="status">
-        <h2 className="t-section">3. Two kinds of status</h2>
+      <section className={styles.section} id="routes">
+        <h2 className="t-section">2. Route construction</h2>
         <div className="prose">
           <p>
-            Evidence status says how well the physics of a relation is known. Search status says whether anyone has looked for a demonstration of a particular composition. They are independent: the
-            Seebeck effect is established physics, and a five-step composition that uses it may never have been searched. The atlas never turns "we found no paper" into "nobody has tried this". A cell
-            or a path can only say <em>no demonstration found</em> when a reviewed search record exists with that result. Otherwise it says <em>not searched</em>, or{" "}
-            <em>index queried, not reviewed</em> when only an automated query has run.
+            From each disequilibrium, the compiler follows only <code>drives</code>, <code>produces</code>, <code>couples_to</code> and <code>converts_into</code> claims depth-first. It never revisits
+            a node, stops after {m.enumeration.max_claims_per_route} claims, records routes that reach an output, and stops after {m.enumeration.max_routes_per_source.toLocaleString("en")} enumerated
+            routes per source. Route ids are the first ten hexadecimal digits of SHA-1 over the ordered claim ids. Literature search does not generate these routes.
           </p>
-          <p>Knowledge levels place a phenomenon or pathway on one scale:</p>
+          <p>
+            If a route's claim sequence is exactly a named, reviewed pathway (a thermoelectric generator, a wind turbine, a hydrovoltaic generator) it inherits that pathway's status, knowledge level
+            and measured performance; otherwise it has none of its own. This revision enumerated {c.routes_enumerated} routes from {c.disequilibria} disequilibria;{" "}
+            {m.enumeration.sources_at_cap.length === 0
+              ? "no disequilibrium reached the per-source cap, so no route set is truncated."
+              : `${m.enumeration.sources_at_cap.length} reached the per-source cap, so their route sets are truncated: ${m.enumeration.sources_at_cap.join(", ")}.`}{" "}
+            The algorithm is specified in <a href={`${DOCS}/docs/candidate-generation.md`}>docs/candidate-generation.md</a>.
+          </p>
+        </div>
+      </section>
+
+      <section className={styles.section} id="checks">
+        <h2 className="t-section">3. The seven checks</h2>
+        <div className="prose">
+          <p>
+            Every route is passed through seven checks. Each returns pass, fail, unresolved (the data needed to decide is partly present) or unknown (none of it is recorded), and a sentence saying
+            what was examined; the site shows the sentence, never just the verdict. The definitions below are the registry served as <Link href="/api/checks.json">/api/checks.json</Link>, rendered
+            here so this page cannot drift from the code. The four marked core decide whether a composition is physically coherent.
+          </p>
+          <dl className={styles.checks}>
+            {CHECK_DEFINITIONS.map((d) => (
+              <div key={d.id} className={styles.check}>
+                <dt>
+                  {d.label}
+                  {d.core ? <span className={styles.core}> · core</span> : null}
+                </dt>
+                <dd>
+                  <p>{d.definition}</p>
+                  <ul className={styles.results}>
+                    <li>
+                      <span className={styles.result}>pass</span> {d.pass_when}
+                    </li>
+                    <li>
+                      <span className={styles.result}>fail</span> {d.fail_when}
+                    </li>
+                    <li>
+                      <span className={styles.result}>unresolved</span> {d.unresolved_when}
+                    </li>
+                    <li>
+                      <span className={styles.result}>unknown</span> {d.unknown_when}
+                    </li>
+                  </ul>
+                  <p className={styles.reads}>reads {d.reads.join(", ")}</p>
+                </dd>
+              </div>
+            ))}
+          </dl>
+          <p>
+            Practical magnitude is one of the seven physics checks and asks whether the atlas records measured performance for the whole composition. <code>magnitude_screen</code> is a separate
+            frontier-ordering diagnostic: <em>quantified</em> means whole-composition measurements exist; <em>bounded</em> means every recorded conversion step carries a constitutive relation;{" "}
+            <em>missing</em> means at least one step cannot yet be bounded from the recorded relations. Neither field estimates performance.
+          </p>
+        </div>
+      </section>
+
+      <section className={styles.section} id="states">
+        <h2 className="t-section">4. Five state layers</h2>
+        <div className="prose">
+          <p>
+            Five different fields answer five different questions and must not be collapsed into one confidence label: claim evidence status describes a relation; route search status describes
+            recorded searches for the whole composition; frontier class describes how an enumerated route compares with evidence, checks and recorded pathways; structural kind describes whether the
+            route is a genuine composition or a representational/engineering variant; matrix-cell status summarizes one driver × coupling-family coordinate.
+          </p>
+          <p>
+            The values of each field, with the definition from the vocabulary and how often the value occurs in this revision. A value with no occurrences is still a valid value; the order in which
+            the compiler decides between them is in <a href={`${DOCS}/docs/status-model.md`}>docs/status-model.md</a>.
+          </p>
+          {layers.map((l) => {
+            const e = vocab(l.enumName);
+            return (
+              <div key={l.field} className={styles.layer}>
+                <h3 className={styles.layerHead}>
+                  <code>{l.field}</code> <span className="secondary">— {l.question}</span>
+                </h3>
+                <dl className={styles.terms}>
+                  {e.terms.map((t) => (
+                    <div key={t.id} className={styles.term}>
+                      <dt>
+                        <code>{t.id}</code>
+                        <span className={styles.occ}>{occurrence(l.counts, t.id)}</span>
+                      </dt>
+                      <dd>{t.definition}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            );
+          })}
+          <p>Knowledge level is a scale, not a state layer. It places a phenomenon or a named pathway on one ladder:</p>
           <table className={styles.table}>
             <tbody>
               {KNOWLEDGE_LEVELS.map((k) => (
@@ -83,19 +276,101 @@ export default function MethodsPage() {
               ))}
             </tbody>
           </table>
-          <p>A composition nobody has demonstrated cannot sit above K4 however well its parts are known, because the composition itself has only been assembled, not observed.</p>
+          <p>
+            A composed route with no demonstration has no level of its own: the compiler records its constituent floor (the lowest level among its claims) and caps the displayed level at K4, because
+            the composition has only been assembled, not observed.
+          </p>
         </div>
       </section>
 
-      <section className={styles.section} id="matrix">
-        <h2 className="t-section">4. The matrix</h2>
+      <section className={styles.section} id="candidate">
+        <h2 className="t-section">5. What “candidate” means</h2>
         <div className="prose">
           <p>
-            Each cell is a disequilibrium × coupling-family pair. If a <code>drives</code> claim links the row to a phenomenon in the column's family, the cell shows that claim's evidence status
-            (established, demonstrated, theoretical, contradicted, or insufficient when the claim cites nothing). If not, the compiler looks for bridges: enumerated paths from the row that pass
-            through a phenomenon of the column's family. A cell with a bridge whose every constituent is at least demonstrated is a <em>candidate composition</em>. A row whose disequilibrium carries
-            no exergy, and whose constraint claim records that, is <em>forbidden</em>. The remaining cells are <em>searched · none found</em>, <em>index queried</em> or <em>not searched</em>, in that
-            order of what is actually on record.
+            Candidate is an atlas classification, not a novelty claim. A frontier candidate has no failed physics check, has constituent evidence at least demonstrated, is not an energy-form round
+            trip, and is not classified as derived from a sufficiently similar recorded pathway. The default frontier further requires <code>structural_kind = composition</code>. A candidate may be
+            not searched, partially searched, or covered by a completed negative search; none of those states means that no such device or experiment exists outside the atlas.
+          </p>
+          <p>
+            “Derived” means the route shares at least two ordered claims with a recorded pathway, or at least two phenomena as a source-variant or sink-variant of the closest recorded pathway: it
+            extends, truncates or re-drives something known and is shown apart from fresh candidates.
+          </p>
+          <p>A matrix cell takes the first of these that applies, in this order:</p>
+          <ol className={styles.precedence}>
+            <li>
+              <strong>direct relation</strong> — a <code>drives</code> claim links the row's disequilibrium to a phenomenon of the column's family; the cell shows the best status among those claims
+              (established, demonstrated, theoretical, contradicted), or <em>insufficient</em> when every such claim cites nothing;
+            </li>
+            <li>
+              <strong>forbidden row</strong> — the row's disequilibrium carries a second-law <code>bounded_by</code> claim;
+            </li>
+            <li>
+              <strong>reviewed direct demonstration</strong> — a reviewed search of the cell found a qualifying demonstration;
+            </li>
+            <li>
+              <strong>qualifying composition bridge</strong> — a route from the row through the family has structural kind composition and frontier class candidate, derived or demonstrated: the cell
+              is a <em>candidate</em>;
+            </li>
+            <li>
+              <strong>reviewed negative direct search</strong> — a reviewed search that passed the protocol gate found no qualifying demonstration;
+            </li>
+            <li>
+              <strong>search incomplete</strong> — any other search record exists (an automated index run, or a reviewed search left partial or blocked);
+            </li>
+            <li>
+              <strong>not searched</strong> — no record.
+            </li>
+          </ol>
+          <p>So a search record can move a cell only among the last five states. It can never create a direct relation; that takes a canonical claim, reviewed separately.</p>
+        </div>
+      </section>
+
+      <section className={styles.section} id="searches">
+        <h2 className="t-section">6. Search records</h2>
+        <div className="prose">
+          <p>
+            A search record changes search state; it does not by itself rewrite canonical physics. An automated run freezes index results and can only produce search-incomplete. A reviewed positive
+            can mark the searched target as demonstrated, but a new direct relation still requires a separate canonical-claim review. A reviewed negative may produce “no demonstration found” only when
+            its protocol gate passes. A physical hit that reaches the requested coupling through a separately resolvable intermediate conversion is route-only evidence and must not promote the direct
+            matrix cell.
+          </p>
+          <p>The gate, enforced by the loader so that a negative that skips it fails validation:</p>
+          <ul>
+            <li>
+              completeness <code>protocol-complete-negative</code>;
+            </li>
+            <li>a named reviewer and a completion date;</li>
+            <li>no hit whose decision is “qualifies”;</li>
+            <li>runs on every discovery engine: OpenAlex, Semantic Scholar and Google Scholar (Crossref only verifies DOIs; a manual web search does not count);</li>
+            <li>
+              runs in every mandatory query form: driver × family, driver × each member phenomenon, and the demonstration-precision form; the citation chase is required by the protocol but is not
+              machine-checked;
+            </li>
+            <li>
+              anything incomplete or blocked — unscreened results beyond the cap, an engine that failed, an inaccessible hit, a member phenomenon not searched — leaves the record{" "}
+              <code>inconclusive</code> with completeness <code>partial</code> or <code>blocked</code>.
+            </li>
+          </ul>
+          <p>
+            A positive may stop early: one unambiguous qualifying experiment, read in full, is conclusive. In this revision {c.searches_reviewed} reviewed search{" "}
+            {c.searches_reviewed === 1 ? "record" : "records"} and {c.searches_index_only} frozen automated {c.searches_index_only === 1 ? "run" : "runs"} exist; {c.matrix_cells_without_search_record}{" "}
+            of {c.matrix_cells} cells have no search record of either kind. The protocol is <a href={`${DOCS}/data/canonical/searches/README.md`}>data/canonical/searches/README.md</a>.
+          </p>
+        </div>
+      </section>
+
+      <section className={styles.section} id="counts">
+        <h2 className="t-section">7. Matrix and home-page counts</h2>
+        <div className="prose">
+          <p>
+            The five home readouts are counts over the current compiled revision, not estimates of physics: DRIVER × COUPLING MATRIX is the number of disequilibrium rows × coupling-family columns (
+            {c.disequilibria} × {c.couplings}); CELLS WITH RECORDED DIRECT RELATIONS counts cells with at least one canonical direct <code>drives</code> relation ({c.matrix_cells_with_direct_relation}
+            ); CELLS WITH NO SEARCH RECORD counts cells with neither a reviewed search nor an automated run ({c.matrix_cells_without_search_record}); FRONTIER CANDIDATE COMPOSITIONS counts routes with{" "}
+            <code>frontier_class = candidate</code> and <code>structural_kind = composition</code> ({candidates}); ROUTES WITH COMPOSITION DEMONSTRATIONS counts routes whose whole-composition search
+            status is demonstrated ({c.routes_with_recorded_composition_demonstration}).
+          </p>
+          <p>
+            The <Link href="/coverage">coverage page</Link> carries the corpus-scale counts per domain and the editorial target inventories those counts are measured against.
           </p>
           <p>
             Addresses like D.04 × C.11 are stable dataset addresses: rows and columns are numbered in file order and filtering never renumbers them, so <code>/matrix?cell=D.04:C.11</code> is a
@@ -104,136 +379,185 @@ export default function MethodsPage() {
         </div>
       </section>
 
-      <section className={styles.section} id="structure">
-        <h2 className="t-section">5. Structure of a route</h2>
+      <section className={styles.section} id="example">
+        <h2 className="t-section">8. Worked example</h2>
         <div className="prose">
           <p>
-            Two routes can have the same evidence and very different research value. Alongside its evidence class, every route is classed by structure, which says nothing about how well its physics is
-            known: <em>composition</em> (two or more conversion phenomena with a real handoff between mechanisms), <em>one effect plus bookkeeping</em> (fewer than two phenomena),{" "}
-            <em>carrier-expanded copy</em> (a shorter route with the same source and sink already contains its phenomena and the extra steps add no cross-family seam and no energy-form transition),{" "}
-            <em>same mechanism at another resolution</em> (the same mechanism core as a named pathway drawn with different carrier nodes, or the same source, ordered coupling families and sink form as
-            another composition — one representative stays on the frontier), <em>energy backtracking</em> (a form reappears after a different one, as in electricity → heat → electricity), and{" "}
-            <em>known device likely</em> (every phenomenon is implemented by one common transducer, so the composition is probably an uncurated pathway).
+            <code>{exClaim.id}</code> records {exSubject.name} —drives→ {exObject.name} under stated solid-conductor conditions, with {exClaim.energy?.input} → {exClaim.energy?.output} energy,{" "}
+            {exClaim.relation?.formula}, {exClaim.evidence.length} cited sources and status {exClaim.status}. <code>{exMember.id}</code> places the {exObject.name} in <code>{EXAMPLE.family}</code>, so
+            that direct drives claim makes {exRow.address} × {exCol.address} a recorded direct-relation cell. The compiler can then chain{" "}
+            {EXAMPLE.sequence.map((id, i) => (
+              <span key={id}>
+                {i > 0 ? " → " : ""}
+                <code>{id}</code>
+              </span>
+            ))}
+            ; that exact sequence hashes to route <code>{exRoute.id}</code> and matches the named {exPathway.name} pathway, which supplies whole-composition evidence and performance.
           </p>
+          <div className={styles.fragments}>
+            <div className={styles.fragment}>
+              <div className="label">source YAML claim</div>
+              <pre className={styles.pre}>{`- id: ${exClaim.id}
+  subject: ${exClaim.subject}
+  predicate: ${exClaim.predicate}
+  object: ${exClaim.object}
+  condition_tags: [${exClaim.condition_tags.join(", ")}]
+  energy: { input: ${exClaim.energy?.input}, output: ${exClaim.energy?.output}, dissipation: ${exClaim.energy?.dissipation} }
+  relation: { formula: "${exClaim.relation?.formula}", coefficient_unit: ${exClaim.relation?.coefficient_unit} }
+  evidence: [${exClaim.evidence.join(", ")}]
+  status: ${exClaim.status}`}</pre>
+              <p className={styles.fragmentNote}>
+                <Link href={claimHref(exClaim.id)}>the claim page</Link> · sources{" "}
+                {exClaim.evidence.map((s, i) => (
+                  <span key={s}>
+                    {i > 0 ? ", " : ""}
+                    <Link href={sourceHref(s)}>{s.split(":")[1]}</Link>
+                  </span>
+                ))}
+              </p>
+            </div>
+            <div className={styles.fragment}>
+              <div className="label">generated route</div>
+              <pre className={styles.pre}>{`id: ${exRoute.id}
+nodes: ${exRoute.nodes.join(" → ")}
+energy: ${exRoute.energy_form_sequence.join(" → ")}
+structural_kind: ${exRoute.structural_kind} · frontier_class: ${exRoute.frontier_class} · search_status: ${exRoute.search_status}
+evidence_status: ${exRoute.evidence_status} (weakest: ${exRoute.weakest_claim})
+magnitude_screen: ${exRoute.magnitude_screen.status}
+checks: ${exChecks}`}</pre>
+              <p className={styles.fragmentNote}>
+                <Link href={`/path/${exRoute.id.slice(2)}`}>the route page</Link>
+              </p>
+            </div>
+            <div className={styles.fragment}>
+              <div className="label">matrix consequence</div>
+              <pre className={styles.pre}>{`cell: ${exCell.address} (${exRow.name} × ${exCol.name})
+status: ${exCell.status}
+direct_claims: ${exCell.direct_claims.join(", ")}
+searched: ${exCell.searched}`}</pre>
+              <p className={styles.fragmentNote}>
+                <Link href={`/matrix?cell=${exCell.address}`}>the cell</Link> · the row is <Link href={hrefFor(exRow.id)}>{exRow.name}</Link>, the column{" "}
+                <Link href={hrefFor(exFamily.id)}>{exFamily.name}</Link>
+              </p>
+            </div>
+            <div className={styles.fragment}>
+              <div className="label">named pathway</div>
+              <pre className={styles.pre}>{`id: ${exPathway.id}
+steps: ${exPathway.steps.join(" > ")}
+status: ${exPathway.status} · knowledge_level: ${exPathway.knowledge_level}
+measurements: ${exPathway.performance?.measurements?.length ?? 0} datum-level records
+evidence: ${exPathway.evidence.join(", ")}`}</pre>
+              <p className={styles.fragmentNote}>
+                Because the route's claim sequence equals these steps, the route inherits this record; only a recorded pathway or a reviewed search of the whole composition can make a route
+                “demonstrated”.
+              </p>
+            </div>
+          </div>
           <p>
-            Only compositions can make an empty matrix cell a candidate, and only compositions appear on the frontier by default. Each route also records its conversion phenomena in order, its
-            collapsed energy-form sequence, the number of genuine cross-family seams, how many of the four core checks are unresolved, how many interfaces its condition tags imply, and how many of its
-            conversion steps carry a constitutive relation.
+            The longer version, with what would change each of these records, is <a href={`${DOCS}/docs/worked-example.md`}>docs/worked-example.md</a>.
           </p>
-          <p>
-            The frontier order is a fixed lexicographic order, never a score: structure, then resolution of the four core checks, then carrier handoffs left unresolved (a consuming step declares what
-            it needs — a bulk, loadable stream, a charged surface — and the producing step before it does not record providing it), then how much of the route a recorded device already implements,
-            then the magnitude screen (whether any number bounds what the route transmits), then composition-search state, then evidence floor and the count of non-established constituents, then how
-            readily the driver is found, then mechanism seams, energy transitions and the number of phenomena. The same order chooses which bridge a matrix cell shows first. Two further structural
-            classes keep the default frontier honest: a route that first manufactures an ambient driver (a temperature gradient by combustion, an osmotic pressure by osmosis) for a suffix that is
-            itself a route is <em>source preparation</em> and defers to the suffix; two routes with the same source, ordered coupling families and sink form are one mechanism, and only one
-            representative stays.
-          </p>
-        </div>
-      </section>
-
-      <section className={styles.section} id="paths">
-        <h2 className="t-section">6. Path enumeration</h2>
-        <div className="prose">
-          <p>
-            From every disequilibrium the compiler follows process claims depth-first, never revisiting a node, up to seven steps, and records every route that ends at an output. Each route gets a
-            stable id from the hash of its claim sequence. If a route matches a named, reviewed pathway (a thermoelectric generator, a wind turbine, a hydrovoltaic generator) it inherits that
-            pathway's status, knowledge level and measured performance. This release examines {a.graph.meta.counts.paths_examined} routes, of which {a.graph.meta.counts.paths_demonstrated} are
-            demonstrated.
-          </p>
-          <p>
-            Routes are then classed for the frontier: demonstrated; candidate (every constituent at least demonstrated, no check fails, and fewer than two relations shared with a recorded pathway);
-            extends a recorded pathway (the same, but sharing two or more relations with one); weakly supported (a constituent is theoretical or worse); fails a check; or round trip (source and sink
-            share an energy form).
-          </p>
-        </div>
-      </section>
-
-      <section className={styles.section} id="checks">
-        <h2 className="t-section">7. The seven checks</h2>
-        <div className="prose">
-          <p>
-            Every route is passed through seven checks. Each returns pass, fail, unresolved (the data needed to decide is partly present) or unknown (none of it is recorded), and a sentence saying
-            what was examined. The site shows the sentence, never just the verdict.
-          </p>
-          <dl className={styles.checks}>
-            <dt>{CHECK_NAME["type-chain"]}</dt>
-            <dd>The route starts at a disequilibrium, ends at an output, and every step is an allowed (subject type, predicate, object type) triple whose object is the next step's subject.</dd>
-            <dt>{CHECK_NAME["energy-form-continuity"]}</dt>
-            <dd>Where consecutive steps declare an energy ledger, the form one step emits is the form the next step takes, and any carrier in between carries that form.</dd>
-            <dt>{CHECK_NAME["conservation"]}</dt>
-            <dd>
-              The source carries exergy relative to a reference environment, no step is contradicted or invalid, and every step declares its output and its losses. A source with no exergy — heat at
-              uniform temperature, the quantum vacuum — fails here, which is how the second law enters the atlas.
-            </dd>
-            <dt>{CHECK_NAME["thermodynamic-bound"]}</dt>
-            <dd>
-              Collects the <code>bounded_by</code> constraints of the route's phenomena. When a constraint has a numeric ceiling that applies to the route's source, any recorded efficiency is compared
-              with it.
-            </dd>
-            <dt>{CHECK_NAME["dimensional"]}</dt>
-            <dd>
-              For each step with a constitutive relation, the SI dimension of the output quantity must equal the dimension of the coefficient times the dimension of the input quantity. Units are
-              parsed from a table in the ontology.
-            </dd>
-            <dt>{CHECK_NAME["boundary-compatibility"]}</dt>
-            <dd>
-              Condition tags (vacuum, aqueous, cryogenic, above 700 K, ferroelectric, …) are checked against a list of declared conflicts. A conflict inside one step fails. A conflict between two
-              adjacent steps means an interface — a heat exchanger, a window, a shaft — is implied but not recorded, so it is unresolved rather than failed.
-            </dd>
-            <dt>{CHECK_NAME["practical-magnitude"]}</dt>
-            <dd>
-              Whether a measured efficiency or power density exists on record for this exact composition. For an undemonstrated composition this is unknown, and the site says so instead of inventing a
-              number.
-            </dd>
-          </dl>
         </div>
       </section>
 
       <section className={styles.section} id="evidence">
-        <h2 className="t-section">8. Evidence and provenance</h2>
+        <h2 className="t-section">9. Evidence thresholds and provenance</h2>
         <div className="prose">
           <p>
-            Every claim cites at least one source. Sources with a DOI are checked against Crossref by a pipeline that records whether the DOI resolves and whether the title Crossref returns matches
-            the one on file; the result is shown beside each reference. Historical sources that predate DOIs are listed with their venue.
+            Every claim except a hypothesised claim must cite at least one source; a hypothesised claim may cite none. The statuses, in the vocabulary's wording, with the minimums a test enforces:
+          </p>
+          <ul>
+            {vocab("claim.status").terms.map((t) => (
+              <li key={t.id}>
+                <code>{t.id}</code> — {t.definition}
+                {t.id === "established" ? " (tested: at least two independent first-author groups, or a review or book, among the sources)" : ""}
+                {t.id === "replicated" ? " (tested: at least two independent first-author groups)" : ""}
+              </li>
+            ))}
+          </ul>
+          <p>
+            Route-level evidence is kept apart from constituent evidence. A compiled route carries <code>constituent_source_ids</code> (sources cited by its steps) and{" "}
+            <code>composition_source_ids</code> (sources cited by a recorded pathway for the whole route, including its datum-level measurements). The site never presents the first as evidence for the
+            composition.
           </p>
           <p>
-            Search records are the only thing allowed to say "no demonstration found". A record names the engine, the date, the query string, the number of works found and the top hits, and whether a
-            reviewer judged that a qualifying demonstration exists. Automated index queries are stored separately from reviewed searches and are never promoted without review.
+            Sources with a DOI are checked against Crossref by a pipeline that records whether the DOI resolves and whether the title Crossref returns matches the one on file; the result is shown
+            beside each reference. Historical sources that predate DOIs are listed with their venue. Authoring rules: <a href={`${DOCS}/docs/evidence-model.md`}>docs/evidence-model.md</a>.
+          </p>
+        </div>
+      </section>
+
+      <section className={styles.section} id="limits">
+        <h2 className="t-section">10. Enumeration limits</h2>
+        <div className="prose">
+          <p>
+            Enumeration is exhaustive only within the recorded graph and its configured bounds. The compiler follows canonical process claims only, forbids node revisits, enumerates at most{" "}
+            {m.enumeration.max_claims_per_route} claims per route and stops after {m.enumeration.max_routes_per_source.toLocaleString("en")} routes from any one disequilibrium. Therefore “all
+            enumerated routes” means all routes found under those rules in this revision, not all physically possible conversions.
+          </p>
+          <ul>
+            <li>no route contains a cycle, so a process that genuinely revisits a node cannot be represented;</li>
+            <li>a conversion that would need more than {m.enumeration.max_claims_per_route} claims is absent;</li>
+            <li>
+              the per-source cap can truncate a dense source;{" "}
+              {m.enumeration.sources_at_cap.length === 0 ? "in this revision none is truncated" : `in this revision ${m.enumeration.sources_at_cap.length} are`} (<code>meta.enumeration</code> in every
+              export);
+            </li>
+            <li>a missing claim, alias or family membership cannot be discovered by enumeration — the compiler can only recombine what is recorded;</li>
+            <li>boundary conditions and carrier handoffs that no claim records stay unresolved or unknown; they are never inferred;</li>
+            <li>the coverage page's target inventories are editorial checklists of what the atlas intends to record, not estimates of what exists in nature.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section className={styles.section} id="non-goals">
+        <h2 className="t-section">11. What the atlas deliberately does not do</h2>
+        <div className="prose">
+          <p>
+            The atlas does not infer missing physics, use a language model to create canonical relations, treat graph absence as impossibility, treat constituent evidence as composition evidence,
+            convert an automated search into a negative result, estimate performance where no recorded magnitude exists, or claim patentability, novelty or experimental feasibility from a generated
+            route.
+          </p>
+          <p>
+            Generated routes are public as compositions of recorded relations, and that is all they are. There is no review queue, no proposal pipeline and no publication policy in this release; the
+            schema reserves a few queue statuses that the compiler never assigns.
           </p>
         </div>
       </section>
 
       <section className={styles.section} id="governance">
-        <h2 className="t-section">9. Changing the atlas</h2>
+        <h2 className="t-section">12. Governance and revisions</h2>
         <div className="prose">
           <p>
             The canonical data is YAML under <code>data/canonical</code>, source-controlled and reviewed in pull requests. Validation rejects unknown units, invalid predicates, dangling entities,
-            missing provenance and malformed conditions before anything is compiled. The compiler is deterministic: the dataset revision shown in the status rail is a hash of the canonical files, so
-            two people building the same commit see the same numbers.
+            missing provenance, malformed conditions and negatives that skip the search gate before anything is compiled. The compiler is deterministic: the dataset revision shown in the status rail
+            is a hash of the canonical files, so two people building the same commit see the same numbers, and every published revision is listed with its counts and the ids it added or removed in{" "}
+            <a href={`${DOCS}/docs/dataset-changelog.md`}>docs/dataset-changelog.md</a>.
           </p>
           <p>
-            Candidate compositions generated by search are public as compositions of known relations. Newly proposed device concepts with possible patent standing go through a review queue first,
-            following the atlas's publication policy; nothing in this release is in that queue.
+            Review provenance is never manufactured: a record's <code>last_reviewed</code> date changes only when that record was actually re-read, and generated records inherit the revision's{" "}
+            <code>data_hash</code> and <code>source_commit</code>, not a review date. The rules for contributors are in <a href={`${DOCS}/AGENTS.md`}>AGENTS.md</a>.
           </p>
         </div>
       </section>
 
-      <section className={styles.section} id="language">
-        <h2 className="t-section">10. Language</h2>
+      <section className={styles.section} id="cite">
+        <h2 className="t-section">13. Citation and data access</h2>
         <div className="prose">
           <p>
-            The site reports the state of the atlas, never the state of nature. The canonical strings are: "Not searched." · "No direct demonstration found — searched in indexed evidence through{" "}
-            {"{date}"}." · "No canonical relation currently recorded. This does not imply the relation is impossible." · "No composed pathway currently recorded." · "Insufficient evidence to assign a
-            stronger status." Numbers on screen are computed from the dataset or replaced by an em dash. Nothing is decorative.
+            To cite the atlas as a dataset, use <a href={`${DOCS}/CITATION.cff`}>CITATION.cff</a> and include the exact <code>meta.data_hash</code> of the revision used. To cite a claim, entity,
+            source, route or matrix cell, cite its stable canonical URL together with dataset revision r{m.data_hash}; the stable id identifies the record and the hash identifies the canonical files
+            from which that page was compiled. Citation does not grant reuse rights: the current dataset and code licence remain PENDING OWNER RULING.
           </p>
           <p>
-            The full data is public under <code>/api/</code>: <Link href="/api/stats.json">stats</Link>, <Link href="/api/graph.json">graph</Link>, <Link href="/api/entities.json">entities</Link>,{" "}
-            <Link href="/api/claims.json">claims</Link> (also <Link href="/api/claims.ndjson">ndjson</Link> and <Link href="/api/claims.csv">csv</Link>), <Link href="/api/sources.json">sources</Link>,{" "}
-            <Link href="/api/pathways.json">pathways</Link>, <Link href="/api/paths.json">paths</Link>, <Link href="/api/matrix.json">matrix</Link>, <Link href="/api/coverage.json">coverage</Link>,{" "}
-            <Link href="/api/checks.json">checks</Link> (the seven checks above as data), <Link href="/api/vocabulary.json">vocabulary</Link> (every enumeration defined) and the JSON Schema at{" "}
-            <Link href="/api/schema/v0.2.0.json">schema/v0.2.0.json</Link>. Every file carries the same <code>meta</code> block: dataset revision, build provenance, counts, schema pointer and reuse
-            terms. The contract is <a href="https://github.com/in-c0/physical-transformation-atlas/blob/main/docs/data-api.md">docs/data-api.md</a>.
+            The full data is public under <code>/api/</code> — every file carries the same <code>meta</code> block (dataset revision, build provenance, enumeration bounds, counts, schema pointer and
+            reuse terms):{" "}
+            {ENDPOINTS.map((e, i) => (
+              <span key={e}>
+                {i > 0 ? " · " : ""}
+                <Link href={e}>{e.replace("/api/", "")}</Link>
+              </span>
+            ))}
+            . The contract is <a href={`${DOCS}/docs/data-api.md`}>docs/data-api.md</a>; the export format is v{SCHEMA_VERSION}.
           </p>
         </div>
       </section>

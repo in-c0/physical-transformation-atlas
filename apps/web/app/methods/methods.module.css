@@ -9,3 +9,40 @@
 .checks dt { font-weight: var(--weight-medium); font-size: var(--text-ui); line-height: var(--leading-ui); padding-top: 1px; }
 .checks dd { margin: 0; }
 @media (max-width: 640px) { .checks { grid-template-columns: 1fr; gap: 2px 0; } .checks dd { margin-bottom: 8px; } }
+
+/* Loop-3 pass 15: the trust document. Section list, check registry, state layers, worked-example fragments. */
+.toc { margin: 12px 0 8px; }
+.toc ol { margin: 0; padding-left: 20px; columns: 2; column-gap: 24px; font-size: var(--text-ui); line-height: 22px; }
+.toc li { break-inside: avoid; }
+.checks { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 12px; }
+.check { display: grid; grid-template-columns: 200px 1fr; gap: 4px 16px; padding-top: 10px; border-top: var(--border); }
+.check:first-child { border-top: 0; padding-top: 0; }
+.core { color: var(--ink-secondary); font-weight: var(--weight-regular); }
+.results { list-style: none; margin: 6px 0 4px; padding: 0; display: grid; gap: 2px; }
+.results li { font-size: var(--text-ui); line-height: var(--leading-ui); }
+.result { display: inline-block; min-width: 88px; font-family: var(--font-mono); font-size: var(--text-data); color: var(--ink-secondary); }
+.reads { font-family: var(--font-mono); font-size: var(--text-data); line-height: var(--leading-data); color: var(--ink-secondary); margin: 0; }
+.layer { margin: 14px 0 6px; }
+.layerHead { font-size: var(--text-ui); line-height: var(--leading-ui); font-weight: var(--weight-medium); margin: 0 0 6px; }
+.terms { display: grid; gap: 4px; margin: 0; }
+.term { display: grid; grid-template-columns: 260px 1fr; gap: 2px 16px; }
+.term dt { display: flex; justify-content: space-between; gap: 8px; font-size: var(--text-ui); line-height: var(--leading-ui); }
+.term dd { margin: 0; font-size: var(--text-ui); line-height: var(--leading-ui); }
+.occ { font-family: var(--font-mono); font-size: var(--text-data); color: var(--ink-secondary); }
+.occ::before { content: "× "; }
+.precedence li { margin-bottom: 4px; }
+.fragments { display: grid; gap: 14px; margin: 12px 0; }
+.fragment { border-top: var(--border); padding-top: 8px; }
+.pre { font-family: var(--font-mono); font-size: var(--text-data); line-height: var(--leading-data); white-space: pre-wrap; overflow-wrap: anywhere; margin: 6px 0; padding: 8px 10px; background: var(--surface-raised); }
+.fragmentNote { font-size: var(--text-ui); line-height: var(--leading-ui); color: var(--ink-secondary); margin: 0; }
+@media (max-width: 640px) {
+  .toc ol { columns: 1; }
+  .check { grid-template-columns: 1fr; }
+  .term { grid-template-columns: 1fr; }
+  .result { min-width: 80px; }
+}
+/* Inline links in the trust document must be visible without hover: a hairline underline in the secondary ink. */
+.main :global(.prose) a, .fragmentNote a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; text-decoration-color: var(--ink-secondary); }
+.main :global(.prose) a:hover, .fragmentNote a:hover { text-decoration-color: currentColor; }
+.toc ol { list-style: decimal; }
+.check .results, .check .results li { list-style: none; padding-left: 0; }

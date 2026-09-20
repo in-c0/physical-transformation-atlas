@@ -160,6 +160,7 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
   // Path enumeration ---------------------------------------------------------------
   const paths: CompiledPath[] = [];
   const disequilibria = canon.entities.filter((e) => e.type === "disequilibrium");
+  const sourcesAtCap: string[] = [];
   for (const d of disequilibria) {
     let count = 0;
     const stack: Claim[] = [];
@@ -183,6 +184,7 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
       }
     };
     dfs(d.id);
+    if (count >= MAX_PATHS_PER_SOURCE) sourcesAtCap.push(d.id);
   }
 
   function compilePath(claims: Claim[]): CompiledPath {
@@ -597,6 +599,7 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
       data_hash,
       source_commit: opts.sourceCommit ?? null,
       search_indexed_through: searchDates.length ? searchDates[searchDates.length - 1] : null,
+      enumeration: { max_claims_per_route: MAX_PATH_STEPS, max_routes_per_source: MAX_PATHS_PER_SOURCE, sources_at_cap: sourcesAtCap },
       counts: {
         entities: canon.entities.length,
         phenomena: count("phenomenon"),

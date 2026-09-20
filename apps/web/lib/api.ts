@@ -7,7 +7,7 @@ import "server-only";
 import type { Claim, CompiledPath, MatrixCell } from "@pta/schema";
 import { atlas } from "./data";
 
-export const SCHEMA_VERSION = "0.2.0";
+export const SCHEMA_VERSION = "0.3.0";
 export const REPO = "https://github.com/in-c0/physical-transformation-atlas";
 export const SITE = "https://physical-transformation-atlas.wldud5192.workers.dev";
 
@@ -77,6 +77,7 @@ export function exportMeta(endpoint: ExportName, opts: { records?: number; recor
     generated_at: m.built_at,
     source_commit: m.source_commit,
     search_indexed_through: m.search_indexed_through,
+    enumeration: m.enumeration,
     record_kind: opts.record_kind ?? "canonical",
     ...(opts.records === undefined ? {} : { records: opts.records }),
     counts: m.counts,

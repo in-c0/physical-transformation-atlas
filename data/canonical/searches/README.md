@@ -45,9 +45,12 @@ been turned into a canonical claim yet. Exhaustive searching is not required to 
 4. **Citation chase (negatives only).** For the two most relevant theory or review papers, inspect
    their reference lists and citing works for experimental predecessors or successors; record them
    as a `citation-chase` run.
-5. **Decide each plausible hit** with one of: `qualifies`, `theory-only`, `simulation-only`,
-   `proposal-only`, `review-only`, `wrong-driver`, `wrong-coupling`, `driver-only-modifies`,
-   `duplicate`, `insufficient-information`; write the reason in one sentence a stranger can check.
+5. **Decide each plausible hit** with one of: `qualifies`, `route-only`, `theory-only`,
+   `simulation-only`, `proposal-only`, `review-only`, `wrong-driver`, `wrong-coupling`,
+   `driver-only-modifies`, `duplicate`, `insufficient-information`; write the reason in one
+   sentence a stranger can check. `route-only` means the experiment demonstrates a multi-step
+   composition but not the direct driver × family relation being searched: it is evidence for a
+   route (record it as a coupling claim after review) and must not promote the direct cell.
 6. **Completeness.** If relevant unscreened results remain beyond the cap, an engine failed, a
    plausible hit is inaccessible, or a member phenomenon was not searched: `partial` or `blocked`,
    and the result is `inconclusive`. Only a complete protocol with nothing qualifying is

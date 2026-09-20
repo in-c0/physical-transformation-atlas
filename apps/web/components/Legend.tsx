@@ -11,7 +11,7 @@ const SHORT: Record<MatrixCellStatus, string> = {
   theoretical: "theoretical",
   candidate: "candidate",
   "searched-none": "searched · none found",
-  "search-incomplete": "index queried",
+  "search-incomplete": "search incomplete",
   "not-searched": "not searched",
   forbidden: "forbidden",
   contradicted: "contradicted",

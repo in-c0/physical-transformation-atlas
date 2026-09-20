@@ -63,13 +63,13 @@ Used in: `claims[].status`, `paths[].evidence_status`
 Used in: `paths[].search_status`, `searches[].status`
 
 - `not-searched` — no search record exists; the atlas has not looked
-- `search-incomplete` — only an automated index query has run; nobody has read the hits
-- `searched-no-demonstration-found` — a reviewed search record says no qualifying demonstration was found in indexed evidence through its date
-- `candidate` — a reviewed search left the composition as a candidate for demonstration
-- `under-review` — the composition is in the review queue
-- `experiment-proposed` — an experiment has been proposed in the literature or the queue
-- `experiment-tested` — an experiment has been run; outcome recorded on the pathway
-- `demonstrated` — a recorded pathway demonstrates the whole composition
+- `search-incomplete` — a search record exists — an automated index run, or a reviewed search that is partial, blocked or inconclusive — but no reviewed result decides the composition
+- `searched-no-demonstration-found` — a reviewed search record that passed the protocol gate says no qualifying demonstration was found in indexed evidence through its date
+- `candidate` — reserved; not produced by the current compiler (no review queue exists in this release)
+- `under-review` — reserved; not produced by the current compiler (no review queue exists in this release)
+- `experiment-proposed` — reserved; not produced by the current compiler (no review queue exists in this release)
+- `experiment-tested` — reserved; not produced by the current compiler (no review queue exists in this release)
+- `demonstrated` — a recorded pathway with a status other than proposed has exactly this claim sequence, or a reviewed search of the whole composition found a demonstration
 
 ## `knowledge_level`
 
@@ -153,9 +153,9 @@ Used in: `matrix.cells[].status`
 - `established` — a canonical direct relation with status established or replicated
 - `demonstrated` — a direct relation with a demonstration or report indexed
 - `theoretical` — a direct relation supported theoretically only
-- `candidate` — no direct relation, but a composed bridge exists with every constituent established
-- `searched-none` — a reviewed search found no qualifying direct demonstration
-- `search-incomplete` — only an automated index query has run; not reviewed
+- `candidate` — no direct relation, but at least one bridge route from the row through the family has structural kind composition and frontier class candidate, derived or demonstrated
+- `searched-none` — no direct relation; a reviewed search that passed the protocol gate found no qualifying direct demonstration through its date
+- `search-incomplete` — no direct relation; a search record exists (an automated index run, or a reviewed search that is partial, blocked or inconclusive) but no reviewed result decides the cell
 - `not-searched` — no recorded search at all
 - `forbidden` — excluded by a recorded physical constraint under the stated conditions
 - `contradicted` — a direct relation whose claim is disputed or contradicted
@@ -165,9 +165,9 @@ Used in: `matrix.cells[].status`
 
 Used in: `paths[].frontier_class`
 
-- `demonstrated` — search_status is demonstrated: a recorded pathway covers the whole route
-- `candidate` — no check fails, every constituent is at least demonstrated, and the route shares fewer than two claims with any recorded pathway
-- `derived` — as candidate, but the route shares two or more claims with a recorded pathway (see known_pathway_overlap): it extends or truncates something known
+- `demonstrated` — search_status is demonstrated: a recorded pathway or a reviewed search covers the whole route
+- `candidate` — no check fails, the source and the sink do not share an energy form, every constituent is at least demonstrated, and neither claim-level overlap (two or more ordered claims shared with a recorded pathway) nor a phenomena-level variant (two or more phenomena shared as a source-variant or sink-variant of the closest recorded pathway) makes it derived
+- `derived` — otherwise candidate-quality, but the route shares two or more ordered claims with a recorded pathway (known_pathway_overlap) or two or more phenomena as a source-variant or sink-variant of the closest recorded pathway (closest_known_pathway): it extends, truncates or re-drives something known
 - `weak` — at least one constituent claim is below demonstrated (reported, theoretical, hypothesised, disputed …)
 - `forbidden` — at least one physics check fails
 - `circular` — the source disequilibrium and the sink carry the same energy form

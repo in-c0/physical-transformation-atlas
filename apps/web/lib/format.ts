@@ -7,7 +7,7 @@ export const CELL_STATUS_LABEL: Record<MatrixCellStatus, string> = {
   theoretical: "Theoretical",
   candidate: "Candidate composition",
   "searched-none": "Searched · no direct demonstration found",
-  "search-incomplete": "Index queried · not reviewed",
+  "search-incomplete": "Search incomplete · not decided",
   "not-searched": "Not searched",
   forbidden: "Forbidden by known physics",
   contradicted: "Contradicted",
@@ -20,7 +20,7 @@ export const CELL_STATUS_SHORT: Record<MatrixCellStatus, string> = {
   theoretical: "THEORETICAL",
   candidate: "CANDIDATE · NO DIRECT RELATION",
   "searched-none": "SEARCHED · NO DIRECT DEMONSTRATION",
-  "search-incomplete": "INDEX QUERIED · NOT REVIEWED",
+  "search-incomplete": "SEARCH INCOMPLETE · NOT DECIDED",
   "not-searched": "NOT SEARCHED",
   forbidden: "FORBIDDEN BY KNOWN PHYSICS",
   contradicted: "CONTRADICTED",
@@ -41,7 +41,7 @@ export const EVIDENCE_LABEL: Record<EvidenceStatus, string> = {
 
 export const SEARCH_LABEL: Record<SearchStatus, string> = {
   "not-searched": "not searched",
-  "search-incomplete": "index queried, not reviewed",
+  "search-incomplete": "search incomplete, not decided",
   "searched-no-demonstration-found": "searched · no demonstration found",
   candidate: "candidate",
   "under-review": "under review",
@@ -73,7 +73,10 @@ export function compositionState(status: SearchStatus, lastSearched?: string): {
         long: `Reviewed search${lastSearched ? ` on ${lastSearched}` : ""}: no qualifying demonstration found in the recorded protocol. This is search provenance, not evidence that the composition is absent from nature.`,
       };
     case "search-incomplete":
-      return { short: "index query only", long: `Not reviewed — index query only${lastSearched ? ` · through ${lastSearched}` : ""}.` };
+      return {
+        short: "search incomplete",
+        long: `Search incomplete${lastSearched ? ` through ${lastSearched}` : ""} — a record exists (an automated index run, or a reviewed search that is partial or blocked) but no reviewed result decides it.`,
+      };
     case "not-searched":
       return { short: "not assessed", long: "Not assessed — complete composition not searched." };
     default:
