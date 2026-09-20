@@ -463,6 +463,7 @@
 - id: phenomenon:reverse-electrodialysis
   type: phenomenon
   name: Reverse electrodialysis
+  aliases: [RED, salinity-gradient power, osmotic power]
   domain: electrochemistry
   year_first_reported: 1954
   condition_tags: [env-aqueous, medium-membrane]
@@ -470,6 +471,7 @@
 - id: phenomenon:pressure-retarded-osmosis
   type: phenomenon
   name: Pressure-retarded osmosis
+  aliases: [PRO, osmotic power, salinity-gradient power]
   domain: electrochemistry
   year_first_reported: 1975
   condition_tags: [env-aqueous, medium-membrane]

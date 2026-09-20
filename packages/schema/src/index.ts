@@ -557,6 +557,8 @@ export type Graph = {
   matrix: { rows: MatrixAxis[]; cols: MatrixAxis[]; cells: MatrixCell[] };
   coverage: CoverageEntry[];
   source_verification: Record<string, { verified: boolean; checked_at: string; crossref_title?: string; note?: string }>;
+  /** The condition-tag vocabulary, so pages and exports can show a label instead of a tag id. */
+  ontology: { condition_tags: { id: string; label: string; description: string }[] };
 };
 
 export type EntityId = z.infer<typeof EntityId>;

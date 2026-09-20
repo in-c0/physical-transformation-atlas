@@ -35,7 +35,7 @@ export interface Canon {
   searches: SearchT[];
   units: UnitT[];
   domains: DomainT[];
-  conditionTags: { id: string; description: string }[];
+  conditionTags: { id: string; description: string; label?: string }[];
   conflicts: ConflictT[];
   /** Automated search runs from pipelines (data/generated/search-runs.json). */
   searchRuns: SearchT[];
@@ -97,7 +97,7 @@ export function loadCanon(root: string): Canon {
 
   const condText = readFileSync(join(canonical, "ontology", "conditions.yaml"), "utf8");
   files.push({ path: "data/canonical/ontology/conditions.yaml", text: condText });
-  const condRaw = parse(condText) as { tags: { id: string; description: string }[]; conflicts: unknown[] };
+  const condRaw = parse(condText) as { tags: { id: string; description: string; label?: string }[]; conflicts: unknown[] };
   const conflicts = (condRaw.conflicts ?? []).flatMap((c, i) => {
     const r = ConditionConflict.safeParse(c);
     if (r.success) return [r.data];
@@ -134,10 +134,22 @@ export function loadCanon(root: string): Canon {
       seen.add(id);
     }
   };
-  dupes(entities.map((e) => e.id), "entity");
-  dupes(claims.map((c) => c.id), "claim");
-  dupes(sources.map((s) => s.id), "source");
-  dupes(pathways.map((p) => p.id), "pathway");
+  dupes(
+    entities.map((e) => e.id),
+    "entity",
+  );
+  dupes(
+    claims.map((c) => c.id),
+    "claim",
+  );
+  dupes(
+    sources.map((s) => s.id),
+    "source",
+  );
+  dupes(
+    pathways.map((p) => p.id),
+    "pathway",
+  );
 
   for (const e of entities) {
     if (e.id.split(":")[0] !== e.type) problems.push(`${e.id}: id prefix does not match type ${e.type}`);

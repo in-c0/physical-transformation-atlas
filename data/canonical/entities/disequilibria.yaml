@@ -41,12 +41,12 @@
   energy_form: chemical
   name: Salinity gradient
   symbol: ΔS
-  aliases: [salinity difference, blue energy, river–sea mixing]
+  aliases: [salinity difference, blue energy, river–sea mixing, osmotic power, salinity-gradient power]
   domain: electrochemistry
   quantity: quantity:concentration
   exergy: positive
   condition_tags: [env-aqueous, state-liquid]
-  summary: Fresh water meeting seawater. About 0.8 kWh of free energy is released per cubic metre of fresh water mixed into the sea.
+  summary: Fresh water meeting seawater, recorded as a chemical disequilibrium with positive exergy. The recorded mixing-free-energy bound is about 0.8 kWh per cubic metre of fresh water mixed into the sea under the stated reference conditions.
 - id: disequilibrium:chemical-potential-difference
   type: disequilibrium
   availability: stored-controlled

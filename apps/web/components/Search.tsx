@@ -1,14 +1,13 @@
 "use client";
 import { useEffect, useId, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import type { Entity } from "@pta/schema";
+import type { SearchHit } from "@pta/graph/query";
 import { loadAtlas } from "@/lib/client-data";
-import { hrefFor } from "@/lib/format";
 import styles from "./Search.module.css";
 
 export function Search() {
   const [q, setQ] = useState("");
-  const [hits, setHits] = useState<Entity[]>([]);
+  const [hits, setHits] = useState<SearchHit[]>([]);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(0);
   const [state, setState] = useState<"idle" | "loading" | "ready" | "error">("idle");
@@ -27,7 +26,7 @@ export function Search() {
       (index) => {
         if (!alive) return;
         setState("ready");
-        setHits(index.search(q, 12).map((h) => h.entity));
+        setHits(index.search(q, 12));
         setActive(0);
       },
       () => alive && setState("error"),
@@ -45,10 +44,10 @@ export function Search() {
     return () => document.removeEventListener("mousedown", onDoc);
   }, []);
 
-  const go = (e: Entity) => {
+  const go = (h: SearchHit) => {
     setOpen(false);
     setQ("");
-    router.push(hrefFor(e.id));
+    router.push(h.href);
   };
 
   return (
@@ -86,13 +85,15 @@ export function Search() {
         <ul id={listId} className={styles.results} role="listbox" aria-label="Search results">
           {state === "loading" && <li className={`${styles.note} t-data`}>Loading atlas index…</li>}
           {state === "error" && <li className={`${styles.note} t-data`}>Atlas data could not be loaded.</li>}
-          {state === "ready" && hits.length === 0 && <li className={`${styles.note} t-data`}>No entity matches. The underlying atlas has not changed.</li>}
+          {state === "ready" && hits.length === 0 && (
+            <li className={`${styles.note} t-data`}>No indexed entity or named pathway matches “{q.trim()}”. Try a physical driver, effect, coupling or device name.</li>
+          )}
           {hits.map((h, i) => (
             <li key={h.id} id={`${listId}-${i}`} role="option" aria-selected={i === active}>
               <button type="button" className={`${styles.hit} ${i === active ? styles.hitActive : ""}`} onMouseEnter={() => setActive(i)} onClick={() => go(h)}>
                 <span className="label">{h.type}</span>
                 <span className={styles.hitName}>{h.name}</span>
-                {h.symbol && <span className="t-data secondary">{h.symbol}</span>}
+                {h.kind === "entity" && h.entity.symbol && <span className="t-data secondary">{h.entity.symbol}</span>}
               </button>
             </li>
           ))}

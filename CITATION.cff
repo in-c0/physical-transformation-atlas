@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you use the atlas or its data, cite it as below and name the dataset revision (meta.revision in every /api export) you used."
+message: "If you use the atlas or its data, cite it as below and name the dataset revision you used: meta.data_hash in every /api export, shown as r<hash> on every page."
 title: "Physical Transformation Atlas"
 abstract: "A live map of known and unexplored pathways for converting physical disequilibria into useful work: evidence-backed claims about physical energy transformations, compiled into every conversion route they compose, with seven physics checks and a record of what has actually been searched."
 type: dataset

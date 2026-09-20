@@ -23,3 +23,6 @@
   .header h1 { font-size: 26px; line-height: 31px; }
   .paths > li { grid-template-columns: 1fr; gap: 2px; }
 }
+.explore { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: baseline; margin-top: 10px; font-family: var(--font-mono); font-size: var(--text-data); }
+.explore a { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
+.record { max-width: 72ch; margin-top: 8px; font-size: var(--text-ui); line-height: var(--leading-ui); }

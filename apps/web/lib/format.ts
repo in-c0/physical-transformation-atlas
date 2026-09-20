@@ -142,6 +142,68 @@ export function predicateLabel(p: string): string {
   return p.replace(/_/g, " ");
 }
 
+/** The predicate as a verb phrase inside a sentence: "a temperature gradient drives the Seebeck effect". */
+export const PREDICATE_PROSE: Record<string, string> = {
+  drives: "drives",
+  produces: "produces",
+  couples_to: "couples directly into",
+  converts_into: "is delivered as",
+  mediated_by: "is mediated by",
+  member_of: "belongs to",
+  implemented_by: "is implemented by",
+  requires: "requires",
+  inhibited_by: "is inhibited by",
+  enhanced_by: "is enhanced by",
+  bounded_by: "is bounded by",
+  conserves: "conserves",
+  dissipates_to: "dissipates to",
+  observed_in: "has been observed in",
+  predicted_in: "is predicted in",
+  demonstrated_with: "has been demonstrated with",
+  governed_by: "is governed by",
+};
+
+/** One self-contained sentence stating what the atlas asserts with a claim. */
+export function claimSentence(
+  status: EvidenceStatus,
+  subject: { name: string; type: string },
+  predicate: string,
+  object: { name: string; type: string },
+  hasConditions: boolean,
+  isProper: (word: string) => boolean,
+): string {
+  // Lowercase a name's first letter unless its first word is a proper noun (Seebeck effect, Onsager reciprocity).
+  const plain = (n: string) => (isProper(n.split(/\s/)[0]) || /^[A-Z]{2,}/.test(n) ? n : n[0].toLowerCase() + n.slice(1));
+  const plural = (n: string) => /[^s]s$/.test(n.split(/\s/).pop() ?? "") && !/ss$/.test(n);
+  const indefinite = (n: string) => (plural(n) ? plain(n) : `${/^[aeiou]/i.test(plain(n)) ? "an" : "a"} ${plain(n)}`);
+  const definite = (n: string) => `the ${plain(n)}`;
+  // Phenomena named as a thing take "the" (the Seebeck effect, the streaming potential); process nouns do not (radioactive decay produces …).
+  const thing = /effect|potential|cycle|lift|descent|action|expansion|convection|conduction|emission|pressure|transport|drag|instability|force/i;
+  const phen = (n: string) => (thing.test(n) ? definite(n) : plain(n));
+  const subj = ["disequilibrium", "carrier"].includes(subject.type) ? indefinite(subject.name) : subject.type === "phenomenon" ? phen(subject.name) : definite(subject.name);
+  const obj =
+    predicate === "member_of"
+      ? `the ${plain(object.name)} coupling family`
+      : object.type === "phenomenon"
+        ? phen(object.name)
+        : object.type === "output"
+          ? plain(object.name)
+          : ["constraint", "coupling", "interaction", "quantity"].includes(object.type)
+            ? definite(object.name)
+            : indefinite(object.name);
+  const verb = PREDICATE_PROSE[predicate] ?? predicateLabel(predicate);
+  // Plural subjects (alpha particles, charge carriers) take the plural verb form.
+  const agreed =
+    plural(subject.name) && ["disequilibrium", "carrier"].includes(subject.type)
+      ? verb
+          .replace(/^(drives|produces|couples|conserves|dissipates|requires)/, (v) => v.slice(0, -1))
+          .replace(/^is /, "are ")
+          .replace(/^has /, "have ")
+          .replace(/^belongs /, "belong ")
+      : verb;
+  return `The atlas records this claim as ${EVIDENCE_LABEL[status].toLowerCase()}: ${subj} ${agreed} ${obj}${hasConditions ? " under the conditions below" : ""}.`;
+}
+
 /** The status-transition contract: what record would change a matrix cell. Generated from status, never hand-authored per cell. */
 export const CELL_TRANSITION: Record<MatrixCellStatus, string> = {
   established: "This cell would change if the recorded direct relation no longer met the atlas's established or replicated evidence threshold.",

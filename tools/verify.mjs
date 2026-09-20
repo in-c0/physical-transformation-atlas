@@ -31,6 +31,7 @@ const PAGES = [
   "/coverage",
   "/methods",
   "/phenomenon/seebeck-effect",
+  "/phenomenon/marangoni-effect",
   "/e/disequilibrium/temperature-gradient",
   "/path/d4b83f7f17",
   "/path/87c18f5e4c",

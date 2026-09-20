@@ -1,9 +1,11 @@
 import Link from "next/link";
 import type { CompiledPath, Source } from "@pta/schema";
 import type { AtlasIndex } from "@pta/graph/query";
-import { EVIDENCE_LABEL, FRONTIER_LABEL, OVERLAP_LABEL, compositionState, hrefFor, kLabel, predicateLabel } from "@/lib/format";
+import { EVIDENCE_LABEL, FRONTIER_LABEL, OVERLAP_LABEL, claimHref, compositionState, hrefFor, kLabel, predicateLabel } from "@/lib/format";
 import { Checksum } from "./Checksum";
 import { EvidenceList } from "./EvidenceList";
+import { CiteBlock } from "./CiteBlock";
+import { ConditionTags, Explore, MatrixLegendLine } from "./Pieces";
 import styles from "./PathView.module.css";
 
 export function pathTitle(index: AtlasIndex, p: CompiledPath): string {
@@ -34,7 +36,7 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
         <div className="label">
           Pathway · {path.id} · {FRONTIER_LABEL[path.frontier_class]}
         </div>
-        <h1 className="t-title">{named ? named.name : pathTitle(index, path)}</h1>
+        <h1 className="t-title">{named ? named.name : `${index.entity.get(path.source)?.name ?? path.source} → ${index.entity.get(path.sink)?.name ?? path.sink}`}</h1>
         <p className={styles.chain}>
           {path.nodes.map((n, i) => (
             <span key={n + i}>
@@ -50,16 +52,15 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
         <dl className={styles.facts}>
           <dt>known constituent relations</dt>
           <dd>
-            {path.established_steps} / {path.length} established or replicated · weakest constituent{" "}
-            <span className={`ev-${path.evidence_status}`}>{EVIDENCE_LABEL[path.evidence_status]}</span>
+            {path.established_steps} / {path.length} established or replicated · weakest constituent <span className={`ev-${path.evidence_status}`}>{EVIDENCE_LABEL[path.evidence_status]}</span>
           </dd>
-          <dt>constituent evidence floor</dt>
+          <dt>constituent maturity floor</dt>
           <dd>{kLabel(path.constituent_floor)}</dd>
-          <dt>exact composition search</dt>
+          <dt>search for this exact route</dt>
           <dd>{comp.long}</dd>
           {named && (
             <>
-              <dt>composition level</dt>
+              <dt>composition maturity</dt>
               <dd>
                 {kLabel(named.knowledge_level)}
                 {named.demonstrated_with.length ? ` — ${named.demonstrated_with.map((t) => index.entity.get(t)?.name).join(", ")}` : ""}
@@ -72,8 +73,8 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
             {overlap && overlap.relation === "exact" && `this route is the recorded pathway ${overlapPathway?.name ?? overlap.pathway}`}
             {overlap && overlap.relation !== "exact" && overlapPathway && (
               <>
-                {OVERLAP_LABEL[overlap.relation]}{" "}
-                {overlapPath ? <Link href={`/path/${overlapPath.id.slice(2)}`}>{overlapPathway.name}</Link> : overlapPathway.name} · {overlap.shared_claims}/{overlap.route_claims} relations shared
+                {OVERLAP_LABEL[overlap.relation]} {overlapPath ? <Link href={`/path/${overlapPath.id.slice(2)}`}>{overlapPathway.name}</Link> : overlapPathway.name} · {overlap.shared_claims}/
+                {overlap.route_claims} relations shared
               </>
             )}
           </dd>
@@ -83,14 +84,46 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
             {path.literature.contradictory ? ` · ${path.literature.contradictory} contradictory constituent claim${path.literature.contradictory === 1 ? "" : "s"}` : ""}
           </dd>
         </dl>
+        <Explore
+          items={[
+            { label: "matrix context", href: "#matrix" },
+            { label: "physics checks", href: "#checks" },
+            ...(named?.performance ? [{ label: "performance", href: "#performance" }] : []),
+            { label: "steps", href: "#steps" },
+            { label: "route evidence", href: "#route-evidence" },
+            { label: "constituent evidence", href: "#constituent-evidence" },
+            { label: "cite", href: "#cite" },
+          ]}
+        />
       </header>
 
-      <section className={styles.section} aria-label="Physics checks">
+      <section className={styles.section} id="matrix">
+        <h2 className="label">Matrix context</h2>
+        <MatrixLegendLine />
+        <p className={styles.coords}>
+          {srcAxis && families.length > 0 ? (
+            families.map((f) => (
+              <span key={f!.id} className={styles.coordRow}>
+                <Link href={`/matrix?cell=${srcAxis.address}:${f!.address}`} className={styles.coord}>
+                  {srcAxis.address} × {f!.address} · {srcAxis.name} × {f!.name}
+                </Link>
+                <Link href={hrefFor(f!.id)} className={styles.coord}>
+                  family: {f!.name}
+                </Link>
+              </span>
+            ))
+          ) : (
+            <span className="secondary">No coupling family recorded for this route's phenomena.</span>
+          )}
+        </p>
+      </section>
+
+      <section className={styles.section} id="checks" aria-label="Physics checks">
         <Checksum checks={path.checks} claims={path.claims} />
       </section>
 
       {named?.performance && (
-        <section className={styles.section}>
+        <section className={styles.section} id="performance">
           <h2 className="label">Measured or reported performance</h2>
           {measurements.length === 0 && (
             <p className="t-ui secondary" style={{ fontWeight: 400 }}>
@@ -153,7 +186,7 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
         </section>
       )}
 
-      <section className={styles.section}>
+      <section className={styles.section} id="steps">
         <h2 className="label">Steps</h2>
         <ol className={styles.steps}>
           {claims.map((c, i) => {
@@ -169,6 +202,9 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
                     <span className="t-data secondary"> —{predicateLabel(c.predicate)}→ </span>
                     <Link href={hrefFor(c.object)}>{o?.name}</Link>
                     <span className={`${styles.stepStatus} ev-${c.status}`}>{EVIDENCE_LABEL[c.status]}</span>
+                    <Link href={claimHref(c.id)} className={styles.stepRecord} aria-label={`Open the record for ${c.id}`}>
+                      claim record
+                    </Link>
                   </div>
                   {c.energy && (
                     <div className="t-data secondary">
@@ -179,7 +215,12 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
                   {c.relation && (
                     <div className="t-data">
                       {c.relation.formula}
-                      {c.relation.coefficient_name ? <span className="secondary"> · {c.relation.coefficient_name} [{c.relation.coefficient_unit}]</span> : null}
+                      {c.relation.coefficient_name ? (
+                        <span className="secondary">
+                          {" "}
+                          · {c.relation.coefficient_name} [{c.relation.coefficient_unit}]
+                        </span>
+                      ) : null}
                       {c.relation.conventions ? <div className="secondary">{c.relation.conventions}</div> : null}
                     </div>
                   )}
@@ -190,7 +231,7 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
                       ))}
                     </ul>
                   )}
-                  {c.condition_tags.length > 0 && <div className="t-micro secondary">{c.condition_tags.join(" · ")}</div>}
+                  <ConditionTags index={index} tags={c.condition_tags} />
                   {c.notes && <div className={`${styles.note} secondary`}>{c.notes}</div>}
                   {refs.length > 0 && <div className="t-data secondary">refs {refs.map((n) => `[${n}]`).join(" ")}</div>}
                 </div>
@@ -200,22 +241,7 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
         </ol>
       </section>
 
-      <section className={styles.section}>
-        <h2 className="label">Coordinates</h2>
-        <p className={styles.coords}>
-          {srcAxis && families.length > 0 ? (
-            families.map((f) => (
-              <Link key={f!.id} href={`/matrix?cell=${srcAxis.address}:${f!.address}`} className={styles.coord}>
-                {srcAxis.address} × {f!.address} · {srcAxis.name} → {f!.name}
-              </Link>
-            ))
-          ) : (
-            <span className="secondary">No coupling family recorded for this path's phenomena.</span>
-          )}
-        </p>
-      </section>
-
-      <section className={styles.section}>
+      <section className={styles.section} id="route-evidence">
         <h2 className="label">Evidence for the complete composition · {compositionSources.length}</h2>
         {compositionSources.length === 0 ? (
           <p className="t-ui secondary" style={{ fontWeight: 400 }}>
@@ -226,10 +252,12 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
         )}
       </section>
 
-      <section className={styles.section}>
+      <section className={styles.section} id="constituent-evidence">
         <h2 className="label">Evidence for the constituent relations · {constituentSources.length}</h2>
         <EvidenceList sources={constituentSources} verification={index.graph.source_verification} numbering={refNo} />
       </section>
+
+      <CiteBlock kind="route" id={path.id} title={named ? named.name : pathTitle(index, path)} revision={index.graph.meta.data_hash} />
     </article>
   );
 }

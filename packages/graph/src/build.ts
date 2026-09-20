@@ -160,7 +160,11 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
     else if (reviewed.some((s) => s.result === "no-demonstration-found")) search_status = "searched-no-demonstration-found";
     else if (searches.length) search_status = "search-incomplete";
     else search_status = "not-searched";
-    if (searches.length) last_searched = searches.map((s) => s.date).sort().at(-1);
+    if (searches.length)
+      last_searched = searches
+        .map((s) => s.date)
+        .sort()
+        .at(-1);
 
     // Recorded-pathway overlap: does a reviewed pathway share this claim sequence, or a prefix,
     // suffix or ordered subsequence of it? A generated route that merely extends or truncates a
@@ -207,14 +211,17 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
     const boundary = boundaryReport(ctx, claims);
     const conversionSteps = claims.filter((c) => entity.get(c.subject)?.type === "phenomenon" || entity.get(c.object)?.type === "phenomenon");
     const quantified = conversionSteps.filter((c) => c.relation).length;
-    const knownDevice = phenomena.length >= 2 && phenomena.every((p) => devicesOf.has(p)) && (() => {
-      let common: Set<string> | null = null;
-      for (const p of phenomena) {
-        const d = devicesOf.get(p)!;
-        common = common ? new Set([...common].filter((x) => d.has(x))) : new Set(d);
-      }
-      return !!common && common.size > 0;
-    })();
+    const knownDevice =
+      phenomena.length >= 2 &&
+      phenomena.every((p) => devicesOf.has(p)) &&
+      (() => {
+        let common: Set<string> | null = null;
+        for (const p of phenomena) {
+          const d = devicesOf.get(p)!;
+          common = common ? new Set([...common].filter((x) => d.has(x))) : new Set(d);
+        }
+        return !!common && common.size > 0;
+      })();
 
     return {
       id,
@@ -353,7 +360,10 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
       const searches = cellSearches.get(`${r.id}|${c.id}`) ?? [];
       const reviewed = searches.filter((s) => reviewedIds.has(s.id));
       const works = searches.reduce((a, s) => a + s.works_found, 0);
-      const last = searches.map((s) => s.date).sort().at(-1);
+      const last = searches
+        .map((s) => s.date)
+        .sort()
+        .at(-1);
 
       let status: MatrixCellStatus;
       if (direct.length) {
@@ -365,7 +375,8 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
         else status = "contradicted";
       } else if (forbiddenRows.has(r.id)) status = "forbidden";
       else if (reviewed.some((s) => s.result === "demonstration-found")) status = "demonstrated";
-      else if (bridges.some((b) => b.structural_kind === "composition" && (b.frontier_class === "candidate" || b.frontier_class === "derived" || b.frontier_class === "demonstrated"))) status = "candidate";
+      else if (bridges.some((b) => b.structural_kind === "composition" && (b.frontier_class === "candidate" || b.frontier_class === "derived" || b.frontier_class === "demonstrated")))
+        status = "candidate";
       else if (reviewed.some((s) => s.result === "no-demonstration-found")) status = "searched-none";
       else if (searches.length) status = "search-incomplete";
       else status = "not-searched";
@@ -418,12 +429,15 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
   const coverage_mean = coverage.reduce((a, c) => a + c.ontology_coverage * c.target_phenomena, 0) / (totalTargets || 1);
   const count = (t: Entity["type"]) => canon.entities.filter((e) => e.type === t).length;
   const cellsEmpty = cells.filter((c) => c.direct_claims.length === 0).length;
-  const tally = <T,>(xs: T[], key: (x: T) => string): Record<string, number> => {
+  const tally = <T>(xs: T[], key: (x: T) => string): Record<string, number> => {
     const m: Record<string, number> = {};
     for (const x of xs) m[key(x)] = (m[key(x)] ?? 0) + 1;
     return Object.fromEntries(Object.entries(m).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])));
   };
-  const searchDates = allSearches.map((x) => x.date).filter(Boolean).sort();
+  const searchDates = allSearches
+    .map((x) => x.date)
+    .filter(Boolean)
+    .sort();
   // Route ids are ten hex characters of a SHA-1 over the ordered claim ids; a collision between two
   // different claim sequences would silently merge two routes, so it is a build failure.
   const seenIds = new Map<string, string>();
@@ -476,5 +490,6 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
     matrix: { rows, cols, cells },
     coverage,
     source_verification: canon.sourceVerification,
+    ontology: { condition_tags: canon.conditionTags.map((t) => ({ id: t.id, label: t.label ?? t.id.replace(/-/g, " "), description: t.description })) },
   };
 }

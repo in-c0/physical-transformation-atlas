@@ -115,6 +115,7 @@ export const GraphCoreExport = z.object({
     matrix: z.object({ rows: z.array(MatrixAxis), cols: z.array(MatrixAxis), cells: z.array(MatrixCellRecord) }),
     coverage: z.array(CoverageEntry),
     source_verification: Verification,
+    ontology: z.object({ condition_tags: z.array(z.object({ id: z.string(), label: z.string(), description: z.string() })) }),
   }),
   links: z.object({ paths: z.string() }),
 });

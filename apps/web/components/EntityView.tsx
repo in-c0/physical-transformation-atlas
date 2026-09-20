@@ -5,6 +5,8 @@ import { CELL_STATUS_LABEL, EVIDENCE_LABEL, FRONTIER_LABEL, hrefFor, kLabel, pre
 import { EvidenceList } from "./EvidenceList";
 import { StatusMark } from "./StatusMark";
 import { pathTitle } from "./PathView";
+import { CiteBlock } from "./CiteBlock";
+import { ConditionTags, Explore, MatrixLegendLine, statusSentence } from "./Pieces";
 import styles from "./EntityView.module.css";
 import claimStyles from "./Drawer.module.css";
 
@@ -48,7 +50,11 @@ function ClaimRow({ c, index, anchor }: { c: Claim; index: AtlasIndex; anchor: s
           {c.relation.coefficient_name ? ` · ${c.relation.coefficient_name} [${c.relation.coefficient_unit}]` : ""}
         </div>
       )}
-      {c.notes && <div className="t-ui secondary" style={{ marginTop: 4, fontWeight: 400 }}>{c.notes}</div>}
+      {c.notes && (
+        <div className="t-ui secondary" style={{ marginTop: 4, fontWeight: 400 }}>
+          {c.notes}
+        </div>
+      )}
     </div>
   );
 }
@@ -57,7 +63,25 @@ export function EntityView({ index, entity }: { index: AtlasIndex; entity: Entit
   const about = index.claimsAbout(entity.id);
   const byPredicate = new Map<string, Claim[]>();
   for (const c of about) byPredicate.set(c.predicate, [...(byPredicate.get(c.predicate) ?? []), c]);
-  const order = ["drives", "produces", "couples_to", "converts_into", "member_of", "implemented_by", "demonstrated_with", "bounded_by", "requires", "observed_in", "predicted_in", "governed_by", "mediated_by", "enhanced_by", "inhibited_by", "conserves", "dissipates_to"];
+  const order = [
+    "drives",
+    "produces",
+    "couples_to",
+    "converts_into",
+    "member_of",
+    "implemented_by",
+    "demonstrated_with",
+    "bounded_by",
+    "requires",
+    "observed_in",
+    "predicted_in",
+    "governed_by",
+    "mediated_by",
+    "enhanced_by",
+    "inhibited_by",
+    "conserves",
+    "dissipates_to",
+  ];
   const groups = order.filter((p) => byPredicate.has(p)).map((p) => [p, byPredicate.get(p)!] as const);
   const paths = index.pathsThrough(entity.id);
   const demonstrated = paths.filter((p) => p.search_status === "demonstrated");
@@ -67,6 +91,22 @@ export function EntityView({ index, entity }: { index: AtlasIndex; entity: Entit
   const rowAxis = index.rowAxis(entity.id);
   const colAxis = index.colAxis(entity.id);
   const domainName = entity.domain ? index.graph.coverage.find((c) => c.domain === entity.domain)?.name : undefined;
+  // A phenomenon supplies the direct relation of every (driver row × family column) cell where a
+  // canonical drives claim names a disequilibrium and a member_of claim names the family.
+  const drivers = entity.type === "phenomenon" ? index.claimsTo(entity.id).filter((c) => c.predicate === "drives" && c.subject.startsWith("disequilibrium:")) : [];
+  const phenomenonCells = drivers.flatMap((d) =>
+    families
+      .map((f) => ({ driver: index.entity.get(d.subject)!, row: index.rowAxis(d.subject), col: index.colAxis(f), cell: index.cellFor(d.subject, f), status: d.status }))
+      .filter((x) => x.row && x.col && x.cell),
+  );
+  const recordSentence = `Atlas record: ${about.length} claim${about.length === 1 ? "" : "s"} reference${about.length === 1 ? "s" : ""} this ${TYPE_LABEL[entity.type].toLowerCase()}${
+    about.length
+      ? ` — ${statusSentence(
+          about.map((c) => c.status),
+          (st) => EVIDENCE_LABEL[st as Claim["status"]],
+        )}`
+      : ""
+  }.`;
   const topPaths = [...paths].sort((a, b) => (a.search_status === "demonstrated" ? -1 : 1) - (b.search_status === "demonstrated" ? -1 : 1) || a.length - b.length).slice(0, 24);
 
   return (
@@ -87,8 +127,22 @@ export function EntityView({ index, entity }: { index: AtlasIndex; entity: Entit
           {entity.knowledge_level && <span>{kLabel(entity.knowledge_level)}</span>}
           {entity.aliases.length > 0 && <span>also: {entity.aliases.join(", ")}</span>}
         </div>
-        {entity.bound && <p className={`${styles.bound} ${styles.mono}`} style={{ marginTop: 10 }}>{entity.bound}</p>}
-        {entity.condition_tags.length > 0 && <div className="t-micro secondary" style={{ marginTop: 8 }}>{entity.condition_tags.join(" · ")}</div>}
+        <p className={styles.record}>{recordSentence}</p>
+        <Explore
+          items={[
+            { label: "relations", href: "#relations" },
+            ...(rowAxis || colAxis || families.length > 0 ? [{ label: "matrix context", href: "#matrix" }] : []),
+            ...(paths.length > 0 ? [{ label: "routes", href: "#routes" }] : []),
+            { label: "sources", href: "#sources" },
+            { label: "cite", href: "#cite" },
+          ]}
+        />
+        {entity.bound && (
+          <p className={`${styles.bound} ${styles.mono}`} style={{ marginTop: 10 }}>
+            {entity.bound}
+          </p>
+        )}
+        <ConditionTags index={index} tags={entity.condition_tags} prefix="conditions:" />
         <div className={styles.readouts}>
           <span className={styles.readout}>
             <b>{about.length}</b>
@@ -96,26 +150,59 @@ export function EntityView({ index, entity }: { index: AtlasIndex; entity: Entit
           </span>
           <span className={styles.readout}>
             <b>{paths.length}</b>
-            <span className="label">pathways through</span>
+            <span className="label">enumerated routes</span>
           </span>
           <span className={styles.readout}>
             <b>{demonstrated.length}</b>
-            <span className="label">demonstrated</span>
+            <span className="label">routes with complete-composition evidence</span>
           </span>
           <span className={styles.readout}>
             <b>{unsearched.length}</b>
-            <span className="label">unsearched candidates</span>
+            <span className="label">candidate routes not searched</span>
           </span>
           <span className={styles.readout}>
             <b>{sources.length}</b>
-            <span className="label">sources</span>
+            <span className="label">cited sources</span>
           </span>
         </div>
       </header>
 
+      <section className={styles.section} id="relations">
+        <h2 className="label">Relations</h2>
+        {groups.length === 0 && <p className="t-data secondary">No claim currently references this entity.</p>}
+        {groups.map(([p, list]) => (
+          <div key={p} className={styles.group}>
+            <div className={styles.groupTitle}>
+              {predicateLabel(p)} · {list.length}
+            </div>
+            <div className={claimStyles.list}>
+              {list.map((c) => (
+                <ClaimRow key={c.id} c={c} index={index} anchor={entity.id} />
+              ))}
+            </div>
+          </div>
+        ))}
+      </section>
+
       {(rowAxis || colAxis || families.length > 0) && (
-        <section className={styles.section}>
-          <h2 className="label">Matrix</h2>
+        <section className={styles.section} id="matrix">
+          <h2 className="label">Matrix context</h2>
+          <MatrixLegendLine />
+          {phenomenonCells.length > 0 && (
+            <div className={styles.cells} style={{ marginBottom: 6 }}>
+              {phenomenonCells.map(({ driver, row, col, cell, status }) => (
+                <Link
+                  key={`${row!.id}|${col!.id}`}
+                  className={styles.cellLink}
+                  href={`/matrix?cell=${row!.address}:${col!.address}`}
+                  title={`${driver.name} × ${col!.name}: ${CELL_STATUS_LABEL[cell!.status]}; direct relation ${EVIDENCE_LABEL[status]}`}
+                >
+                  <StatusMark status={cell!.status} />
+                  {row!.address} × {col!.address} · {driver.name} × {col!.name} · {CELL_STATUS_LABEL[cell!.status]}
+                </Link>
+              ))}
+            </div>
+          )}
           {rowAxis && (
             <div className={styles.cells}>
               {index.graph.matrix.cols.map((col) => {
@@ -148,7 +235,7 @@ export function EntityView({ index, entity }: { index: AtlasIndex; entity: Entit
                 const col = index.colAxis(f)!;
                 return (
                   <Link key={f} className={styles.cellLink} href={hrefFor(f)}>
-                    {col.address} {col.name}
+                    family: {col.name} ({col.address})
                   </Link>
                 );
               })}
@@ -157,27 +244,10 @@ export function EntityView({ index, entity }: { index: AtlasIndex; entity: Entit
         </section>
       )}
 
-      <section className={styles.section}>
-        <h2 className="label">Relations</h2>
-        {groups.length === 0 && <p className="t-data secondary">No claim currently references this entity.</p>}
-        {groups.map(([p, list]) => (
-          <div key={p} className={styles.group}>
-            <div className={styles.groupTitle}>
-              {predicateLabel(p)} · {list.length}
-            </div>
-            <div className={claimStyles.list}>
-              {list.map((c) => (
-                <ClaimRow key={c.id} c={c} index={index} anchor={entity.id} />
-              ))}
-            </div>
-          </div>
-        ))}
-      </section>
-
       {paths.length > 0 && (
-        <section className={styles.section}>
+        <section className={styles.section} id="routes">
           <h2 className="label">
-            Pathways using this · {paths.length}
+            Enumerated routes through this · {paths.length}
             {paths.length > topPaths.length ? ` (showing ${topPaths.length})` : ""}
           </h2>
           <ul className={styles.paths}>
@@ -193,10 +263,12 @@ export function EntityView({ index, entity }: { index: AtlasIndex; entity: Entit
         </section>
       )}
 
-      <section className={styles.section}>
-        <h2 className="label">Evidence · {sources.length}</h2>
+      <section className={styles.section} id="sources">
+        <h2 className="label">Cited sources · {sources.length}</h2>
         <EvidenceList sources={sources} verification={index.graph.source_verification} />
       </section>
+
+      <CiteBlock kind="entity" id={entity.id} title={entity.name} revision={index.graph.meta.data_hash} href={hrefFor(entity.id)} />
     </article>
   );
 }
