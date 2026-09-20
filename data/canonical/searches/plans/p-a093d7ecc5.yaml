@@ -1,0 +1,64 @@
+# route-search-v1 query plan — p-a093d7ecc5
+# Temperature gradient → Thermal expansion → Mechanical stress or strain → Flexoelectric effect → Separated surface charge → Electrical work
+# D = Temperature gradient; M_1 = Thermal expansion; M_2 = Flexoelectric effect; O = Electrical work (k = 2).
+# Written in loop-3 pass 24 (the reviewer's P1 candidate) from the recorded names and the aliases added first:
+# thermal strain / thermoelastic strain / thermal expansion gradient on thermal expansion; flexoelectricity /
+# flexoelectric / strain-gradient polarization / thermopolarization on the flexoelectric effect (the last is the
+# name Iwakiri, Miyata & Mori 2026 give flexoelectric polarization under a temperature gradient). Google Scholar
+# runs are performed by hand and recorded in the reviewed record, not here.
+protocol_version: route-search-v1
+route: p-a093d7ecc5
+claims: [claim:thermal-expansion-drives, claim:thermal-expansion-produces-stress, claim:flexo-drives, claim:flexo-produces-charge, claim:surface-charge-converts-electricity]
+driver_terms: [temperature gradient, temperature difference, thermal gradient, ΔT, waste heat]
+phenomenon_terms:
+  phenomenon:thermal-expansion: [thermal expansion, thermal strain, thermoelastic strain, thermal expansion gradient]
+  phenomenon:flexoelectric-effect: [flexoelectric effect, flexoelectricity, flexoelectric, strain-gradient polarization, thermopolarization]
+output_terms: [electrical work, electricity, electrical output, DC power]
+runs:
+  - id: search:2026-09-21-p-a093d7ecc5/oa-dm1
+    engine: openalex
+    form: route-driver-mechanism
+    key: driver-mechanism:1
+    query: '("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermal expansion" OR "thermal strain" OR "thermoelastic strain" OR "thermal expansion gradient")'
+  - id: search:2026-09-21-p-a093d7ecc5/oa-dm1-newest
+    engine: openalex
+    form: route-driver-mechanism
+    key: driver-mechanism:1
+    sort: newest
+    per_page: 50
+    query: '("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermal expansion" OR "thermal strain" OR "thermoelastic strain" OR "thermal expansion gradient")'
+  - id: search:2026-09-21-p-a093d7ecc5/oa-mp12
+    engine: openalex
+    form: route-mechanism-pair
+    key: mechanism-pair:1-2
+    query: '("Thermal expansion" OR "thermal strain" OR "thermoelastic strain" OR "thermal expansion gradient") AND ("Flexoelectric effect" OR flexoelectricity OR flexoelectric OR "strain-gradient polarization" OR thermopolarization)'
+  - id: search:2026-09-21-p-a093d7ecc5/oa-wc
+    engine: openalex
+    form: route-whole-chain
+    key: whole-chain
+    query: '("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermal expansion" OR "thermal strain" OR "thermoelastic strain" OR "thermal expansion gradient") AND ("Flexoelectric effect" OR flexoelectricity OR flexoelectric OR "strain-gradient polarization" OR thermopolarization) AND ("Electrical work" OR electricity OR "electrical output" OR "DC power")'
+  - id: search:2026-09-21-p-a093d7ecc5/oa-dp
+    engine: openalex
+    form: route-demonstration-precision
+    key: demonstration-precision
+    query: '("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermal expansion" OR "thermal strain" OR "thermoelastic strain" OR "thermal expansion gradient") AND ("Flexoelectric effect" OR flexoelectricity OR flexoelectric OR "strain-gradient polarization" OR thermopolarization) AND ("Electrical work" OR electricity OR "electrical output" OR "DC power") AND (experiment OR experimental OR measured OR device OR prototype)'
+  - id: search:2026-09-21-p-a093d7ecc5/s2-dm1
+    engine: semantic-scholar
+    form: route-driver-mechanism
+    key: driver-mechanism:1
+    query: Temperature gradient temperature difference thermal gradient waste heat Thermal expansion thermal strain thermoelastic strain thermal expansion gradient
+  - id: search:2026-09-21-p-a093d7ecc5/s2-mp12
+    engine: semantic-scholar
+    form: route-mechanism-pair
+    key: mechanism-pair:1-2
+    query: Thermal expansion thermal strain thermoelastic strain thermal expansion gradient Flexoelectric effect flexoelectricity flexoelectric strain-gradient polarization thermopolarization
+  - id: search:2026-09-21-p-a093d7ecc5/s2-wc
+    engine: semantic-scholar
+    form: route-whole-chain
+    key: whole-chain
+    query: Temperature gradient temperature difference thermal gradient waste heat Thermal expansion thermal strain thermoelastic strain thermal expansion gradient Flexoelectric effect flexoelectricity flexoelectric strain-gradient polarization thermopolarization Electrical work electricity electrical output DC power
+  - id: search:2026-09-21-p-a093d7ecc5/s2-dp
+    engine: semantic-scholar
+    form: route-demonstration-precision
+    key: demonstration-precision
+    query: Temperature gradient temperature difference thermal gradient waste heat Thermal expansion thermal strain thermoelastic strain thermal expansion gradient Flexoelectric effect flexoelectricity flexoelectric strain-gradient polarization thermopolarization Electrical work electricity electrical output DC power experiment experimental measured device prototype

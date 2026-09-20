@@ -306,7 +306,7 @@ export type Entity = z.infer<typeof Entity>;
 
 export const Source = z.object({
   id: SourceId,
-  type: z.enum(["paper", "review", "book", "database", "standard", "patent", "thesis", "report", "web"]),
+  type: z.enum(["paper", "preprint", "review", "book", "database", "standard", "patent", "thesis", "report", "web"]),
   title: z.string().min(1),
   authors: z.array(z.string()).default([]),
   year: z.number().int().optional(),

@@ -1319,3 +1319,12 @@
   venue: "Sustainability 14(11), 6930"
   doi: 10.3390/su14116930
   notes: "Open access, read on the publisher's page. A pico waterwheel (C-, V- and straight blades; CFD and experiment; undershot efficiency 72–77 %, best at a 45° conduit) tested in an irrigation-channel rig; 'the turbine was connected to a 3 kilowatt (kW) electrical generator, and the voltage and current were measured at full load conditions', the load being three 100 W bulbs, two 120 W fans and a 1 kW cutting machine. Installation needs channel velocities above 3 m/s and a head of about 1.5 m."
+# Loop-3 pass 24: the thermal expansion → flexoelectric route search.
+- id: source:iwakiri-2026-thermopolarization
+  type: preprint
+  title: "Observation of universal thermopolarization effect in insulators"
+  authors: [S. Iwakiri, Y. Miyata, T. Mori]
+  year: 2026
+  venue: "arXiv:2605.17224 (17 May 2026), National Institute for Materials Science, Tsukuba"
+  url: https://arxiv.org/abs/2605.17224
+  notes: "Preprint, not peer-reviewed; read in full. An on-chip heater driven at 1 kHz imposes a temperature gradient (≈ 0.5 K modulation) across 0.25–1 mm substrates; the non-uniform thermal expansion's strain gradient produces an out-of-plane flexoelectric polarization, detected as a second-harmonic voltage and as the screening current in a detector electrode, in MgO, Al₂O₃, MnO, mica, PET, PEN, polyimide and soda-lime glass; the heat-to-charge ratio collapses onto one trend against the coefficient of thermal expansion, reproduced by finite-element thermo-mechanics; 1/thickness scaling and an order-of-magnitude enhancement at the glass and antiferromagnetic transitions. No load is driven and no output power is reported: the composition observed, the work not extracted."

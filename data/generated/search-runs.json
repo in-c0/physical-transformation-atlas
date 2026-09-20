@@ -7041,5 +7041,1946 @@
   "screening_status": "not-reviewed",
   "result": "inconclusive",
   "notes": "Automated route-search-v1 index queries from data/canonical/searches/plans/p-8fba925ce8.yaml; the result list is frozen for a reviewer and nothing here has been read for a qualifying demonstration. Planned runs NOT run in this bundle (engine unavailable): search:2026-09-21-p-8fba925ce8/s2-dm1 (semantic-scholar); search:2026-09-21-p-8fba925ce8/s2-mp12 (semantic-scholar); search:2026-09-21-p-8fba925ce8/s2-wc (semantic-scholar); search:2026-09-21-p-8fba925ce8/s2-dp (semantic-scholar)."
+ },
+ {
+  "id": "search:2026-09-20-p-a093d7ecc5",
+  "target": {
+   "kind": "path",
+   "path": "p-a093d7ecc5",
+   "claims": [
+    "claim:thermal-expansion-drives",
+    "claim:thermal-expansion-produces-stress",
+    "claim:flexo-drives",
+    "claim:flexo-produces-charge",
+    "claim:surface-charge-converts-electricity"
+   ]
+  },
+  "dataset_hash": "08f5827b86de",
+  "driver_terms": [
+   "temperature gradient",
+   "temperature difference",
+   "thermal gradient",
+   "ΔT",
+   "waste heat"
+  ],
+  "family_terms": [],
+  "phenomenon_terms": {
+   "phenomenon:thermal-expansion": [
+    "thermal expansion",
+    "thermal strain",
+    "thermoelastic strain",
+    "thermal expansion gradient"
+   ],
+   "phenomenon:flexoelectric-effect": [
+    "flexoelectric effect",
+    "flexoelectricity",
+    "flexoelectric",
+    "strain-gradient polarization",
+    "thermopolarization"
+   ]
+  },
+  "runs": [
+   {
+    "id": "search:2026-09-21-p-a093d7ecc5/oa-dm1",
+    "engine": "openalex",
+    "query_form": "route-driver-mechanism",
+    "query": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermal expansion\" OR \"thermal strain\" OR \"thermoelastic strain\" OR \"thermal expansion gradient\")",
+    "executed_at": "2026-09-20T14:57:32.245Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermal+expansion%22+OR+%22thermal+strain%22+OR+%22thermoelastic+strain%22+OR+%22thermal+expansion+gradient%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermal expansion\" OR \"thermal strain\" OR \"thermoelastic strain\" OR \"thermal expansion gradient\")",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 2185,
+    "records_retrieved": 100,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "driver-mechanism:1"
+   },
+   {
+    "id": "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest",
+    "engine": "openalex",
+    "query_form": "route-driver-mechanism",
+    "query": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermal expansion\" OR \"thermal strain\" OR \"thermoelastic strain\" OR \"thermal expansion gradient\")",
+    "executed_at": "2026-09-20T14:57:36.409Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermal+expansion%22+OR+%22thermal+strain%22+OR+%22thermoelastic+strain%22+OR+%22thermal+expansion+gradient%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=50&sort=publication_date%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "publication_date:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermal expansion\" OR \"thermal strain\" OR \"thermoelastic strain\" OR \"thermal expansion gradient\")",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 2185,
+    "records_retrieved": 50,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "driver-mechanism:1"
+   },
+   {
+    "id": "search:2026-09-21-p-a093d7ecc5/oa-mp12",
+    "engine": "openalex",
+    "query_form": "route-mechanism-pair",
+    "query": "(\"Thermal expansion\" OR \"thermal strain\" OR \"thermoelastic strain\" OR \"thermal expansion gradient\") AND (\"Flexoelectric effect\" OR flexoelectricity OR flexoelectric OR \"strain-gradient polarization\" OR thermopolarization)",
+    "executed_at": "2026-09-20T14:57:39.578Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Thermal+expansion%22+OR+%22thermal+strain%22+OR+%22thermoelastic+strain%22+OR+%22thermal+expansion+gradient%22%29+AND+%28%22Flexoelectric+effect%22+OR+flexoelectricity+OR+flexoelectric+OR+%22strain-gradient+polarization%22+OR+thermopolarization%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Thermal expansion\" OR \"thermal strain\" OR \"thermoelastic strain\" OR \"thermal expansion gradient\") AND (\"Flexoelectric effect\" OR flexoelectricity OR flexoelectric OR \"strain-gradient polarization\" OR thermopolarization)",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 8,
+    "records_retrieved": 8,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "mechanism-pair:1-2"
+   },
+   {
+    "id": "search:2026-09-21-p-a093d7ecc5/oa-wc",
+    "engine": "openalex",
+    "query_form": "route-whole-chain",
+    "query": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermal expansion\" OR \"thermal strain\" OR \"thermoelastic strain\" OR \"thermal expansion gradient\") AND (\"Flexoelectric effect\" OR flexoelectricity OR flexoelectric OR \"strain-gradient polarization\" OR thermopolarization) AND (\"Electrical work\" OR electricity OR \"electrical output\" OR \"DC power\")",
+    "executed_at": "2026-09-20T14:57:43.161Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermal+expansion%22+OR+%22thermal+strain%22+OR+%22thermoelastic+strain%22+OR+%22thermal+expansion+gradient%22%29+AND+%28%22Flexoelectric+effect%22+OR+flexoelectricity+OR+flexoelectric+OR+%22strain-gradient+polarization%22+OR+thermopolarization%29+AND+%28%22Electrical+work%22+OR+electricity+OR+%22electrical+output%22+OR+%22DC+power%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermal expansion\" OR \"thermal strain\" OR \"thermoelastic strain\" OR \"thermal expansion gradient\") AND (\"Flexoelectric effect\" OR flexoelectricity OR flexoelectric OR \"strain-gradient polarization\" OR thermopolarization) AND (\"Electrical work\" OR electricity OR \"electrical output\" OR \"DC power\")",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 0,
+    "records_retrieved": 0,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "whole-chain"
+   },
+   {
+    "id": "search:2026-09-21-p-a093d7ecc5/oa-dp",
+    "engine": "openalex",
+    "query_form": "route-demonstration-precision",
+    "query": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermal expansion\" OR \"thermal strain\" OR \"thermoelastic strain\" OR \"thermal expansion gradient\") AND (\"Flexoelectric effect\" OR flexoelectricity OR flexoelectric OR \"strain-gradient polarization\" OR thermopolarization) AND (\"Electrical work\" OR electricity OR \"electrical output\" OR \"DC power\") AND (experiment OR experimental OR measured OR device OR prototype)",
+    "executed_at": "2026-09-20T14:57:46.078Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermal+expansion%22+OR+%22thermal+strain%22+OR+%22thermoelastic+strain%22+OR+%22thermal+expansion+gradient%22%29+AND+%28%22Flexoelectric+effect%22+OR+flexoelectricity+OR+flexoelectric+OR+%22strain-gradient+polarization%22+OR+thermopolarization%29+AND+%28%22Electrical+work%22+OR+electricity+OR+%22electrical+output%22+OR+%22DC+power%22%29+AND+%28experiment+OR+experimental+OR+measured+OR+device+OR+prototype%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermal expansion\" OR \"thermal strain\" OR \"thermoelastic strain\" OR \"thermal expansion gradient\") AND (\"Flexoelectric effect\" OR flexoelectricity OR flexoelectric OR \"strain-gradient polarization\" OR thermopolarization) AND (\"Electrical work\" OR electricity OR \"electrical output\" OR \"DC power\") AND (experiment OR experimental OR measured OR device OR prototype)",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 0,
+    "records_retrieved": 0,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "demonstration-precision"
+   }
+  ],
+  "works": [
+   {
+    "openalex_id": "W2012605786",
+    "doi": "10.1063/1.2147726",
+    "title": "Giant negative thermal expansion in Ge-doped anti-perovskite manganese nitrides",
+    "year": 2005,
+    "type": "article",
+    "cited_by_count": 632,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2082930608",
+    "doi": "10.1016/0011-7471(73)90063-6",
+    "title": "New polynomials for thermal expansion, adiabatic temperature gradient and potential temperature of sea water",
+    "year": 1973,
+    "type": "article",
+    "cited_by_count": 149,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1980757002",
+    "doi": "10.1029/jb095ib13p21731",
+    "title": "Melting, thermal expansion, and phase transitions of iron at high pressures",
+    "year": 1990,
+    "type": "article",
+    "cited_by_count": 272,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2075378929",
+    "doi": "10.1029/jb084ib12p06849",
+    "title": "Compressional wave velocities in rocks at high temperatures and pressures, critical thermal gradients, and crustal low‐velocity zones",
+    "year": 1979,
+    "type": "article",
+    "cited_by_count": 334,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2008574391",
+    "doi": "10.1016/j.ijsolstr.2009.01.023",
+    "title": "Tailorable thermal expansion hybrid structures",
+    "year": 2009,
+    "type": "article",
+    "cited_by_count": 127,
+    "open_access_url": "https://www.sciencedirect.com/science/article/pii/S0020768309000493/pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2104917585",
+    "doi": "10.1109/lgrs.2011.2119463",
+    "title": "The Thermal Expansion Component of Persistent Scatterer Interferometry Observations",
+    "year": 2011,
+    "type": "article",
+    "cited_by_count": 153,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2077800826",
+    "doi": "10.1016/0040-1951(79)90143-4",
+    "title": "Thermal expansion of rocks: some measurements at high pressure",
+    "year": 1979,
+    "type": "article",
+    "cited_by_count": 144,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2146040761",
+    "doi": "10.1016/0043-1648(67)90087-7",
+    "title": "The influence of thermal expansion on the friction and wear process",
+    "year": 1967,
+    "type": "article",
+    "cited_by_count": 115,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2014770827",
+    "doi": "10.1063/1.2970998",
+    "title": "Low-temperature negative thermal expansion of the antiperovskite manganese nitride Mn3CuN codoped with Ge and Si",
+    "year": 2008,
+    "type": "article",
+    "cited_by_count": 152,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2534934237",
+    "doi": "10.12989/sem.2016.60.2.313",
+    "title": "On thermal stability of plates with functionally graded coefficient of thermal expansion",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 117,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2098028265",
+    "doi": "10.1111/j.1151-2916.1987.tb05720.x",
+    "title": "Grain‐Boundary Microcracking Due to Thermal Expansion Anisotropy in Aluminum Titanate Ceramics",
+    "year": 1987,
+    "type": "article",
+    "cited_by_count": 121,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2095266797",
+    "doi": "10.1016/j.geomorph.2005.12.013",
+    "title": "Surface temperature differences between minerals in crystalline rocks: Implications for granular disaggregation of granites through thermal fatigue",
+    "year": 2006,
+    "type": "article",
+    "cited_by_count": 177,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1964744222",
+    "doi": "10.1115/1.3169150",
+    "title": "Thermal Expansion Coefficients and Thermal Stresses in an Aligned Short Fiber Composite With Application to a Short Carbon Fiber/Aluminum",
+    "year": 1985,
+    "type": "article",
+    "cited_by_count": 148,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2103436206",
+    "doi": "10.1016/j.cemconres.2013.05.016",
+    "title": "Moisture dependence of thermal expansion in cement-based materials at early ages",
+    "year": 2013,
+    "type": "article",
+    "cited_by_count": 84,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2114116867",
+    "doi": "10.1016/s0921-5093(99)00781-9",
+    "title": "Mechanical and thermal expansion behavior of laser deposited metal matrix composites of Invar and TiC",
+    "year": 2000,
+    "type": "article",
+    "cited_by_count": 102,
+    "open_access_url": "https://doi.org/10.1016/s0921-5093(99)00781-9",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2096212634",
+    "doi": "10.1002/2014je004729",
+    "title": "Grain‐scale thermoelastic stresses and spatiotemporal temperature gradients on airless bodies, implications for rock breakdown",
+    "year": 2015,
+    "type": "article",
+    "cited_by_count": 111,
+    "open_access_url": "https://arxiv.org/pdf/1501.05389",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2009128177",
+    "doi": "10.1111/j.1551-2916.2005.00214.x",
+    "title": "Thermal Expansion Kinetics: Method to Measure Permeability of Cementitious Materials, IV. Effect of Thermal Gradients and Viscoelasticity",
+    "year": 2005,
+    "type": "article",
+    "cited_by_count": 25,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1969907941",
+    "doi": "10.1089/cpt.2007.9994",
+    "title": "The Effect of Temperature Gradients on Stress Development during Cryopreservation via Vitrification",
+    "year": 2007,
+    "type": "article",
+    "cited_by_count": 84,
+    "open_access_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/2180391",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2024806736",
+    "doi": "10.1007/s11664-012-2083-9",
+    "title": "Thermal Fatigue and Waste Heat Recovery via Thermoelectrics",
+    "year": 2012,
+    "type": "article",
+    "cited_by_count": 61,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2014045160",
+    "doi": "10.1002/polb.21480",
+    "title": "Effect of thermal expansion on shape memory behavior of polyurethane and its nanocomposites",
+    "year": 2008,
+    "type": "article",
+    "cited_by_count": 74,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1616056858",
+    "doi": "10.1029/2004jb003094",
+    "title": "Thermal expansion of Mg2SiO4 ringwoodite at high pressures",
+    "year": 2004,
+    "type": "article",
+    "cited_by_count": 54,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2089357072",
+    "doi": "10.1179/096797802225003956",
+    "title": "Thermal stresses in planar solid oxide fuel cells due to thermal expansion differences",
+    "year": 2002,
+    "type": "article",
+    "cited_by_count": 81,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4362577635",
+    "doi": "10.1002/lpor.202200884",
+    "title": "Eu 3+ ‐Activated Single‐Band Ratiometric Nanothermometry by Lattice Negative Thermal Expansion",
+    "year": 2023,
+    "type": "article",
+    "cited_by_count": 79,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2606486169",
+    "doi": "10.1016/j.actamat.2017.03.081",
+    "title": "Response of molten silicate infiltrated Gd2Zr2O7 thermal barrier coatings to temperature gradients",
+    "year": 2017,
+    "type": "article",
+    "cited_by_count": 62,
+    "open_access_url": "https://doi.org/10.1016/j.actamat.2017.03.081",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2023861058",
+    "doi": "10.1016/j.cemconcomp.2006.09.002",
+    "title": "Numerical tests of thermal cracking induced by temperature gradient in cement-based composites under thermal loads",
+    "year": 2006,
+    "type": "article",
+    "cited_by_count": 74,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2083224586",
+    "doi": "10.1007/s002490050087",
+    "title": "Vibrational frequency shifts as a probe of hydrogen bonds: thermal expansion and glass transition of myoglobin in mixed solvents",
+    "year": 1997,
+    "type": "article",
+    "cited_by_count": 93,
+    "open_access_url": "https://stars.library.ucf.edu/facultybib1990/3074",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3128963018",
+    "doi": "10.1016/j.compositesb.2021.108678",
+    "title": "Near-zero thermal expansion of ZrW2O8/Al–Si composites with three dimensional interpenetrating network structure",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 84,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4310022664",
+    "doi": "10.1002/adma.202208562",
+    "title": "Lightweight 3D Graphene Metamaterials with Tunable Negative Thermal Expansion",
+    "year": 2022,
+    "type": "article",
+    "cited_by_count": 55,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3032167753",
+    "doi": "10.1016/j.matchar.2020.110409",
+    "title": "Microstructures and unique low thermal expansion of Invar 36 alloy fabricated by selective laser melting",
+    "year": 2020,
+    "type": "article",
+    "cited_by_count": 76,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2072843488",
+    "doi": "10.1016/j.marstruc.2004.12.002",
+    "title": "Thermal expansion of pipe-in-pipe systems",
+    "year": 2004,
+    "type": "article",
+    "cited_by_count": 35,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2953037853",
+    "doi": "10.1063/1.4932067",
+    "title": "Giant negative thermal expansion covering room temperature in nanocrystalline GaNxMn3",
+    "year": 2015,
+    "type": "article",
+    "cited_by_count": 48,
+    "open_access_url": "https://arxiv.org/pdf/1508.01063",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2001899688",
+    "doi": "10.1361/10599630420380",
+    "title": "The Effect of a High Thermal Gradient on Sintering and Stiffening in the Top Coat of a Thermal Barrier Coating System",
+    "year": 2004,
+    "type": "article",
+    "cited_by_count": 67,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2964461490",
+    "doi": "10.1016/j.compositesb.2019.107224",
+    "title": "Lattice structures as thermoelastic strain gradient metamaterials: Evidence from full-field simulations and applications to functionally step-wise-graded beams",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 61,
+    "open_access_url": "https://research.aalto.fi/en/publications/3636f404-3ea5-4b41-af07-fa7d6db8d339",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2090130467",
+    "doi": "10.1029/gl017i006p00689",
+    "title": "Thermal expansion of mantle minerals at high pressures—A theoretical study",
+    "year": 1990,
+    "type": "article",
+    "cited_by_count": 41,
+    "open_access_url": "https://discovery.ucl.ac.uk/99140/1/GL017i006p00689.pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2136432322",
+    "doi": "10.1109/61.4309",
+    "title": "Theoretical model for temperature gradients within bare overhead conductors",
+    "year": 1988,
+    "type": "article",
+    "cited_by_count": 41,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2014689319",
+    "doi": "10.1063/1.93880",
+    "title": "Time-resolved x-ray diffraction measurement of the temperature and temperature gradients in silicon during pulsed laser annealing",
+    "year": 1983,
+    "type": "article",
+    "cited_by_count": 76,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2157950397",
+    "doi": "10.1016/j.pepi.2003.12.016",
+    "title": "Temperature gradients and evaluation of thermoelastic properties in the synchrotron-based laser-heated diamond cell",
+    "year": 2004,
+    "type": "article",
+    "cited_by_count": 55,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2087743007",
+    "doi": "10.1007/bf00357864",
+    "title": "Measurement of crack volume due to thermal expansion anisotropy in aluminium titanate ceramics",
+    "year": 1996,
+    "type": "article",
+    "cited_by_count": 52,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2024908865",
+    "doi": "10.1016/0011-2275(64)90002-5",
+    "title": "Application of a variable transformer to the study of low temperature thermal expansion",
+    "year": 1964,
+    "type": "article",
+    "cited_by_count": 42,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1986700621",
+    "doi": "10.1063/1.1789629",
+    "title": "Effect of temperature gradient on simultaneously experimental determination of thermal expansion coefficients and elastic modulus of thin film materials",
+    "year": 2004,
+    "type": "article",
+    "cited_by_count": 17,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2009911482",
+    "doi": "10.1134/s1063783410010294",
+    "title": "Investigation of thermal expansion, phase diagrams, and barocaloric effect in the (NH4)2WO2F4 and (NH4)2MoO2F4 oxyfluorides",
+    "year": 2010,
+    "type": "article",
+    "cited_by_count": 55,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2563925505",
+    "doi": "10.1063/1.4972234",
+    "title": "Colossal negative thermal expansion with an extended temperature interval covering room temperature in fine-powdered Mn0.98CoGe",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 58,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2113366365",
+    "doi": "10.1016/j.dental.2012.09.004",
+    "title": "Simultaneous determination of polymerization shrinkage, exotherm and thermal expansion coefficient for dental resin-composites",
+    "year": 2012,
+    "type": "article",
+    "cited_by_count": 52,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2051478071",
+    "doi": "10.1016/j.compscitech.2008.09.032",
+    "title": "ZrW2O8-containing composites with near-zero coefficient of thermal expansion fabricated by various methods: Comparison and optimization",
+    "year": 2008,
+    "type": "article",
+    "cited_by_count": 59,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1963586416",
+    "doi": "10.1063/1.2988111",
+    "title": "Micron-scale measurements of the coefficient of thermal expansion by time-domain probe beam deflection",
+    "year": 2008,
+    "type": "article",
+    "cited_by_count": 51,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1985560410",
+    "doi": "10.1007/bf00578804",
+    "title": "Temperature gradients at the core-mantle interface",
+    "year": 1973,
+    "type": "article",
+    "cited_by_count": 27,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1985465185",
+    "doi": "10.1088/0957-0233/9/9/025",
+    "title": "Measurement of thermal expansion coefficients using an in-fibre Bragg-grating sensor",
+    "year": 1998,
+    "type": "article",
+    "cited_by_count": 35,
+    "open_access_url": "https://iopscience.iop.org/article/10.1088/0957-0233/9/9/025/pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4405780327",
+    "doi": "10.1016/j.est.2024.114982",
+    "title": "Selection of phase change material under uncertainty for waste heat recovery in diesel engine generator",
+    "year": 2024,
+    "type": "article",
+    "cited_by_count": 55,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2068076796",
+    "doi": "10.1063/1.3157199",
+    "title": "On the estimation of thermal strains developed during oxide growth",
+    "year": 2009,
+    "type": "article",
+    "cited_by_count": 30,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2019175318",
+    "doi": "10.1007/s10853-013-7421-7",
+    "title": "The thermal expansion coefficient as a key design parameter for thermoelectric materials and its relationship to processing-dependent bloating",
+    "year": 2013,
+    "type": "article",
+    "cited_by_count": 53,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2077083908",
+    "doi": "10.1115/1.3171855",
+    "title": "Stresses and Deformations in Composite Tubes Due to a Circumferential Temperature Gradient",
+    "year": 1986,
+    "type": "article",
+    "cited_by_count": 33,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2056835233",
+    "doi": "10.1016/s0379-7112(00)00024-2",
+    "title": "Structural behaviour in fire compartment under different heating regimes — Part 1 (slab thermal gradients)",
+    "year": 2000,
+    "type": "article",
+    "cited_by_count": 38,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2145674580",
+    "doi": "10.1016/j.compstruct.2012.08.045",
+    "title": "An assessment of a higher order theory for composite laminates subjected to thermal gradient",
+    "year": 2012,
+    "type": "article",
+    "cited_by_count": 33,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1979197755",
+    "doi": "10.1016/j.pepi.2008.08.002",
+    "title": "Thermal expansion of forsterite at high pressures determined by in situ X-ray diffraction: The adiabatic geotherm in the upper mantle",
+    "year": 2008,
+    "type": "article",
+    "cited_by_count": 52,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1969100179",
+    "doi": "10.1063/1.1149706",
+    "title": "Thermally actuated interferometric sensors based on the thermal expansion of transparent elastomeric media",
+    "year": 1999,
+    "type": "article",
+    "cited_by_count": 38,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1995995582",
+    "doi": "10.1007/s10765-012-1248-3",
+    "title": "Piezoelectric Behavior of an Inhomogeneous Hollow Cylinder with Thermal Gradient",
+    "year": 2012,
+    "type": "article",
+    "cited_by_count": 24,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3162767318",
+    "doi": "10.1038/s41535-021-00348-z",
+    "title": "Negative thermal expansion in YbMn2Ge2 induced by the dual effect of magnetism and valence transition",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 34,
+    "open_access_url": "https://www.nature.com/articles/s41535-021-00348-z.pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1989113071",
+    "doi": "10.1111/j.1151-2916.1982.tb10398.x",
+    "title": "Crack Propagation in Irradiated B 4 C Induced by Swelling and Thermal Gradients",
+    "year": 1982,
+    "type": "article",
+    "cited_by_count": 24,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1993766894",
+    "doi": "10.1016/0010-4361(95)90913-k",
+    "title": "Effect of matrix cracking and interface sliding on the thermal expansion of fibre-reinforced composites",
+    "year": 1995,
+    "type": "article",
+    "cited_by_count": 34,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4293769378",
+    "doi": "10.3390/molecules27165078",
+    "title": "Anisotropic Thermal Expansion and Electronic Structure of LiInSe2",
+    "year": 2022,
+    "type": "article",
+    "cited_by_count": 22,
+    "open_access_url": "https://www.mdpi.com/1420-3049/27/16/5078/pdf?version=1660125391",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2045138851",
+    "doi": "10.1063/1.1542477",
+    "title": "Low-temperature thermal expansion of pure and inert-gas-doped fullerite C60",
+    "year": 2003,
+    "type": "article",
+    "cited_by_count": 33,
+    "open_access_url": "https://arxiv.org/pdf/cond-mat/0212578",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3132202115",
+    "doi": "10.1016/j.matdes.2021.109591",
+    "title": "Design of negative/nearly zero thermal expansion behavior over a wide temperature range by multi-phase composite",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 44,
+    "open_access_url": "https://www.sciencedirect.com/science/article/pii/S0264127521001441/pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2884360897",
+    "doi": "10.1063/1.5038860",
+    "title": "Giant negative thermal expansion in Fe-Mn-Ga magnetic shape memory alloys",
+    "year": 2018,
+    "type": "article",
+    "cited_by_count": 34,
+    "open_access_url": "https://www.osti.gov/servlets/purl/1480852",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4399806285",
+    "doi": "10.1002/lpor.202400151",
+    "title": "Thermal Enhancement of Er3+ NIR‐II Luminescence by Ho3+‐Mediated Energy‐Trapping in Negative Thermal Expansion Nanocrystals",
+    "year": 2024,
+    "type": "article",
+    "cited_by_count": 47,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2049429680",
+    "doi": "10.1016/s0020-7683(96)00207-7",
+    "title": "Failure criterion for moisture-sensitive plastic packages of integrated circuit (IC) devices: Application of von Kármán's equations with consideration of thermoelastic strains",
+    "year": 1997,
+    "type": "article",
+    "cited_by_count": 30,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2141291567",
+    "doi": "10.1039/c4cp05064a",
+    "title": "Abnormal thermal expansion properties of cubic NaZn 13 -type La(Fe,Al) 13 compounds",
+    "year": 2015,
+    "type": "article",
+    "cited_by_count": 41,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2009851303",
+    "doi": "10.1016/j.engstruct.2010.01.024",
+    "title": "Generic modelling of composite steel–concrete slabs subjected to shrinkage, creep and thermal strains including partial interaction",
+    "year": 2010,
+    "type": "article",
+    "cited_by_count": 51,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2083297862",
+    "doi": "10.1016/s0167-7012(03)00138-6",
+    "title": "A high-pressure thermal gradient block for investigating microbial activity in multiple deep-sea samples",
+    "year": 2003,
+    "type": "article",
+    "cited_by_count": 36,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3020325151",
+    "doi": "10.1107/s160057672000415x",
+    "title": "A thermal-gradient approach to variable-temperature measurements resolved in space",
+    "year": 2020,
+    "type": "article",
+    "cited_by_count": 25,
+    "open_access_url": "https://journals.iucr.org/j/issues/2020/03/00/te5056/te5056.pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1769968489",
+    "doi": "10.1007/s11666-015-0254-y",
+    "title": "Cycling Performance of a Columnar-Structured Complex Perovskite in a Temperature Gradient Test",
+    "year": 2015,
+    "type": "article",
+    "cited_by_count": 29,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2127307517",
+    "doi": "10.1111/jace.12580",
+    "title": "Temperature Gradient Introduced Ferroelectric Self‐Poling in BiFeO 3 Ceramics",
+    "year": 2013,
+    "type": "article",
+    "cited_by_count": 28,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3039639294",
+    "doi": "10.1007/s10704-020-00461-3",
+    "title": "Crack channelling mechanisms in brittle coating systems under moisture or temperature gradients",
+    "year": 2020,
+    "type": "article",
+    "cited_by_count": 32,
+    "open_access_url": "https://link.springer.com/content/pdf/10.1007/s10704-020-00461-3.pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2152824401",
+    "doi": "10.1119/1.1987125",
+    "title": "Thermal Expansion Corrections when ΔT Is Not Small",
+    "year": 1973,
+    "type": "article",
+    "cited_by_count": 3,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2325337542",
+    "doi": "10.1016/j.jngse.2016.03.091",
+    "title": "Sealed annulus thermal expansion pressure mechanical calculation method and application among multiple packers in HPHT gas wells",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 47,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2084016873",
+    "doi": "10.1063/1.1879072",
+    "title": "Quantitative analysis of damage in an octahydro-1,3,5,7-tetranitro-1,3,5,7-tetrazonic-based composite explosive subjected to a linear thermal gradient",
+    "year": 2005,
+    "type": "article",
+    "cited_by_count": 35,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2963745415",
+    "doi": "10.1016/j.compositesb.2019.107217",
+    "title": "The influence of temperature gradient thermal shock cycles on the interlaminar shear strength of fibre metal laminate composite determined by the short beam test",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 50,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2060797290",
+    "doi": "10.1063/1.2227524",
+    "title": "Bidirectional thermal expansion measurement for evaluating Poisson’s ratio of thin films",
+    "year": 2006,
+    "type": "article",
+    "cited_by_count": 18,
+    "open_access_url": "https://tohoku.repo.nii.ac.jp/record/43572/files/ApplPhysLett_89_031913.pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1973752861",
+    "doi": "10.1063/1.3186057",
+    "title": "Influence of thermal strains on the electrocaloric and dielectric properties of ferroelectric nanoshells",
+    "year": 2009,
+    "type": "article",
+    "cited_by_count": 20,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1894834307",
+    "doi": "10.1016/j.jpowsour.2015.04.104",
+    "title": "Investigating the effect of thermal gradients on stress in solid oxide fuel cell anodes using combined synchrotron radiation and thermal imaging",
+    "year": 2015,
+    "type": "article",
+    "cited_by_count": 41,
+    "open_access_url": "https://doi.org/10.1016/j.jpowsour.2015.04.104",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2808762476",
+    "doi": "10.3168/jds.2017-14283",
+    "title": "Strategic application of convective cooling to maximize the thermal gradient and reduce heat stress response in dairy cows",
+    "year": 2018,
+    "type": "article",
+    "cited_by_count": 36,
+    "open_access_url": "http://www.journalofdairyscience.org/article/S0022030218305903/pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2979547235",
+    "doi": "10.1063/1.5094443",
+    "title": "Measuring nanoscale thermal gradients in suspended MoS2 with STEM-EELS",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 17,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3183724227",
+    "doi": "10.31635/ccschem.021.202101125",
+    "title": "Bionic Thermosensation Inspired Temperature Gradient Sensor Based on Covalent Organic Framework Nanofluidic Membrane with Ultrahigh Sensitivity",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 38,
+    "open_access_url": "https://doi.org/10.31635/ccschem.021.202101125",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3099601621",
+    "title": "Low-temperature thermal expansion of pure and inert gas-doped fullerite C₆₀",
+    "year": 2003,
+    "type": "article",
+    "cited_by_count": 25,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1980402964",
+    "doi": "10.1063/1.1658596",
+    "title": "Sensitive Dilatometer for Low Temperatures and the Thermal Expansion of Copper below 10 K",
+    "year": 1970,
+    "type": "article",
+    "cited_by_count": 25,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2090393458",
+    "doi": "10.1179/1066785712z.00000000094",
+    "title": "Development of low thermal expansion Sc2(WO4)3containing composites",
+    "year": 2012,
+    "type": "article",
+    "cited_by_count": 20,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2045852611",
+    "doi": "10.1016/j.actamat.2013.03.031",
+    "title": "New p- and n-type skutterudites with ZT>1 and nearly identical thermal expansion and mechanical properties",
+    "year": 2013,
+    "type": "article",
+    "cited_by_count": 31,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2147255001",
+    "doi": "10.1111/j.1551-2916.2011.04447.x",
+    "title": "Optimization of Thermal Protection Systems Utilizing Sandwich Structures with Low Coefficient of Thermal Expansion Lattice Hot Faces",
+    "year": 2011,
+    "type": "article",
+    "cited_by_count": 33,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1213495560",
+    "doi": "10.60910/g7wm-shgr",
+    "title": "Determination of thermal expansion of green wood and the accuracy of tree stem diameter variation measurements",
+    "year": 2024,
+    "type": "article",
+    "cited_by_count": 26,
+    "open_access_url": "http://hdl.handle.net/10138/578298",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2127833649",
+    "doi": "10.1088/0953-2048/28/7/075012",
+    "title": "Dendritic flux avalanches and the accompanied thermal strain in type-II superconducting films: effect of magnetic field ramp rate",
+    "year": 2015,
+    "type": "article",
+    "cited_by_count": 39,
+    "open_access_url": "https://iopscience.iop.org/article/10.1088/0953-2048/28/7/075012/pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3152120936",
+    "doi": "10.1016/j.epsl.2021.116884",
+    "title": "Thermal expansion of liquid Fe-S alloy at high pressure",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 18,
+    "open_access_url": "https://uca.hal.science/hal-03184365v1/document",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4380887016",
+    "doi": "10.1002/nme.7304",
+    "title": "Topology optimization of thermo‐elastic structures with temperature‐dependent material properties under large temperature gradient",
+    "year": 2023,
+    "type": "article",
+    "cited_by_count": 29,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2020864402",
+    "doi": "10.1016/j.ijmecsci.2008.04.004",
+    "title": "Thermoelastic lateral-torsional buckling of fixed slender beams under linear temperature gradient",
+    "year": 2008,
+    "type": "article",
+    "cited_by_count": 24,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2892192184",
+    "doi": "10.1088/1361-6528/aae368",
+    "title": "Modeling nanoscale temperature gradients and conductivity evolution in pulsed light sintering of silver nanowire networks",
+    "year": 2018,
+    "type": "article",
+    "cited_by_count": 26,
+    "open_access_url": "https://iopscience.iop.org/article/10.1088/1361-6528/aae368/pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4361297880",
+    "doi": "10.1016/j.optlastec.2023.109386",
+    "title": "Control of thermal strain and residual stress in pulsed-wave direct laser deposition",
+    "year": 2023,
+    "type": "article",
+    "cited_by_count": 21,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2056285461",
+    "doi": "10.1140/epjd/e2013-30458-2",
+    "title": "Design of an optical reference cavity with low thermal noise limit and flexible thermal expansion properties",
+    "year": 2013,
+    "type": "article",
+    "cited_by_count": 24,
+    "open_access_url": "https://arxiv.org/pdf/1204.1209",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2894680271",
+    "doi": "10.1021/acs.jctc.8b00460",
+    "title": "Thermal Gradient Approach for the Quasi-harmonic Approximation and Its Application to Improved Treatment of Anisotropic Expansion",
+    "year": 2018,
+    "type": "article",
+    "cited_by_count": 23,
+    "open_access_url": "https://arxiv.org/pdf/1712.00936",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2409834122",
+    "title": "Can thermal expansion differences between cryopreserved tissue and cryoprotective agents alone cause cracking?",
+    "year": 2010,
+    "type": "article",
+    "cited_by_count": 21,
+    "open_access_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/3377493",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4225162089",
+    "doi": "10.1016/j.ijsolstr.2022.111657",
+    "title": "Biot’s Variational Method to determine the thermal strain in layered glazings",
+    "year": 2022,
+    "type": "article",
+    "cited_by_count": 17,
+    "open_access_url": "https://doi.org/10.1016/j.ijsolstr.2022.111657",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2062227984",
+    "doi": "10.1016/j.vacuum.2013.10.018",
+    "title": "Influence of heat treatment temperature on microstructure and thermal expansion properties of 2D carbon/carbon composites",
+    "year": 2013,
+    "type": "article",
+    "cited_by_count": 21,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2069623182",
+    "doi": "10.1063/1.339162",
+    "title": "Elastic calculation of the thermal strains and stresses of the multilayered plate",
+    "year": 1987,
+    "type": "article",
+    "cited_by_count": 12,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W7213563522",
+    "doi": "10.1016/j.cemconres.2026.108410",
+    "title": "Deformation of cement-based materials under drying with thermal cycling: Mechanisms governed by C-S-H solid-moisture interactions",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.1016/j.cemconres.2026.108410",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7213459225",
+    "doi": "10.1016/j.conbuildmat.2026.148205",
+    "title": "Cooling-induced thermal stress evolution in exothermic-curing anchoring adhesives: Experimental characterization and numerical simulation",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.1016/j.conbuildmat.2026.148205",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7213469587",
+    "doi": "10.1080/15376494.2026.2717649",
+    "title": "The effect of the triple periodic minimum surface materials on the thermomechanical buckling of sandwich plates with hybrid face layers",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.6084/m9.figshare.33899536",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7212305818",
+    "doi": "10.1088/1402-4896/aea64d",
+    "title": "Mechanistic insights into thermomechanical stress amplification in heterogeneous dielectric nanopillar metasurfaces under pulsed laser excitation",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.1088/1402-4896/aea64d",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7211953966",
+    "doi": "10.3390/ma19183817",
+    "title": "Thermal Stress and Temperature Analysis of Integrated Protection-Thermal Control Multilayer Films Under Laser Irradiation in Alternating High and Low Temperatures",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.3390/ma19183817",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7208809860",
+    "doi": "10.5281/zenodo.22380346",
+    "title": "Oscillating Earth Geodynamics: How LLSVP-Driven Thermoelectric Cycles Can Solve Tectonic and Geomagnetic Problems",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.5281/zenodo.22380346",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7208820853",
+    "doi": "10.5281/zenodo.22380345",
+    "title": "Oscillating Earth Geodynamics: How LLSVP-Driven Thermoelectric Cycles Can Solve Tectonic and Geomagnetic Problems",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.5281/zenodo.22380345",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7207694573",
+    "doi": "10.1177/09544062261484691",
+    "title": "A phase field model for thermoelastic fracture in hyperelastic solids under finite deformation",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7210288381",
+    "doi": "10.1016/j.mtphys.2026.102221",
+    "title": "Full-temperature-range thermoelectric materials for sustainable waste-heat recovery: Temperature matching, transport engineering and device integration",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7211907776",
+    "doi": "10.1016/j.jallcom.2026.190949",
+    "title": "The key role of PAN-derived carbon-rich regions in achieving near zero expansion of 3D printed SiOC metamaterials",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7212996557",
+    "doi": "10.1063/5.0352637",
+    "title": "Research on in situ temperature measurement and thermal stress simulation of proton exchange membrane fuel cell (PEMFC) based on thin-film thermocouples",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7204758508",
+    "doi": "10.1117/1.jatis.12.3.035003",
+    "title": "Opto-mechanical design and analysis of the mirror assembly for the EUV imager onboard the solar polar-orbit observatory",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7204783553",
+    "doi": "10.3390/pr14172813",
+    "title": "Fluid–Thermal Characteristics and Thermo-Mechanical Response of a Wide-Temperature-Range Gas-Mixing System for a High-Altitude Test Chamber",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.3390/pr14172813",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7204529223",
+    "doi": "10.1016/j.est.2026.124350",
+    "title": "Thermo-mechanical behavior of stainless-clad bimetallic steel-concrete thermal energy storage unit during initial charging",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.1016/j.est.2026.124350",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7204554348",
+    "doi": "10.1007/s00170-026-18972-z",
+    "title": "Experimental, statistical, and numerical investigation and comparison of bending angle and longitudinal distortion in AA6061 and magnesium M1A alloy sheets using Box-Behnken design in multi-scan laser bending process",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7204454673",
+    "doi": "10.1007/s00484-026-03307-0",
+    "title": "Heat stress responses and thermoregulatory dynamics in Murrah buffalo calves assessed by infrared thermography",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7204235323",
+    "doi": "10.1016/j.jmst.2026.08.033",
+    "title": "Constructing a cross-scale structure via self-doping for high-performance n-type PbTe thermoelectrics",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7204143769",
+    "doi": "10.1016/j.ijheatmasstransfer.2026.129467",
+    "title": "Performance evaluation of a multifunctional flexible composite for synergistic thermo-mechanical-vibrational management in battery modules",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7204107703",
+    "doi": "10.1177/09544062261477241",
+    "title": "Nonlinear isogeometric formulation for coupled thermo-mechanical behavior of multilayer cylindrical shell junctions",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7203747866",
+    "doi": "10.20517/microstructures.2026.53",
+    "title": "Residual stress mapping of additively manufactured Inconel 718 via synchrotron X-ray diffraction",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.20517/microstructures.2026.53",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7203748935",
+    "doi": "10.1016/j.cemconcomp.2026.106811",
+    "title": "Impact of testing methods on the evaluation of load-induced thermal strain in concrete at elevated temperatures",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7203683765",
+    "doi": "10.1002/admt.71180",
+    "title": "Lacrimal Gland‐Inspired Active Replenishing Slippery Surface for Robust Anti‐Pollution Optical Windows",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7203454023",
+    "doi": "10.1016/j.icheatmasstransfer.2026.112273",
+    "title": "Theoretical analysis method of fluid-thermal-structural coupling and its influence mechanism analysis for double wall turbine blade",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7202355920",
+    "doi": "10.20291/2079-0392-2026-2-63-68",
+    "title": "Математическая модель расслоения изоляции ТЭД локомотивов",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7202379884",
+    "doi": "10.1007/s00603-026-05821-4",
+    "title": "A Multi-mechanism Coupled Framework for Thermal Spalling in Coal: Thermal Fracture Mechanisms and Physicochemical–Structural–Mechanical Interactions",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7202292446",
+    "doi": "10.1186/s40069-026-00957-7",
+    "title": "Field Performance of Emerging Concrete Technologies: CNT-Based Cementitious Strain Sensors and PCM Covers for Reducing Early-Age Cracking Potential",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://link.springer.com/content/pdf/10.1186/s40069-026-00957-7.pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7202083828",
+    "doi": "10.1063/5.0335266",
+    "title": "Electro-thermal and mechanical simulations of laser annealing perovskite films",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://hal.science/hal-05741442",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7172539069",
+    "doi": "10.1016/j.geoen.2026.214722",
+    "title": "Study on the evolution of microscopic damage in the cement sheath under thermal-mechanical cyclic stress",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7172555822",
+    "doi": "10.1016/j.xphs.2026.104453",
+    "title": "Understanding vial strain during freezing of aqueous solutions–Part I: A combined approach of experimental strain gauge measurements and computer simulations",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7172385594",
+    "doi": "10.3390/en19153657",
+    "title": "Scaling Laws and Thermodynamic Limits of Modular Thermoelastic Energy Harvesting from Low-Grade Heat",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://www.mdpi.com/1996-1073/19/15/3657/pdf?version=1785836042",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7172387425",
+    "doi": "10.5281/zenodo.21791556",
+    "title": "Steady-State Thermal Analysis and Structural Stress Evaluation of IC Engine Piston for Five Engineering Materials Using ANSYS Finite Element Analysis: Temperature Distribution, Thermal Stress, and Design Optimisation",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.5281/zenodo.21791556",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7172412191",
+    "doi": "10.5281/zenodo.21791557",
+    "title": "Steady-State Thermal Analysis and Structural Stress Evaluation of IC Engine Piston for Five Engineering Materials Using ANSYS Finite Element Analysis: Temperature Distribution, Thermal Stress, and Design Optimisation",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.5281/zenodo.21791557",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7172419778",
+    "doi": "10.1016/j.ast.2026.113381",
+    "title": "Thermal control with digital twins for dimensional stability in CubeSat payloads",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.1016/j.ast.2026.113381",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7172287620",
+    "doi": "10.1016/j.net.2026.104627",
+    "title": "Analysis of low-level alarm for a lubricating oil tank based on flow characteristics and temperature in a nuclear power plant",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.1016/j.net.2026.104627",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7172299104",
+    "doi": "10.2355/isijinternational.isijint-2026-166",
+    "title": "Estimation of Melt Flow Properties from Thermal Analysis Data Using Data Assimilation",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://www.jstage.jst.go.jp/article/isijinternational/advpub/0/advpub_ISIJINT-2026-166/_pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4416912428",
+    "doi": "10.1007/s12633-026-03773-6",
+    "title": "Machine Learning Approach Toward Near-Homogeneous Properties of Eutectic Aluminum Silicon Alloy Fabricated by a Wire Arc Direct Energy Deposition",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://www.researchsquare.com/article/rs-7655300/latest.pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7196970968",
+    "doi": "10.1007/s12206-026-0718-7",
+    "title": "Design of discretely assembled octahedral metamaterials with tunable unidirectional coefficient of thermal expansion",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7212229155",
+    "doi": "10.13225/j.cnki.jccs.ge26.0673",
+    "title": "Characteristics and controlling factors of seepage and heat transfer of carbonate thermal reservoir water/supercritical CO2 under temperature and pressure conditions",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7171977803",
+    "doi": "10.1051/0004-6361/202660790",
+    "title": "PALEOS: Multiphase equations of state and mass–radius relations for exoplanet interiors",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.1051/0004-6361/202660790",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7171377670",
+    "doi": "10.1007/s11440-026-03172-6",
+    "title": "Path-dependent thermoplastic solution for wellbore stress analysis",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://link.springer.com/content/pdf/10.1007/s11440-026-03172-6.pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7171420291",
+    "doi": "10.3389/fchem.2026.1888564",
+    "title": "Thermal-field coupling toward efficient water electrolysis",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://www.frontiersin.org/journals/chemistry/articles/10.3389/fchem.2026.1888564/pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7170548359",
+    "doi": "10.5281/zenodo.21523720",
+    "title": "Lunar Regolith Cement Mixer (LRCM) A Governed ISRU Construction-Material Processor for Lunar and Martian Surface Operations V10",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.5281/zenodo.21523720",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7170617262",
+    "doi": "10.1186/s41313-026-00084-6",
+    "title": "E Transient coupled thermomechanical analysis of the crack initiation mechanism in core-bonding multiphase materials during cooling",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://link.springer.com/content/pdf/10.1186/s41313-026-00084-6.pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7170724689",
+    "doi": "10.1007/s12541-026-01581-x",
+    "title": "Minimizing Residual Stresses and Deformation in the Circumferential Welds of Large-Capacity Offshore Wind Turbine Tower Flanges: Control of Heat Input Parameters",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7169773445",
+    "doi": "10.1016/j.optlastec.2026.115992",
+    "title": "Synergistic strengthening of laser pre-melted Y2O3 and electroplated Ni on microstructure and properties of TC4/304 laser-welded joint",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7168250358",
+    "doi": "10.1016/j.compositesa.2026.110089",
+    "title": "Influence of processing conditions on internal stresses, crack formation, and cure kinetics in frontally polymerized composites",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://www.sciencedirect.com/science/article/pii/S1359835X26005361/pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7168265324",
+    "doi": "10.1007/s11665-026-14512-8",
+    "title": "Numerical Validation of Thermal Expansivity of Al6061 Based Hybrid Nano Metal Matrix Composite Filled with Nanoparticles of Ni and Cr",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7168297907",
+    "doi": "10.1029/2026gl123409",
+    "title": "Latitudinal Discrepancy Between Thermospheric Density and Temperature Associated With Neutral Composition Effect",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.1029/2026gl123409",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7168126264",
+    "doi": "10.1016/j.icheatmasstransfer.2026.111967",
+    "title": "Thermo–mechanical response and key parameter sensitivity of skin tissue under pulsed laser irradiation: A numerical study based on the Dual-Phase-Lag model",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7168127220",
+    "doi": "10.54254/2755-2721/2026.ad35186",
+    "title": "Thermal-Mechanical Analysis of Residual Stress and Deformation in 6082 Aluminum Alloy Welded Joints",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://ace.ewapub.com/article/view/35186.pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4389089495",
+    "doi": "10.1007/s43207-023-00326-0",
+    "title": "Enhancement of thermal-electrical like response by flexoelectric effect in sodium bismuth titanate bilayer ceramics with compositional inhomogeneity",
+    "year": 2023,
+    "type": "article",
+    "cited_by_count": 4,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-mp12"
+    ]
+   },
+   {
+    "openalex_id": "W2472271340",
+    "doi": "10.1039/c6cp03082c",
+    "title": "The rich phase behavior of the thermopolarization of water: from a reversal in the polarization, to enhancement near criticality conditions",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 27,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-mp12"
+    ]
+   },
+   {
+    "openalex_id": "W3007580565",
+    "doi": "10.1002/adfm.201910371",
+    "title": "Thermally Induced Flexo‐Type Effects in Nanopatterned Multiferroic Layers",
+    "year": 2020,
+    "type": "article",
+    "cited_by_count": 18,
+    "open_access_url": "http://hdl.handle.net/2078.1/230149",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-mp12"
+    ]
+   },
+   {
+    "openalex_id": "W7204247376",
+    "doi": "10.1063/5.0334544",
+    "title": "Flexoelectricity in ripple-engineered monolayer MoS2",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.1063/5.0334544",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-mp12"
+    ]
+   },
+   {
+    "openalex_id": "W7152680520",
+    "doi": "10.1038/s41528-026-00575-z",
+    "title": "Flexoelectricity enables piezoelectric single crystals to be self-poled",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://www.nature.com/articles/s41528-026-00575-z_reference.pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-mp12"
+    ]
+   },
+   {
+    "openalex_id": "W2536169408",
+    "doi": "10.1002/pssb.201600226",
+    "title": "Static flexural modes and piezoelectricity in 2D and layered crystals",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 7,
+    "open_access_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/pssb.201600226",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-mp12"
+    ]
+   },
+   {
+    "openalex_id": "W4401953500",
+    "doi": "10.1002/smll.202405197",
+    "title": "Harvesting Magneto‐Acoustic Waves Using Magnetic 2D Chromium Telluride (CrTe 3 )",
+    "year": 2024,
+    "type": "article",
+    "cited_by_count": 3,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-mp12"
+    ]
+   },
+   {
+    "openalex_id": "W2979881411",
+    "doi": "10.1115/1.4044680",
+    "title": "Special Issue: Architectured Materials Mechanics",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-mp12"
+    ]
+   }
+  ],
+  "screening_status": "not-reviewed",
+  "result": "inconclusive",
+  "notes": "Automated route-search-v1 index queries from data/canonical/searches/plans/p-a093d7ecc5.yaml; the result list is frozen for a reviewer and nothing here has been read for a qualifying demonstration. Planned runs NOT run in this bundle (engine unavailable): search:2026-09-21-p-a093d7ecc5/s2-dm1 (semantic-scholar); search:2026-09-21-p-a093d7ecc5/s2-mp12 (semantic-scholar); search:2026-09-21-p-a093d7ecc5/s2-wc (semantic-scholar); search:2026-09-21-p-a093d7ecc5/s2-dp (semantic-scholar)."
  }
 ]

@@ -119,6 +119,7 @@
 - id: phenomenon:thermal-expansion
   type: phenomenon
   name: Thermal expansion
+  aliases: [thermal strain, thermoelastic strain, thermal expansion gradient]
   domain: thermodynamics
   year_first_reported: 1700
   condition_tags: []
@@ -188,6 +189,7 @@
 - id: phenomenon:flexoelectric-effect
   type: phenomenon
   name: Flexoelectric effect
+  aliases: [flexoelectricity, flexoelectric, strain-gradient polarization, thermopolarization]
   domain: condensed-matter
   year_first_reported: 1964
   condition_tags: [state-solid, medium-dielectric]

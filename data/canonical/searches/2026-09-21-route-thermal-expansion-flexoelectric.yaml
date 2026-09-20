@@ -1,0 +1,244 @@
+# Loop-3 pass 24: the reviewed ROUTE search for temperature gradient → thermal expansion → flexoelectric effect →
+# electrical work (p-a093d7ecc5), an honest partial. The 2026 thermopolarization preprint observes the whole
+# composition as a polarization and its displacement current, with no load — recorded sink-variant, the route's
+# output being electrical work. OpenAlex runs and two chases recorded; Google Scholar was captcha-blocked this
+# sitting and Semantic Scholar is keyless.
+- id: search:2026-09-21-p-a093d7ecc5-partial
+  target:
+    kind: path
+    path: p-a093d7ecc5
+    claims:
+      - claim:thermal-expansion-drives
+      - claim:thermal-expansion-produces-stress
+      - claim:flexo-drives
+      - claim:flexo-produces-charge
+      - claim:surface-charge-converts-electricity
+  protocol_version: route-search-v1
+  started_at: 2026-09-21T08:20:00+10:00
+  completed_at: 2026-09-21T09:20:00+10:00
+  objective: exact-composition
+  inclusion_criteria:
+    - a physical experiment or device in which an imposed temperature gradient's non-uniform thermal expansion produces a strain gradient whose flexoelectric polarization delivers electrical work to a load (route-search-v1 §3, output Electrical work)
+  exclusion_criteria:
+    - theory, simulation or proposals (recorded as such, never as demonstrations)
+    - the converse effect (a thermal field's electric-field gradient producing strain), bending-imposed strain gradients, uniform-temperature 'thermal-electrical' responses, or flexoelectrically induced pyroelectricity under temperature fluctuations (wrong-coupling / wrong-driver)
+    - "the polarization or its displacement current measured with no load: the mechanisms in order but not the recorded output (sink-variant)"
+  runs:
+    - id: search:2026-09-21-p-a093d7ecc5/oa-dm1
+      engine: openalex
+      query_form: route-driver-mechanism
+      query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermal expansion" OR "thermal strain" OR "thermoelastic strain" OR "thermal expansion gradient")
+      executed_at: 2026-09-20T14:57:32.245Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermal+expansion%22+OR+%22thermal+strain%22+OR+%22thermoelastic+strain%22+OR+%22thermal+expansion+gradient%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermal expansion" OR "thermal strain" OR "thermoelastic strain" OR "thermal expansion gradient")
+        type: article|review|book-chapter
+      result_count_reported: 2185
+      records_retrieved: 100
+      records_screened: 100
+      records_read: 3
+      query_key: driver-mechanism:1
+    - id: search:2026-09-21-p-a093d7ecc5/oa-dm1-newest
+      engine: openalex
+      query_form: route-driver-mechanism
+      query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermal expansion" OR "thermal strain" OR "thermoelastic strain" OR "thermal expansion gradient")
+      executed_at: 2026-09-20T14:57:36.409Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermal+expansion%22+OR+%22thermal+strain%22+OR+%22thermoelastic+strain%22+OR+%22thermal+expansion+gradient%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=50&sort=publication_date%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: publication_date:desc
+      filters:
+        title_and_abstract.search: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermal expansion" OR "thermal strain" OR "thermoelastic strain" OR "thermal expansion gradient")
+        type: article|review|book-chapter
+      result_count_reported: 2185
+      records_retrieved: 50
+      records_screened: 50
+      records_read: 0
+      query_key: driver-mechanism:1
+    - id: search:2026-09-21-p-a093d7ecc5/oa-mp12
+      engine: openalex
+      query_form: route-mechanism-pair
+      query: ("Thermal expansion" OR "thermal strain" OR "thermoelastic strain" OR "thermal expansion gradient") AND ("Flexoelectric effect" OR flexoelectricity OR flexoelectric OR "strain-gradient polarization" OR thermopolarization)
+      executed_at: 2026-09-20T14:57:39.578Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Thermal+expansion%22+OR+%22thermal+strain%22+OR+%22thermoelastic+strain%22+OR+%22thermal+expansion+gradient%22%29+AND+%28%22Flexoelectric+effect%22+OR+flexoelectricity+OR+flexoelectric+OR+%22strain-gradient+polarization%22+OR+thermopolarization%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Thermal expansion" OR "thermal strain" OR "thermoelastic strain" OR "thermal expansion gradient") AND ("Flexoelectric effect" OR flexoelectricity OR flexoelectric OR "strain-gradient polarization" OR thermopolarization)
+        type: article|review|book-chapter
+      result_count_reported: 8
+      records_retrieved: 8
+      records_screened: 8
+      records_read: 3
+      query_key: mechanism-pair:1-2
+    - id: search:2026-09-21-p-a093d7ecc5/oa-wc
+      engine: openalex
+      query_form: route-whole-chain
+      query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermal expansion" OR "thermal strain" OR "thermoelastic strain" OR "thermal expansion gradient") AND ("Flexoelectric effect" OR flexoelectricity OR flexoelectric OR "strain-gradient polarization" OR thermopolarization) AND ("Electrical work" OR electricity OR "electrical output" OR "DC power")
+      executed_at: 2026-09-20T14:57:43.161Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermal+expansion%22+OR+%22thermal+strain%22+OR+%22thermoelastic+strain%22+OR+%22thermal+expansion+gradient%22%29+AND+%28%22Flexoelectric+effect%22+OR+flexoelectricity+OR+flexoelectric+OR+%22strain-gradient+polarization%22+OR+thermopolarization%29+AND+%28%22Electrical+work%22+OR+electricity+OR+%22electrical+output%22+OR+%22DC+power%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermal expansion" OR "thermal strain" OR "thermoelastic strain" OR "thermal expansion gradient") AND ("Flexoelectric effect" OR flexoelectricity OR flexoelectric OR "strain-gradient polarization" OR thermopolarization) AND ("Electrical work" OR electricity OR "electrical output" OR "DC power")
+        type: article|review|book-chapter
+      result_count_reported: 0
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      query_key: whole-chain
+    - id: search:2026-09-21-p-a093d7ecc5/oa-dp
+      engine: openalex
+      query_form: route-demonstration-precision
+      query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermal expansion" OR "thermal strain" OR "thermoelastic strain" OR "thermal expansion gradient") AND ("Flexoelectric effect" OR flexoelectricity OR flexoelectric OR "strain-gradient polarization" OR thermopolarization) AND ("Electrical work" OR electricity OR "electrical output" OR "DC power") AND (experiment OR experimental OR measured OR device OR prototype)
+      executed_at: 2026-09-20T14:57:46.078Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermal+expansion%22+OR+%22thermal+strain%22+OR+%22thermoelastic+strain%22+OR+%22thermal+expansion+gradient%22%29+AND+%28%22Flexoelectric+effect%22+OR+flexoelectricity+OR+flexoelectric+OR+%22strain-gradient+polarization%22+OR+thermopolarization%29+AND+%28%22Electrical+work%22+OR+electricity+OR+%22electrical+output%22+OR+%22DC+power%22%29+AND+%28experiment+OR+experimental+OR+measured+OR+device+OR+prototype%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermal expansion" OR "thermal strain" OR "thermoelastic strain" OR "thermal expansion gradient") AND ("Flexoelectric effect" OR flexoelectricity OR flexoelectric OR "strain-gradient polarization" OR thermopolarization) AND ("Electrical work" OR electricity OR "electrical output" OR "DC power") AND (experiment OR experimental OR measured OR device OR prototype)
+        type: article|review|book-chapter
+      result_count_reported: 0
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      query_key: demonstration-precision
+    - id: search:2026-09-21-p-a093d7ecc5/cc-zubko-2013
+      engine: openalex
+      query_form: citation-chase
+      query_key: citation-chase:zubko-2013
+      query: referenced_works of W2121809600 (Flexoelectric Effect in Solids) and filter=cites:W2121809600
+      executed_at: 2026-09-21T09:20:00+10:00
+      request_url: https://api.openalex.org/works?filter=cites:W2121809600
+      engine_version: null
+      index_snapshot: null
+      sort: none (reference list and citing works)
+      result_count_reported: 1245
+      records_retrieved: 1137
+      records_screened: 1137
+      records_read: 0
+      note: "formal seed 1: the flexoelectricity review (Zubko, Catalan & Tagantsev 2013); the first 1,000 of 1,102 citers retrieved (OpenAlex page cap), screened at title level with a thermal / heat / temperature / pyro filter"
+    - id: search:2026-09-21-p-a093d7ecc5/cc-tagantsev-1986
+      engine: openalex
+      query_form: citation-chase
+      query_key: citation-chase:tagantsev-1986
+      query: referenced_works of W2051617107 (Piezoelectricity and flexoelectricity in crystalline dielectrics) and filter=cites:W2051617107
+      executed_at: 2026-09-21T09:20:00+10:00
+      request_url: https://api.openalex.org/works?filter=cites:W2051617107
+      engine_version: null
+      index_snapshot: null
+      sort: none (reference list and citing works)
+      result_count_reported: 739
+      records_retrieved: 740
+      records_screened: 740
+      records_read: 0
+      note: "formal seed 2: Tagantsev's 1986 theory of piezoelectricity and flexoelectricity in crystalline dielectrics, the origin of the thermal-polarization prediction; 9 references, 731 citers screened at title level"
+  screening:
+    records_retrieved: 158
+    unique_records: 158
+    title_abstract_screened: 158
+    full_text_read: 1
+  hits:
+    - title: Observation of universal thermopolarization effect in insulators
+      year: 2026
+      found_by:
+        - search:2026-09-21-p-a093d7ecc5/cc-zubko-2013
+      access: full-text
+      decision: sink-variant
+      reason: arXiv:2605.17224 (Iwakiri, Miyata & Mori, NIMS, 17 May 2026; not yet in OpenAlex, found through the reviewer and confirmed on arXiv), read in full. An on-chip heater driven at 1 kHz imposes a temperature gradient (about 0.5 K modulation) across 0.25–1 mm substrates; the non-uniform thermal expansion's strain gradient produces an out-of-plane flexoelectric polarization detected as a second-harmonic voltage and, more quantitatively, as the screening (displacement) current in a detector electrode, in MgO, Al₂O₃, MnO, mica, PET, PEN, polyimide and soda-lime glass; the response scales with the coefficient of thermal expansion, is reproduced by finite-element thermo-mechanics, grows as 1/thickness and by over an order of magnitude at the glass and antiferromagnetic transitions. Driver, both mechanisms and their order are physically present; the sink is a measured polarization and its displacement current, not electrical work delivered to a load, so the route's recorded output is not demonstrated.
+    - title: Thermally Induced Flexo-Type Effects in Nanopatterned Multiferroic Layers
+      year: 2020
+      doi: 10.1002/adfm.201910371
+      found_by:
+        - search:2026-09-21-p-a093d7ecc5/oa-mp12
+        - search:2026-09-21-p-a093d7ecc5/cc-zubko-2013
+      access: abstract
+      decision: constituent-only
+      reason: Thermal expansion in a nanopatterned array of ferromagnetic nanocylinders in a ferroelectric polymer produces giant strain gradients at moderate temperatures that depolarise the ferroelectric via the flexoelectric effect (and change the magnetisation flexomagnetically), with finite-element support — the thermal-expansion → strain-gradient → flexoelectric handoff observed, no electrical output (abstract read on OpenAlex).
+    - title: Thermal gradient induced flexoelectric effects in bulk Ba0.67Sr0.33TiO3
+      year: 2016
+      doi: 10.1063/1.4949358
+      found_by:
+        - search:2026-09-21-p-a093d7ecc5/cc-zubko-2013
+      access: abstract
+      decision: wrong-coupling
+      reason: "The converse effect: a temperature gradient along symmetric BST bars produces an electric-field gradient through the temperature-dependent permittivity, and the strain that gradient induces is measured — field gradient → strain, the reverse of the route's strain gradient → polarization (abstract read on OpenAlex)."
+    - title: Strain gradient induced thermal-electrical response in paraelectric Na0.5Bi0.5TiO3-based ceramics
+      year: 2018
+      doi: 10.1103/physrevmaterials.2.034401
+      found_by:
+        - search:2026-09-21-p-a093d7ecc5/cc-zubko-2013
+      access: abstract
+      decision: wrong-driver
+      reason: A pyroelectric-like temperature-dependent current appears in paraelectric NBT ceramics under bending deformation, attributed to flexoelectrically induced conduction; the strain gradient is imposed mechanically, not by thermal expansion (abstract read on OpenAlex).
+    - title: Large Thermal–Electrical Response and Rectifying Conduction Behavior in Asymmetrically Reduced Ferroelectric Ceramics
+      year: 2019
+      doi: 10.1021/acsaelm.8b00107
+      found_by:
+        - search:2026-09-21-p-a093d7ecc5/cc-zubko-2013
+      access: abstract
+      decision: wrong-driver
+      reason: "Thermal-electrical conversion 'in a uniform temperature environment' from a reduction-induced built-in field and conductivity in NBT ceramics (0.18 mW/cm³ claimed): no temperature gradient and no thermal-expansion strain gradient; the driver and the mechanism are not the route's (abstract read on OpenAlex)."
+    - title: Enhancement of thermal-electrical like response by flexoelectric effect in sodium bismuth titanate bilayer ceramics with compositional inhomogeneity
+      year: 2023
+      doi: 10.1007/s43207-023-00326-0
+      found_by:
+        - search:2026-09-21-p-a093d7ecc5/oa-mp12
+      access: abstract
+      decision: insufficient-information
+      reason: A bilayer NBT ceramic whose compositional gradient and differing thermal expansion leave a sintering strain gradient; a 'thermal-electrical like response' larger than the single layer's is attributed to a flexoelectric-like built-in potential coupled with conductivity. Whether an imposed temperature gradient drives a thermal-expansion strain gradient in operation, and what output is measured, cannot be settled from the abstract (Springer page).
+    - title: Flexo-Pyroelectric Effect
+      year: 2025
+      doi: 10.34133/research.1048
+      found_by:
+        - search:2026-09-21-p-a093d7ecc5/cc-zubko-2013
+      access: abstract
+      decision: wrong-driver
+      reason: A strain gradient imposed by an AFM tip gives centrosymmetric SrTiO₃ a pyroelectric coefficient under temperature fluctuations — the strain gradient is mechanical and the driver a temperature change in time, not a gradient's thermal expansion (abstract read on OpenAlex).
+    - title: Thermal excitation of flexoelectricity in silicon
+      year: 2025
+      doi: 10.1103/dxp2-cf75
+      found_by:
+        - search:2026-09-21-p-a093d7ecc5/cc-zubko-2013
+      access: abstract
+      decision: constituent-only
+      reason: "The flexoelectric coefficient of intrinsic and doped silicon measured from −50 to 200 °C (15.2 nC/m to 1.8 μC/m in intrinsic Si): a material property of the second mechanism, no thermal-expansion drive and no output (abstract read on OpenAlex)."
+    - title: Temperature Gradient Introduced Ferroelectric Self-Poling in BiFeO3 Ceramics
+      year: 2013
+      doi: 10.1111/jace.12580
+      found_by:
+        - search:2026-09-21-p-a093d7ecc5/oa-dm1
+      access: abstract
+      decision: constituent-only
+      reason: A sintering temperature gradient and its thermal strain separate bismuth and oxygen vacancies into defect dipoles whose internal field (> 10 kV/cm) poles the ceramic on cooling — a temperature gradient acting through thermal strain on polarization, but via defect dipoles rather than the flexoelectric effect, and with no output (abstract read on OpenAlex).
+    - title: Pyroelectric, piezoelectric, flexoelectric, and thermal polarization effects in ionic crystals
+      year: 1987
+      doi: 10.1070/pu1987v030n07abeh002926
+      found_by:
+        - search:2026-09-21-p-a093d7ecc5/cc-zubko-2013
+      access: metadata-only
+      decision: theory-only
+      reason: Tagantsev's review including the thermal-polarization prediction the 2026 preprint tests; theory (title and the preprint's citation of it).
+  result: inconclusive
+  completeness: partial
+  reviewed_by: Ava Kim's loop-3 lane (Claude Opus 5); abstracts, the 2026 preprint's full text and the citation-chase titles read by the lane; ChatGPT (GPT-5 Thinking) as second reader in pass 24
+  reviewed_on: 2026-09-21
+  limitations:
+    - Semantic Scholar runs not made (anonymous API pool answered HTTP 429 throughout; key requested from the owner, exception e953); Google Scholar answered every query with a captcha in this sitting (the lane completes none), so none of its four forms is run — both are mandatory for a negative
+    - "OpenAlex driver-mechanism query: 2,185 works reported, the first 100 by relevance and the first 50 newest screened at title level (protocol depth), the rest unscreened; the whole-chain and demonstration-precision queries returned 0"
+    - "citation chase on OpenAlex reference lists and citing works only (Zubko 2013: 137 of 143 references, the first 1,000 of 1,102 citers; Tagantsev 1986: 9, 731), screened at title level with a thermal / heat / temperature filter"
+    - the preprint is not peer-reviewed and reports no output power; its signal magnitudes (second-harmonic displacement currents at 1 kHz heater drive) are not recorded as measurements
+  conclusion: "The exact composition has been observed but not converted: Iwakiri, Miyata & Mori 2026 impose a temperature gradient whose thermal expansion produces a strain gradient whose flexoelectric polarization is detected (voltage and displacement current) in eight centrosymmetric insulators, scaling with the expansion coefficient — every mechanism in order, no electrical work delivered. Nothing in the OpenAlex runs or the two chases puts a load on such a device; the thermal-flexoelectric literature otherwise concerns the converse effect, bending-imposed gradients, uniform-temperature conduction effects and flexo-induced pyroelectricity. Inconclusive as a route search until the Scholar and Semantic Scholar runs exist; the open question is now narrow: has anyone extracted work."
+  source_run_ids:
+    - search:2026-09-20-p-a093d7ecc5
+  follow_up:
+    canonical_claim_review: not-applicable
+    canonical_pathway_review: needed
+    candidate_source_ids:
+      - source:iwakiri-2026-thermopolarization

@@ -209,4 +209,4 @@ per-source cap); nothing renamed or removed, so a v0.2.0 reader can ignore the n
 `applies_to_outputs` and `applies_to_phenomena`; measurements gain `value_numeric`, `unit`, `metric`,
 `basis` and `parameters`; claims gain `relation_requirement`; the check labels for `conservation`
 (now "Source work availability") and `practical-magnitude` (now "Measured performance coverage")
-change while their ids stay. Nothing renamed or removed.
+change while their ids stay. Nothing renamed or removed. Within v0.4.0, additive changes dated 21/09/2026 (loop-3 passes 22–24): search runs gain the optional fields `query_compacted`, `expanded_query` (route-search-v1's Google Scholar compaction exception), `segment`, `positions_screened` and `interruption` (the continuation rule); `Source.type` gains `preprint`. Nothing renamed or removed; a v0.4.0 reader that ignores unknown fields and unknown enum values is unaffected, one that validates `type` strictly must accept the new value.
