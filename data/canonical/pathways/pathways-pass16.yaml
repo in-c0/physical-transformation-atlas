@@ -187,3 +187,82 @@
   environment: [state-liquid, env-aqueous, charged-surface-required]
   summary: A surfactant-concentration difference along a free electrolyte surface drives a solutocapillary shear flow past a charged wall, whose streaming potential is the electrical output. Theoretical and numerical only; the route stays a candidate.
   review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics; abstract read)" }
+# Loop-3 pass 20: the last two candidate compositions. The resonance-expanded spellings the frontier
+# showed are representation-equivalent to these direct routes; a resonance is an operating condition, not
+# a conversion of its own.
+- id: pathway:flexoelectric-vibration-harvester
+  name: Flexoelectric vibration harvester
+  steps: [claim:vibration-drives-elastic, claim:elastic-produces-stress, claim:flexo-drives, claim:flexo-produces-charge, claim:surface-charge-converts-electricity]
+  demonstrated_with: [transducer:flexoelectric-vibration-harvester]
+  evidence: [source:yang-2025-flexoelectric-harvester]
+  status: demonstrated
+  knowledge_level: K5
+  performance:
+    measurements:
+      - quantity: output voltage
+        value: "≈ 0.19 V average"
+        value_numeric: 0.19
+        unit: V
+        scope: laboratory
+        conditions: "two-stage stepped epoxy cantilever with an unpolarised α-PVDF flexoelectric layer (60 × 10 mm, 45 μm) on a vibration exciter, sinusoidal 20 Hz, measured acceleration 0.915 g; off resonance (the 1.2 Hz resonance was beyond the shaker)"
+        sources: [source:yang-2025-flexoelectric-harvester]
+        year: 2025
+        note: "the paper's 3.58 V and 94.93 mW m⁻³ at resonance are theory and finite elements, not measurements, and are not recorded here"
+  environment: [state-solid, medium-dielectric]
+  summary: Base vibration bends a dielectric cantilever; the bending strain gradient, not piezoelectricity, polarises the unpolarised PVDF layer and the electrodes deliver charge to a load. Demonstrated off resonance; resonance is an amplifying operating condition, not a step of the composition.
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 20 (the last two candidate compositions audited as physics; source read in full)" }
+- id: pathway:vibration-elastocaloric-cooler
+  name: Vibration-driven elastocaloric cooler (proposed)
+  steps: [claim:vibration-drives-elastic, claim:elastic-produces-stress, claim:elastocaloric-drives, claim:elastocaloric-converts-cooling]
+  demonstrated_with: [transducer:vibration-elastocaloric-cooler]
+  evidence: [source:kumar-2019-vibration-refrigeration]
+  status: proposed
+  knowledge_level: K3
+  performance:
+    measurements:
+      - quantity: predicted source cooling (finite-element model)
+        value: "≈ 0.2 K in ≈ 50 s"
+        scope: model
+        conditions: "ten cantilevers with off-axis 0.5BZT–0.5BCT patches, 2 mm imposed tip motion, 324 K, 1.5 Hz; 0.02 K per element; ≈ 2 K predicted from 358 K"
+        sources: [source:kumar-2019-vibration-refrigeration]
+        year: 2019
+        note: model-only; no device has been built or measured
+  environment: [state-solid]
+  summary: Ambient vibration stresses off-axis ferroelectric patches on a cantilever elastocalorically and periodic contacts carry the heat away — proposed and modelled by finite elements, never built. The genuine open question behind this route is whether ambient vibration supplies enough stress, timing and heat transfer for sustained cooling.
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 20 (the last two candidate compositions audited as physics; abstract read)" }
+- id: pathway:bending-actuated-elastocaloric-cooler
+  name: Bending-actuated NiTi elastocaloric air cooler
+  steps: [claim:elastocaloric-drives, claim:elastocaloric-converts-cooling]
+  demonstrated_with: [transducer:bending-elastocaloric-air-cooler]
+  evidence: [source:li-2022-bending-elastocaloric]
+  status: demonstrated
+  knowledge_level: K6
+  performance:
+    measurements:
+      - quantity: air temperature reduction
+        value: "5.5 K"
+        value_numeric: 5.5
+        unit: K
+        scope: device
+        conditions: "single-row bent NiTi sheets with an air duct, cooling cycle; 7.20 % maximum surface strain on the tension side at a specific driving force of 5.64 N g⁻¹"
+        sources: [source:li-2022-bending-elastocaloric]
+        year: 2022
+      - quantity: specific cooling power
+        value: "0.137 W g⁻¹"
+        value_numeric: 0.137
+        unit: W/g
+        scope: device
+        conditions: "same single-row cooler"
+        sources: [source:li-2022-bending-elastocaloric]
+        year: 2022
+      - quantity: cooling power
+        value: "11.5 W"
+        value_numeric: 11.5
+        unit: W
+        scope: device
+        conditions: "multi-row NiTi sheets"
+        sources: [source:li-2022-bending-elastocaloric]
+        year: 2022
+  environment: [state-solid]
+  summary: An actuator bends NiTi sheets through their transformation at two orders of magnitude less force than tension; the recorded driver is mechanical stress supplied by the actuator, which is why this pathway starts at the stress row and is not evidence that ambient vibration can drive the cooler.
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 20 (the last two candidate compositions audited as physics; abstract read)" }

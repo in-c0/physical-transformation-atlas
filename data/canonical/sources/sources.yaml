@@ -1170,3 +1170,28 @@
   venue: "ACS Omega 4, 15265–15268"
   doi: 10.1021/acsomega.9b02257
   notes: "Open access (PMC6751999). Camphor emitted from floating polymer rotors lowers the water surface tension asymmetrically; the solutocapillary Marangoni stress rotates the rotor, whose permanent magnets induce a current in a stationary 800-turn coil (r = 35 Ω): maximal voltage 1.6 mV across a 35 Ω load, rotation lasting 10–20 h (full text)."
+# Loop-3 pass 20: the resonant flexoelectric harvester and the vibration-driven elastocaloric cooler.
+- id: source:yang-2025-flexoelectric-harvester
+  type: paper
+  title: "Performance enhancement of flexoelectric energy harvester by structural design"
+  authors: [S. Yang, Q. Yang, C. Zhang, Y. Kong, Y. Li, T. Lu, C. Shen]
+  year: 2025
+  venue: "International Journal of Smart and Nano Materials 16(4), 908–928"
+  doi: 10.1080/19475411.2025.2592544
+  notes: "Open access (full text read). A two-stage stepped epoxy cantilever with an unpolarised α-PVDF flexoelectric layer (60 × 10 mm, 45 μm) — the authors count it, with Thai et al., among the only pure flexoelectric harvesters tested; on a vibration exciter at 20 Hz and 0.915 g the measured average output was ≈ 0.19 V (theory 0.167 V). The 3.58 V / 94.93 mW m⁻³ at the 1.2 Hz resonance are theory and FEA, not measured: the shaker could not reach 1.2 Hz."
+- id: source:kumar-2019-vibration-refrigeration
+  type: paper
+  title: "Vibration induced refrigeration using ferroelectric materials"
+  authors: [A. Kumar, A. Chauhan, S. Patel, N. Novak, R. Kumar, R. Vaish]
+  year: 2019
+  venue: "Scientific Reports 9, 3922"
+  doi: 10.1038/s41598-019-40159-8
+  notes: "Proposal with finite-element analysis (abstract read): a cantilever cooling device with off-axis bulk ferroelectric patches (0.5BZT–0.5BCT) in which ambient vibration stresses the patches elastocalorically; 0.02 K per element at 324 K, 0.2 K in 50 s for ten elements at 1.5 Hz, ≈ 2 K predicted from 358 K. No device was built."
+- id: source:li-2022-bending-elastocaloric
+  type: paper
+  title: "A compact NiTi elastocaloric air cooler with low force bending actuation"
+  authors: [X. Li, S. Cheng, Q. Sun]
+  year: 2022
+  venue: "Applied Thermal Engineering 215, 118942"
+  doi: 10.1016/j.applthermaleng.2022.118942
+  notes: "Abstract read (HKUST repository record). Bent NiTi sheets (7.20 % maximum surface strain) transform at a specific driving force of 5.64 N g⁻¹, two orders of magnitude below tension or compression; the single-row cooler with an air duct gave a 5.5 K air-temperature reduction and 0.137 W g⁻¹ specific cooling power, the multi-row cooler 11.5 W."

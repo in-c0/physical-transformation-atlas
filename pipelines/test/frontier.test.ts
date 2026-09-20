@@ -89,3 +89,34 @@ test("default frontier order never places a source-preparation or known-device r
   const lastComposition = sorted.map((p) => p.structural_kind === "composition").lastIndexOf(true);
   assert.ok(firstNonComposition === -1 || lastComposition < firstNonComposition);
 });
+
+// Loop-3 pass 20: a resonance is an operating condition, not a conversion. The resonance-expanded
+// spellings collapse onto the direct vibration → elastic deformation → stress routes, and a proposal
+// never demonstrates.
+test("resonance-expanded spellings are representation-equivalent to the direct vibration routes that carry the recorded pathways", () => {
+  const flexoDirect = paths.find((p) => p.pathway === "pathway:flexoelectric-vibration-harvester");
+  const elastoDirect = paths.find((p) => p.pathway === "pathway:vibration-elastocaloric-cooler");
+  const flexoRes = paths.find(
+    (p) =>
+      p.nodes.includes("phenomenon:resonant-vibration") && p.nodes.includes("phenomenon:flexoelectric-effect") && p.source === "disequilibrium:mechanical-vibration" && p.sink === "output:electricity",
+  );
+  const elastoRes = paths.find(
+    (p) =>
+      p.nodes.includes("phenomenon:resonant-vibration") && p.nodes.includes("phenomenon:elastocaloric-effect") && p.source === "disequilibrium:mechanical-vibration" && p.sink === "output:cooling",
+  );
+  assert.ok(flexoDirect && elastoDirect && flexoRes && elastoRes, "all four routes compiled");
+  assert.equal(flexoRes!.structural_kind, "representation-equivalent");
+  assert.equal(flexoRes!.dominated_by, flexoDirect!.id);
+  assert.equal(elastoRes!.structural_kind, "representation-equivalent");
+  assert.equal(elastoRes!.dominated_by, elastoDirect!.id);
+  // Yang 2025 demonstrates the direct flexoelectric route only; constituent resonance evidence promotes nothing.
+  assert.equal(flexoDirect!.search_status, "demonstrated");
+  assert.notEqual(flexoRes!.search_status, "demonstrated");
+  // Kumar 2019 is a proposal: attached to the direct elastocaloric route, never a demonstration.
+  assert.equal(elastoDirect!.pathway, "pathway:vibration-elastocaloric-cooler");
+  assert.notEqual(elastoDirect!.search_status, "demonstrated");
+  assert.notEqual(elastoRes!.search_status, "demonstrated");
+  // The bending-actuated cooler starts at the stress row and is demonstrated on its own.
+  const bending = paths.find((p) => p.pathway === "pathway:bending-actuated-elastocaloric-cooler");
+  assert.ok(bending && bending.source === "disequilibrium:mechanical-stress" && bending.search_status === "demonstrated");
+});

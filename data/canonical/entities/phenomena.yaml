@@ -111,6 +111,7 @@
 - id: phenomenon:elastocaloric-effect
   type: phenomenon
   name: Elastocaloric effect
+  aliases: [mechanocaloric effect, stress-induced caloric effect, elastocaloric cooling]
   domain: condensed-matter
   year_first_reported: 1980
   condition_tags: [state-solid]

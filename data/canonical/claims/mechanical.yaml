@@ -917,3 +917,56 @@
   conditions: [when the flow is produced by a thermal expansion]
   evidence: [source:rosa-1961-mhd, source:bejan-2016]
   status: established
+# --- Loop-3 pass 20: vibration stresses an elastic member directly; resonance amplifies but is not required ---
+# The atlas had no route from mechanical vibration to a stress state except through resonant vibration, so
+# every vibration-driven stress converter was spelled with resonance as a mandatory step. A phenomenon must
+# sit between two disequilibria (the typed chain forbids disequilibrium → disequilibrium), so the direct
+# spelling goes through elastic deformation, as the pressure routes already do.
+- id: claim:vibration-drives-elastic
+  subject: disequilibrium:mechanical-vibration
+  predicate: drives
+  object: phenomenon:elastic-deformation
+  conditions: [cyclic deformation of an elastic member (a cantilever, a plate, a sheet) by base or inertial excitation; operation at a structural resonance amplifies the deformation but is not required]
+  condition_tags: [state-solid]
+  energy: { input: mechanical, output: mechanical, dissipation: thermal }
+  evidence: [source:erturk-inman-2011, source:yang-2025-flexoelectric-harvester, source:kumar-2019-vibration-refrigeration]
+  status: established
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 20 (the last two candidate compositions audited as physics; direct spelling of vibration-driven stress)" }
+- id: claim:elastic-produces-stress
+  subject: phenomenon:elastic-deformation
+  predicate: produces
+  object: disequilibrium:mechanical-stress
+  conditions: [the deformed member carries a cyclic stress or strain state that can drive a stress-driven conversion (flexoelectric, elastocaloric, piezoelectric)]
+  energy: { input: mechanical, output: mechanical }
+  evidence: [source:nye-1985, source:erturk-inman-2011]
+  status: established
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 20 (the last two candidate compositions audited as physics; direct spelling of vibration-driven stress)" }
+- id: claim:flexo-implemented-vibration-harvester
+  subject: phenomenon:flexoelectric-effect
+  predicate: implemented_by
+  object: transducer:flexoelectric-vibration-harvester
+  evidence: [source:yang-2025-flexoelectric-harvester]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 20 (the last two candidate compositions audited as physics; source read in full)" }
+- id: claim:elastic-implemented-vibration-harvester
+  subject: phenomenon:elastic-deformation
+  predicate: implemented_by
+  object: transducer:flexoelectric-vibration-harvester
+  evidence: [source:yang-2025-flexoelectric-harvester]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 20 (the last two candidate compositions audited as physics; source read in full)" }
+- id: claim:elastocaloric-implemented-vibration-cooler
+  subject: phenomenon:elastocaloric-effect
+  predicate: implemented_by
+  object: transducer:vibration-elastocaloric-cooler
+  evidence: [source:kumar-2019-vibration-refrigeration]
+  status: theoretically-predicted
+  notes: A finite-element proposal; no device has been built.
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 20 (the last two candidate compositions audited as physics; abstract read)" }
+- id: claim:elastocaloric-implemented-bending-cooler
+  subject: phenomenon:elastocaloric-effect
+  predicate: implemented_by
+  object: transducer:bending-elastocaloric-air-cooler
+  evidence: [source:li-2022-bending-elastocaloric]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 20 (the last two candidate compositions audited as physics; abstract read)" }

@@ -591,3 +591,25 @@
   applies_to_sources: [disequilibrium:radiation-flux]
   summary: Radiation pressure is set by the momentum flux of the radiation, I/c to 2I/c. In full sunlight (I ≈ 1 kW m⁻²) that is at most ≈ 6.7 µPa; a surface moving at 0.1 m s⁻¹ against it receives at most ≈ 7 × 10⁻⁷ W m⁻², so mechanical work from radiation pressure is confined to high-irradiance or micro-scale regimes.
   review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics)" }
+# Loop-3 pass 20: devices behind the last two candidate compositions.
+- id: transducer:flexoelectric-vibration-harvester
+  type: transducer
+  name: Flexoelectric vibration harvester
+  aliases: [flexoelectric energy harvester, FEH]
+  knowledge_level: K5
+  summary: A vibrating dielectric cantilever develops bending strain gradients that polarise an unpolarised flexoelectric layer; electrodes deliver the induced charge to a load (Yang et al. 2025, ≈ 0.19 V at 20 Hz and 0.915 g).
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 20 (the last two candidate compositions audited as physics; source read in full)" }
+- id: transducer:vibration-elastocaloric-cooler
+  type: transducer
+  name: Vibration-driven elastocaloric cooler (proposed)
+  aliases: [vibration induced refrigerator]
+  knowledge_level: K3
+  summary: Proposed cantilever refrigerator in which cyclic cantilever stress drives the elastocaloric response of off-axis ferroelectric patches and periodic contacts transfer the heat; finite-element analysis only (Kumar et al. 2019).
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 20 (the last two candidate compositions audited as physics; abstract read)" }
+- id: transducer:bending-elastocaloric-air-cooler
+  type: transducer
+  name: Bending-actuated NiTi elastocaloric air cooler
+  aliases: [low-force bending elastocaloric cooler]
+  knowledge_level: K6
+  summary: Bent NiTi sheets driven through their transformation at 5.64 N g⁻¹ cool an air stream by 5.5 K with 0.137 W g⁻¹ specific cooling power; the driver is an actuator's stress, not ambient vibration (Li, Cheng and Sun 2022).
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 20 (the last two candidate compositions audited as physics; abstract read)" }
