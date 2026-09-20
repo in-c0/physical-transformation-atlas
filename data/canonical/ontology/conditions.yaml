@@ -28,6 +28,7 @@ tags:
   - { id: flow-required, description: requires bulk fluid flow, label: bulk flow required }
   - { id: humidity-required, description: requires a humidity or moisture difference, label: humidity difference required }
   - { id: transient-only, description: produces output only while the driving quantity changes, label: transient only }
+  - { id: charged-surface-required, description: requires a charged solid boundary (an electric double layer at a wall or channel surface) in contact with the moving liquid, label: charged surface required }
 conflicts:
   - { a: env-vacuum, b: env-aqueous, reason: a vacuum step and an aqueous step cannot share one working medium }
   - { a: env-vacuum, b: state-liquid, reason: liquid media are incompatible with a vacuum working region }

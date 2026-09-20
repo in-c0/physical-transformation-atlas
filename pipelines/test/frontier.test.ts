@@ -42,10 +42,38 @@ test("a flow producer that lacks the consumer's declared requirements has an unr
   assert.ok(none && none.handoff_unresolved_count === 0);
 });
 
-test("the recorded TOEC pathway makes the thermo-osmotic turbine route a known composition, not a fresh candidate", () => {
+test("a proposed pathway (TOEC) is attached to its route, leaves it a candidate and never makes it demonstrated", () => {
   const toec = paths.find((p) => p.pathway === "pathway:thermo-osmotic-energy-converter");
   assert.ok(toec, "TOEC pathway compiled");
-  assert.notEqual(toec!.frontier_class, "candidate");
+  assert.equal(toec!.frontier_class, "candidate");
+  assert.notEqual(toec!.search_status, "demonstrated");
+  assert.equal(toec!.structural_kind, "composition");
+});
+
+test("a route whose consuming step requires a carrier property nothing upstream provides is incomplete-handoff, not a candidate (radiation pressure → induction)", () => {
+  const p = paths.find((x) => x.nodes.includes("phenomenon:radiation-pressure") && x.nodes.includes("phenomenon:electromagnetic-induction") && x.nodes.length === 6);
+  if (!p) return;
+  assert.equal(p.frontier_class, "incomplete-handoff");
+  assert.ok(p.handoff_issues.some((h) => h.missing.includes("motion:relative-flux-change")));
+});
+
+test("carrier-relay bypass: a Marangoni flow turning a rotor is representation-dominated by the recorded direct Marangoni → motion route", () => {
+  const long = paths.find(
+    (x) =>
+      x.source === "disequilibrium:temperature-gradient" && x.nodes.includes("phenomenon:marangoni-effect") && x.nodes.includes("phenomenon:aerodynamic-lift") && x.sink === "output:mechanical-work",
+  );
+  const short = paths.find((x) => x.pathway === "pathway:thermocapillary-micromotor");
+  assert.ok(long && short, "both spellings compiled");
+  assert.equal(long!.structural_kind, "representation-dominated");
+  assert.equal(long!.dominated_by, short!.id);
+});
+
+test("internal-transport normalisation: heat conduction → phonon drag collapses onto the thermoelectric generator, never onto the Nernst generator", () => {
+  const phonon = paths.find((x) => x.nodes.includes("phenomenon:phonon-drag") && x.nodes.includes("phenomenon:heat-conduction") && x.sink === "output:electricity" && x.nodes.length === 6);
+  const teg = paths.find((x) => x.pathway === "pathway:thermoelectric-generator");
+  assert.ok(phonon && teg);
+  assert.equal(phonon!.structural_kind, "representation-equivalent");
+  assert.equal(phonon!.dominated_by, teg!.id);
 });
 
 test("a route sharing the tail of a recorded pathway's mechanism is a source-variant and therefore derived", () => {

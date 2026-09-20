@@ -131,8 +131,9 @@
   conditions: [a phonon heat current in a semiconductor at low temperature]
   condition_tags: [state-solid, medium-semiconductor, temp-cryogenic]
   energy: { input: phonon, output: electrical, dissipation: thermal }
-  evidence: [source:herring-1954, source:goldsmid-2016]
+  evidence: [source:herring-1954, source:goldsmid-2016, source:yalamarthy-2019-phonon-drag]
   status: established
+  notes: "Phonon drag is a component of the same conductor's Seebeck coefficient, not a second converter in series with it: Yalamarthy et al. 2019 attribute up to 32 % (300 K) and 88 % (50 K) of the Seebeck coefficient of a thick AlGaN/GaN 2DEG to drag. The compiler therefore treats the heat-conduction → phonon-drag spelling as representation-equivalent to the thermoelectric generator."
 - id: claim:phonon-drag-produces
   subject: phenomenon:phonon-drag
   predicate: produces
@@ -738,6 +739,7 @@
   subject: phenomenon:working-fluid-expansion
   predicate: produces
   object: carrier:mechanical-motion
+  handoff: { provides: [motion:relative-flux-change] }
   energy: { input: mechanical, output: mechanical, dissipation: thermal }
   evidence: [source:bejan-2016]
   status: established
@@ -786,6 +788,7 @@
   condition_tags: [medium-conductor, field-magnetic-required]
   energy: { input: mechanical, output: electrical, dissipation: thermal }
   evidence: [source:faraday-1832, source:dixon-hall-2014]
+  handoff: { requires_all: [motion:relative-flux-change] }
   status: established
   knowledge_level: K8
 - id: claim:generator-produces-carriers
@@ -823,6 +826,7 @@
   subject: phenomenon:ocean-thermal-gradient-conversion
   predicate: produces
   object: carrier:mechanical-motion
+  handoff: { provides: [motion:relative-flux-change] }
   energy: { input: mechanical, output: mechanical }
   evidence: [source:claude-1930]
   status: demonstrated

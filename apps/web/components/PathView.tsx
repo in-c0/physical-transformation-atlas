@@ -67,6 +67,11 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
           </dd>
           {named && (
             <>
+              <dt>recorded pathway</dt>
+              <dd>
+                {named.name} · {named.status}
+                {named.status === "proposed" ? " — a proposal in the literature, not a demonstration; the route stays a candidate and its search state is unchanged by the proposal" : ""}
+              </dd>
               <dt>composition maturity</dt>
               <dd>
                 {kLabel(named.knowledge_level)}

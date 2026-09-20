@@ -75,14 +75,35 @@ test("negative control: a claim with a dangling entity is rejected by validation
   assert.ok(new ValidationError(["x"]).message.includes("validation problem"));
 });
 
-test("a candidate never shares two or more relations with a recorded pathway, nor a two-effect head or tail; derived routes always do one of them", () => {
+test("derived means mechanism overlap with a demonstrated pathway: a shared head, the whole pathway or two shared phenomena — never a generic tail; candidates have none of it and every handoff provided", () => {
+  const pathwayById = new Map(canon.pathways.map((pw) => [pw.id, pw]));
+  const claimById = new Map(canon.claims.map((c) => [c.id, c]));
+  const entityType = new Map(canon.entities.map((e) => [e.id, e.type]));
+  const phenomenaOf = (ids: string[]) => new Set(ids.flatMap((id) => [claimById.get(id)?.subject, claimById.get(id)?.object]).filter((n) => n && entityType.get(n) === "phenomenon"));
   for (const p of graph.paths) {
-    const shared = p.known_pathway_overlap?.shared_claims ?? 0;
+    const ov = p.known_pathway_overlap;
+    const steps = ov ? (pathwayById.get(ov.pathway)?.steps ?? []) : [];
+    const shared = new Set<string>();
+    let j = 0;
+    for (const id of p.claims) if (j < steps.length && steps[j] === id) (shared.add(id), j++);
+    let k = 0;
+    for (const st of steps) if (k < p.claims.length && p.claims[k] === st) (shared.add(st), k++);
+    let head = 0;
+    while (head < steps.length && shared.has(steps[head])) head++;
+    const byClaims = !!ov && ov.shared_claims >= 2 && (head >= 2 || steps.every((st) => shared.has(st)) || phenomenaOf([...shared]).size >= 2);
     const ck = p.closest_known_pathway;
     const variant = !!ck && ck.relation !== "mechanism-subsequence" && ck.shared_phenomena >= 2;
-    if (p.frontier_class === "candidate") assert.ok(shared < 2 && !variant, `${p.id} is a candidate but overlaps ${p.known_pathway_overlap?.pathway ?? ck?.pathway}`);
-    if (p.frontier_class === "derived") assert.ok(shared >= 2 || variant, `${p.id} is derived with only ${shared} shared relations and no phenomena-level variant`);
-    if (p.pathway) assert.equal(p.known_pathway_overlap?.relation, "exact", `${p.id} matches a pathway but overlap is not exact`);
+    if (p.frontier_class === "candidate") {
+      assert.ok(!byClaims && !variant, `${p.id} is a candidate but overlaps ${ov?.pathway ?? ck?.pathway}`);
+      assert.equal(p.handoff_unresolved_count, 0, `${p.id} is a candidate with an unresolved handoff`);
+    }
+    if (p.frontier_class === "derived") assert.ok(byClaims || variant, `${p.id} is derived with only a generic overlap`);
+    if (p.frontier_class === "incomplete-handoff") assert.ok(p.handoff_unresolved_count > 0, `${p.id} is incomplete-handoff with nothing unresolved`);
+    if (p.search_status === "demonstrated") assert.equal(p.handoff_unresolved_count, 0, `${p.id} is demonstrated yet a handoff is unresolved: the tokens are wrong`);
+    // A proposed pathway is attached to its route but never counts as overlap with a demonstrated one.
+    if (p.pathway && pathwayById.get(p.pathway)?.status !== "proposed") assert.equal(ov?.relation, "exact", `${p.id} matches a pathway but overlap is not exact`);
+    if (p.pathway && pathwayById.get(p.pathway)?.status === "proposed") assert.notEqual(p.search_status, "demonstrated", `${p.id}: a proposal made a route demonstrated`);
+    if (p.pathway) assert.equal(p.dominated_by, null, `${p.id} is a recorded pathway shown as dominated`);
   }
 });
 

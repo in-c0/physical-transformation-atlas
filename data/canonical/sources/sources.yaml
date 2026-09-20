@@ -1104,3 +1104,69 @@
   year: 2009
   venue: "Energy Conversion and Management 50, 35–42"
   doi: 10.1016/j.enconman.2008.09.005
+# Loop-3 pass 16: the frontier's candidate compositions audited as physics. Every DOI resolved on
+# Crossref and every figure below was read in the abstract or full text before it was recorded.
+- id: source:maggi-2015-thermocapillary-gears
+  type: paper
+  title: "Micromotors with asymmetric shape that efficiently convert light into work by thermocapillary effects"
+  authors: [C. Maggi, F. Saglimbeni, M. Dipalo, F. De Angelis, R. Di Leonardo]
+  year: 2015
+  venue: "Nature Communications 6, 7855"
+  doi: 10.1038/ncomms8855
+  notes: "Open access. Microfabricated gears on a liquid–air interface rotate at up to 300 r.p.m. under wide-field incoherent illumination through a thermocapillary (Marangoni) effect; the temperature gradient is produced by absorbed light."
+- id: source:pini-2015-surface-tension-streaming
+  type: paper
+  title: "Energy conversion by surface-tension-driven charge separation"
+  authors: [C. Pini, T. Baier, M. Dietzel]
+  year: 2015
+  venue: "Microfluidics and Nanofluidics 19, 721–735"
+  doi: 10.1007/s10404-015-1597-x
+  notes: "Theoretical and numerical: the shear-induced streaming potential in free-surface electrolyte flows driven by a surface-tension gradient (thermocapillary or solutocapillary), with the maximal thermal efficiency compared with Carnot. No physical experiment; recorded as a proposal, never as a demonstration."
+- id: source:chiolerio-2020-thermomagnetic-harvester
+  type: paper
+  title: "Waste heat to power conversion by means of thermomagnetic hydrodynamic energy harvester"
+  authors: [A. Chiolerio, E. Garofalo, F. Mattiussi, M. Crepaldi, G. Fortunato, M. Iovieno]
+  year: 2020
+  venue: "Applied Energy 277, 115591"
+  doi: 10.1016/j.apenergy.2020.115591
+  notes: "Lab-scale closed-loop toroidal thermomagnetic hydrodynamic harvester: a commercial ferrofluid advects under permanent magnets and Peltier-controlled gradients; induction coils wrapped on the torus extract up to 10.4 μW per kelvin of temperature difference (abstract)."
+- id: source:zhou-2009-thermomagnetic-engine
+  type: paper
+  title: "A new miniaturized engine based on thermomagnetic effect of magnetic fluids"
+  authors: [L. Zhou, Y. Xuan, Q. Li, W. Lian]
+  year: 2009
+  venue: "Frontiers of Energy and Power Engineering in China 3, 160–166"
+  doi: 10.1007/s11708-009-0018-9
+  notes: "A permanent NdFeB magnet, a kerosene-based temperature-sensitive magnetic fluid and a rotor: the rotor is driven by the thermomagnetic convection of the fluid in the field; peak angular velocity about 2.1 rad/min, rising with heat input and falling heat-sink temperature (abstract)."
+- id: source:yalamarthy-2019-phonon-drag
+  type: paper
+  title: "Significant Phonon Drag Enables High Power Factor in the AlGaN/GaN Two-Dimensional Electron Gas"
+  authors: [A. S. Yalamarthy, M. Muñoz Rojo, A. Bruefach, D. Boone, K. M. Dowling, P. F. Satterthwaite, D. Goldhaber-Gordon, E. Pop, D. G. Senesky]
+  year: 2019
+  venue: "Nano Letters 19, 3770–3776"
+  doi: 10.1021/acs.nanolett.9b00901
+  notes: "Phonon drag treated as a component of the Seebeck coefficient: up to 32 % (88 %) of the Seebeck coefficient at 300 K (50 K) in a ~1.2 μm GaN film, negligible at ~100 nm; power factor up to ~40 mW m⁻¹ K⁻² at 50 K (abstract)."
+- id: source:yang-2022-pneumatic-piezo-harvester
+  type: paper
+  title: "Design and Experimental Investigation of a Novel Piezoelectric Energy Harvester in Pneumatic System"
+  authors: [C. Yang, W. Shi, C. Chen, Y. Gao, H. Wang]
+  year: 2022
+  venue: "Energy Technology 10, 2200096"
+  doi: 10.1002/ente.202200096
+  notes: "A sealed piezoelectric harvester on a pneumatic branch pipe captures air-pressure impacts; for a 0 to 0.5 MPa excursion the maximum peak power is 140 μW at 1500 kΩ and the power density 1.43 mW cm⁻³ (abstract)."
+- id: source:mozumder-2026-wave-impact-piezo
+  type: paper
+  title: "Design and Experimental Validation of a Piezoelectric Impact-Based Energy Harvester for Low-Frequency Oceanic Waves"
+  authors: [I. Mozumder, S. C. Banik]
+  year: 2026
+  venue: "SciEn Conference Series: Engineering 4, 684–687"
+  doi: 10.38032/scse.2026.4.309
+  notes: "Conference paper. Five vertical pipes with stacked PZT-5A discs struck by impact balls driven by wave motion; laboratory tests at 0.1–2 Hz and 3.5 % salinity gave up to 1.28 V per pipe and about 20 mW per wave event with 70 g steel balls and double-disc stacks (abstract). One laboratory demonstration in a small venue: demonstrated, not replicated."
+- id: source:frenkel-2019-marangoni-generator
+  type: paper
+  title: "Mini-Generator of Electrical Power Exploiting the Marangoni Flow Inspired Self-Propulsion"
+  authors: [M. Frenkel, A. Vilk, I. Legchenkova, S. Shoval, E. Bormashenko]
+  year: 2019
+  venue: "ACS Omega 4, 15265–15268"
+  doi: 10.1021/acsomega.9b02257
+  notes: "Open access (PMC6751999). Camphor emitted from floating polymer rotors lowers the water surface tension asymmetrically; the solutocapillary Marangoni stress rotates the rotor, whose permanent magnets induce a current in a stationary 800-turn coil (r = 35 Ω): maximal voltage 1.6 mV across a 35 Ω load, rotation lasting 10–20 h (full text)."

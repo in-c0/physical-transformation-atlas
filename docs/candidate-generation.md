@@ -11,16 +11,16 @@ the canonical description of the algorithm; `/methods` summarises it and links h
 2. Give each route a stable id: `p-` plus the first ten hex digits of SHA-1 over its ordered claim ids joined by `>`.
 3. Run the seven checks (`packages/physics/src/checks.ts`).
 4. Match the claim sequence against named pathways; inherit status, level and performance when it matches.
-5. Class the route for the frontier (see `status-model.md`).
-6. Classify its *structure* (`packages/graph/src/structure.ts`), which says nothing about evidence:
+5. Class the route for the frontier (see `status-model.md`): a declared carrier handoff that nothing upstream provides makes it `incomplete-handoff` before any candidate/derived decision; a pathway with status `proposed` is attached but never changes the class.
+6. Classify its _structure_ (`packages/graph/src/structure.ts`), which says nothing about evidence:
    - `atomic` — fewer than two conversion phenomena: one effect plus bookkeeping to an output;
    - `source-preparation` — an internal disequilibrium on the route is recorded as `ambient-common` or `ambient-conditional` and the suffix from that node is itself an enumerated route; the prefix only supplies a driver that exists without engineering, so `dominated_by` names the suffix, which is the composition;
-   - `representation-equivalent` — the same mechanism as another route: a recorded pathway with the same source, ordered phenomena and sink energy form drawn with different carrier nodes, or (family-core collapse) another composition with the same source, ordered coupling families and sink form, in which case `dominated_by` names the representative (the shortest, then the lowest id);
-   - `representation-dominated` — a shorter route with the same source and sink has its phenomena as an ordered subsequence and the extra phenomena add no cross-family seam and no energy-form transition;
+   - `representation-equivalent` — the same mechanism as another route: a recorded pathway with the same source, ordered phenomena and sink energy form drawn with different carrier nodes, or (family-core collapse) another composition with the same source, ordered coupling families and sink form. Phenomena with no coupling family (pure transport such as heat conduction) are transparent in the family core, so a microscopic decomposition of one effect (heat conduction → phonon drag) collapses onto the thermoelectric generator. `dominated_by` names the representative: a recorded pathway when the group has one (the one sharing the most cited sources with the collapsed spelling), otherwise the shortest, then the lowest id; a recorded pathway is never itself collapsed;
+   - `representation-dominated` — a shorter route with the same source and sink has its phenomena as an ordered subsequence and either the extra phenomena add no cross-family seam and no energy-form transition, or (carrier-relay bypass) every extra phenomenon is a relay that takes a carrier in and hands a carrier out — a rotor in a produced flow — so the shorter route already links the same mechanisms;
    - `energy-backtracking` — an energy form reappears after a different one (A → B → A) with no new driver;
    - `known-device-likely` — every phenomenon is implemented by one common K6+ transducer, so the composition is probably an uncurated pathway;
    - `composition` — everything else: a genuine handoff between mechanisms.
-   Every route also carries `effective_length` (conversion phenomena, not claims), the collapsed energy-form sequence, `family_seam_count`, `core_unresolved_count`, `implied_interface_count` and `magnitude_data_coverage`.
+     Every route also carries `effective_length` (conversion phenomena, not claims), the collapsed energy-form sequence, `family_seam_count`, `core_unresolved_count`, `implied_interface_count` and `magnitude_data_coverage`.
 
 The frontier's default view is `frontier_class = candidate` and `structural_kind = composition`. Its order (`packages/graph/src/order.ts`, shared with the matrix drawer) is lexicographic, never a synthetic score: structure → unresolved core checks → unresolved handoffs → recorded device coverage → magnitude screen → search state → evidence floor → non-established constituent count → driver availability → family seams → presence of an energy-form transition → effective length → route id.
 

@@ -272,9 +272,10 @@
   predicate: produces
   object: carrier:fluid-flow
   energy: { input: kinetic, output: kinetic }
-  evidence: [source:barragan-kjelstrup-2017-thermo-osmosis]
-  handoff: { provides: [flow:liquid, flow:confined] }
+  evidence: [source:barragan-kjelstrup-2017-thermo-osmosis, source:straub-2016-toec]
+  handoff: { provides: [flow:liquid, flow:confined, flow:bulk, flow:directed-momentum] }
   status: established
+  notes: "Confined in a nanochannel (Zhao 2020) or collected as a pressurised bulk flow: Straub et al. 2016 measured 3.53 W/m² of hydraulic power from the thermo-osmotic flux, so the produced flow can load a turbine."
 # Thermo-osmotic flow in a charged nanochannel carries the double-layer counter-ions with it: the
 # first reviewed search (D.01 × C.23) found this composition demonstrated, not a direct relation.
 - id: claim:thermo-osmosis-couples-streaming
@@ -289,7 +290,7 @@
     - pressure-driven current is absent, negligible or separately controlled when the thermo-driven contribution is attributed
   condition_tags: [env-aqueous, medium-membrane, temp-gradient-required, flow-required]
   energy: { input: kinetic, output: electrical, dissipation: thermal }
-  handoff: { provides: [flow:liquid, flow:confined, surface:charged] }
+  handoff: { provides: [flow:liquid, flow:confined] }
   evidence: [source:zhao-2020-thermo-nanofluidics]
   status: demonstrated
   notes: "One physical experiment (Zhao et al. 2020): a track-etched polyimide membrane between hot and cold reservoirs gave a streaming current rising linearly with ΔT to 14 nA at 47.5 °C over 0.5 cm², direction set by the surface charge (pH). One paper is demonstrated, not established."
@@ -361,9 +362,10 @@
   predicate: produces
   object: carrier:fluid-flow
   energy: { input: kinetic, output: kinetic }
-  evidence: [source:rosensweig-1985]
-  handoff: { provides: [flow:liquid, flow:bulk, medium:ferrofluid] }
+  evidence: [source:rosensweig-1985, source:zhou-2009-thermomagnetic-engine]
+  handoff: { provides: [flow:liquid, flow:bulk, flow:directed-momentum, flow:magnetized, medium:ferrofluid] }
   status: established
+  notes: "The circulating flow carries a directed momentum flux that can load a blade: Zhou et al. 2009 drove a rotor with it (recorded as pathway:thermomagnetic-fluid-engine)."
 - id: claim:ferrofluid-convection-implemented-pump
   subject: phenomenon:thermomagnetic-ferrofluid-convection
   predicate: implemented_by
@@ -394,6 +396,7 @@
   subject: phenomenon:thermally-driven-shape-memory-effect
   predicate: produces
   object: carrier:mechanical-motion
+  handoff: { provides: [motion:relative-flux-change] }
   energy: { input: mechanical, output: mechanical }
   evidence: [source:sma-heat-engine-2019, source:otsuka-wayman-1998]
   status: established

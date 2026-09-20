@@ -25,6 +25,10 @@ export interface RouteCore {
   knownDevice: boolean;
   /** claim ids, so representation collapse can prefer the shortest spelling */
   claimCount?: number;
+  /** phenomena entered from a carrier and left into a carrier (a rotor in a produced flow): pure relays for the bypass rule */
+  relay?: Set<string>;
+  /** sources cited by the route's claims, so a collapse can attach a spelling to the recorded pathway that shares its literature */
+  sources?: Set<string>;
   /** entity types of the internal nodes (index i = node after step i), for source-preparation */
   internalDisequilibriumAt?: number[];
   /** ids of every enumerated route keyed by its claim-sequence suffixes, supplied by the compiler */
@@ -100,7 +104,11 @@ export function classify(routes: RouteCore[], namedSignatures: Set<string>): Map
         if (!isOrderedSubsequence(a.phenomena, r.phenomena)) continue;
         const aSeams = familySeams(a.families);
         const aTransitions = Math.max(0, a.forms.length - 1);
-        if (seams <= aSeams && transitions <= aTransitions) {
+        // Carrier-relay bypass (loop-3 pass 16): the longer spelling differs only by relays — phenomena that
+        // take a carrier in and hand a carrier out — so the shorter route already links the same mechanisms.
+        const extra = r.phenomena.filter((ph) => !a.phenomena.includes(ph));
+        const relayOnly = extra.length > 0 && extra.every((ph) => r.relay?.has(ph));
+        if ((seams <= aSeams && transitions <= aTransitions) || relayOnly) {
           dominatedBy = a.id;
           break;
         }
@@ -130,36 +138,56 @@ export function classify(routes: RouteCore[], namedSignatures: Set<string>): Map
   // different carrier chain. The shortest claim sequence is the representative.
   const identical = new Map<string, RouteCore[]>();
   for (const r of routes) {
-    if (out.get(r.id)!.kind !== "composition") continue;
+    if (out.get(r.id)!.kind !== "composition" && !r.exact) continue;
     const key = signature(r.source, r.phenomena, r.sinkForm);
     identical.set(key, [...(identical.get(key) ?? []), r]);
   }
-  for (const group of identical.values()) {
-    if (group.length < 2) continue;
-    const [rep, ...rest] = [...group].sort((a, b) => (a.claimCount ?? 0) - (b.claimCount ?? 0) || a.id.localeCompare(b.id));
-    for (const r of rest) out.set(r.id, { kind: "representation-equivalent", semanticOverlap: false, dominatedBy: rep.id });
-  }
+  for (const group of identical.values()) collapse(group, (a, b) => (a.claimCount ?? 0) - (b.claimCount ?? 0) || a.id.localeCompare(b.id));
   // Family-core collapse (loop-3 pass 10): two compositions with the same source, the same ordered
   // sequence of coupling families and the same sink form are one mechanism spelled with different
   // phenomena (a generator written as "electromagnetic induction" or as "generator action"). One
   // representative stays a composition; the rest become representation-equivalent to it.
   const cores = new Map<string, RouteCore[]>();
   for (const r of routes) {
-    if (out.get(r.id)!.kind !== "composition") continue;
+    // recorded pathways join the groups whatever their own kind, so a decomposition of a one-effect pathway collapses onto it
+    if (out.get(r.id)!.kind !== "composition" && !r.exact) continue;
     const key = familyCore(r);
     if (!key) continue;
     cores.set(key, [...(cores.get(key) ?? []), r]);
   }
-  for (const group of cores.values()) {
-    if (group.length < 2) continue;
-    const [rep, ...rest] = [...group].sort((a, b) => a.phenomena.length - b.phenomena.length || a.id.localeCompare(b.id));
-    for (const r of rest) out.set(r.id, { kind: "representation-equivalent", semanticOverlap: false, dominatedBy: rep.id });
-  }
+  for (const group of cores.values()) collapse(group, (a, b) => a.phenomena.length - b.phenomena.length || a.id.localeCompare(b.id));
   return out;
+
+  /**
+   * Mark every non-representative member of a group representation-equivalent. A recorded pathway is
+   * always a representative (two recorded devices in one group stay two devices); a spelling without a
+   * pathway attaches to the recorded pathway that shares the most of its cited sources, then to the
+   * shortest, then the lowest id. Without any recorded pathway the shortest spelling represents the group.
+   */
+  function collapse(group: RouteCore[], shorter: (a: RouteCore, b: RouteCore) => number) {
+    if (group.length < 2) return;
+    const exacts = group.filter((r) => r.exact);
+    const others = group.filter((r) => !r.exact);
+    if (exacts.length === 0) {
+      const [rep, ...rest] = [...others].sort(shorter);
+      for (const r of rest) out.set(r.id, { kind: "representation-equivalent", semanticOverlap: false, dominatedBy: rep.id });
+      return;
+    }
+    const shared = (a: RouteCore, b: RouteCore) => [...(a.sources ?? [])].filter((s) => b.sources?.has(s)).length;
+    for (const r of others) {
+      const rep = [...exacts].sort((a, b) => shared(b, r) - shared(a, r) || shorter(a, b))[0];
+      out.set(r.id, { kind: "representation-equivalent", semanticOverlap: false, dominatedBy: rep.id });
+    }
+  }
 }
 
-/** source | ordered family sets | sink form — undefined when any phenomenon has no family (cannot be compared). */
+/**
+ * source | ordered family sets | sink form. Phenomena with no coupling family (pure transport such as
+ * heat conduction) are transparent, so a microscopic decomposition of one mechanism collapses onto it;
+ * undefined when no phenomenon on the route has a family (nothing to compare).
+ */
 export function familyCore(r: RouteCore): string | undefined {
-  if (r.families.some((f) => f.length === 0)) return undefined;
-  return `${r.source}|${r.families.map((f) => [...f].sort().join("+")).join(">")}|${r.sinkForm ?? "?"}`;
+  const fams = r.families.filter((f) => f.length > 0);
+  if (fams.length === 0) return undefined;
+  return `${r.source}|${fams.map((f) => [...f].sort().join("+")).join(">")}|${r.sinkForm ?? "?"}`;
 }

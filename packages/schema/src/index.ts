@@ -539,7 +539,7 @@ export const CheckResult = z.object({
 });
 export type CheckResult = z.infer<typeof CheckResult>;
 
-export const FRONTIER_CLASSES = ["demonstrated", "candidate", "derived", "weak", "forbidden", "circular"] as const;
+export const FRONTIER_CLASSES = ["demonstrated", "candidate", "derived", "incomplete-handoff", "weak", "forbidden", "circular"] as const;
 export type FrontierClass = (typeof FRONTIER_CLASSES)[number];
 
 export const CompiledPath = z.object({

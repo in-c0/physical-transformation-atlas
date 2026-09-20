@@ -54,6 +54,7 @@ export const FRONTIER_LABEL: Record<FrontierClass, string> = {
   demonstrated: "demonstrated",
   candidate: "candidate",
   derived: "extends a recorded pathway",
+  "incomplete-handoff": "unresolved handoff",
   weak: "weakly supported",
   forbidden: "fails a check",
   circular: "round trip",

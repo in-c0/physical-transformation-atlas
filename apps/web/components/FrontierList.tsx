@@ -209,12 +209,17 @@ export function FrontierList() {
               <div className={styles.itemHead}>
                 <span className={styles.num}>{String(i + 1).padStart(4, "0")}</span>
                 <span
-                  className={`t-micro st-${p.frontier_class === "forbidden" ? "contradicted" : p.frontier_class === "demonstrated" ? "demonstrated" : p.frontier_class === "derived" ? "search-incomplete" : "candidate"}`}
+                  className={`t-micro st-${p.frontier_class === "forbidden" ? "contradicted" : p.frontier_class === "demonstrated" ? "demonstrated" : p.frontier_class === "derived" || p.frontier_class === "incomplete-handoff" ? "search-incomplete" : "candidate"}`}
                 >
                   {FRONTIER_LABEL[p.frontier_class].toUpperCase()}
                 </span>
                 <span className="t-micro secondary">{p.id}</span>
-                {named && <span className="t-micro secondary">· {named.name}</span>}
+                {named && (
+                  <span className="t-micro secondary">
+                    · {named.name}
+                    {named.status === "proposed" ? " (proposed in the literature, not demonstrated)" : ""}
+                  </span>
+                )}
               </div>
               <div className={styles.chain}>
                 {p.nodes.map((n, k) => (

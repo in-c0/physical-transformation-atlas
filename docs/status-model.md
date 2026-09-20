@@ -48,26 +48,39 @@ current compiler never assigns them; there is no review queue in this release.
 2. `demonstrated` — search status is `demonstrated`;
 3. `circular` — the source disequilibrium and the sink carry the same energy form;
 4. if every constituent claim is at least `demonstrated`:
-   `derived` when the route shares at least two ordered claims with a recorded pathway
-   (`known_pathway_overlap`) **or** shares at least two phenomena as a `source-variant` or
-   `sink-variant` of the closest recorded pathway (`closest_known_pathway`; a
-   `mechanism-subsequence` does not count); otherwise `candidate`;
+   - `incomplete-handoff` when a consuming step declares a carrier requirement
+     (`handoff.requires_all` / `requires_any`) that no earlier step provides
+     (`handoff_unresolved_count > 0`): the composition is not research-ready until the interface
+     is recorded;
+   - otherwise `derived` when the route overlaps a **demonstrated** pathway (status other than
+     `proposed`) in one of two ways: by claims — at least two ordered claims shared
+     (`known_pathway_overlap`) that form the pathway's head (its driver step and first conversion),
+     contain the whole pathway, or span two or more phenomena, so that a shared generic tail (a
+     produced carrier turning a rotor, a rotor turning a generator) does not count — or by phenomena
+     — at least two shared as a `source-variant` or `sink-variant` of the closest demonstrated
+     pathway (`closest_known_pathway`; a `mechanism-subsequence` does not count);
+   - otherwise `candidate`. A pathway with status `proposed` is attached to its exact route
+     (`p.pathway`) and shown as a proposal, but is ignored for overlap and never changes the class;
 5. `weak` — a constituent claim is below `demonstrated`.
 
 So a candidate is: no physics check fails, source and sink do not collapse to the same energy form,
-every constituent is at least demonstrated, and neither claim-level overlap nor a ≥ 2-phenomenon
-source/sink variant makes the route derived. Nothing in the rule mentions novelty or searches: a
-candidate may be not searched, search-incomplete, or covered by a completed negative search.
+every constituent is at least demonstrated, every declared carrier handoff is provided, and neither
+claim-level mechanism overlap nor a ≥ 2-phenomenon source/sink variant of a demonstrated pathway makes
+the route derived. Nothing in the rule mentions novelty or searches: a candidate may be not searched,
+search-incomplete, covered by a completed negative search, or the subject of a literature proposal.
 
 ## Structural kind (per route)
 
 Computed after enumeration by `structure.ts`, in this order: `atomic` (fewer than two conversion
-phenomena) → `representation-equivalent` → `representation-dominated` → `energy-backtracking` →
-`known-device-likely` → `composition`; a `composition` whose prefix manufactures an ambient
+phenomena) → `representation-equivalent` → `representation-dominated` (a shorter spelling exists that
+adds no seam or transition, or the longer one differs only by carrier relays such as a rotor in a
+produced flow) → `energy-backtracking` → `known-device-likely` → `composition`; a `composition` whose prefix manufactures an ambient
 (`ambient-common` or `ambient-conditional`) disequilibrium for a suffix that is itself an enumerated
 route becomes `source-preparation` (`dominated_by` names the suffix); two compositions with the
-same source, ordered coupling families and sink form collapse to one representative. A route that
-exactly matches a recorded pathway is always shown as `composition`. The rules are spelled out in
+same source, ordered coupling families (phenomena with no family, such as pure transport, are
+transparent) and sink form collapse to one representative — a recorded pathway when the group has one,
+chosen by shared cited sources, otherwise the shortest spelling. A route that exactly matches a recorded
+pathway is always shown as `composition` and is never marked as dominated. The rules are spelled out in
 [candidate-generation.md](candidate-generation.md).
 
 ## Matrix cell status, in precedence order

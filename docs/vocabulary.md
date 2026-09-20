@@ -142,8 +142,8 @@ Used in: `paths[].structural_kind`
 - `known-device-likely` — every conversion phenomenon on the route is implemented by one and the same recorded device, so the route most likely restates that device
 - `source-preparation` — the route first manufactures an ambient driver (a temperature gradient by combustion, an osmotic pressure by osmosis …) and then runs a suffix that is itself an enumerated route from that driver; dominated_by names the suffix route, which is the composition
 - `energy-backtracking` — the energy-form sequence returns to a form it already left
-- `representation-dominated` — a shorter route with the same source, sink form and an ordered subset of its phenomena exists with no more mechanism seams or energy transitions; the field dominated_by names it
-- `representation-equivalent` — the same mechanism as another route — either a recorded pathway with the same source, ordered phenomena and sink form spelled with different claims, or another composition with the same source, ordered coupling families and sink form (dominated_by names the representative)
+- `representation-dominated` — a shorter route with the same source, sink form and an ordered subset of its phenomena exists, and either adds no mechanism seam or energy transition to it, or differs from it only by carrier relays (phenomena that take a carrier in and hand a carrier out, such as a rotor in a produced flow); the field dominated_by names it
+- `representation-equivalent` — the same mechanism as another route — either a recorded pathway with the same source, ordered phenomena and sink form spelled with different claims, or another composition with the same source, ordered coupling families (phenomena with no family, such as pure transport, are transparent) and sink form; dominated_by names the representative, which is the recorded pathway when one is in the group
 - `atomic` — fewer than two conversion phenomena; nothing to compose
 
 ## `matrix.cell.status`
@@ -166,8 +166,9 @@ Used in: `matrix.cells[].status`
 Used in: `paths[].frontier_class`
 
 - `demonstrated` — search_status is demonstrated: a recorded pathway or a reviewed search covers the whole route
-- `candidate` — no check fails, the source and the sink do not share an energy form, every constituent is at least demonstrated, and neither claim-level overlap (two or more ordered claims shared with a recorded pathway) nor a phenomena-level variant (two or more phenomena shared as a source-variant or sink-variant of the closest recorded pathway) makes it derived
-- `derived` — otherwise candidate-quality, but the route shares two or more ordered claims with a recorded pathway (known_pathway_overlap) or two or more phenomena as a source-variant or sink-variant of the closest recorded pathway (closest_known_pathway): it extends, truncates or re-drives something known
+- `candidate` — no check fails, the source and the sink do not share an energy form, every constituent is at least demonstrated, every declared carrier handoff is provided, and neither claim-level overlap nor a phenomena-level variant of a demonstrated pathway makes it derived; a pathway with status proposed does not change the class
+- `derived` — otherwise candidate-quality, but the route shares with a demonstrated pathway (status other than proposed) either two or more ordered claims that span two or more phenomena or contain the whole pathway (known_pathway_overlap), or two or more phenomena as a source-variant or sink-variant (closest_known_pathway): it extends, truncates or re-drives something known
+- `incomplete-handoff` — otherwise candidate-quality, but a consuming step declares a carrier requirement (handoff.requires_all / requires_any) that no earlier step on the route provides; the composition is not research-ready until the interface is recorded
 - `weak` — at least one constituent claim is below demonstrated (reported, theoretical, hypothesised, disputed …)
 - `forbidden` — at least one physics check fails
 - `circular` — the source disequilibrium and the sink carry the same energy form

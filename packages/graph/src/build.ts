@@ -156,6 +156,10 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
     }
   }
   const reviewedIds = new Set(canon.searches.map((s) => s.id));
+  const pathwayById = new Map(canon.pathways.map((p) => [p.id, p]));
+  // Only pathways with a demonstration (status other than proposed) can make a route "derived"; a
+  // proposal is recorded on the route (p.pathway) but leaves it a candidate.
+  const recordedPathways = canon.pathways.filter((p) => p.status !== "proposed");
 
   // Path enumeration ---------------------------------------------------------------
   const paths: CompiledPath[] = [];
@@ -214,6 +218,22 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
     const known_pathway_overlap = pathwayOverlap(ids, pathway);
     const phenomenaOf = (cl: Claim[]) => [...new Set(cl.flatMap((c) => [c.subject, c.object]).filter((n) => entity.get(n)?.type === "phenomenon"))];
     const closest_known_pathway = closestPathway(ids, phenomenaOf(claims), pathway);
+    const derivedByClaims = (() => {
+      if (!known_pathway_overlap || known_pathway_overlap.shared_claims < 2) return false;
+      const steps = pathwayById.get(known_pathway_overlap.pathway)?.steps ?? [];
+      const shared = new Set<string>();
+      let j = 0;
+      for (const id of ids) if (j < steps.length && steps[j] === id) (shared.add(id), j++);
+      let k = 0;
+      for (const st of steps) if (k < ids.length && ids[k] === st) (shared.add(st), k++);
+      const containsWhole = steps.length > 0 && steps.every((st) => shared.has(st));
+      // A shared head (the pathway's driver step and first conversion) means the route re-uses the recorded
+      // mechanism and diverges later; a shared generic tail (a produced carrier turning a rotor) does not.
+      let head = 0;
+      while (head < steps.length && shared.has(steps[head])) head++;
+      const spanned = phenomenaOf([...shared].map((id) => claimById.get(id)!).filter(Boolean));
+      return containsWhole || head >= 2 || spanned.length >= 2;
+    })();
     const handoff = handoffReport(claims);
     const magnitude_screen = magnitudeScreen(claims, pathway);
 
@@ -224,10 +244,13 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
     else if (search_status === "demonstrated") frontier_class = "demonstrated";
     else if (srcForm && sinkForm && srcForm === sinkForm) frontier_class = "circular";
     else if (EVIDENCE_RANK[weakest] >= EVIDENCE_RANK.demonstrated) {
-      // Derived: extends or truncates a recorded pathway by claim overlap, or differs from one only
-      // before its driver or after its recorded transduction sequence (phenomena-level variant).
+      // A declared carrier requirement nothing upstream provides: the composition is not research-ready
+      // (loop-3 pass 16). Derived: extends or truncates a demonstrated pathway by claim overlap that spans
+      // its mechanism, or differs from one only before its driver or after its recorded transduction
+      // sequence (phenomena-level variant).
       const variant = closest_known_pathway && closest_known_pathway.relation !== "mechanism-subsequence" && closest_known_pathway.shared_phenomena >= 2;
-      frontier_class = (known_pathway_overlap && known_pathway_overlap.shared_claims >= 2) || variant ? "derived" : "candidate";
+      if (handoff.length > 0) frontier_class = "incomplete-handoff";
+      else frontier_class = derivedByClaims || variant ? "derived" : "candidate";
     } else frontier_class = "weak";
 
     // The constituent floor is a statement about the parts. The composition's own level exists only
@@ -324,9 +347,9 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
 
   /** Best overlap between a route's claim sequence and the recorded pathways. */
   function pathwayOverlap(ids: string[], exact: Pathway | undefined): CompiledPath["known_pathway_overlap"] {
-    if (exact) return { pathway: exact.id, relation: "exact", shared_claims: ids.length, route_claims: ids.length };
+    if (exact && exact.status !== "proposed") return { pathway: exact.id, relation: "exact", shared_claims: ids.length, route_claims: ids.length };
     let best: CompiledPath["known_pathway_overlap"] = null;
-    for (const p of canon.pathways) {
+    for (const p of recordedPathways) {
       const steps = p.steps;
       let relation: "prefix" | "suffix" | "subsequence" | null = null;
       let shared = 0;
@@ -361,9 +384,9 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
     return dp[a.length][b.length];
   }
   function closestPathway(ids: string[], phen: string[], exact: Pathway | undefined): CompiledPath["closest_known_pathway"] {
-    if (exact) return { pathway: exact.id, relation: "exact", shared_claims: ids.length, shared_phenomena: phen.length, route_phenomena: phen.length };
+    if (exact && exact.status !== "proposed") return { pathway: exact.id, relation: "exact", shared_claims: ids.length, shared_phenomena: phen.length, route_phenomena: phen.length };
     let best: CompiledPath["closest_known_pathway"] = null;
-    for (const p of canon.pathways) {
+    for (const p of recordedPathways) {
       const pp = pathwayPhenomena.get(p.id)!;
       const sharedPh = lcs(pp, phen);
       if (sharedPh < 2) continue;
@@ -441,6 +464,12 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
     exact: !!p.pathway,
     knownDevice: (p as unknown as { _knownDevice: boolean })._knownDevice,
     claimCount: p.claims.length,
+    sources: new Set(p.constituent_source_ids),
+    relay: new Set(
+      p.nodes.filter(
+        (n, k) => k > 0 && k < p.nodes.length - 1 && entity.get(n)?.type === "phenomenon" && entity.get(p.nodes[k - 1])?.type === "carrier" && entity.get(p.nodes[k + 1])?.type === "carrier",
+      ),
+    ),
     // internal disequilibria: node k (k ≥ 1) of type disequilibrium means the suffix from step k could be its own route
     // Only a driver that exists without engineering (ambient-common or ambient-conditional) makes the
     // prefix a preparation; manufacturing an engineered driver (a pressure or a stress) is the composition itself.
@@ -456,7 +485,8 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
     const k = kinds.get(p.id)!;
     p.structural_kind = p.pathway ? "composition" : k.kind;
     p.semantic_overlap = k.semanticOverlap ? (sigToPathway.get(p.representation_signature) ?? null) : null;
-    p.dominated_by = k.dominatedBy;
+    // A recorded pathway is its own representative: it is never shown as dominated by another spelling.
+    p.dominated_by = p.pathway ? null : k.dominatedBy;
     delete (p as unknown as { _families?: unknown })._families;
     delete (p as unknown as { _knownDevice?: unknown })._knownDevice;
   }

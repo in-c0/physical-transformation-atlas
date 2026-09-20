@@ -478,3 +478,60 @@
   knowledge_level: K6
   summary: A ferrofluid loop with a permanent magnet at the heated section circulates by itself as the heated fluid loses magnetisation; a self-pumping heat-transport device with no moving parts.
   review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 10 (frontier as a research instrument)" }
+# Loop-3 pass 16: devices the frontier's candidate compositions turned out to be, and the momentum-flux bound on radiation pressure.
+- id: transducer:thermocapillary-micromotor
+  type: transducer
+  name: Thermocapillary micromotor
+  aliases: [light-driven microgear, Marangoni micromotor]
+  knowledge_level: K5
+  summary: A microfabricated asymmetric gear at a liquid–air interface spins when absorbed light heats it unevenly; the surface-tension gradient around its teeth drives a thermocapillary flow that torques the gear (Maggi et al. 2015, up to 300 r.p.m.).
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics; source read)" }
+- id: transducer:marangoni-rotor-generator
+  type: transducer
+  name: Marangoni rotor mini-generator
+  aliases: [camphor rotor generator, solutocapillary generator]
+  knowledge_level: K5
+  summary: A floating polymer rotor carrying camphor and permanent magnets spins for hours on a solutocapillary Marangoni stress; the moving magnets induce a current in a stationary coil (Frenkel et al. 2019, 1.6 mV across 35 Ω).
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics; source read)" }
+- id: transducer:thermo-driven-nanofluidic-converter
+  type: transducer
+  name: Thermo-driven nanofluidic electrokinetic converter
+  aliases: [thermo-osmotic streaming-current membrane]
+  knowledge_level: K4
+  summary: A charged track-etched membrane between hot and cold reservoirs; thermo-osmotic flow through the nanochannels carries the double-layer counter-ions, giving a streaming current that rises with the temperature difference (Zhao et al. 2020, 14 nA at ΔT = 47.5 °C over 0.5 cm²; electrical power computed, not delivered to a load).
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics; source read in pass 13)" }
+- id: transducer:thermomagnetic-hydrodynamic-harvester
+  type: transducer
+  name: Thermomagnetic hydrodynamic energy harvester
+  aliases: [ferrofluid toroidal harvester, thermomagnetic advection generator]
+  knowledge_level: K6
+  summary: A closed toroidal loop in which a ferrofluid advects thermomagnetically between Peltier-controlled hot and cold sections under permanent magnets; induction coils wound on the torus extract electrical power from the moving magnetised fluid (Chiolerio et al. 2020, up to 10.4 μW per kelvin).
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics; source read)" }
+- id: transducer:thermomagnetic-fluid-engine
+  type: transducer
+  name: Thermomagnetic fluid engine
+  aliases: [magnetic-fluid rotor engine]
+  knowledge_level: K5
+  summary: A permanent magnet, a kerosene-based temperature-sensitive magnetic fluid and a rotor; heating the fluid in the field sets up thermomagnetic convection that drives the rotor (Zhou et al. 2009, about 2.1 rad/min).
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics; source read)" }
+- id: transducer:pneumatic-pressure-piezo-harvester
+  type: transducer
+  name: Pneumatic pressure piezoelectric harvester
+  aliases: [air-pressure impact piezoelectric harvester]
+  knowledge_level: K5
+  summary: A sealed piezoelectric element on a branch of a pneumatic line is stressed by the pressure excursions of the system and delivers transient electrical power (Yang et al. 2022, 140 μW peak at 1.5 MΩ for a 0 to 0.5 MPa excursion).
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics; source read)" }
+- id: transducer:wave-impact-piezo-harvester
+  type: transducer
+  name: Wave-impact piezoelectric harvester
+  aliases: [impact-ball piezoelectric wave harvester]
+  knowledge_level: K5
+  summary: Vertical pipes holding stacked PZT discs and free impact balls; wave motion throws the balls against the discs, whose stress produces charge (Mozumder and Banik 2026, laboratory tests at 0.1–2 Hz).
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics; source read)" }
+- id: constraint:radiation-momentum-flux
+  type: constraint
+  name: Radiation momentum flux
+  bound: "p = I/c for full absorption, p ≤ 2I/c for perfect reflection at normal incidence; the mechanical power a moving surface can take from the pressure is at most p·v per unit area"
+  applies_to_sources: [disequilibrium:radiation-flux]
+  summary: Radiation pressure is set by the momentum flux of the radiation, I/c to 2I/c. In full sunlight (I ≈ 1 kW m⁻²) that is at most ≈ 6.7 µPa; a surface moving at 0.1 m s⁻¹ against it receives at most ≈ 7 × 10⁻⁷ W m⁻², so mechanical work from radiation pressure is confined to high-irradiance or micro-scale regimes.
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics)" }

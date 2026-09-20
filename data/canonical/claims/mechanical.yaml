@@ -296,6 +296,7 @@
   subject: phenomenon:resonant-vibration
   predicate: produces
   object: carrier:mechanical-motion
+  handoff: { provides: [motion:relative-flux-change] }
   energy: { input: mechanical, output: mechanical }
   evidence: [source:beeby-2007, source:erturk-inman-2011]
   status: established
@@ -307,6 +308,7 @@
   condition_tags: [medium-conductor, field-magnetic-required]
   energy: { input: mechanical, output: electrical, dissipation: thermal }
   evidence: [source:faraday-1832, source:beeby-2007]
+  handoff: { requires_all: [motion:relative-flux-change] }
   status: established
   knowledge_level: K8
 - id: claim:induction-produces-carriers
@@ -480,11 +482,11 @@
   subject: carrier:fluid-flow
   predicate: drives
   object: phenomenon:aerodynamic-lift
-  conditions: [a rotor or vane in the produced stream at a working angle of attack; the driven flow must carry enough momentum flux for a blade to load]
+  conditions: [a rotor or vane in the produced stream at a working angle of attack; the driven flow must carry a directed momentum flux for a blade to load]
   condition_tags: [flow-required]
   energy: { input: kinetic, output: mechanical, dissipation: thermal }
   evidence: [source:betz-1920, source:dixon-hall-2014]
-  handoff: { requires_all: [flow:bulk, flow:loadable-momentum] }
+  handoff: { requires_all: [flow:bulk, flow:directed-momentum] }
   status: established
   review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 9 (structural gap: produced fluid flow had no consumer)" }
 - id: claim:fluid-flow-carrier-drives-fiv
@@ -502,11 +504,11 @@
   subject: carrier:fluid-flow
   predicate: drives
   object: phenomenon:streaming-potential
-  conditions: [the produced liquid flow passes a charged surface or through a charged channel]
-  condition_tags: [env-aqueous, flow-required]
+  conditions: [the produced liquid flow passes a charged surface or through a charged channel; the charged boundary is a condition of the step, not something the upstream flow provides]
+  condition_tags: [env-aqueous, flow-required, charged-surface-required]
   energy: { input: kinetic, output: electrical, dissipation: thermal }
   evidence: [source:yin-2014-graphene-flow, source:yang-2003-electrokinetic]
-  handoff: { requires_all: [flow:liquid, surface:charged] }
+  handoff: { requires_all: [flow:liquid] }
   status: replicated
   review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 9 (structural gap: produced fluid flow had no consumer)" }
 - id: claim:flow-drives-lift
@@ -523,6 +525,7 @@
   subject: phenomenon:aerodynamic-lift
   predicate: produces
   object: carrier:mechanical-motion
+  handoff: { provides: [motion:relative-flux-change] }
   energy: { input: mechanical, output: mechanical }
   evidence: [source:dixon-hall-2014]
   status: established
@@ -572,6 +575,7 @@
   subject: phenomenon:hydrostatic-descent
   predicate: produces
   object: carrier:mechanical-motion
+  handoff: { provides: [motion:relative-flux-change] }
   conditions: [falling or flowing water transfers weight and momentum to waterwheel buckets or paddles, producing shaft rotation]
   condition_tags: [state-liquid, flow-required]
   energy: { input: mechanical, output: mechanical, dissipation: thermal }
@@ -726,6 +730,7 @@
   subject: phenomenon:ocean-wave-motion
   predicate: produces
   object: carrier:mechanical-motion
+  handoff: { provides: [motion:relative-flux-change] }
   conditions: ["a buoy, flap or water column following the wave"]
   energy: { input: mechanical, output: mechanical }
   evidence: [source:salter-1974]
@@ -828,6 +833,7 @@
   subject: phenomenon:evaporation
   predicate: produces
   object: carrier:mechanical-motion
+  handoff: { provides: [motion:relative-flux-change] }
   conditions: ["hygroscopic spores or films that swell and shrink with humidity, driving a piston or oscillator"]
   energy: { input: chemical, output: mechanical }
   evidence: [source:chen-2015-evaporation]

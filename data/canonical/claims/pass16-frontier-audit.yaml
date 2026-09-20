@@ -1,0 +1,143 @@
+# Loop-3 pass 16: the frontier's thirteen candidate compositions audited as physics (ChatGPT review,
+# every source verified on Crossref and read before recording). New relations the audit exposed as
+# missing, the devices that implement them, and one momentum-flux bound.
+
+# --- Marangoni self-propulsion: the surface-tension gradient moves the body itself -----------------
+- id: claim:marangoni-produces-motion
+  subject: phenomenon:marangoni-effect
+  predicate: produces
+  object: carrier:mechanical-motion
+  conditions:
+    - a floating or interface-bound body whose asymmetry (shape, or where it emits a surfactant or absorbs heat) leaves a net surface-tension force or torque on it
+    - the body must be free to move on the interface; a rigid wall only sets up a flow
+  condition_tags: [state-liquid]
+  energy: { input: kinetic, output: mechanical, dissipation: thermal }
+  evidence: [source:maggi-2015-thermocapillary-gears, source:frenkel-2019-marangoni-generator]
+  handoff: { provides: [motion:relative-flux-change] }
+  status: replicated
+  knowledge_level: K5
+  notes: "Two independent groups: thermocapillary microgears (Maggi et al. 2015, light-heated, up to 300 r.p.m.) and solutocapillary camphor rotors carrying magnets past a coil (Frenkel et al. 2019, 10–20 h). Distinct from Marangoni flow turning a rotor: here the Marangoni stress acts on the moving body directly."
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics; both sources read)" }
+- id: claim:marangoni-implemented-micromotor
+  subject: phenomenon:marangoni-effect
+  predicate: implemented_by
+  object: transducer:thermocapillary-micromotor
+  evidence: [source:maggi-2015-thermocapillary-gears]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics; source read)" }
+- id: claim:marangoni-implemented-rotor-generator
+  subject: phenomenon:marangoni-effect
+  predicate: implemented_by
+  object: transducer:marangoni-rotor-generator
+  evidence: [source:frenkel-2019-marangoni-generator]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics; source read)" }
+- id: claim:induction-implemented-rotor-generator
+  subject: phenomenon:electromagnetic-induction
+  predicate: implemented_by
+  object: transducer:marangoni-rotor-generator
+  evidence: [source:frenkel-2019-marangoni-generator]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics; source read)" }
+
+# --- Thermomagnetic advection inducing directly in a coil ------------------------------------------
+- id: claim:ferrofluid-convection-couples-induction
+  subject: phenomenon:thermomagnetic-ferrofluid-convection
+  predicate: couples_to
+  object: phenomenon:electromagnetic-induction
+  conditions:
+    - magnetised ferrofluid advects through a closed loop wound with induction coils, so the flux linked by each coil changes as magnetised packets pass
+    - a permanent-magnet bias field keeps the fluid magnetised where it moves past the coils
+  condition_tags: [state-liquid, field-magnetic-required, temp-gradient-required]
+  energy: { input: kinetic, output: electrical, dissipation: thermal }
+  evidence: [source:chiolerio-2020-thermomagnetic-harvester]
+  status: demonstrated
+  knowledge_level: K6
+  notes: "One lab-scale prototype (Chiolerio et al. 2020): a toroidal loop with poloidal or mixed poloidal/toroidal windings, water carrier with ferrofluid packets, up to 10.4 μW per kelvin. One paper is demonstrated, not established."
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics; source read)" }
+- id: claim:ferrofluid-convection-implemented-harvester
+  subject: phenomenon:thermomagnetic-ferrofluid-convection
+  predicate: implemented_by
+  object: transducer:thermomagnetic-hydrodynamic-harvester
+  evidence: [source:chiolerio-2020-thermomagnetic-harvester]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics; source read)" }
+- id: claim:induction-implemented-thermomagnetic-harvester
+  subject: phenomenon:electromagnetic-induction
+  predicate: implemented_by
+  object: transducer:thermomagnetic-hydrodynamic-harvester
+  evidence: [source:chiolerio-2020-thermomagnetic-harvester]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics; source read)" }
+- id: claim:ferrofluid-convection-implemented-fluid-engine
+  subject: phenomenon:thermomagnetic-ferrofluid-convection
+  predicate: implemented_by
+  object: transducer:thermomagnetic-fluid-engine
+  evidence: [source:zhou-2009-thermomagnetic-engine]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics; source read)" }
+- id: claim:lift-implemented-fluid-engine
+  subject: phenomenon:aerodynamic-lift
+  predicate: implemented_by
+  object: transducer:thermomagnetic-fluid-engine
+  conditions: [the rotor sits in the circulating magnetic fluid and is turned by it]
+  evidence: [source:zhou-2009-thermomagnetic-engine]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics; source read)" }
+
+# --- Thermo-driven nanofluidic converter (the pass-13 finding as a device) --------------------------
+- id: claim:thermo-osmosis-implemented-nanofluidic-converter
+  subject: phenomenon:thermo-osmosis
+  predicate: implemented_by
+  object: transducer:thermo-driven-nanofluidic-converter
+  evidence: [source:zhao-2020-thermo-nanofluidics]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics)" }
+- id: claim:streaming-implemented-nanofluidic-converter
+  subject: phenomenon:streaming-potential
+  predicate: implemented_by
+  object: transducer:thermo-driven-nanofluidic-converter
+  evidence: [source:zhao-2020-thermo-nanofluidics]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics)" }
+
+# --- Piezoelectric pressure and wave-impact harvesters --------------------------------------------
+- id: claim:piezo-implemented-pneumatic-harvester
+  subject: phenomenon:piezoelectric-effect
+  predicate: implemented_by
+  object: transducer:pneumatic-pressure-piezo-harvester
+  evidence: [source:yang-2022-pneumatic-piezo-harvester]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics; source read)" }
+- id: claim:elastic-implemented-pneumatic-harvester
+  subject: phenomenon:elastic-deformation
+  predicate: implemented_by
+  object: transducer:pneumatic-pressure-piezo-harvester
+  evidence: [source:yang-2022-pneumatic-piezo-harvester]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics; source read)" }
+- id: claim:piezo-implemented-wave-impact-harvester
+  subject: phenomenon:piezoelectric-effect
+  predicate: implemented_by
+  object: transducer:wave-impact-piezo-harvester
+  evidence: [source:mozumder-2026-wave-impact-piezo]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics; source read)" }
+- id: claim:wave-implemented-wave-impact-harvester
+  subject: phenomenon:ocean-wave-motion
+  predicate: implemented_by
+  object: transducer:wave-impact-piezo-harvester
+  evidence: [source:mozumder-2026-wave-impact-piezo]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics; source read)" }
+
+# --- Radiation pressure: the momentum-flux ceiling ------------------------------------------------
+- id: claim:radiation-pressure-bounded-momentum-flux
+  subject: phenomenon:radiation-pressure
+  predicate: bounded_by
+  object: constraint:radiation-momentum-flux
+  conditions: [p = I/c for full absorption and at most 2I/c for perfect reflection at normal incidence; the mechanical power per unit area a surface moving at speed v can take is at most p·v]
+  evidence: [source:landau-lifshitz-ecm, source:nichols-hull-1901]
+  status: established
+  notes: "The bound scopes the coupling by irradiance rather than declaring it impossible: in full sunlight it caps the mechanical power at ≈ 7 × 10⁻⁷ W m⁻² for a surface receding at 0.1 m s⁻¹, so a generator driven by radiation pressure is a micro-scale or high-irradiance proposition."
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics)" }

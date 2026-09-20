@@ -288,12 +288,15 @@ export default function MethodsPage() {
         <div className="prose">
           <p>
             Candidate is an atlas classification, not a novelty claim. A frontier candidate has no failed physics check, has constituent evidence at least demonstrated, is not an energy-form round
-            trip, and is not classified as derived from a sufficiently similar recorded pathway. The default frontier further requires <code>structural_kind = composition</code>. A candidate may be
-            not searched, partially searched, or covered by a completed negative search; none of those states means that no such device or experiment exists outside the atlas.
+            trip, has every declared carrier handoff provided by an earlier step (otherwise it is classed <em>unresolved handoff</em>), and is not classified as derived from a sufficiently similar
+            demonstrated pathway. A pathway recorded with status <em>proposed</em> is shown on the route but does not change its class. The default frontier further requires{" "}
+            <code>structural_kind = composition</code>. A candidate may be not searched, partially searched, or covered by a completed negative search; none of those states means that no such device
+            or experiment exists outside the atlas.
           </p>
           <p>
-            “Derived” means the route shares at least two ordered claims with a recorded pathway, or at least two phenomena as a source-variant or sink-variant of the closest recorded pathway: it
-            extends, truncates or re-drives something known and is shown apart from fresh candidates.
+            “Derived” means the route shares with a demonstrated pathway at least two ordered claims that span two or more phenomena (or contain the whole pathway), or at least two phenomena as a
+            source-variant or sink-variant of the closest demonstrated pathway: it extends, truncates or re-drives something known and is shown apart from fresh candidates. Sharing only a generic tail
+            (a produced carrier turning a rotor, a rotor turning a generator) does not make a route derived.
           </p>
           <p>A matrix cell takes the first of these that applies, in this order:</p>
           <ol className={styles.precedence}>

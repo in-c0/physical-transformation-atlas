@@ -1,0 +1,189 @@
+# Loop-3 pass 16: the frontier's thirteen candidate compositions audited as physics. Eight of them
+# turned out to be demonstrated devices the atlas had no pathway record for; two are literature
+# proposals (status proposed, which never makes a route "demonstrated"). Every figure was read in the
+# source before it was written here.
+- id: pathway:thermocapillary-micromotor
+  name: Thermocapillary micromotor
+  steps: [claim:temperature-drives-marangoni, claim:marangoni-produces-motion, claim:motion-converts-mechanical-work]
+  demonstrated_with: [transducer:thermocapillary-micromotor]
+  evidence: [source:maggi-2015-thermocapillary-gears]
+  status: demonstrated
+  knowledge_level: K5
+  performance:
+    measurements:
+      - quantity: rotation rate
+        value: "up to 300 r.p.m."
+        scope: device
+        conditions: "microfabricated asymmetric gears on a liquid–air interface under wide-field incoherent illumination; the temperature gradient that drives the thermocapillary flow is produced by the light the gear absorbs"
+        sources: [source:maggi-2015-thermocapillary-gears]
+        year: 2015
+        note: rotational work against viscous drag; no load other than the fluid was measured
+  environment: [state-liquid, temp-gradient-required]
+  summary: Absorbed light heats an asymmetric floating gear unevenly; the surface-tension gradient around it drives a thermocapillary flow whose stress torques the gear. The temperature gradient is the driver; light is how it is prepared.
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics; source read)" }
+- id: pathway:marangoni-rotor
+  name: Solutocapillary Marangoni rotor
+  steps: [claim:surface-drives-marangoni, claim:marangoni-produces-motion, claim:motion-converts-mechanical-work]
+  demonstrated_with: [transducer:marangoni-rotor-generator]
+  evidence: [source:frenkel-2019-marangoni-generator]
+  status: demonstrated
+  knowledge_level: K5
+  performance:
+    measurements:
+      - quantity: duration of rotation
+        value: "≈ 10–20 h"
+        scope: device
+        conditions: "floating polymer rotor with camphor engines on deionised water in a 420 mm dish"
+        sources: [source:frenkel-2019-marangoni-generator]
+        year: 2019
+  environment: [state-liquid]
+  summary: Camphor released from a floating rotor lowers the surface tension asymmetrically; the solutocapillary stress spins the rotor for hours — the camphor boat as a rotor.
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics; source read)" }
+- id: pathway:marangoni-rotor-generator
+  name: Marangoni rotor mini-generator
+  steps: [claim:surface-drives-marangoni, claim:marangoni-produces-motion, claim:motion-drives-induction, claim:induction-produces-carriers, claim:charge-carriers-convert-electricity]
+  demonstrated_with: [transducer:marangoni-rotor-generator]
+  evidence: [source:frenkel-2019-marangoni-generator]
+  status: demonstrated
+  knowledge_level: K5
+  performance:
+    measurements:
+      - quantity: load voltage
+        value: "1.6 mV maximum across 35 Ω"
+        scope: device
+        conditions: "permanent magnets on the rotor passing a stationary 800-turn copper coil (r = 35 Ω) connected to a 35 Ω resistor; about 7 × 10⁻⁸ W at the maximum"
+        sources: [source:frenkel-2019-marangoni-generator]
+        year: 2019
+        note: the power figure is derived from the reported voltage and resistance, not reported directly
+  environment: [state-liquid, medium-conductor, field-magnetic-required]
+  summary: The solutocapillary rotor carries permanent magnets whose passage induces a current in a stationary coil; a mini-generator run by a surface-energy difference alone.
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics; source read)" }
+- id: pathway:thermo-driven-nanofluidic-converter
+  name: Thermo-driven nanofluidic electrokinetic converter
+  steps: [claim:temperature-drives-thermo-osmosis, claim:thermo-osmosis-couples-streaming, claim:streaming-produces-ions, claim:ionic-current-converts-electricity]
+  demonstrated_with: [transducer:thermo-driven-nanofluidic-converter]
+  evidence: [source:zhao-2020-thermo-nanofluidics]
+  status: demonstrated
+  knowledge_level: K4
+  performance:
+    measurements:
+      - quantity: streaming current
+        value: "14 nA at ΔT = 47.5 °C"
+        scope: device
+        conditions: "track-etched polyimide membrane, 0.5 cm² exposed area, between hot and cold reservoirs; current rising linearly with ΔT, direction set by the surface charge (pH)"
+        sources: [source:zhao-2020-thermo-nanofluidics]
+        year: 2020
+        note: a measured short-circuit current; the electrical power (25.48 pW per channel at ΔT = 40 °C in the paper) is calculated, not delivered to a load
+  environment: [state-liquid, medium-membrane, env-aqueous, temp-gradient-required]
+  summary: Thermo-osmotic flow through charged nanochannels carries the double-layer counter-ions; the streaming current is the electrical output. The composition the atlas's first reviewed search found, recorded as the device it is.
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics; mechanism read in pass 13)" }
+- id: pathway:thermomagnetic-hydrodynamic-harvester
+  name: Thermomagnetic hydrodynamic energy harvester
+  steps: [claim:temperature-drives-ferrofluid-convection, claim:ferrofluid-convection-couples-induction, claim:induction-produces-carriers, claim:charge-carriers-convert-electricity]
+  demonstrated_with: [transducer:thermomagnetic-hydrodynamic-harvester]
+  evidence: [source:chiolerio-2020-thermomagnetic-harvester]
+  status: prototype
+  knowledge_level: K6
+  performance:
+    theoretical_limit: "Carnot between the hot and cold sections; the paper places the device near 20 % of the Carnot efficiency for its temperature drop"
+    measurements:
+      - quantity: extracted electrical power per kelvin
+        value: "up to 10.4 μW/K"
+        scope: laboratory
+        conditions: "toroidal closed loop, commercial ferrofluid packets in a water carrier, Peltier-controlled gradient, permanent magnets, poloidal or mixed poloidal/toroidal induction windings"
+        sources: [source:chiolerio-2020-thermomagnetic-harvester]
+        year: 2020
+  environment: [state-liquid, field-magnetic-required, temp-gradient-required, medium-conductor]
+  summary: A ferrofluid advects around a torus as heating demagnetises it; coils wound on the torus see the passing magnetised packets and deliver electrical power directly, with no moving solid part.
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics; source read)" }
+- id: pathway:thermomagnetic-fluid-engine
+  name: Thermomagnetic fluid engine
+  steps: [claim:temperature-drives-ferrofluid-convection, claim:ferrofluid-convection-produces-flow, claim:fluid-flow-carrier-drives-lift, claim:lift-produces-motion, claim:motion-converts-mechanical-work]
+  demonstrated_with: [transducer:thermomagnetic-fluid-engine]
+  evidence: [source:zhou-2009-thermomagnetic-engine]
+  status: demonstrated
+  knowledge_level: K5
+  performance:
+    measurements:
+      - quantity: rotor angular velocity
+        value: "≈ 2.1 rad/min peak"
+        scope: device
+        conditions: "kerosene-based temperature-sensitive magnetic fluid, permanent NdFeB magnet, rotor in the circulating fluid; speed rises with heat input and with a colder heat sink"
+        sources: [source:zhou-2009-thermomagnetic-engine]
+        year: 2009
+        note: no shaft power reported; a miniature demonstration of the mechanism
+  environment: [state-liquid, field-magnetic-required, temp-gradient-required]
+  summary: Thermomagnetic convection of a magnetic fluid in a permanent-magnet field circulates the fluid, and the circulating fluid turns a rotor — the produced flow loading a blade, which is why the atlas records it on the flow-to-rotor spelling rather than as a direct effect.
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics; source read)" }
+- id: pathway:pneumatic-pressure-piezo-harvester
+  name: Pneumatic pressure piezoelectric harvester
+  steps: [claim:pressure-drives-elastic, claim:elastic-produces-stress-carrier, claim:elastic-stress-drives-piezo, claim:piezo-produces-charge, claim:surface-charge-converts-electricity]
+  demonstrated_with: [transducer:pneumatic-pressure-piezo-harvester]
+  evidence: [source:yang-2022-pneumatic-piezo-harvester]
+  status: prototype
+  knowledge_level: K5
+  performance:
+    power_density: "1.43 mW cm⁻³ at the maximum peak power"
+    measurements:
+      - quantity: peak power
+        value: "140 μW at 1500 kΩ"
+        scope: device
+        conditions: "air pressure varying from 0 to 0.5 MPa on a sealed piezoelectric harvester connected to a pneumatic branch pipe; transient, alternating output"
+        sources: [source:yang-2022-pneumatic-piezo-harvester]
+        year: 2022
+      - quantity: power density
+        value: "1.43 mW cm⁻³"
+        scope: device
+        conditions: "same excursion and load"
+        sources: [source:yang-2022-pneumatic-piezo-harvester]
+        year: 2022
+  environment: [state-solid, medium-non-centrosymmetric]
+  summary: The pressure excursions of a pneumatic line stress a sealed piezoelectric element, which delivers transient electrical power; the pressure gradient is engineered, so this is a harvester of an existing system's swings, not a primary source.
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics; source read)" }
+- id: pathway:wave-impact-piezo-harvester
+  name: Wave-impact piezoelectric harvester
+  steps: [claim:wave-drives, claim:wave-produces-pressure, claim:pressure-drives-elastic, claim:elastic-produces-stress-carrier, claim:elastic-stress-drives-piezo, claim:piezo-produces-charge, claim:surface-charge-converts-electricity]
+  demonstrated_with: [transducer:wave-impact-piezo-harvester]
+  evidence: [source:mozumder-2026-wave-impact-piezo]
+  status: demonstrated
+  knowledge_level: K5
+  performance:
+    measurements:
+      - quantity: open-circuit voltage per pipe
+        value: "up to 1.28 V"
+        scope: laboratory
+        conditions: "stacked PZT-5A discs struck by 70 g steel impact balls on rigid cement base tiles, double-disc configuration; simulated waves at 0.1–2 Hz, 3.5 % salinity"
+        sources: [source:mozumder-2026-wave-impact-piezo]
+        year: 2026
+      - quantity: power per wave event
+        value: "≈ 20 mW"
+        scope: laboratory
+        conditions: "same configuration; reported per wave event, not as a time average"
+        sources: [source:mozumder-2026-wave-impact-piezo]
+        year: 2026
+        note: one laboratory demonstration in a conference series; the atlas records it as demonstrated, not replicated
+  environment: [state-liquid, state-solid, medium-non-centrosymmetric]
+  summary: Wave motion drives impact balls against stacked piezoelectric discs; the impact stress is the pressure step the atlas records between wave motion and elastic deformation, a coarse but faithful spelling of impact loading.
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics; source read)" }
+- id: pathway:thermocapillary-streaming-generator
+  name: Thermocapillary streaming-potential generator (proposed)
+  steps: [claim:temperature-drives-marangoni, claim:marangoni-produces-flow, claim:fluid-flow-carrier-drives-streaming, claim:streaming-produces-ions, claim:ionic-current-converts-electricity]
+  evidence: [source:pini-2015-surface-tension-streaming]
+  status: proposed
+  knowledge_level: K3
+  performance:
+    theoretical_limit: "Carnot between the hot and cold ends of the free surface; Pini, Baier and Dietzel compare the maximal thermal efficiency with it and find thermocapillary drive limited by the heat capacity of aqueous solvents"
+  environment: [state-liquid, env-aqueous, temp-gradient-required, charged-surface-required]
+  summary: A temperature gradient along a free electrolyte surface drives a thermocapillary shear flow past a charged wall, whose streaming potential is the electrical output. Analysed theoretically and numerically; no physical demonstration is recorded, so the route stays a candidate.
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics; abstract read)" }
+- id: pathway:solutocapillary-streaming-generator
+  name: Solutocapillary streaming-potential generator (proposed)
+  steps: [claim:surface-drives-marangoni, claim:marangoni-produces-flow, claim:fluid-flow-carrier-drives-streaming, claim:streaming-produces-ions, claim:ionic-current-converts-electricity]
+  evidence: [source:pini-2015-surface-tension-streaming]
+  status: proposed
+  knowledge_level: K3
+  performance:
+    theoretical_limit: "the same analysis finds concentration-driven (destillocapillary) flows more promising than thermocapillary ones"
+  environment: [state-liquid, env-aqueous, charged-surface-required]
+  summary: A surfactant-concentration difference along a free electrolyte surface drives a solutocapillary shear flow past a charged wall, whose streaming potential is the electrical output. Theoretical and numerical only; the route stays a candidate.
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics; abstract read)" }
