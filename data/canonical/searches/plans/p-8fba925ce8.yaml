@@ -1,0 +1,69 @@
+# route-search-v1 query plan — p-8fba925ce8
+# Temperature gradient → Thermo-osmosis → Fluid flow → Aerodynamic and hydrodynamic lift → Mechanical motion → Mechanical work
+# D = Temperature gradient; M_1 = Thermo-osmosis; M_2 = Aerodynamic and hydrodynamic lift; O = Mechanical work (k = 2).
+# The route carries the proposed pathway pathway:thermo-osmotic-energy-converter (Straub et al. 2016: the
+# pressurised thermo-osmotic flow was measured, the turbine stage is proposed); the search asks whether anyone
+# has closed the chain through a turbine. Written in loop-3 pass 21 from the recorded names and aliases, after
+# adding the spelling variants thermoosmosis / thermo-osmotic / thermo-osmotic energy conversion to thermo-osmosis
+# and hydraulic turbine / turbine to the lift phenomenon (its recorded aliases were rotor torque, blade lift and
+# turbine action, none of which a paper on a membrane-pressurised flow would use). Google Scholar runs are
+# performed by hand and recorded in the reviewed record, not here. Re-run after the second reader's screening
+# added the field's own names for the same vapour-gap transport — vapor pressure-driven osmosis (VPDO) and
+# pressure-retarded membrane distillation (PRMD) — as aliases of the phenomenon; the first run's query had
+# missed every PRMD paper. Generic "membrane distillation" was rejected as too broad; "MemPower" names a device.
+protocol_version: route-search-v1
+route: p-8fba925ce8
+claims: [claim:temperature-drives-thermo-osmosis, claim:thermo-osmosis-produces-flow, claim:fluid-flow-carrier-drives-lift, claim:lift-produces-motion, claim:motion-converts-mechanical-work]
+driver_terms: [temperature gradient, temperature difference, thermal gradient, ΔT, waste heat]
+phenomenon_terms:
+  phenomenon:thermo-osmosis: [thermo-osmosis, thermal osmosis, thermo-osmotic flow, thermoosmosis, thermo-osmotic, thermo-osmotic energy conversion, vapor pressure-driven osmosis, VPDO, pressure-retarded membrane distillation, PRMD]
+  phenomenon:aerodynamic-lift: [rotor torque, blade lift, turbine action, hydraulic turbine, turbine]
+output_terms: [mechanical work, shaft work, torque, motion]
+runs:
+  - id: search:2026-09-21-p-8fba925ce8/oa-dm1
+    engine: openalex
+    form: route-driver-mechanism
+    key: driver-mechanism:1
+    query: '("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermo-osmosis" OR "thermal osmosis" OR "thermo-osmotic flow" OR thermoosmosis OR "thermo-osmotic" OR "thermo-osmotic energy conversion" OR "vapor pressure-driven osmosis" OR VPDO OR "pressure-retarded membrane distillation" OR PRMD)'
+  - id: search:2026-09-21-p-8fba925ce8/oa-dm1-newest
+    engine: openalex
+    form: route-driver-mechanism
+    key: driver-mechanism:1
+    sort: newest
+    per_page: 50
+    query: '("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermo-osmosis" OR "thermal osmosis" OR "thermo-osmotic flow" OR thermoosmosis OR "thermo-osmotic" OR "thermo-osmotic energy conversion" OR "vapor pressure-driven osmosis" OR VPDO OR "pressure-retarded membrane distillation" OR PRMD)'
+  - id: search:2026-09-21-p-8fba925ce8/oa-mp12
+    engine: openalex
+    form: route-mechanism-pair
+    key: mechanism-pair:1-2
+    query: '("Thermo-osmosis" OR "thermal osmosis" OR "thermo-osmotic flow" OR thermoosmosis OR "thermo-osmotic" OR "thermo-osmotic energy conversion" OR "vapor pressure-driven osmosis" OR VPDO OR "pressure-retarded membrane distillation" OR PRMD) AND ("rotor torque" OR "blade lift" OR "turbine action" OR "hydraulic turbine" OR turbine)'
+  - id: search:2026-09-21-p-8fba925ce8/oa-wc
+    engine: openalex
+    form: route-whole-chain
+    key: whole-chain
+    query: '("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermo-osmosis" OR "thermal osmosis" OR "thermo-osmotic flow" OR thermoosmosis OR "thermo-osmotic" OR "thermo-osmotic energy conversion" OR "vapor pressure-driven osmosis" OR VPDO OR "pressure-retarded membrane distillation" OR PRMD) AND ("rotor torque" OR "blade lift" OR "turbine action" OR "hydraulic turbine" OR turbine) AND ("mechanical work" OR "shaft work" OR torque OR motion)'
+  - id: search:2026-09-21-p-8fba925ce8/oa-dp
+    engine: openalex
+    form: route-demonstration-precision
+    key: demonstration-precision
+    query: '("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermo-osmosis" OR "thermal osmosis" OR "thermo-osmotic flow" OR thermoosmosis OR "thermo-osmotic" OR "thermo-osmotic energy conversion" OR "vapor pressure-driven osmosis" OR VPDO OR "pressure-retarded membrane distillation" OR PRMD) AND ("rotor torque" OR "blade lift" OR "turbine action" OR "hydraulic turbine" OR turbine) AND ("mechanical work" OR "shaft work" OR torque OR motion) AND (experiment OR experimental OR measured OR device OR prototype)'
+  - id: search:2026-09-21-p-8fba925ce8/s2-dm1
+    engine: semantic-scholar
+    form: route-driver-mechanism
+    key: driver-mechanism:1
+    query: Temperature gradient temperature difference thermal gradient ΔT waste heat thermo-osmosis thermal osmosis thermo-osmotic flow thermoosmosis thermo-osmotic energy conversion vapor pressure-driven osmosis VPDO pressure-retarded membrane distillation PRMD
+  - id: search:2026-09-21-p-8fba925ce8/s2-mp12
+    engine: semantic-scholar
+    form: route-mechanism-pair
+    key: mechanism-pair:1-2
+    query: thermo-osmosis thermal osmosis thermo-osmotic flow thermoosmosis thermo-osmotic energy conversion vapor pressure-driven osmosis VPDO pressure-retarded membrane distillation PRMD rotor torque blade lift turbine action hydraulic turbine turbine
+  - id: search:2026-09-21-p-8fba925ce8/s2-wc
+    engine: semantic-scholar
+    form: route-whole-chain
+    key: whole-chain
+    query: Temperature gradient thermal gradient ΔT waste heat thermo-osmosis thermal osmosis thermo-osmotic flow thermoosmosis thermo-osmotic energy conversion vapor pressure-driven osmosis VPDO pressure-retarded membrane distillation PRMD hydraulic turbine turbine mechanical work shaft work torque motion
+  - id: search:2026-09-21-p-8fba925ce8/s2-dp
+    engine: semantic-scholar
+    form: route-demonstration-precision
+    key: demonstration-precision
+    query: Temperature gradient thermal gradient ΔT waste heat thermo-osmosis thermal osmosis thermo-osmotic flow thermoosmosis thermo-osmotic energy conversion vapor pressure-driven osmosis VPDO pressure-retarded membrane distillation PRMD hydraulic turbine turbine mechanical work shaft work torque motion experiment experimental measured device prototype

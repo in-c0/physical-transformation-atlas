@@ -132,7 +132,11 @@ pathway. The same source and ordered mechanisms with a different final output ar
 physical chain that contains the target mechanisms but requires one or more additional conversion
 phenomena between the target's recorded steps is `longer-chain`: evidence for that longer route, not
 for the exact target. Extra instrumentation, reservoirs, electrodes, loads or non-converting
-apparatus do not make a hit `longer-chain`.
+apparatus do not make a hit `longer-chain`. A reservoir the atlas spells as a conversion of its own
+does: an elevated tank feeding a turbine is gravitational potential difference → hydrostatic descent
+→ hydraulic pressure in the atlas's hydro spelling, so a thermo-osmotic flow stored at height before
+the turbine is `longer-chain` for the direct thermo-osmosis → turbine route (the TOEC search of
+21/09/2026, Xiao et al. 2024), however hydrostatically equivalent a standpipe and an accumulator are.
 
 ### 4. Decisions
 

@@ -514,7 +514,7 @@
 - id: transducer:thermo-osmotic-energy-converter
   type: transducer
   name: Thermo-osmotic energy converter (TOEC)
-  aliases: [TOEC, thermo-osmotic membrane engine]
+  aliases: [TOEC, thermo-osmotic membrane engine, MemPower]
   knowledge_level: K5
   summary: A hydrophobic nanoporous membrane passes a thermo-osmotic vapour flux from a hot reservoir into a pressurised cold reservoir; the pressurised flow is the mechanical output, proposed to drive a turbine.
   review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 10 (frontier as a research instrument)" }
@@ -613,3 +613,18 @@
   knowledge_level: K6
   summary: Bent NiTi sheets driven through their transformation at 5.64 N g⁻¹ cool an air stream by 5.5 K with 0.137 W g⁻¹ specific cooling power; the driver is an actuator's stress, not ambient vibration (Li, Cheng and Sun 2022).
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 20 (the last two candidate compositions audited as physics; abstract read)" }
+# Loop-3 pass 21: the devices the TOEC route search surfaced.
+- id: transducer:thermal-osmosis-electrokinetic-generator
+  type: transducer
+  name: Thermal-osmosis electrokinetic generator (MD-EPG)
+  aliases: [MD-EPG, membrane distiller + electrokinetic power generator, TOEC electrokinetic module]
+  knowledge_level: K5
+  summary: Two-stage laboratory converter coupling a thermal-osmosis (membrane-distillation) module, whose pressurised cold-side water is the working stream, to a pressure-driven electrokinetic microchannel generator (Huang et al. 2021; Luo et al. 2023, 1.12 W m⁻² at ΔT = 50 °C).
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 21 (TOEC route search; abstracts read)" }
+- id: transducer:permeate-gap-thermo-osmotic-generator
+  type: transducer
+  name: Permeate-gap thermo-osmotic generator (PGTO)
+  aliases: [PGTO system, permeate gap thermo-osmotic system, pump-free thermo-osmotic generator]
+  knowledge_level: K5
+  summary: A permeate-gap membrane-distillation module pressurises its own permeate into an elevated tank; the released stream drives a small hydro-turbine generator (Xiao et al. 2024, 32 cm², a 2 W-rated bulb lit at about 1.5 m head). Gravitational storage sits between the thermo-osmotic flow and the turbine, so it is a longer-chain relative of the TOEC composition.
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 21 (TOEC route search; source read in full)" }

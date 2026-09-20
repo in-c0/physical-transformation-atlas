@@ -63,7 +63,7 @@
 - id: phenomenon:thermo-osmosis
   type: phenomenon
   name: Thermo-osmosis
-  aliases: [thermal osmosis, thermo-osmotic flow]
+  aliases: [thermal osmosis, thermo-osmotic flow, thermoosmosis, thermo-osmotic, thermo-osmotic energy conversion, vapor pressure-driven osmosis, VPDO, pressure-retarded membrane distillation, PRMD]
   domain: thermodynamics
   year_first_reported: 1907
   condition_tags: [medium-membrane, temp-gradient-required, state-liquid]

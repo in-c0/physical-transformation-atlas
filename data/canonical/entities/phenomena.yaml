@@ -258,7 +258,7 @@
 - id: phenomenon:aerodynamic-lift
   type: phenomenon
   name: Aerodynamic and hydrodynamic lift
-  aliases: [rotor torque, blade lift, turbine action]
+  aliases: [rotor torque, blade lift, turbine action, hydraulic turbine, turbine]
   domain: fluid-mechanics
   year_first_reported: 1900
   condition_tags: [flow-required]

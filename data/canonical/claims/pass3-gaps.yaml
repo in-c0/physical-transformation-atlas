@@ -548,3 +548,33 @@
   object: transducer:shape-memory-heat-engine
   evidence: [source:sma-heat-engine-2019, source:otsuka-wayman-1998]
   status: demonstrated
+# Loop-3 pass 21: the devices behind the TOEC route search.
+- id: claim:thermo-osmosis-implemented-md-epg
+  subject: phenomenon:thermo-osmosis
+  predicate: implemented_by
+  object: transducer:thermal-osmosis-electrokinetic-generator
+  evidence: [source:luo-2023-thermal-osmosis-electrokinetic, source:huang-2021-membrane-distiller-electrokinetic]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 21 (TOEC route search; abstracts read)" }
+- id: claim:streaming-implemented-md-epg
+  subject: phenomenon:streaming-potential
+  predicate: implemented_by
+  object: transducer:thermal-osmosis-electrokinetic-generator
+  evidence: [source:luo-2023-thermal-osmosis-electrokinetic, source:huang-2021-membrane-distiller-electrokinetic]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 21 (TOEC route search; abstracts read)" }
+- id: claim:thermo-osmosis-implemented-pgto
+  subject: phenomenon:thermo-osmosis
+  predicate: implemented_by
+  object: transducer:permeate-gap-thermo-osmotic-generator
+  evidence: [source:xiao-2024-permeate-gap-thermo-osmotic]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 21 (TOEC route search; source read in full)" }
+- id: claim:lift-implemented-pgto
+  subject: phenomenon:aerodynamic-lift
+  predicate: implemented_by
+  object: transducer:permeate-gap-thermo-osmotic-generator
+  evidence: [source:xiao-2024-permeate-gap-thermo-osmotic]
+  status: demonstrated
+  notes: The small hydro-turbine generator of layout 1, fed from the elevated tank; the bulb was lit, no output figure is reported.
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 21 (TOEC route search; source read in full)" }

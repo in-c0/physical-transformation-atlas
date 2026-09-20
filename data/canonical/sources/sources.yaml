@@ -1195,3 +1195,68 @@
   venue: "Applied Thermal Engineering 215, 118942"
   doi: 10.1016/j.applthermaleng.2022.118942
   notes: "Abstract read (HKUST repository record). Bent NiTi sheets (7.20 % maximum surface strain) transform at a specific driving force of 5.64 N g⁻¹, two orders of magnitude below tension or compression; the single-row cooler with an air duct gave a 5.5 K air-temperature reduction and 0.137 W g⁻¹ specific cooling power, the multi-row cooler 11.5 W."
+# Loop-3 pass 21: the TOEC route search (route-search-v1) — the papers the decisions rest on.
+- id: source:xiao-2024-permeate-gap-thermo-osmotic
+  type: paper
+  title: "Permeate gap thermo-osmotic system for simultaneous freshwater production, energy storage, and power generation"
+  authors: [T. Xiao, T. Yan, C. Liu, L. Liu, M. Aziz]
+  year: 2024
+  venue: "Energy Conversion and Management 314, 118636"
+  doi: 10.1016/j.enconman.2024.118636
+  notes: "Full text read (an author-shared copy located through Google Scholar). A 32 cm² permeate-gap module (PTFE, hot feed to 70 °C, cold side 20 °C) pressurises its own permeate without a pump; in layout 1 the permeate rises through a vertical pipe to an elevated tank and the stream released from the tank propelled a small hydro-turbine generator that lit a 2 W-rated bulb — the authors' 'thermal-potential-mechanical energy conversion'. The laboratory head was limited to about 1.5 m; sealed-permeate pressurisation reached a liquid entry pressure of 222 kPa (PTFE with non-woven support); water flux fell 54.25 % from 0 to 200 kPa permeate pressure. No shaft or electrical output figure is reported for the bulb demonstration; the 72-hour fluctuating-source run used a virtual hydro-turbine (0.0065 L h⁻¹), and the 156.75 kW, 0.113 W m⁻² and 1.04 % exergy figures belong to the modelled 150 kW solar case study. For the atlas this is a longer-chain demonstration of the TOEC route: gravitational storage (head conversion) sits between the thermo-osmotic flow and the turbine."
+- id: source:luo-2023-thermal-osmosis-electrokinetic
+  type: paper
+  title: "Utilization of low-grade heat for desalination and electricity generation through thermal osmosis energy conversion process"
+  authors: [Q. Luo, A. He, S. Xu, M. Miao, T. Liu, B. Cao, K. Shan, B. Tang, X. Hu, L. Huang, H. Jiang]
+  year: 2023
+  venue: "Chemical Engineering Journal 452, 139560"
+  doi: 10.1016/j.cej.2022.139560
+  notes: "Abstract and introduction read on the publisher's page (online 2022, volume dated 15 January 2023). A PTFE thermal-osmosis unit produces pressurised fresh water on the confined cold side; the pressure-driven flow passes through the microchannels of an electrokinetic module, whose streaming potential is the electrical output: 18.46 kg m⁻² h⁻¹ of fresh water and 1.12 W m⁻² of output power density obtained simultaneously at a temperature difference of 50 °C; real seawater feed; the 1.0 μm PTFE membrane performed best. The authors chose the electrokinetic module because their unit could not sustain the continuous pressurised flow a turbine needs."
+- id: source:huang-2021-membrane-distiller-electrokinetic
+  type: paper
+  title: "Simultaneous water and electricity harvesting from low-grade heat by coupling a membrane distiller and an electrokinetic power generator"
+  authors: [L. Huang, A. He, M. Miao, J. Pei, T. Liu, X. Lei, et al.]
+  year: 2021
+  venue: "Journal of Materials Chemistry A 9, 27709–27717"
+  doi: 10.1039/d1ta07530f
+  notes: "Metadata and the one-sentence publisher abstract only ('a novel tandem MD-EPG system to harvest low-grade thermal energy … for synergetic water purification and electricity generation'). The earlier demonstration of the same tandem; its figures (13.4 kg m⁻² h⁻¹, 147 μW m⁻² at ΔT = 40 °C across a microporous Al₂O₃ membrane) are known to the atlas only through Xiao et al. 2024's description and are not recorded as measurements."
+- id: source:luo-2024-hollow-fibre-toec
+  type: paper
+  title: "Thermal-driven osmosis utilizing hollow fiber membranes: Sustainable dye water treatment and electricity extraction"
+  authors: [Q. Luo, L. Huang, P. Yun, T. Qiu, B. Tang, K. Huang, X. Hu, H. Jiang]
+  year: 2024
+  venue: "Desalination 579, 117485"
+  doi: 10.1016/j.desal.2024.117485
+  notes: "Abstract, highlights and introduction read on the publisher's page; full text paywalled. A hollow-fibre (PVDF, ≈ 0.7 m²) thermo-osmotic module for dye solutions: 'the continuous accumulation of condensed water generates pressure and drives a water turbine for sustainable power generation'; 16.75 W m⁻³ and 70.29 kg m⁻³ h⁻¹ at a 40 °C gradient 'under ideal conditions', alongside a theoretical optimisation model. Whether the turbine's output was physically measured cannot be settled from the abstract."
+- id: source:kuipers-2014-mempower
+  type: paper
+  title: "Simultaneous production of high-quality water and electrical power from aqueous feedstock's and waste heat by high-pressure membrane distillation"
+  authors: [N. J. M. Kuipers, J. H. Hanemaaijer, H. Brouwer, J. van Medevoort, A. Jansen, F. Altena, P. van der Vleuten, H. Bak]
+  year: 2015
+  venue: "Desalination and Water Treatment 55(10), 2766–2776 (online 2014)"
+  doi: 10.1080/19443994.2014.946724
+  notes: "Abstract read. TNO's MemPower concept: Memstill membrane distillation run at high hydraulic pressure produces a pressurised distillate from low-grade heat, the proof of principle being vapour transport against a hydraulic pressure gradient; 'power densities have been measured which are sufficient to drive the pumps'. Predates Straub et al. 2016; no turbine is described in the abstract."
+- id: source:li-2021-stack-toec
+  type: paper
+  title: "Stack Thermo-Osmotic System for Low-Grade Thermal Energy Conversion"
+  authors: [J. Li, Z. Zhang, R. Zhao, B. Zhang, Y. Liang, R. Long, et al.]
+  year: 2021
+  venue: "ACS Applied Materials & Interfaces 13"
+  doi: 10.1021/acsami.1c03395
+  notes: "Abstract read. A multistage permeate-gap TOEC that works without pump assistance: 1.39 ± 0.25 W m⁻² at a heating temperature of 80 °C, efficiency rising linearly with the stage number; a 30-stage system at 5.0 MPa is calculated to reach 2.72 % and 14.0 W m⁻². The power density is that of the pressurised flow; no turbine is described."
+- id: source:zhao-2021-prmd-net-power
+  type: paper
+  title: "Harvesting net power and desalinating water by pressure-retarded membrane distillation"
+  authors: [R. Zhao, J. Li, Z. Zhang, R. Long, W. Liu, Z. Liu]
+  year: 2021
+  venue: "Science China Technological Sciences 64"
+  doi: 10.1007/s11431-021-1926-6
+  notes: "Abstract read. A multistage PRMD in which the phase-change heat reaches the interface by conduction, cutting pump loss: per m² of heating area, 188 L of fresh water and 27.8 kJ of pressure energy per day between 80 and 40 °C — net positive with low-grade heat as the only input. The 'power' is the pressure energy of the condensate; no turbine is described."
+- id: source:straub-elimelech-2017-toec-limits
+  type: paper
+  title: "Energy Efficiency and Performance Limiting Effects in Thermo-Osmotic Energy Conversion from Low-Grade Heat"
+  authors: [A. P. Straub, M. Elimelech]
+  year: 2017
+  venue: "Environmental Science & Technology 51(21), 12925–12937"
+  doi: 10.1021/acs.est.7b02213
+  notes: "Abstract read. The first energy-efficiency analysis of TOEC with vapour-gap membranes and water: an optimised system reaches 4.1 % heat-to-electricity (34 % of Carnot) at 60/20 °C and 5 MPa; lower efficiencies at high power density (> 5 W m⁻²) and with finite heat exchangers; asymmetric pores, pressure resistance, high porosity and 30–100 μm thickness matter most. Model, no experiment."

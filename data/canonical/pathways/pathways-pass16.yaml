@@ -266,3 +266,37 @@
   environment: [state-solid]
   summary: An actuator bends NiTi sheets through their transformation at two orders of magnitude less force than tension; the recorded driver is mechanical stress supplied by the actuator, which is why this pathway starts at the stress row and is not evidence that ambient vibration can drive the cooler.
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 20 (the last two candidate compositions audited as physics; abstract read)" }
+# Loop-3 pass 21: the sibling route the TOEC search surfaced — the same driver and first mechanism, with a
+# streaming-potential module in place of the turbine (Huang et al. 2021; Luo et al. 2023). Recorded through
+# the ordinary pathway path, not as a route positive: the TOEC search targeted a different composition.
+- id: pathway:thermal-osmosis-electrokinetic-generator
+  name: Thermal-osmosis electrokinetic generator
+  steps: [claim:temperature-drives-thermo-osmosis, claim:thermo-osmosis-produces-flow, claim:fluid-flow-carrier-drives-streaming, claim:streaming-produces-ions, claim:ionic-current-converts-electricity]
+  demonstrated_with: [transducer:thermal-osmosis-electrokinetic-generator]
+  evidence: [source:huang-2021-membrane-distiller-electrokinetic, source:luo-2023-thermal-osmosis-electrokinetic]
+  status: demonstrated
+  knowledge_level: K5
+  performance:
+    measurements:
+      - quantity: electrical output power density
+        value: "1.12 W/m²"
+        value_numeric: 1.12
+        unit: W/m²
+        metric: power-density
+        basis: "as reported in the abstract; the area basis is not stated there"
+        scope: laboratory
+        conditions: "thermal-osmosis PTFE membrane (1.0 μm pores) plus an electrokinetic microchannel module; ΔT = 50 °C; real seawater feed"
+        sources: [source:luo-2023-thermal-osmosis-electrokinetic]
+        year: 2023
+      - quantity: freshwater production rate
+        value: "18.46 kg/m²·h"
+        value_numeric: 18.46
+        unit: kg/(m²·h)
+        scope: laboratory
+        conditions: "the same device and run; ΔT = 50 °C"
+        sources: [source:luo-2023-thermal-osmosis-electrokinetic]
+        year: 2023
+        note: the co-product, recorded because the source reports the two together; not an energy figure
+  environment: [state-liquid, medium-membrane, env-aqueous, temp-gradient-required, charged-surface-required]
+  summary: A temperature difference drives vapour transport through a hydrophobic membrane, producing pressurised fresh water; the water then traverses a charged electrokinetic microchannel module and delivers electrical power — the explicit-flow spelling of the nanofluidic thermo-osmotic converter, with a bulk stream between the two mechanisms.
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 21 (TOEC route search; abstracts read; Huang 2021's figures not recorded until its text is read)" }

@@ -5300,5 +5300,1746 @@
   "screening_status": "not-reviewed",
   "result": "inconclusive",
   "notes": "Automated route-search-v1 index queries from data/canonical/searches/plans/p-423a19acdd.yaml; the result list is frozen for a reviewer and nothing here has been read for a qualifying demonstration. Planned runs NOT run in this bundle (engine unavailable): search:2026-09-20-p-423a19acdd/s2-dm1 (semantic-scholar); search:2026-09-20-p-423a19acdd/s2-mp12 (semantic-scholar); search:2026-09-20-p-423a19acdd/s2-wc (semantic-scholar); search:2026-09-20-p-423a19acdd/s2-dp (semantic-scholar)."
+ },
+ {
+  "id": "search:2026-09-20-p-8fba925ce8",
+  "target": {
+   "kind": "path",
+   "path": "p-8fba925ce8",
+   "claims": [
+    "claim:temperature-drives-thermo-osmosis",
+    "claim:thermo-osmosis-produces-flow",
+    "claim:fluid-flow-carrier-drives-lift",
+    "claim:lift-produces-motion",
+    "claim:motion-converts-mechanical-work"
+   ]
+  },
+  "dataset_hash": "a0188d3dfdab",
+  "driver_terms": [
+   "temperature gradient",
+   "temperature difference",
+   "thermal gradient",
+   "ΔT",
+   "waste heat"
+  ],
+  "family_terms": [],
+  "phenomenon_terms": {
+   "phenomenon:thermo-osmosis": [
+    "thermo-osmosis",
+    "thermal osmosis",
+    "thermo-osmotic flow",
+    "thermoosmosis",
+    "thermo-osmotic",
+    "thermo-osmotic energy conversion",
+    "vapor pressure-driven osmosis",
+    "VPDO",
+    "pressure-retarded membrane distillation",
+    "PRMD"
+   ],
+   "phenomenon:aerodynamic-lift": [
+    "rotor torque",
+    "blade lift",
+    "turbine action",
+    "hydraulic turbine",
+    "turbine"
+   ]
+  },
+  "runs": [
+   {
+    "id": "search:2026-09-21-p-8fba925ce8/oa-dm1",
+    "engine": "openalex",
+    "query_form": "route-driver-mechanism",
+    "query": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermo-osmosis\" OR \"thermal osmosis\" OR \"thermo-osmotic flow\" OR thermoosmosis OR \"thermo-osmotic\" OR \"thermo-osmotic energy conversion\" OR \"vapor pressure-driven osmosis\" OR VPDO OR \"pressure-retarded membrane distillation\" OR PRMD)",
+    "executed_at": "2026-09-20T13:05:14.996Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermo-osmosis%22+OR+%22thermal+osmosis%22+OR+%22thermo-osmotic+flow%22+OR+thermoosmosis+OR+%22thermo-osmotic%22+OR+%22thermo-osmotic+energy+conversion%22+OR+%22vapor+pressure-driven+osmosis%22+OR+VPDO+OR+%22pressure-retarded+membrane+distillation%22+OR+PRMD%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermo-osmosis\" OR \"thermal osmosis\" OR \"thermo-osmotic flow\" OR thermoosmosis OR \"thermo-osmotic\" OR \"thermo-osmotic energy conversion\" OR \"vapor pressure-driven osmosis\" OR VPDO OR \"pressure-retarded membrane distillation\" OR PRMD)",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 203,
+    "records_retrieved": 100,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "driver-mechanism:1"
+   },
+   {
+    "id": "search:2026-09-21-p-8fba925ce8/oa-dm1-newest",
+    "engine": "openalex",
+    "query_form": "route-driver-mechanism",
+    "query": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermo-osmosis\" OR \"thermal osmosis\" OR \"thermo-osmotic flow\" OR thermoosmosis OR \"thermo-osmotic\" OR \"thermo-osmotic energy conversion\" OR \"vapor pressure-driven osmosis\" OR VPDO OR \"pressure-retarded membrane distillation\" OR PRMD)",
+    "executed_at": "2026-09-20T13:05:18.522Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermo-osmosis%22+OR+%22thermal+osmosis%22+OR+%22thermo-osmotic+flow%22+OR+thermoosmosis+OR+%22thermo-osmotic%22+OR+%22thermo-osmotic+energy+conversion%22+OR+%22vapor+pressure-driven+osmosis%22+OR+VPDO+OR+%22pressure-retarded+membrane+distillation%22+OR+PRMD%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=50&sort=publication_date%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "publication_date:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermo-osmosis\" OR \"thermal osmosis\" OR \"thermo-osmotic flow\" OR thermoosmosis OR \"thermo-osmotic\" OR \"thermo-osmotic energy conversion\" OR \"vapor pressure-driven osmosis\" OR VPDO OR \"pressure-retarded membrane distillation\" OR PRMD)",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 203,
+    "records_retrieved": 50,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "driver-mechanism:1"
+   },
+   {
+    "id": "search:2026-09-21-p-8fba925ce8/oa-mp12",
+    "engine": "openalex",
+    "query_form": "route-mechanism-pair",
+    "query": "(\"Thermo-osmosis\" OR \"thermal osmosis\" OR \"thermo-osmotic flow\" OR thermoosmosis OR \"thermo-osmotic\" OR \"thermo-osmotic energy conversion\" OR \"vapor pressure-driven osmosis\" OR VPDO OR \"pressure-retarded membrane distillation\" OR PRMD) AND (\"rotor torque\" OR \"blade lift\" OR \"turbine action\" OR \"hydraulic turbine\" OR turbine)",
+    "executed_at": "2026-09-20T13:05:22.275Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Thermo-osmosis%22+OR+%22thermal+osmosis%22+OR+%22thermo-osmotic+flow%22+OR+thermoosmosis+OR+%22thermo-osmotic%22+OR+%22thermo-osmotic+energy+conversion%22+OR+%22vapor+pressure-driven+osmosis%22+OR+VPDO+OR+%22pressure-retarded+membrane+distillation%22+OR+PRMD%29+AND+%28%22rotor+torque%22+OR+%22blade+lift%22+OR+%22turbine+action%22+OR+%22hydraulic+turbine%22+OR+turbine%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Thermo-osmosis\" OR \"thermal osmosis\" OR \"thermo-osmotic flow\" OR thermoosmosis OR \"thermo-osmotic\" OR \"thermo-osmotic energy conversion\" OR \"vapor pressure-driven osmosis\" OR VPDO OR \"pressure-retarded membrane distillation\" OR PRMD) AND (\"rotor torque\" OR \"blade lift\" OR \"turbine action\" OR \"hydraulic turbine\" OR turbine)",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 5,
+    "records_retrieved": 5,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "mechanism-pair:1-2"
+   },
+   {
+    "id": "search:2026-09-21-p-8fba925ce8/oa-wc",
+    "engine": "openalex",
+    "query_form": "route-whole-chain",
+    "query": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermo-osmosis\" OR \"thermal osmosis\" OR \"thermo-osmotic flow\" OR thermoosmosis OR \"thermo-osmotic\" OR \"thermo-osmotic energy conversion\" OR \"vapor pressure-driven osmosis\" OR VPDO OR \"pressure-retarded membrane distillation\" OR PRMD) AND (\"rotor torque\" OR \"blade lift\" OR \"turbine action\" OR \"hydraulic turbine\" OR turbine) AND (\"mechanical work\" OR \"shaft work\" OR torque OR motion)",
+    "executed_at": "2026-09-20T13:05:25.151Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermo-osmosis%22+OR+%22thermal+osmosis%22+OR+%22thermo-osmotic+flow%22+OR+thermoosmosis+OR+%22thermo-osmotic%22+OR+%22thermo-osmotic+energy+conversion%22+OR+%22vapor+pressure-driven+osmosis%22+OR+VPDO+OR+%22pressure-retarded+membrane+distillation%22+OR+PRMD%29+AND+%28%22rotor+torque%22+OR+%22blade+lift%22+OR+%22turbine+action%22+OR+%22hydraulic+turbine%22+OR+turbine%29+AND+%28%22mechanical+work%22+OR+%22shaft+work%22+OR+torque+OR+motion%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermo-osmosis\" OR \"thermal osmosis\" OR \"thermo-osmotic flow\" OR thermoosmosis OR \"thermo-osmotic\" OR \"thermo-osmotic energy conversion\" OR \"vapor pressure-driven osmosis\" OR VPDO OR \"pressure-retarded membrane distillation\" OR PRMD) AND (\"rotor torque\" OR \"blade lift\" OR \"turbine action\" OR \"hydraulic turbine\" OR turbine) AND (\"mechanical work\" OR \"shaft work\" OR torque OR motion)",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 1,
+    "records_retrieved": 1,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "whole-chain"
+   },
+   {
+    "id": "search:2026-09-21-p-8fba925ce8/oa-dp",
+    "engine": "openalex",
+    "query_form": "route-demonstration-precision",
+    "query": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermo-osmosis\" OR \"thermal osmosis\" OR \"thermo-osmotic flow\" OR thermoosmosis OR \"thermo-osmotic\" OR \"thermo-osmotic energy conversion\" OR \"vapor pressure-driven osmosis\" OR VPDO OR \"pressure-retarded membrane distillation\" OR PRMD) AND (\"rotor torque\" OR \"blade lift\" OR \"turbine action\" OR \"hydraulic turbine\" OR turbine) AND (\"mechanical work\" OR \"shaft work\" OR torque OR motion) AND (experiment OR experimental OR measured OR device OR prototype)",
+    "executed_at": "2026-09-20T13:05:28.780Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermo-osmosis%22+OR+%22thermal+osmosis%22+OR+%22thermo-osmotic+flow%22+OR+thermoosmosis+OR+%22thermo-osmotic%22+OR+%22thermo-osmotic+energy+conversion%22+OR+%22vapor+pressure-driven+osmosis%22+OR+VPDO+OR+%22pressure-retarded+membrane+distillation%22+OR+PRMD%29+AND+%28%22rotor+torque%22+OR+%22blade+lift%22+OR+%22turbine+action%22+OR+%22hydraulic+turbine%22+OR+turbine%29+AND+%28%22mechanical+work%22+OR+%22shaft+work%22+OR+torque+OR+motion%29+AND+%28experiment+OR+experimental+OR+measured+OR+device+OR+prototype%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermo-osmosis\" OR \"thermal osmosis\" OR \"thermo-osmotic flow\" OR thermoosmosis OR \"thermo-osmotic\" OR \"thermo-osmotic energy conversion\" OR \"vapor pressure-driven osmosis\" OR VPDO OR \"pressure-retarded membrane distillation\" OR PRMD) AND (\"rotor torque\" OR \"blade lift\" OR \"turbine action\" OR \"hydraulic turbine\" OR turbine) AND (\"mechanical work\" OR \"shaft work\" OR torque OR motion) AND (experiment OR experimental OR measured OR device OR prototype)",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 0,
+    "records_retrieved": 0,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "demonstration-precision"
+   }
+  ],
+  "works": [
+   {
+    "openalex_id": "W4212905264",
+    "doi": "10.1002/anie.202116910",
+    "title": "Thermo‐Osmotic Energy Conversion Enabled by Covalent‐Organic‐Framework Membranes with Record Output Power Density",
+    "year": 2022,
+    "type": "article",
+    "cited_by_count": 128,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2981090454",
+    "doi": "10.1039/c9ta08992f",
+    "title": "Thermo-osmotic energy conversion and storage by nanochannels",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 58,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2900739447",
+    "doi": "10.1016/j.desal.2018.11.005",
+    "title": "Asymmetric membranes for membrane distillation and thermo-osmotic energy conversion",
+    "year": 2018,
+    "type": "article",
+    "cited_by_count": 70,
+    "open_access_url": "https://doi.org/10.1016/j.desal.2018.11.005",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2761315865",
+    "doi": "10.1021/acs.est.7b02213",
+    "title": "Energy Efficiency and Performance Limiting Effects in Thermo-Osmotic Energy Conversion from Low-Grade Heat",
+    "year": 2017,
+    "type": "article",
+    "cited_by_count": 112,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1",
+     "search:2026-09-21-p-8fba925ce8/oa-mp12",
+     "search:2026-09-21-p-8fba925ce8/oa-wc"
+    ]
+   },
+   {
+    "openalex_id": "W2795881970",
+    "doi": "10.1021/acs.jpclett.8b00703",
+    "title": "Understanding Fast and Robust Thermo-osmotic Flows through Carbon Nanotube Membranes: Thermodynamics Meets Hydrodynamics",
+    "year": 2018,
+    "type": "article",
+    "cited_by_count": 72,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2471760349",
+    "doi": "10.1038/nenergy.2016.90",
+    "title": "Harvesting low-grade heat energy using thermo-osmotic vapour transport through nanoporous membranes",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 313,
+    "open_access_url": "https://doi.org/10.7916/d83n23jp",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2063131076",
+    "doi": "10.1016/j.memsci.2008.11.043",
+    "title": "Investigation of temperature-driven water transport in polymer electrolyte fuel cell: Thermo-osmosis in membranes",
+    "year": 2008,
+    "type": "article",
+    "cited_by_count": 144,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2963117459",
+    "doi": "10.1103/physrevlett.119.038002",
+    "title": "Molecular Simulation of Thermo-osmotic Slip",
+    "year": 2017,
+    "type": "article",
+    "cited_by_count": 91,
+    "open_access_url": "https://arxiv.org/pdf/1702.02499",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2731701676",
+    "doi": "10.1515/jnet-2016-0088",
+    "title": "Thermo-osmosis in Membrane Systems: A Review",
+    "year": 2017,
+    "type": "article",
+    "cited_by_count": 65,
+    "open_access_url": "http://hdl.handle.net/11250/2462710",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2766057372",
+    "doi": "10.1103/physrevlett.119.214501",
+    "title": "What Controls Thermo-osmosis? Molecular Simulations Show the Critical Role of Interfacial Hydrodynamics",
+    "year": 2017,
+    "type": "article",
+    "cited_by_count": 119,
+    "open_access_url": "https://arxiv.org/pdf/1710.09734",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2352574757",
+    "doi": "10.1016/j.gete.2016.05.001",
+    "title": "Analysis of unsaturated materials hydration incorporating the effect of thermo-osmotic flow",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 19,
+    "open_access_url": "http://hdl.handle.net/2117/102096",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2997381910",
+    "doi": "10.1016/j.memsci.2019.117765",
+    "title": "Pressure-retarded membrane distillation for simultaneous hypersaline brine desalination and low-grade heat harvesting",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 40,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4385409374",
+    "doi": "10.1021/acs.chemrev.3c00168",
+    "title": "Harvesting Blue Energy Based on Salinity and Temperature Gradient: Challenges, Solutions, and Opportunities",
+    "year": 2023,
+    "type": "review",
+    "cited_by_count": 169,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2026826302",
+    "doi": "10.2136/sssaj1969.03615995003300060012x",
+    "title": "Thermo‐Osmosis Through Compacted Saturated Clay Membranes",
+    "year": 1969,
+    "type": "article",
+    "cited_by_count": 59,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4282837472",
+    "doi": "10.1038/s41467-022-31183-w",
+    "title": "Anomalous thermo-osmotic conversion performance of ionic covalent-organic-framework membranes in response to charge variations",
+    "year": 2022,
+    "type": "article",
+    "cited_by_count": 100,
+    "open_access_url": "https://www.nature.com/articles/s41467-022-31183-w.pdf",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2917867934",
+    "doi": "10.1016/j.memsci.2019.02.045",
+    "title": "Pressure-retarded membrane distillation for low-grade heat recovery: The critical roles of pressure-induced membrane deformation",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 38,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1976497767",
+    "doi": "10.1016/j.memsci.2005.08.010",
+    "title": "Thermo-osmosis of mixtures of water and methanol through a Nafion membrane",
+    "year": 2005,
+    "type": "article",
+    "cited_by_count": 56,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4212854953",
+    "doi": "10.1002/ange.202116910",
+    "title": "Thermo‐Osmotic Energy Conversion Enabled by Covalent‐Organic‐Framework Membranes with Record Output Power Density",
+    "year": 2022,
+    "type": "article",
+    "cited_by_count": 12,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2013573573",
+    "doi": "10.1088/0953-8984/16/38/032",
+    "title": "Thermal forces : colloids in temperature gradients",
+    "year": 2004,
+    "type": "article",
+    "cited_by_count": 76,
+    "open_access_url": "https://iopscience.iop.org/article/10.1088/0953-8984/16/38/032/pdf",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2060840532",
+    "doi": "10.1093/jxb/37.10.1450",
+    "title": "Localization of Thermo-Osmotically Active Partitions in Young Leaves ofNuphar lutea",
+    "year": 1986,
+    "type": "article",
+    "cited_by_count": 72,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2002924440",
+    "doi": "10.1016/s0376-7388(00)82265-6",
+    "title": "Thermal osmosis in liquids",
+    "year": 1976,
+    "type": "article",
+    "cited_by_count": 35,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4386807633",
+    "doi": "10.1016/j.ceja.2023.100558",
+    "title": "Performance analysis of the Thermo Osmotic Energy Conversion (TOEC) process for harvesting low-grade heat",
+    "year": 2023,
+    "type": "article",
+    "cited_by_count": 9,
+    "open_access_url": "https://doi.org/10.1016/j.ceja.2023.100558",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1",
+     "search:2026-09-21-p-8fba925ce8/oa-mp12"
+    ]
+   },
+   {
+    "openalex_id": "W4400516074",
+    "doi": "10.1016/j.cscee.2024.100847",
+    "title": "Lifecycle assessment of membrane synthesis for the application of thermo-osmotic energy conversion process",
+    "year": 2024,
+    "type": "article",
+    "cited_by_count": 7,
+    "open_access_url": "https://doi.org/10.1016/j.cscee.2024.100847",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1",
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4413081888",
+    "doi": "10.1063/5.0267187",
+    "title": "The direction reversal of thermo-osmotic flow in a nanochannel",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 5,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1",
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W1981789106",
+    "doi": "10.1149/1.2425508",
+    "title": "New Experiments on Thermoosmosis",
+    "year": 1962,
+    "type": "article",
+    "cited_by_count": 46,
+    "open_access_url": "https://iopscience.iop.org/article/10.1149/1.2425508/pdf",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3212344150",
+    "doi": "10.1016/j.desal.2021.115446",
+    "title": "Thermal-exergy efficiency trade-off optimization of pressure retarded membrane distillation based on TOPSIS model",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 22,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1973111349",
+    "doi": "10.1016/j.epsl.2012.03.032",
+    "title": "Importance of thermo-osmosis for fluid flow and transport in clay formations hosting a nuclear waste repository",
+    "year": 2012,
+    "type": "article",
+    "cited_by_count": 48,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2049226624",
+    "doi": "10.1016/j.jcis.2009.09.056",
+    "title": "Estimating thermo-osmotic coefficients in clay-rocks: I. Theoretical insights",
+    "year": 2009,
+    "type": "article",
+    "cited_by_count": 52,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3107007710",
+    "doi": "10.1021/acs.nanolett.0c04331",
+    "title": "Net Unidirectional Fluid Transport in Locally Heated Nanochannel by Thermo-osmosis",
+    "year": 2020,
+    "type": "article",
+    "cited_by_count": 44,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1990288707",
+    "doi": "10.1039/tf9666201754",
+    "title": "Cross-phenomenological coefficients. Part 5.—Thermo-osmosis of liquids through cellophane membrane",
+    "year": 1966,
+    "type": "article",
+    "cited_by_count": 39,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2761350936",
+    "doi": "10.1103/physrevlett.121.068002",
+    "title": "Hamiltonian Transformation to Compute Thermo-osmotic Forces",
+    "year": 2018,
+    "type": "article",
+    "cited_by_count": 34,
+    "open_access_url": "https://arxiv.org/pdf/1710.01657",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2029634126",
+    "doi": "10.1098/rspa.1952.0007",
+    "title": "The thermo-osmosis of gases through a membrane I. Theoretical",
+    "year": 1952,
+    "type": "article",
+    "cited_by_count": 34,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2027766625",
+    "doi": "10.1038/163060a0",
+    "title": "Thermo-osmosis of Gases through a Membrane",
+    "year": 1949,
+    "type": "article",
+    "cited_by_count": 25,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4383704216",
+    "doi": "10.1021/acsami.3c02559",
+    "title": "Thermo-Osmosis in Charged Nanochannels: Effects of Surface Charge and Ionic Strength",
+    "year": 2023,
+    "type": "article",
+    "cited_by_count": 27,
+    "open_access_url": "https://pubs.acs.org/doi/pdf/10.1021/acsami.3c02559",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W16671399",
+    "doi": "10.1007/bf00202399",
+    "title": "Characterization of a thermo-osmotic gas transport mechanism in Alnus glutinosa (L.) Gaertn.",
+    "year": 1989,
+    "type": "article",
+    "cited_by_count": 39,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2152052141",
+    "doi": "10.1016/0304-3770(96)01038-8",
+    "title": "The mechanism of thermal transpiration (= thermal osmosis)",
+    "year": 1996,
+    "type": "article",
+    "cited_by_count": 36,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2040700323",
+    "doi": "10.1016/j.jcis.2009.09.055",
+    "title": "Estimating thermo-osmotic coefficients in clay-rocks: II. In situ experimental approach",
+    "year": 2009,
+    "type": "article",
+    "cited_by_count": 35,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2015674750",
+    "doi": "10.1007/s11242-014-0332-5",
+    "title": "Thermo-Osmosis Effect in Saturated Porous Medium",
+    "year": 2014,
+    "type": "article",
+    "cited_by_count": 28,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2969852406",
+    "doi": "10.1016/j.ijheatmasstransfer.2019.118569",
+    "title": "Thermoelectric effect and temperature-gradient-driven electrokinetic flow of electrolyte solutions in charged nanocapillaries",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 58,
+    "open_access_url": "https://arxiv.org/pdf/2203.14998",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2976391126",
+    "doi": "10.1063/1.5123164",
+    "title": "Comparing theory and simulation for thermo-osmosis",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 16,
+    "open_access_url": "https://arxiv.org/pdf/1908.00513",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1995704779",
+    "doi": "10.1016/s0376-7388(00)83296-2",
+    "title": "Thermoosmosis of water through cellulose acetate membranes",
+    "year": 1978,
+    "type": "article",
+    "cited_by_count": 31,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3111087327",
+    "doi": "10.1021/acs.energyfuels.0c03733",
+    "title": "Review of Liquid-Based Systems to Recover Low-Grade Waste Heat for Electrical Energy Generation",
+    "year": 2020,
+    "type": "article",
+    "cited_by_count": 52,
+    "open_access_url": "http://ira.lib.polyu.edu.hk/bitstream/10397/97572/1/Cheng_Review_Liquid-Based_Systems.pdf",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4386351425",
+    "doi": "10.1016/j.apenergy.2023.121810",
+    "title": "Simultaneous water production and electricity generation driven by synergistic temperature-salinity gradient in thermo-osmosis process",
+    "year": 2023,
+    "type": "article",
+    "cited_by_count": 20,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4386263447",
+    "doi": "10.1039/d3cp03083k",
+    "title": "Complex coupling between surface charge and thermo-osmotic phenomena",
+    "year": 2023,
+    "type": "article",
+    "cited_by_count": 18,
+    "open_access_url": "https://pubs.rsc.org/en/content/articlepdf/2023/cp/d3cp03083k",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3209403506",
+    "doi": "10.1007/s11431-021-1926-6",
+    "title": "Harvesting net power and desalinating water by pressure-retarded membrane distillation",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 7,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4404066308",
+    "doi": "10.1016/j.desal.2024.118276",
+    "title": "Fast thermo-osmotic flow through covalent organic framework multilayers for desalination",
+    "year": 2024,
+    "type": "article",
+    "cited_by_count": 3,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1",
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W2936735127",
+    "doi": "10.1016/j.compgeo.2019.04.011",
+    "title": "Thermo-osmosis and mechano-caloric couplings on THM responses of porous medium under point heat source",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 32,
+    "open_access_url": "https://repository.lsu.edu/civil_engineering_pubs/568",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4318052096",
+    "doi": "10.1016/j.jcis.2023.01.112",
+    "title": "Surface hydrophilicity-mediated migration of nano/microparticles under temperature gradient in a confined space",
+    "year": 2023,
+    "type": "article",
+    "cited_by_count": 28,
+    "open_access_url": "https://ars.els-cdn.com/content/image/1-s2.0-S0021979723001340-ga1_lrg.jpg",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4411717090",
+    "doi": "10.1016/j.icheatmasstransfer.2025.109288",
+    "title": "Tunable direction reverses of thermo-osmotic flow in a nanochannel by introducing surfactant",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 2,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1",
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4391333926",
+    "doi": "10.1016/j.ijthermalsci.2024.108931",
+    "title": "Magnetic nanofluid F e 3 O 4 in passive cooling system based on thermo-osmotic effect",
+    "year": 2024,
+    "type": "article",
+    "cited_by_count": 26,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4391250288",
+    "doi": "10.1021/acs.nanolett.3c04343",
+    "title": "Enhanced Selective Ion Transport in Highly Charged Bacterial Cellulose/Boron Nitride Composite Membranes for Thermo-Osmotic Energy Harvesting",
+    "year": 2024,
+    "type": "article",
+    "cited_by_count": 41,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2342054454",
+    "doi": "10.1021/acs.jpcc.5b08670",
+    "title": "Thermoosmosis as Driving Mechanism for Micro- or Nanoscale Engine Driven by External Temperature Gradient",
+    "year": 2015,
+    "type": "article",
+    "cited_by_count": 9,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3178083879",
+    "doi": "10.1016/j.enggeo.2021.106271",
+    "title": "Modelling non-isothermal volume change and solute transport behaviours of a semi-permeable clay soil under the combined influence of mechanical loading, chemical-osmosis, and thermo-osmosis",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 41,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2022279884",
+    "doi": "10.1016/s0376-7388(00)80064-2",
+    "title": "Permeation and thermal osmosis of water through cellulose acetate membranes",
+    "year": 1986,
+    "type": "article",
+    "cited_by_count": 27,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4389190139",
+    "doi": "10.1103/physrevapplied.20.054061",
+    "title": "Thermo-osmotic slip flows around a thermophoretic microparticle characterized by optical trapping of tracers",
+    "year": 2023,
+    "type": "article",
+    "cited_by_count": 18,
+    "open_access_url": "http://link.aps.org/pdf/10.1103/PhysRevApplied.20.054061",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4225369319",
+    "doi": "10.1140/epje/s10189-022-00194-2",
+    "title": "Soret separation and thermo-osmosis in porous media",
+    "year": 2022,
+    "type": "article",
+    "cited_by_count": 11,
+    "open_access_url": "https://link.springer.com/content/pdf/10.1140/epje/s10189-022-00194-2.pdf",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2019238623",
+    "doi": "10.1016/0301-4622(77)85008-4",
+    "title": "Thermoosmosis through charged membranes",
+    "year": 1977,
+    "type": "article",
+    "cited_by_count": 16,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1991755126",
+    "doi": "10.1098/rsta.1973.0101",
+    "title": "Isothermal and thermo-osmotic transport of sorbable gases in microporous carbon membranes",
+    "year": 1973,
+    "type": "article",
+    "cited_by_count": 20,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4291512744",
+    "doi": "10.3390/nano12162774",
+    "title": "Charge Regulation and pH Effects on Thermo-Osmotic Conversion",
+    "year": 2022,
+    "type": "article",
+    "cited_by_count": 10,
+    "open_access_url": "https://www.mdpi.com/2079-4991/12/16/2774/pdf?version=1660378866",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2052214741",
+    "doi": "10.1016/0304-3770(96)01039-x",
+    "title": "Convective gas flow in plant aeration and thermo-osmosis: a model experiment",
+    "year": 1996,
+    "type": "article",
+    "cited_by_count": 12,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3164716826",
+    "doi": "10.1039/d0cp06556k",
+    "title": "Thermo-osmotic pressure and resistance to mass transport in a vapor-gap membrane",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 18,
+    "open_access_url": "https://pubs.rsc.org/en/content/articlepdf/2021/cp/d0cp06556k",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4291991897",
+    "doi": "10.1103/physreve.106.024116",
+    "title": "Fluid flow at interfaces driven by thermal gradients",
+    "year": 2022,
+    "type": "article",
+    "cited_by_count": 18,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2009752448",
+    "doi": "10.1039/f19888400647",
+    "title": "Differential thermo-osmotic permeability in water–cellophane systems",
+    "year": 1988,
+    "type": "article",
+    "cited_by_count": 9,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4404414680",
+    "doi": "10.1063/5.0239503",
+    "title": "Direction reverse of the thermo-osmosis for a liquid in a nanochannel",
+    "year": 2024,
+    "type": "article",
+    "cited_by_count": 10,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1",
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W2065752421",
+    "doi": "10.1016/0301-4622(78)80002-7",
+    "title": "Thermoosmosis through charged membranes. theoretical analysis of concentration dependence",
+    "year": 1978,
+    "type": "article",
+    "cited_by_count": 20,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2014865265",
+    "doi": "10.1016/0376-7388(92)85014-a",
+    "title": "Solvent transoport across cation-exchange membranes under a temperature difference and under an osmotic pressure difference",
+    "year": 1992,
+    "type": "article",
+    "cited_by_count": 43,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2981651933",
+    "doi": "10.1140/epje/i2019-11898-3",
+    "title": "A simple statistical-mechanical interpretation of Onsager reciprocal relations and Derjaguin theory of thermo-osmosis",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 9,
+    "open_access_url": "https://arxiv.org/pdf/1909.07196",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2981138683",
+    "doi": "10.1080/19648189.2019.1675094",
+    "title": "Thermo-poroelastic modelling of cement sheath: pore pressure response, thermal effect and thermo-osmotic effect",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 21,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2003771247",
+    "doi": "10.1016/s0011-9164(00)84022-9",
+    "title": "Thermo-osmosis and electro-osmosis of water and electrophoresis of suspensions in water",
+    "year": 1967,
+    "type": "article",
+    "cited_by_count": 11,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3016723487",
+    "doi": "10.1016/j.compgeo.2020.103576",
+    "title": "Analytical study of the thermo-osmosis effect in porothermoelastic responses of saturated porous media under axisymmetric thermal loadings",
+    "year": 2020,
+    "type": "article",
+    "cited_by_count": 19,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3206177627",
+    "doi": "10.1021/acs.jpclett.1c02795",
+    "title": "Generating Shear Flows without Moving Parts by Thermo-osmosis in Heterogeneous Nanochannels",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 11,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2943006281",
+    "doi": "10.1016/s0376-7388(00)81409-x",
+    "title": "Thermo-osmosis of sorbable gases in porous media",
+    "year": 1982,
+    "type": "article",
+    "cited_by_count": 7,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2988082079",
+    "doi": "10.1038/165199a0",
+    "title": "Thermo-osmosis of Gases Through a Membrane",
+    "year": 1950,
+    "type": "article",
+    "cited_by_count": 6,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4300167459",
+    "doi": "10.1016/j.cej.2022.139560",
+    "title": "Utilization of low-grade heat for desalination and electricity generation through thermal osmosis energy conversion process",
+    "year": 2022,
+    "type": "article",
+    "cited_by_count": 21,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2021697130",
+    "doi": "10.1149/1.3046136",
+    "title": "Investigation of Temperature-Driven Water Transport in Polymer Electrolyte Fuel Cell: Phase-Change-Induced Flow",
+    "year": 2009,
+    "type": "article",
+    "cited_by_count": 141,
+    "open_access_url": "https://iopscience.iop.org/article/10.1149/1.3046136/pdf",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4412603755",
+    "doi": "10.1021/acs.jpcb.5c03615",
+    "title": "Self-Sustained Flow in Janus Nanochannels Based on Thermo-Osmosis",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 5,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1",
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4401781967",
+    "doi": "10.1080/00268976.2024.2392016",
+    "title": "Equilibrium and non-equilibrium molecular dynamics simulation of thermo-osmosis: enhanced effects on polarised graphene surfaces",
+    "year": 2024,
+    "type": "article",
+    "cited_by_count": 6,
+    "open_access_url": "https://hal.science/hal-04525549v2/file/main.pdf",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1",
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W3197724939",
+    "doi": "10.3208/jgssp.v09.cpeg150",
+    "title": "Thermo-osmosis in silica nanochannels",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 3,
+    "open_access_url": "https://www.jstage.jst.go.jp/article/jgssp/9/5/9_v09.cpeg150/_pdf",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4399430784",
+    "doi": "10.1016/j.desal.2024.117785",
+    "title": "Thermo-osmotic coefficients in membrane distillation: Experiments and theory for three types of membranes",
+    "year": 2024,
+    "type": "article",
+    "cited_by_count": 5,
+    "open_access_url": "https://doi.org/10.1016/j.desal.2024.117785",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1",
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4205420879",
+    "doi": "10.1016/j.ijthermalsci.2021.107441",
+    "title": "Molecular level study of carbon isotope fractionation in Knudsen number flows induced by thermo-osmosis",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 6,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4399775693",
+    "doi": "10.1103/physreve.109.064610",
+    "title": "Thermo-osmosis of a near-critical binary fluid mixture: A general formulation and universal flow direction",
+    "year": 2024,
+    "type": "article",
+    "cited_by_count": 6,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1",
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4232870157",
+    "doi": "10.1016/0376-7388(92)87042-v",
+    "title": "Solvent transport across anion-exchange membranes under a temperature difference and an osmotic pressure difference",
+    "year": 1992,
+    "type": "article",
+    "cited_by_count": 22,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3126103087",
+    "doi": "10.1061/(asce)em.1943-7889.0001905",
+    "title": "Theoretical Investigation into Thermo-Osmosis and Thermofiltration Effects on Hydromechanical Behavior of Saturated Soils",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 6,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2920937536",
+    "doi": "10.1098/rspa.2018.0040",
+    "title": "Light-induced thermoosmosis about conducting ellipsoidal nanoparticles",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 6,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2614861201",
+    "doi": "10.1002/slct.201700386",
+    "title": "Water Desalination through a Zeolitic Imidazolate Framework Membrane by Electro‐ and Thermo‐Osmosis: Which Could Be More Efficient?",
+    "year": 2017,
+    "type": "article",
+    "cited_by_count": 8,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4416204741",
+    "doi": "10.1103/zpzj-ngrh",
+    "title": "Slip-flow theory for thermo-osmosis based on a kinetic model with near-wall potential",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 5,
+    "open_access_url": "https://doi.org/10.1103/zpzj-ngrh",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1",
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W2066479475",
+    "doi": "10.1016/0021-9797(88)90034-3",
+    "title": "Thermoosmosis of water, methanol, and ethanol through cellulose acetate membranes",
+    "year": 1988,
+    "type": "article",
+    "cited_by_count": 6,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1992894830",
+    "doi": "10.1246/bcsj.68.493",
+    "title": "Thermoosmosis and Transported Entropy of Water across Hydrocarbonsulfonic Acid-Type Cation-Exchange Membranes",
+    "year": 1995,
+    "type": "article",
+    "cited_by_count": 8,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1976670501",
+    "doi": "10.1016/0376-7388(94)80015-4",
+    "title": "Solvent transport across anion-exchange membranes under a temperature difference and transported entropy of water",
+    "year": 1994,
+    "type": "article",
+    "cited_by_count": 13,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2183662715",
+    "title": "Temperature Dependence of Thermo-osmosis",
+    "year": 1989,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2048148529",
+    "doi": "10.1016/0304-3770(91)90024-y",
+    "title": "Pressurized ventilation in wetland plants",
+    "year": 1991,
+    "type": "article",
+    "cited_by_count": 116,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2957245577",
+    "doi": "10.1103/physrevlett.123.028002",
+    "title": "Thermal Forces from a Microscopic Perspective",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 30,
+    "open_access_url": "https://arxiv.org/pdf/1901.09840",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4416705128",
+    "doi": "10.1016/j.enconman.2025.120824",
+    "title": "Synergistic utilization of low-grade heat and salinity gradient for water-electricity cogeneration through thermal osmosis and nanofluidic reverse electrodialysis",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 5,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1",
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W2017195923",
+    "doi": "10.1007/bf00658895",
+    "title": "Nonisothermal membrane phenomena across perfluorosulfonic acid-type membranes, Flemion S: part I. Thermoosmosis and transported entropy of water",
+    "year": 1994,
+    "type": "article",
+    "cited_by_count": 8,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2461121825",
+    "doi": "10.1038/nenergy.2016.101",
+    "title": "Thermal-energy conversion: Under pressure",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 33,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4414100939",
+    "doi": "10.1016/j.ces.2025.122605",
+    "title": "Low-grade heat powered hydrogen production from seawater based on thermal osmosis process",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 3,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1",
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W191729257",
+    "doi": "10.1007/bf03182161",
+    "title": "Thermo-osmosis of water through composite clay membranes— The parallel arrangement",
+    "year": 1978,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W7118607673",
+    "doi": "10.1002/smll.202513720",
+    "title": "Thermal‐Gradient‐Driven Hydrovoltaic Nanogenerators: Opportunities and Challenges for Advanced Energy Conversion",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 4,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1",
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4407267030",
+    "doi": "10.1016/j.ijheatmasstransfer.2025.126758",
+    "title": "Effects of thermoosmosis and thermophoresis of finite-sized ions along with a pressure-driven flow on the thermoelectric field in a conical hydrophobic nanopore",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 4,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1",
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W2989190560",
+    "doi": "10.1140/epje/i2019-11914-8",
+    "title": "Thermoosomosis in microfluidic devices containing a temperature gradient normal to the channel walls",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 3,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W7169772614",
+    "doi": "10.1016/j.ijheatmasstransfer.2026.129314",
+    "title": "Investigation on the excess specific enthalpy of thermo-osmosis in a nanochannel based on machine learning",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7168362566",
+    "doi": "10.1016/j.chemphys.2026.113376",
+    "title": "Mode transition for thermally driven fluid transport controlled by external pressure and surface wettability",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7166537048",
+    "doi": "10.1038/s41545-026-00599-y",
+    "title": "Integrated alkaline electrolyser-pressure retarded membrane distillation system for ammonia wastewater valorisation: technoeconomic and environmental assessment",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://www.nature.com/articles/s41545-026-00599-y_reference.pdf",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7163013988",
+    "doi": "10.1140/epje/s10189-026-00592-w",
+    "title": "Thermodiffusion and thermo-osmosis in thin membranes with slit pores",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://link.springer.com/content/pdf/10.1140/epje/s10189-026-00592-w.pdf",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7162208592",
+    "doi": "10.1016/j.icheatmasstransfer.2026.111556",
+    "title": "Direction prediction of thermo-osmosis in a nanochannel by utilization of machine learning",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7135371449",
+    "doi": "10.1016/j.ijrmms.2026.106513",
+    "title": "Learning from data — Calibration and improvement of modeling thermo-osmosis effects in THM simulations based on the Mont Terri Deep Borehole experiment",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.1016/j.ijrmms.2026.106513",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7131655425",
+    "doi": "10.1088/2515-7647/ae4aed",
+    "title": "Optothermal assembly and manipulation of colloids via non-coherent light",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.1088/2515-7647/ae4aed",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7128809939",
+    "doi": "10.1016/j.ces.2026.123595",
+    "title": "Thermo-osmotic water transport through multilayered membranes of covalent organic frameworks (COFs)",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7128588946",
+    "doi": "10.1063/5.0288358",
+    "title": "Thermo-osmotic flows in closed channels",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.1063/5.0288358",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7124449284",
+    "doi": "10.1016/j.seppur.2026.136917",
+    "title": "Critical insights into lithium recovery from brines using membrane separation technologies: misconceptions, recent progress, and outlook",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 3,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7154508594",
+    "doi": "10.17169/refubium-51923",
+    "title": "Learning from data — Calibration and improvement of modeling thermo-osmosis effects in THM simulations based on the Mont Terri Deep Borehole experiment",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://refubium.fu-berlin.de/handle/fub188/52193",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7167914106",
+    "doi": "10.1007/978-981-95-9237-1_3",
+    "title": "Analytical Solutions Under Half-Space Condition",
+    "year": 2026,
+    "type": "book-chapter",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4416364469",
+    "doi": "10.1007/s11440-025-02810-9",
+    "title": "Coupled model for nonlinear thermal consolidation and heavy-metal contaminant transport within compacted clay liner incorporating non-Darcian seepage and heat transfer",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4416674629",
+    "doi": "10.1021/acs.analchem.5c04068",
+    "title": "Does Finite Size Ion Modulate Electrolyte Transport? Thermoosmosis Cooperates with Capillary Osmotic Flow Velocity in Charged Nanopores",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4416279625",
+    "doi": "10.1063/5.0290384",
+    "title": "Thermophoresis in a near-critical binary fluid mixture",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4415675987",
+    "doi": "10.1016/j.compgeo.2025.107730",
+    "title": "Fully coupled conductive–convective thermo-poroelasticity modeling of pore–fracture systems in geological reservoirs",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4414150219",
+    "doi": "10.1016/j.electacta.2025.147324",
+    "title": "Coupled thermo-electro-osmotic characteristics in conical bipolar nanochannels: A comparative study of asymmetric surface charge polarity and electrolyte solutions",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4413821224",
+    "doi": "10.1016/j.cej.2025.167873",
+    "title": "Enhanced solvent sieving in thermo-osmosis-evaporation membranes for saline wastewater remediation",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4413430150",
+    "doi": "10.1201/9780429324925-6",
+    "title": "Unsaturated thermo-hydro- mechanical coupled modelling with thermal osmosis",
+    "year": 2025,
+    "type": "book-chapter",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.1201/9780429324925-6",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4413803732",
+    "doi": "10.3724/1000-6915.jrme.2024.0897",
+    "title": "热–力荷载作用下考虑有效孔隙比的饱和黏土一维非线性热固结耦合机制研究",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://www.sciengine.com/doi/pdf/9B2010958D6B4CE5B529A18772A65823",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4411002711",
+    "doi": "10.1021/acsnano.5c05766",
+    "title": "Thermofluidic Nonequilibrium Assembly of Reconfigurable Functional Structures",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 2,
+    "open_access_url": "https://pubs.acs.org/doi/pdf/10.1021/acsnano.5c05766?ref=article_openPDF",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4410599271",
+    "doi": "10.1021/acs.est.5c02908",
+    "title": "Gradient-Pore-Engineered Janus Membranes for Sequential Molecular Sieving in Membrane Desalination",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 21,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4408378848",
+    "doi": "10.1016/j.ijrmms.2025.106075",
+    "title": "Is more always better? Study on uncertainties introduced by decision-making process of model design — A case study with thermo-osmosis",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 2,
+    "open_access_url": "https://doi.org/10.1016/j.ijrmms.2025.106075",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4408090627",
+    "doi": "10.1063/5.0251775",
+    "title": "Temperature-driven flows in nanochannels: Theory and simulations",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 7,
+    "open_access_url": "https://doi.org/10.1063/5.0251775",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4407695014",
+    "doi": "10.1016/j.desal.2025.118717",
+    "title": "Utilization of Janus membranes and low-grade thermal energy for sustainable desalination",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 16,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4407606494",
+    "doi": "10.1002/smll.202500366",
+    "title": "Synergistic Photoelectric/Photothermal Effects Guided Ion Transport for Enhancing Multiple Climatic Osmotic Energy Conversion Efficiency",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 10,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4406375850",
+    "doi": "10.1021/acsnano.4c15010",
+    "title": "Volatile Sieving Using Architecturally Designed Nanochannel Lamellar Membranes in Membrane Desalination",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 17,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4406787767",
+    "doi": "10.1016/j.advmem.2025.100130",
+    "title": "Hybrid energy harvesting enabled by a covalent organic framework membrane",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 11,
+    "open_access_url": "https://doi.org/10.1016/j.advmem.2025.100130",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4410101404",
+    "doi": "10.1039/d4sm01348d",
+    "title": "Optothermally induced active and chiral motion of colloidal structures",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 2,
+    "open_access_url": "https://doi.org/10.1039/d4sm01348d",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4405581131",
+    "doi": "10.1002/nag.3922",
+    "title": "A Multi‐Zone Axisymmetric Model for Consolidation of Saturated Soils Improved by PVTD With Interfacial Thermal Resistance",
+    "year": 2024,
+    "type": "article",
+    "cited_by_count": 15,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4404826912",
+    "doi": "10.1021/acs.iecr.4c03251",
+    "title": "Desalination Driven by Temperature Gradient Coupled with Surface Wettability in a Graphene Channel",
+    "year": 2024,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4401678946",
+    "doi": "10.1007/s11440-024-02382-0",
+    "title": "Insight into nonlinear thermal consolidation of saturated clay under coupled thermo-mechanical loading: a unified one-dimensional model",
+    "year": 2024,
+    "type": "article",
+    "cited_by_count": 23,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4400109689",
+    "doi": "10.1016/j.jece.2024.113429",
+    "title": "Forward osmosis membrane process: A review of temperature effects on system performance and membrane parameters from experimental studies",
+    "year": 2024,
+    "type": "article",
+    "cited_by_count": 34,
+    "open_access_url": "https://doi.org/10.1016/j.jece.2024.113429",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4399741091",
+    "doi": "10.3390/lubricants12060220",
+    "title": "Driving Water through Sub-2-Nanometer Carbon Nanotubes",
+    "year": 2024,
+    "type": "article",
+    "cited_by_count": 1,
+    "open_access_url": "https://doi.org/10.3390/lubricants12060220",
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4396571504",
+    "doi": "10.1016/j.ijheatmasstransfer.2024.125645",
+    "title": "Temperature-driven coupled transport of pollutants and suspended particles established by granular thermodynamics",
+    "year": 2024,
+    "type": "article",
+    "cited_by_count": 41,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4392799929",
+    "doi": "10.1021/acsnano.3c12874",
+    "title": "Green Alga-Inspired Underwater Vision Based on Light-Driven Active Ion Transport across Janus Dual-Field Heterostructures",
+    "year": 2024,
+    "type": "article",
+    "cited_by_count": 21,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W2770872545",
+    "doi": "10.1021/acs.iecr.7b03642",
+    "title": "Theoretical Analysis of Pressure Retarded Membrane Distillation (PRMD) Process for Simultaneous Production of Water and Electricity",
+    "year": 2017,
+    "type": "article",
+    "cited_by_count": 39,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-mp12"
+    ]
+   },
+   {
+    "openalex_id": "W4313830554",
+    "doi": "10.1016/j.applthermaleng.2023.120039",
+    "title": "Integration of desalination and energy conversion in a thermo-osmotic system using low-grade heat: Performance analysis and techno-economic evaluation",
+    "year": 2023,
+    "type": "article",
+    "cited_by_count": 64,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-mp12"
+    ]
+   },
+   {
+    "openalex_id": "W4392203423",
+    "doi": "10.1016/j.desal.2024.117485",
+    "title": "Thermal-driven osmosis utilizing hollow fiber membranes: Sustainable dye water treatment and electricity extraction",
+    "year": 2024,
+    "type": "article",
+    "cited_by_count": 7,
+    "found_by": [
+     "search:2026-09-21-p-8fba925ce8/oa-mp12"
+    ]
+   }
+  ],
+  "screening_status": "not-reviewed",
+  "result": "inconclusive",
+  "notes": "Automated route-search-v1 index queries from data/canonical/searches/plans/p-8fba925ce8.yaml; the result list is frozen for a reviewer and nothing here has been read for a qualifying demonstration. Planned runs NOT run in this bundle (engine unavailable): search:2026-09-21-p-8fba925ce8/s2-dm1 (semantic-scholar); search:2026-09-21-p-8fba925ce8/s2-mp12 (semantic-scholar); search:2026-09-21-p-8fba925ce8/s2-wc (semantic-scholar); search:2026-09-21-p-8fba925ce8/s2-dp (semantic-scholar)."
  }
 ]

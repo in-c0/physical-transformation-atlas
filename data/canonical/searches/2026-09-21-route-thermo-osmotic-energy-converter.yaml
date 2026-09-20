@@ -1,0 +1,402 @@
+# Loop-3 pass 21: the reviewed ROUTE search for the thermo-osmotic energy converter (p-8fba925ce8), an honest
+# partial. The OpenAlex protocol runs (re-run after the VPDO / PRMD aliases were added), four citation chases and
+# the screening are recorded; Semantic Scholar and the mandatory Google Scholar forms are not run. One hydro-turbine
+# demonstration exists (Xiao et al. 2024) and is recorded as longer-chain — gravitational storage sits between the
+# thermo-osmotic flow and the turbine — so the exact composition stays search-incomplete; the second reader's ruling
+# and the lane's reservation are both in the hit's reason.
+- id: search:2026-09-21-p-8fba925ce8-partial
+  target:
+    kind: path
+    path: p-8fba925ce8
+    claims:
+      - claim:temperature-drives-thermo-osmosis
+      - claim:thermo-osmosis-produces-flow
+      - claim:fluid-flow-carrier-drives-lift
+      - claim:lift-produces-motion
+      - claim:motion-converts-mechanical-work
+  protocol_version: route-search-v1
+  started_at: 2026-09-20T22:20:00+10:00
+  completed_at: 2026-09-21T01:55:00+10:00
+  objective: exact-composition
+  inclusion_criteria:
+    - a physical experiment or device in which a temperature difference drives thermo-osmotic (vapour-gap) transport that pressurises or moves a liquid, that liquid loads a turbine (aerodynamic or hydrodynamic lift) directly, and shaft work is measured or delivered (route-search-v1 §3)
+  exclusion_criteria:
+    - theory, simulation or proposals (recorded as such, never as demonstrations)
+    - the pressurised flow produced and its pressure × flux reported as a power density, with no turbine on the bench (constituent-only)
+    - the same driver and thermo-osmotic stage with an electrokinetic, electrodialytic or electrolytic sink in place of the turbine (sink-variant), or with an extra conversion phenomenon between the recorded steps (longer-chain)
+  runs:
+    - id: search:2026-09-21-p-8fba925ce8/oa-dm1
+      engine: openalex
+      query_form: route-driver-mechanism
+      query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermo-osmosis" OR "thermal osmosis" OR "thermo-osmotic flow" OR thermoosmosis OR "thermo-osmotic" OR "thermo-osmotic energy conversion" OR "vapor pressure-driven osmosis" OR VPDO OR "pressure-retarded membrane distillation" OR PRMD)
+      executed_at: 2026-09-20T13:05:14.996Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermo-osmosis%22+OR+%22thermal+osmosis%22+OR+%22thermo-osmotic+flow%22+OR+thermoosmosis+OR+%22thermo-osmotic%22+OR+%22thermo-osmotic+energy+conversion%22+OR+%22vapor+pressure-driven+osmosis%22+OR+VPDO+OR+%22pressure-retarded+membrane+distillation%22+OR+PRMD%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermo-osmosis" OR "thermal osmosis" OR "thermo-osmotic flow" OR thermoosmosis OR "thermo-osmotic" OR "thermo-osmotic energy conversion" OR "vapor pressure-driven osmosis" OR VPDO OR "pressure-retarded membrane distillation" OR PRMD)
+        type: article|review|book-chapter
+      result_count_reported: 203
+      records_retrieved: 100
+      records_screened: 100
+      records_read: 9
+      query_key: driver-mechanism:1
+    - id: search:2026-09-21-p-8fba925ce8/oa-dm1-newest
+      engine: openalex
+      query_form: route-driver-mechanism
+      query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermo-osmosis" OR "thermal osmosis" OR "thermo-osmotic flow" OR thermoosmosis OR "thermo-osmotic" OR "thermo-osmotic energy conversion" OR "vapor pressure-driven osmosis" OR VPDO OR "pressure-retarded membrane distillation" OR PRMD)
+      executed_at: 2026-09-20T13:05:18.522Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermo-osmosis%22+OR+%22thermal+osmosis%22+OR+%22thermo-osmotic+flow%22+OR+thermoosmosis+OR+%22thermo-osmotic%22+OR+%22thermo-osmotic+energy+conversion%22+OR+%22vapor+pressure-driven+osmosis%22+OR+VPDO+OR+%22pressure-retarded+membrane+distillation%22+OR+PRMD%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=50&sort=publication_date%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: publication_date:desc
+      filters:
+        title_and_abstract.search: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermo-osmosis" OR "thermal osmosis" OR "thermo-osmotic flow" OR thermoosmosis OR "thermo-osmotic" OR "thermo-osmotic energy conversion" OR "vapor pressure-driven osmosis" OR VPDO OR "pressure-retarded membrane distillation" OR PRMD)
+        type: article|review|book-chapter
+      result_count_reported: 203
+      records_retrieved: 50
+      records_screened: 50
+      records_read: 0
+      query_key: driver-mechanism:1
+    - id: search:2026-09-21-p-8fba925ce8/oa-mp12
+      engine: openalex
+      query_form: route-mechanism-pair
+      query: ("Thermo-osmosis" OR "thermal osmosis" OR "thermo-osmotic flow" OR thermoosmosis OR "thermo-osmotic" OR "thermo-osmotic energy conversion" OR "vapor pressure-driven osmosis" OR VPDO OR "pressure-retarded membrane distillation" OR PRMD) AND ("rotor torque" OR "blade lift" OR "turbine action" OR "hydraulic turbine" OR turbine)
+      executed_at: 2026-09-20T13:05:22.275Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Thermo-osmosis%22+OR+%22thermal+osmosis%22+OR+%22thermo-osmotic+flow%22+OR+thermoosmosis+OR+%22thermo-osmotic%22+OR+%22thermo-osmotic+energy+conversion%22+OR+%22vapor+pressure-driven+osmosis%22+OR+VPDO+OR+%22pressure-retarded+membrane+distillation%22+OR+PRMD%29+AND+%28%22rotor+torque%22+OR+%22blade+lift%22+OR+%22turbine+action%22+OR+%22hydraulic+turbine%22+OR+turbine%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Thermo-osmosis" OR "thermal osmosis" OR "thermo-osmotic flow" OR thermoosmosis OR "thermo-osmotic" OR "thermo-osmotic energy conversion" OR "vapor pressure-driven osmosis" OR VPDO OR "pressure-retarded membrane distillation" OR PRMD) AND ("rotor torque" OR "blade lift" OR "turbine action" OR "hydraulic turbine" OR turbine)
+        type: article|review|book-chapter
+      result_count_reported: 5
+      records_retrieved: 5
+      records_screened: 5
+      records_read: 5
+      query_key: mechanism-pair:1-2
+    - id: search:2026-09-21-p-8fba925ce8/oa-wc
+      engine: openalex
+      query_form: route-whole-chain
+      query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermo-osmosis" OR "thermal osmosis" OR "thermo-osmotic flow" OR thermoosmosis OR "thermo-osmotic" OR "thermo-osmotic energy conversion" OR "vapor pressure-driven osmosis" OR VPDO OR "pressure-retarded membrane distillation" OR PRMD) AND ("rotor torque" OR "blade lift" OR "turbine action" OR "hydraulic turbine" OR turbine) AND ("mechanical work" OR "shaft work" OR torque OR motion)
+      executed_at: 2026-09-20T13:05:25.151Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermo-osmosis%22+OR+%22thermal+osmosis%22+OR+%22thermo-osmotic+flow%22+OR+thermoosmosis+OR+%22thermo-osmotic%22+OR+%22thermo-osmotic+energy+conversion%22+OR+%22vapor+pressure-driven+osmosis%22+OR+VPDO+OR+%22pressure-retarded+membrane+distillation%22+OR+PRMD%29+AND+%28%22rotor+torque%22+OR+%22blade+lift%22+OR+%22turbine+action%22+OR+%22hydraulic+turbine%22+OR+turbine%29+AND+%28%22mechanical+work%22+OR+%22shaft+work%22+OR+torque+OR+motion%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermo-osmosis" OR "thermal osmosis" OR "thermo-osmotic flow" OR thermoosmosis OR "thermo-osmotic" OR "thermo-osmotic energy conversion" OR "vapor pressure-driven osmosis" OR VPDO OR "pressure-retarded membrane distillation" OR PRMD) AND ("rotor torque" OR "blade lift" OR "turbine action" OR "hydraulic turbine" OR turbine) AND ("mechanical work" OR "shaft work" OR torque OR motion)
+        type: article|review|book-chapter
+      result_count_reported: 1
+      records_retrieved: 1
+      records_screened: 1
+      records_read: 0
+      query_key: whole-chain
+    - id: search:2026-09-21-p-8fba925ce8/oa-dp
+      engine: openalex
+      query_form: route-demonstration-precision
+      query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermo-osmosis" OR "thermal osmosis" OR "thermo-osmotic flow" OR thermoosmosis OR "thermo-osmotic" OR "thermo-osmotic energy conversion" OR "vapor pressure-driven osmosis" OR VPDO OR "pressure-retarded membrane distillation" OR PRMD) AND ("rotor torque" OR "blade lift" OR "turbine action" OR "hydraulic turbine" OR turbine) AND ("mechanical work" OR "shaft work" OR torque OR motion) AND (experiment OR experimental OR measured OR device OR prototype)
+      executed_at: 2026-09-20T13:05:28.780Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermo-osmosis%22+OR+%22thermal+osmosis%22+OR+%22thermo-osmotic+flow%22+OR+thermoosmosis+OR+%22thermo-osmotic%22+OR+%22thermo-osmotic+energy+conversion%22+OR+%22vapor+pressure-driven+osmosis%22+OR+VPDO+OR+%22pressure-retarded+membrane+distillation%22+OR+PRMD%29+AND+%28%22rotor+torque%22+OR+%22blade+lift%22+OR+%22turbine+action%22+OR+%22hydraulic+turbine%22+OR+turbine%29+AND+%28%22mechanical+work%22+OR+%22shaft+work%22+OR+torque+OR+motion%29+AND+%28experiment+OR+experimental+OR+measured+OR+device+OR+prototype%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermo-osmosis" OR "thermal osmosis" OR "thermo-osmotic flow" OR thermoosmosis OR "thermo-osmotic" OR "thermo-osmotic energy conversion" OR "vapor pressure-driven osmosis" OR VPDO OR "pressure-retarded membrane distillation" OR PRMD) AND ("rotor torque" OR "blade lift" OR "turbine action" OR "hydraulic turbine" OR turbine) AND ("mechanical work" OR "shaft work" OR torque OR motion) AND (experiment OR experimental OR measured OR device OR prototype)
+        type: article|review|book-chapter
+      result_count_reported: 0
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      query_key: demonstration-precision
+    - id: search:2026-09-21-p-8fba925ce8/cc-straub-2016
+      engine: openalex
+      query_form: citation-chase
+      query_key: citation-chase:straub-2016
+      query: referenced_works of W2471760349 (Harvesting low-grade heat energy using thermo-osmotic vapour transport through nanoporous membranes) and filter=cites:W2471760349
+      executed_at: 2026-09-21T01:55:00+10:00
+      request_url: https://api.openalex.org/works?filter=cites:W2471760349
+      engine_version: null
+      index_snapshot: null
+      sort: none (reference list and citing works)
+      result_count_reported: 361
+      records_retrieved: 360
+      records_screened: 360
+      records_read: 0
+      note: "formal seed 1: the pressurised-flow experiment and the turbine proposal"
+    - id: search:2026-09-21-p-8fba925ce8/cc-straub-2017
+      engine: openalex
+      query_form: citation-chase
+      query_key: citation-chase:straub-2017
+      query: referenced_works of W2761315865 (Energy Efficiency and Performance Limiting Effects in Thermo-Osmotic Energy Conversion from Low-Grade Heat) and filter=cites:W2761315865
+      executed_at: 2026-09-21T01:55:00+10:00
+      request_url: https://api.openalex.org/works?filter=cites:W2761315865
+      engine_version: null
+      index_snapshot: null
+      sort: none (reference list and citing works)
+      result_count_reported: 168
+      records_retrieved: 168
+      records_screened: 168
+      records_read: 0
+      note: "formal seed 2: the principal quantitative TOEC theory paper"
+    - id: search:2026-09-21-p-8fba925ce8/cc-luo-2024
+      engine: openalex
+      query_form: citation-chase
+      query_key: citation-chase:luo-2024
+      query: "referenced_works of W4392203423 (Thermal-driven osmosis utilizing hollow fiber membranes: Sustainable dye water treatment and electricity extraction) and filter=cites:W4392203423"
+      executed_at: 2026-09-21T01:55:00+10:00
+      request_url: https://api.openalex.org/works?filter=cites:W4392203423
+      engine_version: null
+      index_snapshot: null
+      sort: none (reference list and citing works)
+      result_count_reported: 39
+      records_retrieved: 39
+      records_screened: 39
+      records_read: 0
+      note: additional chase on the unread plausible hit, not one of the two formal seeds
+    - id: search:2026-09-21-p-8fba925ce8/cc-xiao-2024
+      engine: openalex
+      query_form: citation-chase
+      query_key: citation-chase:xiao-2024
+      query: referenced_works of W4399457699 (Permeate gap thermo-osmotic system for simultaneous freshwater production, energy storage, and power generation) and filter=cites:W4399457699
+      executed_at: 2026-09-21T01:55:00+10:00
+      request_url: https://api.openalex.org/works?filter=cites:W4399457699
+      engine_version: null
+      index_snapshot: null
+      sort: none (reference list and citing works)
+      result_count_reported: 47
+      records_retrieved: 46
+      records_screened: 46
+      records_read: 0
+      note: additional chase on the longer-chain demonstration's reference list, looking for an earlier direct turbine run; it is how the MemPower paper was found
+  screening:
+    records_retrieved: 156
+    unique_records: 139
+    title_abstract_screened: 139
+    full_text_read: 1
+  hits:
+    - title: Permeate gap thermo-osmotic system for simultaneous freshwater production, energy storage, and power generation
+      year: 2024
+      doi: 10.1016/j.enconman.2024.118636
+      found_by:
+        - search:2026-09-21-p-8fba925ce8/cc-straub-2016
+        - search:2026-09-21-p-8fba925ce8/cc-straub-2017
+      access: full-text
+      decision: longer-chain
+      reason: "Physical thermo-osmotic laboratory system (32 cm² permeate-gap module, hot feed to 70 °C, cold 20 °C): the pump-free membrane flow raises water into an elevated reservoir, storing gravitational potential energy, before the stored water descends through a small hydro-turbine generator and lights a 2 W-rated bulb (no output figure reported; head limited to about 1.5 m; liquid entry pressure 222 kPa). The gravitational storage and descent stage — the atlas's own hydro spelling, gravitational potential difference → hydrostatic descent → hydraulic pressure → lift — is an additional conversion between the target route's thermo-osmotic flow and turbine action (§3 item 6), so the exact composition is not demonstrated by it. Mechanical work was physically delivered (item 4 passes qualitatively). The 156.75 kW, 0.113 W m⁻², 1.04 % and 72-hour figures are the modelled solar case study. The lane notes its reservation: hydrostatically an open standpipe is a pressure accumulator, but the atlas records head conversion as a phenomenon and must apply that to itself."
+    - title: "Thermal-driven osmosis utilizing hollow fiber membranes: Sustainable dye water treatment and electricity extraction"
+      year: 2024
+      doi: 10.1016/j.desal.2024.117485
+      found_by:
+        - search:2026-09-21-p-8fba925ce8/oa-dm1-newest
+        - search:2026-09-21-p-8fba925ce8/oa-mp12
+      access: abstract
+      decision: insufficient-information
+      reason: Abstract reports a hollow-fibre thermo-osmotic system in which accumulated condensate pressure drives a water turbine and states electricity generation was achieved, but the 16.75 W m⁻³ result is stated for ideal conditions and the paper also uses a theoretical optimisation model; the inaccessible full text prevents determining whether the turbine's electrical output was physically measured. Library full-text review required.
+    - title: Harvesting low-grade heat energy using thermo-osmotic vapour transport through nanoporous membranes
+      year: 2016
+      doi: 10.1038/nenergy.2016.90
+      found_by:
+        - search:2026-09-21-p-8fba925ce8/oa-dm1
+      access: abstract
+      decision: constituent-only
+      reason: "The recorded TOEC proposal: a hydrophobic nanoporous membrane passes a thermo-osmotic vapour flux into a pump-pressurised cold reservoir (up to 13 bar); 3.53 ± 0.29 W m⁻² is the pressure × flux of the pressurised flow. The turbine is proposed, not run."
+    - title: Simultaneous production of high-quality water and electrical power from aqueous feedstock's and waste heat by high-pressure membrane distillation
+      year: 2014
+      doi: 10.1080/19443994.2014.946724
+      found_by:
+        - search:2026-09-21-p-8fba925ce8/cc-xiao-2024
+      access: abstract
+      decision: constituent-only
+      reason: "TNO's MemPower: Memstill membrane distillation at high hydraulic pressure produces a pressurised distillate from low-grade heat — proof of principle of vapour transport against a hydraulic pressure gradient, with 'power densities … measured which are sufficient to drive the pumps'. Predates Straub 2016; no turbine described in the abstract."
+    - title: Stack Thermo-Osmotic System for Low-Grade Thermal Energy Conversion
+      year: 2021
+      doi: 10.1021/acsami.1c03395
+      found_by:
+        - search:2026-09-21-p-8fba925ce8/cc-straub-2016
+        - search:2026-09-21-p-8fba925ce8/cc-straub-2017
+        - search:2026-09-21-p-8fba925ce8/cc-luo-2024
+        - search:2026-09-21-p-8fba925ce8/cc-xiao-2024
+      access: abstract
+      decision: constituent-only
+      reason: "A pump-free multistage permeate-gap TOEC: 1.39 ± 0.25 W m⁻² at 80 °C, efficiency linear in the stage number, 30-stage/5 MPa performance calculated. The power density is that of the pressurised flow; no turbine described."
+    - title: Harvesting net power and desalinating water by pressure-retarded membrane distillation
+      year: 2021
+      doi: 10.1007/s11431-021-1926-6
+      found_by:
+        - search:2026-09-21-p-8fba925ce8/oa-dm1
+        - search:2026-09-21-p-8fba925ce8/cc-straub-2016
+        - search:2026-09-21-p-8fba925ce8/cc-straub-2017
+      access: abstract
+      decision: constituent-only
+      reason: "Multistage PRMD with conduction-dominated heat delivery: 188 L of fresh water and 27.8 kJ of pressure energy per m² per day between 80 and 40 °C, net positive with heat as the only input. The 'power' is the condensate's pressure energy; no turbine described."
+    - title: Pressure-retarded membrane distillation for simultaneous hypersaline brine desalination and low-grade heat harvesting
+      year: 2019
+      doi: 10.1016/j.memsci.2019.117765
+      found_by:
+        - search:2026-09-21-p-8fba925ce8/oa-dm1
+        - search:2026-09-21-p-8fba925ce8/cc-straub-2016
+        - search:2026-09-21-p-8fba925ce8/cc-straub-2017
+        - search:2026-09-21-p-8fba925ce8/cc-xiao-2024
+      access: metadata-only
+      decision: constituent-only
+      reason: Found by the PRMD alias on the re-run and by the chases; no abstract on OpenAlex or Crossref, not read. Lai et al. 2025's open-access review describes it as a PRMD experiment reaching a peak power density of 0.66 W m⁻² at 4 bar with 0.5 M NaCl feed (pressure × flux); no turbine is mentioned there. Classified from that secondary description and the title.
+    - title: Theoretical Analysis of Pressure Retarded Membrane Distillation (PRMD) Process for Simultaneous Production of Water and Electricity
+      year: 2017
+      doi: 10.1021/acs.iecr.7b03642
+      found_by:
+        - search:2026-09-21-p-8fba925ce8/oa-mp12
+        - search:2026-09-21-p-8fba925ce8/cc-straub-2016
+        - search:2026-09-21-p-8fba925ce8/cc-straub-2017
+        - search:2026-09-21-p-8fba925ce8/cc-xiao-2024
+      access: abstract
+      decision: theory-only
+      reason: A mathematical model of DCMD combined with PRO in one module, 'producing electricity from a hydro-turbine' in the model (0.1738 kWh m⁻³ saved at a 3 % water penalty); no experiment.
+    - title: Energy Efficiency and Performance Limiting Effects in Thermo-Osmotic Energy Conversion from Low-Grade Heat
+      year: 2017
+      doi: 10.1021/acs.est.7b02213
+      found_by:
+        - search:2026-09-21-p-8fba925ce8/oa-dm1
+        - search:2026-09-21-p-8fba925ce8/oa-mp12
+        - search:2026-09-21-p-8fba925ce8/oa-wc
+      access: abstract
+      decision: theory-only
+      reason: The first energy-efficiency analysis of TOEC (4.1 %, 34 % of Carnot at 60/20 °C and 5 MPa; membrane property and heat-exchanger sensitivities). Model, no experiment; the only work the whole-chain query returned because it names the turbine.
+    - title: Performance analysis of the Thermo Osmotic Energy Conversion (TOEC) process for harvesting low-grade heat
+      year: 2023
+      doi: 10.1016/j.ceja.2023.100558
+      found_by:
+        - search:2026-09-21-p-8fba925ce8/oa-dm1
+        - search:2026-09-21-p-8fba925ce8/oa-mp12
+      access: abstract
+      decision: theory-only
+      reason: Mass- and heat-transfer evaluation of TOEC validated against experimental flux data; power densities above 5 W m⁻² at 6.2–11.8 bar and a 0.016 % maximum energy efficiency are computed for a hydro-turbine that 'can be harnessed'; no turbine run.
+    - title: "Integration of desalination and energy conversion in a thermo-osmotic system using low-grade heat: Performance analysis and techno-economic evaluation"
+      year: 2023
+      doi: 10.1016/j.applthermaleng.2023.120039
+      found_by:
+        - search:2026-09-21-p-8fba925ce8/oa-mp12
+        - search:2026-09-21-p-8fba925ce8/cc-straub-2016
+        - search:2026-09-21-p-8fba925ce8/cc-straub-2017
+        - search:2026-09-21-p-8fba925ce8/cc-xiao-2024
+      access: metadata-only
+      decision: theory-only
+      reason: No abstract accessible; Lai et al. 2025 describe it as a mathematical model of a 200,000 m² thermo-osmotic plant (2.15 MW net, 10.75 W m⁻²). Classified from the title and that description.
+    - title: Energetic and exergetic analyses of a closed-loop pressure retarded membrane distillation (PRMD) for low-grade thermal energy utilization and freshwater production
+      year: 2022
+      doi: 10.1016/j.desal.2022.115799
+      found_by:
+        - search:2026-09-21-p-8fba925ce8/cc-straub-2016
+        - search:2026-09-21-p-8fba925ce8/cc-straub-2017
+        - search:2026-09-21-p-8fba925ce8/cc-luo-2024
+        - search:2026-09-21-p-8fba925ce8/cc-xiao-2024
+      access: metadata-only
+      decision: theory-only
+      reason: Energy and exergy analysis of PRMD designs (net electrical power density 1.91 W m⁻² for the new design per Lai et al. 2025's description); a model, not an experiment.
+    - title: Energetic and techno-economic analysis of harvesting energy from low-grade heat by thermo-osmotic energy conversion
+      year: 2025
+      doi: 10.1016/j.enconman.2025.119949
+      found_by:
+        - search:2026-09-21-p-8fba925ce8/cc-straub-2016
+        - search:2026-09-21-p-8fba925ce8/cc-straub-2017
+      access: abstract
+      decision: theory-only
+      reason: Theoretical maximum power density and specific energy of TOEC with a techno-economic analysis (LCOE $0.66/kWh); no experiment.
+    - title: Thermoosmosis as Driving Mechanism for Micro- or Nanoscale Engine Driven by External Temperature Gradient
+      year: 2015
+      doi: 10.1021/acs.jpcc.5b08670
+      found_by:
+        - search:2026-09-21-p-8fba925ce8/oa-dm1
+      access: abstract
+      decision: theory-only
+      reason: "A modelled nano-engine: circular thermo-osmotic flow in an annular cavity spins a rotor by hydrodynamic friction — a different second mechanism (viscous drag, not blade lift) and theory only."
+    - title: "Thermal-energy conversion: Under pressure"
+      year: 2016
+      doi: 10.1038/nenergy.2016.101
+      found_by:
+        - search:2026-09-21-p-8fba925ce8/oa-dm1
+      access: metadata-only
+      decision: review-only
+      reason: News & Views on Straub et al. 2016; no new experiment.
+    - title: Simultaneous water and electricity harvesting from low-grade heat by coupling a membrane distiller and an electrokinetic power generator
+      year: 2021
+      doi: 10.1039/d1ta07530f
+      found_by:
+        - search:2026-09-21-p-8fba925ce8/cc-straub-2016
+        - search:2026-09-21-p-8fba925ce8/cc-straub-2017
+        - search:2026-09-21-p-8fba925ce8/cc-luo-2024
+        - search:2026-09-21-p-8fba925ce8/cc-xiao-2024
+      access: metadata-only
+      decision: sink-variant
+      reason: "The same driver and thermo-osmotic stage with an electrokinetic (streaming-potential) module consuming the pressurised flow in place of a turbine: electricity, not shaft work, is the sink. Evidence for the sibling route Temperature gradient → Thermo-osmosis → Fluid flow → Streaming potential → Ionic current → Electrical work, recorded as pathway:thermal-osmosis-electrokinetic-generator. Publisher abstract is one sentence; figures not recorded."
+    - title: Utilization of low-grade heat for desalination and electricity generation through thermal osmosis energy conversion process
+      year: 2023
+      doi: 10.1016/j.cej.2022.139560
+      found_by:
+        - search:2026-09-21-p-8fba925ce8/oa-dm1
+        - search:2026-09-21-p-8fba925ce8/cc-straub-2016
+        - search:2026-09-21-p-8fba925ce8/cc-straub-2017
+        - search:2026-09-21-p-8fba925ce8/cc-xiao-2024
+      access: abstract
+      decision: sink-variant
+      reason: "PTFE thermal-osmosis unit plus electrokinetic module: 18.46 kg m⁻² h⁻¹ and 1.12 W m⁻² simultaneously at ΔT = 50 °C; the authors state a turbine could not be sustained by their unit. Electricity via streaming potential is the sink; canonicalised on the sibling route (pathway:thermal-osmosis-electrokinetic-generator)."
+    - title: Simultaneous water production and electricity generation driven by synergistic temperature-salinity gradient in thermo-osmosis process
+      year: 2023
+      doi: 10.1016/j.apenergy.2023.121810
+      found_by:
+        - search:2026-09-21-p-8fba925ce8/oa-dm1
+        - search:2026-09-21-p-8fba925ce8/cc-straub-2016
+        - search:2026-09-21-p-8fba925ce8/cc-straub-2017
+        - search:2026-09-21-p-8fba925ce8/cc-xiao-2024
+      access: abstract
+      decision: sink-variant
+      reason: Thermo-osmosis unit plus a reverse-electrodialysis module recovering the salinity gradient the process creates (+0.99 W m⁻²); the electrical sink is electrodialytic, no turbine.
+    - title: Synergistic utilization of low-grade heat and salinity gradient for water-electricity cogeneration through thermal osmosis and nanofluidic reverse electrodialysis
+      year: 2025
+      doi: 10.1016/j.enconman.2025.120824
+      found_by:
+        - search:2026-09-21-p-8fba925ce8/oa-dm1
+        - search:2026-09-21-p-8fba925ce8/oa-dm1-newest
+        - search:2026-09-21-p-8fba925ce8/cc-straub-2016
+        - search:2026-09-21-p-8fba925ce8/cc-straub-2017
+        - search:2026-09-21-p-8fba925ce8/cc-xiao-2024
+      access: abstract
+      decision: sink-variant
+      reason: Laboratory prototype of thermo-osmosis plus nanofluidic reverse electrodialysis (2.27 W m⁻² at 3.5 wt % and 100 kPa); electrodialytic sink, no turbine.
+    - title: Low-grade heat powered hydrogen production from seawater based on thermal osmosis process
+      year: 2025
+      doi: 10.1016/j.ces.2025.122605
+      found_by:
+        - search:2026-09-21-p-8fba925ce8/oa-dm1
+        - search:2026-09-21-p-8fba925ce8/oa-dm1-newest
+      access: abstract
+      decision: wrong-coupling
+      reason: Thermal osmosis supplies pure water to a PEM electrolyser (3.79 kg m⁻² h⁻¹ at ΔT = 20 °C; 551 mL h⁻¹ H₂); the thermo-osmotic flow is a feedstock, not converted to work.
+    - title: Thermo‐Osmotic Energy Conversion Enabled by Covalent‐Organic‐Framework Membranes with Record Output Power Density
+      year: 2022
+      doi: 10.1002/anie.202116910
+      found_by:
+        - search:2026-09-21-p-8fba925ce8/oa-dm1
+      access: metadata-only
+      decision: wrong-coupling
+      reason: "Representative of the nanofluidic 'thermo-osmotic energy conversion' cluster on the list (COF, BN, ionogel and ionic-COF membranes; Chem. Rev. 2023 blue-energy review; Nano Lett. 2024; Small 2025–2026): a temperature difference drives selective ion transport through charged nanochannels and the output is ionic-thermoelectric electricity — no bulk flow, no turbine. Screened at title level."
+  result: inconclusive
+  completeness: partial
+  reviewed_by: Ava Kim's loop-3 lane (Claude Opus 5), with ChatGPT (GPT-5 Thinking) as second reader of the screened list and of the qualification question; abstracts, Xiao 2024's full text and the citation-chase titles read by the lane
+  reviewed_on: 2026-09-21
+  limitations:
+    - Semantic Scholar runs not made (anonymous API pool answered HTTP 429 throughout; key requested from the owner, exception e953) and the mandatory Google Scholar forms not run (one title lookup only, used to locate a readable copy of Xiao 2024); both are required for a negative
+    - "OpenAlex driver-mechanism query: 203 works reported after the VPDO/PRMD aliases were added, the first 100 by relevance and the first 50 newest screened at title level (protocol depth), the rest unscreened; the first run without those aliases (198 reported) had missed every PRMD paper"
+    - "citation chase on OpenAlex's reference lists and citing works only (Straub 2016: 47 of 48 references, 313 citers; Straub 2017: 56, 112; Luo 2024: 32, 7; Xiao 2024: 41 of 42, 5), screened at title level with a turbine / hydro / power-generation vocabulary filter; no full-text chase"
+    - one plausible hit remains unread (Luo et al. 2024, Desalination 579:117485, paywalled) and could be a direct turbine run
+    - the mechanism-pair, whole-chain and demonstration-precision queries returned 5, 1 and 0 works; the whole-chain hit is the 2017 theory paper
+  conclusion: No physical experiment couples a turbine directly to a thermo-osmotic pressurised flow in the OpenAlex protocol runs or the four citation chases. The pressurised flow itself has been produced and its pressure × flux reported since 2014 (MemPower, Straub 2016, stack TOEC 2021, PRMD); the one hydro-turbine run (Xiao et al. 2024, a 2 W-rated bulb lit) stores the permeate in an elevated tank first and is recorded as longer-chain; the same driver and stage have been closed through electrokinetic and electrodialytic sinks instead (Huang 2021, Luo 2023, Ma 2025). Inconclusive until Luo 2024 is read and the Semantic Scholar and Google Scholar runs exist.
+  source_run_ids:
+    - search:2026-09-20-p-8fba925ce8
+  follow_up:
+    canonical_claim_review: not-applicable
+    canonical_pathway_review: not-applicable
+    candidate_source_ids:
+      - source:xiao-2024-permeate-gap-thermo-osmotic
+      - source:luo-2024-hollow-fibre-toec

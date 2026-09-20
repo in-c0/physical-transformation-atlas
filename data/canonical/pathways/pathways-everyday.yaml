@@ -309,16 +309,21 @@
   knowledge_level: K5
   performance:
     theoretical_limit: "Carnot between the hot and cold reservoirs"
+    notes: "Every TOEC power density on record (Kuipers 2014 MemPower, Straub 2016, Li 2021 stack, Zhao 2021 PRMD) is the pressure × flux of the pressurised permeate, not turbine output. The one physical run through a hydro-turbine (Xiao et al. 2024, a 2 W-rated bulb lit) stored the permeate in an elevated tank first, a longer chain through gravitational head conversion; the direct coupling of a turbine to the pressurised permeate has not been reported (route search of 21/09/2026)."
     measurements:
       - quantity: hydraulic power density
         value: "3.53 ± 0.29 W/m² of membrane"
+        value_numeric: 3.53
+        unit: W/m²
+        metric: power-density
+        basis: "pressure × permeate flux per membrane area; the turbine stage proposed, not run"
         scope: laboratory
         conditions: "60 °C hot side, 20 °C cold side, hydraulic pressures up to 13 bar; the pressurised flow was measured, the turbine stage is proposed"
         sources: [source:straub-2016-toec]
         year: 2016
   environment: [state-liquid, medium-membrane, temp-gradient-required]
   summary: Heat drives a thermo-osmotic vapour flux through a hydrophobic membrane into a pressurised reservoir; the pressurised flow is recorded, its conversion through a turbine is the proposed step.
-  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 10 (frontier as a research instrument)" }
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 21 (TOEC route search: status kept proposed — the only turbine run, Xiao 2024, is a longer chain through gravitational storage)" }
 - id: pathway:bimetal-piezoelectric-harvester
   name: Bimetallic-strip piezoelectric harvester
   steps: [claim:thermal-expansion-drives, claim:thermal-expansion-produces-stress, claim:piezo-drives, claim:piezo-produces-charge, claim:surface-charge-converts-electricity]

@@ -8,6 +8,9 @@ import type { CompiledPath } from "@pta/schema";
 const root = resolve(import.meta.dirname, "..", "..");
 const paths: CompiledPath[] = JSON.parse(readFileSync(join(root, "apps", "web", "generated", "paths.json"), "utf8"));
 const byId = new Map(paths.map((p) => [p.id, p]));
+const graph: { searches: { id: string; target: { kind: string; path?: string }; reviewed?: boolean; result: string; hits: { decision: string; doi?: string }[] }[] } = JSON.parse(
+  readFileSync(join(root, "apps", "web", "generated", "graph.json"), "utf8"),
+);
 
 test("a carrier-expanded spelling is representation-equivalent to its shortest form (magnetostriction → piezo)", () => {
   const a = byId.get("p-784ad6a8e6");
@@ -42,12 +45,32 @@ test("a flow producer that lacks the consumer's declared requirements has an unr
   assert.ok(none && none.handoff_unresolved_count === 0);
 });
 
-test("a proposed pathway (TOEC) is attached to its route, leaves it a candidate and never makes it demonstrated", () => {
+test("a proposed pathway (TOEC) is attached to its route and never makes it demonstrated; its class comes from the demonstrated sibling, not the proposal", () => {
   const toec = paths.find((p) => p.pathway === "pathway:thermo-osmotic-energy-converter");
   assert.ok(toec, "TOEC pathway compiled");
-  assert.equal(toec!.frontier_class, "candidate");
+  assert.notEqual(toec!.frontier_class, "demonstrated");
   assert.notEqual(toec!.search_status, "demonstrated");
   assert.equal(toec!.structural_kind, "composition");
+  // Loop-3 pass 21: the thermal-osmosis → electrokinetic pathway (demonstrated) shares the route's head — driver
+  // step and first conversion — so the head-overlap rule classes the turbine route derived. The proposal itself
+  // is still ignored for overlap: the overlap named is the sibling, never the TOEC proposal.
+  assert.equal(toec!.frontier_class, "derived");
+  assert.equal(toec!.known_pathway_overlap?.pathway, "pathway:thermal-osmosis-electrokinetic-generator");
+  // The reviewed route search is attached: an honest partial whose only turbine run is a longer chain.
+  assert.equal(toec!.search_status, "search-incomplete");
+  const rec = graph.searches.find((s) => s.target.kind === "path" && s.target.path === toec!.id && s.reviewed);
+  assert.ok(rec, "reviewed TOEC route record compiled");
+  assert.equal(rec!.result, "inconclusive");
+  assert.ok(rec!.hits.some((h) => h.decision === "longer-chain" && h.doi === "10.1016/j.enconman.2024.118636"));
+  assert.ok(!rec!.hits.some((h) => h.decision === "qualifies"));
+});
+
+test("the sibling thermal-osmosis → streaming route carries the demonstrated MD-EPG pathway and is no longer a bare derived spelling", () => {
+  const md = paths.find((p) => p.pathway === "pathway:thermal-osmosis-electrokinetic-generator");
+  assert.ok(md, "MD-EPG pathway compiled");
+  assert.equal(md!.frontier_class, "demonstrated");
+  assert.equal(md!.search_status, "demonstrated");
+  assert.deepEqual(md!.nodes, ["disequilibrium:temperature-gradient", "phenomenon:thermo-osmosis", "carrier:fluid-flow", "phenomenon:streaming-potential", "carrier:ionic-current", "output:electricity"]);
 });
 
 test("a route whose consuming step requires a carrier property nothing upstream provides is incomplete-handoff, not a candidate (radiation pressure → induction)", () => {
