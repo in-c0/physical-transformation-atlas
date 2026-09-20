@@ -17,13 +17,8 @@ import { Drawer, DrawerSection, drawerStyles as s } from "./Drawer";
 import { ClaimLine } from "./ClaimLine";
 import { Checksum } from "./Checksum";
 import { EvidenceList } from "./EvidenceList";
+import { CORE_CHECK_IDS } from "@pta/physics";
 
-const CORE_CHECKS = new Set([
-  "energy-form-continuity",
-  "conservation",
-  "thermodynamic-bound",
-  "boundary-compatibility",
-]);
 
 /** Search terms a reviewer would use: row and column names plus their aliases, quoted. */
 function searchDraft(
@@ -346,7 +341,7 @@ export function CellDrawer({
           title={`Core checks · bridge ${String(bridges.indexOf(active) + 1).padStart(2, "0")}`}
         >
           <Checksum
-            checks={active.checks.filter((k) => CORE_CHECKS.has(k.id))}
+            checks={active.checks.filter((k) => CORE_CHECK_IDS.has(k.id))}
             claims={active.claims}
             compact
           />

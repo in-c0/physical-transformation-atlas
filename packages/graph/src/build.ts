@@ -23,7 +23,7 @@ import {
   type SearchRecord,
   type SearchStatus,
 } from "@pta/schema";
-import { UnitTable, boundaryReport, runAllChecks, type PhysicsContext } from "@pta/physics";
+import { CORE_CHECK_IDS, UnitTable, boundaryReport, runAllChecks, type PhysicsContext } from "@pta/physics";
 import type { Canon } from "./load.js";
 import { classify, collapseForms, familySeams, signature, type RouteCore } from "./structure.js";
 import { researchOrder } from "./order.js";
@@ -202,7 +202,7 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
     const phenomena = nodes.filter((n) => entity.get(n)?.type === "phenomenon");
     const forms = collapseForms([claims[0].energy?.input, ...claims.map((c) => c.energy?.output)]);
     const famSets = phenomena.map((p) => memberOf.get(p) ?? []);
-    const CORE = new Set(["energy-form-continuity", "conservation", "thermodynamic-bound", "boundary-compatibility"]);
+    const CORE = CORE_CHECK_IDS;
     const coreUnresolved = checks.filter((k) => CORE.has(k.id) && (k.result === "unresolved" || k.result === "unknown")).length;
     const boundary = boundaryReport(ctx, claims);
     const conversionSteps = claims.filter((c) => entity.get(c.subject)?.type === "phenomenon" || entity.get(c.object)?.type === "phenomenon");
