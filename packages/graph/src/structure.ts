@@ -106,5 +106,27 @@ export function classify(routes: RouteCore[], namedSignatures: Set<string>): Map
     }
     out.set(r.id, { kind, semanticOverlap, dominatedBy });
   }
+  // Family-core collapse (loop-3 pass 10): two compositions with the same source, the same ordered
+  // sequence of coupling families and the same sink form are one mechanism spelled with different
+  // phenomena (a generator written as "electromagnetic induction" or as "generator action"). One
+  // representative stays a composition; the rest become representation-equivalent to it.
+  const cores = new Map<string, RouteCore[]>();
+  for (const r of routes) {
+    if (out.get(r.id)!.kind !== "composition") continue;
+    const key = familyCore(r);
+    if (!key) continue;
+    cores.set(key, [...(cores.get(key) ?? []), r]);
+  }
+  for (const group of cores.values()) {
+    if (group.length < 2) continue;
+    const [rep, ...rest] = [...group].sort((a, b) => a.phenomena.length - b.phenomena.length || a.id.localeCompare(b.id));
+    for (const r of rest) out.set(r.id, { kind: "representation-equivalent", semanticOverlap: false, dominatedBy: rep.id });
+  }
   return out;
+}
+
+/** source | ordered family sets | sink form — undefined when any phenomenon has no family (cannot be compared). */
+export function familyCore(r: RouteCore): string | undefined {
+  if (r.families.some((f) => f.length === 0)) return undefined;
+  return `${r.source}|${r.families.map((f) => [...f].sort().join("+")).join(">")}|${r.sinkForm ?? "?"}`;
 }

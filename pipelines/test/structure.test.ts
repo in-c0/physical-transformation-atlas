@@ -49,3 +49,14 @@ test("energy backtracking and form collapsing", () => {
   const r = route({ id: "d", source: "disequilibrium:electric-potential-difference", phenomena: ["phenomenon:peltier-effect", "phenomenon:seebeck-effect"], families: [["coupling:thermoelectric"], ["coupling:thermoelectric"]], forms: ["electrical", "thermal", "electrical"] });
   assert.equal(classify([r], new Set()).get("d")!.kind, "energy-backtracking");
 });
+
+test("family-core collapse: two compositions with the same source, family sequence and sink form keep one representative", () => {
+  const a: RouteCore = { id: "p-a", source: "d:heat", sinkForm: "electrical", phenomena: ["ph:marangoni", "ph:lift", "ph:induction"], families: [["c:marangoni"], ["c:turbo"], ["c:emi"]], forms: ["thermal", "kinetic", "mechanical", "electrical"], exact: false, knownDevice: false };
+  const b: RouteCore = { ...a, id: "p-b", phenomena: ["ph:marangoni", "ph:lift", "ph:generator"] };
+  const c: RouteCore = { ...a, id: "p-c", phenomena: ["ph:marangoni", "ph:lift", "ph:mhd"], families: [["c:marangoni"], ["c:turbo"], ["c:mhd"]] };
+  const out = classify([a, b, c], new Set());
+  assert.equal(out.get("p-a")!.kind, "composition");
+  assert.equal(out.get("p-b")!.kind, "representation-equivalent");
+  assert.equal(out.get("p-b")!.dominatedBy, "p-a");
+  assert.equal(out.get("p-c")!.kind, "composition", "a different family sequence is a different mechanism");
+});

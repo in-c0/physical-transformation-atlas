@@ -142,7 +142,7 @@ Used in: `paths[].structural_kind`
 - `known-device-likely` — every step already appears in one recorded device pathway, so the route most likely restates that device
 - `energy-backtracking` — the energy-form sequence returns to a form it already left
 - `representation-dominated` — a shorter route with the same source, sink form and an ordered subset of its phenomena exists with no more mechanism seams or energy transitions; the field dominated_by names it
-- `representation-equivalent` — same mechanism core (source, ordered phenomena, sink form) as a recorded pathway, spelled with different claims
+- `representation-equivalent` — the same mechanism as another route — either a recorded pathway with the same source, ordered phenomena and sink form spelled with different claims, or another composition with the same source, ordered coupling families and sink form (dominated_by names the representative)
 - `atomic` — fewer than two conversion phenomena; nothing to compose
 
 ## `matrix.cell.status`

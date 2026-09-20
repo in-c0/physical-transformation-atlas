@@ -460,6 +460,12 @@ export const CompiledPath = z.object({
   core_unresolved_count: z.number().int(),
   /** Adjacent-step condition conflicts: an exchanger, window, membrane or shaft is implied but not recorded. */
   implied_interface_count: z.number().int(),
+  /** The conflicts themselves, "claim → claim: tag vs tag", so the row can say which interface is implied. */
+  implied_interfaces: z.array(z.string()),
+  /** The step whose evidence status is the route's weakest; ties resolve to the earliest step. */
+  weakest_claim: ClaimId,
+  /** The recorded device (transducer) that shares the most steps with this route, if any step is implemented by one. */
+  closest_known_device: z.object({ transducer: EntityId, shared_steps: z.number().int(), of: z.number().int() }).nullable(),
   /** Conversion steps that carry a constitutive relation, over all conversion steps. */
   magnitude_data_coverage: z.object({ quantified: z.number().int(), of: z.number().int() }),
   /** source | ordered phenomena | sink energy form — the mechanism core, independent of carriers. */

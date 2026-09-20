@@ -223,6 +223,6 @@ export const STRUCTURE_LABEL: Record<StructuralKind, string> = {
   "known-device-likely": "known device likely",
   "energy-backtracking": "energy backtracking",
   "representation-dominated": "carrier-expanded copy",
-  "representation-equivalent": "recorded pathway at another resolution",
+  "representation-equivalent": "same mechanism at another resolution",
   atomic: "one effect plus bookkeeping",
 };

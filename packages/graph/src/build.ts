@@ -45,12 +45,29 @@ const STATUS_TO_LEVEL: Record<EvidenceStatus, KnowledgeLevel> = {
 
 const LEVEL_RANK = (k: KnowledgeLevel) => Number(k.slice(1));
 
+/** Transducer that implements the most conversion phenomena on the route (implemented_by / demonstrated_with claims). */
+let implementedBy = new Map<string, Set<string>>();
+function closestDevice(claims: Claim[]): CompiledPath["closest_known_device"] {
+  const phen = [...new Set(claims.flatMap((c) => [c.subject, c.object]).filter((id) => id.startsWith("phenomenon:")))];
+  if (phen.length === 0) return null;
+  const tally = new Map<string, number>();
+  for (const ph of phen) for (const t of implementedBy.get(ph) ?? []) tally.set(t, (tally.get(t) ?? 0) + 1);
+  const best = [...tally.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0];
+  return best ? { transducer: best[0], shared_steps: best[1], of: phen.length } : null;
+}
+
 function pathId(claimIds: string[]): string {
   return "p-" + createHash("sha1").update(claimIds.join(">")).digest("hex").slice(0, 10);
 }
 
 export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: string; sourceCommit?: string | null } = {}): Graph {
   const entity = new Map(canon.entities.map((e) => [e.id, e]));
+  implementedBy = new Map();
+  for (const c of canon.claims) {
+    if ((c.predicate === "implemented_by" || c.predicate === "demonstrated_with") && c.object.startsWith("transducer:")) {
+      implementedBy.set(c.subject, new Set([...(implementedBy.get(c.subject) ?? []), c.object]));
+    }
+  }
   const claimById = new Map(canon.claims.map((c) => [c.id, c]));
   const units = new UnitTable(canon.units);
 
@@ -237,6 +254,9 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
       family_seam_count: familySeams(famSets),
       core_unresolved_count: coreUnresolved,
       implied_interface_count: boundary.adjacent.length,
+      implied_interfaces: boundary.adjacent,
+      weakest_claim: claims.find((c) => c.status === weakest)!.id,
+      closest_known_device: closestDevice(claims),
       magnitude_data_coverage: { quantified, of: conversionSteps.length },
       representation_signature: signature(claims[0].subject, phenomena, sinkForm),
       semantic_overlap: null,

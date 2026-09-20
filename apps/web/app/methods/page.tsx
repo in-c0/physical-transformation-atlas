@@ -111,7 +111,7 @@ export default function MethodsPage() {
             Two routes can have the same evidence and very different research value. Alongside its evidence class, every route is classed by structure, which says nothing about how well its physics is
             known: <em>composition</em> (two or more conversion phenomena with a real handoff between mechanisms), <em>one effect plus bookkeeping</em> (fewer than two phenomena),{" "}
             <em>carrier-expanded copy</em> (a shorter route with the same source and sink already contains its phenomena and the extra steps add no cross-family seam and no energy-form transition),{" "}
-            <em>recorded pathway at another resolution</em> (the same mechanism core as a named pathway, drawn with different carrier nodes), <em>energy backtracking</em> (a form reappears after a
+            <em>same mechanism at another resolution</em> (the same mechanism core as a named pathway drawn with different carrier nodes, or the same source, ordered coupling families and sink form as another composition — one representative stays on the frontier), <em>energy backtracking</em> (a form reappears after a
             different one, as in electricity → heat → electricity), and <em>known device likely</em> (every phenomenon is implemented by one common transducer, so the composition is probably an
             uncurated pathway).
           </p>

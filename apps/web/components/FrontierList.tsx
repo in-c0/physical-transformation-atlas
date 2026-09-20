@@ -194,6 +194,10 @@ export function FrontierList() {
 
       <ol className={styles.list}>
         {list.slice(0, limit).map((p, i) => {
+          const describeClaim = (id: string) => {
+            const c = index.claim.get(id);
+            return c ? `${index.entity.get(c.subject)?.name ?? c.subject} → ${index.entity.get(c.object)?.name ?? c.object}` : id;
+          };
           const named = p.pathway ? index.pathway.get(p.pathway) : undefined;
           return (
             <li key={p.id} className={styles.item}>
@@ -222,8 +226,11 @@ export function FrontierList() {
                 </dd>
                 <dt>interfaces</dt>
                 <dd>
-                  {p.checks.find((k) => k.id === "boundary-compatibility")?.result === "fail" ? "conflict within a step" : "0 conflicts"} · {p.implied_interface_count} implied interface
-                  {p.implied_interface_count === 1 ? "" : "s"} · {p.source_availability ? p.source_availability.replace("-", "/") : "availability not recorded"} source
+                  {p.checks.find((k) => k.id === "boundary-compatibility")?.result === "fail" ? "conflict within a step" : "0 conflicts"} ·{" "}
+                  {p.implied_interface_count === 0
+                    ? "0 implied interfaces"
+                    : `${p.implied_interface_count} implied interface${p.implied_interface_count === 1 ? "" : "s"}: ${p.implied_interfaces.map((x) => x.replace(/^claim:[^ ]+ → claim:[^:]+: /, "").replace(/ vs /, " | ")).join("; ")}`}{" "}
+                  · {p.source_availability ? p.source_availability.replace("-", "/") : "availability not recorded"} source
                 </dd>
                 <dt>magnitude</dt>
                 <dd>
@@ -247,7 +254,26 @@ export function FrontierList() {
                 )}
                 <dt>constituents</dt>
                 <dd>
-                  {p.established_steps}/{p.length} established · weakest {EVIDENCE_LABEL[p.evidence_status]} · floor {p.constituent_floor}
+                  {p.established_steps}/{p.length} established · weakest{" "}
+                  {p.established_steps === p.length ? (
+                    "none below established"
+                  ) : (
+                    <>
+                      {EVIDENCE_LABEL[p.evidence_status]} at <Link href={`/claim/${p.weakest_claim.split(":")[1]}`}>{describeClaim(p.weakest_claim)}</Link>
+                    </>
+                  )}{" "}
+                  · maturity floor {p.constituent_floor}
+                </dd>
+                <dt>closest device</dt>
+                <dd>
+                  {p.closest_known_device ? (
+                    <>
+                      <Link href={hrefFor(p.closest_known_device.transducer)}>{index.entity.get(p.closest_known_device.transducer)?.name ?? p.closest_known_device.transducer}</Link> implements{" "}
+                      {p.closest_known_device.shared_steps} of {p.closest_known_device.of} effects
+                    </>
+                  ) : (
+                    "no recorded device implements any effect on this route"
+                  )}
                 </dd>
                 <dt>exact composition</dt>
                 <dd>{compositionState(p.search_status, p.last_searched).long}</dd>
