@@ -360,7 +360,7 @@
       - claim:ionic-current-converts-electricity
   protocol_version: route-search-v1
   started_at: 2026-09-20T22:45:00+10:00
-  completed_at: 2026-09-21T03:25:00+10:00
+  completed_at: 2026-09-21T05:40:00+10:00
   objective: exact-composition
   inclusion_criteria:
     - a physical experiment or device in which the route's driver is imposed or naturally present, every conversion phenomenon occurs in the recorded order, the carrier crosses every handoff, and an electrical response (streaming voltage, current or power) is measured (route-search-v1 §3)
@@ -482,10 +482,78 @@
       records_retrieved: 159
       records_screened: 159
       records_read: 0
+    - id: search:2026-09-20-p-41cb505083/gs-dm1
+      engine: google-scholar
+      query_form: route-driver-mechanism
+      query_key: driver-mechanism:1
+      query: ("surface energy difference" OR "surface-tension gradient" OR "interfacial tension gradient" OR "Marangoni stress") ("Marangoni effect" OR solutocapillary OR destillocapillarity OR thermocapillary)
+      query_compacted: true
+      expanded_query: ("Surface energy difference" OR "surface-tension gradient" OR "interfacial tension gradient" OR "Marangoni stress") AND ("Marangoni effect" OR "surface-tension-driven flow" OR "thermocapillary flow" OR "solutocapillary flow" OR thermocapillary OR solutocapillary OR destillocapillarity)
+      executed_at: 2026-09-21T05:40:00+10:00
+      request_url: https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=(%22surface%20energy%20difference%22%20OR%20%22surface-tension%20gradient%22%20OR%20%22interfacial%20tension%20gradient%22%20OR%20%22Marangoni%20stress%22)%20(%22Marangoni%20effect%22%20OR%20solutocapillary%20OR%20destillocapillarity%20OR%20thermocapillary)
+      engine_version: null
+      index_snapshot: null
+      sort: relevance (Scholar default)
+      result_count_reported: 11800
+      records_retrieved: 100
+      records_screened: 100
+      records_read: 0
+      note: "Run by hand in the owner's Chrome. Google Scholar silently returns nothing for a query beyond about 32 words, so the form was submitted as a compact string drawn from the record's frozen bundles (route-search-v1 §2 query-length exception); the unabridged form is in expanded_query. Scholar indexes full text, so it matches phrases anywhere in a paper. About 11,800 results; the first 100 by relevance screened at title level: Marangoni fluid mechanics, surfactant films, droplet migration — nothing electrokinetic."
+    - id: search:2026-09-20-p-41cb505083/gs-mp12
+      engine: google-scholar
+      query_form: route-mechanism-pair
+      query_key: mechanism-pair:1-2
+      query: ("Marangoni effect" OR solutocapillary OR destillocapillarity OR thermocapillary) ("streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming")
+      query_compacted: true
+      expanded_query: ("Marangoni effect" OR "surface-tension-driven flow" OR "thermocapillary flow" OR "solutocapillary flow" OR thermocapillary OR solutocapillary OR destillocapillarity) AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming")
+      executed_at: 2026-09-21T05:40:00+10:00
+      request_url: https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=(%22Marangoni%20effect%22%20OR%20solutocapillary%20OR%20destillocapillarity%20OR%20thermocapillary)%20(%22streaming%20potential%22%20OR%20%22streaming%20current%22%20OR%20%22electrokinetic%20effect%22%20OR%20%22electrokinetic%20streaming%22)
+      engine_version: null
+      index_snapshot: null
+      sort: relevance (Scholar default)
+      result_count_reported: 261
+      records_retrieved: 100
+      records_screened: 100
+      records_read: 0
+      note: Run by hand in the owner's Chrome. Google Scholar silently returns nothing for a query beyond about 32 words, so the form was submitted as a compact string drawn from the record's frozen bundles (route-search-v1 §2 query-length exception); the unabridged form is in expanded_query. Scholar indexes full text, so it matches phrases anywhere in a paper. About 261 results; the first 100 by relevance screened with snippets — the same population as the thermal sibling's mechanism-pair run of 21/09 (the mechanisms are shared).
+    - id: search:2026-09-20-p-41cb505083/gs-wc
+      engine: google-scholar
+      query_form: route-whole-chain
+      query_key: whole-chain
+      query: ("surface energy difference" OR "surface-tension gradient" OR "interfacial tension gradient" OR "Marangoni stress") ("Marangoni effect" OR solutocapillary OR destillocapillarity OR thermocapillary) ("streaming potential" OR "streaming current" OR "electrokinetic effect") electricity
+      query_compacted: true
+      expanded_query: ("Surface energy difference" OR "surface-tension gradient" OR "interfacial tension gradient" OR "Marangoni stress") AND ("Marangoni effect" OR "surface-tension-driven flow" OR "thermocapillary flow" OR "solutocapillary flow" OR thermocapillary OR solutocapillary OR destillocapillarity) AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power")
+      executed_at: 2026-09-21T05:40:00+10:00
+      request_url: https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=(%22surface%20energy%20difference%22%20OR%20%22surface-tension%20gradient%22%20OR%20%22interfacial%20tension%20gradient%22%20OR%20%22Marangoni%20stress%22)%20(%22Marangoni%20effect%22%20OR%20solutocapillary%20OR%20destillocapillarity%20OR%20thermocapillary)%20(%22streaming%20potential%22%20OR%20%22streaming%20current%22%20OR%20%22electrokinetic%20effect%22)%20electricity
+      engine_version: null
+      index_snapshot: null
+      sort: relevance (Scholar default)
+      result_count_reported: 68
+      records_retrieved: 59
+      records_screened: 59
+      records_read: 3
+      note: Run by hand in the owner's Chrome. Google Scholar silently returns nothing for a query beyond about 32 words, so the form was submitted as a compact string drawn from the record's frozen bundles (route-search-v1 §2 query-length exception); the unabridged form is in expanded_query. Scholar indexes full text, so it matches phrases anywhere in a paper. About 68 results, 59 delivered, all screened; abstracts of the plausible hits read.
+    - id: search:2026-09-20-p-41cb505083/gs-dp
+      engine: google-scholar
+      query_form: route-demonstration-precision
+      query_key: demonstration-precision
+      query: ("surface energy difference" OR "surface-tension gradient" OR "interfacial tension gradient" OR "Marangoni stress") ("Marangoni effect" OR solutocapillary OR destillocapillarity OR thermocapillary) ("streaming potential" OR "streaming current") electricity (experiment OR measured OR device)
+      query_compacted: true
+      expanded_query: ("Surface energy difference" OR "surface-tension gradient" OR "interfacial tension gradient" OR "Marangoni stress") AND ("Marangoni effect" OR "surface-tension-driven flow" OR "thermocapillary flow" OR "solutocapillary flow" OR thermocapillary OR solutocapillary OR destillocapillarity) AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power") AND (experiment OR experimental OR measured OR device OR prototype)
+      executed_at: 2026-09-21T05:40:00+10:00
+      request_url: https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=(%22surface%20energy%20difference%22%20OR%20%22surface-tension%20gradient%22%20OR%20%22interfacial%20tension%20gradient%22%20OR%20%22Marangoni%20stress%22)%20(%22Marangoni%20effect%22%20OR%20solutocapillary%20OR%20destillocapillarity%20OR%20thermocapillary)%20(%22streaming%20potential%22%20OR%20%22streaming%20current%22)%20electricity%20(experiment%20OR%20measured%20OR%20device)
+      engine_version: null
+      index_snapshot: null
+      sort: relevance (Scholar default)
+      result_count_reported: 53
+      records_retrieved: 44
+      records_screened: 44
+      records_read: 0
+      note: Run by hand in the owner's Chrome. Google Scholar silently returns nothing for a query beyond about 32 words, so the form was submitted as a compact string drawn from the record's frozen bundles (route-search-v1 §2 query-length exception); the unabridged form is in expanded_query. Scholar indexes full text, so it matches phrases anywhere in a paper. About 53 results, 44 delivered, all screened; a subset of the whole-chain list.
   screening:
-    records_retrieved: 152
-    unique_records: 151
-    title_abstract_screened: 151
+    records_retrieved: 455
+    unique_records: 156
+    title_abstract_screened: 156
     full_text_read: 2
   hits:
     - title: Energy conversion by surface-tension-driven charge separation
@@ -538,17 +606,60 @@
       access: abstract
       decision: driver-only-modifies
       reason: "Surfaced by the sibling thermal route's Google Scholar runs (21/09/2026). A graphene-oxide evaporator with a programmed longitudinal gradient of oxygen-containing groups: the persistent surface-tension disparity sustains Marangoni microcirculation that co-drives water transport with capillary flow ('a dual-driving transport regime'), while the device delivers 25 μA short-circuit current and 0.7 V open-circuit voltage and series units power an LED. D → M1 is physical, but capillary transport is a simultaneous independent driver and the electrical output is not decomposed into capillary-driven and Marangoni-driven parts (parallel-driver rule). The nearest physical device to this route; recorded as a note on the proposed pathway, its figures kept off the pathway's measurements."
+    - title: Circadian humidity fluctuation induced capillary flow for sustainable mobile energy
+      year: 2022
+      doi: 10.1038/s41467-022-28998-y
+      found_by:
+        - search:2026-09-20-p-41cb505083/gs-wc
+        - search:2026-09-20-p-41cb505083/gs-dp
+      access: abstract
+      decision: wrong-driver
+      reason: Ionic-liquid drops on a nanowire array swell and shrink with the daily humidity, and the surface-tension-regulated cap profile drives an inward/outward capillary flow whose streaming potential is harvested (an LED and an LCD lit). The driver is the humidity fluctuation and the flow is capillary, not a surface-tension gradient; the Gibbs–Marangoni effect is invoked for a detail of the flow (abstract read on OpenAlex).
+    - title: Polypyrrole@TiO2 Composite Nanotube System with Enhanced Capillary Fluid and Charge Transfer for High-Current Hydrovoltaic Energy Generation and Seawater Desalination
+      year: 2024
+      found_by:
+        - search:2026-09-20-p-41cb505083/gs-wc
+        - search:2026-09-20-p-41cb505083/gs-dp
+      access: metadata-only
+      decision: driver-only-modifies
+      reason: An evaporation-driven hydrovoltaic generator; the Marangoni effect is invoked for salt-film behaviour in the text (Scholar snippet), not as the driver of the streaming output. Not read beyond the snippet.
+    - title: "Thin liquid film drainage: Ionic vs. non-ionic surfactants"
+      year: 2010
+      doi: 10.1016/j.jcis.2009.11.065
+      found_by:
+        - search:2026-09-20-p-41cb505083/gs-wc
+        - search:2026-09-20-p-41cb505083/gs-dp
+      access: metadata-only
+      decision: wrong-coupling
+      reason: Film drainage generates the streaming potential; the surface-tension gradient (Marangoni effect) is a stabilising surface stress in the drainage model, not the driver of the flow — the same physics as the electro-Marangoni papers already recorded (Scholar snippet).
+    - title: Onsager relation for electrokinetics at surfactant-covered bubble film
+      year: 2025
+      doi: 10.1002/dro2.70007
+      found_by:
+        - search:2026-09-20-p-41cb505083/gs-wc
+      access: metadata-only
+      decision: theory-only
+      reason: A theory of electrokinetics at a surfactant-covered bubble film under pressure-driven flow, in which the Marangoni stress from surfactant accumulation modifies the streaming current; the flow is pressure-driven (Scholar snippet; DOI resolved on OpenAlex).
+    - title: In Situ Studies of the Effect of CO2 on the Initial NaCl-Induced Atmospheric Corrosion of Copper
+      year: 2005
+      found_by:
+        - search:2026-09-20-p-41cb505083/gs-wc
+        - search:2026-09-20-p-41cb505083/gs-dp
+      access: metadata-only
+      decision: insufficient-information
+      reason: A corrosion study whose text suggests that a surface-tension gradient in the electrolyte droplet induces Marangoni convection that could give rise to a streaming potential difference; no energy conversion is measured and the passage is known only from Scholar's snippet. Not read.
   result: inconclusive
   completeness: partial
-  reviewed_by: Ava Kim's loop-3 lane (Claude Opus 5), with ChatGPT (GPT-5 Thinking) as second reader of the title lists; abstracts, Pini 2015's full text and the citation-chase titles read by the lane
+  reviewed_by: Ava Kim's loop-3 lane (Claude Opus 5), with ChatGPT (GPT-5 Thinking) as second reader of the title lists; abstracts, Pini 2015's full text and the citation-chase titles read by the lane; Google Scholar runs by hand and their screening on 21/09 (pass 23)
   reviewed_on: 2026-09-21
   limitations:
     - Semantic Scholar and Google Scholar runs not made (see p-423a19acdd); both are mandatory for a negative
     - "OpenAlex driver-mechanism query: 515 works reported, the first 100 by relevance and the first 50 newest screened at title level, the rest unscreened"
     - "citation chase on OpenAlex reference lists and citing works only (Pini 2015: 40 references, 3 citers; Kim et al. 2017: 26 of 28 references, 133 of 134 citers), title-level with a vocabulary filter"
     - the mechanism-pair, whole-chain and demonstration-precision queries returned 2, 0 and 0 works
-    - Google Scholar's mandatory forms not yet run for this route (pass 23); the Zhang 2026 co-driver device was found by the thermal sibling's Scholar runs
-  conclusion: No physical demonstration of a surface-energy difference → Marangoni flow → streaming potential → electrical output was found; the only literature is the Pini 2015 proposal. Inconclusive until the Semantic Scholar and Google Scholar runs exist.
+    - the Zhang 2026 co-driver device was first found by the thermal sibling's Scholar runs and appears in this route's own whole-chain and precision runs
+    - "Google Scholar: the driver-mechanism form reports about 11,800 works, the first 100 by relevance screened at title level (protocol depth); the mechanism-pair form 261, the first 100 screened"
+  conclusion: "No physical demonstration of a surface-energy difference → Marangoni flow → streaming potential → electrical output was found in the OpenAlex protocol runs, the two citation chases or the four Google Scholar forms run by hand on 21/09/2026. The route's literature is the Pini 2015 theoretical proposal and one physical device in which a programmed surface-tension gradient sustains Marangoni microcirculation as a co-driver beside capillary flow in a hydrovoltaic evaporator (Zhang et al. 2026: driver-only-modifies under the parallel-driver rule, since the Marangoni branch's electrical contribution is not isolated). Inconclusive until the Semantic Scholar runs exist and the unread chase hits are read."
   source_run_ids:
     - search:2026-09-20-p-41cb505083
 - id: search:2026-09-20-p-1043a15e01-partial
@@ -563,7 +674,7 @@
       - claim:ionic-current-converts-electricity
   protocol_version: route-search-v1
   started_at: 2026-09-20T22:45:00+10:00
-  completed_at: 2026-09-20T23:40:00+10:00
+  completed_at: 2026-09-21T05:40:00+10:00
   objective: exact-composition
   inclusion_criteria:
     - a physical experiment or device in which the route's driver is imposed or naturally present, every conversion phenomenon occurs in the recorded order, the carrier crosses every handoff, and an electrical response (streaming voltage, current or power) is measured (route-search-v1 §3)
@@ -685,10 +796,78 @@
       records_retrieved: 486
       records_screened: 486
       records_read: 0
+    - id: search:2026-09-20-p-1043a15e01/gs-dm1
+      engine: google-scholar
+      query_form: route-driver-mechanism
+      query_key: driver-mechanism:1
+      query: ("temperature gradient" OR "temperature difference" OR "thermal gradient" OR "waste heat") ("thermomagnetic convection" OR "ferrofluid convection" OR "thermomagnetic pumping" OR "thermomagnetic pump")
+      query_compacted: true
+      expanded_query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermomagnetic convection" OR "ferrofluid convection" OR "magnetocaloric pumping in ferrofluids" OR "thermomagnetic pumping" OR "thermomagnetic pump")
+      executed_at: 2026-09-21T05:40:00+10:00
+      request_url: https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=(%22temperature%20gradient%22%20OR%20%22temperature%20difference%22%20OR%20%22thermal%20gradient%22%20OR%20%22waste%20heat%22)%20(%22thermomagnetic%20convection%22%20OR%20%22ferrofluid%20convection%22%20OR%20%22thermomagnetic%20pumping%22%20OR%20%22thermomagnetic%20pump%22)
+      engine_version: null
+      index_snapshot: null
+      sort: relevance (Scholar default)
+      result_count_reported: 1140
+      records_retrieved: 10
+      records_screened: 10
+      records_read: 0
+      note: Run by hand in the owner's Chrome. Google Scholar silently returns nothing for a query beyond about 32 words, so the form was submitted as a compact string drawn from the record's frozen bundles (route-search-v1 §2 query-length exception); the unabridged form is in expanded_query. Scholar indexes full text, so it matches phrases anywhere in a paper. About 1,140 results; only the first page (10) was screened — Google Scholar answered the second page with a captcha, which the lane does not complete. The ten were ferrofluid convection and thermomagnetic pumping papers already known from the OpenAlex runs (Chiolerio 2020, Pal 2011). The form is INCOMPLETE at the protocol depth.
+    - id: search:2026-09-20-p-1043a15e01/gs-mp12
+      engine: google-scholar
+      query_form: route-mechanism-pair
+      query_key: mechanism-pair:1-2
+      query: ("thermomagnetic convection" OR "ferrofluid convection" OR "thermomagnetic pumping" OR "thermomagnetic pump") ("streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming")
+      query_compacted: true
+      expanded_query: ("Thermomagnetic convection" OR "ferrofluid convection" OR "magnetocaloric pumping in ferrofluids" OR "thermomagnetic pumping" OR "thermomagnetic pump") AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming")
+      executed_at: 2026-09-21T05:40:00+10:00
+      request_url: https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=(%22thermomagnetic%20convection%22%20OR%20%22ferrofluid%20convection%22%20OR%20%22thermomagnetic%20pumping%22%20OR%20%22thermomagnetic%20pump%22)%20(%22streaming%20potential%22%20OR%20%22streaming%20current%22%20OR%20%22electrokinetic%20effect%22%20OR%20%22electrokinetic%20streaming%22)
+      engine_version: null
+      index_snapshot: null
+      sort: relevance (Scholar default)
+      result_count_reported: 4
+      records_retrieved: 4
+      records_screened: 4
+      records_read: 0
+      note: "Run by hand in the owner's Chrome. Google Scholar silently returns nothing for a query beyond about 32 words, so the form was submitted as a compact string drawn from the record's frozen bundles (route-search-v1 §2 query-length exception); the unabridged form is in expanded_query. Scholar indexes full text, so it matches phrases anywhere in a paper. 4 results, all screened with snippets: a lattice-Boltzmann electroosmotic stirring paper, a transformer-nanofluid review, a ceramics-tool lubrication paper and a microscale-mixing thesis — each mentions both terms incidentally; nothing electrokinetic driven by thermomagnetic convection."
+    - id: search:2026-09-20-p-1043a15e01/gs-wc
+      engine: google-scholar
+      query_form: route-whole-chain
+      query_key: whole-chain
+      query: ("temperature gradient" OR "temperature difference" OR "thermal gradient") ("thermomagnetic convection" OR "ferrofluid convection" OR "thermomagnetic pumping" OR "thermomagnetic pump") ("streaming potential" OR "streaming current" OR "electrokinetic effect") electricity
+      query_compacted: true
+      expanded_query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermomagnetic convection" OR "ferrofluid convection" OR "magnetocaloric pumping in ferrofluids" OR "thermomagnetic pumping" OR "thermomagnetic pump") AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power")
+      executed_at: 2026-09-21T05:40:00+10:00
+      request_url: https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=(%22temperature%20gradient%22%20OR%20%22temperature%20difference%22%20OR%20%22thermal%20gradient%22)%20(%22thermomagnetic%20convection%22%20OR%20%22ferrofluid%20convection%22%20OR%20%22thermomagnetic%20pumping%22%20OR%20%22thermomagnetic%20pump%22)%20(%22streaming%20potential%22%20OR%20%22streaming%20current%22%20OR%20%22electrokinetic%20effect%22)%20electricity
+      engine_version: null
+      index_snapshot: null
+      sort: relevance (Scholar default)
+      result_count_reported: 1
+      records_retrieved: 1
+      records_screened: 1
+      records_read: 0
+      note: "Run by hand in the owner's Chrome. Google Scholar silently returns nothing for a query beyond about 32 words, so the form was submitted as a compact string drawn from the record's frozen bundles (route-search-v1 §2 query-length exception); the unabridged form is in expanded_query. Scholar indexes full text, so it matches phrases anywhere in a paper. 1 result (the microscale-mixing thesis, De 2008), screened: not a device."
+    - id: search:2026-09-20-p-1043a15e01/gs-dp
+      engine: google-scholar
+      query_form: route-demonstration-precision
+      query_key: demonstration-precision
+      query: ("temperature gradient" OR "temperature difference" OR "thermal gradient") ("thermomagnetic convection" OR "ferrofluid convection" OR "thermomagnetic pumping" OR "thermomagnetic pump") ("streaming potential" OR "streaming current") electricity (experiment OR measured OR device)
+      query_compacted: true
+      expanded_query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermomagnetic convection" OR "ferrofluid convection" OR "magnetocaloric pumping in ferrofluids" OR "thermomagnetic pumping" OR "thermomagnetic pump") AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power") AND (experiment OR experimental OR measured OR device OR prototype)
+      executed_at: 2026-09-21T05:40:00+10:00
+      request_url: https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=(%22temperature%20gradient%22%20OR%20%22temperature%20difference%22%20OR%20%22thermal%20gradient%22)%20(%22thermomagnetic%20convection%22%20OR%20%22ferrofluid%20convection%22%20OR%20%22thermomagnetic%20pumping%22%20OR%20%22thermomagnetic%20pump%22)%20(%22streaming%20potential%22%20OR%20%22streaming%20current%22)%20electricity%20(experiment%20OR%20measured%20OR%20device)
+      engine_version: null
+      index_snapshot: null
+      sort: relevance (Scholar default)
+      result_count_reported: 1
+      records_retrieved: 1
+      records_screened: 1
+      records_read: 0
+      note: Run by hand in the owner's Chrome. Google Scholar silently returns nothing for a query beyond about 32 words, so the form was submitted as a compact string drawn from the record's frozen bundles (route-search-v1 §2 query-length exception); the unabridged form is in expanded_query. Scholar indexes full text, so it matches phrases anywhere in a paper. 1 result (the same thesis), screened.
   screening:
-    records_retrieved: 78
-    unique_records: 39
-    title_abstract_screened: 39
+    records_retrieved: 94
+    unique_records: 43
+    title_abstract_screened: 43
     full_text_read: 0
   hits:
     - title: Characterization of a ferrofluid-based thermomagnetic pump for microfluidic applications
@@ -717,13 +896,14 @@
       reason: Book chapter on flow in thermomagnetic energy-conversion loops; no abstract accessible; nothing indicates an electrokinetic step.
   result: inconclusive
   completeness: partial
-  reviewed_by: Ava Kim's loop-3 lane (Claude Opus 5), with ChatGPT (GPT-5 Thinking) as second reader of the title lists; abstracts, Pini 2015's full text and the citation-chase titles read by the lane
-  reviewed_on: 2026-09-20
+  reviewed_by: Ava Kim's loop-3 lane (Claude Opus 5), with ChatGPT (GPT-5 Thinking) as second reader of the title lists; abstracts, Pini 2015's full text and the citation-chase titles read by the lane; Google Scholar runs by hand and their screening on 21/09 (pass 23)
+  reviewed_on: 2026-09-21
   limitations:
     - Semantic Scholar and Google Scholar runs not made (see p-423a19acdd); both are mandatory for a negative
     - "OpenAlex driver-mechanism query: 39 works reported and all screened at title level; none names an electrokinetic or streaming response"
     - "citation chase on OpenAlex reference lists and citing works only (Pal et al. 2011: 27 of 28 references, 61 of 62 citers; Nguyen 2012: 96 references, 390 citers), title-level with a vocabulary filter; two chase hits could not be read"
     - the mechanism-pair, whole-chain and demonstration-precision queries returned 0 works
+    - "Google Scholar driver-mechanism form incomplete: 10 of the protocol's 100 screened (captcha after about 110 page loads in one sitting)"
   conclusion: No physical demonstration of temperature gradient → thermomagnetic convection → streaming potential → electrical output was found, and no retrieved title combines a thermomagnetic flow with an electrokinetic response. Inconclusive until the Semantic Scholar and Google Scholar runs exist and the two unread chase hits are read.
   source_run_ids:
     - search:2026-09-20-p-1043a15e01
