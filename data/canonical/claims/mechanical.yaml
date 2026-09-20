@@ -371,7 +371,7 @@
   status: demonstrated
 - id: claim:villari-onsager
   subject: phenomenon:villari-effect
-  predicate: bounded_by
+  predicate: governed_by
   object: constraint:onsager-reciprocity
   conditions: [Villari and Joule magnetostriction are converse effects with equal coefficients]
   evidence: [source:joule-1847, source:villari-1865]
@@ -787,7 +787,7 @@
   status: demonstrated
 - id: claim:streaming-onsager
   subject: phenomenon:streaming-potential
-  predicate: bounded_by
+  predicate: governed_by
   object: constraint:onsager-reciprocity
   conditions: [streaming current and electro-osmosis are reciprocal]
   evidence: [source:degroot-mazur-1962]

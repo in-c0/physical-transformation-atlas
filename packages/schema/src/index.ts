@@ -131,6 +131,22 @@ export const DOMAINS = [
 ] as const;
 export type Domain = (typeof DOMAINS)[number];
 
+/** loop-3 pass 19: the kinds of recorded limit and the quantities they bound. */
+export const CONSTRAINT_KINDS = ["upper-bound", "formula-bound", "resource-bound", "constitutive-relation", "benchmark"] as const;
+export const BOUND_METRICS = [
+  "conversion-efficiency",
+  "conversion-efficiency-at-maximum-power",
+  "power-coefficient",
+  "power-density",
+  "current-density",
+  "work-per-volume",
+  "work",
+  "pressure",
+  "mechanical-power-density",
+  "converted-fraction-per-cycle",
+  "reciprocity",
+] as const;
+
 export const AVAILABILITY = ["ambient-common", "ambient-conditional", "engineered-common", "stored-controlled", "scarce-specialised"] as const;
 export type Availability = (typeof AVAILABILITY)[number];
 
@@ -250,10 +266,29 @@ export const Entity = z.object({
   availability: z.enum(AVAILABILITY).optional(),
   /** For constraints: the bound in words and, if it has one, as a formula. */
   bound: z.string().optional(),
-  /** For constraints: a numeric efficiency ceiling when one exists independent of conditions. */
+  /**
+   * For constraints (loop-3 pass 19): what kind of limit this is. Only upper-bound and formula-bound
+   * are "hard" bounds the thermodynamic-bound check may pass or fail a route on; a benchmark
+   * (Curzon–Ahlborn), a constitutive relation (Onsager–Casimir) or a resource bound without a
+   * comparable datum is listed as a recorded limit and never decides.
+   */
+  constraint_kind: z.enum(CONSTRAINT_KINDS).optional(),
+  /** For constraints: which quantity the limit bounds; a datum is comparable only when its metric matches. */
+  metric: z.enum(BOUND_METRICS).optional(),
+  /** For formula bounds: the ceiling as a formula over formula_inputs, evaluated by the check when a datum records every input. */
+  formula: z.string().optional(),
+  formula_inputs: z.array(z.string()).default([]),
+  /** For upper bounds: a numeric ceiling that holds whenever the applicability filters do. */
   max_efficiency: z.number().min(0).max(1).optional(),
-  /** For constraints: the numeric ceiling only applies to paths starting at one of these disequilibria. */
+  /** For formula bounds: the ceiling at a stated reference regime, for display only (e.g. Landsberg 0.933 at 6000 K / 300 K). */
+  reference_value: z.number().optional(),
+  reference_regime: z.string().optional(),
+  /** For upper bounds: the measurement basis a datum must state to be compared (e.g. "single-junction, unconcentrated AM1.5G"). */
+  requires_basis: z.string().optional(),
+  /** Applicability filters: an empty list means no further filter, never that every route shares the bound. */
   applies_to_sources: z.array(EntityId).default([]),
+  applies_to_outputs: z.array(EntityId).default([]),
+  applies_to_phenomena: z.array(EntityId).default([]),
   /** Typical condition tags (env:*, state:*, temp:*, field:*), used by the boundary check. */
   condition_tags: z.array(Slug).default([]),
   /** For transducers: readiness of the real device. */
@@ -322,6 +357,13 @@ export const Claim = z.object({
     .optional(),
   relation: Relation.optional(),
   /**
+   * Whether this step is expected to carry a constitutive relation (loop-3 pass 19). Defaults by
+   * predicate: drives / couples_to are conversion steps ("unknown" until a reviewer says required or
+   * not-applicable); produces / converts_into are bookkeeping ("not-applicable"). The dimensional
+   * check passes a route only when every required or unknown conversion step carries a balanced relation.
+   */
+  relation_requirement: z.enum(["required", "not-applicable", "unknown"]).optional(),
+  /**
    * What a producing step hands to the next step and what a consuming step needs from the previous
    * one, as short tokens ("flow:bulk", "surface:charged"). The compiler compares them across each
    * carrier handoff: every requirement provided = compatible; a requirement nothing provides =
@@ -350,6 +392,12 @@ export type Claim = z.infer<typeof Claim>;
 export const Measurement = z.object({
   quantity: z.string(), // e.g. "module efficiency", "power density", "open-circuit voltage"
   value: z.string(), // keep as written in the source, e.g. "12%", "1.2 W/cm²", "≈ 6 µV/K"
+  /** Structured form of the datum (loop-3 pass 19): the number, its unit, which bounded quantity it is, the basis it is defined on, and the parameters a formula bound needs (T_h_K, T_c_K, ZT, T_s_K …). */
+  value_numeric: z.number().optional(),
+  unit: z.string().optional(),
+  metric: z.enum(BOUND_METRICS).optional(),
+  basis: z.string().optional(),
+  parameters: z.record(z.string(), z.number()).optional(),
   scope: z.enum(["material", "device", "module", "system", "plant", "laboratory", "field", "model"]),
   conditions: z.string(), // regime: temperatures, load, irradiance, geometry
   sources: z.array(SourceId).min(1),

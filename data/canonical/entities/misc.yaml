@@ -253,72 +253,126 @@
   type: constraint
   name: Carnot limit
   bound: "η ≤ 1 − T_c/T_h for any heat engine between reservoirs at T_h and T_c"
-  summary: No engine taking heat from a hot reservoir and rejecting it to a cold one can beat the Carnot efficiency. Applies to every thermal-to-work path.
+  constraint_kind: formula-bound
+  metric: conversion-efficiency
+  formula: "1 - T_c_K/T_h_K"
+  formula_inputs: [T_h_K, T_c_K]
+  applies_to_outputs: [output:electricity, output:mechanical-work, output:chemical-fuel]
+  summary: No engine taking heat from a hot reservoir and rejecting it to a cold one can beat the Carnot efficiency. Evaluated only against an efficiency datum that records the absolute hot- and cold-side temperatures it was measured between.
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 19 (the seven checks audited as physics; typed limits)" }
 - id: constraint:curzon-ahlborn-limit
   type: constraint
   name: Curzon–Ahlborn efficiency at maximum power
   bound: "η_CA = 1 − √(T_c/T_h)"
-  summary: The efficiency of an endoreversible engine operated at maximum power rather than maximum efficiency; a better guide to real plant than Carnot.
+  constraint_kind: benchmark
+  metric: conversion-efficiency-at-maximum-power
+  formula: "1 - sqrt(T_c_K/T_h_K)"
+  formula_inputs: [T_h_K, T_c_K]
+  summary: The efficiency of an endoreversible engine operated at maximum power; a benchmark for real plant, not a universal ceiling — a plant run below maximum power may exceed it, so it never fails a route.
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 19 (the seven checks audited as physics; typed limits)" }
 - id: constraint:thermoelectric-zt-bound
   type: constraint
   name: Thermoelectric figure-of-merit bound
   bound: "η = η_Carnot · (√(1+ZT) − 1)/(√(1+ZT) + T_c/T_h)"
-  summary: A thermoelectric generator's efficiency is the Carnot value reduced by a factor set by the material figure of merit ZT = S²σT/κ.
+  constraint_kind: formula-bound
+  metric: conversion-efficiency
+  formula: "(1 - T_c_K/T_h_K) * (sqrt(1 + ZT) - 1) / (sqrt(1 + ZT) + T_c_K/T_h_K)"
+  formula_inputs: [T_h_K, T_c_K, ZT]
+  applies_to_phenomena: [phenomenon:seebeck-effect]
+  summary: A thermoelectric generator's efficiency is the Carnot value reduced by a factor set by the material figure of merit ZT = S²σT/κ; evaluated only against a datum that records T_h, T_c and the module's ZT.
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 19 (the seven checks audited as physics; typed limits)" }
 - id: constraint:shockley-queisser-limit
   type: constraint
   name: Shockley–Queisser limit
   bound: "η ≤ 33.7% for a single p–n junction under unconcentrated AM1.5 sunlight"
+  constraint_kind: upper-bound
+  metric: conversion-efficiency
   max_efficiency: 0.337
+  requires_basis: "single-junction cell, unconcentrated AM1.5G, 298 K"
   applies_to_sources: [disequilibrium:radiation-flux]
-  summary: "Detailed-balance limit for one junction: sub-gap photons are lost and excess photon energy thermalises."
+  applies_to_phenomena: [phenomenon:photovoltaic-effect]
+  summary: "Detailed-balance limit for one junction: sub-gap photons are lost and excess photon energy thermalises. The 33.7 % figure is a defined reference regime (modern tabulations give ≈ 33.2 % at AM1.5G, 298 K), so a datum is compared only when it states that basis."
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 19 (the seven checks audited as physics; typed limits)" }
 - id: constraint:landsberg-limit
   type: constraint
   name: Landsberg limit
-  bound: "η ≤ 93.3% for conversion of blackbody solar radiation"
-  max_efficiency: 0.933
+  bound: "η ≤ 1 − (4/3)(T_c/T_s) + (1/3)(T_c/T_s)⁴ for conversion of blackbody radiation at T_s with a sink at T_c; 93.3 % at 6000 K / 300 K"
+  constraint_kind: formula-bound
+  metric: conversion-efficiency
+  formula: "1 - (4/3)*(T_c_K/T_s_K) + (1/3)*(T_c_K/T_s_K)^4"
+  formula_inputs: [T_s_K, T_c_K]
+  reference_value: 0.933
+  reference_regime: "T_s = 6000 K, T_c = 300 K"
   applies_to_sources: [disequilibrium:radiation-flux]
-  summary: The thermodynamic ceiling for converting 6000 K blackbody radiation to work with a 300 K sink.
+  summary: The thermodynamic ceiling for converting thermal (blackbody) radiation to work; it does not apply to coherent radiation such as a microwave beam, so it is attached to phenomena, never to the radiation source as a whole.
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 19 (the seven checks audited as physics; typed limits)" }
 - id: constraint:betz-limit
   type: constraint
   name: Betz limit
   bound: "C_p ≤ 16/27 ≈ 59.3% of the kinetic power through the rotor disc"
+  constraint_kind: upper-bound
+  metric: power-coefficient
   max_efficiency: 0.593
+  requires_basis: "rotor power coefficient on the free-stream kinetic power through the swept area"
   applies_to_sources: [disequilibrium:fluid-flow]
-  summary: An open rotor cannot capture more than 16/27 of the kinetic energy flux of the stream passing through its swept area.
+  summary: An open rotor cannot capture more than 16/27 of the kinetic energy flux of the stream passing through its swept area; a system efficiency on another basis is not compared with it.
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 19 (the seven checks audited as physics; typed limits)" }
 - id: constraint:second-law
   type: constraint
   name: Second law of thermodynamics
   bound: "ΔS_universe ≥ 0; no cyclic device can extract work from a single reservoir"
+  constraint_kind: resource-bound
+  metric: work
   summary: The reason uniform thermal energy and the quantum vacuum are not resources.
 - id: constraint:nernst-potential-bound
   type: constraint
   name: Nernst / Gibbs free-energy bound
   bound: "W_electrical ≤ −ΔG = nFE_cell"
+  constraint_kind: resource-bound
+  metric: work
+  formula_inputs: [delta_G_J]
   summary: Electrical work from a reaction cannot exceed its Gibbs free energy change.
 - id: constraint:electromechanical-coupling-bound
   type: constraint
   name: Electromechanical coupling factor
   bound: "converted fraction per cycle ≤ k² = d²/(s·ε)"
+  constraint_kind: formula-bound
+  metric: converted-fraction-per-cycle
+  formula: "k_squared"
+  formula_inputs: [k_squared]
   summary: A piezoelectric element converts at most k² of the mechanical energy stored in it per cycle.
 - id: constraint:onsager-reciprocity
   type: constraint
-  name: Onsager reciprocity
-  bound: "L_ij = L_ji for coupled linear transport coefficients"
-  summary: Cross-coefficients of coupled flows are equal; every direct effect has a converse of fixed magnitude.
+  name: Onsager–Casimir reciprocity
+  bound: "L_ij(B) = ε_i ε_j L_ji(−B): the cross-coefficients of coupled linear transport are equal up to the time-reversal parities ε of the variables and reversal of the magnetic field; L_ij = L_ji is the zero-field, even-parity case"
+  constraint_kind: constitutive-relation
+  metric: reciprocity
+  summary: "Every direct effect has a converse of fixed magnitude. A relation between coefficients, not an efficiency ceiling: it is recorded with governed_by and is never an applicable bound."
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 19 (the seven checks audited as physics; typed limits)" }
 - id: constraint:radiative-cooling-power-bound
   type: constraint
   name: Radiative cooling power bound
   bound: "net cooling power ≲ 100–150 W/m² under a clear sky"
+  constraint_kind: resource-bound
+  metric: power-density
   summary: The net radiative flux a surface can send to space through the atmospheric window.
 - id: constraint:space-charge-limit
   type: constraint
   name: Space-charge limit
   bound: "J ≤ (4ε₀/9)√(2e/m) V^{3/2}/d² (Child–Langmuir)"
+  constraint_kind: formula-bound
+  metric: current-density
+  formula: "2.334e-6 * V^1.5 / d^2"
+  formula_inputs: [V, d]
   summary: Electron cloud between thermionic electrodes limits the current unless the gap is microns or caesium is added.
 - id: constraint:mixing-free-energy-bound
   type: constraint
   name: Free energy of mixing
   bound: "W ≤ −ΔG_mix ≈ 0.8 kWh per m³ of fresh water into seawater"
+  constraint_kind: resource-bound
+  metric: work-per-volume
+  reference_value: 0.8
+  reference_regime: "kWh per m³ of river water mixed into seawater at 20 °C"
   summary: The most work any salinity-gradient device can extract per unit of river water.
 
 # --- Interactions ----------------------------------------------------------
@@ -532,6 +586,8 @@
   type: constraint
   name: Radiation momentum flux
   bound: "p = I/c for full absorption, p ≤ 2I/c for perfect reflection at normal incidence; the mechanical power a moving surface can take from the pressure is at most p·v per unit area"
+  constraint_kind: resource-bound
+  metric: mechanical-power-density
   applies_to_sources: [disequilibrium:radiation-flux]
   summary: Radiation pressure is set by the momentum flux of the radiation, I/c to 2I/c. In full sunlight (I ≈ 1 kW m⁻²) that is at most ≈ 6.7 µPa; a surface moving at 0.1 m s⁻¹ against it receives at most ≈ 7 × 10⁻⁷ W m⁻², so mechanical work from radiation pressure is confined to high-irradiance or micro-scale regimes.
   review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics)" }

@@ -33,6 +33,8 @@ conflicts:
   - { a: env-vacuum, b: env-aqueous, reason: a vacuum step and an aqueous step cannot share one working medium }
   - { a: env-vacuum, b: state-liquid, reason: liquid media are incompatible with a vacuum working region }
   - { a: temp-cryogenic, b: temp-high, reason: a single continuous medium cannot be cryogenic and above 700 K }
+  - { a: temp-cryogenic, b: temp-room, reason: a single continuous medium cannot be cryogenic and at room temperature at the same time }
+  - { a: temp-room, b: temp-high, reason: a single continuous medium cannot be at room temperature and above 700 K at the same time }
   - { a: temp-cryogenic, b: env-aqueous, reason: liquid water is not available at cryogenic temperatures }
   - { a: temp-high, b: env-aqueous, reason: liquid water electrolytes do not survive above ~700 K at ordinary pressure }
   - { a: temp-high, b: medium-ferroelectric, reason: common ferroelectrics lose polarisation above their Curie point (typically < 700 K) }

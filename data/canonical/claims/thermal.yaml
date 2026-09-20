@@ -74,7 +74,7 @@
   status: established
 - id: claim:seebeck-conserves-onsager
   subject: phenomenon:seebeck-effect
-  predicate: bounded_by
+  predicate: governed_by
   object: constraint:onsager-reciprocity
   conditions: [Seebeck and Peltier coefficients are linked by Π = S·T]
   evidence: [source:onsager-1931, source:callen-1948]
@@ -463,7 +463,7 @@
   status: established
 - id: claim:soret-onsager
   subject: phenomenon:soret-effect
-  predicate: bounded_by
+  predicate: governed_by
   object: constraint:onsager-reciprocity
   conditions: [the Soret and Dufour coefficients are Onsager-reciprocal]
   evidence: [source:onsager-1931, source:degroot-mazur-1962]
@@ -757,7 +757,7 @@
   status: established
 - id: claim:expansion-bounded-ca
   subject: phenomenon:working-fluid-expansion
-  predicate: bounded_by
+  predicate: governed_by
   object: constraint:curzon-ahlborn-limit
   evidence: [source:curzon-ahlborn-1975, source:bejan-2016]
   status: established
@@ -1029,3 +1029,14 @@
   object: constraint:second-law
   evidence: [source:toyabe-2010, source:parrondo-2015]
   status: established
+
+# Loop-3 pass 19: Carnot bounds every conversion of heat flow between reservoirs into work or non-thermal
+# free energy, so it is recorded once at the source. The constraint scopes itself to work-like outputs.
+- id: claim:temperature-gradient-bounded-carnot
+  subject: disequilibrium:temperature-gradient
+  predicate: bounded_by
+  object: constraint:carnot-limit
+  conditions: [conversion of a heat flow between reservoirs at T_h and T_c into work or a non-thermal free energy; the bound is evaluated against a datum that records both temperatures]
+  evidence: [source:callen-1948, source:bejan-2016]
+  status: established
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 19 (the seven checks audited as physics; typed limits)" }

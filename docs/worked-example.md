@@ -63,15 +63,17 @@ sentence. For this route:
 
 - typed chain — pass ("3 typed steps, disequilibrium → output");
 - energy-form continuity — pass ("thermal → electrical → electrical → electrical");
-- conservation / available free energy — pass ("source exergy positive; every step declares its
-  output and losses");
-- thermodynamic bound — pass ("applicable: Carnot limit, thermoelectric figure-of-merit bound,
-  Onsager reciprocity" — three `bounded_by` claims recorded against the Seebeck effect; the check
-  never assumes Carnot from a thermal source, it reads a claim);
-- dimensional — unresolved ("1/3 steps carry a relation; all consistent: ΔV = S · ΔT");
+- source work availability — pass ("source exergy positive; every step declares its output and
+  losses"; no quantitative balance is recorded, so this is availability, not a verified first law);
+- thermodynamic bound — pass: the Carnot limit is evaluated from the pathway's own measurements —
+  12.0 % at T_h = 850 K, T_c = 300 K against η_C = 64.7 %; 6 % at 500/300 K against 40.0 % — and
+  the figure-of-merit bound stays unresolved because no datum records the module's ZT; Onsager–Casimir
+  reciprocity is listed as a recorded relation and never decides;
+- dimensional — pass ("every conversion step carries a relation and all balance: ΔV = S · ΔT"; the
+  produces and converts_into steps are bookkeeping and are not expected to carry one);
 - boundary compatibility — pass ("3 condition tags across 3 steps, no conflicts");
-- practical magnitude — pass ("typical efficiency 5.0%, record 12.0%", read from the pathway
-  below).
+- measured performance coverage — pass (structured measurements with value, unit, regime and source
+  exist on the pathway below).
 
 "Unresolved" never means wrong. It means the atlas has not recorded what it would need to decide.
 

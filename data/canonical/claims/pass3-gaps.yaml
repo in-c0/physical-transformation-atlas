@@ -79,7 +79,7 @@
   status: established
 - id: claim:dufour-onsager
   subject: phenomenon:dufour-effect
-  predicate: bounded_by
+  predicate: governed_by
   object: constraint:onsager-reciprocity
   conditions: ["near equilibrium the properly defined heat–mass Onsager cross-coefficients are reciprocal when fluxes and conjugate forces use the same convention; this does not imply numerical equality of the convention-dependent Soret and Dufour coefficients"]
   evidence: [source:onsager-1931, source:rowley-horne-1978-dufour, source:degroot-mazur-1962, source:wurger-2014-dufour-onsager]

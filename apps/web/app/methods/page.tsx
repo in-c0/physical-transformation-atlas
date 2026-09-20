@@ -192,7 +192,11 @@ export default function MethodsPage() {
           <p>
             Every route is passed through seven checks. Each returns pass, fail, unresolved (the data needed to decide is partly present) or unknown (none of it is recorded), and a sentence saying
             what was examined; the site shows the sentence, never just the verdict. The definitions below are the registry served as <Link href="/api/checks.json">/api/checks.json</Link>, rendered
-            here so this page cannot drift from the code. The four marked core decide whether a composition is physically coherent.
+            here so this page cannot drift from the code. The four marked core decide whether a composition is physically coherent. Since pass 19 a check passes only when it has actually decided
+            something: the thermodynamic bound passes only when a hard limit (an upper bound with its stated basis, or a formula such as Carnot evaluated from the datum's own recorded temperatures)
+            has been compared with a comparable measurement, the dimensional check only when every conversion step carries a balanced relation, and the coverage check only when a structured datum
+            exists. Benchmarks such as Curzon–Ahlborn and relations such as Onsager–Casimir reciprocity are listed as recorded limits and never decide. Most routes therefore read unresolved or
+            unknown, which is the honest state of an undemonstrated composition.
           </p>
           <dl className={styles.checks}>
             {CHECK_DEFINITIONS.map((d) => (
@@ -223,9 +227,9 @@ export default function MethodsPage() {
             ))}
           </dl>
           <p>
-            Practical magnitude is one of the seven physics checks and asks whether the atlas records measured performance for the whole composition. <code>magnitude_screen</code> is a separate
-            frontier-ordering diagnostic: <em>quantified</em> means whole-composition measurements exist; <em>bounded</em> means every recorded conversion step carries a constitutive relation;{" "}
-            <em>missing</em> means at least one step cannot yet be bounded from the recorded relations. Neither field estimates performance.
+            Measured performance coverage is one of the seven checks and asks whether the recorded pathway carries a structured measurement for the whole composition; it is a coverage statement, not a
+            physics verdict. <code>magnitude_screen</code> is a separate frontier-ordering diagnostic: <em>quantified</em> means whole-composition measurements exist; <em>bounded</em> means every
+            recorded conversion step carries a constitutive relation; <em>missing</em> means at least one step cannot yet be bounded from the recorded relations. Neither field estimates performance.
           </p>
         </div>
       </section>

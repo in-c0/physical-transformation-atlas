@@ -95,29 +95,29 @@ export const OVERLAP_LABEL: Record<"exact" | "prefix" | "suffix" | "subsequence"
 export const CHECK_ABBR: Record<CheckResult["id"], string> = {
   "type-chain": "TYPED",
   "energy-form-continuity": "ENERGY",
-  conservation: "FREE ENERGY",
+  conservation: "AVAILABILITY",
   "thermodynamic-bound": "THERMO BOUND",
   dimensional: "DIMENSIONAL",
   "boundary-compatibility": "BOUNDARY",
-  "practical-magnitude": "MAGNITUDE",
+  "practical-magnitude": "COVERAGE",
 };
 export const CHECK_PHONE: Record<CheckResult["id"], string> = {
   "type-chain": "TYPE",
   "energy-form-continuity": "ENERGY",
-  conservation: "FREE",
+  conservation: "AVAIL",
   "thermodynamic-bound": "BOUND",
   dimensional: "DIM",
   "boundary-compatibility": "BC",
-  "practical-magnitude": "MAG",
+  "practical-magnitude": "COV",
 };
 export const CHECK_NAME: Record<CheckResult["id"], string> = {
   "type-chain": "Typed chain",
   "energy-form-continuity": "Energy-form continuity",
-  conservation: "Conservation / free energy",
+  conservation: "Source work availability",
   "thermodynamic-bound": "Thermodynamic bound",
   dimensional: "Dimensional consistency",
   "boundary-compatibility": "Boundary compatibility",
-  "practical-magnitude": "Practical magnitude",
+  "practical-magnitude": "Measured performance coverage",
 };
 export const CHECK_GLYPH: Record<CheckResult["result"], string> = { pass: "✓", fail: "×", unresolved: "?", unknown: "—" };
 
@@ -214,7 +214,8 @@ export function claimSentence(
 /** The status-transition contract: what record would change a matrix cell. Generated from status, never hand-authored per cell. */
 export const CELL_TRANSITION: Record<MatrixCellStatus, string> = {
   established: "This cell would change if the recorded direct relation no longer met the atlas's established or replicated evidence threshold.",
-  demonstrated: "If a direct claim is recorded: an independent replication or review could raise it to established, contrary evidence could lower it. If the status comes from a reviewed search alone: recording the demonstrated relation as a canonical claim is the pending step.",
+  demonstrated:
+    "If a direct claim is recorded: an independent replication or review could raise it to established, contrary evidence could lower it. If the status comes from a reviewed search alone: recording the demonstrated relation as a canonical claim is the pending step.",
   theoretical: "A credible experimental observation of this direct relation would move the cell from theoretical evidence to demonstrated evidence.",
   candidate: "A qualifying direct relation would replace the candidate status; otherwise this remains a composition of recorded constituent physics, not a recorded direct relation.",
   "searched-none": "A qualifying direct demonstration, or a newly recorded composition through this coupling, would change this cell.",

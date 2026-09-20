@@ -7,7 +7,7 @@ import "server-only";
 import type { Claim, CompiledPath, MatrixCell } from "@pta/schema";
 import { atlas } from "./data";
 
-export const SCHEMA_VERSION = "0.3.0";
+export const SCHEMA_VERSION = "0.4.0";
 export const REPO = "https://github.com/in-c0/physical-transformation-atlas";
 export const SITE = "https://physical-transformation-atlas.wldud5192.workers.dev";
 

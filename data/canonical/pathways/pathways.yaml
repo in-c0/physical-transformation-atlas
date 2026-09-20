@@ -16,6 +16,11 @@
     measurements:
       - quantity: module conversion efficiency
         value: "12.0%"
+        value_numeric: 0.12
+        unit: "1"
+        metric: conversion-efficiency
+        basis: "module: electrical output over heat flow measured at the cold side"
+        parameters: { T_h_K: 850, T_c_K: 300 }
         scope: module
         conditions: "Bi₂Te₃/skutterudite segmented 8-couple module, T_h = 850 K, T_c = 300 K (ΔT = 550 K), matched load; heat flow measured at the cold side"
         sources: [source:zhang-2017-segmented-teg]
@@ -23,6 +28,11 @@
         note: record for a segmented module at the time of publication
       - quantity: module conversion efficiency
         value: "≈ 4–6%"
+        value_numeric: 0.06
+        unit: "1"
+        metric: conversion-efficiency
+        basis: "module: electrical output over heat flow, upper end of the handbook range"
+        parameters: { T_h_K: 500, T_c_K: 300 }
         scope: module
         conditions: "commercial Bi₂Te₃ modules, T_h ≈ 500 K, T_c ≈ 300 K (ΔT ≈ 200 K), matched load"
         sources: [source:rowe-2006, source:goldsmid-2016]
@@ -35,6 +45,11 @@
         year: 2011
       - quantity: system efficiency (radioisotope heat to electric)
         value: "≈ 6–7%"
+        value_numeric: 0.07
+        unit: "1"
+        metric: conversion-efficiency
+        basis: "system: electrical output over radioisotope heat, upper end of the range"
+        parameters: { T_h_K: 800, T_c_K: 470 }
         scope: system
         conditions: "Pu-238 RTGs (MMRTG-class), PbTe/TAGS couples, T_h ≈ 800 K, T_c ≈ 470 K, beginning of life"
         sources: [source:prelas-2014, source:rowe-2006]

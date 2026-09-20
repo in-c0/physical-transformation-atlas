@@ -481,7 +481,7 @@
   status: established
 - id: claim:ishe-onsager
   subject: phenomenon:inverse-spin-hall-effect
-  predicate: bounded_by
+  predicate: governed_by
   object: constraint:onsager-reciprocity
   conditions: [the spin Hall and inverse spin Hall angles are equal]
   evidence: [source:sinova-2015]
