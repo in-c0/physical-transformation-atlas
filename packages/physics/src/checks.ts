@@ -6,13 +6,17 @@
  * is partly present; "unknown" means none of it is recorded yet. The site shows
  * the sentence, never just the verdict.
  */
-import type { CheckResult, Claim, ConditionConflict, Entity, EntityType, EnergyForm, Pathway, Predicate } from "@pta/schema";
+import type { CheckResult, Claim, ConditionConflict, ConditionRequirement, Entity, EntityType, EnergyForm, ExclusiveGroup, Interface, InterfaceKind, InterfaceStatus, Pathway, Predicate } from "@pta/schema";
 import { UnitTable, add, equal, format, dim } from "./dimensions.js";
 
 export interface PhysicsContext {
   entity(id: string): Entity | undefined;
   units: UnitTable;
   conflicts: ConditionConflict[];
+  /** Pass 26: exclusive tag groups, the interface records, and each step's scoped requirements (expanded from its flat tags when none are authored). */
+  exclusiveGroups: ExclusiveGroup[];
+  interfaces: Interface[];
+  requirementsOf(claim: Claim): ConditionRequirement[];
   /** All `bounded_by` claims, so the thermodynamic check can find applicable limits. */
   boundedBy(entityId: string): { constraint: Entity; claim: Claim }[];
 }
@@ -351,40 +355,90 @@ export function checkDimensional(ctx: PhysicsContext, claims: Claim[]): CheckRes
  * a shaft — is implied but not recorded, so the result is unresolved, not fail.
  * Condition conflicts within a step and between adjacent steps, for the boundary check and the compiler.
  */
-export function boundaryReport(ctx: PhysicsContext, claims: Claim[]): { within: string[]; adjacent: string[]; untagged: number; tagCount: number } {
-  const tagsByStep = claims.map((c) => {
-    const own = new Set(c.condition_tags);
-    for (const id of [c.subject, c.object]) for (const t of ctx.entity(id)?.condition_tags ?? []) own.add(t);
-    return own;
-  });
+export interface BoundaryReport {
+  /** Hard conflicts: two requirements of one step in the same scope on the same region, or environment requirements anywhere on the route on the same region. */
+  within: string[];
+  /** Medium-region transitions between adjacent steps: the same continuing region changes state; resolved only by a demonstrated interface record between the two claims. */
+  adjacent: { from: string; to: string; pair: string; region: string; interface: { id: string; kind: InterfaceKind; status: InterfaceStatus } | null }[];
+  /** Every interface record on the route: between two adjacent steps, or within one step. */
+  recorded: { interface: string; kind: InterfaceKind; status: InterfaceStatus; location: string; relation: boolean }[];
+  untagged: number;
+  tagCount: number;
+}
+
+export function boundaryReport(ctx: PhysicsContext, claims: Claim[]): BoundaryReport {
+  // Pass 26: only the claim's own scoped requirements count; entity-level tags are descriptive.
+  const reqs = claims.map((c) => ctx.requirementsOf(c));
   const all = new Set<string>();
-  for (const s of tagsByStep) for (const t of s) all.add(t);
+  for (const r of reqs) for (const q of r) all.add(q.tag);
+  /** Two requirements conflict only in the same scope on the same region: a listed pair, or two members of one exclusive group. */
+  const conflict = (a: ConditionRequirement, b: ConditionRequirement): string | null => {
+    if (a.scope !== b.scope || a.region !== b.region || a.tag === b.tag) return null;
+    for (const k of ctx.conflicts) if ((k.a === a.tag && k.b === b.tag) || (k.a === b.tag && k.b === a.tag)) return `${a.tag} vs ${b.tag}`;
+    for (const g of ctx.exclusiveGroups) if (g.scope === a.scope && g.members.includes(a.tag) && g.members.includes(b.tag)) return `${a.tag} vs ${b.tag}`;
+    return null;
+  };
   const within: string[] = [];
-  const adjacent = new Set<string>();
-  for (const k of ctx.conflicts) {
-    for (let i = 0; i < tagsByStep.length; i++) {
-      const s = tagsByStep[i];
-      if (s.has(k.a) && s.has(k.b)) within.push(`${claims[i].id}: ${k.a} vs ${k.b} (${k.reason})`);
-      if (i > 0) {
-        const p = tagsByStep[i - 1];
-        if ((p.has(k.a) && s.has(k.b)) || (p.has(k.b) && s.has(k.a))) adjacent.add(`${claims[i - 1].id} → ${claims[i].id}: ${k.a} vs ${k.b}`);
+  for (let i = 0; i < reqs.length; i++)
+    for (let x = 0; x < reqs[i].length; x++)
+      for (let y = x + 1; y < reqs[i].length; y++) {
+        const m = conflict(reqs[i][x], reqs[i][y]);
+        if (m) within.push(`${claims[i].id}: ${m} on region ${reqs[i][x].region}`);
       }
+  // Environment requirements on the same region are compared route-wide, not only between neighbours.
+  for (let i = 0; i < reqs.length; i++)
+    for (let j = i + 1; j < reqs.length; j++)
+      for (const a of reqs[i])
+        for (const b of reqs[j]) {
+          if (a.scope !== "environment" || b.scope !== "environment") continue;
+          const m = conflict(a, b);
+          if (m) within.push(`${claims[i].id} … ${claims[j].id}: ${m} (environment, region ${a.region})`);
+        }
+  // Medium transitions between adjacent steps: the same continuing region changes state; an interface record between the two claims names it.
+  const adjacent: BoundaryReport["adjacent"] = [];
+  const seen = new Set<string>();
+  for (let i = 1; i < reqs.length; i++)
+    for (const a of reqs[i - 1])
+      for (const b of reqs[i]) {
+        if (a.scope !== "medium" || b.scope !== "medium") continue;
+        const m = conflict(a, b);
+        if (!m) continue;
+        const key = `${claims[i - 1].id}>${claims[i].id}:${m}`;
+        if (seen.has(key)) continue;
+        seen.add(key);
+        const rec = ctx.interfaces.find((f) => "between_claims" in f.location && f.location.between_claims.from_claim === claims[i - 1].id && f.location.between_claims.to_claim === claims[i].id);
+        adjacent.push({ from: claims[i - 1].id, to: claims[i].id, pair: m, region: a.region, interface: rec ? { id: rec.id, kind: rec.kind, status: rec.status } : null });
+      }
+  const recorded: BoundaryReport["recorded"] = [];
+  for (const f of ctx.interfaces) {
+    if ("within_claim" in f.location) {
+      if (claims.some((c) => c.id === f.location.within_claim)) recorded.push({ interface: f.id, kind: f.kind, status: f.status, location: `within ${f.location.within_claim}`, relation: !!f.relation });
+    } else {
+      const { from_claim, to_claim } = f.location.between_claims;
+      for (let i = 1; i < claims.length; i++)
+        if (claims[i - 1].id === from_claim && claims[i].id === to_claim) recorded.push({ interface: f.id, kind: f.kind, status: f.status, location: `${from_claim} → ${to_claim}`, relation: !!f.relation });
     }
   }
-  return { within, adjacent: [...adjacent], untagged: tagsByStep.filter((s) => s.size === 0).length, tagCount: all.size };
+  return { within, adjacent, recorded, untagged: reqs.filter((r) => r.length === 0).length, tagCount: all.size };
 }
 
 export function checkBoundaryCompatibility(ctx: PhysicsContext, claims: Claim[]): CheckResult {
   const label = "boundary compatibility";
-  const { within, adjacent, untagged, tagCount } = boundaryReport(ctx, claims);
-  if (tagCount === 0) return { id: "boundary-compatibility", label, result: "unknown", detail: "no condition tags recorded on any step" };
+  const { within, adjacent, recorded, tagCount } = boundaryReport(ctx, claims);
   if (within.length) return { id: "boundary-compatibility", label, result: "fail", detail: within.join("; ") };
-  if (adjacent.length) {
-    return { id: "boundary-compatibility", label, result: "unresolved", detail: `interface implied but not recorded: ${adjacent.join("; ")}` };
+  if (tagCount === 0) return { id: "boundary-compatibility", label, result: "unknown", detail: "no scoped condition requirements recorded on any step" };
+  const open = adjacent.filter((a) => !a.interface || a.interface.status !== "demonstrated");
+  if (open.length) {
+    const items = open.map((a) => (a.interface ? `${a.interface.status} interface recorded: ${a.interface.id} (${a.interface.kind}) for ${a.from} → ${a.to}, ${a.pair}` : `interface unrecorded: ${a.from} → ${a.to}: ${a.pair} on region ${a.region}`));
+    return { id: "boundary-compatibility", label, result: "unresolved", detail: items.join("; ") };
   }
-  if (untagged > 0)
-    return { id: "boundary-compatibility", label, result: "unresolved", detail: `${untagged}/${claims.length} steps have no condition tags; no conflicts among the ${tagCount} recorded` };
-  return { id: "boundary-compatibility", label, result: "pass", detail: `${tagCount} condition tags across ${claims.length} steps, no conflicts within or between adjacent steps` };
+  const demonstrated = recorded.filter((r) => r.status === "demonstrated").length;
+  return {
+    id: "boundary-compatibility",
+    label,
+    result: "pass",
+    detail: `${tagCount} scoped condition tags across ${claims.length} steps, no conflicts within a step or on a continuing region between neighbours; ${demonstrated} recorded interface${demonstrated === 1 ? "" : "s"}${adjacent.length ? ` (every region transition has a demonstrated record)` : ""}`,
+  };
 }
 
 export function checkPracticalMagnitude(pathway?: Pathway): CheckResult {

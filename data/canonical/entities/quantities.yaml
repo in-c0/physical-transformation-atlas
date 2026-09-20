@@ -282,3 +282,12 @@
   dimension: { M: 1, T: -3 }
   summary: Time-averaged acoustic power flux through unit area, positive along the wavevector.
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 25 (the Weinreich relation's input quantity)" }
+# Loop-3 pass 26: the inputs of the plane-boundary acoustic transmission relation.
+- id: quantity:acoustic-impedance
+  type: quantity
+  name: Characteristic acoustic impedance
+  symbol: Z
+  unit: Pa·s/m
+  dimension: { M: 1, L: -2, T: -1 }
+  summary: Density times sound speed of a medium; the mismatch between two media sets how much acoustic intensity crosses their boundary.
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 26 (the interface relation's named inputs)" }

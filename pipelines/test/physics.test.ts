@@ -33,15 +33,20 @@ const entities: Entity[] = [
   { id: "phenomenon:thermogalvanic-effect", type: "phenomenon", name: "Thermogalvanic", aliases: [], summary: "", condition_tags: [], tags: [] },
   { id: "output:electricity", type: "output", name: "Electricity", aliases: [], summary: "", condition_tags: [], tags: [] },
 ];
+// Pass 26: the synthetic context treats every tag as a medium requirement on region "active" unless a claim scopes it itself.
 const ctx: PhysicsContext = {
   entity: (id) => entities.find((e) => e.id === id),
   units: table,
   conflicts: [{ a: "env-vacuum", b: "env-aqueous", reason: "vacuum vs water" }],
+  exclusiveGroups: [{ id: "material-state", members: ["state-solid", "state-liquid", "state-gas", "state-plasma"], scope: "medium", rule: "one state per region" }],
+  interfaces: [],
+  requirementsOf: (c) => (c.condition_requirements.length ? c.condition_requirements : c.condition_tags.map((tag) => ({ tag, scope: "medium" as const, region: "active" }))),
   boundedBy: () => [],
 };
 const base: Omit<Claim, "id" | "subject" | "predicate" | "object"> = {
   conditions: [],
   condition_tags: [],
+  condition_requirements: [],
   evidence: ["source:x"],
   status: "established",
   review: { canonical: true, last_reviewed: "2026-09-19" },
@@ -69,6 +74,23 @@ test("boundary check: conflict inside a step fails, conflict across adjacent ste
   assert.equal(checkBoundaryCompatibility(ctx, [a, b]).result, "unresolved");
   const within: Claim = { ...a, id: "claim:within", condition_tags: ["env-vacuum", "env-aqueous"] };
   assert.equal(checkBoundaryCompatibility(ctx, [within]).result, "fail");
+  // pass 26: scope and region decide — the same two tags on different regions of one step do not conflict,
+  // an exclusive group conflicts like a listed pair, a demonstrated interface record resolves a transition and a theoretical one does not
+  const twoRegions: Claim = { ...within, id: "claim:two-regions", condition_tags: [], condition_requirements: [{ tag: "env-vacuum", scope: "medium", region: "gap" }, { tag: "env-aqueous", scope: "medium", region: "active" }] };
+  assert.equal(checkBoundaryCompatibility(ctx, [twoRegions]).result, "pass");
+  const gas: Claim = { ...a, id: "claim:gas", condition_tags: ["state-gas"] };
+  const solid: Claim = { ...b, id: "claim:solid", condition_tags: ["state-solid"] };
+  const r = checkBoundaryCompatibility(ctx, [gas, solid]);
+  assert.equal(r.result, "unresolved");
+  assert.match(r.detail, /^interface unrecorded/);
+  const record = (status: "demonstrated" | "theoretical") => ({
+    ...ctx,
+    interfaces: [{ id: "interface:x", location: { between_claims: { from_claim: "claim:gas", to_claim: "claim:solid" } }, kind: "gas-solid-acoustic-boundary" as const, from_region: "gas", to_region: "solid", carrier: null, handoff_token: null, relation: null, conditions: [], condition_requirements: [], evidence: ["source:x"], status, notes: null, review: { canonical: true, last_reviewed: null } }],
+  });
+  assert.equal(checkBoundaryCompatibility(record("demonstrated"), [gas, solid]).result, "pass");
+  const t = checkBoundaryCompatibility(record("theoretical"), [gas, solid]);
+  assert.equal(t.result, "unresolved");
+  assert.match(t.detail, /^theoretical interface recorded/);
 });
 
 test("conservation check: a source with no exergy fails (second law)", () => {

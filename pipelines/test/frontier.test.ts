@@ -197,7 +197,7 @@ test("a consuming step's carrier requirement is met only by the regime that prov
   assert.ok(travelling && generic);
   assert.equal(travelling!.frontier_class, "candidate");
   assert.equal(travelling!.handoff_unresolved_count, 0);
-  assert.equal(travelling!.magnitude_screen.status, "bounded", "both drives steps carry a constitutive relation");
+  assert.equal(travelling!.magnitude_screen.status, "relation-complete", "both drives steps carry a constitutive relation");
   assert.equal(travelling!.checks.find((c) => c.id === "dimensional")?.result, "pass");
   assert.equal(generic!.frontier_class, "incomplete-handoff");
   assert.ok(generic!.handoff_issues.some((h) => h.missing.includes("acoustic:travelling-wave")));
@@ -206,11 +206,45 @@ test("a consuming step's carrier requirement is met only by the regime that prov
   assert.ok(piezo && piezo.search_status === "demonstrated" && piezo.frontier_class === "demonstrated");
 });
 
-test("magnitude screen: bounded means every relation-capable step (drives / couples_to / required) carries a relation; produces steps are never asked for one", () => {
-  const bounded = paths.filter((p) => p.magnitude_screen.status === "bounded");
-  assert.ok(bounded.length > 0, "the screen can say bounded");
+test("magnitude screen: relation-complete means every relation-capable step (drives / couples_to / required) carries a relation; produces steps are never asked for one; no magnitude is asserted", () => {
+  const complete = paths.filter((p) => p.magnitude_screen.status === "relation-complete");
+  assert.ok(complete.length > 0, "the screen can say relation-complete");
   for (const p of paths) {
     if (p.magnitude_screen.status === "missing") assert.ok(p.magnitude_screen.bottleneck_claim, `${p.id} missing without a bottleneck`);
-    if (p.magnitude_screen.status === "bounded") assert.equal(p.magnitude_data_coverage.quantified, p.magnitude_data_coverage.of, `${p.id} bounded but coverage incomplete`);
+    if (p.magnitude_screen.status === "relation-complete") assert.equal(p.magnitude_data_coverage.quantified, p.magnitude_data_coverage.of, `${p.id} relation-complete but coverage incomplete`);
+    assert.notEqual((p.magnitude_screen.status as string), "bounded", `${p.id} still says bounded`);
+  }
+});
+
+test("scoped conditions and interface records (loop-3 pass 26): a demonstrated interface resolves the gas→solid transition, a theoretical one is recorded but unresolved, an unrecorded one stays implied, and no false conflict comes from an entity tag", () => {
+  const boundary = (p: CompiledPath) => p.checks.find((c) => c.id === "boundary-compatibility")!;
+  // (a) thermoacoustic → PAN membrane: demonstrated interface → PASS, nothing implied, one recorded
+  const pan = paths.find((p) => p.pathway === "pathway:thermoacoustic-piezoelectric-harvester")!;
+  assert.equal(boundary(pan).result, "pass");
+  assert.equal(pan.implied_interface_count, 0);
+  assert.deepEqual(pan.interfaces_recorded.map((r) => [r.interface, r.status]), [["interface:thermoacoustic-pan-membrane", "demonstrated"]]);
+  // (b) combustion MHD: the phase-neutral charge carrier manufactures no gas→solid conflict; the electrode boundary is recorded within the step
+  const mhd = paths.find((p) => p.pathway === "pathway:mhd-generator")!;
+  assert.equal(boundary(mhd).result, "pass");
+  assert.equal(mhd.implied_interface_count, 0);
+  assert.ok(mhd.interfaces_recorded.some((r) => r.interface === "interface:mhd-plasma-electrodes" && r.location === "within claim:mhd-produces"));
+  // (c) the acoustoelectric candidate: a theoretical record → UNRESOLVED, not implied, one recorded with a relation
+  const cand = paths.find((p) => p.claims.includes("claim:thermoacoustic-produces-travelling-sound") && p.claims.includes("claim:acoustic-wave-drives-acoustoelectric") && p.nodes[0] === "disequilibrium:temperature-gradient")!;
+  assert.equal(boundary(cand).result, "unresolved");
+  assert.match(boundary(cand).detail, /^theoretical interface recorded/);
+  assert.equal(cand.implied_interface_count, 0);
+  assert.deepEqual(cand.interfaces_recorded.map((r) => r.status), ["theoretical"]);
+  assert.deepEqual(cand.interface_model_coverage, { with_relation: 1, of: 1 });
+  assert.equal(cand.magnitude_screen.status, "relation-complete", "the interface relation stays outside the magnitude screen");
+  // (27) a genuinely absent interface: the generic-sound spelling changes the active medium from gas to solid with no record
+  const generic = paths.find((p) => p.claims.includes("claim:thermoacoustic-produces-sound") && p.claims.includes("claim:acoustic-wave-drives-acoustoelectric") && p.nodes[0] === "disequilibrium:temperature-gradient")!;
+  assert.equal(boundary(generic).result, "unresolved");
+  assert.match(boundary(generic).detail, /^interface unrecorded/);
+  assert.equal(generic.implied_interface_count, 1);
+  assert.equal(generic.interfaces_recorded.length, 0);
+  // every demonstrated pathway is either boundary-pass or honestly unknown (no scoped requirements); never an anonymous implied interface
+  for (const p of paths.filter((q) => q.search_status === "demonstrated")) {
+    assert.ok(["pass", "unknown"].includes(boundary(p).result), `${p.pathway}: ${boundary(p).detail}`);
+    assert.equal(p.implied_interface_count, 0, `${p.pathway} shows an unrecorded interface`);
   }
 });

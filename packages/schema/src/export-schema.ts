@@ -7,6 +7,9 @@ import { z } from "zod";
 import {
   Claim,
   CompiledPath,
+  CONDITION_SCOPES,
+  ExclusiveGroup,
+  Interface,
   CoverageEntry,
   Entity,
   MatrixCell,
@@ -133,7 +136,11 @@ export const GraphCoreExport = z.object({
     matrix: z.object({ rows: z.array(MatrixAxis), cols: z.array(MatrixAxis), cells: z.array(MatrixCellRecord) }),
     coverage: z.array(CoverageEntry),
     source_verification: Verification,
-    ontology: z.object({ condition_tags: z.array(z.object({ id: z.string(), label: z.string(), description: z.string() })) }),
+    interfaces: z.array(Interface),
+    ontology: z.object({
+      condition_tags: z.array(z.object({ id: z.string(), label: z.string(), description: z.string(), default_scope: z.enum(CONDITION_SCOPES) })),
+      exclusive_groups: z.array(ExclusiveGroup),
+    }),
   }),
   links: z.object({ paths: z.string() }),
 });

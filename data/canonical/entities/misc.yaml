@@ -664,6 +664,6 @@
   type: transducer
   name: Thermoacoustic piezoelectric harvester
   aliases: [thermoacoustic nanofibre generator, PAN thermoacoustic harvester]
-  knowledge_level: K5
+  knowledge_level: K6
   summary: "A thermally stabilised piezoelectric nanofibre membrane placed in a thermoacoustic engine's sound field converts the wave into electricity at up to 450 °C (Zheng et al. 2022: 102 V and 10 μA peak from a 3 × 3 cm² device on the engine, 30 LEDs lit, a battery charged)."
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 25 (abstract read; a known device of the piezoelectric family, not the acoustoelectric route)" }

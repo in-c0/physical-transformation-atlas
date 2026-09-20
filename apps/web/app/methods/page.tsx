@@ -160,6 +160,16 @@ export default function MethodsPage() {
             machine-checkable condition tags.
           </p>
           <p>
+            A condition tag on a claim applies in a <em>scope</em> — medium (the matter the phenomenon acts in), boundary (a surface, contact or gap the step uses) or environment (a surrounding
+            field, atmosphere, vacuum or source) — and on a named <em>region</em> of the device (<code>active</code> unless the claim says otherwise): <code>condition_requirements</code>, expanded
+            from the flat tags with each tag&apos;s default scope when a claim has not been curated. Entity-level tags describe the entity and are never inherited into a route step. Two
+            requirements can conflict only in the same scope on the same region — as members of one exclusive group (material state; coarse temperature regime) or as one of the few universal
+            same-region incompatibilities — and an adjacent-step change of medium on the same continuing region is a region transition that an <em>interface record</em> must name: a gas–solid
+            acoustic boundary, an electrode contact, a heat-exchanger wall, a window, a membrane, a coupling, a free surface. A demonstrated record resolves the transition; a theoretical or
+            proposed one is shown on the route and leaves the boundary check unresolved; none leaves it unresolved and the interface unrecorded. Interface records live in{" "}
+            <code>data/canonical/interfaces</code> and are served in <Link href="/api/graph.json">/api/graph.json</Link>.
+          </p>
+          <p>
             Definitions of every enumerated value — entity types, predicates, statuses, energy forms, domains — are generated from one source file and served as{" "}
             <Link href="/api/vocabulary.json">/api/vocabulary.json</Link> (<a href={`${DOCS}/docs/vocabulary.md`}>docs/vocabulary.md</a>). This page renders those definitions where it needs them
             rather than restating them. The ontology itself is described in <a href={`${DOCS}/docs/ontology.md`}>docs/ontology.md</a>.
@@ -228,10 +238,11 @@ export default function MethodsPage() {
           </dl>
           <p>
             Measured performance coverage is one of the seven checks and asks whether the recorded pathway carries a structured measurement for the whole composition; it is a coverage statement, not a
-            physics verdict. <code>magnitude_screen</code> is a separate frontier-ordering diagnostic: <em>quantified</em> means whole-composition measurements exist; <em>bounded</em> means every
-            recorded conversion step carries a constitutive relation — a conversion step here is a <em>drives</em> or <em>couples_to</em> step, or one whose <code>relation_requirement</code> is
-            required; a <em>produces</em> step projects the carrier its phenomenon emits and is bounded by the step before it (the same notion the dimensional check uses); <em>missing</em> means at
-            least one such step cannot yet be bounded from the recorded relations. Neither field estimates performance.
+            physics verdict. <code>magnitude_screen</code> is a separate frontier-ordering diagnostic: <em>quantified</em> means whole-composition measurements exist; <em>relation-complete</em> means every
+            relation-required conversion step — a <em>drives</em> or <em>couples_to</em> step, or one whose <code>relation_requirement</code> is required; a <em>produces</em> step projects the
+            carrier its phenomenon emits and is not asked for one, the same notion the dimensional check uses — carries a dimensionally valid constitutive relation, and no route magnitude is
+            thereby asserted (a formula with no coefficient value bounds nothing numerically, which is why the value is not called <em>bounded</em>); <em>missing</em> means at least one such step
+            has no relation. Interface transmission relations stay outside the screen (<code>interface_model_coverage</code> counts them separately). Neither field estimates performance.
           </p>
         </div>
       </section>

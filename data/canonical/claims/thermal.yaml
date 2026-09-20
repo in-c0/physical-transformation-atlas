@@ -256,9 +256,11 @@
   subject: phenomenon:thermoacoustic-effect
   predicate: produces
   object: carrier:acoustic-wave
+  condition_tags: [state-gas]
   energy: { input: acoustic, output: acoustic }
   evidence: [source:swift-1988]
   status: established
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 26 (own medium tag: the wave lives in the resonator gas, so a solid consumer is a recorded interface)" }
 - id: claim:thermoacoustic-produces-travelling-sound
   subject: phenomenon:thermoacoustic-effect
   predicate: produces

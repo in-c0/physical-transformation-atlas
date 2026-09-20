@@ -229,6 +229,22 @@ export const ConditionConflict = z.object({
 });
 export type ConditionConflict = z.infer<typeof ConditionConflict>;
 
+/**
+ * Scoped conditions (loop-3 pass 26). A condition tag on a claim applies in a scope — medium (the matter
+ * the phenomenon acts in), boundary (a surface, contact or gap the step crosses or uses) or environment
+ * (a surrounding field, atmosphere, vacuum or source) — and on a named region of the device (active by
+ * default; hot-side, cold-side, upstream, downstream, gap, electrode, membrane, ambient are the usual
+ * others). Two requirements can only conflict in the same scope on the same region; an adjacent-step
+ * conflict on the same continuing region is an interface the route must record.
+ */
+export const CONDITION_SCOPES = ["medium", "boundary", "environment"] as const;
+export type ConditionScope = (typeof CONDITION_SCOPES)[number];
+export const ConditionRequirement = z.object({ tag: Slug, scope: z.enum(CONDITION_SCOPES), region: Slug.default("active") });
+export type ConditionRequirement = z.infer<typeof ConditionRequirement>;
+/** Tags of which at most one may describe the same region in the same scope (material state; coarse temperature regime). */
+export const ExclusiveGroup = z.object({ id: Slug, members: z.array(Slug).min(2), scope: z.enum(CONDITION_SCOPES), rule: z.string() });
+export type ExclusiveGroup = z.infer<typeof ExclusiveGroup>;
+
 // ---------------------------------------------------------------------------
 // Entities
 // ---------------------------------------------------------------------------
@@ -344,8 +360,14 @@ export const Claim = z.object({
   object: EntityId,
   /** Plain-language conditions under which the relation holds. */
   conditions: z.array(z.string()).default([]),
-  /** Machine-checkable condition tags (see ontology/condition-tags.yaml). */
+  /** Machine-checkable condition tags (see ontology/condition-tags.yaml); the flat form, scope and region defaulted. */
   condition_tags: z.array(Slug).default([]),
+  /**
+   * The scoped form (pass 26): authoritative for the boundary check when present; when empty the
+   * compiler expands condition_tags with each tag's default scope on region "active". Entity-level
+   * tags describe the entity and are never inherited into a route step.
+   */
+  condition_requirements: z.array(ConditionRequirement).default([]),
   /** Energy bookkeeping for process claims. */
   energy: z
     .object({
@@ -449,6 +471,57 @@ const PathwayBase = z.object({
   summary: z.string(),
   review: ReviewMeta.default({ canonical: true, last_reviewed: null }),
 });
+/**
+ * An interface record (loop-3 pass 26): a physical surface, contact, wall, window, membrane, coupling or
+ * free surface between two regions of a device, recorded either between two adjacent claims (the handoff
+ * it carries) or within one claim (a boundary internal to a conversion step, such as an MHD channel's
+ * electrodes). A demonstrated record resolves the adjacent-step region transition it names; a
+ * theoretical or proposed one is shown but leaves the boundary check unresolved.
+ */
+export const INTERFACE_KINDS = [
+  "gas-solid-acoustic-boundary",
+  "fluid-solid-mechanical-boundary",
+  "electrode-contact",
+  "heat-exchanger-wall",
+  "radiative-window",
+  "membrane",
+  "shaft-coupling",
+  "free-surface",
+  "material-contact",
+] as const;
+export type InterfaceKind = (typeof INTERFACE_KINDS)[number];
+export const INTERFACE_STATUSES = ["demonstrated", "theoretical", "proposed"] as const;
+export type InterfaceStatus = (typeof INTERFACE_STATUSES)[number];
+export const InterfaceId = z.string().regex(/^interface:[a-z0-9]+(?:-[a-z0-9]+)*$/);
+export const InterfaceLocation = z.union([
+  z.object({ between_claims: z.object({ from_claim: ClaimId, to_claim: ClaimId }) }).strict(),
+  z.object({ within_claim: ClaimId }).strict(),
+]);
+export type InterfaceLocation = z.infer<typeof InterfaceLocation>;
+export const Interface = z.object({
+  id: InterfaceId,
+  location: InterfaceLocation,
+  kind: z.enum(INTERFACE_KINDS),
+  from_region: Slug,
+  to_region: Slug,
+  /** The carrier that crosses, if one does. */
+  carrier: EntityId.nullable().default(null),
+  /** The handoff token the crossing preserves, if the consuming step requires one. */
+  handoff_token: z.string().nullable().default(null),
+  /** An optional transmission relation in the atlas's relation form (input and output the same quantity, a dimensionless coefficient). */
+  relation: Relation.nullable().default(null),
+  conditions: z.array(z.string()).default([]),
+  condition_requirements: z.array(ConditionRequirement).default([]),
+  evidence: z.array(SourceId).default([]),
+  status: z.enum(INTERFACE_STATUSES),
+  notes: z.string().nullable().default(null),
+  review: ReviewMeta.default({ canonical: true, last_reviewed: null }),
+});
+export type Interface = z.infer<typeof Interface>;
+/** A route's view of one interface record. */
+export const InterfaceRef = z.object({ interface: InterfaceId, kind: z.enum(INTERFACE_KINDS), status: z.enum(INTERFACE_STATUSES), location: z.string() });
+export type InterfaceRef = z.infer<typeof InterfaceRef>;
+
 export const Pathway = PathwayBase.superRefine((p, ctx) => {
   if (p.status === "observed") {
     if (!p.observed_through) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["observed_through"], message: "an observed pathway must name observed_through, the last step its evidence physically established" });
@@ -690,8 +763,12 @@ export const CompiledPath = z.object({
   core_unresolved_count: z.number().int(),
   /** Adjacent-step condition conflicts: an exchanger, window, membrane or shaft is implied but not recorded. */
   implied_interface_count: z.number().int(),
-  /** The conflicts themselves, "claim → claim: tag vs tag", so the row can say which interface is implied. */
+  /** The unrecorded ones, "claim → claim: tag vs tag", so the row can say which interface is implied; a recorded interface (of any status) is listed under interfaces_recorded instead. */
   implied_interfaces: z.array(z.string()),
+  /** Interface records on the route (pass 26): between two of its adjacent steps, or within one of its steps. */
+  interfaces_recorded: z.array(InterfaceRef),
+  /** Recorded interfaces that carry a transmission relation, over all recorded; outside the magnitude screen by design. */
+  interface_model_coverage: z.object({ with_relation: z.number().int(), of: z.number().int() }),
   /** The step whose evidence status is the route's weakest; ties resolve to the earliest step. */
   weakest_claim: ClaimId,
   /** The recorded device (transducer) that shares the most steps with this route, if any step is implemented by one. */
@@ -717,13 +794,16 @@ export const CompiledPath = z.object({
   handoff_unresolved_count: z.number().int(),
   handoff_issues: z.array(z.object({ from_claim: ClaimId, to_claim: ClaimId, missing: z.array(z.string()) })),
   /**
-   * Whether the atlas holds numbers that bound what the route transmits: quantified (a reviewed
-   * measurement of the whole composition), bounded (every conversion step carries a constitutive
-   * relation), missing (a conversion step has no relation; bottleneck_claim names the first).
-   * "incompatible" is reserved for a recorded contradiction and is never inferred from absence.
+   * Whether the atlas holds the numbers or relations that could bound what the route transmits:
+   * quantified (a reviewed measurement of the whole composition), relation-complete (every
+   * relation-required conversion step — drives, couples_to, or relation_requirement required — carries a
+   * dimensionally valid constitutive relation; no route magnitude is thereby asserted), missing (such a
+   * step has no relation; bottleneck_claim names the first). "incompatible" is reserved for a recorded
+   * contradiction and is never inferred from absence. Pass 26 renamed the second value from "bounded",
+   * which had overclaimed: a formula with no coefficient value bounds nothing numerically.
    */
   magnitude_screen: z.object({
-    status: z.enum(["quantified", "bounded", "missing", "incompatible"]),
+    status: z.enum(["quantified", "relation-complete", "missing", "incompatible"]),
     bottleneck_claim: ClaimId.nullable(),
     detail: z.string(),
   }),
@@ -869,12 +949,14 @@ export type Graph = {
   searches: SearchRecord[];
   /** Automated index runs (frozen result lists a person can promote). */
   search_runs: AutomatedSearchRun[];
+  /** Interface records (pass 26). */
+  interfaces: Interface[];
   paths: CompiledPath[];
   matrix: { rows: MatrixAxis[]; cols: MatrixAxis[]; cells: MatrixCell[] };
   coverage: CoverageEntry[];
   source_verification: Record<string, { verified: boolean; checked_at: string; crossref_title?: string; note?: string }>;
-  /** The condition-tag vocabulary, so pages and exports can show a label instead of a tag id. */
-  ontology: { condition_tags: { id: string; label: string; description: string }[] };
+  /** The condition-tag vocabulary (with each tag's default scope) and the exclusive groups, so pages and exports can show a label instead of a tag id. */
+  ontology: { condition_tags: { id: string; label: string; description: string; default_scope: ConditionScope }[]; exclusive_groups: ExclusiveGroup[] };
 };
 
 export type EntityId = z.infer<typeof EntityId>;

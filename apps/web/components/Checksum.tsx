@@ -13,7 +13,12 @@ function fact(k: CheckResult): string {
   if (k.id === "conservation" && k.result === "pass") return "ΔG < 0";
   if (k.id === "dimensional" && k.result === "pass") return "valid";
   if (k.id === "boundary-compatibility" && k.result === "pass") return "compatible";
-  if (k.id === "boundary-compatibility" && k.result === "unresolved" && k.detail.startsWith("interface")) return "interface";
+  if (k.id === "boundary-compatibility" && k.result === "unresolved") {
+    if (k.detail.startsWith("interface unrecorded")) return "interface unrecorded";
+    const m = k.detail.match(/^(theoretical|proposed) interface recorded/);
+    if (m) return `${m[1]} interface`;
+    return "interface";
+  }
   if (k.id === "thermodynamic-bound") {
     const m = k.detail.match(/≤ ([\d.]+%)/);
     if (m) return `η ≤ ${m[1]}`;

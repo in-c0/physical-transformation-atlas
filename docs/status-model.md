@@ -51,7 +51,13 @@ current compiler never assigns them; there is no review queue in this release.
    - `incomplete-handoff` when a consuming step declares a carrier requirement
      (`handoff.requires_all` / `requires_any`) that no earlier step provides
      (`handoff_unresolved_count > 0`): the composition is not research-ready until the interface
-     is recorded;
+     is recorded. (Boundary compatibility — the scoped condition tags and interface records of
+     loop-3 pass 26 — is a core check, not a class: a route whose active medium changes state
+     between two steps stays whatever class the rest of the rules give it, with the check
+     `unresolved` until a demonstrated interface record names the boundary, `pass` once one does,
+     and `fail` only when two requirements of one step conflict in the same scope on the same
+     region; `implied_interface_count` counts the unrecorded transitions, `interfaces_recorded`
+     lists the recorded ones of any status);
    - otherwise `derived` when the route overlaps a **demonstrated** pathway (status `demonstrated`,
      `prototype` or `commercial`) in one of two ways: by claims — at least two ordered claims shared
      (`known_pathway_overlap`) such that (a) the route contains the pathway's complete ordered

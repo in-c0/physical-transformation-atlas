@@ -1,0 +1,53 @@
+# Interface records (loop-3 pass 26): a physical boundary between two regions of a device — recorded between two
+# adjacent claims (the handoff it carries) or within one claim (a boundary internal to a conversion step). A
+# demonstrated record resolves the region transition it names; a theoretical or proposed one is shown on the
+# route and leaves the boundary check unresolved. Kinds and statuses are enumerated in the schema.
+- id: interface:thermoacoustic-pan-membrane
+  location: { between_claims: { from_claim: claim:thermoacoustic-produces-sound, to_claim: claim:acoustic-wave-drives-piezoelectric } }
+  kind: gas-solid-acoustic-boundary
+  from_region: resonator-gas
+  to_region: piezoelectric-membrane
+  carrier: carrier:acoustic-wave
+  handoff_token: null
+  relation: null
+  conditions:
+    - the PAN membrane is directly exposed to the thermoacoustic pressure field; no active acoustic-to-acoustic transducer lies between the resonator gas and the membrane
+  evidence: [source:zheng-2022-thermoacoustic-pan]
+  status: demonstrated
+  notes: "Zheng et al. directly drove the thermally stabilised PAN membrane with a mini thermoacoustic engine and obtained 102 V / 10 μA peak output; the paper does not report an incident-to-transmitted acoustic intensity coefficient for this boundary."
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 26 (the second reader's first interface record; abstract read)" }
+- id: interface:mhd-plasma-electrodes
+  location: { within_claim: claim:mhd-produces }
+  kind: electrode-contact
+  from_region: plasma-channel
+  to_region: electrode
+  carrier: carrier:charge-carriers
+  handoff_token: null
+  relation: null
+  conditions:
+    - the conducting plasma crosses the magnetic field in the generator channel; the induced current is collected at solid electrodes into the external circuit
+    - the solid electrode is a boundary of the plasma channel, not the active medium of the MHD effect
+  evidence: [source:rosa-1961-mhd]
+  status: demonstrated
+  notes: "Rosa's experimental MHD work (Physics of Fluids 4, 182–194, 1961: an experimental 10 kW generator) used a conducting high-temperature gas and electrodes; the electrode boundary must not make the plasma conversion step inherit state-solid."
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 26 (the second reader's second interface record; the false gas–solid conflict was removed by the carrier fix, this record names the real boundary)" }
+- id: interface:thermoacoustic-acoustoelectric-gas-solid
+  location: { between_claims: { from_claim: claim:thermoacoustic-produces-travelling-sound, to_claim: claim:acoustic-wave-drives-acoustoelectric } }
+  kind: gas-solid-acoustic-boundary
+  from_region: resonator-gas
+  to_region: acoustoelectric-solid
+  carrier: carrier:acoustic-wave
+  handoff_token: acoustic:travelling-wave
+  relation:
+    formula: "I₂ = T_I I₁; T_I = 4 Z₁ Z₂ / (Z₁ + Z₂)^2"
+    input: quantity:acoustic-intensity
+    output: quantity:acoustic-intensity
+    coefficient_unit: "1"
+    coefficient_name: normal-incidence acoustic intensity transmission coefficient T_I
+    conventions: "ideal plane boundary at normal incidence; Z₁ and Z₂ are the characteristic acoustic impedances of the gas and the solid; matching layers, finite geometry and dissipative losses neglected"
+  conditions:
+    - the travelling gas-borne acoustic wave mechanically loads the acoustoelectric solid directly; an electrically driven piezoelectric or IDT launcher would instead create a longer-chain implementation
+  evidence: [source:zheng-2022-thermoacoustic-pan]
+  status: theoretical
+  notes: "Zheng 2022 physically demonstrates direct thermoacoustic gas-wave coupling into a solid piezoelectric membrane, establishing that an active intermediate launcher is not required. No experiment is recorded in which this boundary directly drives a Weinreich-type semiconductor; the ideal transmission relation is a model for the candidate interface, not a measured datum — for 30-bar helium (Z ≈ 4.9 × 10³ Pa·s/m) on germanium (≈ 2.9 × 10⁷ Pa·s/m) it gives T_I ≈ 7 × 10⁻⁴, an illustration only."
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 26 (the second reader's third interface record; the candidate's gas–solid transition named and modelled, not measured)" }

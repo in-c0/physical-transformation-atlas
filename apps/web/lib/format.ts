@@ -1,4 +1,4 @@
-import type { CheckResult, EvidenceStatus, FrontierClass, KnowledgeLevel, MatrixCellStatus, PathwayStatus, SearchStatus, StructuralKind } from "@pta/schema";
+import type { CheckResult, EvidenceStatus, FrontierClass, InterfaceKind, KnowledgeLevel, MatrixCellStatus, PathwayStatus, SearchStatus, StructuralKind } from "@pta/schema";
 import { KNOWLEDGE_LEVEL_LABEL } from "@pta/schema";
 
 export const CELL_STATUS_LABEL: Record<MatrixCellStatus, string> = {
@@ -49,6 +49,36 @@ export const SEARCH_LABEL: Record<SearchStatus, string> = {
   "experiment-tested": "experiment tested",
   demonstrated: "demonstrated",
 };
+
+/** Interface kinds (pass 26) as shown on routes. */
+export const INTERFACE_KIND_LABEL: Record<InterfaceKind, string> = {
+  "gas-solid-acoustic-boundary": "gas–solid acoustic boundary",
+  "fluid-solid-mechanical-boundary": "fluid–solid mechanical boundary",
+  "electrode-contact": "electrode contact",
+  "heat-exchanger-wall": "heat-exchanger wall",
+  "radiative-window": "radiative window",
+  membrane: "membrane",
+  "shaft-coupling": "shaft coupling",
+  "free-surface": "free surface",
+  "material-contact": "material contact",
+};
+
+/** The frontier's boundary line (pass 26): the check's verdict, then what is recorded, never a bare "interface implied". */
+export function boundaryLine(p: { checks: CheckResult[]; implied_interface_count: number; interfaces_recorded: { status: string }[] }): string {
+  const k = p.checks.find((c) => c.id === "boundary-compatibility");
+  const rec = p.interfaces_recorded;
+  const n = (s: string) => rec.filter((r) => r.status === s).length;
+  const parts: string[] = [];
+  if (n("demonstrated")) parts.push(`${n("demonstrated")} recorded interface${n("demonstrated") === 1 ? "" : "s"}`);
+  if (n("theoretical")) parts.push(`${n("theoretical")} theoretical interface${n("theoretical") === 1 ? "" : "s"}`);
+  if (n("proposed")) parts.push(`${n("proposed")} proposed interface${n("proposed") === 1 ? "" : "s"}`);
+  if (p.implied_interface_count) parts.push(`${p.implied_interface_count} interface${p.implied_interface_count === 1 ? "" : "s"} unrecorded`);
+  if (!k) return "BOUNDARY not checked";
+  if (k.result === "fail") return `BOUNDARY conflict within a step · ${k.detail}`;
+  if (k.result === "unknown") return "BOUNDARY unknown · no scoped condition requirements recorded";
+  if (k.result === "pass") return `BOUNDARY compatible${parts.length ? ` · ${parts.join(" · ")}` : " · no region transition"}`;
+  return `BOUNDARY unresolved · ${parts.join(" · ") || k.detail}`;
+}
 
 /** Pathway statuses as shown on routes, claims and the frontier; observed never reads as a demonstration. */
 export const PATHWAY_STATUS_LABEL: Record<PathwayStatus, string> = {

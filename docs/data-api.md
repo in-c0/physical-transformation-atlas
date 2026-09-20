@@ -84,7 +84,11 @@ benchmark), `metric`, `max_efficiency` or `formula` + `formula_inputs`, `require
 can pass or fail a route's thermodynamic-bound check); `knowledge_level` on transducers.
 `condition_tags` are machine-checkable regime tags (`data/canonical/ontology/conditions.yaml`).
 
-**Claim** — `subject —predicate→ object`, with `conditions` (prose), `condition_tags`,
+**Claim** — `subject —predicate→ object`, with `conditions` (prose), `condition_tags` (the flat form),
+`condition_requirements[]` (`{ tag, scope, region }`, the scoped form since pass 26 — vocabulary
+`condition.scope`; region is a slug, `active` by default; the export always carries the effective
+requirements, expanded from the flat tags with each tag's default scope when a claim has not been
+curated; entity-level tags are never inherited into a step),
 `energy` (`input`, `output`, optional `dissipation`; declared on process claims), an optional
 constitutive `relation` (`formula`, `input` and `output` quantities, `coefficient_unit`,
 `conventions`), an optional `handoff` (`provides[]` on a producing step, `requires_all[]` /
@@ -100,6 +104,16 @@ from; the rest are descriptive (vocabulary `claim.predicate`).
 
 **Source** — bibliographic record; `doi` when one exists. Crossref verification lives beside the
 export in `verification`, not on the record.
+
+**Interface** (pass 26) — a physical boundary between two regions of a device: `id` (`interface:` + slug),
+`location` (`{ between_claims: { from_claim, to_claim } }` for the handoff between two adjacent
+steps, or `{ within_claim }` for a boundary internal to one step, such as an MHD channel's
+electrodes), `kind` (vocabulary `interface.kind`), `from_region`, `to_region`, `carrier` (entity id
+or null), `handoff_token` (or null), `relation` (the atlas's relation form, input and output the same
+quantity and a dimensionless coefficient, or null), `conditions`, `condition_requirements`, `evidence`,
+`status` (vocabulary `interface.status`: a demonstrated record resolves the region transition it
+names; theoretical and proposed records are shown and leave the boundary check unresolved), `notes`,
+`review`. Served in `graph.json` as `interfaces`; a route lists its own under `interfaces_recorded`.
 
 **Pathway** — a named, reviewed composition: ordered `steps` (claim ids), `demonstrated_with`
 (transducer ids), `evidence`, `status` (`demonstrated`, `prototype`, `commercial`, `proposed`,
@@ -122,8 +136,11 @@ constituent), `established_steps`, `search_status`, `frontier_class`, `knowledge
 `constituent_source_ids` versus `composition_source_ids` (evidence for the steps is never evidence
 for the composition), `constituent_floor`, `phenomena`, `effective_length`,
 `energy_form_sequence`, `energy_transition_count`, `family_seam_count`, `core_unresolved_count`,
-`implied_interface_count`, `implied_interfaces` (the adjacent-step tag conflicts, "claim → claim: tag vs
-tag"), `weakest_claim` (the step with the route's weakest status; ties go to the earliest step),
+`implied_interface_count`, `implied_interfaces` (the adjacent-step medium transitions on a continuing
+region that no interface record names, "claim → claim: tag vs tag"), `interfaces_recorded[]`
+(`{ interface, kind, status, location }`: the interface records between the route's adjacent steps or
+within its steps, of any status), `interface_model_coverage` (`{ with_relation, of }`: recorded
+interfaces that carry a transmission relation — outside the magnitude screen by design), `weakest_claim` (the step with the route's weakest status; ties go to the earliest step),
 `closest_known_device` (`{ transducer, shared_steps, of }`: the recorded device implementing the most
 effects on the route, or null), `device_coverage` (`{ implemented, of }`: how many of the route's effects
 some recorded device implements), `closest_known_pathway` (`{ pathway, relation, shared_claims,
@@ -133,14 +150,16 @@ mechanism from a different driver), `sink-variant` (shared head) or `mechanism-s
 `handoff_unresolved_count` and `handoff_issues[]` (`{ from_claim, to_claim, missing[] }`: declared
 carrier-handoff requirements nothing earlier on the route provides — unresolved, never "impossible"),
 `magnitude_screen` (`{ status, bottleneck_claim, detail }`: `quantified` when a reviewed measurement
-covers the whole composition, `bounded` when every conversion step carries a constitutive relation — a
-conversion step being a `drives` or `couples_to` step, or one whose `relation_requirement` is `required`,
-as in the dimensional check; a `produces` step projects a carrier and is bounded by the step before it —
+covers the whole composition, `relation-complete` when every relation-required conversion step carries a
+dimensionally valid constitutive relation — a `drives` or `couples_to` step, or one whose
+`relation_requirement` is `required`, as in the dimensional check; a `produces` step projects a carrier
+and is not asked for one; no route magnitude is asserted, which is why the value is not called bounded —
 `missing` otherwise; `incompatible` is reserved for a recorded contradiction), `magnitude_data_coverage`, `representation_signature`,
 `semantic_overlap`, `structural_kind`, `dominated_by`, `source_availability`,
 `known_pathway_overlap`, `composition_observation` (`observed-not-converted` when the exact route
 carries an `observed` pathway, else null). Enumerations: vocabulary `path.search_status`,
-`path.frontier_class`, `path.structural_kind`, `path.composition_observation`, `check.result`.
+`path.frontier_class`, `path.structural_kind`, `path.composition_observation`,
+`path.magnitude_screen.status`, `check.result`.
 
 **MatrixCell** (generated) — `row` and `col` entity ids, `address` (`D.nn:C.nn`), `status`
 (vocabulary `matrix.cell.status`), `direct_claims`, `direct_phenomena`, `bridge_paths` (route ids),
@@ -216,4 +235,4 @@ per-source cap); nothing renamed or removed, so a v0.2.0 reader can ignore the n
 `applies_to_outputs` and `applies_to_phenomena`; measurements gain `value_numeric`, `unit`, `metric`,
 `basis` and `parameters`; claims gain `relation_requirement`; the check labels for `conservation`
 (now "Source work availability") and `practical-magnitude` (now "Measured performance coverage")
-change while their ids stay. Nothing renamed or removed. Within v0.4.0, additive changes dated 21/09/2026 (loop-3 passes 22–24): search runs gain the optional fields `query_compacted`, `expanded_query` (route-search-v1's Google Scholar compaction exception), `segment`, `positions_screened` and `interruption` (the continuation rule); `Source.type` gains `preprint`; `Pathway.status` gains `observed` with the companion field `observed_through`, and CompiledPath gains `composition_observation` (pass 24). Nothing renamed or removed; a v0.4.0 reader that ignores unknown fields and unknown enum values is unaffected, one that validates `type` or `status` strictly must accept the new values.
+change while their ids stay. Nothing renamed or removed. Within v0.4.0, additive changes dated 21/09/2026 (loop-3 passes 22–24): search runs gain the optional fields `query_compacted`, `expanded_query` (route-search-v1's Google Scholar compaction exception), `segment`, `positions_screened` and `interruption` (the continuation rule); `Source.type` gains `preprint`; `Pathway.status` gains `observed` with the companion field `observed_through`, and CompiledPath gains `composition_observation` (pass 24). Pass 26: `Claim` gains `condition_requirements[]`, the graph gains `interfaces[]` (the Interface record) and `ontology.exclusive_groups[]`, `ontology.condition_tags[]` gain `default_scope`, CompiledPath gains `interfaces_recorded[]` and `interface_model_coverage`; the conditions ontology's pairwise `conflicts` shrink to two universal same-region rows with two exclusive groups (material state; temperature regime) replacing the rest; and one enum value is renamed — `magnitude_screen.status` `bounded` → `relation-complete` — which no published revision before rc3c317847bc7 (live for about an hour on 21/09/2026) had ever emitted, because the screen could not reach it until pass 25. Otherwise nothing renamed or removed; a v0.4.0 reader that ignores unknown fields and unknown enum values is unaffected, one that validates `type`, `status` or `magnitude_screen.status` strictly must accept the new values.

@@ -89,10 +89,18 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
     list.push({ constraint, claim: c });
     boundedByIndex.set(c.subject, list);
   }
+  // Pass 26: a step's scoped requirements are its own condition_requirements, or its flat tags expanded
+  // with each tag's default scope on region "active". Entity tags are descriptive and never inherited.
+  const scopeOf = new Map(canon.conditionTags.map((t) => [t.id, t.default_scope]));
+  const requirementsOf = (c: Claim) =>
+    c.condition_requirements.length ? c.condition_requirements : c.condition_tags.map((tag) => ({ tag, scope: scopeOf.get(tag) ?? "medium", region: "active" }));
   const ctx: PhysicsContext = {
     entity: (id) => entity.get(id),
     units,
     conflicts: canon.conflicts,
+    exclusiveGroups: canon.exclusiveGroups,
+    interfaces: canon.interfaces,
+    requirementsOf,
     boundedBy: (id) => boundedByIndex.get(id) ?? [],
   };
 
@@ -336,8 +344,11 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
       energy_transition_count: Math.max(0, forms.length - 1),
       family_seam_count: familySeams(famSets),
       core_unresolved_count: coreUnresolved,
-      implied_interface_count: boundary.adjacent.length,
-      implied_interfaces: boundary.adjacent,
+      // Unrecorded region transitions only; a recorded interface of any status is listed, not implied.
+      implied_interface_count: boundary.adjacent.filter((a) => !a.interface).length,
+      implied_interfaces: boundary.adjacent.filter((a) => !a.interface).map((a) => `${a.from} → ${a.to}: ${a.pair}`),
+      interfaces_recorded: boundary.recorded.map((r) => ({ interface: r.interface, kind: r.kind, status: r.status, location: r.location })),
+      interface_model_coverage: { with_relation: boundary.recorded.filter((r) => r.relation).length, of: boundary.recorded.length },
       weakest_claim: claims.find((c) => c.status === weakest)!.id,
       closest_known_device: closestDevice(claims),
       device_coverage: deviceCoverage(claims),
@@ -460,7 +471,7 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
     const conversion = claims.filter((c) => (PROCESS_PREDICATES as readonly string[]).includes(c.predicate) && entity.get(c.object)?.type !== "output" && relationRequirement(c) !== "not-applicable");
     const without = conversion.find((c) => !c.relation);
     if (!without && conversion.length)
-      return { status: "bounded", bottleneck_claim: null, detail: `every conversion step (${conversion.length}) carries a constitutive relation; the transmitted quantity is bounded step by step` };
+      return { status: "relation-complete", bottleneck_claim: null, detail: `${conversion.length}/${conversion.length} relation-required conversion steps carry constitutive relations; no numerical route magnitude has been evaluated` };
     return {
       status: "missing",
       bottleneck_claim: without?.id ?? null,
@@ -696,15 +707,20 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
       },
     },
     entities: canon.entities,
-    claims: canon.claims,
+    // Claims carry their effective scoped requirements in the export, so a reader never has to expand the defaults.
+    claims: canon.claims.map((c) => ({ ...c, condition_requirements: requirementsOf(c) })),
     sources: canon.sources,
     pathways: canon.pathways,
     searches: canon.searches.map((x) => ({ ...x, reviewed: true })),
+    interfaces: canon.interfaces,
     search_runs: canon.searchRuns,
     paths,
     matrix: { rows, cols, cells },
     coverage,
     source_verification: canon.sourceVerification,
-    ontology: { condition_tags: canon.conditionTags.map((t) => ({ id: t.id, label: t.label ?? t.id.replace(/-/g, " "), description: t.description })) },
+    ontology: {
+      condition_tags: canon.conditionTags.map((t) => ({ id: t.id, label: t.label ?? t.id.replace(/-/g, " "), description: t.description, default_scope: t.default_scope })),
+      exclusive_groups: canon.exclusiveGroups,
+    },
   };
 }

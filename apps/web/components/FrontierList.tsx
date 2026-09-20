@@ -6,7 +6,7 @@ import { FRONTIER_CLASSES, STRUCTURAL_KINDS } from "@pta/schema";
 import { researchOrder } from "@pta/graph/order";
 import { useAtlas } from "@/lib/client-data";
 import { useWide } from "@/lib/useWide";
-import { EVIDENCE_LABEL, FRONTIER_LABEL, OVERLAP_LABEL, PATHWAY_STATUS_LABEL, STRUCTURE_LABEL, compositionState, hrefFor } from "@/lib/format";
+import { EVIDENCE_LABEL, FRONTIER_LABEL, INTERFACE_KIND_LABEL, OVERLAP_LABEL, PATHWAY_STATUS_LABEL, STRUCTURE_LABEL, boundaryLine, compositionState, hrefFor } from "@/lib/format";
 import { CheckGlyph } from "./StatusMark";
 import styles from "./FrontierList.module.css";
 
@@ -277,13 +277,12 @@ export function FrontierList() {
                     {p.effective_length} effect
                     {p.effective_length === 1 ? "" : "s"} · {p.family_seam_count} cross-family seam{p.family_seam_count === 1 ? "" : "s"} · {p.energy_form_sequence.join(" → ") || "no energy ledger"}
                   </dd>
-                  <dt>boundary tags</dt>
+                  <dt>boundary</dt>
                   <dd>
-                    {p.checks.find((k) => k.id === "boundary-compatibility")?.result === "fail" ? "a recorded conflict within a step" : "0 recorded conflicts"} ·{" "}
-                    {p.implied_interface_count === 0
-                      ? "0 tag-conflict interfaces"
-                      : `${p.implied_interface_count} tag-conflict interface${p.implied_interface_count === 1 ? "" : "s"}: ${p.implied_interfaces.map((x) => x.replace(/^claim:[^ ]+ → claim:[^:]+: /, "").replace(/ vs /, " | ")).join("; ")}`}
-                    {" · tags only say what conflicts; a rotor, bluff body, charged channel or membrane the prose requires shows under handoff"}
+                    {boundaryLine(p)}
+                    {p.implied_interface_count > 0 ? `: ${p.implied_interfaces.map((x) => x.replace(/^claim:[^ ]+ → claim:[^:]+: /, "").replace(/ vs /, " | ")).join("; ")}` : ""}
+                    {p.interfaces_recorded.length > 0 ? ` — ${p.interfaces_recorded.map((r) => `${r.interface.split(":")[1]} (${INTERFACE_KIND_LABEL[r.kind]}, ${r.status})`).join("; ")}` : ""}
+                    {" · scoped condition tags only say where the medium changes; a rotor, bluff body or charged channel the prose requires shows under handoff"}
                   </dd>
                   <dt>magnitude screen</dt>
                   <dd>

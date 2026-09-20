@@ -1,43 +1,46 @@
-# Condition tags are short machine-checkable labels a claim or entity can carry.
-# The boundary-compatibility check unions the tags along a path and refuses any
-# pair listed under `conflicts`. Tags are namespaced: env, state, temp, field, medium.
+# Condition tags are short machine-checkable labels a claim or entity can carry. Since loop-3 pass 26 a tag on
+# a claim applies in a scope — medium (the matter the phenomenon acts in), boundary (a surface, contact or gap the
+# step uses) or environment (a surrounding field, atmosphere, vacuum or source) — and on a named region of the
+# device (`active` unless the claim says otherwise). Each tag carries its default scope here; a claim's
+# `condition_requirements` may override it. Entity-level tags describe the entity and are never inherited into a
+# route step. Two requirements can conflict only in the same scope on the same region: a pair listed under
+# `conflicts`, or two members of one `exclusive_groups` entry. Between adjacent steps such a conflict on the
+# same continuing region is a region transition that an interface record (data/canonical/interfaces) must name.
+# Tags are namespaced: env, state, temp, field, medium.
 tags:
-  - { id: env-vacuum, description: requires vacuum or near-vacuum, label: vacuum required }
-  - { id: env-aqueous, description: requires an aqueous electrolyte or liquid water, label: aqueous medium required }
-  - { id: env-ambient, description: works at ordinary ambient conditions, label: ambient conditions }
-  - { id: env-high-vacuum-gap, description: requires a vacuum gap between electrodes, label: vacuum gap between electrodes }
-  - { id: temp-cryogenic, description: requires cryogenic temperatures (< 120 K), label: cryogenic }
-  - { id: temp-high, description: requires temperatures above ~700 K, label: above ~700 K }
-  - { id: temp-room, description: operates around room temperature, label: room temperature }
-  - { id: temp-gradient-required, description: requires a sustained temperature difference, label: temperature gradient required }
-  - { id: state-solid, description: the active medium is a solid, label: solid }
-  - { id: state-liquid, description: the active medium is a liquid, label: liquid }
-  - { id: state-gas, description: the active medium is a gas, label: gas }
-  - { id: state-plasma, description: the active medium is an ionised gas, label: plasma }
-  - { id: field-magnetic-required, description: requires an applied or intrinsic magnetic field, label: magnetic field required }
-  - { id: field-electric-required, description: requires an applied electric field or bias, label: electric field or bias required }
-  - { id: medium-semiconductor, description: requires a semiconductor, label: semiconductor required }
-  - { id: medium-conductor, description: requires an electrical conductor, label: conductor required }
-  - { id: medium-dielectric, description: requires a dielectric / insulator, label: dielectric required }
-  - { id: medium-ferromagnet, description: requires a ferromagnetic material, label: ferromagnet required }
-  - { id: medium-ferroelectric, description: requires a ferroelectric / polar material, label: ferroelectric required }
-  - { id: medium-membrane, description: requires a selective membrane, label: selective membrane required }
-  - { id: medium-non-centrosymmetric, description: requires a non-centrosymmetric crystal, label: non-centrosymmetric crystal required }
-  - { id: illumination-required, description: requires incident radiation, label: illumination required }
-  - { id: radioisotope-required, description: requires a radioactive source, label: radioisotope required }
-  - { id: flow-required, description: requires bulk fluid flow, label: bulk flow required }
-  - { id: humidity-required, description: requires a humidity or moisture difference, label: humidity difference required }
-  - { id: transient-only, description: produces output only while the driving quantity changes, label: transient only }
-  - { id: charged-surface-required, description: requires a charged solid boundary (an electric double layer at a wall or channel surface) in contact with the moving liquid, label: charged surface required }
+  - { id: env-vacuum, description: requires vacuum or near-vacuum, label: vacuum required, default_scope: environment }
+  - { id: env-aqueous, description: requires an aqueous electrolyte or liquid water, label: aqueous medium required, default_scope: medium }
+  - { id: env-ambient, description: works at ordinary ambient conditions, label: ambient conditions, default_scope: environment }
+  - { id: env-high-vacuum-gap, description: requires a vacuum gap between electrodes, label: vacuum gap between electrodes, default_scope: boundary }
+  - { id: temp-cryogenic, description: requires cryogenic temperatures (< 120 K), label: cryogenic, default_scope: medium }
+  - { id: temp-high, description: requires temperatures above ~700 K, label: above ~700 K, default_scope: medium }
+  - { id: temp-room, description: operates around room temperature, label: room temperature, default_scope: medium }
+  - { id: temp-gradient-required, description: requires a sustained temperature difference, label: temperature gradient required, default_scope: medium }
+  - { id: state-solid, description: the active medium is a solid, label: solid, default_scope: medium }
+  - { id: state-liquid, description: the active medium is a liquid, label: liquid, default_scope: medium }
+  - { id: state-gas, description: the active medium is a gas, label: gas, default_scope: medium }
+  - { id: state-plasma, description: the active medium is an ionised gas, label: plasma, default_scope: medium }
+  - { id: field-magnetic-required, description: requires an applied or intrinsic magnetic field, label: magnetic field required, default_scope: environment }
+  - { id: field-electric-required, description: requires an applied electric field or bias, label: electric field or bias required, default_scope: environment }
+  - { id: medium-semiconductor, description: requires a semiconductor, label: semiconductor required, default_scope: medium }
+  - { id: medium-conductor, description: requires an electrical conductor, label: conductor required, default_scope: medium }
+  - { id: medium-dielectric, description: requires a dielectric / insulator, label: dielectric required, default_scope: medium }
+  - { id: medium-ferromagnet, description: requires a ferromagnetic material, label: ferromagnet required, default_scope: medium }
+  - { id: medium-ferroelectric, description: requires a ferroelectric / polar material, label: ferroelectric required, default_scope: medium }
+  - { id: medium-membrane, description: requires a selective membrane, label: selective membrane required, default_scope: boundary }
+  - { id: medium-non-centrosymmetric, description: requires a non-centrosymmetric crystal, label: non-centrosymmetric crystal required, default_scope: medium }
+  - { id: illumination-required, description: requires incident radiation, label: illumination required, default_scope: environment }
+  - { id: radioisotope-required, description: requires a radioactive source, label: radioisotope required, default_scope: environment }
+  - { id: flow-required, description: requires bulk fluid flow, label: bulk flow required, default_scope: medium }
+  - { id: humidity-required, description: requires a humidity or moisture difference, label: humidity difference required, default_scope: environment }
+  - { id: transient-only, description: produces output only while the driving quantity changes, label: transient only, default_scope: medium }
+  - { id: charged-surface-required, description: requires a charged solid boundary (an electric double layer at a wall or channel surface) in contact with the moving liquid, label: charged surface required, default_scope: boundary }
+exclusive_groups:
+  - { id: material-state, members: [state-solid, state-liquid, state-gas, state-plasma], scope: medium, rule: "at most one state tag may describe the same active-medium region; multiphase devices represent phases as different regions joined by an interface" }
+  - { id: temperature-regime, members: [temp-cryogenic, temp-room, temp-high], scope: medium, rule: "at most one may apply to the same medium region at the same time" }
+# Specific same-region incompatibilities that are genuinely universal. Material-specific limits (Curie points,
+# ferroelectric transitions) and cross-region facts (a liquid beside a vacuum, a plasma beside water) are not
+# conflicts: the first belong to material properties, the second are interfaces.
 conflicts:
-  - { a: env-vacuum, b: env-aqueous, reason: a vacuum step and an aqueous step cannot share one working medium }
-  - { a: env-vacuum, b: state-liquid, reason: liquid media are incompatible with a vacuum working region }
-  - { a: temp-cryogenic, b: temp-high, reason: a single continuous medium cannot be cryogenic and above 700 K }
-  - { a: temp-cryogenic, b: temp-room, reason: a single continuous medium cannot be cryogenic and at room temperature at the same time }
-  - { a: temp-room, b: temp-high, reason: a single continuous medium cannot be at room temperature and above 700 K at the same time }
-  - { a: temp-cryogenic, b: env-aqueous, reason: liquid water is not available at cryogenic temperatures }
-  - { a: temp-high, b: env-aqueous, reason: liquid water electrolytes do not survive above ~700 K at ordinary pressure }
-  - { a: temp-high, b: medium-ferroelectric, reason: common ferroelectrics lose polarisation above their Curie point (typically < 700 K) }
-  - { a: temp-high, b: medium-ferromagnet, reason: common ferromagnets lose ordering near their Curie temperature }
-  - { a: state-gas, b: state-solid, reason: one active medium cannot be both a gas and a solid; needs an explicit interface step }
-  - { a: state-plasma, b: env-aqueous, reason: a plasma working region and an aqueous region need an explicit interface step }
+  - { a: temp-cryogenic, b: env-aqueous, reason: liquid water is not available at cryogenic temperatures in the same medium region }
+  - { a: temp-high, b: env-aqueous, reason: a liquid-water electrolyte does not survive above ~700 K at ordinary pressure in the same medium region }

@@ -480,7 +480,7 @@
   demonstrated_with: [transducer:thermoacoustic-piezoelectric-harvester]
   evidence: [source:zheng-2022-thermoacoustic-pan]
   status: demonstrated
-  knowledge_level: K5
+  knowledge_level: K6
   performance:
     measurements:
       - quantity: open-circuit voltage (peak)

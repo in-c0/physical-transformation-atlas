@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { CompiledPath, Source } from "@pta/schema";
 import type { AtlasIndex } from "@pta/graph/query";
-import { EVIDENCE_LABEL, FRONTIER_LABEL, OVERLAP_LABEL, PATHWAY_STATUS_LABEL, claimHref, compositionState, hrefFor, kLabel, predicateLabel } from "@/lib/format";
+import { EVIDENCE_LABEL, FRONTIER_LABEL, INTERFACE_KIND_LABEL, OVERLAP_LABEL, PATHWAY_STATUS_LABEL, boundaryLine, claimHref, compositionState, hrefFor, kLabel, predicateLabel } from "@/lib/format";
 import { Checksum } from "./Checksum";
 import { EvidenceList } from "./EvidenceList";
 import { CiteBlock } from "./CiteBlock";
@@ -27,6 +27,7 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
   const families = path.coupling_families.map((f) => index.colAxis(f)).filter(Boolean);
   const comp = compositionState(path.search_status, path.last_searched);
   const routeSearch = index.graph.searches.find((x) => x.target.kind === "path" && x.target.path === path.id);
+  const interfaces = path.interfaces_recorded.map((r) => index.graph.interfaces.find((f) => f.id === r.interface)).filter((f): f is NonNullable<typeof f> => !!f);
   const routeRuns = (index.graph.search_runs ?? []).filter((x) => x.target.kind === "path" && x.target.path === path.id);
   const overlap = path.known_pathway_overlap;
   const overlapPathway = overlap ? index.pathway.get(overlap.pathway) : undefined;
@@ -113,6 +114,45 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
           <dd>
             {compositionSources.length} source{compositionSources.length === 1 ? "" : "s"} for the complete composition · {constituentSources.length} cited by the constituent steps
             {path.literature.contradictory ? ` · ${path.literature.contradictory} contradictory constituent claim${path.literature.contradictory === 1 ? "" : "s"}` : ""}
+          </dd>
+          <dt>boundaries and interfaces</dt>
+          <dd>
+            {boundaryLine(path)}
+            {interfaces.length > 0 && (
+              <ul className={styles.conditions}>
+                {interfaces.map((f) => (
+                  <li key={f.id}>
+                    <b>{f.id.split(":")[1]}</b> · {INTERFACE_KIND_LABEL[f.kind]} · {f.status} · {f.from_region} → {f.to_region}
+                    {f.carrier ? ` · carries ${index.entity.get(f.carrier)?.name ?? f.carrier}` : ""}
+                    {f.handoff_token ? ` · preserves ${f.handoff_token}` : ""}
+                    {"between_claims" in f.location
+                      ? ` · between ${f.location.between_claims.from_claim.split(":")[1]} and ${f.location.between_claims.to_claim.split(":")[1]}`
+                      : ` · within ${f.location.within_claim.split(":")[1]}`}
+                    {f.relation ? <div className="t-data">{f.relation.formula}{f.relation.conventions ? <span className="secondary"> — {f.relation.conventions}</span> : null}</div> : null}
+                    {f.conditions.map((x) => (
+                      <div key={x} className="secondary">
+                        {x}
+                      </div>
+                    ))}
+                    {f.notes ? <div className="secondary">{f.notes}</div> : null}
+                    {f.evidence.length > 0 && (
+                      <div className="t-micro secondary">
+                        evidence:{" "}
+                        {f.evidence.map((s, i) => (
+                          <span key={s}>
+                            {i > 0 ? ", " : ""}
+                            <Link href={hrefFor(s)}>{index.source.get(s)?.title ?? s}</Link>
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            )}
+            {path.implied_interfaces.length > 0 && (
+              <div className="secondary">unrecorded: {path.implied_interfaces.map((x) => x.replace(/^claim:([^ ]+) → claim:([^:]+): /, "$1 → $2: ")).join("; ")}</div>
+            )}
           </dd>
         </dl>
         <Explore

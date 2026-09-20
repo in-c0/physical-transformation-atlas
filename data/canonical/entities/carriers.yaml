@@ -10,10 +10,10 @@
 - id: carrier:charge-carriers
   type: carrier
   name: Charge carriers
-  aliases: [electrons, holes, electric current in a solid]
+  aliases: [electrons, holes, mobile electronic charge carriers]
   energy_form: electrical
-  condition_tags: [state-solid]
-  summary: Electrons or holes redistributed or driven through a solid; their potential difference is the electrical output of most solid-state converters.
+  summary: "Mobile electronic charge carrying electrical energy. Their physical medium is specified by the producing/consuming claim; they may occur in a solid conductor or semiconductor, or in an ionised gas. Phase is not a property of this bookkeeping carrier."
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 26 (phase-neutral: the state-solid tag had manufactured a gas–solid interface on every MHD route)" }
 - id: carrier:ionic-current
   type: carrier
   name: Ionic current

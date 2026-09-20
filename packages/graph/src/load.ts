@@ -11,8 +11,11 @@ import { z } from "zod";
 import {
   Claim,
   ConditionConflict,
+  CONDITION_SCOPES,
   DomainDef,
   Entity,
+  ExclusiveGroup,
+  Interface,
   Pathway,
   SearchRecord,
   AutomatedSearchRun,
@@ -22,6 +25,9 @@ import {
   UnitDef,
   type Claim as ClaimT,
   type ConditionConflict as ConflictT,
+  type ConditionScope,
+  type ExclusiveGroup as ExclusiveGroupT,
+  type Interface as InterfaceT,
   type DomainDef as DomainT,
   type Entity as EntityT,
   type Pathway as PathwayT,
@@ -40,10 +46,14 @@ export interface Canon {
   sources: SourceT[];
   pathways: PathwayT[];
   searches: SearchT[];
+  /** Interface records (pass 26), data/canonical/interfaces. */
+  interfaces: InterfaceT[];
   units: UnitT[];
   domains: DomainT[];
-  conditionTags: { id: string; description: string; label?: string }[];
+  conditionTags: { id: string; description: string; label?: string; default_scope: ConditionScope }[];
   conflicts: ConflictT[];
+  /** Exclusive tag groups (pass 26): at most one member per scope and region. */
+  exclusiveGroups: ExclusiveGroupT[];
   /** Automated index runs from pipelines (data/generated/search-runs.json): frozen result lists, never reviewed statements. */
   searchRuns: RunT[];
   sourceVerification: Record<string, { verified: boolean; checked_at: string; crossref_title?: string; note?: string }>;
@@ -99,19 +109,31 @@ export function loadCanon(root: string): Canon {
   const sources = yamlFiles(join(canonical, "sources")).flatMap((f) => readList(Source, f, root, problems, files));
   const pathways = yamlFiles(join(canonical, "pathways")).flatMap((f) => readList(Pathway, f, root, problems, files));
   const searches = yamlFiles(join(canonical, "searches")).flatMap((f) => readList(SearchRecord, f, root, problems, files));
+  const interfacesDir = join(canonical, "interfaces");
+  const interfaces = existsSync(interfacesDir) ? yamlFiles(interfacesDir).flatMap((f) => readList(Interface, f, root, problems, files)) : [];
   const units = readList(UnitDef, join(canonical, "ontology", "units.yaml"), root, problems, files);
   const domains = readList(DomainDef, join(canonical, "ontology", "domains.yaml"), root, problems, files);
 
   const condText = readFileSync(join(canonical, "ontology", "conditions.yaml"), "utf8");
   files.push({ path: "data/canonical/ontology/conditions.yaml", text: condText });
-  const condRaw = parse(condText) as { tags: { id: string; description: string; label?: string }[]; conflicts: unknown[] };
+  const condRaw = parse(condText) as { tags: { id: string; description: string; label?: string; default_scope?: string }[]; conflicts: unknown[]; exclusive_groups?: unknown[] };
   const conflicts = (condRaw.conflicts ?? []).flatMap((c, i) => {
     const r = ConditionConflict.safeParse(c);
     if (r.success) return [r.data];
     problems.push(`ontology/conditions.yaml conflicts#${i}: ${r.error.issues.map((x) => x.message).join("; ")}`);
     return [];
   });
-  const conditionTags = condRaw.tags ?? [];
+  const exclusiveGroups = (condRaw.exclusive_groups ?? []).flatMap((g, i) => {
+    const r = ExclusiveGroup.safeParse(g);
+    if (r.success) return [r.data];
+    problems.push(`ontology/conditions.yaml exclusive_groups#${i}: ${r.error.issues.map((x) => x.message).join("; ")}`);
+    return [];
+  });
+  // Every tag carries a default scope (pass 26); a claim may override it per requirement.
+  const conditionTags = (condRaw.tags ?? []).map((t) => {
+    if (!t.default_scope || !(CONDITION_SCOPES as readonly string[]).includes(t.default_scope)) problems.push(`ontology/conditions.yaml tag ${t.id}: default_scope must be one of ${CONDITION_SCOPES.join(", ")}`);
+    return { ...t, default_scope: (t.default_scope ?? "medium") as ConditionScope };
+  });
 
   let searchRuns: RunT[] = [];
   const runsFile = join(generated, "search-runs.json");
@@ -258,8 +280,29 @@ export function loadCanon(root: string): Canon {
     if (!tagIds.has(k.a)) problems.push(`conflict: unknown tag ${k.a}`);
     if (!tagIds.has(k.b)) problems.push(`conflict: unknown tag ${k.b}`);
   }
+  for (const g of exclusiveGroups) for (const m of g.members) if (!tagIds.has(m)) problems.push(`exclusive group ${g.id}: unknown tag ${m}`);
+  for (const c of claims) for (const r of c.condition_requirements) if (!tagIds.has(r.tag)) problems.push(`${c.id}: unknown condition tag ${r.tag} in condition_requirements`);
+  const interfaceIds = new Set<string>();
+  for (const f of interfaces) {
+    if (interfaceIds.has(f.id)) problems.push(`duplicate interface id ${f.id}`);
+    interfaceIds.add(f.id);
+    if ("between_claims" in f.location) {
+      const { from_claim, to_claim } = f.location.between_claims;
+      if (!claimIds.has(from_claim)) problems.push(`${f.id}: unknown from_claim ${from_claim}`);
+      if (!claimIds.has(to_claim)) problems.push(`${f.id}: unknown to_claim ${to_claim}`);
+      if (from_claim === to_claim) problems.push(`${f.id}: from_claim and to_claim are the same claim; use within_claim`);
+    } else if (!claimIds.has(f.location.within_claim)) problems.push(`${f.id}: unknown within_claim ${f.location.within_claim}`);
+    if (f.carrier && !entityIds.has(f.carrier)) problems.push(`${f.id}: unknown carrier ${f.carrier}`);
+    for (const s of f.evidence) if (!sourceIds.has(s)) problems.push(`${f.id}: unknown source ${s}`);
+    for (const r of f.condition_requirements) if (!tagIds.has(r.tag)) problems.push(`${f.id}: unknown condition tag ${r.tag}`);
+    if (f.relation) {
+      if (!entityIds.has(f.relation.input)) problems.push(`${f.id}: unknown relation input ${f.relation.input}`);
+      if (!entityIds.has(f.relation.output)) problems.push(`${f.id}: unknown relation output ${f.relation.output}`);
+    }
+    if (f.status === "demonstrated" && f.evidence.length === 0) problems.push(`${f.id}: a demonstrated interface must cite evidence`);
+  }
 
   if (problems.length) throw new ValidationError(problems);
 
-  return { root, entities, claims, sources, pathways, searches, units, domains, conditionTags, conflicts, searchRuns, sourceVerification, files };
+  return { root, entities, claims, sources, pathways, searches, interfaces, units, domains, conditionTags, conflicts, exclusiveGroups, searchRuns, sourceVerification, files };
 }

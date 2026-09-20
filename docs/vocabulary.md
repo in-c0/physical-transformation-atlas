@@ -81,6 +81,45 @@ Used in: `pathways[].status`
 - `proposed` — a design, calculation or simulation in the literature; attached to its exact route and shown as a proposal, never a demonstration; ignored when other routes are classified as derived
 - `observed` — one physical experiment or device has traversed every recorded conversion phenomenon and every inter-phenomenon handoff in order, but the route's terminal output criterion has not been met: a voltage, current, charge, displacement, force, flow or other terminal response may be measured, but the pathway has not delivered the work or output represented by the route's sink; observed_through names the last step its evidence established; an observed pathway does not make a route demonstrated and is ignored when classifying other routes as derived from demonstrated pathways
 
+## `condition.scope`
+
+Used in: `claims[].condition_requirements[].scope`, `interfaces[].condition_requirements[].scope`, `ontology.condition_tags[].default_scope`, `ontology.exclusive_groups[].scope`
+
+- `medium` — a condition of the matter in which the phenomenon acts, on a named region of the device (active by default); the only scope in which an adjacent-step change of state is a region transition
+- `boundary` — a condition of a physical surface, contact or gap the step crosses or uses; checked against interface records, never treated as an active-medium state
+- `environment` — an external field, radiation, atmosphere, vacuum or other surrounding or source condition; compared route-wide on the same region, not only between neighbours
+
+## `interface.kind`
+
+Used in: `interfaces[].kind`, `paths[].interfaces_recorded[].kind`
+
+- `gas-solid-acoustic-boundary` — a gas-borne acoustic field loading a solid across a mechanically continuous boundary
+- `fluid-solid-mechanical-boundary` — a liquid or gas exerting pressure or shear on a solid surface, plate or membrane
+- `electrode-contact` — a solid electrode collecting or injecting current at the boundary of a conducting fluid, plasma or solid
+- `heat-exchanger-wall` — a wall conducting heat between two media without mass exchange
+- `radiative-window` — a transparent boundary through which radiation crosses between regions
+- `membrane` — a selective boundary passing some species or phases and not others
+- `shaft-coupling` — a mechanical coupling transmitting torque or motion between regions or machines
+- `free-surface` — an interface between a liquid and a gas or vacuum with no solid between them
+- `material-contact` — two solids in contact, exchanging strain, charge or heat across the junction
+
+## `interface.status`
+
+Used in: `interfaces[].status`, `paths[].interfaces_recorded[].status`
+
+- `demonstrated` — the boundary has been realised in a physical experiment or device cited in evidence; it resolves the region transition it names
+- `theoretical` — the boundary is modelled (a transmission relation or an argument from physics) but not realised for this pair of steps; the boundary check stays unresolved
+- `proposed` — the boundary is named in a proposal or design only; the boundary check stays unresolved
+
+## `path.magnitude_screen.status`
+
+Used in: `paths[].magnitude_screen.status`
+
+- `quantified` — a reviewed whole-composition measurement exists
+- `relation-complete` — every relation-required conversion step (drives, couples_to, or relation_requirement required) carries a dimensionally valid constitutive relation; no route magnitude is thereby asserted (renamed from bounded in loop-3 pass 26)
+- `missing` — at least one relation-required conversion step lacks a relation; bottleneck_claim names the first
+- `incompatible` — a recorded quantitative contradiction makes the composition physically inconsistent; never inferred from absence
+
 ## `path.composition_observation`
 
 Used in: `paths[].composition_observation`
