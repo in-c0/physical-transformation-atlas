@@ -99,7 +99,10 @@ constituent), `established_steps`, `search_status`, `frontier_class`, `knowledge
 `constituent_source_ids` versus `composition_source_ids` (evidence for the steps is never evidence
 for the composition), `constituent_floor`, `phenomena`, `effective_length`,
 `energy_form_sequence`, `energy_transition_count`, `family_seam_count`, `core_unresolved_count`,
-`implied_interface_count`, `magnitude_data_coverage`, `representation_signature`,
+`implied_interface_count`, `implied_interfaces` (the adjacent-step tag conflicts, "claim → claim: tag vs
+tag"), `weakest_claim` (the step with the route's weakest status; ties go to the earliest step),
+`closest_known_device` (`{ transducer, shared_steps, of }`: the recorded device implementing the most
+effects on the route, or null), `magnitude_data_coverage`, `representation_signature`,
 `semantic_overlap`, `structural_kind`, `dominated_by`, `source_availability`,
 `known_pathway_overlap`. Enumerations: vocabulary `path.search_status`, `path.frontier_class`,
 `path.structural_kind`, `check.result`.
