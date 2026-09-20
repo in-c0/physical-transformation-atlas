@@ -60,7 +60,9 @@ export class AtlasIndex {
     id: string;
     name: string;
     nameWords: string[];
+    aliasNames: string[];
     textWords: string[];
+    symbol: string;
     type: string;
   }[];
 
@@ -95,7 +97,10 @@ export class AtlasIndex {
       id: e.id,
       name: e.name.toLowerCase(),
       nameWords: words([e.name, ...(e.aliases ?? [])].join(" ")),
-      textWords: words([e.summary, e.symbol ?? ""].join(" ")),
+      aliasNames: (e.aliases ?? []).map((a) => a.toLowerCase()),
+      textWords: words([e.summary].join(" ")),
+      // Symbols are matched whole, case-insensitively, so "ΔT" and "∇T" find the driver they denote.
+      symbol: (e.symbol ?? "").toLowerCase().replace(/\s+/g, ""),
       type: e.type,
     }));
   }
@@ -167,9 +172,14 @@ export class AtlasIndex {
   search(query: string, limit = 20): { entity: Entity; score: number }[] {
     const q = query.toLowerCase().trim();
     if (!q) return [];
+    const compact = q.replace(/\s+/g, "");
     const tokens = q.split(/[\s,;.()/]+/).filter((t) => t.length >= 3 && !STOP.has(t));
-    if (tokens.length === 0) return [];
     const hits: { entity: Entity; score: number }[] = [];
+    // A symbol query ("ΔT", "∇p", "Δμ") is shorter than a word token; match it whole.
+    if (tokens.length === 0) {
+      for (const d of this.searchDocs) if (d.symbol && d.symbol === compact) hits.push({ entity: this.entity.get(d.id)!, score: 12 });
+      return hits.sort((a, b) => b.score - a.score || a.entity.name.localeCompare(b.entity.name)).slice(0, limit);
+    }
     // A token matches a word when the word starts with it ("heat" ⊂ "heated"), never mid-word
     // ("rain" must not match "strain").
     const wordHit = (words: string[], t: string) => words.some((w) => w === t || (t.length >= 4 && w.startsWith(t)) || (w.length >= 5 && t.startsWith(w)));
@@ -187,7 +197,12 @@ export class AtlasIndex {
       }
       if (matched === 0) continue;
       if (matched === tokens.length) score += 2;
+      // The entity whose name (or an alias) is exactly the query outranks everything that merely contains it.
       if (d.name === q) score += 10;
+      else if (tokens.every((t, i) => d.nameWords[i] === t))
+        score += 6; // the name starts with the query: "seebeck" → Seebeck effect
+      else if (d.aliasNames.includes(q)) score += 5;
+      if (d.symbol && d.symbol === compact) score += 12;
       // A concept search is for drivers and effects; quantities and materials rank below.
       if (d.type === "disequilibrium" || d.type === "phenomenon") score += 1;
       hits.push({ entity: this.entity.get(d.id)!, score });

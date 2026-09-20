@@ -473,6 +473,39 @@
   status: established
 
 # --- Fluid flow, wind, waves, tides, hydro -----------------------------------------------
+# Flow produced inside a route (Marangoni, thermo-osmosis, thermomagnetic convection) re-enters the
+# flow-driven phenomena as a carrier, the same way mechanical motion drives a generator. Without these
+# three claims every flow-producing phenomenon was a dead end in the enumeration (loop-3 pass 9).
+- id: claim:fluid-flow-carrier-drives-lift
+  subject: carrier:fluid-flow
+  predicate: drives
+  object: phenomenon:aerodynamic-lift
+  conditions: [a rotor or vane in the produced stream at a working angle of attack; the driven flow must carry enough momentum flux for a blade to load]
+  condition_tags: [flow-required]
+  energy: { input: kinetic, output: mechanical, dissipation: thermal }
+  evidence: [source:betz-1920, source:dixon-hall-2014]
+  status: established
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 9 (structural gap: produced fluid flow had no consumer)" }
+- id: claim:fluid-flow-carrier-drives-fiv
+  subject: carrier:fluid-flow
+  predicate: drives
+  object: phenomenon:flow-induced-vibration
+  conditions: [a bluff or flexible body in the produced stream at a Reynolds number where vortex shedding locks to a structural mode]
+  condition_tags: [flow-required]
+  energy: { input: kinetic, output: mechanical, dissipation: thermal }
+  evidence: [source:radousky-liang-2012]
+  status: established
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 9 (structural gap: produced fluid flow had no consumer)" }
+- id: claim:fluid-flow-carrier-drives-streaming
+  subject: carrier:fluid-flow
+  predicate: drives
+  object: phenomenon:streaming-potential
+  conditions: [the produced liquid flow passes a charged surface or through a charged channel]
+  condition_tags: [env-aqueous, flow-required]
+  energy: { input: kinetic, output: electrical, dissipation: thermal }
+  evidence: [source:yin-2014-graphene-flow, source:yang-2003-electrokinetic]
+  status: replicated
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 9 (structural gap: produced fluid flow had no consumer)" }
 - id: claim:flow-drives-lift
   subject: disequilibrium:fluid-flow
   predicate: drives
