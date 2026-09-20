@@ -533,5 +533,135 @@
     "verified": true,
     "checked_at": "2026-09-19T12:56:04.682Z",
     "crossref_title": "An inconvenient truth about thermoelectrics"
+  },
+  "source:trowbridge-2025-radiation-pressure": {
+    "verified": true,
+    "checked_at": "2026-09-20T02:16:38.721Z",
+    "crossref_title": "Radiation pressure revisited: historical context and the role of structured light"
+  },
+  "source:rowley-horne-1978-dufour": {
+    "verified": true,
+    "checked_at": "2026-09-20T02:16:39.723Z",
+    "crossref_title": "The Dufour effect. II. Experimental confirmation of the Onsager heat–mass reciprocal relation for a binary liquid mixture"
+  },
+  "source:marangoni-review-2021": {
+    "verified": true,
+    "checked_at": "2026-09-20T02:16:40.092Z",
+    "crossref_title": "Directional interfacial motion of liquids: Fundamentals, evaluations, and manipulation strategies"
+  },
+  "source:weinreich-white-1957": {
+    "verified": true,
+    "checked_at": "2026-09-20T02:16:40.690Z",
+    "crossref_title": "Observation of the Acoustoelectric Effect"
+  },
+  "source:strait-2019-photon-drag": {
+    "verified": true,
+    "checked_at": "2026-09-20T02:16:41.058Z",
+    "crossref_title": "Revisiting the Photon-Drag Effect in Metal Films"
+  },
+  "source:bose-tulapurkar-2019-spin-nernst": {
+    "verified": true,
+    "checked_at": "2026-09-20T02:16:41.440Z",
+    "crossref_title": "Recent advances in the spin Nernst effect"
+  },
+  "source:apostolopoulos-barnes-2014-dember": {
+    "verified": true,
+    "checked_at": "2026-09-20T02:16:41.808Z",
+    "crossref_title": "THz emitters based on the photo-Dember effect"
+  },
+  "source:barragan-kjelstrup-2017-thermo-osmosis": {
+    "verified": true,
+    "checked_at": "2026-09-20T02:16:42.175Z",
+    "crossref_title": "Thermo-osmosis in Membrane Systems: A Review"
+  },
+  "source:wurger-2014-dufour-onsager": {
+    "verified": true,
+    "checked_at": "2026-09-20T02:16:42.542Z",
+    "crossref_title": "Do thermal diffusion and Dufour coefficients satisfy Onsager’s reciprocity relation?"
+  },
+  "source:schetzina-1975-dember": {
+    "verified": true,
+    "checked_at": "2026-09-20T02:16:42.910Z",
+    "crossref_title": "Steady-state transport in trap-dominated relaxation semiconductors"
+  },
+  "source:ehd-review-2025": {
+    "verified": true,
+    "checked_at": "2026-09-20T02:16:43.278Z",
+    "crossref_title": "Interfacial electro-hydrodynamics inspired micro/nano-fluidic energy conversion: from mechanism to applications"
+  },
+  "source:ehd-generator-1977": {
+    "verified": true,
+    "checked_at": "2026-09-20T02:16:43.657Z",
+    "crossref_title": "Fundamental characteristics of liquid-filled electrohydrodynamic generator"
+  },
+  "source:zhao-wurger-crispin-2021-ionic-te": {
+    "verified": true,
+    "checked_at": "2026-09-20T02:16:44.024Z",
+    "crossref_title": "Ionic thermoelectric materials and devices"
+  },
+  "source:suslov-2022-ferrofluid": {
+    "verified": true,
+    "checked_at": "2026-09-20T02:16:44.389Z",
+    "crossref_title": "Peculiarities of Convective Heat and Mass Transfer in Magnetic Nanofluids"
+  },
+  "source:sma-heat-engine-2019": {
+    "verified": true,
+    "checked_at": "2026-09-20T02:16:44.745Z",
+    "crossref_title": "Shape memory alloy engine for high efficiency low-temperature gradient thermal to electrical conversion"
+  },
+  "source:abanades-2022-thermochemical": {
+    "verified": true,
+    "checked_at": "2026-09-20T02:16:45.160Z",
+    "crossref_title": "Redox Cycles, Active Materials, and Reactors Applied to Water and Carbon Dioxide Splitting for Solar Thermochemical Fuel Production: A Review"
+  },
+  "source:spencer-alam-2019-alphavoltaic": {
+    "verified": true,
+    "checked_at": "2026-09-20T02:16:45.529Z",
+    "crossref_title": "High power direct energy conversion by nuclear batteries"
+  },
+  "source:iwan-2021-radioluminescence": {
+    "verified": true,
+    "checked_at": "2026-09-20T02:16:45.895Z",
+    "crossref_title": "Conversion of Radiophotoluminescence Irradiation into Electricity in Photovoltaic Cells. A Review of Theoretical Considerations and Practical Solutions"
+  },
+  "source:scriven-sternling-1960": {
+    "verified": true,
+    "checked_at": "2026-09-20T02:16:46.265Z",
+    "crossref_title": "The Marangoni Effects"
+  },
+  "source:parmenter-1953": {
+    "verified": true,
+    "checked_at": "2026-09-20T02:16:46.632Z",
+    "crossref_title": "The Acousto-Electric Effect"
+  },
+  "source:gibson-1970-photon-drag": {
+    "verified": true,
+    "checked_at": "2026-09-20T02:16:46.999Z",
+    "crossref_title": "PHOTON DRAG IN GERMANIUM"
+  },
+  "source:meyer-2017-spin-nernst": {
+    "verified": true,
+    "checked_at": "2026-09-20T02:16:47.367Z",
+    "crossref_title": "Observation of the spin Nernst effect"
+  },
+  "source:johnston-2002-dember": {
+    "verified": true,
+    "checked_at": "2026-09-20T02:16:47.750Z",
+    "crossref_title": "Simulation of terahertz generation at semiconductor surfaces"
+  },
+  "source:bonetti-2011-ionic-seebeck": {
+    "verified": true,
+    "checked_at": "2026-09-20T02:16:48.117Z",
+    "crossref_title": "Huge Seebeck coefficients in nonaqueous electrolytes"
+  },
+  "source:steinfeld-2005-thermochemical": {
+    "verified": true,
+    "checked_at": "2026-09-20T02:16:48.471Z",
+    "crossref_title": "Solar thermochemical production of hydrogen––a review"
+  },
+  "source:nichols-hull-1901": {
+    "verified": true,
+    "checked_at": "2026-09-20T02:16:48.842Z",
+    "crossref_title": "A Preliminary Communication on the Pressure of Heat and Light Radiation"
   }
 }

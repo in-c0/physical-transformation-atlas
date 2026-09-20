@@ -14,8 +14,8 @@
   aliases: [diffusion thermoeffect]
   domain: thermodynamics
   year_first_reported: 1872
-  condition_tags: [state-liquid]
-  summary: A concentration gradient in a mixture drives a heat flux, the Onsager-reciprocal partner of the Soret effect. A chemical disequilibrium becomes a thermal one.
+  condition_tags: []
+  summary: A concentration gradient in a liquid or gas mixture drives a heat flux, the Onsager-reciprocal partner of the Soret effect. A chemical disequilibrium becomes a thermal one.
 - id: phenomenon:marangoni-effect
   type: phenomenon
   name: Marangoni effect
@@ -30,7 +30,7 @@
   aliases: [acoustoelectric current, phonon drag by a travelling wave]
   domain: condensed-matter
   year_first_reported: 1957
-  condition_tags: [state-solid, medium-semiconductor]
+  condition_tags: [state-solid]
   summary: A travelling acoustic wave transfers momentum to mobile charge carriers in a semiconductor or metal, producing a direct current or voltage along the direction of propagation.
 - id: phenomenon:photon-drag-effect
   type: phenomenon
@@ -39,7 +39,7 @@
   domain: optics-photonics
   year_first_reported: 1970
   condition_tags: [state-solid, illumination-required]
-  summary: Absorbed photon momentum is transferred to charge carriers and drives a directed current or EMF along the light's direction of travel. A momentum-transfer effect, distinct from the photovoltaic effect.
+  summary: Absorbed or redirected photon momentum generates a longitudinal electrical response in a material; the magnitude and polarity depend on the carrier and interface physics and need not follow the naive free-electron momentum-transfer sign. A momentum-transfer effect, distinct from the photovoltaic effect.
 - id: phenomenon:spin-nernst-effect
   type: phenomenon
   name: Spin Nernst effect
@@ -54,8 +54,8 @@
   aliases: [photodiffusion voltage, surface photocurrent]
   domain: optics-photonics
   year_first_reported: 1931
-  condition_tags: [state-solid, medium-semiconductor, illumination-required, transient-only]
-  summary: After photoexcitation near a surface, electrons and holes diffuse at different rates and separate, creating a transient dipole and current; the basis of many terahertz emitters.
+  condition_tags: [state-solid, medium-semiconductor, illumination-required]
+  summary: Non-uniform photoexcitation creates electron and hole concentration gradients; unequal carrier transport separates charge and sets up a Dember field. Under ultrafast pulsed excitation the transient current is widely used for terahertz emission; steady-state Dember photovoltages are derived in the same framework.
 - id: phenomenon:thermo-osmosis
   type: phenomenon
   name: Thermo-osmosis
@@ -94,8 +94,8 @@
   aliases: [shape-memory transformation, martensitic thermal actuation]
   domain: condensed-matter
   year_first_reported: 1951
-  condition_tags: [state-solid, temp-gradient-required]
-  summary: Heating a deformed shape-memory alloy through its martensite–austenite transformation recovers strain and exerts large stress; cycling between a hot and a cold reservoir gives cyclic mechanical motion.
+  condition_tags: [state-solid]
+  summary: Heating a deformed shape-memory alloy through its martensite–austenite transformation recovers strain and exerts large stress; cycling between a hot and a cold reservoir gives cyclic mechanical motion (the reservoirs are needed for heat-engine operation, not for a single recovery event).
 - id: phenomenon:thermochemical-redox-cycle
   type: phenomenon
   name: Thermochemical redox cycle
@@ -114,7 +114,7 @@
 - id: phenomenon:radioluminescence
   type: phenomenon
   name: Radioluminescence
-  aliases: [scintillation, radiophotoluminescence, tritium light]
+  aliases: [scintillation, tritium light]
   domain: nuclear-physics
   year_first_reported: 1903
   condition_tags: [state-solid, radioisotope-required]

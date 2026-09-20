@@ -934,6 +934,20 @@
   year: 2017
   venue: "Journal of Non-Equilibrium Thermodynamics, 42"
   doi: 10.1515/jnet-2016-0088
+- id: source:wurger-2014-dufour-onsager
+  type: paper
+  title: "Do thermal diffusion and Dufour coefficients satisfy Onsager's reciprocity relation?"
+  authors: [A. Würger]
+  year: 2014
+  venue: "The European Physical Journal E 37, 96"
+  doi: 10.1140/epje/i2014-14096-y
+- id: source:schetzina-1975-dember
+  type: paper
+  title: "Steady-state transport in trap-dominated relaxation semiconductors"
+  authors: [J. F. Schetzina]
+  year: 1975
+  venue: "Physical Review B 11, 4994–4998"
+  doi: 10.1103/PhysRevB.11.4994
 - id: source:ehd-review-2025
   type: review
   title: "Interfacial electro-hydrodynamics inspired micro/nano-fluidic energy conversion: from mechanism to applications"
@@ -959,8 +973,8 @@
   type: review
   title: "Peculiarities of Convective Heat and Mass Transfer in Magnetic Nanofluids"
   authors: [S. A. Suslov]
-  year: 2022
-  venue: "ASME Journal of Heat and Mass Transfer 145, 030801"
+  year: 2023
+  venue: "ASME Journal of Heat and Mass Transfer 145(3), 030801 (online December 2022)"
   doi: 10.1115/1.4055343
 - id: source:sma-heat-engine-2019
   type: paper

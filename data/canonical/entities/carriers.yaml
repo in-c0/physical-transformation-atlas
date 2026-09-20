@@ -1,4 +1,11 @@
 # Carriers: what physically moves the energy between two phenomena.
+- id: carrier:fluid-space-charge
+  type: carrier
+  name: Fluid-borne space charge
+  aliases: [unipolar injected charge, charged species in a dielectric liquid]
+  energy_form: electrical
+  condition_tags: [state-liquid]
+  summary: Net electrical charge transported with a dielectric liquid, as in liquid electrohydrodynamic generators; collected at an electrode it becomes electrical output.
 - id: carrier:charge-carriers
   type: carrier
   name: Charge carriers

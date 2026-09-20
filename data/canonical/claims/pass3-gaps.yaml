@@ -6,8 +6,8 @@
   subject: disequilibrium:radiation-flux
   predicate: drives
   object: phenomenon:radiation-pressure
-  conditions: ["radiation absorbed or reflected by a surface; force per unit area I/c absorbed, 2I/c reflected at normal incidence — about 9 µPa in full sunlight"]
-  energy: { input: radiative, output: mechanical, dissipation: thermal }
+  conditions: ["radiation absorbed or reflected by a surface; force per unit area I/c absorbed, 2I/c reflected at normal incidence — about 9 µPa in full sunlight", "mechanical work requires displacement or deformation under the radiation-pressure force; absorbed optical power may additionally thermalise, perfect reflection dissipates nothing"]
+  energy: { input: radiative, output: mechanical }
   evidence: [source:nichols-hull-1901, source:trowbridge-2025-radiation-pressure, source:landau-lifshitz-ecm]
   status: established
   knowledge_level: K6
@@ -16,6 +16,7 @@
   subject: phenomenon:radiation-pressure
   predicate: produces
   object: carrier:mechanical-motion
+  conditions: [the illuminated body is mechanically free or compliant enough to move or deform under the radiation-pressure force]
   energy: { input: mechanical, output: mechanical }
   evidence: [source:trowbridge-2025-radiation-pressure]
   status: established
@@ -29,7 +30,7 @@
   subject: disequilibrium:radiation-flux
   predicate: drives
   object: phenomenon:photon-drag-effect
-  conditions: ["intense radiation absorbed by free carriers in a semiconductor or thin metal film; the induced EMF is along the propagation direction and scales with intensity"]
+  conditions: ["absorbed or redirected radiation in a semiconductor or thin metal film supporting photon drag; the longitudinal response scales with the optical drive while its polarity is material- and interface-dependent"]
   condition_tags: [state-solid, illumination-required]
   energy: { input: radiative, output: electrical, dissipation: thermal }
   evidence: [source:gibson-1970-photon-drag, source:strait-2019-photon-drag]
@@ -55,7 +56,6 @@
   predicate: drives
   object: phenomenon:dufour-effect
   conditions: ["a composition gradient in a liquid or gas mixture; the heat flux is the Onsager-reciprocal partner of Soret thermodiffusion"]
-  condition_tags: [state-liquid]
   energy: { input: chemical, output: thermal }
   evidence: [source:rowley-horne-1978-dufour, source:degroot-mazur-1962]
   status: established
@@ -77,8 +77,8 @@
   subject: phenomenon:dufour-effect
   predicate: bounded_by
   object: constraint:onsager-reciprocity
-  conditions: ["Dufour and Soret coefficients are equal by Onsager reciprocity (confirmed experimentally by Rowley and Horne)"]
-  evidence: [source:rowley-horne-1978-dufour, source:onsager-1931]
+  conditions: ["near equilibrium the properly defined heat–mass Onsager cross-coefficients are reciprocal when fluxes and conjugate forces use the same convention; this does not imply numerical equality of the convention-dependent Soret and Dufour coefficients"]
+  evidence: [source:onsager-1931, source:rowley-horne-1978-dufour, source:degroot-mazur-1962, source:wurger-2014-dufour-onsager]
   status: established
 - id: claim:soret-member
   subject: phenomenon:soret-effect
@@ -157,26 +157,27 @@
   predicate: drives
   object: phenomenon:acoustoelectric-effect
   conditions: ["a travelling acoustic wave in a piezoelectric semiconductor (CdS, GaAs) or a metal; the dc current follows the wave's direction and is proportional to the absorbed acoustic power"]
-  condition_tags: [state-solid, medium-semiconductor]
+  condition_tags: [state-solid]
   energy: { input: acoustic, output: electrical, dissipation: thermal }
   evidence: [source:parmenter-1953, source:weinreich-white-1957]
-  status: established
+  status: demonstrated
+  notes: "Parmenter 1953 is the theoretical prediction; Weinreich and White 1957 the one experimental observation recorded so far, so the atlas threshold for established (two independent groups, or a review or book) is not yet met."
   knowledge_level: K4
 - id: claim:acoustic-wave-drives-acoustoelectric
   subject: carrier:acoustic-wave
   predicate: drives
   object: phenomenon:acoustoelectric-effect
-  condition_tags: [state-solid, medium-semiconductor]
+  condition_tags: [state-solid]
   energy: { input: acoustic, output: electrical, dissipation: thermal }
   evidence: [source:weinreich-white-1957, source:parmenter-1953]
-  status: established
+  status: demonstrated
 - id: claim:acoustoelectric-produces
   subject: phenomenon:acoustoelectric-effect
   predicate: produces
   object: carrier:charge-carriers
   energy: { input: electrical, output: electrical }
   evidence: [source:weinreich-white-1957, source:parmenter-1953]
-  status: established
+  status: demonstrated
 - id: claim:acoustoelectric-member
   subject: phenomenon:acoustoelectric-effect
   predicate: member_of
@@ -187,7 +188,7 @@
   subject: disequilibrium:acoustic-field
   predicate: drives
   object: phenomenon:piezoelectric-effect
-  conditions: ["sound or ultrasound stressing a piezoelectric element — the working principle of every microphone and ultrasonic receiver"]
+  conditions: ["an acoustic pressure field stressing a piezoelectric element; the working principle of piezoelectric microphones and many piezoelectric ultrasonic receivers"]
   condition_tags: [state-solid, medium-non-centrosymmetric]
   energy: { input: acoustic, output: electrical, dissipation: thermal }
   evidence: [source:nye-1985, source:erturk-inman-2011]
@@ -224,10 +225,10 @@
   subject: disequilibrium:radiation-flux
   predicate: drives
   object: phenomenon:photo-dember-effect
-  conditions: ["pulsed above-gap illumination of a semiconductor surface with a large electron–hole mobility difference (InAs, InSb); the response is transient"]
-  condition_tags: [state-solid, medium-semiconductor, illumination-required, transient-only]
+  conditions: ["non-uniform above-gap illumination of a semiconductor with a large electron–hole mobility difference (InAs, InSb); pulsed excitation gives the transient current used for terahertz emission, steady illumination a Dember photovoltage"]
+  condition_tags: [state-solid, medium-semiconductor, illumination-required]
   energy: { input: radiative, output: electrical, dissipation: thermal }
-  evidence: [source:johnston-2002-dember, source:apostolopoulos-barnes-2014-dember]
+  evidence: [source:johnston-2002-dember, source:apostolopoulos-barnes-2014-dember, source:schetzina-1975-dember]
   status: established
   knowledge_level: K4
 - id: claim:dember-produces-charge
@@ -283,8 +284,17 @@
 - id: claim:ehd-produces
   subject: phenomenon:electrohydrodynamic-generation
   predicate: produces
-  object: carrier:charge-carriers
+  object: carrier:fluid-space-charge
+  conditions: ["monopolar charge injected into a dielectric liquid (n-hexane in the 1977 generator) is carried by the flow against the field to a collector"]
   energy: { input: electrical, output: electrical }
+  evidence: [source:ehd-generator-1977, source:ehd-review-2025]
+  status: established
+- id: claim:fluid-space-charge-converts-electricity
+  subject: carrier:fluid-space-charge
+  predicate: converts_into
+  object: output:electricity
+  conditions: [charge collected at an electrode and driven through an external load at the potential the flow maintains]
+  energy: { input: electrical, output: electrical, dissipation: thermal }
   evidence: [source:ehd-generator-1977, source:ehd-review-2025]
   status: established
 - id: claim:ehd-member
@@ -347,6 +357,7 @@
   subject: phenomenon:thermally-driven-shape-memory-effect
   predicate: bounded_by
   object: constraint:carnot-limit
+  conditions: ["applies when the shape-memory effect is operated cyclically as a heat engine between hot and cold reservoirs; it does not bound a one-shot thermally triggered shape-recovery event"]
   evidence: [source:sma-heat-engine-2019, source:bejan-2016]
   status: established
 - id: claim:shape-memory-observed-niti
@@ -391,7 +402,7 @@
   subject: phenomenon:thermochemical-redox-cycle
   predicate: bounded_by
   object: constraint:carnot-limit
-  conditions: ["solar-to-fuel efficiency is bounded by the Carnot factor between receiver and re-oxidation temperatures times the absorption efficiency of the receiver"]
+  conditions: ["for an ideal solar thermochemical process the heat-to-work (exergy) factor is bounded by 1 − T_L/T_H, with T_H the receiver/process temperature and T_L the heat-rejection reservoir, usually the environment; T_L is not in general the re-oxidation temperature; the receiver absorption efficiency multiplies this factor"]
   evidence: [source:steinfeld-2005-thermochemical]
   status: established
 

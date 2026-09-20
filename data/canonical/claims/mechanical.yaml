@@ -532,6 +532,15 @@
   energy: { input: mechanical, output: mechanical }
   evidence: [source:radousky-liang-2012]
   status: established
+- id: claim:descent-produces-waterwheel-motion
+  subject: phenomenon:hydrostatic-descent
+  predicate: produces
+  object: carrier:mechanical-motion
+  conditions: [falling or flowing water transfers weight and momentum to waterwheel buckets or paddles, producing shaft rotation]
+  condition_tags: [state-liquid, flow-required]
+  energy: { input: mechanical, output: mechanical, dissipation: thermal }
+  evidence: [source:dixon-hall-2014]
+  status: established
 - id: claim:gravity-drives-descent
   subject: disequilibrium:gravitational-potential-difference
   predicate: drives

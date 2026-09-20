@@ -184,13 +184,13 @@
   performance:
     notes: "≈ 3–4 protons per ATP; the rotary motor runs at ~100 revolutions per second in vivo"
   environment: [env-aqueous, medium-membrane]
-  summary: A proton gradient across the membrane drives ATP synthase; the working transducer of every cell.
+  summary: A transmembrane proton-motive force drives ATP synthase to make ATP; the central bioenergetic mechanism of respiratory and photosynthetic phosphorylation.
 
 - id: pathway:steam-engine
   name: Steam engine (shaft work)
   steps: [claim:expansion-drives, claim:expansion-produces-motion, claim:motion-converts-mechanical-work]
-  demonstrated_with: [transducer:rankine-cycle-plant, transducer:stirling-engine]
-  evidence: [source:bejan-2016, source:walker-1980-stirling]
+  demonstrated_with: [transducer:rankine-cycle-plant]
+  evidence: [source:bejan-2016]
   status: commercial
   knowledge_level: K8
   performance:
@@ -212,7 +212,7 @@
 
 - id: pathway:waterwheel
   name: Waterwheel (mechanical)
-  steps: [claim:gravity-drives-descent, claim:descent-produces-pressure, claim:hydraulic-drives-lift, claim:lift-produces-motion, claim:motion-converts-mechanical-work]
+  steps: [claim:gravity-drives-descent, claim:descent-produces-waterwheel-motion, claim:motion-converts-mechanical-work]
   evidence: [source:dixon-hall-2014]
   status: commercial
   knowledge_level: K8
@@ -275,12 +275,12 @@
   status: demonstrated
   knowledge_level: K6
   performance:
-    theoretical_limit: "Carnot between the hot and cold baths; ≈ 6% for 320 K against 300 K"
+    theoretical_limit: "Carnot for the actual hot- and cold-side reservoir temperatures, η_C = 1 − T_c/T_h"
     measurements:
       - quantity: thermal-to-electrical efficiency
-        value: "≈ 1–2% (about 30% of Carnot at low ΔT)"
+        value: "1.5% (10.5% of Carnot at the reported maximum-efficiency operating point)"
         scope: laboratory
-        conditions: "NiTi SMA engine driving a generator between water baths with ΔT of 20–40 K"
+        conditions: "NiTi SMA heat engine driving a generator; maximum efficiency reported near a 70 °C hot-water bath with ambient acting as the heat sink"
         sources: [source:sma-heat-engine-2019]
         year: 2019
   environment: [state-solid, temp-gradient-required]
