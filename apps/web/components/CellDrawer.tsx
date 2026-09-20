@@ -17,7 +17,7 @@ import { Drawer, DrawerSection, drawerStyles as s } from "./Drawer";
 import { ClaimLine } from "./ClaimLine";
 import { Checksum } from "./Checksum";
 import { EvidenceList } from "./EvidenceList";
-import { CORE_CHECK_IDS } from "@pta/physics";
+import { CORE_CHECK_IDS } from "@pta/physics/definitions";
 
 
 /** Search terms a reviewer would use: row and column names plus their aliases, quoted. */

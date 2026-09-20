@@ -1,4 +1,4 @@
-import { CHECK_DEFINITIONS } from "@pta/physics";
+import { CHECK_DEFINITIONS } from "@pta/physics/definitions";
 
 export const dynamic = "force-static";
 
