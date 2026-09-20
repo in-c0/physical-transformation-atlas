@@ -1,62 +1,510 @@
 # Physics domains used for coverage accounting.
 #
-# `target_phenomena` is the number of distinct, well-established phenomena a
-# thorough first full release of this domain would carry. It is a reviewed
-# editorial estimate, kept deliberately round, and it is what the coverage bars
-# divide by. It is NOT an estimate of how much physics humanity understands.
+# `target_inventory` is the checklist of phenomena a thorough first broad release of the domain
+# would carry: the slugs already recorded plus the ones still missing. `target_phenomena` is
+# derived from it by the loader (inventory length) and is what the scope-fill bars divide by.
+# Scope targets are maintained checklists of phenomena the atlas intends to represent; they are
+# editorial and revisable; they are NOT estimates of the total number of phenomena that exist.
+# `target_basis` says how the list was assembled. Recorded slugs must exist as phenomenon ids;
+# missing ones are the work queue. Loop-3 pass 11 (20/09/2026) turned five scalar targets into
+# inventories on review and left the other nine as inventories reconstructed from the old scalar.
 - id: thermodynamics
   name: Thermodynamics
-  target_phenomena: 40
   summary: Heat, work, temperature and entropy; thermal-to-anything conversion and its bounds.
+  target_basis: "Cross effects that belong to solid-state transport, electrochemistry or spin systems are counted there, not here (pass 11: 40 → 25)."
+  target_inventory:
+    - dufour-effect
+    - thermo-osmosis
+    - thermoacoustic-effect
+    - soret-effect
+    - thermal-expansion
+    - heat-conduction
+    - diffusion
+    - working-fluid-expansion
+    - ocean-thermal-gradient-conversion
+    - joule-thomson-expansion
+    - latent-heat-phase-change
+    - adiabatic-compression-heating
+    - natural-convection
+    - thermal-radiation-exchange
+    - regenerative-heat-exchange
+    - absorption-refrigeration
+    - adsorption-heat-transformation
+    - thermal-transpiration
+    - thermophoresis
+    - stirling-cycle-regeneration
+    - rankine-cycle-evaporation
+    - kalina-mixture-boiling
+    - thermochemical-heat-storage
+    - thermal-rectification
+    - heat-pipe-transport
 - id: classical-mechanics
   name: Classical mechanics
-  target_phenomena: 30
   summary: Motion, stress, strain, vibration and the conversion of mechanical work.
+  target_basis: "Reconstructed from the previous scalar target of 30."
+  target_inventory:
+    - elastic-deformation
+    - resonant-vibration
+    - hydrostatic-descent
+    - flywheel-inertial-storage
+    - pendulum-oscillation
+    - gear-torque-conversion
+    - lever-mechanical-advantage
+    - spring-energy-storage
+    - friction-dissipation
+    - impact-momentum-transfer
+    - centrifugal-separation
+    - gyroscopic-precession
+    - buckling-snap-through
+    - parametric-resonance
+    - nonlinear-vibration-broadening
+    - frequency-up-conversion
+    - mechanical-rectification
+    - ratchet-motion
+    - vibration-isolation
+    - acoustic-radiation-force
+    - hydraulic-transmission
+    - pneumatic-compression
+    - rolling-resistance
+    - torsional-oscillation
+    - cam-follower-conversion
+    - clockwork-escapement
+    - gravitational-tidal-forcing
+    - mechanical-metamaterial-transduction
+    - shock-wave-compression
+    - bistable-mechanism-switching
 - id: electromagnetism
   name: Electromagnetism
-  target_phenomena: 40
   summary: Fields, induction, charge transport and electromechanical/electrothermal coupling.
+  target_basis: "Reconstructed from the previous scalar target of 40."
+  target_inventory:
+    - electrostatic-induction
+    - electromagnetic-induction
+    - rectification
+    - antenna-reception
+    - generator-action
+    - linear-alternator-action
+    - joule-heating
+    - induction-heating
+    - eddy-current-damping
+    - dielectric-heating
+    - lorentz-force-actuation
+    - electrostatic-actuation
+    - capacitive-energy-storage
+    - inductive-energy-storage
+    - transformer-action
+    - electret-charge-storage
+    - corona-discharge
+    - electrostatic-precipitation
+    - magnetic-levitation
+    - magnetic-hysteresis-loss
+    - electromagnetic-wave-radiation
+    - microwave-absorption-heating
+    - wireless-power-transfer
+    - electromagnetic-braking
+    - motor-action
+    - homopolar-generation
+    - unipolar-induction
+    - skin-effect-loss
+    - dielectric-breakdown
+    - triboelectric-charge-separation
+    - electrostatic-discharge
+    - plasma-arc-heating
+    - electrodynamic-tether
+    - magnetic-reconnection
+    - superconducting-current-storage
+    - flux-pumping
+    - electromagnetic-stirring
+    - magnetic-gearing
+    - inductive-charging
+    - piezoresistive-sensing
 - id: electrochemistry
   name: Electrochemistry
-  target_phenomena: 30
   summary: Redox, ion transport, concentration and salinity gradients, thermogalvanic effects.
+  target_basis: "Reconstructed from the previous scalar target of 30."
+  target_inventory:
+    - ionic-thermoelectric-effect
+    - thermogalvanic-effect
+    - photoelectrochemical-effect
+    - galvanic-reaction
+    - fuel-cell-reaction
+    - concentration-cell-effect
+    - reverse-electrodialysis
+    - pressure-retarded-osmosis
+    - capacitive-mixing
+    - osmosis
+    - thermally-regenerative-electrochemical-cycle
+    - alkali-metal-thermal-electric-conversion
+    - electrolysis
+    - battery-intercalation
+    - redox-flow-storage
+    - supercapacitor-double-layer-storage
+    - electrodeposition
+    - corrosion-cell
+    - bioelectrochemical-oxidation
+    - electrodialysis
+    - capacitive-deionisation
+    - electrochemical-heat-pumping
+    - thermally-regenerative-ammonia-battery
+    - mixing-entropy-battery
+    - electro-osmotic-pumping
+    - photoelectrolysis
+    - electrocatalytic-co2-reduction
+    - hydrogen-evolution
+    - oxygen-reduction
+    - ion-selective-membrane-transport
 - id: condensed-matter
   name: Condensed matter
-  target_phenomena: 60
   summary: Solid-state transport effects, ferroics, caloric effects, phonons and excitons.
+  target_basis: "Reconstructed from the previous scalar target of 60."
+  target_inventory:
+    - acoustoelectric-effect
+    - thermally-driven-shape-memory-effect
+    - seebeck-effect
+    - peltier-effect
+    - thomson-effect
+    - thermionic-emission
+    - pyroelectric-effect
+    - nernst-effect
+    - ettingshausen-effect
+    - thermomagnetic-transition
+    - magnetocaloric-effect
+    - electrocaloric-effect
+    - elastocaloric-effect
+    - phonon-drag
+    - piezoelectric-effect
+    - converse-piezoelectric-effect
+    - flexoelectric-effect
+    - villari-effect
+    - joule-magnetostriction
+    - magnetoelectric-coupling
+    - hall-effect
+    - photostriction
+    - righi-leduc-effect
+    - maggi-righi-leduc-effect
+    - barocaloric-effect
+    - multicaloric-effect
+    - superelasticity
+    - ferroelectric-switching
+    - ferromagnetic-hysteresis
+    - magnetoresistance
+    - giant-magnetoresistance
+    - piezoresistivity
+    - thermoresistivity
+    - electrostriction
+    - wiedemann-effect
+    - matteucci-effect
+    - barkhausen-effect
+    - exciton-diffusion
+    - hot-carrier-cooling
+    - impact-ionisation
+    - avalanche-multiplication
+    - tunnelling-thermionic-emission
+    - phonon-scattering-limited-conduction
+    - superconducting-transition
+    - charge-density-wave-sliding
+    - ferroelectric-photovoltaic-effect
+    - thermal-hall-effect
+    - phonon-hall-effect
+    - electron-phonon-drag-thermopower
+    - bipolar-diffusion
+    - dember-diffusion-in-solids
+    - grain-boundary-scattering
+    - piezomagnetism
+    - photoconductivity
+    - thermoelastic-damping
+    - magnetostrictive-hysteresis
+    - band-gap-engineering-response
+    - minority-carrier-lifetime-limitation
+    - pyromagnetic-effect
+    - laser-cooling-of-solids
 - id: fluid-mechanics
   name: Fluid mechanics
-  target_phenomena: 25
   summary: Flow, pressure, waves, capillarity and evaporation-driven transport.
+  target_basis: "Reconstructed from the previous scalar target of 25."
+  target_inventory:
+    - marangoni-effect
+    - electrohydrodynamic-generation
+    - thermomagnetic-ferrofluid-convection
+    - aerodynamic-lift
+    - flow-induced-vibration
+    - tidal-flow
+    - ocean-wave-motion
+    - drag-force-extraction
+    - vortex-shedding
+    - venturi-pressure-drop
+    - hydraulic-jump
+    - capillary-rise
+    - evaporation-driven-flow
+    - rayleigh-benard-convection
+    - jet-impingement
+    - cavitation
+    - water-hammer
+    - buoyancy-driven-flow
+    - wind-shear-turbulence
+    - oscillating-water-column
+    - overtopping-wave-capture
+    - siphon-flow
+    - stratified-flow-mixing
+    - droplet-impact
+    - film-flow-drainage
 - id: optics-photonics
   name: Optics and photonics
-  target_phenomena: 30
   summary: Absorption, emission, photovoltaics, thermophotovoltaics and radiative exchange.
+  target_basis: "Reconstructed from the previous scalar target of 30."
+  target_inventory:
+    - radiation-pressure
+    - photon-drag-effect
+    - photo-dember-effect
+    - thermal-emission
+    - radiative-cooling
+    - photothermal-effect
+    - thermoradiative-effect
+    - photovoltaic-effect
+    - photoelectric-effect
+    - photon-enhanced-thermionic-emission
+    - bulk-photovoltaic-effect
+    - thermophotovoltaic-conversion
+    - luminescent-solar-concentration
+    - photon-upconversion
+    - photon-downconversion
+    - singlet-fission
+    - plasmonic-absorption
+    - photoacoustic-effect
+    - optical-rectification
+    - photorefractive-effect
+    - photoisomerisation-storage
+    - solar-thermal-absorption
+    - selective-emission
+    - near-field-radiative-transfer
+    - laser-cooling-of-gases
+    - optical-tweezing
+    - photocatalysis
+    - fluorescence
+    - photochromism
+    - stimulated-emission
 - id: spin-systems
   name: Spin systems
-  target_phenomena: 20
   summary: Spin currents, magnons, spin caloritronics and spin–charge conversion.
+  target_basis: "Pass 11: 20 → 30. The recorded seven omitted spin Peltier, spin-dependent thermopower, Rashba–Edelstein and inverse Edelstein, spin-transfer and spin-orbit torque, spin-motive and other established spin/heat/charge conversions."
+  target_inventory:
+    - spin-nernst-effect
+    - anomalous-nernst-effect
+    - spin-hall-effect
+    - inverse-spin-hall-effect
+    - spin-seebeck-effect
+    - spin-pumping
+    - magnon-transport
+    - spin-peltier-effect
+    - spin-dependent-thermopower
+    - rashba-edelstein-effect
+    - inverse-rashba-edelstein-effect
+    - spin-transfer-torque
+    - spin-orbit-torque
+    - spin-motive-force
+    - anomalous-hall-effect
+    - anomalous-ettingshausen-effect
+    - magnon-drag-thermopower
+    - spin-thermionic-emission
+    - magnetic-tunnel-junction-magnetoresistance
+    - spin-valve-magnetoresistance
+    - domain-wall-motion
+    - skyrmion-motion
+    - magnon-spin-current-in-insulators
+    - spin-caloritronic-cooling
+    - spin-torque-oscillation
+    - magnetoelastic-spin-pumping
+    - acoustic-spin-pumping
+    - spin-hall-magnetoresistance
+    - thermal-spin-injection
+    - spin-mechanical-coupling
 - id: nuclear-physics
   name: Nuclear physics
-  target_phenomena: 20
   summary: Decay, fission, fusion and direct conversion of nuclear radiation.
+  target_basis: "Reconstructed from the previous scalar target of 20."
+  target_inventory:
+    - alphavoltaic-effect
+    - radioluminescence
+    - radioactive-decay
+    - radioisotope-heating
+    - betavoltaic-effect
+    - nuclear-fission
+    - nuclear-fusion
+    - gammavoltaic-effect
+    - nuclear-isomer-storage
+    - neutron-moderation-heating
+    - fission-fragment-direct-conversion
+    - thermionic-nuclear-conversion
+    - radiation-catalysed-chemistry
+    - nuclear-battery-tritium
+    - alpha-recoil
+    - beta-decay-electron-emission
+    - gamma-heating
+    - neutron-capture-heating
+    - muon-catalysed-fusion
+    - spontaneous-fission
 - id: plasma-physics
   name: Plasma physics
-  target_phenomena: 20
   summary: Ionised media, magnetohydrodynamics and plasma-based conversion.
+  target_basis: "Reconstructed from the previous scalar target of 20."
+  target_inventory:
+    - magnetohydrodynamic-effect
+    - plasma-thermionic-conversion
+    - electron-cyclotron-heating
+    - ohmic-plasma-heating
+    - plasma-expansion-direct-conversion
+    - inverse-cyclotron-conversion
+    - arc-discharge-heating
+    - glow-discharge
+    - dielectric-barrier-discharge
+    - plasma-electrolysis
+    - magnetic-mirror-confinement
+    - ambipolar-diffusion
+    - plasma-sheath-potential
+    - alfven-wave-heating
+    - laser-plasma-acceleration
+    - plasma-torch-pyrolysis
+    - electrohydrodynamic-thrust
+    - ionic-wind
+    - z-pinch-compression
+    - magnetic-nozzle-expansion
 - id: quantum-transport
   name: Quantum transport
-  target_phenomena: 20
   summary: Tunnelling, coherence and quantum-limited energy exchange.
+  target_basis: "Pass 11: 20 → 35. Two records cannot be benchmarked against 20 when the intended scope includes tunnelling, resonant transport, Coulomb blockade and single-electron transport, Andreev and Josephson processes, coherent interference, quantum pumping, edge transport and quantum-dot thermoelectric transport."
+  target_inventory:
+    - casimir-effect
+    - information-to-work-conversion
+    - quantum-tunnelling
+    - resonant-tunnelling
+    - coulomb-blockade
+    - single-electron-transport
+    - andreev-reflection
+    - josephson-effect
+    - inverse-josephson-effect
+    - quantum-interference-transport
+    - quantum-pumping
+    - quantum-hall-edge-transport
+    - quantum-dot-thermoelectric-transport
+    - quantum-point-contact-thermopower
+    - landauer-quantised-conductance
+    - quantised-thermal-conductance
+    - photon-assisted-tunnelling
+    - cooper-pair-splitting
+    - superconducting-tunnel-junction-cooling
+    - normal-metal-insulator-superconductor-refrigeration
+    - quantum-heat-engine
+    - quantum-thermal-rectification
+    - dynamical-casimir-effect
+    - quantum-ratchet
+    - brownian-motor
+    - stochastic-resonance
+    - single-photon-detection
+    - kondo-thermopower
+    - thermionic-quantum-well-cooling
+    - phonon-tunnelling
+    - quantum-shuttle
+    - mesoscopic-thermoelectric-fluctuations
+    - electron-hydrodynamic-flow
+    - hot-electron-bolometry
+    - fluctuation-theorem-work-extraction
 - id: biophysical-transduction
   name: Biophysical transduction
-  target_phenomena: 15
   summary: Photosynthesis, chemiosmosis, molecular motors and biological transducers.
+  target_basis: "Pass 11: 15 → 30. Photosynthesis and chemiosmosis omitted the ATP-driven myosin, kinesin and dynein motors, ion pumps, the bacterial rotary motor, mechanosensitive channels, hair-cell transduction and active cytoskeletal transduction; these are distinct energy-transduction mechanisms."
+  target_inventory:
+    - photosynthesis
+    - chemiosmosis
+    - myosin-motor
+    - kinesin-motor
+    - dynein-motor
+    - atp-synthase-rotation
+    - bacterial-flagellar-motor
+    - sodium-potassium-pump
+    - calcium-pump
+    - proton-pump-bacteriorhodopsin
+    - mechanosensitive-channel-gating
+    - hair-cell-mechanotransduction
+    - actin-polymerisation-force
+    - microtubule-dynamic-instability
+    - muscle-contraction
+    - electric-organ-discharge
+    - bioluminescence
+    - photoreceptor-phototransduction
+    - thermogenesis-uncoupling
+    - electroreception
+    - magnetoreception
+    - osmoregulation-work
+    - nitrogenase-reduction
+    - hydrogenase-catalysis
+    - biological-fuel-cell-oxidation
+    - light-harvesting-antenna-transfer
+    - rhodopsin-isomerisation
+    - cilia-beating
+    - plant-turgor-motion
+    - venom-gland-secretion-work
 - id: surface-interface
   name: Surfaces and interfaces
-  target_phenomena: 20
   summary: Contact electrification, wetting, electrokinetics and interfacial energy.
+  target_basis: "Pass 11: 20 → 30. The recorded five left out electro-osmosis, electrophoresis, diffusiophoresis, thermophoresis, electrocapillarity and electrowetting, capillary transport and contact-line transport."
+  target_inventory:
+    - triboelectric-effect
+    - reverse-electrowetting
+    - streaming-potential
+    - hydrovoltaic-effect
+    - droplet-charge-transfer
+    - electro-osmosis
+    - electrophoresis
+    - diffusiophoresis
+    - diffusio-osmosis
+    - thermophoresis-of-colloids
+    - electrocapillarity
+    - electrowetting
+    - capillary-transport
+    - contact-line-pinning-release
+    - wetting-transition
+    - contact-electrification-solid-liquid
+    - slide-electrification
+    - evaporation-induced-potential
+    - moisture-electric-generation
+    - interfacial-double-layer-charging
+    - adsorption-energy-release
+    - surface-tension-actuation
+    - dewetting-instability
+    - condensation-heat-release
+    - frost-formation-work
+    - nanofluidic-ion-selectivity
+    - surface-plasmon-heating
+    - leidenfrost-propulsion
+    - jumping-droplet-electrostatics
+    - capillary-condensation
 - id: chemistry
   name: Chemistry
-  target_phenomena: 25
   summary: Reaction free energy, catalysis, combustion and thermochemical cycles.
+  target_basis: "Reconstructed from the previous scalar target of 25."
+  target_inventory:
+    - thermochemical-redox-cycle
+    - combustion
+    - evaporation
+    - catalytic-oxidation
+    - exothermic-hydration
+    - chemical-looping-combustion
+    - reversible-reaction-heat-storage
+    - metal-hydride-absorption
+    - ammonia-synthesis-decomposition
+    - methanation
+    - reforming
+    - pyrolysis
+    - gasification
+    - photochemical-reaction
+    - mechanochemical-reaction
+    - electrochemical-synthesis
+    - crystallisation-heat-release
+    - dissolution-heat
+    - phase-change-material-storage
+    - salt-hydrate-storage
+    - sorption-heat-storage
+    - detonation
+    - self-propagating-synthesis
+    - chemiluminescence
+    - osmotic-heat-engine-solute

@@ -519,9 +519,10 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
   for (const c of canon.claims) claimsBySubject.set(c.subject, [...(claimsBySubject.get(c.subject) ?? []), c]);
   const sourceYear = new Map(canon.sources.map((s) => [s.id, s.year ?? null]));
   const colDomain = new Map(cols.map((c) => [c.id, c.family]));
-  const reviewedCellSearches = canon.searches.filter((s) => s.target.kind === "cell");
+  const reviewedCellSearches = allSearches.filter((s) => s.target.kind === "cell");
   const coverage: CoverageEntry[] = canon.domains.map((d) => {
-    const phen = canon.entities.filter((e) => e.type === "phenomenon" && e.domain === d.id && (claimsBySubject.get(e.id) ?? []).length > 0);
+    // A phenomenon record counts as recorded whether or not it has an outgoing claim yet (pass 11).
+    const phen = canon.entities.filter((e) => e.type === "phenomenon" && e.domain === d.id);
     const phenIds = new Set(phen.map((p) => p.id));
     const dclaims = canon.claims.filter((c) => phenIds.has(c.subject) || phenIds.has(c.object));
     const withEvidence = dclaims.filter((c) => c.evidence.length > 0).length;
@@ -533,10 +534,10 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
       domain: d.id,
       name: d.name,
       phenomena: phen.length,
-      target_phenomena: d.target_phenomena,
+      target_phenomena: d.target_phenomena!,
       claims: dclaims.length,
       claims_with_evidence: withEvidence,
-      ontology_coverage: Math.min(1, phen.length / d.target_phenomena),
+      ontology_coverage: phen.length / d.target_phenomena!,
       literature_coverage: dclaims.length ? withEvidence / dclaims.length : 0,
       unresolved_claims: unresolved,
       claims_established: dclaims.filter((c) => c.status === "established" || c.status === "replicated").length,
@@ -544,8 +545,13 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
       named_pathways: canon.pathways.filter((p) => p.steps.some((s) => claimIds.has(s))).length,
       matrix_cells: dcells.length,
       matrix_cells_unsearched: dcells.filter((c) => c.status === "not-searched").length,
-      reviewed_searches: reviewedCellSearches.filter((s) => s.target.kind === "cell" && colDomain.get(s.target.col) === d.id).length,
+      reviewed_searches: reviewedCellSearches.filter((s) => s.target.kind === "cell" && colDomain.get(s.target.col) === d.id && reviewedIds.has(s.id)).length,
       newest_source_year: years.length ? Math.max(...years) : null,
+      open_status_claims: unresolved,
+      contradicted_claims: dclaims.filter((c) => c.status === "contradicted" || c.status === "invalid").length,
+      missing_from_inventory: d.target_inventory.filter((slug) => !phen.some((p) => p.id === `phenomenon:${slug}`)),
+      index_only_searches: allSearches.filter((s) => s.target.kind === "cell" && colDomain.get(s.target.col) === d.id && !reviewedIds.has(s.id)).length,
+      matrix_cells_without_search_record: dcells.filter((c) => !c.searched).length,
     };
   });
 
@@ -554,7 +560,9 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
   for (const f of [...canon.files].sort((a, b) => a.path.localeCompare(b.path))) hash.update(f.path).update("\0").update(f.text).update("\0");
   const data_hash = hash.digest("hex").slice(0, 12);
   const totalTargets = coverage.reduce((a, c) => a + c.target_phenomena, 0);
-  const coverage_mean = coverage.reduce((a, c) => a + c.ontology_coverage * c.target_phenomena, 0) / (totalTargets || 1);
+  const editorial_scope_fill = coverage.reduce((a, c) => a + c.phenomena, 0) / (totalTargets || 1);
+  const coverage_mean = editorial_scope_fill;
+  const searchedCells = cells.filter((c) => c.searched).length;
   const count = (t: Entity["type"]) => canon.entities.filter((e) => e.type === t).length;
   const cellsEmpty = cells.filter((c) => c.direct_claims.length === 0).length;
   const tally = <T>(xs: T[], key: (x: T) => string): Record<string, number> => {
@@ -600,6 +608,15 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
         matrix_cells_empty: cellsEmpty,
         matrix_cells_unsearched: cells.filter((c) => c.status === "not-searched").length,
         coverage_mean,
+        editorial_scope_fill,
+        matrix_cells_without_search_record: cells.length - searchedCells,
+        matrix_cells_with_direct_relation: cells.length - cellsEmpty,
+        matrix_cells_status_not_searched: cells.filter((c) => c.status === "not-searched").length,
+        routes_enumerated: paths.length,
+        routes_with_recorded_composition_demonstration: paths.filter((p) => p.search_status === "demonstrated").length,
+        matrix_cells_without_direct_relation: cellsEmpty,
+        searches_reviewed: allSearches.filter((s) => reviewedIds.has(s.id)).length,
+        searches_index_only: allSearches.filter((s) => !reviewedIds.has(s.id)).length,
         claims_by_status: tally(canon.claims, (c) => c.status),
         claims_by_predicate: tally(canon.claims, (c) => c.predicate),
         paths_by_search_status: tally(paths, (p) => p.search_status),

@@ -311,7 +311,8 @@ export function Matrix({ data, density, fill = false, filters = false }: { data:
         <div className={styles.rail}>
           <Legend compact />
           <span className={`t-micro ${styles.stamp}`}>
-            {data.indexed_through ? `SEARCHES THROUGH ${data.indexed_through}` : "NO SEARCH RECORDS"} · DATASET r{data.data_hash}
+            {data.searches_index_only} INDEX-ONLY CELL SEARCH{data.searches_index_only === 1 ? "" : "ES"} · {data.searches_reviewed} REVIEWED SEARCH{data.searches_reviewed === 1 ? "" : "ES"} ·{" "}
+            {data.indexed_through ? `SEARCH RECORDS THROUGH ${data.indexed_through}` : "NO SEARCH RECORDS"} · DATASET r{data.data_hash}
           </span>
         </div>
       </div>

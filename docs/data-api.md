@@ -30,8 +30,13 @@ Every JSON export is `{ "meta": {...}, "data": ... }`, sometimes with one extra 
 | `citation`, `contract`, `changelog`, `vocabulary`, `checks` | where to find the citation file, this page, the revision history, the enumeration definitions and the physics-check registry |
 | `canonical_url_rules` | how each record kind maps to a page you can cite |
 
-`counts` carries the totals (`entities`, `claims`, `sources`, `paths_examined`, `matrix_cells`, …)
-and occurrence maps that say which vocabulary values this revision actually uses:
+`counts` carries the totals (`entities`, `claims`, `sources`, `routes_enumerated`,
+`routes_with_recorded_composition_demonstration`, `matrix_cells`, `matrix_cells_with_direct_relation`,
+`matrix_cells_without_direct_relation`, `matrix_cells_without_search_record`, `searches_reviewed`,
+`searches_index_only`, `editorial_scope_fill` = Σ recorded phenomena / Σ inventory length, …; the older
+names `paths_examined`, `paths_demonstrated`, `matrix_cells_empty`, `matrix_cells_unsearched` (status
+count, not the search-record count) and `coverage_mean` are kept one release and deprecated) and
+occurrence maps that say which vocabulary values this revision actually uses:
 `claims_by_status`, `claims_by_predicate`, `paths_by_search_status`, `paths_by_frontier_class`,
 `paths_by_structural_kind`, `matrix_cells_by_status`, `entities_by_type`. A value defined in the
 vocabulary may occur zero times in a given revision.
@@ -122,8 +127,14 @@ covers the whole composition, `bounded` when every conversion step carries a con
 (vocabulary `matrix.cell.status`), `direct_claims`, `direct_phenomena`, `bridge_paths` (route ids),
 `searched`, `last_searched`, `works_found`.
 
-**CoverageEntry** (generated) — per domain: `phenomena` recorded against `target_phenomena`,
-`claims`, `claims_with_evidence`, `ontology_coverage`, `literature_coverage`, `unresolved_claims`.
+**CoverageEntry** (generated) — per domain: `phenomena` recorded against `target_phenomena` (the
+length of the domain's editorial checklist in `ontology/domains.yaml`; `missing_from_inventory` lists
+the unrecorded slugs), `claims`, `claims_with_evidence`, `ontology_coverage` (editorial scope fill,
+not clamped), `literature_coverage` (citation completeness), `claims_established`,
+`claims_demonstrated`, `open_status_claims` (reported / theoretically-predicted / hypothesised /
+disputed; the older name `unresolved_claims` is kept), `contradicted_claims`, `named_pathways`,
+`matrix_cells`, `matrix_cells_without_search_record`, `matrix_cells_unsearched` (status count),
+`reviewed_searches`, `index_only_searches`, `newest_source_year`.
 
 **SearchRecord** — the only record that may say *no demonstration found*; see
 `data/canonical/searches/README.md`.

@@ -151,6 +151,18 @@ export function loadCanon(root: string): Canon {
     "pathway",
   );
 
+  // Domain inventories: recorded slugs must exist as phenomena; target_phenomena is derived, never typed.
+  const phenomenonSlugs = new Set(entities.filter((e) => e.type === "phenomenon").map((e) => e.id.split(":")[1]));
+  for (const d of domains) {
+    const dupes = d.target_inventory.filter((s, i) => d.target_inventory.indexOf(s) !== i);
+    if (dupes.length) problems.push(`ontology/domains.yaml ${d.id}: duplicate inventory slugs ${dupes.join(", ")}`);
+    d.target_phenomena = d.target_inventory.length;
+    for (const e of entities) {
+      if (e.type === "phenomenon" && e.domain === d.id && !d.target_inventory.includes(e.id.split(":")[1]))
+        problems.push(`ontology/domains.yaml ${d.id}: recorded phenomenon ${e.id} is missing from target_inventory`);
+    }
+    void phenomenonSlugs;
+  }
   for (const e of entities) {
     if (e.id.split(":")[0] !== e.type) problems.push(`${e.id}: id prefix does not match type ${e.type}`);
     if (e.quantity && !entityIds.has(e.quantity)) problems.push(`${e.id}: unknown quantity ${e.quantity}`);

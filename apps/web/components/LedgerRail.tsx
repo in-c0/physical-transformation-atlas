@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { n, pct } from "@/lib/format";
+import { n } from "@/lib/format";
 import styles from "./LedgerRail.module.css";
 
 export type Readout = { value: string; label: string; href?: string; tone?: "default" | "frontier" };
@@ -31,25 +31,24 @@ export function LedgerRail({ items }: { items: Readout[] }) {
   );
 }
 
+/**
+ * The five first-screen numbers, in instrument order: the question space, recorded direct knowledge,
+ * the unsearched space, the actionable compositions, the demonstrated reference set. Corpus-scale
+ * figures (phenomena, claims, routes, scope fill) live on /coverage.
+ */
 export function homeReadouts(counts: {
-  phenomena: number;
-  claims: number;
   couplings: number;
   disequilibria: number;
-  paths_examined: number;
-  paths_demonstrated: number;
-  matrix_cells_unsearched: number;
-  coverage_mean: number;
+  matrix_cells_with_direct_relation: number;
+  matrix_cells_without_search_record: number;
+  routes_with_recorded_composition_demonstration: number;
   candidates: number;
 }): Readout[] {
   return [
-    { value: n(counts.phenomena), label: "PHENOMENA", href: "/atlas" },
-    { value: n(counts.claims), label: "CLAIMS" },
-    { value: `${counts.disequilibria} × ${counts.couplings}`, label: "DRIVERS × COUPLINGS", href: "/matrix" },
-    { value: n(counts.paths_examined), label: "PATHS EXAMINED", href: "/frontier" },
-    { value: n(counts.paths_demonstrated), label: "DEMONSTRATED" },
-    { value: n(counts.candidates), label: "CANDIDATE COMPOSITIONS", href: "/frontier", tone: "frontier" },
-    { value: n(counts.matrix_cells_unsearched), label: "UNSEARCHED CELLS", href: "/matrix", tone: "frontier" },
-    { value: pct(counts.coverage_mean, 1), label: "COVERAGE", href: "/coverage" },
+    { value: `${counts.disequilibria} × ${counts.couplings}`, label: "DRIVER × COUPLING MATRIX", href: "/matrix" },
+    { value: n(counts.matrix_cells_with_direct_relation), label: "CELLS WITH RECORDED DIRECT RELATIONS", href: "/matrix" },
+    { value: n(counts.matrix_cells_without_search_record), label: "CELLS WITH NO SEARCH RECORD", href: "/matrix", tone: "frontier" },
+    { value: n(counts.candidates), label: "FRONTIER CANDIDATE COMPOSITIONS", href: "/frontier", tone: "frontier" },
+    { value: n(counts.routes_with_recorded_composition_demonstration), label: "ROUTES WITH COMPOSITION DEMONSTRATIONS", href: "/frontier" },
   ];
 }

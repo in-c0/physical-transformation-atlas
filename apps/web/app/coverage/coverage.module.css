@@ -1,7 +1,9 @@
-.main { max-width: 900px; margin: 0 auto; padding: 24px var(--gutter) 48px; }
+.main { max-width: 1180px; margin: 0 auto; padding: 24px var(--gutter) 48px; }
+.tableWrap { overflow-x: auto; }
 .lead { max-width: 72ch; margin-bottom: 20px; }
 .table { width: 100%; border-collapse: collapse; border-top: var(--border-strong); }
-.table th, .table td { text-align: left; padding: 6px 12px 6px 0; border-bottom: var(--border); vertical-align: middle; font-weight: var(--weight-regular); }
+.table th, .table td { text-align: left; padding: 6px 10px 6px 0; border-bottom: var(--border); vertical-align: middle; font-weight: var(--weight-regular); }
+.table thead th { white-space: normal; max-width: 120px; vertical-align: bottom; }
 .table thead th { font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-secondary); }
 .table tbody th { font-weight: var(--weight-medium); white-space: nowrap; }
 .num { text-align: right !important; white-space: nowrap; font-variant-numeric: tabular-nums; }
@@ -15,6 +17,9 @@
 .facts dt { color: var(--ink-secondary); font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: 0.04em; text-transform: uppercase; padding-top: 2px; }
 .facts dd { margin: 0; }
 @media (max-width: 640px) {
-  .table { display: block; overflow-x: auto; }
   .facts { grid-template-columns: 1fr; }
 }
+.checklist { display: grid; gap: 10px; }
+.groupTitle { font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-secondary); margin-bottom: 2px; }
+.slugs { display: flex; flex-wrap: wrap; gap: 2px 12px; font-size: var(--text-ui); line-height: var(--leading-ui); max-width: none; }
+.slugs a { text-decoration: underline; text-underline-offset: 2px; }

@@ -36,7 +36,9 @@ try {
     writeFileSync(join(dir, "paths.json"), pathsJson);
   }
   const c = graph.meta.counts;
-  console.log(`graph ${graph.meta.data_hash}: ${c.phenomena} phenomena · ${c.claims} claims · ${c.paths_examined} paths (${c.paths_demonstrated} demonstrated) · ${c.matrix_cells} cells (${c.matrix_cells_empty} empty, ${c.matrix_cells_unsearched} unsearched) · coverage ${(c.coverage_mean * 100).toFixed(1)}% · core ${(coreJson.length / 1024).toFixed(0)} KB + paths ${(pathsJson.length / 1024).toFixed(0)} KB`);
+  console.log(
+    `graph ${graph.meta.data_hash}: ${c.phenomena} phenomena · ${c.claims} claims · ${c.routes_enumerated} routes enumerated (${c.routes_with_recorded_composition_demonstration} with a recorded demonstration) · ${c.matrix_cells} cells (${c.matrix_cells_without_direct_relation} without a direct relation, ${c.matrix_cells_without_search_record} without a search record) · scope fill ${(c.editorial_scope_fill * 100).toFixed(1)}% · core ${(coreJson.length / 1024).toFixed(0)} KB + paths ${(pathsJson.length / 1024).toFixed(0)} KB`,
+  );
   const fails = graph.paths.filter((p) => p.checks.some((k) => k.result === "fail"));
   const byCheck = new Map<string, number>();
   for (const p of fails) for (const k of p.checks) if (k.result === "fail") byCheck.set(k.id, (byCheck.get(k.id) ?? 0) + 1);

@@ -38,6 +38,8 @@ export function matrixPayload() {
       works_found: c.works_found ?? null,
     })),
     indexed_through: a.graph.meta.search_indexed_through,
+    searches_reviewed: a.graph.meta.counts.searches_reviewed,
+    searches_index_only: a.graph.meta.counts.searches_index_only,
     data_hash: a.graph.meta.data_hash,
   };
 }

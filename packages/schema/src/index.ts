@@ -196,9 +196,13 @@ export type UnitDef = z.infer<typeof UnitDef>;
 export const DomainDef = z.object({
   id: z.enum(DOMAINS),
   name: z.string(),
-  /** How many distinct, well-established phenomena a thorough V1 in this domain would carry. */
-  target_phenomena: z.number().int().positive(),
   summary: z.string(),
+  /** How the inventory was assembled; editorial and revisable. */
+  target_basis: z.string(),
+  /** The checklist of phenomenon slugs a thorough first broad release would carry: recorded ones plus the missing ones. */
+  target_inventory: z.array(Slug).min(1),
+  /** Derived by the loader: target_inventory.length. Never typed by hand. */
+  target_phenomena: z.number().int().positive().optional(),
 });
 export type DomainDef = z.infer<typeof DomainDef>;
 
@@ -556,6 +560,16 @@ export const CoverageEntry = z.object({
   reviewed_searches: z.number().int(),
   /** Publication year of the newest source cited by the domain's claims; null when none has a year. */
   newest_source_year: z.number().int().nullable(),
+  /** Claims about the domain's phenomena with status reported, theoretically-predicted, hypothesised or disputed. */
+  open_status_claims: z.number().int(),
+  /** … contradicted or invalid. */
+  contradicted_claims: z.number().int(),
+  /** Inventory slugs not yet recorded as phenomena: the domain's work queue. */
+  missing_from_inventory: z.array(z.string()),
+  /** Automated index-only search runs targeting a cell whose family belongs to this domain. */
+  index_only_searches: z.number().int(),
+  /** Matrix cells in the domain's coupling columns with no search record of any kind. */
+  matrix_cells_without_search_record: z.number().int(),
 });
 export type CoverageEntry = z.infer<typeof CoverageEntry>;
 
@@ -586,7 +600,22 @@ export type Graph = {
       matrix_cells: number;
       matrix_cells_empty: number;
       matrix_cells_unsearched: number;
+      /** Deprecated name for editorial_scope_fill; kept one release for readers of the old exports. */
       coverage_mean: number;
+      /** Σ recorded phenomena / Σ inventory length across domains. Says how much of the atlas's own editorial scope is filled, nothing about nature. */
+      editorial_scope_fill: number;
+      /** Cells with any search record (reviewed or index-only) versus none. 897 − searched. */
+      matrix_cells_without_search_record: number;
+      /** Cells carrying at least one recorded direct relation. */
+      matrix_cells_with_direct_relation: number;
+      /** Cells whose computed status is not-searched (candidate cells with no search are not counted here); prefer matrix_cells_without_search_record. */
+      matrix_cells_status_not_searched: number;
+      /** Aliases with honest names; the old names are deprecated. */
+      routes_enumerated: number;
+      routes_with_recorded_composition_demonstration: number;
+      matrix_cells_without_direct_relation: number;
+      searches_reviewed: number;
+      searches_index_only: number;
       /** Occurrence maps: which vocabulary values this revision actually uses, and how often. */
       claims_by_status: Record<string, number>;
       claims_by_predicate: Record<string, number>;
