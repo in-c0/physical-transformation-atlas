@@ -26,7 +26,7 @@ import {
   searchDate,
   type SearchStatus,
 } from "@pta/schema";
-import { CORE_CHECK_IDS, UnitTable, boundaryReport, runAllChecks, type PhysicsContext } from "@pta/physics";
+import { CORE_CHECK_IDS, UnitTable, boundaryReport, relationRequirement, runAllChecks, type PhysicsContext } from "@pta/physics";
 import type { Canon } from "./load.js";
 import { classify, collapseForms, familySeams, signature, type RouteCore } from "./structure.js";
 import { researchOrder } from "./order.js";
@@ -306,7 +306,10 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
     const CORE = CORE_CHECK_IDS;
     const coreUnresolved = checks.filter((k) => CORE.has(k.id) && (k.result === "unresolved" || k.result === "unknown")).length;
     const boundary = boundaryReport(ctx, claims);
-    const conversionSteps = claims.filter((c) => entity.get(c.subject)?.type === "phenomenon" || entity.get(c.object)?.type === "phenomenon");
+    // Steps that can carry a constitutive relation — the same notion the dimensional check uses (loop-3 pass 25):
+    // drives and couples_to steps, or any step whose relation_requirement says required. A produces or
+    // converts_into step projects the carrier its phenomenon emits and is bounded by the step before it.
+    const conversionSteps = claims.filter((c) => relationRequirement(c) !== "not-applicable");
     const quantified = conversionSteps.filter((c) => c.relation).length;
     const knownDevice =
       phenomena.length >= 2 &&
@@ -452,7 +455,9 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
   function magnitudeScreen(claims: Claim[], pathway: Pathway | undefined): CompiledPath["magnitude_screen"] {
     if (pathway?.performance?.measurements?.length)
       return { status: "quantified", bottleneck_claim: null, detail: `${pathway.performance.measurements.length} reviewed measurement(s) of the whole composition` };
-    const conversion = claims.filter((c) => (PROCESS_PREDICATES as readonly string[]).includes(c.predicate) && entity.get(c.object)?.type !== "output");
+    // Before pass 25 every process step counted, so no route in the atlas could ever be bounded: produces
+    // steps never carry a relation. Now only the steps that can carry one are asked for one.
+    const conversion = claims.filter((c) => (PROCESS_PREDICATES as readonly string[]).includes(c.predicate) && entity.get(c.object)?.type !== "output" && relationRequirement(c) !== "not-applicable");
     const without = conversion.find((c) => !c.relation);
     if (!without && conversion.length)
       return { status: "bounded", bottleneck_claim: null, detail: `every conversion step (${conversion.length}) carries a constitutive relation; the transmitted quantity is bounded step by step` };

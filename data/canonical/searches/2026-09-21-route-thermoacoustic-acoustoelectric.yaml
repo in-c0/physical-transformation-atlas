@@ -1,0 +1,100 @@
+# Loop-3 pass 25: the reviewed ROUTE search for temperature gradient → thermoacoustic effect → (travelling) acoustic wave →
+# acoustoelectric effect → electrical work (p-231472e45e), opened as physics before any engine could run: OpenAlex's shared
+# anonymous daily budget was exhausted, Semantic Scholar keyless and Google Scholar captcha-blocked on 21/09. The second
+# reader's web search found no experiment in which a thermoacoustic engine drove classical Weinreich carrier drag; its five
+# nearest works are recorded with the lane's verification. The protocol runs follow when the engines reopen (pass 26).
+- id: search:2026-09-21-p-231472e45e-partial
+  target:
+    kind: path
+    path: p-231472e45e
+    claims:
+      - claim:thermoacoustic-drives
+      - claim:thermoacoustic-produces-travelling-sound
+      - claim:acoustic-wave-drives-acoustoelectric
+      - claim:acoustoelectric-produces
+      - claim:charge-carriers-convert-electricity
+  protocol_version: route-search-v1
+  started_at: 2026-09-21T02:20:00+10:00
+  completed_at: 2026-09-21T03:10:00+10:00
+  objective: exact-composition
+  inclusion_criteria:
+    - a physical experiment or device in which a thermoacoustic engine's travelling acoustic wave drags mobile carriers in a semiconductor (the Weinreich acoustoelectric effect) and the resulting current delivers electrical work to a load (route-search-v1 §3, output Electrical work)
+  exclusion_criteria:
+    - theory, simulation or proposals (recorded as such, never as demonstrations)
+    - "piezoelectric or triboelectric conversion of thermoacoustic sound, even where the authors call it acoustoelectric (wrong-coupling: the atlas's acoustoelectric effect is Weinreich carrier drag)"
+    - acoustoelectric currents from an electrically launched wave (an RF-driven interdigitated transducer or plate) with no thermoacoustic source (constituent-only or source-variant)
+    - thermoacoustic engines with no acoustoelectric element (constituent-only)
+  runs:
+    - id: search:2026-09-21-p-231472e45e/reviewer-web
+      engine: manual
+      query_form: route-demonstration-precision
+      query_key: demonstration-precision
+      query: "second reader's web search (ChatGPT with browsing, pass 25): any experiment in which a thermoacoustic engine, Rijke tube or Sondhauss tube drove classical acoustoelectric carrier drag, or the nearest thing (a thermoacoustic engine driving a SAW device; an acoustoelectric current from a gas-borne wave)"
+      executed_at: 2026-09-21T02:40:00+10:00
+      engine_version: null
+      index_snapshot: null
+      result_count_reported: null
+      records_retrieved: 5
+      records_screened: 5
+      records_read: 5
+      note: "a web-search negative, not route-search-v1 evidence; the five works the reviewer named were each verified by the lane on Crossref and read at abstract level (Zheng 2022 on the publisher's page, Atashbar 2026 open access)"
+  screening:
+    records_retrieved: 5
+    unique_records: 5
+    title_abstract_screened: 5
+    full_text_read: 0
+  hits:
+    - title: Thermoacoustic energy harvesting using thermally-stabilized polyacrylonitrile nanofibers
+      year: 2022
+      doi: 10.1016/j.nanoen.2022.106995
+      found_by:
+        - search:2026-09-21-p-231472e45e/reviewer-web
+      access: abstract
+      decision: wrong-coupling
+      reason: "Zheng et al. 2022 (Nano Energy): a mini thermoacoustic engine's sound converted to electricity in situ by a thermally stabilised PAN nanofibre membrane (102 V and 10 μA peak, 30 LEDs, a battery charged) — the thermoacoustic source is the route's, but the abstract names the mechanism piezoelectric conversion; the authors' 'acoustoelectric' is not Weinreich carrier drag. Recorded instead as the demonstrated pathway thermoacoustic-piezoelectric-harvester and kept here as the negative control for the alias set."
+    - title: Acoustoelectric Effect in n-Type Germanium
+      year: 1959
+      doi: 10.1103/PhysRev.114.33
+      found_by:
+        - search:2026-09-21-p-231472e45e/reviewer-web
+      access: metadata-only
+      decision: constituent-only
+      reason: "Weinreich, Sanders & White 1959: a travelling ultrasonic wave from an external transducer drags electrons in arsenic-doped n-type germanium — the downstream mechanism demonstrated and the Weinreich relation validated, with no thermoacoustic source (metadata on Crossref; the reviewer's summary of the experiment)."
+    - title: Observation of giant acoustoelectric currents in graphene on lead magnesium niobate–lead titanate
+      year: 2026
+      doi: 10.1038/s41467-026-74813-3
+      found_by:
+        - search:2026-09-21-p-231472e45e/reviewer-web
+      access: full-text
+      decision: source-variant
+      reason: "Atashbar et al. 2026 (Nature Communications, open access): RF-driven interdigitated transducers on (111)-cut PMN–PT launch a surface acoustic wave through monolayer graphene; acoustoelectric current up to 90.39 μA and voltage 341.72 mV at 20 dBm with a 50 V gate (17 μA and 225 mV ungated). A travelling solid-state wave does yield substantial carrier-drag current when coupling and mobility are engineered, but the wave is launched electrically — the route's acoustoelectric stage with a different source."
+    - title: "A thermoacoustic-Stirling heat engine: Detailed study"
+      year: 2000
+      doi: 10.1121/1.429343
+      found_by:
+        - search:2026-09-21-p-231472e45e/reviewer-web
+      access: metadata-only
+      decision: constituent-only
+      reason: "Backhaus & Swift 2000: the travelling-wave (Stirling-cycle) thermoacoustic engine in detail — the driver, the first mechanism and the travelling acoustic carrier demonstrated, no acoustoelectric element."
+    - title: Traveling Wave Thermoacoustic Engine in a Looped Tube
+      year: 1998
+      doi: 10.1103/PhysRevLett.81.3128
+      found_by:
+        - search:2026-09-21-p-231472e45e/reviewer-web
+      access: metadata-only
+      decision: constituent-only
+      reason: "Yazaki, Iwata, Maekawa & Tominaga 1998: the first travelling-wave thermoacoustic engine (a looped tube) — the same role as Backhaus & Swift 2000, earlier."
+  result: inconclusive
+  completeness: partial
+  reviewed_by: Ava Kim's loop-3 lane (Claude Opus 5); abstracts and Crossref metadata read by the lane; ChatGPT (GPT-5 Thinking) as second reader and web searcher in pass 25
+  reviewed_on: 2026-09-21
+  limitations:
+    - no protocol engine has run for this route yet — OpenAlex's shared anonymous daily budget was exhausted (HTTP 429, resets at midnight UTC), Semantic Scholar answered 429 keyless (owner exception e953) and Google Scholar answered every query with a captcha; the plan p-231472e45e.yaml is written and the OpenAlex and Scholar forms are pass 26's first job
+    - the only run is the second reader's web search, which does not count as an engine under route-search-v1
+    - "Weinreich, Sanders & White 1959 and the two travelling-wave engine papers were verified at metadata level only; their roles are constituent, so nothing about the composition rests on their full texts"
+  conclusion: "No demonstration known: the second reader's web search found no experiment in which a thermoacoustic engine, Rijke tube or Sondhauss tube drove classical Weinreich carrier drag, and each of its five nearest works fails the composition for a stated reason — the thermoacoustic-to-electric device that exists (Zheng 2022) is piezoelectric, and the acoustoelectric currents that exist (Weinreich 1959, Atashbar 2026) come from electrically launched waves. The physics review changed the route's spelling: Weinreich drag needs a travelling wave, so the candidate is now the travelling-wave spelling (handoff token acoustic:travelling-wave) and the generic-sound spelling is incomplete-handoff. Both conversion steps now carry a constitutive relation (Swift's critical gradient; the Weinreich relation), so the route is the atlas's first bounded candidate; the second reader's order-of-magnitude estimate — of order 10⁻³ of a 700 W engine's acoustic power crossing a bare helium–germanium interface, nanoamp-to-microamp acoustoelectric currents, femtowatt-to-sub-picowatt matched-load power — lives in the pass log, not here. Inconclusive as a route search until the engine runs exist."
+  follow_up:
+    canonical_claim_review: completed
+    canonical_pathway_review: completed
+    candidate_source_ids:
+      - source:zheng-2022-thermoacoustic-pan

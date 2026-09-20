@@ -241,8 +241,16 @@
     - a resonant gas column
   condition_tags: [state-gas, temp-gradient-required]
   energy: { input: thermal, output: acoustic, dissipation: thermal }
+  relation:
+    formula: "|∇T_crit| = β T_m ω |p₁| / (ρ_m c_p |u₁|); prime-mover onset requires |∇T| > |∇T_crit|"
+    input: quantity:sound-pressure
+    output: quantity:temperature-gradient
+    coefficient_unit: "K/(Pa·m)"
+    coefficient_name: "critical-gradient factor β T_m ω/(ρ_m c_p u₁)"
+    conventions: "p₁ and u₁ are the local first-order acoustic pressure and particle-velocity amplitudes; β is the volumetric thermal expansion coefficient (β T_m ≈ 1 for an ideal gas); this is the linear short-stack / standing-wave criterion of Swift 1988 — above the critical gradient the stack amplifies the wave, below it the same interaction pumps heat — not a closed-form performance law for every travelling-wave regenerator."
   evidence: [source:swift-1988]
   status: established
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 25 (Swift's critical-gradient criterion recorded as the constitutive relation; the efficiency belongs to pathway performance and the Carnot bound)" }
   knowledge_level: K7
 - id: claim:thermoacoustic-produces-sound
   subject: phenomenon:thermoacoustic-effect
@@ -251,6 +259,29 @@
   energy: { input: acoustic, output: acoustic }
   evidence: [source:swift-1988]
   status: established
+- id: claim:thermoacoustic-produces-travelling-sound
+  subject: phenomenon:thermoacoustic-effect
+  predicate: produces
+  object: carrier:acoustic-wave
+  conditions:
+    - "travelling-wave thermoacoustic regime with a non-zero time-averaged acoustic power flux; pressure and particle velocity have the phase relation required for directed acoustic power (a looped tube or a travelling-wave regenerator), unlike the standing wave of a straight resonator"
+  condition_tags: [state-gas]
+  energy: { input: acoustic, output: acoustic }
+  handoff: { provides: [acoustic:travelling-wave] }
+  evidence: [source:yazaki-1998-travelling-wave-tae, source:backhaus-swift-2000]
+  status: established
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 25 (regime-specific spelling: only a travelling wave carries the directed momentum Weinreich drag needs; the generic sound claim keeps standing-wave engines)" }
+- id: claim:acoustic-wave-drives-piezoelectric
+  subject: carrier:acoustic-wave
+  predicate: drives
+  object: phenomenon:piezoelectric-effect
+  conditions:
+    - "sound pressure strains a compliant piezoelectric membrane or plate; standing and travelling waves both serve, the response following the pressure oscillation"
+  condition_tags: [state-solid]
+  energy: { input: acoustic, output: electrical, dissipation: thermal }
+  evidence: [source:zheng-2022-thermoacoustic-pan]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 25 (the consumer the thermoacoustic piezoelectric harvester needs; Zheng 2022 abstract read)" }
 - id: claim:acoustic-drives-linear-alternator
   subject: carrier:acoustic-wave
   predicate: drives

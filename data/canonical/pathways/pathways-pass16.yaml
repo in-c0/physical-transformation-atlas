@@ -473,3 +473,41 @@
   environment: [state-solid, medium-dielectric, temp-gradient-required]
   summary: A spatial temperature gradient produces non-uniform thermal expansion and a strain gradient that drives flexoelectric polarization in insulating solids. Voltage and polarization-screening current were experimentally detected, but no electrical load or output power was reported, so heat-to-charge conversion is observed while electrical-work conversion remains undemonstrated.
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 24 (the second reader's status (a) — observed, observed_through the flexoelectric charge step; the final step remains unsupported by the evidence)" }
+# Loop-3 pass 25: a known device found while searching the acoustoelectric route — thermoacoustic sound harvested piezoelectrically.
+- id: pathway:thermoacoustic-piezoelectric-harvester
+  name: Thermoacoustic piezoelectric harvester
+  steps: [claim:thermoacoustic-drives, claim:thermoacoustic-produces-sound, claim:acoustic-wave-drives-piezoelectric, claim:piezo-produces-charge, claim:surface-charge-converts-electricity]
+  demonstrated_with: [transducer:thermoacoustic-piezoelectric-harvester]
+  evidence: [source:zheng-2022-thermoacoustic-pan]
+  status: demonstrated
+  knowledge_level: K5
+  performance:
+    measurements:
+      - quantity: open-circuit voltage (peak)
+        value: "102 V"
+        value_numeric: 102
+        unit: V
+        scope: laboratory
+        conditions: "3 × 3 cm² thermally stabilised PAN nanofibre membrane in the sound field of a mini thermoacoustic engine, the device at 280 °C; ran 30 LEDs and charged a lithium battery and a capacitor; stable for at least 2 h"
+        sources: [source:zheng-2022-thermoacoustic-pan]
+        year: 2022
+      - quantity: short-circuit current (peak)
+        value: "10 μA"
+        value_numeric: 0.00001
+        unit: A
+        scope: laboratory
+        conditions: "the same engine-driven run"
+        sources: [source:zheng-2022-thermoacoustic-pan]
+        year: 2022
+      - quantity: areal power density
+        value: "392 mW m⁻²"
+        value_numeric: 0.392
+        unit: W/m²
+        scope: laboratory
+        conditions: "under loudspeaker sound, 118 dB at 230 Hz (118 V open-circuit, 12 μA short-circuit), room temperature to 450 °C — the device characterisation, not the engine-driven run"
+        sources: [source:zheng-2022-thermoacoustic-pan]
+        year: 2022
+        note: "abstract figures; the engine-driven output is the pathway's demonstration"
+  environment: [state-gas, temp-gradient-required]
+  summary: A thermoacoustic engine's sound field strains a piezoelectric nanofibre membrane, whose charge runs a load — the piezoelectric sibling of the linear-alternator generator, recorded from the authors' engine-driven run. The authors call the membrane "acoustoelectric"; the atlas keeps that name for Weinreich carrier drag, a different coupling.
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 25 (known device recorded from the abstract; the second reader ruled it wrong-coupling for the acoustoelectric route)" }

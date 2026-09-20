@@ -187,3 +187,30 @@ test("an observed pathway (loop-3 pass 24) leads its route with the observation 
   assert.ok(rec!.hits.some((h) => h.decision === "sink-variant"));
   assert.ok(!rec!.hits.some((h) => h.decision === "qualifies"));
 });
+
+test("a consuming step's carrier requirement is met only by the regime that provides it (loop-3 pass 25): the travelling-wave thermoacoustic spelling is the bounded acoustoelectric candidate, the generic-sound spelling is incomplete-handoff", () => {
+  const phen = (p: CompiledPath) => p.nodes.filter((n) => n.startsWith("phenomenon:")).map((n) => n.split(":")[1]).join(">");
+  const spellings = paths.filter((p) => p.nodes[0] === "disequilibrium:temperature-gradient" && phen(p) === "thermoacoustic-effect>acoustoelectric-effect" && p.sink === "output:electricity");
+  assert.equal(spellings.length, 2, "two spellings of thermoacoustic → acoustoelectric");
+  const travelling = spellings.find((p) => p.claims.includes("claim:thermoacoustic-produces-travelling-sound"));
+  const generic = spellings.find((p) => p.claims.includes("claim:thermoacoustic-produces-sound"));
+  assert.ok(travelling && generic);
+  assert.equal(travelling!.frontier_class, "candidate");
+  assert.equal(travelling!.handoff_unresolved_count, 0);
+  assert.equal(travelling!.magnitude_screen.status, "bounded", "both drives steps carry a constitutive relation");
+  assert.equal(travelling!.checks.find((c) => c.id === "dimensional")?.result, "pass");
+  assert.equal(generic!.frontier_class, "incomplete-handoff");
+  assert.ok(generic!.handoff_issues.some((h) => h.missing.includes("acoustic:travelling-wave")));
+  // the piezoelectric sibling found on the way is a demonstrated pathway, never a candidate
+  const piezo = paths.find((p) => p.pathway === "pathway:thermoacoustic-piezoelectric-harvester");
+  assert.ok(piezo && piezo.search_status === "demonstrated" && piezo.frontier_class === "demonstrated");
+});
+
+test("magnitude screen: bounded means every relation-capable step (drives / couples_to / required) carries a relation; produces steps are never asked for one", () => {
+  const bounded = paths.filter((p) => p.magnitude_screen.status === "bounded");
+  assert.ok(bounded.length > 0, "the screen can say bounded");
+  for (const p of paths) {
+    if (p.magnitude_screen.status === "missing") assert.ok(p.magnitude_screen.bottleneck_claim, `${p.id} missing without a bottleneck`);
+    if (p.magnitude_screen.status === "bounded") assert.equal(p.magnitude_data_coverage.quantified, p.magnitude_data_coverage.of, `${p.id} bounded but coverage incomplete`);
+  }
+});

@@ -174,11 +174,23 @@
   subject: carrier:acoustic-wave
   predicate: drives
   object: phenomenon:acoustoelectric-effect
-  condition_tags: [state-solid]
+  conditions:
+    - "a travelling longitudinal bulk acoustic wave propagates through a semiconductor, or a travelling surface acoustic wave is coupled to mobile carriers"
+    - "net DC Weinreich drag requires directed acoustic momentum; a pure standing wave does not by itself supply the required net momentum"
+    - "a gas-borne acoustic wave may couple mechanically into the solid at a gas–solid boundary; an active piezoelectric launcher is an optional implementation, not part of the acoustoelectric effect"
+  condition_tags: [state-solid, medium-semiconductor]
   energy: { input: acoustic, output: electrical, dissipation: thermal }
-  evidence: [source:weinreich-white-1957, source:parmenter-1953]
+  handoff: { requires_all: [acoustic:travelling-wave] }
+  relation:
+    formula: "|j_AE| = μ |Γ| I_s / v_s"
+    input: quantity:acoustic-intensity
+    output: quantity:current-density
+    coefficient_unit: "A/W"
+    coefficient_name: "Weinreich acoustoelectric responsivity μ Γ / v_s"
+    conventions: "I_s is positive along the acoustic wavevector and Γ > 0 is the intensity attenuation coefficient due to the carriers; momentum transfer is along propagation, so electron drift gives conventional current opposite to propagation while hole current is along it — the magnitude form keeps the carrier sign out of μ."
+  evidence: [source:weinreich-white-1957, source:parmenter-1953, source:weinreich-1957-attenuation, source:weinreich-sanders-white-1959, source:atashbar-2026-graphene-pmn-pt]
   status: demonstrated
-  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 7 audit (ChatGPT review, applied and source-verified by the lane)" }
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 25 (travelling-wave handoff required, conditions and the Weinreich relation recorded; Atashbar 2026 as a modern SAW demonstration)" }
 - id: claim:acoustoelectric-produces
   subject: phenomenon:acoustoelectric-effect
   predicate: produces
@@ -659,3 +671,18 @@
   evidence: [source:asim-2022-pico-waterwheel]
   status: demonstrated
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 23 (triage of the released candidates; Asim 2022 read on the publisher's page)" }
+# Loop-3 pass 25: the thermoacoustic piezoelectric harvester.
+- id: claim:thermoacoustic-implemented-piezo-harvester
+  subject: phenomenon:thermoacoustic-effect
+  predicate: implemented_by
+  object: transducer:thermoacoustic-piezoelectric-harvester
+  evidence: [source:zheng-2022-thermoacoustic-pan]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 25 (abstract read)" }
+- id: claim:piezo-implemented-thermoacoustic-harvester
+  subject: phenomenon:piezoelectric-effect
+  predicate: implemented_by
+  object: transducer:thermoacoustic-piezoelectric-harvester
+  evidence: [source:zheng-2022-thermoacoustic-pan]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 25 (abstract read)" }

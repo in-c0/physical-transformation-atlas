@@ -1,5 +1,8 @@
-# route-search-v1 query plan — p-690d387078
-# Temperature gradient → Thermoacoustic effect → Acoustic wave → Acoustoelectric effect → Charge carriers → Electrical work
+# route-search-v1 query plan — p-231472e45e
+# Temperature gradient → Thermoacoustic effect → Acoustic wave (travelling) → Acoustoelectric effect → Charge carriers → Electrical work
+# Re-pointed in pass 25 from p-690d387078, the generic-sound spelling, after the second reader's review: Weinreich drag needs a
+# travelling wave, so the acoustoelectric step now requires the handoff token acoustic:travelling-wave, which only the regime-
+# specific claim thermoacoustic-produces-travelling-sound provides; the generic spelling is incomplete-handoff and dominated.
 # D = Temperature gradient; M_1 = Thermoacoustic effect; M_2 = Acoustoelectric effect; O = Electrical work (k = 2).
 # Written in loop-3 pass 25 (the reviewer's P2 candidate) from the recorded names and the aliases added first:
 # thermoacoustic engine / prime mover / heat engine / instability on the thermoacoustic effect; acousto-electric
@@ -9,62 +12,62 @@
 # reviewer's first query is recorded verbatim as the extra precision run oa-dp-r. Google Scholar runs are
 # performed by hand and recorded in the reviewed record, not here.
 protocol_version: route-search-v1
-route: p-690d387078
-claims: [claim:thermoacoustic-drives, claim:thermoacoustic-produces-sound, claim:acoustic-wave-drives-acoustoelectric, claim:acoustoelectric-produces, claim:charge-carriers-convert-electricity]
+route: p-231472e45e
+claims: [claim:thermoacoustic-drives, claim:thermoacoustic-produces-travelling-sound, claim:acoustic-wave-drives-acoustoelectric, claim:acoustoelectric-produces, claim:charge-carriers-convert-electricity]
 driver_terms: [temperature gradient, temperature difference, thermal gradient, ΔT, waste heat, heat input]
 phenomenon_terms:
   phenomenon:thermoacoustic-effect: [thermoacoustic, thermoacoustic effect, thermoacoustic engine, thermoacoustic prime mover, thermoacoustic heat engine, Rijke tube, Sondhauss tube]
   phenomenon:acoustoelectric-effect: [acoustoelectric effect, acoustoelectric current, acousto-electric effect, acoustoelectric voltage, acoustoelectric drag, Weinreich relation]
 output_terms: [electrical work, electricity, electrical output, DC power, direct current]
 runs:
-  - id: search:2026-09-21-p-690d387078/oa-dm1
+  - id: search:2026-09-21-p-231472e45e/oa-dm1
     engine: openalex
     form: route-driver-mechanism
     key: driver-mechanism:1
     query: '("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat" OR "heat input") AND (thermoacoustic OR "thermoacoustic effect" OR "thermoacoustic engine" OR "thermoacoustic prime mover" OR "thermoacoustic heat engine" OR "Rijke tube" OR "Sondhauss tube")'
-  - id: search:2026-09-21-p-690d387078/oa-dm1-newest
+  - id: search:2026-09-21-p-231472e45e/oa-dm1-newest
     engine: openalex
     form: route-driver-mechanism
     key: driver-mechanism:1
     sort: newest
     per_page: 50
     query: '("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat" OR "heat input") AND (thermoacoustic OR "thermoacoustic effect" OR "thermoacoustic engine" OR "thermoacoustic prime mover" OR "thermoacoustic heat engine" OR "Rijke tube" OR "Sondhauss tube")'
-  - id: search:2026-09-21-p-690d387078/oa-mp12
+  - id: search:2026-09-21-p-231472e45e/oa-mp12
     engine: openalex
     form: route-mechanism-pair
     key: mechanism-pair:1-2
     query: '(thermoacoustic OR "thermoacoustic effect" OR "thermoacoustic engine" OR "thermoacoustic prime mover" OR "thermoacoustic heat engine" OR "Rijke tube" OR "Sondhauss tube") AND ("Acoustoelectric effect" OR "acoustoelectric current" OR "acousto-electric effect" OR "acoustoelectric voltage" OR "acoustoelectric drag" OR "Weinreich relation")'
-  - id: search:2026-09-21-p-690d387078/oa-wc
+  - id: search:2026-09-21-p-231472e45e/oa-wc
     engine: openalex
     form: route-whole-chain
     key: whole-chain
     query: '("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat" OR "heat input") AND (thermoacoustic OR "thermoacoustic effect" OR "thermoacoustic engine" OR "thermoacoustic prime mover" OR "thermoacoustic heat engine" OR "Rijke tube" OR "Sondhauss tube") AND ("Acoustoelectric effect" OR "acoustoelectric current" OR "acousto-electric effect" OR "acoustoelectric voltage" OR "acoustoelectric drag" OR "Weinreich relation") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power" OR "direct current")'
-  - id: search:2026-09-21-p-690d387078/oa-dp
+  - id: search:2026-09-21-p-231472e45e/oa-dp
     engine: openalex
     form: route-demonstration-precision
     key: demonstration-precision
     query: '("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat" OR "heat input") AND (thermoacoustic OR "thermoacoustic effect" OR "thermoacoustic engine" OR "thermoacoustic prime mover" OR "thermoacoustic heat engine" OR "Rijke tube" OR "Sondhauss tube") AND ("Acoustoelectric effect" OR "acoustoelectric current" OR "acousto-electric effect" OR "acoustoelectric voltage" OR "acoustoelectric drag" OR "Weinreich relation") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power" OR "direct current") AND (experiment OR experimental OR measured OR device OR prototype)'
-  - id: search:2026-09-21-p-690d387078/oa-dp-r
+  - id: search:2026-09-21-p-231472e45e/oa-dp-r
     engine: openalex
     form: route-demonstration-precision
     key: demonstration-precision
     query: 'thermoacoustic AND ("acoustoelectric current" OR "acousto-electric effect") AND (semiconductor OR graphene) AND experiment'
-  - id: search:2026-09-21-p-690d387078/s2-dm1
+  - id: search:2026-09-21-p-231472e45e/s2-dm1
     engine: semantic-scholar
     form: route-driver-mechanism
     key: driver-mechanism:1
     query: Temperature gradient temperature difference thermal gradient waste heat heat input thermoacoustic thermoacoustic effect thermoacoustic engine thermoacoustic prime mover thermoacoustic heat engine Rijke tube Sondhauss tube
-  - id: search:2026-09-21-p-690d387078/s2-mp12
+  - id: search:2026-09-21-p-231472e45e/s2-mp12
     engine: semantic-scholar
     form: route-mechanism-pair
     key: mechanism-pair:1-2
     query: thermoacoustic thermoacoustic effect thermoacoustic engine thermoacoustic prime mover thermoacoustic heat engine Rijke tube Sondhauss tube Acoustoelectric effect acoustoelectric current acousto-electric effect acoustoelectric voltage acoustoelectric drag Weinreich relation
-  - id: search:2026-09-21-p-690d387078/s2-wc
+  - id: search:2026-09-21-p-231472e45e/s2-wc
     engine: semantic-scholar
     form: route-whole-chain
     key: whole-chain
     query: Temperature gradient temperature difference thermal gradient waste heat heat input thermoacoustic thermoacoustic effect thermoacoustic engine thermoacoustic prime mover thermoacoustic heat engine Rijke tube Sondhauss tube Acoustoelectric effect acoustoelectric current acousto-electric effect acoustoelectric voltage acoustoelectric drag Weinreich relation Electrical work electricity electrical output DC power direct current
-  - id: search:2026-09-21-p-690d387078/s2-dp
+  - id: search:2026-09-21-p-231472e45e/s2-dp
     engine: semantic-scholar
     form: route-demonstration-precision
     key: demonstration-precision

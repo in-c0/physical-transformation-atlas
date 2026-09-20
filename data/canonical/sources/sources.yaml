@@ -1353,3 +1353,52 @@
   venue: "International Journal of Solids and Structures 162, 96–104"
   doi: 10.1016/j.ijsolstr.2018.12.003
   notes: "Abstract read on the publisher's page (open archive). Theory by variational principles of the polarization response of an inhomogeneously heated thin plate; the authors estimate that the effect could convert waste heat into electric power at up to tens of watts per kilogram of flexoelectric material — a calculated bound, no device. A citation-chase seed for the route."
+# Loop-3 pass 25: the thermoacoustic → acoustoelectric route as physics — travelling-wave engines, the Weinreich relation, and the nearest experiments.
+- id: source:yazaki-1998-travelling-wave-tae
+  type: paper
+  title: "Traveling Wave Thermoacoustic Engine in a Looped Tube"
+  authors: [T. Yazaki, A. Iwata, T. Maekawa, A. Tominaga]
+  year: 1998
+  venue: "Physical Review Letters 81, 3128–3131"
+  doi: 10.1103/PhysRevLett.81.3128
+  notes: "Metadata verified on Crossref. The first travelling-wave thermoacoustic engine: a looped tube in which the acoustic wave circulates with a non-zero time-averaged acoustic power flux, as distinct from the standing wave of a straight resonator."
+- id: source:backhaus-swift-2000
+  type: paper
+  title: "A thermoacoustic-Stirling heat engine: Detailed study"
+  authors: [S. Backhaus, G. W. Swift]
+  year: 2000
+  venue: "Journal of the Acoustical Society of America 107, 3148–3166"
+  doi: 10.1121/1.429343
+  notes: "Metadata verified on Crossref. The detailed study of the travelling-wave (Stirling-cycle) thermoacoustic engine of Backhaus & Swift 1999 (Nature 399, 335: 710 W of acoustic power at 30 % thermal efficiency, ≈ 30 bar helium, ≈ 80 Hz) — the regime in which the engine's wave carries directed acoustic power."
+- id: source:weinreich-1957-attenuation
+  type: paper
+  title: "Ultrasonic Attenuation by Free Carriers in Germanium"
+  authors: [G. Weinreich]
+  year: 1957
+  venue: "Physical Review 107, 317–318"
+  doi: 10.1103/PhysRev.107.317.2
+  notes: "Metadata verified on Crossref. The Weinreich relation: the acoustoelectric field (current) is tied to the ultrasonic attenuation the free carriers cause — momentum lost by the wave is transferred to the carriers."
+- id: source:weinreich-sanders-white-1959
+  type: paper
+  title: "Acoustoelectric Effect in n-Type Germanium"
+  authors: [G. Weinreich, T. M. Sanders, H. G. White]
+  year: 1959
+  venue: "Physical Review 114, 33–44"
+  doi: 10.1103/PhysRev.114.33
+  notes: "Metadata verified on Crossref. Theory and measurement of the acoustoelectric drag of electrons by a travelling ultrasonic wave in arsenic-doped n-type germanium (the second reader: donor concentrations of order 10¹⁴–10¹⁶ cm⁻³, 20–160 K), the quantitative validation of the Weinreich relation; the carrier-related attenuation was small enough to be hard to measure."
+- id: source:zheng-2022-thermoacoustic-pan
+  type: paper
+  title: "Thermoacoustic energy harvesting using thermally-stabilized polyacrylonitrile nanofibers"
+  authors: [Y. Zheng, W. Wang, J. Niu, X. Jin, Y. Sun, L. Peng, W. Li, H. Wang, T. Lin]
+  year: 2022
+  venue: "Nano Energy 95, 106995"
+  doi: 10.1016/j.nanoen.2022.106995
+  notes: "Abstract read on the publisher's page. Thermally stabilised electrospun PAN nanofibre membranes convert sound into electricity piezoelectrically up to 450 °C: under mono-frequency sound (118 dB, 230 Hz) a 3 × 3 cm² device gives 118 V open-circuit and 12 μA short-circuit (392 mW m⁻²); driven in situ by a mini thermoacoustic engine, with the device at 280 °C, peak outputs of 102 V and 10 μA ran 30 LEDs and charged a lithium battery and a capacitor, stable for at least 2 h. The authors' word 'acoustoelectric' names piezoelectric acoustic-to-electric conversion, not Weinreich carrier drag."
+- id: source:atashbar-2026-graphene-pmn-pt
+  type: paper
+  title: "Observation of giant acoustoelectric currents in graphene on lead magnesium niobate–lead titanate"
+  authors: [M. Atashbar, H. Mansoorzare, T. Jabegu, S. Lei, M. Galanko Klemash, S. Bedair, R. Abdolvand]
+  year: 2026
+  venue: "Nature Communications 17, 8932"
+  doi: 10.1038/s41467-026-74813-3
+  notes: "Open access, abstract and results read. Interdigitated transducers on (111)-cut PMN–PT launch a surface acoustic wave through monolayer graphene: the acoustoelectric current reaches 90.39 μA and the open-circuit voltage 341.72 mV at 20 dBm RF input with a 50 V gate (17 μA and 225 mV ungated), an acoustoelectric responsivity of 7.66 μA/(W·MHz). The travelling solid-state wave is launched electrically, not by heat."

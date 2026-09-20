@@ -273,3 +273,12 @@
   unit: Pa
   dimension: { M: 1, L: -1, T: -2 }
   summary: Oscillating pressure of a sound wave.
+# Loop-3 pass 25: the input of the Weinreich acoustoelectric relation.
+- id: quantity:acoustic-intensity
+  type: quantity
+  name: Acoustic intensity
+  symbol: I_s
+  unit: W/m²
+  dimension: { M: 1, T: -3 }
+  summary: Time-averaged acoustic power flux through unit area, positive along the wavevector.
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 25 (the Weinreich relation's input quantity)" }

@@ -88,8 +88,10 @@ can pass or fail a route's thermodynamic-bound check); `knowledge_level` on tran
 `energy` (`input`, `output`, optional `dissipation`; declared on process claims), an optional
 constitutive `relation` (`formula`, `input` and `output` quantities, `coefficient_unit`,
 `conventions`), an optional `handoff` (`provides[]` on a producing step, `requires_all[]` /
-`requires_any[]` on a consuming step, as tokens such as `flow:bulk`, `flow:directed-momentum` or
-`motion:relative-flux-change`; the compiler checks them across each carrier), an optional
+`requires_any[]` on a consuming step, as tokens such as `flow:bulk`, `flow:directed-momentum`,
+`motion:relative-flux-change` or `acoustic:travelling-wave` — an acoustic field carrying directed
+time-averaged momentum along a propagation direction, which a pure standing wave does not provide;
+the compiler checks them across each carrier), an optional
 `relation_requirement` (`required` / `not-applicable` / `unknown`; drives and couples_to steps default
 to unknown, produces and converts_into to not-applicable), `evidence` (source ids), `status`
 (vocabulary `claim.status`), optional `knowledge_level`, `review` and `notes`. The four process predicates (`drives`, `produces`,
@@ -131,7 +133,9 @@ mechanism from a different driver), `sink-variant` (shared head) or `mechanism-s
 `handoff_unresolved_count` and `handoff_issues[]` (`{ from_claim, to_claim, missing[] }`: declared
 carrier-handoff requirements nothing earlier on the route provides — unresolved, never "impossible"),
 `magnitude_screen` (`{ status, bottleneck_claim, detail }`: `quantified` when a reviewed measurement
-covers the whole composition, `bounded` when every conversion step carries a constitutive relation,
+covers the whole composition, `bounded` when every conversion step carries a constitutive relation — a
+conversion step being a `drives` or `couples_to` step, or one whose `relation_requirement` is `required`,
+as in the dimensional check; a `produces` step projects a carrier and is bounded by the step before it —
 `missing` otherwise; `incompatible` is reserved for a recorded contradiction), `magnitude_data_coverage`, `representation_signature`,
 `semantic_overlap`, `structural_kind`, `dominated_by`, `source_availability`,
 `known_pathway_overlap`, `composition_observation` (`observed-not-converted` when the exact route

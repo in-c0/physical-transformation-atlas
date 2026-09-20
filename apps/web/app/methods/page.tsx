@@ -229,7 +229,9 @@ export default function MethodsPage() {
           <p>
             Measured performance coverage is one of the seven checks and asks whether the recorded pathway carries a structured measurement for the whole composition; it is a coverage statement, not a
             physics verdict. <code>magnitude_screen</code> is a separate frontier-ordering diagnostic: <em>quantified</em> means whole-composition measurements exist; <em>bounded</em> means every
-            recorded conversion step carries a constitutive relation; <em>missing</em> means at least one step cannot yet be bounded from the recorded relations. Neither field estimates performance.
+            recorded conversion step carries a constitutive relation — a conversion step here is a <em>drives</em> or <em>couples_to</em> step, or one whose <code>relation_requirement</code> is
+            required; a <em>produces</em> step projects the carrier its phenomenon emits and is bounded by the step before it (the same notion the dimensional check uses); <em>missing</em> means at
+            least one such step cannot yet be bounded from the recorded relations. Neither field estimates performance.
           </p>
         </div>
       </section>
