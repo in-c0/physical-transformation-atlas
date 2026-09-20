@@ -52,17 +52,7 @@ export type Predicate = (typeof PREDICATES)[number];
 export const PROCESS_PREDICATES = ["drives", "produces", "couples_to", "converts_into"] as const;
 export type ProcessPredicate = (typeof PROCESS_PREDICATES)[number];
 
-export const EVIDENCE_STATUSES = [
-  "established",
-  "replicated",
-  "demonstrated",
-  "reported",
-  "theoretically-predicted",
-  "hypothesised",
-  "disputed",
-  "contradicted",
-  "invalid",
-] as const;
+export const EVIDENCE_STATUSES = ["established", "replicated", "demonstrated", "reported", "theoretically-predicted", "hypothesised", "disputed", "contradicted", "invalid"] as const;
 export type EvidenceStatus = (typeof EVIDENCE_STATUSES)[number];
 
 /** Rank used when a path takes the weakest of its constituent claims. */
@@ -149,7 +139,7 @@ export type Availability = (typeof AVAILABILITY)[number];
  * evidence. composition = two or more conversion phenomena with a real handoff; the others are
  * artefacts of representation that stay searchable but are not frontier material.
  */
-export const STRUCTURAL_KINDS = ["composition", "known-device-likely", "energy-backtracking", "representation-dominated", "representation-equivalent", "atomic"] as const;
+export const STRUCTURAL_KINDS = ["composition", "known-device-likely", "source-preparation", "energy-backtracking", "representation-dominated", "representation-equivalent", "atomic"] as const;
 export type StructuralKind = (typeof STRUCTURAL_KINDS)[number];
 
 export const MATRIX_CELL_STATUSES = [
@@ -171,9 +161,7 @@ export type MatrixCellStatus = (typeof MATRIX_CELL_STATUSES)[number];
 // ---------------------------------------------------------------------------
 
 const slug = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
-export const EntityId = z
-  .string()
-  .regex(new RegExp(`^(${ENTITY_TYPES.join("|")}):[a-z0-9]+(?:-[a-z0-9]+)*$`), "entity id must be <type>:<slug>");
+export const EntityId = z.string().regex(new RegExp(`^(${ENTITY_TYPES.join("|")}):[a-z0-9]+(?:-[a-z0-9]+)*$`), "entity id must be <type>:<slug>");
 export const ClaimId = z.string().regex(/^claim:[a-z0-9]+(?:-[a-z0-9]+)*$/);
 export const SourceId = z.string().regex(/^source:[a-z0-9]+(?:-[a-z0-9]+)*$/);
 export const PathwayId = z.string().regex(/^pathway:[a-z0-9]+(?:-[a-z0-9]+)*$/);
@@ -329,6 +317,19 @@ export const Claim = z.object({
     })
     .optional(),
   relation: Relation.optional(),
+  /**
+   * What a producing step hands to the next step and what a consuming step needs from the previous
+   * one, as short tokens ("flow:bulk", "surface:charged"). The compiler compares them across each
+   * carrier handoff: every requirement provided = compatible; a requirement nothing provides =
+   * unresolved (the atlas has not recorded enough to compose that interface — never "impossible").
+   */
+  handoff: z
+    .object({
+      provides: z.array(z.string()).default([]),
+      requires_all: z.array(z.string()).default([]),
+      requires_any: z.array(z.string()).default([]),
+    })
+    .optional(),
   evidence: z.array(SourceId).default([]),
   status: z.enum(EVIDENCE_STATUSES),
   /** Where the physics sits on the K-scale, if the claim is a phenomenon-level claim. */
@@ -396,9 +397,7 @@ export const SearchRecord = z.object({
   engine: z.enum(["openalex", "crossref", "manual", "google-scholar", "semantic-scholar"]),
   query: z.string(),
   works_found: z.number().int().nonnegative(),
-  top: z
-    .array(z.object({ title: z.string(), year: z.number().int().optional(), doi: z.string().optional(), url: z.string().optional() }))
-    .default([]),
+  top: z.array(z.object({ title: z.string(), year: z.number().int().optional(), doi: z.string().optional(), url: z.string().optional() })).default([]),
   result: z.enum(["demonstration-found", "no-demonstration-found", "inconclusive"]),
   reviewed_by: z.string().optional(),
   notes: z.string().optional(),
@@ -466,6 +465,37 @@ export const CompiledPath = z.object({
   weakest_claim: ClaimId,
   /** The recorded device (transducer) that shares the most steps with this route, if any step is implemented by one. */
   closest_known_device: z.object({ transducer: EntityId, shared_steps: z.number().int(), of: z.number().int() }).nullable(),
+  /** Conversion phenomena on the route that some recorded device implements, over all of them. */
+  device_coverage: z.object({ implemented: z.number().int(), of: z.number().int() }),
+  /**
+   * The recorded pathway whose mechanism this route most resembles, by longest common subsequence
+   * of phenomena (then of claims). source-variant = the pathway's phenomena are a suffix of the
+   * route's (the route prepares the driver differently); sink-variant = a prefix (the route ends
+   * differently); mechanism-subsequence = two or more phenomena in order.
+   */
+  closest_known_pathway: z
+    .object({
+      pathway: PathwayId,
+      relation: z.enum(["exact", "source-variant", "sink-variant", "mechanism-subsequence"]),
+      shared_claims: z.number().int(),
+      shared_phenomena: z.number().int(),
+      route_phenomena: z.number().int(),
+    })
+    .nullable(),
+  /** Carrier handoffs whose declared requirements nothing on the route provides. */
+  handoff_unresolved_count: z.number().int(),
+  handoff_issues: z.array(z.object({ from_claim: ClaimId, to_claim: ClaimId, missing: z.array(z.string()) })),
+  /**
+   * Whether the atlas holds numbers that bound what the route transmits: quantified (a reviewed
+   * measurement of the whole composition), bounded (every conversion step carries a constitutive
+   * relation), missing (a conversion step has no relation; bottleneck_claim names the first).
+   * "incompatible" is reserved for a recorded contradiction and is never inferred from absence.
+   */
+  magnitude_screen: z.object({
+    status: z.enum(["quantified", "bounded", "missing", "incompatible"]),
+    bottleneck_claim: ClaimId.nullable(),
+    detail: z.string(),
+  }),
   /** Conversion steps that carry a constitutive relation, over all conversion steps. */
   magnitude_data_coverage: z.object({ quantified: z.number().int(), of: z.number().int() }),
   /** source | ordered phenomena | sink energy form — the mechanism core, independent of carriers. */

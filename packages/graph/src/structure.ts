@@ -23,6 +23,12 @@ export interface RouteCore {
   exact: boolean;
   /** all phenomena share a K6+ transducer through implemented_by / demonstrated_with */
   knownDevice: boolean;
+  /** claim ids, so representation collapse can prefer the shortest spelling */
+  claimCount?: number;
+  /** entity types of the internal nodes (index i = node after step i), for source-preparation */
+  internalDisequilibriumAt?: number[];
+  /** ids of every enumerated route keyed by its claim-sequence suffixes, supplied by the compiler */
+  suffixRouteId?: (fromStep: number) => string | undefined;
 }
 
 export function collapseForms(forms: (EnergyForm | undefined)[]): EnergyForm[] {
@@ -104,7 +110,34 @@ export function classify(routes: RouteCore[], namedSignatures: Set<string>): Map
       else if (r.knownDevice) kind = "known-device-likely";
       else kind = "composition";
     }
+    // Source preparation (loop-3 pass 10): the route first manufactures a disequilibrium (a
+    // temperature gradient by combustion, a Peltier junction, an osmotic pressure by osmosis …) and
+    // then runs a suffix that is itself an enumerated route from that disequilibrium. The suffix is
+    // the composition; the prefix is a way of supplying its driver.
+    if (kind === "composition" && r.internalDisequilibriumAt && r.suffixRouteId) {
+      for (const at of r.internalDisequilibriumAt) {
+        const suffix = r.suffixRouteId(at);
+        if (suffix && suffix !== r.id) {
+          kind = "source-preparation";
+          dominatedBy = suffix;
+          break;
+        }
+      }
+    }
     out.set(r.id, { kind, semanticOverlap, dominatedBy });
+  }
+  // Phenomena-identical collapse: same source, sink form and ordered phenomena, spelled with a
+  // different carrier chain. The shortest claim sequence is the representative.
+  const identical = new Map<string, RouteCore[]>();
+  for (const r of routes) {
+    if (out.get(r.id)!.kind !== "composition") continue;
+    const key = signature(r.source, r.phenomena, r.sinkForm);
+    identical.set(key, [...(identical.get(key) ?? []), r]);
+  }
+  for (const group of identical.values()) {
+    if (group.length < 2) continue;
+    const [rep, ...rest] = [...group].sort((a, b) => (a.claimCount ?? 0) - (b.claimCount ?? 0) || a.id.localeCompare(b.id));
+    for (const r of rest) out.set(r.id, { kind: "representation-equivalent", semanticOverlap: false, dominatedBy: rep.id });
   }
   // Family-core collapse (loop-3 pass 10): two compositions with the same source, the same ordered
   // sequence of coupling families and the same sink form are one mechanism spelled with different

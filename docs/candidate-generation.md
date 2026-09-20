@@ -9,6 +9,7 @@ Version 0.1 generates candidates by exhaustive enumeration, not by a model.
 5. Class the route for the frontier (see `status-model.md`).
 6. Classify its *structure* (`packages/graph/src/structure.ts`), which says nothing about evidence:
    - `atomic` — fewer than two conversion phenomena: one effect plus bookkeeping to an output;
+   - `source-preparation` — an internal node is an ambient-common or ambient-conditional disequilibrium and the suffix from it is itself an enumerated route: the prefix only supplies a driver that exists without engineering (`dominated_by` names the suffix);
    - `representation-equivalent` — the same mechanism as another route: a recorded pathway with the same source, ordered phenomena and sink energy form drawn with different carrier nodes, or (family-core collapse) another composition with the same source, ordered coupling families and sink form, in which case `dominated_by` names the representative (the shortest, then the lowest id);
    - `representation-dominated` — a shorter route with the same source and sink has its phenomena as an ordered subsequence and the extra phenomena add no cross-family seam and no energy-form transition;
    - `energy-backtracking` — an energy form reappears after a different one (A → B → A) with no new driver;

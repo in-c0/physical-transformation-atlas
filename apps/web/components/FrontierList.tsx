@@ -218,24 +218,68 @@ export function FrontierList() {
                   </span>
                 ))}
               </div>
+              <p className={styles.decision}>
+                <span>driver {p.source_availability ? p.source_availability.replace("-", "/") : "availability not recorded"}</span>
+                <span>search {compositionState(p.search_status, p.last_searched).short}</span>
+                <span>
+                  weakest{" "}
+                  {p.established_steps === p.length ? (
+                    "none below established"
+                  ) : (
+                    <Link href={`/claim/${p.weakest_claim.split(":")[1]}`}>
+                      {describeClaim(p.weakest_claim)} — {EVIDENCE_LABEL[p.evidence_status]}
+                    </Link>
+                  )}
+                </span>
+                <span>
+                  handoff{" "}
+                  {p.handoff_unresolved_count === 0
+                    ? p.claims.some((id) => index.claim.get(id)?.handoff)
+                      ? "requirements met"
+                      : "no requirements recorded"
+                    : `${p.handoff_unresolved_count} unresolved · requires ${p.handoff_issues.flatMap((h) => h.missing).join(" + ")}`}
+                </span>
+                <span>
+                  closest{" "}
+                  {p.closest_known_pathway ? (
+                    <>
+                      {index.pathway.get(p.closest_known_pathway.pathway)?.name ?? p.closest_known_pathway.pathway} · {p.closest_known_pathway.relation.replace("-", " ")} (
+                      {p.closest_known_pathway.shared_phenomena}/{p.closest_known_pathway.route_phenomena} effects)
+                    </>
+                  ) : p.closest_known_device ? (
+                    <>
+                      device <Link href={hrefFor(p.closest_known_device.transducer)}>{index.entity.get(p.closest_known_device.transducer)?.name}</Link> · {p.device_coverage.implemented}/
+                      {p.device_coverage.of} effects implemented somewhere
+                    </>
+                  ) : (
+                    "none recorded"
+                  )}
+                </span>
+              </p>
               <dl className={styles.facts}>
                 <dt>mechanism</dt>
                 <dd>
                   {p.effective_length} effect
                   {p.effective_length === 1 ? "" : "s"} · {p.family_seam_count} cross-family seam{p.family_seam_count === 1 ? "" : "s"} · {p.energy_form_sequence.join(" → ") || "no energy ledger"}
                 </dd>
-                <dt>interfaces</dt>
+                <dt>boundary tags</dt>
                 <dd>
-                  {p.checks.find((k) => k.id === "boundary-compatibility")?.result === "fail" ? "conflict within a step" : "0 conflicts"} ·{" "}
+                  {p.checks.find((k) => k.id === "boundary-compatibility")?.result === "fail" ? "a recorded conflict within a step" : "0 recorded conflicts"} ·{" "}
                   {p.implied_interface_count === 0
-                    ? "0 implied interfaces"
-                    : `${p.implied_interface_count} implied interface${p.implied_interface_count === 1 ? "" : "s"}: ${p.implied_interfaces.map((x) => x.replace(/^claim:[^ ]+ → claim:[^:]+: /, "").replace(/ vs /, " | ")).join("; ")}`}{" "}
-                  · {p.source_availability ? p.source_availability.replace("-", "/") : "availability not recorded"} source
+                    ? "0 tag-conflict interfaces"
+                    : `${p.implied_interface_count} tag-conflict interface${p.implied_interface_count === 1 ? "" : "s"}: ${p.implied_interfaces.map((x) => x.replace(/^claim:[^ ]+ → claim:[^:]+: /, "").replace(/ vs /, " | ")).join("; ")}`}
+                  {" · tags only say what conflicts; a rotor, bluff body, charged channel or membrane the prose requires shows under handoff"}
                 </dd>
-                <dt>magnitude</dt>
+                <dt>magnitude screen</dt>
                 <dd>
-                  {p.magnitude_data_coverage.quantified}/{p.magnitude_data_coverage.of} conversion steps carry a constitutive relation ·{" "}
-                  {p.pathway ? "performance on record" : "bottleneck not yet recorded"}
+                  {p.magnitude_screen.status}
+                  {p.magnitude_screen.bottleneck_claim ? (
+                    <>
+                      {" "}
+                      · bottleneck <Link href={`/claim/${p.magnitude_screen.bottleneck_claim.split(":")[1]}`}>{describeClaim(p.magnitude_screen.bottleneck_claim)}</Link>
+                    </>
+                  ) : null}{" "}
+                  · {p.magnitude_screen.detail}
                 </dd>
                 {p.structural_kind !== "composition" && (
                   <>
@@ -245,7 +289,7 @@ export function FrontierList() {
                       {p.dominated_by ? (
                         <>
                           {" "}
-                          · shorter form <Link href={`/path/${p.dominated_by.slice(2)}`}>{p.dominated_by}</Link>
+                          · {p.structural_kind === "source-preparation" ? "the composition itself" : "representative"} <Link href={`/path/${p.dominated_by.slice(2)}`}>{p.dominated_by}</Link>
                         </>
                       ) : null}
                       {p.semantic_overlap ? ` · same mechanism core as ${index.pathway.get(p.semantic_overlap)?.name ?? p.semantic_overlap}` : ""}
@@ -264,16 +308,16 @@ export function FrontierList() {
                   )}{" "}
                   · maturity floor {p.constituent_floor}
                 </dd>
-                <dt>closest device</dt>
+                <dt>devices</dt>
                 <dd>
+                  {p.device_coverage.implemented} of {p.device_coverage.of} effects have a recorded implementing device
                   {p.closest_known_device ? (
                     <>
-                      <Link href={hrefFor(p.closest_known_device.transducer)}>{index.entity.get(p.closest_known_device.transducer)?.name ?? p.closest_known_device.transducer}</Link> implements{" "}
-                      {p.closest_known_device.shared_steps} of {p.closest_known_device.of} effects
+                      {" "}
+                      · most shared: <Link href={hrefFor(p.closest_known_device.transducer)}>{index.entity.get(p.closest_known_device.transducer)?.name ?? p.closest_known_device.transducer}</Link> (
+                      {p.closest_known_device.shared_steps})
                     </>
-                  ) : (
-                    "no recorded device implements any effect on this route"
-                  )}
+                  ) : null}
                 </dd>
                 <dt>exact composition</dt>
                 <dd>{compositionState(p.search_status, p.last_searched).long}</dd>

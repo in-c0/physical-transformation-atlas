@@ -224,5 +224,6 @@ export const STRUCTURE_LABEL: Record<StructuralKind, string> = {
   "energy-backtracking": "energy backtracking",
   "representation-dominated": "carrier-expanded copy",
   "representation-equivalent": "same mechanism at another resolution",
+  "source-preparation": "prepares an ambient driver for a recorded composition",
   atomic: "one effect plus bookkeeping",
 };

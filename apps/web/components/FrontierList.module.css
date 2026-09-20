@@ -33,3 +33,7 @@
 .more { margin-top: 12px; height: 28px; padding: 0 10px; border: var(--border); border-radius: var(--radius-control); font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: 0.04em; text-transform: uppercase; }
 .more:hover { border-color: var(--ink); }
 @media (max-width: 640px) { .facts { grid-template-columns: 1fr; } .facts dd { margin-bottom: 4px; } }
+.decision { display: flex; flex-wrap: wrap; gap: 2px 14px; margin: 4px 0 6px; font-family: var(--font-mono); font-size: var(--text-data); color: var(--ink-secondary); }
+.decision > span::before { content: "· "; }
+.decision > span:first-child::before { content: ""; }
+.decision a { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }

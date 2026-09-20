@@ -30,7 +30,10 @@ test("everyday phrases resolve to drivers and effects", () => {
 
 test("named pathways are searchable and full-token matches precede partial ones", () => {
   const hits = index.search("waste heat", 8);
-  assert.ok(hits.some((h) => h.kind === "pathway" && h.name === "Thermoelectric generator"), "the TEG pathway surfaces for waste heat");
+  assert.ok(
+    hits.some((h) => h.kind === "pathway" && h.name === "Thermoelectric generator"),
+    "the TEG pathway surfaces for waste heat",
+  );
   const q = index.search("thermal gradient", 12);
   const firstPartial = q.findIndex((h) => !/thermal|gradient/i.test(h.name) || !(/thermal|temperature/i.test(h.name) && /gradient/i.test(h.name)));
   const lastFull = q.map((h) => /thermal|temperature/i.test(h.name) && /gradient/i.test(h.name)).lastIndexOf(true);

@@ -76,7 +76,9 @@ reading guide.
 **Claim** — `subject —predicate→ object`, with `conditions` (prose), `condition_tags`,
 `energy` (`input`, `output`, optional `dissipation`; declared on process claims), an optional
 constitutive `relation` (`formula`, `input` and `output` quantities, `coefficient_unit`,
-`conventions`), `evidence` (source ids), `status` (vocabulary `claim.status`), optional
+`conventions`), an optional `handoff` (`provides[]` on a producing step, `requires_all[]` /
+`requires_any[]` on a consuming step, as tokens such as `flow:bulk` or `surface:charged`; the
+compiler checks them across each carrier), `evidence` (source ids), `status` (vocabulary `claim.status`), optional
 `knowledge_level`, `review` and `notes`. The four process predicates (`drives`, `produces`,
 `couples_to`, `converts_into`) carry energy between nodes and are the only ones routes are built
 from; the rest are descriptive (vocabulary `claim.predicate`).
@@ -102,7 +104,16 @@ for the composition), `constituent_floor`, `phenomena`, `effective_length`,
 `implied_interface_count`, `implied_interfaces` (the adjacent-step tag conflicts, "claim → claim: tag vs
 tag"), `weakest_claim` (the step with the route's weakest status; ties go to the earliest step),
 `closest_known_device` (`{ transducer, shared_steps, of }`: the recorded device implementing the most
-effects on the route, or null), `magnitude_data_coverage`, `representation_signature`,
+effects on the route, or null), `device_coverage` (`{ implemented, of }`: how many of the route's effects
+some recorded device implements), `closest_known_pathway` (`{ pathway, relation, shared_claims,
+shared_phenomena, route_phenomena }`: the recorded pathway with the longest common phenomena
+subsequence; `relation` is `exact`, `source-variant` (shared tail: the route reaches the recorded
+mechanism from a different driver), `sink-variant` (shared head) or `mechanism-subsequence`),
+`handoff_unresolved_count` and `handoff_issues[]` (`{ from_claim, to_claim, missing[] }`: declared
+carrier-handoff requirements nothing earlier on the route provides — unresolved, never "impossible"),
+`magnitude_screen` (`{ status, bottleneck_claim, detail }`: `quantified` when a reviewed measurement
+covers the whole composition, `bounded` when every conversion step carries a constitutive relation,
+`missing` otherwise; `incompatible` is reserved for a recorded contradiction), `magnitude_data_coverage`, `representation_signature`,
 `semantic_overlap`, `structural_kind`, `dominated_by`, `source_availability`,
 `known_pathway_overlap`. Enumerations: vocabulary `path.search_status`, `path.frontier_class`,
 `path.structural_kind`, `check.result`.

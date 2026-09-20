@@ -28,7 +28,12 @@ test("a carrier-expanded copy of a recorded pathway is representation-equivalent
 
 test("a strict zero-novelty superpath is dominated by the shorter route", () => {
   const short = route({ id: "s", phenomena: ["phenomenon:p", "phenomenon:q"], families: [["coupling:a"], ["coupling:b"]], forms: ["thermal", "spin", "electrical"] });
-  const long = route({ id: "l", phenomena: ["phenomenon:p", "phenomenon:transport", "phenomenon:q"], families: [["coupling:a"], ["coupling:a"], ["coupling:b"]], forms: ["thermal", "spin", "electrical"] });
+  const long = route({
+    id: "l",
+    phenomena: ["phenomenon:p", "phenomenon:transport", "phenomenon:q"],
+    families: [["coupling:a"], ["coupling:a"], ["coupling:b"]],
+    forms: ["thermal", "spin", "electrical"],
+  });
   const k = classify([short, long], new Set());
   assert.equal(k.get("s")!.kind, "composition");
   assert.equal(k.get("l")!.kind, "representation-dominated");
@@ -36,7 +41,12 @@ test("a strict zero-novelty superpath is dominated by the shorter route", () => 
 });
 
 test("a true two-effect cross-family composition stays a composition", () => {
-  const r = route({ id: "c", phenomena: ["phenomenon:thermal-expansion", "phenomenon:piezoelectric-effect"], families: [["coupling:heat-engine"], ["coupling:piezoelectric"]], forms: ["thermal", "mechanical", "electrical"] });
+  const r = route({
+    id: "c",
+    phenomena: ["phenomenon:thermal-expansion", "phenomenon:piezoelectric-effect"],
+    families: [["coupling:heat-engine"], ["coupling:piezoelectric"]],
+    forms: ["thermal", "mechanical", "electrical"],
+  });
   const k = classify([r], new Set()).get("c")!;
   assert.equal(k.kind, "composition");
   assert.equal(familySeams(r.families), 1);
@@ -46,12 +56,27 @@ test("energy backtracking and form collapsing", () => {
   assert.deepEqual(collapseForms(["thermal", "thermal", "electrical", undefined, "electrical"]), ["thermal", "electrical"]);
   assert.equal(hasBacktracking(["electrical", "thermal", "electrical"]), true);
   assert.equal(hasBacktracking(["thermal", "mechanical", "electrical"]), false);
-  const r = route({ id: "d", source: "disequilibrium:electric-potential-difference", phenomena: ["phenomenon:peltier-effect", "phenomenon:seebeck-effect"], families: [["coupling:thermoelectric"], ["coupling:thermoelectric"]], forms: ["electrical", "thermal", "electrical"] });
+  const r = route({
+    id: "d",
+    source: "disequilibrium:electric-potential-difference",
+    phenomena: ["phenomenon:peltier-effect", "phenomenon:seebeck-effect"],
+    families: [["coupling:thermoelectric"], ["coupling:thermoelectric"]],
+    forms: ["electrical", "thermal", "electrical"],
+  });
   assert.equal(classify([r], new Set()).get("d")!.kind, "energy-backtracking");
 });
 
 test("family-core collapse: two compositions with the same source, family sequence and sink form keep one representative", () => {
-  const a: RouteCore = { id: "p-a", source: "d:heat", sinkForm: "electrical", phenomena: ["ph:marangoni", "ph:lift", "ph:induction"], families: [["c:marangoni"], ["c:turbo"], ["c:emi"]], forms: ["thermal", "kinetic", "mechanical", "electrical"], exact: false, knownDevice: false };
+  const a: RouteCore = {
+    id: "p-a",
+    source: "d:heat",
+    sinkForm: "electrical",
+    phenomena: ["ph:marangoni", "ph:lift", "ph:induction"],
+    families: [["c:marangoni"], ["c:turbo"], ["c:emi"]],
+    forms: ["thermal", "kinetic", "mechanical", "electrical"],
+    exact: false,
+    knownDevice: false,
+  };
   const b: RouteCore = { ...a, id: "p-b", phenomena: ["ph:marangoni", "ph:lift", "ph:generator"] };
   const c: RouteCore = { ...a, id: "p-c", phenomena: ["ph:marangoni", "ph:lift", "ph:mhd"], families: [["c:marangoni"], ["c:turbo"], ["c:mhd"]] };
   const out = classify([a, b, c], new Set());
@@ -59,4 +84,55 @@ test("family-core collapse: two compositions with the same source, family sequen
   assert.equal(out.get("p-b")!.kind, "representation-equivalent");
   assert.equal(out.get("p-b")!.dominatedBy, "p-a");
   assert.equal(out.get("p-c")!.kind, "composition", "a different family sequence is a different mechanism");
+});
+
+test("phenomena-identical collapse keeps the shortest claim sequence", () => {
+  const short: RouteCore = {
+    id: "p-short",
+    source: "d:flux",
+    sinkForm: "electrical",
+    phenomena: ["ph:joule-ms", "ph:piezo"],
+    families: [["c:ms"], ["c:piezo"]],
+    forms: ["magnetic", "mechanical", "electrical"],
+    exact: false,
+    knownDevice: false,
+    claimCount: 4,
+  };
+  const long: RouteCore = { ...short, id: "p-long", claimCount: 5 };
+  const out = classify([short, long], new Set());
+  assert.equal(out.get("p-short")!.kind, "composition");
+  assert.equal(out.get("p-long")!.kind, "representation-equivalent");
+  assert.equal(out.get("p-long")!.dominatedBy, "p-short");
+});
+
+test("source-preparation: manufacturing an ambient driver for a suffix that is its own route", () => {
+  const suffix: RouteCore = {
+    id: "p-suffix",
+    source: "d:temperature-gradient",
+    sinkForm: "electrical",
+    phenomena: ["ph:ionic-te"],
+    families: [["c:thermodiffusive"]],
+    forms: ["thermal", "electrical"],
+    exact: false,
+    knownDevice: false,
+    claimCount: 3,
+  };
+  const prepared: RouteCore = {
+    id: "p-prepared",
+    source: "d:chemical",
+    sinkForm: "electrical",
+    phenomena: ["ph:combustion", "ph:ionic-te"],
+    families: [["c:combustion"], ["c:thermodiffusive"]],
+    forms: ["chemical", "thermal", "electrical"],
+    exact: false,
+    knownDevice: false,
+    claimCount: 5,
+    internalDisequilibriumAt: [2],
+    suffixRouteId: (k) => (k === 2 ? "p-suffix" : undefined),
+  };
+  const out = classify([suffix, prepared], new Set());
+  assert.equal(out.get("p-prepared")!.kind, "source-preparation");
+  assert.equal(out.get("p-prepared")!.dominatedBy, "p-suffix");
+  const alone: RouteCore = { ...prepared, id: "p-alone", suffixRouteId: () => undefined };
+  assert.equal(classify([alone], new Set()).get("p-alone")!.kind, "composition", "negative control: no suffix route, still a composition");
 });

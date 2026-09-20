@@ -166,11 +166,14 @@ export const VOCABULARY: VocabularyEnum[] = [
     used_in: ["paths[].structural_kind"],
     terms: define(STRUCTURAL_KINDS, {
       composition: "two or more conversion phenomena with a real handoff; the only kind the frontier treats as a fresh composition",
-      "known-device-likely": "every step already appears in one recorded device pathway, so the route most likely restates that device",
+      "known-device-likely": "every conversion phenomenon on the route is implemented by one and the same recorded device, so the route most likely restates that device",
+      "source-preparation":
+        "the route first manufactures an ambient driver (a temperature gradient by combustion, an osmotic pressure by osmosis …) and then runs a suffix that is itself an enumerated route from that driver; dominated_by names the suffix route, which is the composition",
       "energy-backtracking": "the energy-form sequence returns to a form it already left",
       "representation-dominated":
         "a shorter route with the same source, sink form and an ordered subset of its phenomena exists with no more mechanism seams or energy transitions; the field dominated_by names it",
-      "representation-equivalent": "the same mechanism as another route — either a recorded pathway with the same source, ordered phenomena and sink form spelled with different claims, or another composition with the same source, ordered coupling families and sink form (dominated_by names the representative)",
+      "representation-equivalent":
+        "the same mechanism as another route — either a recorded pathway with the same source, ordered phenomena and sink form spelled with different claims, or another composition with the same source, ordered coupling families and sink form (dominated_by names the representative)",
       atomic: "fewer than two conversion phenomena; nothing to compose",
     }),
   },

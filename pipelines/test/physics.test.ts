@@ -39,10 +39,23 @@ const ctx: PhysicsContext = {
   conflicts: [{ a: "env-vacuum", b: "env-aqueous", reason: "vacuum vs water" }],
   boundedBy: () => [],
 };
-const base: Omit<Claim, "id" | "subject" | "predicate" | "object"> = { conditions: [], condition_tags: [], evidence: ["source:x"], status: "established", review: { canonical: true, last_reviewed: "2026-09-19" } };
+const base: Omit<Claim, "id" | "subject" | "predicate" | "object"> = {
+  conditions: [],
+  condition_tags: [],
+  evidence: ["source:x"],
+  status: "established",
+  review: { canonical: true, last_reviewed: "2026-09-19" },
+};
 
 test("dimensional check passes a consistent constitutive relation and fails an inconsistent one (negative control)", () => {
-  const good: Claim = { ...base, id: "claim:good", subject: "disequilibrium:temperature-gradient", predicate: "drives", object: "phenomenon:seebeck-effect", relation: { formula: "ΔV = S·ΔT", input: "quantity:temperature-difference", output: "quantity:electric-potential", coefficient_unit: "V/K" } };
+  const good: Claim = {
+    ...base,
+    id: "claim:good",
+    subject: "disequilibrium:temperature-gradient",
+    predicate: "drives",
+    object: "phenomenon:seebeck-effect",
+    relation: { formula: "ΔV = S·ΔT", input: "quantity:temperature-difference", output: "quantity:electric-potential", coefficient_unit: "V/K" },
+  };
   const bad: Claim = { ...good, id: "claim:bad", relation: { ...good.relation!, coefficient_unit: "W/K" } };
   assert.equal(checkDimensional(ctx, [good]).result, "pass");
   const r = checkDimensional(ctx, [bad]);
@@ -59,7 +72,14 @@ test("boundary check: conflict inside a step fails, conflict across adjacent ste
 });
 
 test("conservation check: a source with no exergy fails (second law)", () => {
-  const c: Claim = { ...base, id: "claim:c", subject: "disequilibrium:uniform-thermal-energy", predicate: "drives", object: "phenomenon:seebeck-effect", energy: { input: "thermal", output: "electrical" } };
+  const c: Claim = {
+    ...base,
+    id: "claim:c",
+    subject: "disequilibrium:uniform-thermal-energy",
+    predicate: "drives",
+    object: "phenomenon:seebeck-effect",
+    energy: { input: "thermal", output: "electrical" },
+  };
   assert.equal(checkConservation(ctx, [c]).result, "fail");
   const ok: Claim = { ...c, id: "claim:ok", subject: "disequilibrium:temperature-gradient" };
   assert.equal(checkConservation(ctx, [ok]).result, "pass");

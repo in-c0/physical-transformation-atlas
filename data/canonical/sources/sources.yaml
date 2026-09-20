@@ -1075,3 +1075,24 @@
   authors: [K. Otsuka (ed.), C. M. Wayman (ed.)]
   year: 1998
   venue: Cambridge University Press
+- id: source:straub-2016-toec
+  type: paper
+  title: "Harvesting low-grade heat energy using thermo-osmotic vapour transport through nanoporous membranes"
+  authors: [A. P. Straub, N. Y. Yip, S. Lin, J. Lee, M. Elimelech]
+  year: 2016
+  venue: "Nature Energy 1, 16090"
+  doi: 10.1038/nenergy.2016.90
+- id: source:boughaleb-2016-bimetal-piezo
+  type: paper
+  title: "Coupling of a bimetallic strip heat engine with a piezoelectric transducer for thermal energy harvesting"
+  authors: [J. Boughaleb, A. Arnaud, S. Monfray, P.-J. Cottinet, S. Quenard, F. Boeuf, D. Guyomar, T. Skotnicki]
+  year: 2016
+  venue: "Molecular Crystals and Liquid Crystals 628, 15–22"
+  doi: 10.1080/15421406.2015.1137390
+- id: source:lian-2009-thermomagnetic-pump
+  type: paper
+  title: "Characterization of miniature automatic energy transport devices based on the thermomagnetic effect"
+  authors: [W. Lian, Y. Xuan, Q. Li]
+  year: 2009
+  venue: "Energy Conversion and Management 50, 35–42"
+  doi: 10.1016/j.enconman.2008.09.005

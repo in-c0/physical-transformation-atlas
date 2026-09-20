@@ -1,7 +1,19 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { VOCABULARY } from "@pta/schema/vocabulary";
-import { AVAILABILITY, DOMAINS, ENERGY_FORMS, ENTITY_TYPES, EVIDENCE_STATUSES, FRONTIER_CLASSES, KNOWLEDGE_LEVELS, MATRIX_CELL_STATUSES, PREDICATES, SEARCH_STATUSES, STRUCTURAL_KINDS } from "@pta/schema";
+import {
+  AVAILABILITY,
+  DOMAINS,
+  ENERGY_FORMS,
+  ENTITY_TYPES,
+  EVIDENCE_STATUSES,
+  FRONTIER_CLASSES,
+  KNOWLEDGE_LEVELS,
+  MATRIX_CELL_STATUSES,
+  PREDICATES,
+  SEARCH_STATUSES,
+  STRUCTURAL_KINDS,
+} from "@pta/schema";
 
 const byName = new Map(VOCABULARY.map((e) => [e.name, e]));
 

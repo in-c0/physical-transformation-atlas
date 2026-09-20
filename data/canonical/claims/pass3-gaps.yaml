@@ -148,6 +148,7 @@
   object: carrier:fluid-flow
   energy: { input: kinetic, output: kinetic }
   evidence: [source:scriven-sternling-1960, source:marangoni-review-2021]
+  handoff: { provides: [flow:liquid, flow:interfacial] }
   status: established
 - id: claim:marangoni-member
   subject: phenomenon:marangoni-effect
@@ -272,7 +273,16 @@
   object: carrier:fluid-flow
   energy: { input: kinetic, output: kinetic }
   evidence: [source:barragan-kjelstrup-2017-thermo-osmosis]
+  handoff: { provides: [flow:liquid, flow:confined] }
   status: established
+- id: claim:thermo-osmosis-implemented-toec
+  subject: phenomenon:thermo-osmosis
+  predicate: implemented_by
+  object: transducer:thermo-osmotic-energy-converter
+  conditions: [hydrophobic nanoporous membrane between a hot reservoir and a pressurised cold reservoir; hydraulic pressures up to 13 bar reported]
+  evidence: [source:straub-2016-toec]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 10 (frontier as a research instrument)" }
 - id: claim:thermo-osmosis-member
   subject: phenomenon:thermo-osmosis
   predicate: member_of
@@ -333,7 +343,16 @@
   object: carrier:fluid-flow
   energy: { input: kinetic, output: kinetic }
   evidence: [source:rosensweig-1985]
+  handoff: { provides: [flow:liquid, flow:bulk, medium:ferrofluid] }
   status: established
+- id: claim:ferrofluid-convection-implemented-pump
+  subject: phenomenon:thermomagnetic-ferrofluid-convection
+  predicate: implemented_by
+  object: transducer:thermomagnetic-pump
+  conditions: [a closed ferrofluid loop with a permanent magnet over the heated section; self-circulating heat transport with no moving parts]
+  evidence: [source:lian-2009-thermomagnetic-pump]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 10 (frontier as a research instrument)" }
 - id: claim:ferrofluid-convection-member
   subject: phenomenon:thermomagnetic-ferrofluid-convection
   predicate: member_of

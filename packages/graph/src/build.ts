@@ -56,6 +56,12 @@ function closestDevice(claims: Claim[]): CompiledPath["closest_known_device"] {
   return best ? { transducer: best[0], shared_steps: best[1], of: phen.length } : null;
 }
 
+/** How many of the route's conversion phenomena have any recorded implementing device. */
+function deviceCoverage(claims: Claim[]): { implemented: number; of: number } {
+  const phen = [...new Set(claims.flatMap((c) => [c.subject, c.object]).filter((id) => id.startsWith("phenomenon:")))];
+  return { implemented: phen.filter((ph) => (implementedBy.get(ph)?.size ?? 0) > 0).length, of: phen.length };
+}
+
 function pathId(claimIds: string[]): string {
   return "p-" + createHash("sha1").update(claimIds.join(">")).digest("hex").slice(0, 10);
 }
@@ -114,6 +120,12 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
 
   // Named pathway lookup by claim sequence ----------------------------------------
   const pathwayBySeq = new Map<string, Pathway>();
+  const pathwayPhenomena = new Map(
+    canon.pathways.map((p) => {
+      const cl = p.steps.map((s) => claimById.get(s)!);
+      return [p.id, [...new Set(cl.flatMap((c) => [c.subject, c.object]).filter((n) => entity.get(n)?.type === "phenomenon"))]] as const;
+    }),
+  );
   for (const p of canon.pathways) pathwayBySeq.set(p.steps.join(">"), p);
 
   // Search records ----------------------------------------------------------------
@@ -187,6 +199,10 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
     // suffix or ordered subsequence of it? A generated route that merely extends or truncates a
     // recorded pathway is "derived", not a fresh candidate.
     const known_pathway_overlap = pathwayOverlap(ids, pathway);
+    const phenomenaOf = (cl: Claim[]) => [...new Set(cl.flatMap((c) => [c.subject, c.object]).filter((n) => entity.get(n)?.type === "phenomenon"))];
+    const closest_known_pathway = closestPathway(ids, phenomenaOf(claims), pathway);
+    const handoff = handoffReport(claims);
+    const magnitude_screen = magnitudeScreen(claims, pathway);
 
     const srcForm = entity.get(claims[0].subject)?.energy_form;
     const sinkForm = entity.get(claims[claims.length - 1].object)?.energy_form;
@@ -194,8 +210,12 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
     if (failed) frontier_class = "forbidden";
     else if (search_status === "demonstrated") frontier_class = "demonstrated";
     else if (srcForm && sinkForm && srcForm === sinkForm) frontier_class = "circular";
-    else if (EVIDENCE_RANK[weakest] >= EVIDENCE_RANK.demonstrated) frontier_class = known_pathway_overlap && known_pathway_overlap.shared_claims >= 2 ? "derived" : "candidate";
-    else frontier_class = "weak";
+    else if (EVIDENCE_RANK[weakest] >= EVIDENCE_RANK.demonstrated) {
+      // Derived: extends or truncates a recorded pathway by claim overlap, or differs from one only
+      // before its driver or after its recorded transduction sequence (phenomena-level variant).
+      const variant = closest_known_pathway && closest_known_pathway.relation !== "mechanism-subsequence" && closest_known_pathway.shared_phenomena >= 2;
+      frontier_class = (known_pathway_overlap && known_pathway_overlap.shared_claims >= 2) || variant ? "derived" : "candidate";
+    } else frontier_class = "weak";
 
     // The constituent floor is a statement about the parts. The composition's own level exists only
     // when a reviewed pathway records it.
@@ -257,6 +277,11 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
       implied_interfaces: boundary.adjacent,
       weakest_claim: claims.find((c) => c.status === weakest)!.id,
       closest_known_device: closestDevice(claims),
+      device_coverage: deviceCoverage(claims),
+      closest_known_pathway,
+      handoff_unresolved_count: handoff.length,
+      handoff_issues: handoff,
+      magnitude_screen,
       magnitude_data_coverage: { quantified, of: conversionSteps.length },
       representation_signature: signature(claims[0].subject, phenomena, sinkForm),
       semantic_overlap: null,
@@ -316,6 +341,67 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
     return best;
   }
 
+  /** Longest common subsequence length of two id sequences. */
+  function lcs(a: string[], b: string[]): number {
+    const dp: number[][] = Array.from({ length: a.length + 1 }, () => new Array<number>(b.length + 1).fill(0));
+    for (let i = 1; i <= a.length; i++) for (let j = 1; j <= b.length; j++) dp[i][j] = a[i - 1] === b[j - 1] ? dp[i - 1][j - 1] + 1 : Math.max(dp[i - 1][j], dp[i][j - 1]);
+    return dp[a.length][b.length];
+  }
+  function closestPathway(ids: string[], phen: string[], exact: Pathway | undefined): CompiledPath["closest_known_pathway"] {
+    if (exact) return { pathway: exact.id, relation: "exact", shared_claims: ids.length, shared_phenomena: phen.length, route_phenomena: phen.length };
+    let best: CompiledPath["closest_known_pathway"] = null;
+    for (const p of canon.pathways) {
+      const pp = pathwayPhenomena.get(p.id)!;
+      const sharedPh = lcs(pp, phen);
+      if (sharedPh < 2) continue;
+      const sharedCl = lcs(p.steps, ids);
+      // Either sequence may contain the other: the route may add a prefix or suffix to the recorded
+      // mechanism, or truncate it. Same source side = sink-variant; same sink side = source-variant.
+      const short = pp.length <= phen.length ? pp : phen;
+      const long = pp.length <= phen.length ? phen : pp;
+      // A shared tail of two or more phenomena means the route reaches the recorded mechanism from a
+      // different driver (source-variant); a shared head means it leaves it differently (sink-variant).
+      let tail = 0;
+      while (tail < short.length && short[short.length - 1 - tail] === long[long.length - 1 - tail]) tail++;
+      let head = 0;
+      while (head < short.length && short[head] === long[head]) head++;
+      const relation: NonNullable<CompiledPath["closest_known_pathway"]>["relation"] =
+        head >= 2 || head === short.length ? "sink-variant" : tail >= 2 || tail === short.length ? "source-variant" : "mechanism-subsequence";
+      if (!best || sharedPh > best.shared_phenomena || (sharedPh === best.shared_phenomena && sharedCl > best.shared_claims)) {
+        best = { pathway: p.id, relation, shared_claims: sharedCl, shared_phenomena: sharedPh, route_phenomena: phen.length };
+      }
+    }
+    return best;
+  }
+  /** Declared handoff requirements a consuming step has that the producing step before it does not provide. */
+  function handoffReport(claims: Claim[]): CompiledPath["handoff_issues"] {
+    const issues: CompiledPath["handoff_issues"] = [];
+    for (let i = 1; i < claims.length; i++) {
+      const consumer = claims[i];
+      const req = consumer.handoff;
+      if (!req || (req.requires_all.length === 0 && req.requires_any.length === 0)) continue;
+      // Provisions accumulate from every earlier step that declares them; the immediate producer is the usual source.
+      const provided = new Set(claims.slice(0, i).flatMap((c) => c.handoff?.provides ?? []));
+      const missing = req.requires_all.filter((t) => !provided.has(t));
+      if (req.requires_any.length && !req.requires_any.some((t) => provided.has(t))) missing.push(`any of ${req.requires_any.join(" | ")}`);
+      if (missing.length) issues.push({ from_claim: claims[i - 1].id, to_claim: consumer.id, missing });
+    }
+    return issues;
+  }
+  function magnitudeScreen(claims: Claim[], pathway: Pathway | undefined): CompiledPath["magnitude_screen"] {
+    if (pathway?.performance?.measurements?.length)
+      return { status: "quantified", bottleneck_claim: null, detail: `${pathway.performance.measurements.length} reviewed measurement(s) of the whole composition` };
+    const conversion = claims.filter((c) => (PROCESS_PREDICATES as readonly string[]).includes(c.predicate) && entity.get(c.object)?.type !== "output");
+    const without = conversion.find((c) => !c.relation);
+    if (!without && conversion.length)
+      return { status: "bounded", bottleneck_claim: null, detail: `every conversion step (${conversion.length}) carries a constitutive relation; the transmitted quantity is bounded step by step` };
+    return {
+      status: "missing",
+      bottleneck_claim: without?.id ?? null,
+      detail: without ? `no constitutive relation on ${without.id}; nothing bounds what this step transmits` : "no conversion step recorded",
+    };
+  }
+
   // Sanity: every named pathway must correspond to an enumerated path ---------------
   const pathIds = new Set(paths.map((p) => p.id));
   for (const p of canon.pathways) {
@@ -331,6 +417,7 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
   // Structural classification (pure; see structure.ts) --------------------------------
   const namedSignatures = new Set<string>();
   for (const p of paths) if (p.pathway) namedSignatures.add(p.representation_signature);
+  const routeIdBySeq = new Map(paths.map((p) => [p.claims.join(">"), p.id]));
   const cores: RouteCore[] = paths.map((p) => ({
     id: p.id,
     source: p.source,
@@ -340,6 +427,14 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
     forms: p.energy_form_sequence,
     exact: !!p.pathway,
     knownDevice: (p as unknown as { _knownDevice: boolean })._knownDevice,
+    claimCount: p.claims.length,
+    // internal disequilibria: node k (k ≥ 1) of type disequilibrium means the suffix from step k could be its own route
+    // Only a driver that exists without engineering (ambient-common or ambient-conditional) makes the
+    // prefix a preparation; manufacturing an engineered driver (a pressure or a stress) is the composition itself.
+    internalDisequilibriumAt: p.nodes
+      .map((n, k) => (k > 0 && k < p.nodes.length - 1 && entity.get(n)?.type === "disequilibrium" && /^ambient-/.test(entity.get(n)?.availability ?? "") ? k : -1))
+      .filter((k) => k >= 0),
+    suffixRouteId: (fromStep: number) => routeIdBySeq.get(p.claims.slice(fromStep).join(">")),
   }));
   const kinds = classify(cores, namedSignatures);
   const sigToPathway = new Map<string, string>();

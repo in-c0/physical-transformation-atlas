@@ -484,6 +484,7 @@
   condition_tags: [flow-required]
   energy: { input: kinetic, output: mechanical, dissipation: thermal }
   evidence: [source:betz-1920, source:dixon-hall-2014]
+  handoff: { requires_all: [flow:bulk, flow:loadable-momentum] }
   status: established
   review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 9 (structural gap: produced fluid flow had no consumer)" }
 - id: claim:fluid-flow-carrier-drives-fiv
@@ -494,6 +495,7 @@
   condition_tags: [flow-required]
   energy: { input: kinetic, output: mechanical, dissipation: thermal }
   evidence: [source:radousky-liang-2012]
+  handoff: { requires_all: [flow:reynolds-qualified], requires_any: [flow:bulk, flow:confined] }
   status: established
   review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 9 (structural gap: produced fluid flow had no consumer)" }
 - id: claim:fluid-flow-carrier-drives-streaming
@@ -504,6 +506,7 @@
   condition_tags: [env-aqueous, flow-required]
   energy: { input: kinetic, output: electrical, dissipation: thermal }
   evidence: [source:yin-2014-graphene-flow, source:yang-2003-electrokinetic]
+  handoff: { requires_all: [flow:liquid, surface:charged] }
   status: replicated
   review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 9 (structural gap: produced fluid flow had no consumer)" }
 - id: claim:flow-drives-lift
@@ -575,6 +578,54 @@
   evidence: [source:dixon-hall-2014]
   status: established
   review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 7 audit (ChatGPT review, applied and source-verified by the lane)" }
+# Device implementations (loop-3 pass 10): the classifier can only call a route "known device" when the
+# device that implements its effects is recorded.
+- id: claim:generator-action-implemented
+  subject: phenomenon:generator-action
+  predicate: implemented_by
+  object: transducer:rotating-generator
+  evidence: [source:dixon-hall-2014]
+  status: established
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 10 (frontier as a research instrument)" }
+- id: claim:induction-implemented-generator
+  subject: phenomenon:electromagnetic-induction
+  predicate: implemented_by
+  object: transducer:rotating-generator
+  evidence: [source:dixon-hall-2014]
+  status: established
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 10 (frontier as a research instrument)" }
+- id: claim:joule-ms-implemented-me-composite
+  subject: phenomenon:joule-magnetostriction
+  predicate: implemented_by
+  object: transducer:magnetoelectric-composite
+  conditions: [the magnetostrictive layer of a magnetoelectric laminate; strain is passed to the bonded piezoelectric layer]
+  evidence: [source:nan-2008]
+  status: established
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 10 (frontier as a research instrument)" }
+- id: claim:piezo-implemented-me-composite
+  subject: phenomenon:piezoelectric-effect
+  predicate: implemented_by
+  object: transducer:magnetoelectric-composite
+  conditions: [the piezoelectric layer of a magnetoelectric laminate, strained by the bonded magnetostrictive layer]
+  evidence: [source:nan-2008]
+  status: established
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 10 (frontier as a research instrument)" }
+- id: claim:thermal-expansion-implemented-bimetal
+  subject: phenomenon:thermal-expansion
+  predicate: implemented_by
+  object: transducer:bimetal-piezo-harvester
+  conditions: [a bimetallic strip that snaps between hot and cold plates as it expands and contracts]
+  evidence: [source:boughaleb-2016-bimetal-piezo]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 10 (frontier as a research instrument)" }
+- id: claim:piezo-implemented-bimetal
+  subject: phenomenon:piezoelectric-effect
+  predicate: implemented_by
+  object: transducer:bimetal-piezo-harvester
+  conditions: [the piezoelectric element struck by the snapping strip]
+  evidence: [source:boughaleb-2016-bimetal-piezo]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 10 (frontier as a research instrument)" }
 - id: claim:gravity-drives-descent
   subject: disequilibrium:gravitational-potential-difference
   predicate: drives

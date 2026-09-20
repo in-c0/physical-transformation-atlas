@@ -450,3 +450,31 @@
   name: Shape-memory alloy heat engine
   knowledge_level: K6
   summary: NiTi wires or springs cycled between warm and cold water (ΔT of 20–60 K) turning a crank or driving a linear generator; laboratory engines of watts to tens of watts.
+- id: transducer:rotating-generator
+  type: transducer
+  name: Rotating electrical generator
+  aliases: [alternator, synchronous generator, dynamo]
+  knowledge_level: K8
+  summary: Shaft rotation moves conductors through a magnetic field; the commercial machine behind every turbine, engine and hydro plant that makes electricity.
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 10 (frontier as a research instrument)" }
+- id: transducer:thermo-osmotic-energy-converter
+  type: transducer
+  name: Thermo-osmotic energy converter (TOEC)
+  aliases: [TOEC, thermo-osmotic membrane engine]
+  knowledge_level: K5
+  summary: A hydrophobic nanoporous membrane passes a thermo-osmotic vapour flux from a hot reservoir into a pressurised cold reservoir; the pressurised flow is the mechanical output, proposed to drive a turbine.
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 10 (frontier as a research instrument)" }
+- id: transducer:bimetal-piezo-harvester
+  type: transducer
+  name: Bimetallic-strip piezoelectric harvester
+  aliases: [bimetal heat engine with piezoelectric transducer, HEATec]
+  knowledge_level: K6
+  summary: A bimetallic strip snaps between a hot and a cold plate as it heats and cools; each snap strikes a piezoelectric element that converts the impact into charge.
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 10 (frontier as a research instrument)" }
+- id: transducer:thermomagnetic-pump
+  type: transducer
+  name: Thermomagnetic ferrofluid pump
+  aliases: [automatic energy transport device, magnetocaloric pump]
+  knowledge_level: K6
+  summary: A ferrofluid loop with a permanent magnet at the heated section circulates by itself as the heated fluid loses magnetisation; a self-pumping heat-transport device with no moving parts.
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 10 (frontier as a research instrument)" }

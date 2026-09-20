@@ -298,3 +298,36 @@
   knowledge_level: K6
   environment: [state-solid, temp-gradient-required]
   summary: The same engine delivering shaft work directly (Banks engine, 1973, and successors).
+
+# Loop-3 pass 10: devices the frontier was re-inventing under other names.
+- id: pathway:thermo-osmotic-energy-converter
+  name: Thermo-osmotic energy conversion (TOEC)
+  steps: [claim:temperature-drives-thermo-osmosis, claim:thermo-osmosis-produces-flow, claim:fluid-flow-carrier-drives-lift, claim:lift-produces-motion, claim:motion-converts-mechanical-work]
+  demonstrated_with: [transducer:thermo-osmotic-energy-converter]
+  evidence: [source:straub-2016-toec]
+  status: proposed
+  knowledge_level: K5
+  performance:
+    theoretical_limit: "Carnot between the hot and cold reservoirs"
+    measurements:
+      - quantity: hydraulic power density
+        value: "3.53 ± 0.29 W/m² of membrane"
+        scope: laboratory
+        conditions: "60 °C hot side, 20 °C cold side, hydraulic pressures up to 13 bar; the pressurised flow was measured, the turbine stage is proposed"
+        sources: [source:straub-2016-toec]
+        year: 2016
+  environment: [state-liquid, medium-membrane, temp-gradient-required]
+  summary: Heat drives a thermo-osmotic vapour flux through a hydrophobic membrane into a pressurised reservoir; the pressurised flow is recorded, its conversion through a turbine is the proposed step.
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 10 (frontier as a research instrument)" }
+- id: pathway:bimetal-piezoelectric-harvester
+  name: Bimetallic-strip piezoelectric harvester
+  steps: [claim:thermal-expansion-drives, claim:thermal-expansion-produces-stress, claim:piezo-drives, claim:piezo-produces-charge, claim:surface-charge-converts-electricity]
+  demonstrated_with: [transducer:bimetal-piezo-harvester]
+  evidence: [source:boughaleb-2016-bimetal-piezo]
+  status: demonstrated
+  knowledge_level: K6
+  performance:
+    notes: "microwatt-scale electrical output per snap in laboratory devices; the strip's snap-through converts a slow thermal cycle into an impulse the piezoelectric element can use"
+  environment: [state-solid, temp-gradient-required]
+  summary: A bimetallic strip snapping between hot and cold plates strikes a piezoelectric element; a demonstrated thermal-to-electrical harvester with no working fluid.
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 10 (frontier as a research instrument)" }

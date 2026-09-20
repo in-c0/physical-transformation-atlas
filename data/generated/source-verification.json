@@ -663,5 +663,20 @@
     "verified": true,
     "checked_at": "2026-09-20T02:16:48.842Z",
     "crossref_title": "A Preliminary Communication on the Pressure of Heat and Light Radiation"
+  },
+  "source:straub-2016-toec": {
+    "verified": true,
+    "checked_at": "2026-09-20T04:55:35.580Z",
+    "crossref_title": "Harvesting low-grade heat energy using thermo-osmotic vapour transport through nanoporous membranes"
+  },
+  "source:boughaleb-2016-bimetal-piezo": {
+    "verified": true,
+    "checked_at": "2026-09-20T04:55:36.671Z",
+    "crossref_title": "Coupling of a bimetallic strip heat engine with a piezoelectric transducer for thermal energy harvesting"
+  },
+  "source:lian-2009-thermomagnetic-pump": {
+    "verified": true,
+    "checked_at": "2026-09-20T04:55:37.057Z",
+    "crossref_title": "Characterization of miniature automatic energy transport devices based on the thermomagnetic effect"
   }
 }

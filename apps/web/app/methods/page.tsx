@@ -111,9 +111,9 @@ export default function MethodsPage() {
             Two routes can have the same evidence and very different research value. Alongside its evidence class, every route is classed by structure, which says nothing about how well its physics is
             known: <em>composition</em> (two or more conversion phenomena with a real handoff between mechanisms), <em>one effect plus bookkeeping</em> (fewer than two phenomena),{" "}
             <em>carrier-expanded copy</em> (a shorter route with the same source and sink already contains its phenomena and the extra steps add no cross-family seam and no energy-form transition),{" "}
-            <em>same mechanism at another resolution</em> (the same mechanism core as a named pathway drawn with different carrier nodes, or the same source, ordered coupling families and sink form as another composition — one representative stays on the frontier), <em>energy backtracking</em> (a form reappears after a
-            different one, as in electricity → heat → electricity), and <em>known device likely</em> (every phenomenon is implemented by one common transducer, so the composition is probably an
-            uncurated pathway).
+            <em>same mechanism at another resolution</em> (the same mechanism core as a named pathway drawn with different carrier nodes, or the same source, ordered coupling families and sink form as
+            another composition — one representative stays on the frontier), <em>energy backtracking</em> (a form reappears after a different one, as in electricity → heat → electricity), and{" "}
+            <em>known device likely</em> (every phenomenon is implemented by one common transducer, so the composition is probably an uncurated pathway).
           </p>
           <p>
             Only compositions can make an empty matrix cell a candidate, and only compositions appear on the frontier by default. Each route also records its conversion phenomena in order, its
@@ -121,9 +121,13 @@ export default function MethodsPage() {
             conversion steps carry a constitutive relation.
           </p>
           <p>
-            The frontier order is a fixed lexicographic order, never a score: structure, then resolution of the four core checks, then evidence floor and the count of non-established constituents,
-            then mechanism novelty (one or two seams first), then composition-search strength, then how readily the driver is found, then the number of phenomena, then overlap with recorded pathways.
-            The same order chooses which bridge a matrix cell shows first.
+            The frontier order is a fixed lexicographic order, never a score: structure, then resolution of the four core checks, then carrier handoffs left unresolved (a consuming step declares what
+            it needs — a bulk, loadable stream, a charged surface — and the producing step before it does not record providing it), then how much of the route a recorded device already implements,
+            then the magnitude screen (whether any number bounds what the route transmits), then composition-search state, then evidence floor and the count of non-established constituents, then how
+            readily the driver is found, then mechanism seams, energy transitions and the number of phenomena. The same order chooses which bridge a matrix cell shows first. Two further structural
+            classes keep the default frontier honest: a route that first manufactures an ambient driver (a temperature gradient by combustion, an osmotic pressure by osmosis) for a suffix that is
+            itself a route is <em>source preparation</em> and defers to the suffix; two routes with the same source, ordered coupling families and sink form are one mechanism, and only one
+            representative stays.
           </p>
         </div>
       </section>

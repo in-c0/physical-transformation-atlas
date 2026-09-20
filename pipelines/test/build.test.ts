@@ -59,7 +59,14 @@ test("counts on the home page derive from the compiled data", () => {
 });
 
 test("negative control: a claim with a dangling entity is rejected by validation", () => {
-  const bad = Claim.parse({ id: "claim:dangling", subject: "disequilibrium:does-not-exist", predicate: "drives", object: "phenomenon:seebeck-effect", evidence: ["source:goldsmid-2016"], status: "established" });
+  const bad = Claim.parse({
+    id: "claim:dangling",
+    subject: "disequilibrium:does-not-exist",
+    predicate: "drives",
+    object: "phenomenon:seebeck-effect",
+    evidence: ["source:goldsmid-2016"],
+    status: "established",
+  });
   // Re-run the referential checks the loader performs, on a copy with the bad claim injected.
   const ids = new Set(canon.entities.map((e) => e.id));
   const problems = [bad, ...canon.claims].filter((c) => !ids.has(c.subject) || !ids.has(c.object));
@@ -68,11 +75,13 @@ test("negative control: a claim with a dangling entity is rejected by validation
   assert.ok(new ValidationError(["x"]).message.includes("validation problem"));
 });
 
-test("a candidate never shares two or more relations with a recorded pathway; derived routes always do", () => {
+test("a candidate never shares two or more relations with a recorded pathway, nor a two-effect head or tail; derived routes always do one of them", () => {
   for (const p of graph.paths) {
     const shared = p.known_pathway_overlap?.shared_claims ?? 0;
-    if (p.frontier_class === "candidate") assert.ok(shared < 2, `${p.id} is a candidate but shares ${shared} relations with ${p.known_pathway_overlap?.pathway}`);
-    if (p.frontier_class === "derived") assert.ok(shared >= 2, `${p.id} is derived with only ${shared} shared relations`);
+    const ck = p.closest_known_pathway;
+    const variant = !!ck && ck.relation !== "mechanism-subsequence" && ck.shared_phenomena >= 2;
+    if (p.frontier_class === "candidate") assert.ok(shared < 2 && !variant, `${p.id} is a candidate but overlaps ${p.known_pathway_overlap?.pathway ?? ck?.pathway}`);
+    if (p.frontier_class === "derived") assert.ok(shared >= 2 || variant, `${p.id} is derived with only ${shared} shared relations and no phenomena-level variant`);
     if (p.pathway) assert.equal(p.known_pathway_overlap?.relation, "exact", `${p.id} matches a pathway but overlap is not exact`);
   }
 });
