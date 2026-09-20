@@ -29,7 +29,13 @@ export function StatusMark({ status, size = 12 }: { status: MatrixCellStatus; si
       body = <circle cx={c} cy={c} r={3.5} fill="none" stroke="var(--status-searched-none)" strokeWidth={1} />;
       break;
     case "search-incomplete":
-      body = <path d={`M${c - 5} ${c + 1} V${c + 5} H${c - 1}`} fill="none" stroke="var(--ink-secondary)" strokeWidth={1} />;
+      // corner plus a dot: geometrically distinct from not-searched, not just darker
+      body = (
+        <>
+          <path d={`M${c - 5} ${c + 1} V${c + 5} H${c - 1}`} fill="none" stroke="var(--ink-secondary)" strokeWidth={1} />
+          <circle cx={c + 2.5} cy={c - 2.5} r={1.2} fill="var(--ink-secondary)" />
+        </>
+      );
       break;
     case "not-searched":
       body = <path d={`M${c - 5} ${c + 1} V${c + 5} H${c - 1}`} fill="none" stroke="var(--status-not-searched-mark)" strokeWidth={1} />;
@@ -53,7 +59,7 @@ export function StatusMark({ status, size = 12 }: { status: MatrixCellStatus; si
               <line x1={0} y1={0} x2={0} y2={5} stroke="var(--insufficient)" strokeWidth={1} />
             </pattern>
           </defs>
-          <rect x={0} y={0} width={12} height={12} fill="url(#pta-hatch)" opacity={0.6} />
+          <rect x={0} y={0} width={12} height={12} fill="url(#pta-hatch)" />
         </>
       );
       break;

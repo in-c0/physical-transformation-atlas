@@ -83,18 +83,33 @@ export default function MethodsPage() {
         </div>
       </section>
 
+      <section className={styles.section} id="structure">
+        <h2 className="t-section">5. Structure of a route</h2>
+        <div className="prose">
+          <p>
+            Two routes can have the same evidence and very different research value. Alongside its evidence class, every route is classed by structure, which says nothing about how well its physics is known: <em>composition</em> (two or more conversion phenomena with a real handoff between mechanisms), <em>one effect plus bookkeeping</em> (fewer than two phenomena), <em>carrier-expanded copy</em> (a shorter route with the same source and sink already contains its phenomena and the extra steps add no cross-family seam and no energy-form transition), <em>recorded pathway at another resolution</em> (the same mechanism core as a named pathway, drawn with different carrier nodes), <em>energy backtracking</em> (a form reappears after a different one, as in electricity → heat → electricity), and <em>known device likely</em> (every phenomenon is implemented by one common transducer, so the composition is probably an uncurated pathway).
+          </p>
+          <p>
+            Only compositions can make an empty matrix cell a candidate, and only compositions appear on the frontier by default. Each route also records its conversion phenomena in order, its collapsed energy-form sequence, the number of genuine cross-family seams, how many of the four core checks are unresolved, how many interfaces its condition tags imply, and how many of its conversion steps carry a constitutive relation.
+          </p>
+          <p>
+            The frontier order is a fixed lexicographic order, never a score: structure, then resolution of the four core checks, then evidence floor and the count of non-established constituents, then mechanism novelty (one or two seams first), then composition-search strength, then how readily the driver is found, then the number of phenomena, then overlap with recorded pathways. The same order chooses which bridge a matrix cell shows first.
+          </p>
+        </div>
+      </section>
+
       <section className={styles.section} id="paths">
-        <h2 className="t-section">5. Path enumeration</h2>
+        <h2 className="t-section">6. Path enumeration</h2>
         <div className="prose">
           <p>
             From every disequilibrium the compiler follows process claims depth-first, never revisiting a node, up to seven steps, and records every route that ends at an output. Each route gets a stable id from the hash of its claim sequence. If a route matches a named, reviewed pathway (a thermoelectric generator, a wind turbine, a hydrovoltaic generator) it inherits that pathway's status, knowledge level and measured performance. This release examines {a.graph.meta.counts.paths_examined} routes, of which {a.graph.meta.counts.paths_demonstrated} are demonstrated.
           </p>
-          <p>Routes are then classed for the frontier: demonstrated; candidate (every constituent at least demonstrated and no check fails); weakly supported (a constituent is theoretical or worse); fails a check; or round trip (source and sink share an energy form, so the route converts electricity into electricity at a loss).</p>
+          <p>Routes are then classed for the frontier: demonstrated; candidate (every constituent at least demonstrated, no check fails, and fewer than two relations shared with a recorded pathway); extends a recorded pathway (the same, but sharing two or more relations with one); weakly supported (a constituent is theoretical or worse); fails a check; or round trip (source and sink share an energy form).</p>
         </div>
       </section>
 
       <section className={styles.section} id="checks">
-        <h2 className="t-section">6. The seven checks</h2>
+        <h2 className="t-section">7. The seven checks</h2>
         <div className="prose">
           <p>Every route is passed through seven checks. Each returns pass, fail, unresolved (the data needed to decide is partly present) or unknown (none of it is recorded), and a sentence saying what was examined. The site shows the sentence, never just the verdict.</p>
           <dl className={styles.checks}>
@@ -117,7 +132,7 @@ export default function MethodsPage() {
       </section>
 
       <section className={styles.section} id="evidence">
-        <h2 className="t-section">7. Evidence and provenance</h2>
+        <h2 className="t-section">8. Evidence and provenance</h2>
         <div className="prose">
           <p>
             Every claim cites at least one source. Sources with a DOI are checked against Crossref by a pipeline that records whether the DOI resolves and whether the title Crossref returns matches the one on file; the result is shown beside each reference. Historical sources that predate DOIs are listed with their venue.
@@ -129,7 +144,7 @@ export default function MethodsPage() {
       </section>
 
       <section className={styles.section} id="governance">
-        <h2 className="t-section">8. Changing the atlas</h2>
+        <h2 className="t-section">9. Changing the atlas</h2>
         <div className="prose">
           <p>
             The canonical data is YAML under <code>data/canonical</code>, source-controlled and reviewed in pull requests. Validation rejects unknown units, invalid predicates, dangling entities, missing provenance and malformed conditions before anything is compiled. The compiler is deterministic: the dataset revision shown in the status rail is a hash of the canonical files, so two people building the same commit see the same numbers.
@@ -141,7 +156,7 @@ export default function MethodsPage() {
       </section>
 
       <section className={styles.section} id="language">
-        <h2 className="t-section">9. Language</h2>
+        <h2 className="t-section">10. Language</h2>
         <div className="prose">
           <p>The site reports the state of the atlas, never the state of nature. The canonical strings are: "Not searched." · "No direct demonstration found — searched in indexed evidence through {"{date}"}." · "No canonical relation currently recorded. This does not imply the relation is impossible." · "No composed pathway currently recorded." · "Insufficient evidence to assign a stronger status." Numbers on screen are computed from the dataset or replaced by an em dash. Nothing is decorative.</p>
           <p>

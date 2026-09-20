@@ -51,6 +51,7 @@
 .bridgeFacts b { font-weight: var(--weight-medium); color: var(--ink); }
 .bridgeActions { margin: 6px 0 0 26px; display: flex; gap: 12px; }
 .linkBtn { font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
+.linkBtn:is(button) { min-height: 24px; display: inline-flex; align-items: center; }
 .bridgeActive { background: var(--surface-raised); margin: 0 calc(-1 * var(--gutter)); padding-left: var(--gutter); padding-right: var(--gutter); }
 .claim { padding: 6px 0; }
 .claimLine { display: flex; gap: 8px; align-items: baseline; font-size: var(--text-ui); line-height: var(--leading-ui); }
@@ -59,6 +60,6 @@
 .axisLinks { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: var(--text-ui); line-height: var(--leading-ui); }
 .axisLinks a { text-decoration: underline; text-underline-offset: 2px; }
 @media (max-width: 640px) {
-  .drawer { flex: none; width: 100%; border-left: 0; border-top: var(--border-strong); border-bottom: var(--border-strong); animation: none; order: -1; }
+  .drawer { flex: none; width: 100%; border-left: 0; border-top: var(--border-strong); border-bottom: var(--border-strong); animation: none; }
   .body { max-height: none; overflow: visible; }
 }

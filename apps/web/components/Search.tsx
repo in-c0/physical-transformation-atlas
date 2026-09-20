@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { Entity } from "@pta/schema";
 import { loadAtlas } from "@/lib/client-data";
@@ -11,9 +11,12 @@ export function Search() {
   const [hits, setHits] = useState<Entity[]>([]);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(0);
-  const [state, setState] = useState<"idle" | "loading" | "ready" | "error">("idle");
+  const [state, setState] = useState<"idle" | "loading" | "ready" | "error">(
+    "idle",
+  );
   const router = useRouter();
   const box = useRef<HTMLDivElement>(null);
+  const listId = useId();
 
   useEffect(() => {
     if (!q.trim()) {
@@ -38,7 +41,8 @@ export function Search() {
 
   useEffect(() => {
     const onDoc = (e: MouseEvent) => {
-      if (box.current && !box.current.contains(e.target as Node)) setOpen(false);
+      if (box.current && !box.current.contains(e.target as Node))
+        setOpen(false);
     };
     document.addEventListener("mousedown", onDoc);
     return () => document.removeEventListener("mousedown", onDoc);
@@ -58,8 +62,13 @@ export function Search() {
         value={q}
         placeholder="Search a concept — rain, strain, ΔT…"
         aria-label="Search the atlas"
+        role="combobox"
+        aria-autocomplete="list"
         aria-expanded={open && hits.length > 0}
-        aria-controls="search-results"
+        aria-controls={listId}
+        aria-activedescendant={
+          open && hits[active] ? `${listId}-${active}` : undefined
+        }
         onChange={(e) => {
           setQ(e.target.value);
           setOpen(true);
@@ -79,16 +88,43 @@ export function Search() {
         }}
       />
       {open && q.trim() && (
-        <ul id="search-results" className={styles.results} role="listbox">
-          {state === "loading" && <li className={`${styles.note} t-data`}>Loading atlas index…</li>}
-          {state === "error" && <li className={`${styles.note} t-data`}>Atlas data could not be loaded.</li>}
-          {state === "ready" && hits.length === 0 && <li className={`${styles.note} t-data`}>No entity matches. The underlying atlas has not changed.</li>}
+        <ul
+          id={listId}
+          className={styles.results}
+          role="listbox"
+          aria-label="Search results"
+        >
+          {state === "loading" && (
+            <li className={`${styles.note} t-data`}>Loading atlas index…</li>
+          )}
+          {state === "error" && (
+            <li className={`${styles.note} t-data`}>
+              Atlas data could not be loaded.
+            </li>
+          )}
+          {state === "ready" && hits.length === 0 && (
+            <li className={`${styles.note} t-data`}>
+              No entity matches. The underlying atlas has not changed.
+            </li>
+          )}
           {hits.map((h, i) => (
-            <li key={h.id} role="option" aria-selected={i === active}>
-              <button type="button" className={`${styles.hit} ${i === active ? styles.hitActive : ""}`} onMouseEnter={() => setActive(i)} onClick={() => go(h)}>
+            <li
+              key={h.id}
+              id={`${listId}-${i}`}
+              role="option"
+              aria-selected={i === active}
+            >
+              <button
+                type="button"
+                className={`${styles.hit} ${i === active ? styles.hitActive : ""}`}
+                onMouseEnter={() => setActive(i)}
+                onClick={() => go(h)}
+              >
                 <span className="label">{h.type}</span>
                 <span className={styles.hitName}>{h.name}</span>
-                {h.symbol && <span className="t-data secondary">{h.symbol}</span>}
+                {h.symbol && (
+                  <span className="t-data secondary">{h.symbol}</span>
+                )}
               </button>
             </li>
           ))}

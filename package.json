@@ -15,5 +15,8 @@
     "dev": "pnpm build:graph && pnpm --filter @pta/web dev",
     "build": "pnpm build:graph && pnpm --filter @pta/web build",
     "deploy": "pnpm build && pnpm --filter @pta/worker deploy"
+  },
+  "devDependencies": {
+    "axe-core": "^4.13.0"
   }
 }

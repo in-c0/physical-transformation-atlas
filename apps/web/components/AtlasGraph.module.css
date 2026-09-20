@@ -1,7 +1,7 @@
 .wrap { display: flex; align-items: stretch; height: calc(100vh - var(--header-height)); min-height: 480px; }
 .main { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; }
 .toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 8px var(--gutter); border-bottom: var(--border); }
-.chip { height: 22px; padding: 0 12px 0 0; margin-right: 12px; border: 0; border-right: 1px solid var(--hairline); border-radius: 0; background: transparent; font-size: var(--text-ui); color: var(--ink-secondary); }
+.chip { min-height: 24px; padding: 0 12px 0 0; margin-right: 12px; border: 0; border-right: 1px solid var(--hairline); border-radius: 0; background: transparent; font-size: var(--text-ui); color: var(--ink-secondary); }
 .chip:hover { color: var(--ink); }
 .chip[aria-pressed="false"] { text-decoration: line-through; text-decoration-color: var(--ink-secondary); }
 .chipOn { color: var(--ink); }
@@ -9,6 +9,19 @@
 .canvasWrap { position: relative; flex: 1 1 auto; min-height: 0; }
 .canvas { position: absolute; inset: 0; }
 .state { position: absolute; top: 12px; left: var(--gutter); font-family: var(--font-mono); font-size: var(--text-data); color: var(--ink-secondary); z-index: 1; }
+/* DOM navigator: the accessible route into the raster (loop-3 pass 6). Overlays the canvas top-left. */
+.nav { position: absolute; top: 10px; left: var(--gutter); z-index: 2; max-width: 260px; background: var(--surface-raised); border: 1px solid var(--control-border); font-size: var(--text-ui); }
+.nav[open] { width: 260px; max-height: calc(100% - 20px); display: flex; flex-direction: column; }
+.navSummary { cursor: pointer; padding: 4px 8px; min-height: 24px; display: flex; align-items: center; font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-secondary); list-style: none; }
+.navSummary::-webkit-details-marker { display: none; }
+.navSummary::before { content: "▸ "; }
+.nav[open] .navSummary::before { content: "▾ "; }
+.navSearch { margin: 0 8px 4px; height: 26px; padding: 0 6px; background: var(--surface); border: 1px solid var(--control-border); border-radius: var(--radius-control); font-family: var(--font-mono); font-size: var(--text-data); }
+.nav > div { padding: 0 8px 4px; }
+.navList { list-style: none; margin: 0; padding: 0 0 4px; overflow: auto; flex: 1 1 auto; min-height: 0; border-top: var(--border); }
+.navItem { display: block; width: 100%; min-height: 24px; padding: 3px 8px; border: 0; background: transparent; text-align: left; font-size: var(--text-ui); color: var(--ink); }
+.navItem:hover { background: var(--surface); }
+.navItem[aria-current="true"] { border-left: 2px solid var(--ink); padding-left: 6px; }
 @media (max-width: 640px) {
   .wrap { flex-direction: column; height: auto; }
   .canvasWrap { height: 60vh; }
