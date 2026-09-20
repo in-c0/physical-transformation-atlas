@@ -517,12 +517,18 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
   // Coverage ---------------------------------------------------------------------------
   const claimsBySubject = new Map<string, Claim[]>();
   for (const c of canon.claims) claimsBySubject.set(c.subject, [...(claimsBySubject.get(c.subject) ?? []), c]);
+  const sourceYear = new Map(canon.sources.map((s) => [s.id, s.year ?? null]));
+  const colDomain = new Map(cols.map((c) => [c.id, c.family]));
+  const reviewedCellSearches = canon.searches.filter((s) => s.target.kind === "cell");
   const coverage: CoverageEntry[] = canon.domains.map((d) => {
     const phen = canon.entities.filter((e) => e.type === "phenomenon" && e.domain === d.id && (claimsBySubject.get(e.id) ?? []).length > 0);
     const phenIds = new Set(phen.map((p) => p.id));
     const dclaims = canon.claims.filter((c) => phenIds.has(c.subject) || phenIds.has(c.object));
     const withEvidence = dclaims.filter((c) => c.evidence.length > 0).length;
     const unresolved = dclaims.filter((c) => ["hypothesised", "disputed", "theoretically-predicted", "reported"].includes(c.status)).length;
+    const claimIds = new Set(dclaims.map((c) => c.id));
+    const dcells = cells.filter((c) => colDomain.get(c.col) === d.id);
+    const years = dclaims.flatMap((c) => c.evidence.map((s) => sourceYear.get(s) ?? null)).filter((y): y is number => typeof y === "number");
     return {
       domain: d.id,
       name: d.name,
@@ -533,6 +539,13 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
       ontology_coverage: Math.min(1, phen.length / d.target_phenomena),
       literature_coverage: dclaims.length ? withEvidence / dclaims.length : 0,
       unresolved_claims: unresolved,
+      claims_established: dclaims.filter((c) => c.status === "established" || c.status === "replicated").length,
+      claims_demonstrated: dclaims.filter((c) => c.status === "demonstrated" || c.status === "reported").length,
+      named_pathways: canon.pathways.filter((p) => p.steps.some((s) => claimIds.has(s))).length,
+      matrix_cells: dcells.length,
+      matrix_cells_unsearched: dcells.filter((c) => c.status === "not-searched").length,
+      reviewed_searches: reviewedCellSearches.filter((s) => s.target.kind === "cell" && colDomain.get(s.target.col) === d.id).length,
+      newest_source_year: years.length ? Math.max(...years) : null,
     };
   });
 

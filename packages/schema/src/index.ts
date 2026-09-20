@@ -543,6 +543,19 @@ export const CoverageEntry = z.object({
   ontology_coverage: z.number().min(0).max(1),
   literature_coverage: z.number().min(0).max(1),
   unresolved_claims: z.number().int(),
+  /** Claims about the domain's phenomena that are established or replicated. */
+  claims_established: z.number().int(),
+  /** … demonstrated or reported. */
+  claims_demonstrated: z.number().int(),
+  /** Named pathways with at least one step in this domain. */
+  named_pathways: z.number().int(),
+  /** Matrix cells whose coupling family belongs to this domain, and how many of them are not searched. */
+  matrix_cells: z.number().int(),
+  matrix_cells_unsearched: z.number().int(),
+  /** Reviewed search records targeting a cell or route in this domain. */
+  reviewed_searches: z.number().int(),
+  /** Publication year of the newest source cited by the domain's claims; null when none has a year. */
+  newest_source_year: z.number().int().nullable(),
 });
 export type CoverageEntry = z.infer<typeof CoverageEntry>;
 
