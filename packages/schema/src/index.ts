@@ -394,7 +394,7 @@ export const SearchTarget = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("claim"), claim: ClaimId }),
 ]);
 
-const isoDateTime = z.string().regex(/^\d{4}-\d{2}-\d{2}(T\d{2}:\d{2}(:\d{2})?([+-]\d{2}:\d{2}|Z))?$/, "ISO 8601 date or date-time");
+const isoDateTime = z.string().regex(/^\d{4}-\d{2}-\d{2}(T\d{2}:\d{2}(:\d{2}(\.\d{1,3})?)?([+-]\d{2}:\d{2}|Z))?$/, "ISO 8601 date or date-time");
 
 export const SEARCH_ENGINES = ["openalex", "semantic-scholar", "google-scholar", "crossref", "manual"] as const;
 export const QUERY_FORMS = ["driver-family", "driver-phenomenon", "demonstration-precision", "citation-chase"] as const;
