@@ -14,8 +14,8 @@
       - claim:acoustoelectric-produces
       - claim:charge-carriers-convert-electricity
   protocol_version: route-search-v1
-  started_at: 2026-09-21T02:20:00+10:00
-  completed_at: 2026-09-21T03:10:00+10:00
+  started_at: 2026-09-21T01:45:00+10:00
+  completed_at: 2026-09-21T02:10:00+10:00
   objective: exact-composition
   inclusion_criteria:
     - a physical experiment or device in which a thermoacoustic engine's travelling acoustic wave drags mobile carriers in a semiconductor (the Weinreich acoustoelectric effect) and the resulting current delivers electrical work to a load (route-search-v1 §3, output Electrical work)
@@ -30,7 +30,7 @@
       query_form: route-demonstration-precision
       query_key: demonstration-precision
       query: "second reader's web search (ChatGPT with browsing, pass 25): any experiment in which a thermoacoustic engine, Rijke tube or Sondhauss tube drove classical acoustoelectric carrier drag, or the nearest thing (a thermoacoustic engine driving a SAW device; an acoustoelectric current from a gas-borne wave)"
-      executed_at: 2026-09-21T02:40:00+10:00
+      executed_at: 2026-09-21T01:55:00+10:00
       engine_version: null
       index_snapshot: null
       result_count_reported: null

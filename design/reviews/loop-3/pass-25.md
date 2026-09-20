@@ -1,4 +1,4 @@
-# Pass 25 — thermoacoustic → acoustoelectric as physics: the travelling-wave handoff, two constitutive relations, and a bounded candidate (21/09/2026 ~2:05–3:35 am Sydney)
+# Pass 25 — thermoacoustic → acoustoelectric as physics: the travelling-wave handoff, two constitutive relations, and a bounded candidate (21/09/2026 ~1:40–2:18 am Sydney)
 
 Focus sent: candidate 5 (the reviewer's P2), temperature gradient → thermoacoustic effect →
 acoustic wave → acoustoelectric effect → electrical work, taken as physics first because every
@@ -8,7 +8,7 @@ run; (B) the implied gas→solid interface — GENUINE / KNOWN DEVICE / ARTEFACT
 constitutive relations the route's two drives-steps should carry (Swift's critical gradient; the
 Weinreich relation) with primary sources, and an order-of-magnitude bound for a Backhaus–Swift-class
 engine; (D) the reviewer's own web search for any thermoacoustic → classical-acoustoelectric
-experiment; (E) pass 26. ChatGPT (High, ~38 min, with web search). Verdict: PIVOT — 19 findings.
+experiment; (E) pass 26. ChatGPT (High, ~17 min, with web search). Verdict: PIVOT — 19 findings.
 
 Verification before recording: every named source resolved on Crossref — Yazaki, Iwata, Maekawa &
 Tominaga 1998 (PRL 81:3128), Backhaus & Swift 2000 (JASA 107:3148–3166), Weinreich 1957 (Phys. Rev.

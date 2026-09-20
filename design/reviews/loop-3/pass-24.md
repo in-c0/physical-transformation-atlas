@@ -1,4 +1,4 @@
-# Pass 24 — the thermal expansion → flexoelectric route: observed but not converted (21/09/2026 ~12:55–2:05 am Sydney)
+# Pass 24 — the thermal expansion → flexoelectric route: observed but not converted (21/09/2026 ~12:55–1:40 am Sydney)
 
 Focus sent: (A) the route-search-v1 plan and runs for p-a093d7ecc5 (aliases added first; OpenAlex
 driver-mechanism 2,185 reported / 150 screened, mechanism-pair 8, whole-chain 0, precision 0; chases
