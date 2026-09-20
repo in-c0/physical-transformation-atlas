@@ -1,0 +1,110 @@
+/**
+ * Structural classification of enumerated routes. Pure functions over a minimal
+ * route shape so they can be unit-tested with synthetic data.
+ *
+ * Nothing here is an epistemic statement: a route's structural kind says how it
+ * sits in the graph (one effect plus bookkeeping? a carrier-expanded copy of a
+ * recorded pathway? a genuine handoff between mechanisms?), never how well its
+ * physics is known.
+ */
+import type { EnergyForm, StructuralKind } from "@pta/schema";
+
+export interface RouteCore {
+  id: string;
+  source: string;
+  sinkForm: EnergyForm | undefined;
+  /** conversion phenomena in order */
+  phenomena: string[];
+  /** family sets per phenomenon, same order */
+  families: string[][];
+  /** energy forms along the route, consecutive repeats collapsed */
+  forms: EnergyForm[];
+  /** true when the claim sequence is exactly a recorded pathway */
+  exact: boolean;
+  /** all phenomena share a K6+ transducer through implemented_by / demonstrated_with */
+  knownDevice: boolean;
+}
+
+export function collapseForms(forms: (EnergyForm | undefined)[]): EnergyForm[] {
+  const out: EnergyForm[] = [];
+  for (const f of forms) {
+    if (!f) continue;
+    if (out[out.length - 1] !== f) out.push(f);
+  }
+  return out;
+}
+
+export function familySeams(families: string[][]): number {
+  let seams = 0;
+  for (let i = 1; i < families.length; i++) {
+    const a = families[i - 1];
+    const b = families[i];
+    if (a.length === 0 || b.length === 0) continue; // an unclassified phenomenon is not a seam
+    if (!a.some((f) => b.includes(f))) seams++;
+  }
+  return seams;
+}
+
+export function signature(source: string, phenomena: string[], sinkForm: EnergyForm | undefined): string {
+  return `${source}|${phenomena.join(">")}|${sinkForm ?? "?"}`;
+}
+
+/** A → B → A with no new external driver: a form reappears after a different one. */
+export function hasBacktracking(forms: EnergyForm[]): boolean {
+  const seen = new Set<EnergyForm>();
+  for (let i = 0; i < forms.length; i++) {
+    if (seen.has(forms[i]) && forms[i - 1] !== forms[i]) return true;
+    seen.add(forms[i]);
+  }
+  return false;
+}
+
+function isOrderedSubsequence(short: string[], long: string[]): boolean {
+  let j = 0;
+  for (const x of long) if (j < short.length && short[j] === x) j++;
+  return j === short.length;
+}
+
+/**
+ * Classify every route. `namedSignatures` are the mechanism signatures of recorded pathways.
+ * Dominance is pairwise within (source, sink form) buckets: B is dominated by A when A's
+ * phenomena are a proper ordered subsequence of B's and B's extra phenomena add no seam
+ * and no energy transition.
+ */
+export function classify(routes: RouteCore[], namedSignatures: Set<string>): Map<string, { kind: StructuralKind; semanticOverlap: boolean; dominatedBy: string | null }> {
+  const out = new Map<string, { kind: StructuralKind; semanticOverlap: boolean; dominatedBy: string | null }>();
+  const buckets = new Map<string, RouteCore[]>();
+  for (const r of routes) {
+    const k = `${r.source}|${r.sinkForm ?? "?"}`;
+    buckets.set(k, [...(buckets.get(k) ?? []), r]);
+  }
+  for (const r of routes) {
+    const sig = signature(r.source, r.phenomena, r.sinkForm);
+    const semanticOverlap = !r.exact && namedSignatures.has(sig);
+    let kind: StructuralKind;
+    let dominatedBy: string | null = null;
+    if (r.phenomena.length < 2) kind = "atomic";
+    else if (semanticOverlap) kind = "representation-equivalent";
+    else {
+      const seams = familySeams(r.families);
+      const transitions = Math.max(0, r.forms.length - 1);
+      const bucket = buckets.get(`${r.source}|${r.sinkForm ?? "?"}`) ?? [];
+      for (const a of bucket) {
+        if (a.id === r.id || a.phenomena.length >= r.phenomena.length) continue;
+        if (!isOrderedSubsequence(a.phenomena, r.phenomena)) continue;
+        const aSeams = familySeams(a.families);
+        const aTransitions = Math.max(0, a.forms.length - 1);
+        if (seams <= aSeams && transitions <= aTransitions) {
+          dominatedBy = a.id;
+          break;
+        }
+      }
+      if (dominatedBy) kind = "representation-dominated";
+      else if (hasBacktracking(r.forms)) kind = "energy-backtracking";
+      else if (r.knownDevice) kind = "known-device-likely";
+      else kind = "composition";
+    }
+    out.set(r.id, { kind, semanticOverlap, dominatedBy });
+  }
+  return out;
+}

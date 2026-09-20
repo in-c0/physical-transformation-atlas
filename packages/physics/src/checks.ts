@@ -203,8 +203,8 @@ export function checkDimensional(ctx: PhysicsContext, claims: Claim[]): CheckRes
  * conditions on two adjacent steps mean an interface — a heat exchanger, a window,
  * a shaft — is implied but not recorded, so the result is unresolved, not fail.
  */
-export function checkBoundaryCompatibility(ctx: PhysicsContext, claims: Claim[]): CheckResult {
-  const label = "boundary compatibility";
+/** Condition conflicts within a step and between adjacent steps, for the boundary check and the compiler. */
+export function boundaryReport(ctx: PhysicsContext, claims: Claim[]): { within: string[]; adjacent: string[]; untagged: number; tagCount: number } {
   const tagsByStep = claims.map((c) => {
     const own = new Set(c.condition_tags);
     for (const id of [c.subject, c.object]) for (const t of ctx.entity(id)?.condition_tags ?? []) own.add(t);
@@ -212,26 +212,31 @@ export function checkBoundaryCompatibility(ctx: PhysicsContext, claims: Claim[])
   });
   const all = new Set<string>();
   for (const s of tagsByStep) for (const t of s) all.add(t);
-  const untagged = tagsByStep.filter((s) => s.size === 0).length;
-  if (all.size === 0) return { id: "boundary-compatibility", label, result: "unknown", detail: "no condition tags recorded on any step" };
   const within: string[] = [];
-  const adjacent: string[] = [];
+  const adjacent = new Set<string>();
   for (const k of ctx.conflicts) {
     for (let i = 0; i < tagsByStep.length; i++) {
       const s = tagsByStep[i];
       if (s.has(k.a) && s.has(k.b)) within.push(`${claims[i].id}: ${k.a} vs ${k.b} (${k.reason})`);
       if (i > 0) {
         const p = tagsByStep[i - 1];
-        if ((p.has(k.a) && s.has(k.b)) || (p.has(k.b) && s.has(k.a))) adjacent.push(`${claims[i - 1].id} → ${claims[i].id}: ${k.a} vs ${k.b}`);
+        if ((p.has(k.a) && s.has(k.b)) || (p.has(k.b) && s.has(k.a))) adjacent.add(`${claims[i - 1].id} → ${claims[i].id}: ${k.a} vs ${k.b}`);
       }
     }
   }
+  return { within, adjacent: [...adjacent], untagged: tagsByStep.filter((s) => s.size === 0).length, tagCount: all.size };
+}
+
+export function checkBoundaryCompatibility(ctx: PhysicsContext, claims: Claim[]): CheckResult {
+  const label = "boundary compatibility";
+  const { within, adjacent, untagged, tagCount } = boundaryReport(ctx, claims);
+  if (tagCount === 0) return { id: "boundary-compatibility", label, result: "unknown", detail: "no condition tags recorded on any step" };
   if (within.length) return { id: "boundary-compatibility", label, result: "fail", detail: within.join("; ") };
   if (adjacent.length) {
-    return { id: "boundary-compatibility", label, result: "unresolved", detail: `interface implied but not recorded: ${[...new Set(adjacent)].join("; ")}` };
+    return { id: "boundary-compatibility", label, result: "unresolved", detail: `interface implied but not recorded: ${adjacent.join("; ")}` };
   }
-  if (untagged > 0) return { id: "boundary-compatibility", label, result: "unresolved", detail: `${untagged}/${claims.length} steps have no condition tags; no conflicts among the ${all.size} recorded` };
-  return { id: "boundary-compatibility", label, result: "pass", detail: `${all.size} condition tags across ${claims.length} steps, no conflicts within or between adjacent steps` };
+  if (untagged > 0) return { id: "boundary-compatibility", label, result: "unresolved", detail: `${untagged}/${claims.length} steps have no condition tags; no conflicts among the ${tagCount} recorded` };
+  return { id: "boundary-compatibility", label, result: "pass", detail: `${tagCount} condition tags across ${claims.length} steps, no conflicts within or between adjacent steps` };
 }
 
 export function checkPracticalMagnitude(pathway?: Pathway): CheckResult {

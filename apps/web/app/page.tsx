@@ -5,7 +5,7 @@ import { Matrix } from "@/components/Matrix";
 export default function Home() {
   const a = atlas();
   const c = a.graph.meta.counts;
-  const candidates = a.graph.paths.filter((p) => p.frontier_class === "candidate").length;
+  const candidates = a.graph.paths.filter((p) => p.frontier_class === "candidate" && p.structural_kind === "composition").length;
   return (
     <main>
       <h1 className="visually-hidden" style={{ position: "absolute", width: 1, height: 1, overflow: "hidden", clip: "rect(0 0 0 0)" }}>

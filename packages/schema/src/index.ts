@@ -142,6 +142,17 @@ export const DOMAINS = [
 ] as const;
 export type Domain = (typeof DOMAINS)[number];
 
+export const AVAILABILITY = ["ambient-common", "ambient-conditional", "engineered-common", "stored-controlled", "scarce-specialised"] as const;
+export type Availability = (typeof AVAILABILITY)[number];
+
+/**
+ * Structural kind of an enumerated route — a statement about graph structure, never about
+ * evidence. composition = two or more conversion phenomena with a real handoff; the others are
+ * artefacts of representation that stay searchable but are not frontier material.
+ */
+export const STRUCTURAL_KINDS = ["composition", "known-device-likely", "energy-backtracking", "representation-dominated", "representation-equivalent", "atomic"] as const;
+export type StructuralKind = (typeof STRUCTURAL_KINDS)[number];
+
 export const MATRIX_CELL_STATUSES = [
   "established", // canonical direct relation, established or replicated
   "demonstrated", // direct relation with a demonstration or report indexed
@@ -233,6 +244,8 @@ export const Entity = z.object({
   energy_form: z.enum(ENERGY_FORMS).optional(),
   /** For disequilibria: whether exergy is available relative to a reference environment. */
   exergy: z.enum(["positive", "conditional", "none"]).optional(),
+  /** For disequilibria: how readily the driver is found. Curated per row; a late ranking key on the frontier. */
+  availability: z.enum(AVAILABILITY).optional(),
   /** For constraints: the bound in words and, if it has one, as a formula. */
   bound: z.string().optional(),
   /** For constraints: a numeric efficiency ceiling when one exists independent of conditions. */
@@ -430,6 +443,29 @@ export const CompiledPath = z.object({
   composition_source_ids: z.array(SourceId),
   /** Lowest knowledge level among the constituent claims; says nothing about the composition. */
   constituent_floor: z.enum(KNOWLEDGE_LEVELS),
+  /** Conversion phenomena on the route, in order. */
+  phenomena: z.array(EntityId),
+  /** Number of conversion phenomena; carriers and the terminal output projection do not count. */
+  effective_length: z.number().int(),
+  /** Energy forms along the route with consecutive repeats collapsed. */
+  energy_form_sequence: z.array(z.enum(ENERGY_FORMS)),
+  energy_transition_count: z.number().int(),
+  /** Adjacent phenomena whose coupling-family sets are disjoint: a real mechanism handoff. */
+  family_seam_count: z.number().int(),
+  /** Unresolved or unknown results among energy continuity, conservation, thermodynamic bound, boundary. */
+  core_unresolved_count: z.number().int(),
+  /** Adjacent-step condition conflicts: an exchanger, window, membrane or shaft is implied but not recorded. */
+  implied_interface_count: z.number().int(),
+  /** Conversion steps that carry a constitutive relation, over all conversion steps. */
+  magnitude_data_coverage: z.object({ quantified: z.number().int(), of: z.number().int() }),
+  /** source | ordered phenomena | sink energy form — the mechanism core, independent of carriers. */
+  representation_signature: z.string(),
+  /** A recorded pathway with the same mechanism core but a different claim sequence, if any. */
+  semantic_overlap: PathwayId.nullable(),
+  structural_kind: z.enum(STRUCTURAL_KINDS),
+  /** If representation-dominated: the shorter route with the same mechanism core. */
+  dominated_by: z.string().nullable(),
+  source_availability: z.enum(AVAILABILITY).nullable(),
   /** The recorded pathway this route most overlaps, if any. exact = same claim sequence. */
   known_pathway_overlap: z
     .object({

@@ -1,16 +1,52 @@
 "use client";
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import type { CompiledPath, FrontierClass } from "@pta/schema";
-import { FRONTIER_CLASSES } from "@pta/schema";
+import type { CompiledPath, FrontierClass, StructuralKind } from "@pta/schema";
+import { AVAILABILITY, EVIDENCE_RANK, FRONTIER_CLASSES, STRUCTURAL_KINDS } from "@pta/schema";
 import { useAtlas } from "@/lib/client-data";
 import { EVIDENCE_LABEL, FRONTIER_LABEL, OVERLAP_LABEL, compositionState, hrefFor } from "@/lib/format";
 import { CheckGlyph } from "./StatusMark";
 import styles from "./FrontierList.module.css";
 
-type Filters = { source: string; sink: string; establishedOnly: boolean; minLen: number; maxLen: number; env: string; classes: Set<FrontierClass>; family: string; q: string };
+type Filters = { source: string; sink: string; establishedOnly: boolean; minLen: number; maxLen: number; env: string; classes: Set<FrontierClass>; kinds: Set<StructuralKind>; family: string; q: string };
 
-const DEFAULT: Filters = { source: "", sink: "", establishedOnly: false, minLen: 2, maxLen: 7, env: "", classes: new Set<FrontierClass>(["candidate"]), family: "", q: "" };
+const DEFAULT: Filters = { source: "", sink: "", establishedOnly: false, minLen: 1, maxLen: 7, env: "", classes: new Set<FrontierClass>(["candidate"]), kinds: new Set<StructuralKind>(["composition"]), family: "", q: "" };
+
+export const STRUCTURE_LABEL: Record<StructuralKind, string> = {
+  composition: "composition",
+  "known-device-likely": "known device likely",
+  "energy-backtracking": "energy backtracking",
+  "representation-dominated": "carrier-expanded copy",
+  "representation-equivalent": "recorded pathway at another resolution",
+  atomic: "one effect plus bookkeeping",
+};
+const KIND_RANK: Record<StructuralKind, number> = { composition: 0, "known-device-likely": 1, "energy-backtracking": 2, "representation-dominated": 3, "representation-equivalent": 4, atomic: 5 };
+const SEARCH_RANK: Record<string, number> = { "searched-no-demonstration-found": 0, "search-incomplete": 1, "not-searched": 2, "not-indexed": 2 };
+const AVAIL_RANK: Record<string, number> = Object.fromEntries(AVAILABILITY.map((a, i) => [a, i]));
+/** One or two genuine seams rank first; zero-seam chains and long seam ladders below. */
+const seamScore = (n: number) => (n === 1 ? 0 : n === 2 ? 1 : n === 0 ? 2 : 3);
+
+/**
+ * Research-priority order (loop-3 pass 4): structure → core-check resolution → evidence floor →
+ * mechanism novelty → composition-search strength → source availability → effective length →
+ * overlap with recorded pathways → id. Lexicographic; never a synthetic score.
+ */
+export function researchOrder(a: CompiledPath, b: CompiledPath): number {
+  const nonEst = (p: CompiledPath) => p.length - p.established_steps;
+  return (
+    KIND_RANK[a.structural_kind] - KIND_RANK[b.structural_kind] ||
+    a.core_unresolved_count - b.core_unresolved_count ||
+    EVIDENCE_RANK[b.evidence_status] - EVIDENCE_RANK[a.evidence_status] ||
+    nonEst(a) - nonEst(b) ||
+    seamScore(a.family_seam_count) - seamScore(b.family_seam_count) ||
+    (a.energy_transition_count === 0 ? 1 : 0) - (b.energy_transition_count === 0 ? 1 : 0) ||
+    (SEARCH_RANK[a.search_status] ?? 3) - (SEARCH_RANK[b.search_status] ?? 3) ||
+    (a.source_availability ? AVAIL_RANK[a.source_availability] : 9) - (b.source_availability ? AVAIL_RANK[b.source_availability] : 9) ||
+    a.effective_length - b.effective_length ||
+    (a.known_pathway_overlap?.shared_claims ?? 0) - (b.known_pathway_overlap?.shared_claims ?? 0) ||
+    a.id.localeCompare(b.id)
+  );
+}
 
 export function FrontierList() {
   const atlas = useAtlas();
@@ -29,17 +65,17 @@ export function FrontierList() {
     const q = f.q.trim().toLowerCase();
     const list = g.paths.filter((p) => {
       if (!f.classes.has(p.frontier_class)) return false;
+      if (!f.kinds.has(p.structural_kind)) return false;
       if (f.source && p.source !== f.source) return false;
       if (f.sink && p.sink !== f.sink) return false;
       if (f.family && !p.coupling_families.includes(f.family)) return false;
       if (f.establishedOnly && p.established_steps < p.length) return false;
-      if (p.length < f.minLen || p.length > f.maxLen) return false;
+      if (p.effective_length < f.minLen || p.effective_length > f.maxLen) return false;
       if (f.env && !claimTags(p).has(f.env)) return false;
       if (q && !p.nodes.some((n) => (index.entity.get(n)?.name ?? "").toLowerCase().includes(q))) return false;
       return true;
     });
-    // Shortest, best-supported first; demonstrated last unless asked for.
-    list.sort((a, b) => b.established_steps / b.length - a.established_steps / a.length || a.length - b.length || a.id.localeCompare(b.id));
+    list.sort(researchOrder);
     return { index, sources, sinks, families, envs, list };
   }, [atlas, f]);
 
@@ -73,6 +109,12 @@ export function FrontierList() {
     if (next.has(c)) next.delete(c);
     else next.add(c);
     set({ classes: next });
+  };
+  const toggleKind = (k: StructuralKind) => {
+    const next = new Set(f.kinds);
+    if (next.has(k)) next.delete(k);
+    else next.add(k);
+    set({ kinds: next });
   };
 
   return (
@@ -123,11 +165,11 @@ export function FrontierList() {
           </select>
         </label>
         <label>
-          <span className="label">Path length</span>
+          <span className="label">Effects</span>
           <span className={styles.range}>
-            <input type="number" min={1} max={7} value={f.minLen} onChange={(e) => set({ minLen: Number(e.target.value) })} aria-label="minimum steps" />
+            <input type="number" min={1} max={7} value={f.minLen} onChange={(e) => set({ minLen: Number(e.target.value) })} aria-label="minimum conversion phenomena" />
             –
-            <input type="number" min={1} max={7} value={f.maxLen} onChange={(e) => set({ maxLen: Number(e.target.value) })} aria-label="maximum steps" />
+            <input type="number" min={1} max={7} value={f.maxLen} onChange={(e) => set({ maxLen: Number(e.target.value) })} aria-label="maximum conversion phenomena" />
           </span>
         </label>
         <label className={styles.check}>
@@ -138,11 +180,19 @@ export function FrontierList() {
           <span className="label">Contains</span>
           <input type="search" value={f.q} placeholder="phenomenon or carrier" onChange={(e) => set({ q: e.target.value })} />
         </label>
-        <div className={styles.classes} role="group" aria-label="Status">
-          <span className="label">Status</span>
+        <div className={styles.classes} role="group" aria-label="Evidence class">
+          <span className="label">Evidence</span>
           {FRONTIER_CLASSES.map((c) => (
             <button key={c} type="button" className={`${styles.chip} ${f.classes.has(c) ? styles.chipOn : ""}`} aria-pressed={f.classes.has(c)} onClick={() => toggleClass(c)}>
               {FRONTIER_LABEL[c]}
+            </button>
+          ))}
+        </div>
+        <div className={styles.classes} role="group" aria-label="Structure">
+          <span className="label">Structure</span>
+          {STRUCTURAL_KINDS.map((k) => (
+            <button key={k} type="button" className={`${styles.chip} ${f.kinds.has(k) ? styles.chipOn : ""}`} aria-pressed={f.kinds.has(k)} onClick={() => toggleKind(k)}>
+              {STRUCTURE_LABEL[k]}
             </button>
           ))}
         </div>
@@ -174,6 +224,33 @@ export function FrontierList() {
                 ))}
               </div>
               <dl className={styles.facts}>
+                <dt>mechanism</dt>
+                <dd>
+                  {p.effective_length} effect{p.effective_length === 1 ? "" : "s"} · {p.family_seam_count} cross-family seam{p.family_seam_count === 1 ? "" : "s"} · {p.energy_form_sequence.join(" → ") || "no energy ledger"}
+                </dd>
+                <dt>interfaces</dt>
+                <dd>
+                  {p.checks.find((k) => k.id === "boundary-compatibility")?.result === "fail" ? "conflict within a step" : "0 conflicts"} · {p.implied_interface_count} implied interface{p.implied_interface_count === 1 ? "" : "s"} ·{" "}
+                  {p.source_availability ? p.source_availability.replace("-", "/") : "availability not recorded"} source
+                </dd>
+                <dt>magnitude</dt>
+                <dd>
+                  {p.magnitude_data_coverage.quantified}/{p.magnitude_data_coverage.of} conversion steps carry a constitutive relation · {p.pathway ? "performance on record" : "bottleneck not yet recorded"}
+                </dd>
+                {p.structural_kind !== "composition" && (
+                  <>
+                    <dt>structure</dt>
+                    <dd>
+                      {STRUCTURE_LABEL[p.structural_kind]}
+                      {p.dominated_by ? (
+                        <>
+                          {" "}· shorter form <Link href={`/path/${p.dominated_by.slice(2)}`}>{p.dominated_by}</Link>
+                        </>
+                      ) : null}
+                      {p.semantic_overlap ? ` · same mechanism core as ${index.pathway.get(p.semantic_overlap)?.name ?? p.semantic_overlap}` : ""}
+                    </dd>
+                  </>
+                )}
                 <dt>constituents</dt>
                 <dd>
                   {p.established_steps}/{p.length} established · weakest {EVIDENCE_LABEL[p.evidence_status]} · floor {p.constituent_floor}

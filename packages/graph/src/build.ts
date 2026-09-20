@@ -23,8 +23,9 @@ import {
   type SearchRecord,
   type SearchStatus,
 } from "@pta/schema";
-import { UnitTable, runAllChecks, type PhysicsContext } from "@pta/physics";
+import { UnitTable, boundaryReport, runAllChecks, type PhysicsContext } from "@pta/physics";
 import type { Canon } from "./load.js";
+import { classify, collapseForms, familySeams, signature, type RouteCore } from "./structure.js";
 
 export const MAX_PATH_STEPS = 7;
 export const MAX_PATHS_PER_SOURCE = 4000;
@@ -82,6 +83,15 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
     const list = memberOf.get(c.subject) ?? [];
     list.push(c.object);
     memberOf.set(c.subject, list);
+  }
+
+  // Transducers per phenomenon (implemented_by / demonstrated_with), K6+ only ---------
+  const devicesOf = new Map<string, Set<string>>();
+  for (const c of canon.claims) {
+    if (c.predicate !== "implemented_by" && c.predicate !== "demonstrated_with") continue;
+    const t = entity.get(c.object);
+    if (!t || t.type !== "transducer" || !t.knowledge_level || Number(t.knowledge_level.slice(1)) < 6) continue;
+    devicesOf.set(c.subject, new Set([...(devicesOf.get(c.subject) ?? []), c.object]));
   }
 
   // Named pathway lookup by claim sequence ----------------------------------------
@@ -188,6 +198,23 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
     const compositionSources = new Set<string>(pathway?.evidence ?? []);
     for (const m of pathway?.performance?.measurements ?? []) for (const src of m.sources) compositionSources.add(src);
 
+    const phenomena = nodes.filter((n) => entity.get(n)?.type === "phenomenon");
+    const forms = collapseForms([claims[0].energy?.input, ...claims.map((c) => c.energy?.output)]);
+    const famSets = phenomena.map((p) => memberOf.get(p) ?? []);
+    const CORE = new Set(["energy-form-continuity", "conservation", "thermodynamic-bound", "boundary-compatibility"]);
+    const coreUnresolved = checks.filter((k) => CORE.has(k.id) && (k.result === "unresolved" || k.result === "unknown")).length;
+    const boundary = boundaryReport(ctx, claims);
+    const conversionSteps = claims.filter((c) => entity.get(c.subject)?.type === "phenomenon" || entity.get(c.object)?.type === "phenomenon");
+    const quantified = conversionSteps.filter((c) => c.relation).length;
+    const knownDevice = phenomena.length >= 2 && phenomena.every((p) => devicesOf.has(p)) && (() => {
+      let common: Set<string> | null = null;
+      for (const p of phenomena) {
+        const d = devicesOf.get(p)!;
+        common = common ? new Set([...common].filter((x) => d.has(x))) : new Set(d);
+      }
+      return !!common && common.size > 0;
+    })();
+
     return {
       id,
       nodes,
@@ -195,6 +222,22 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
       source: claims[0].subject,
       sink: claims[claims.length - 1].object,
       length: claims.length,
+      phenomena,
+      effective_length: phenomena.length,
+      energy_form_sequence: forms,
+      energy_transition_count: Math.max(0, forms.length - 1),
+      family_seam_count: familySeams(famSets),
+      core_unresolved_count: coreUnresolved,
+      implied_interface_count: boundary.adjacent.length,
+      magnitude_data_coverage: { quantified, of: conversionSteps.length },
+      representation_signature: signature(claims[0].subject, phenomena, sinkForm),
+      semantic_overlap: null,
+      structural_kind: "composition",
+      dominated_by: null,
+      source_availability: entity.get(claims[0].subject)?.availability ?? null,
+      // filled after enumeration: see classifyStructure below
+      _families: famSets as never,
+      _knownDevice: knownDevice as never,
       evidence_status: weakest,
       established_steps: established,
       search_status,
@@ -255,6 +298,31 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
       paths.push(compilePath(claims));
       pathIds.add(id);
     }
+  }
+
+  // Structural classification (pure; see structure.ts) --------------------------------
+  const namedSignatures = new Set<string>();
+  for (const p of paths) if (p.pathway) namedSignatures.add(p.representation_signature);
+  const cores: RouteCore[] = paths.map((p) => ({
+    id: p.id,
+    source: p.source,
+    sinkForm: entity.get(p.sink)?.energy_form,
+    phenomena: p.phenomena,
+    families: (p as unknown as { _families: string[][] })._families,
+    forms: p.energy_form_sequence,
+    exact: !!p.pathway,
+    knownDevice: (p as unknown as { _knownDevice: boolean })._knownDevice,
+  }));
+  const kinds = classify(cores, namedSignatures);
+  const sigToPathway = new Map<string, string>();
+  for (const p of paths) if (p.pathway) sigToPathway.set(p.representation_signature, p.pathway);
+  for (const p of paths) {
+    const k = kinds.get(p.id)!;
+    p.structural_kind = p.pathway ? "composition" : k.kind;
+    p.semantic_overlap = k.semanticOverlap ? (sigToPathway.get(p.representation_signature) ?? null) : null;
+    p.dominated_by = k.dominatedBy;
+    delete (p as unknown as { _families?: unknown })._families;
+    delete (p as unknown as { _knownDevice?: unknown })._knownDevice;
   }
 
   // Matrix ---------------------------------------------------------------------------

@@ -3,6 +3,7 @@
 # reference environment — "conditional" means it depends on what the environment is.
 - id: disequilibrium:temperature-gradient
   type: disequilibrium
+  availability: ambient-common
   energy_form: thermal
   name: Temperature gradient
   symbol: ∇T
@@ -14,6 +15,7 @@
   summary: Two regions at different temperatures. Heat flows down the gradient, and a fraction bounded by Carnot can be diverted into work.
 - id: disequilibrium:pressure-gradient
   type: disequilibrium
+  availability: engineered-common
   energy_form: mechanical
   name: Pressure gradient
   symbol: ∇p
@@ -24,6 +26,7 @@
   summary: A pressure difference across a fluid, membrane or solid. Drives flow, deformation and, through turbomachinery, mechanical work.
 - id: disequilibrium:concentration-gradient
   type: disequilibrium
+  availability: ambient-conditional
   energy_form: chemical
   name: Concentration gradient
   symbol: ∇c
@@ -34,6 +37,7 @@
   summary: Different concentrations of a species in two connected regions. Mixing releases free energy that a membrane or electrode can intercept.
 - id: disequilibrium:salinity-gradient
   type: disequilibrium
+  availability: ambient-conditional
   energy_form: chemical
   name: Salinity gradient
   symbol: ΔS
@@ -45,6 +49,7 @@
   summary: Fresh water meeting seawater. About 0.8 kWh of free energy is released per cubic metre of fresh water mixed into the sea.
 - id: disequilibrium:chemical-potential-difference
   type: disequilibrium
+  availability: stored-controlled
   energy_form: chemical
   name: Chemical potential difference
   symbol: Δμ
@@ -55,6 +60,7 @@
   summary: A reaction or phase change with negative Gibbs free energy. Fuel plus oxidiser, a charged battery, an unstable phase.
 - id: disequilibrium:electric-potential-difference
   type: disequilibrium
+  availability: engineered-common
   energy_form: electrical
   name: Electric potential difference
   symbol: ΔV
@@ -65,6 +71,7 @@
   summary: Separated charge or an applied bias. Electrical work is the most directly usable form, so this is usually a destination rather than a source.
 - id: disequilibrium:magnetic-field-change
   type: disequilibrium
+  availability: engineered-common
   energy_form: magnetic
   name: Changing magnetic flux
   symbol: dΦ/dt
@@ -76,6 +83,7 @@
   summary: A magnetic flux that changes through a circuit, from motion or from a time-varying field. Only the change drives anything.
 - id: disequilibrium:mechanical-stress
   type: disequilibrium
+  availability: engineered-common
   energy_form: mechanical
   name: Mechanical stress or strain
   symbol: σ, ε
@@ -87,6 +95,7 @@
   summary: A solid under load. Elastic energy can be released, and in polar or non-centrosymmetric materials the strain itself moves charge or magnetisation.
 - id: disequilibrium:mechanical-vibration
   type: disequilibrium
+  availability: ambient-common
   energy_form: mechanical
   name: Mechanical vibration
   symbol: a(t)
@@ -97,6 +106,7 @@
   summary: Periodic or random motion of a structure. Ambient vibration in machines, vehicles and bodies is the classic small-scale harvesting source.
 - id: disequilibrium:fluid-flow
   type: disequilibrium
+  availability: ambient-common
   energy_form: kinetic
   name: Bulk fluid flow
   symbol: v
@@ -108,6 +118,7 @@
   summary: Moving air or water. Its kinetic energy can be intercepted by a rotor bounded by the Betz limit, or by electrokinetic and flow-induced effects at small scale.
 - id: disequilibrium:radiation-flux
   type: disequilibrium
+  availability: ambient-common
   energy_form: radiative
   name: Incident radiation flux
   symbol: G
@@ -119,6 +130,7 @@
   summary: Photons arriving from a hotter source, above all the Sun. Absorbable in one step into heat, charge, or chemical bonds.
 - id: disequilibrium:radiative-sky-imbalance
   type: disequilibrium
+  availability: ambient-conditional
   energy_form: radiative
   name: Radiative imbalance with the sky
   symbol: T_surface − T_sky
@@ -129,6 +141,7 @@
   summary: A surface at ambient temperature radiates to a colder sky through the 8–13 µm atmospheric window and drops below ambient. The resulting temperature difference is small but free.
 - id: disequilibrium:spin-accumulation
   type: disequilibrium
+  availability: scarce-specialised
   energy_form: spin
   name: Spin accumulation
   symbol: μ_s
@@ -140,6 +153,7 @@
   summary: More spins of one orientation than equilibrium allows, usually created by a temperature gradient, a charge current or pumping. Relaxes into charge currents in spin–orbit materials.
 - id: disequilibrium:metastable-phase
   type: disequilibrium
+  availability: stored-controlled
   energy_form: chemical
   name: Metastable phase
   symbol: ΔG_phase
@@ -150,6 +164,7 @@
   summary: A material held in a phase that is not the equilibrium one. Its transformation releases latent heat, strain or magnetisation change.
 - id: disequilibrium:surface-energy-difference
   type: disequilibrium
+  availability: ambient-common
   energy_form: surface
   name: Surface energy difference
   symbol: Δγ
@@ -160,6 +175,7 @@
   summary: Two surfaces or interfaces with different surface energy or work function. Contact, sliding and wetting can move charge across them.
 - id: disequilibrium:capillary-pressure
   type: disequilibrium
+  availability: ambient-conditional
   energy_form: mechanical
   name: Capillary pressure
   symbol: p_c
@@ -171,6 +187,7 @@
   summary: Pressure produced by curved liquid interfaces in pores. Sustained by evaporation, it drives flow through nanoporous materials.
 - id: disequilibrium:humidity-gradient
   type: disequilibrium
+  availability: ambient-common
   energy_form: chemical
   name: Humidity gradient
   symbol: ΔRH
@@ -182,6 +199,7 @@
   summary: Air drier than a wet surface. Evaporation of water into unsaturated air is a large, mostly untapped ambient free-energy flux.
 - id: disequilibrium:osmotic-pressure-difference
   type: disequilibrium
+  availability: ambient-conditional
   energy_form: osmotic
   name: Osmotic pressure difference
   symbol: ΔΠ
@@ -193,6 +211,7 @@
   summary: Solutions of different solute concentration separated by a semipermeable membrane. Seawater against fresh water is about 27 bar.
 - id: disequilibrium:gravitational-potential-difference
   type: disequilibrium
+  availability: ambient-conditional
   energy_form: gravitational
   name: Gravitational potential difference
   symbol: Δh
@@ -203,6 +222,7 @@
   summary: Mass held above a lower level in a gravitational field. Water behind a dam or the tide against the shore.
 - id: disequilibrium:nuclear-binding-difference
   type: disequilibrium
+  availability: scarce-specialised
   energy_form: nuclear
   name: Nuclear binding-energy difference
   symbol: ΔE_bind
@@ -214,6 +234,7 @@
   summary: Nuclei that can decay, fission or fuse into more tightly bound ones. Energy per reaction is a million times chemical.
 - id: disequilibrium:uniform-thermal-energy
   type: disequilibrium
+  availability: ambient-common
   energy_form: thermal
   name: Thermal energy at uniform temperature
   symbol: T = T₀
@@ -224,6 +245,7 @@
   summary: A body at the same temperature as its surroundings holds a great deal of energy and no exergy. Included so that the atlas can say so explicitly.
 - id: disequilibrium:quantum-vacuum-fluctuations
   type: disequilibrium
+  availability: ambient-common
   energy_form: nuclear
   name: Quantum vacuum fluctuations
   symbol: ⟨0|E²|0⟩
@@ -234,6 +256,7 @@
   summary: The ground state of the quantum fields. It has measurable consequences (the Casimir force) but, being the ground state, no free energy can be continuously extracted from it.
 - id: disequilibrium:acoustic-field
   type: disequilibrium
+  availability: ambient-conditional
   name: Acoustic field
   symbol: p′(t)
   aliases: [sound, ultrasound, acoustic wave, pressure oscillation, noise]
