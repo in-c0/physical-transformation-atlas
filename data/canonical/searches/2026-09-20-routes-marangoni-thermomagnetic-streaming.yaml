@@ -813,6 +813,9 @@
       records_screened: 10
       records_read: 0
       note: Run by hand in the owner's Chrome. Google Scholar silently returns nothing for a query beyond about 32 words, so the form was submitted as a compact string drawn from the record's frozen bundles (route-search-v1 §2 query-length exception); the unabridged form is in expanded_query. Scholar indexes full text, so it matches phrases anywhere in a paper. About 1,140 results; only the first page (10) was screened — Google Scholar answered the second page with a captcha, which the lane does not complete. The ten were ferrofluid convection and thermomagnetic pumping papers already known from the OpenAlex runs (Chiolerio 2020, Pal 2011). The form is INCOMPLETE at the protocol depth.
+      segment: 1
+      positions_screened: 1–10
+      interruption: Google Scholar answered the second page with a captcha after about 110 page loads in one sitting; the lane completes no captchas — resumable, not waived
     - id: search:2026-09-20-p-1043a15e01/gs-mp12
       engine: google-scholar
       query_form: route-mechanism-pair
@@ -866,8 +869,8 @@
       note: Run by hand in the owner's Chrome. Google Scholar silently returns nothing for a query beyond about 32 words, so the form was submitted as a compact string drawn from the record's frozen bundles (route-search-v1 §2 query-length exception); the unabridged form is in expanded_query. Scholar indexes full text, so it matches phrases anywhere in a paper. 1 result (the same thesis), screened.
   screening:
     records_retrieved: 94
-    unique_records: 43
-    title_abstract_screened: 43
+    unique_records: 47
+    title_abstract_screened: 47
     full_text_read: 0
   hits:
     - title: Characterization of a ferrofluid-based thermomagnetic pump for microfluidic applications
@@ -894,6 +897,36 @@
       access: metadata-only
       decision: insufficient-information
       reason: Book chapter on flow in thermomagnetic energy-conversion loops; no abstract accessible; nothing indicates an electrokinetic step.
+    - title: Lattice Boltzmann method simulation of electroosmotic stirring in a microscale cavity
+      year: 2008
+      found_by:
+        - search:2026-09-20-p-1043a15e01/gs-mp12
+      access: metadata-only
+      decision: simulation-only
+      reason: A simulation of electroosmotic stirring whose text mentions streaming-potential gradients and thermomagnetic terms incidentally; no ferrofluid convection feeding an electrokinetic stage (Scholar snippet).
+    - title: Next Nanotechnology (transformer nanofluids)
+      year: 2024
+      found_by:
+        - search:2026-09-20-p-1043a15e01/gs-mp12
+      access: metadata-only
+      decision: review-only
+      reason: A review of nanofluids for transformer cooling that describes thermomagnetic convection in the transformer's field; the electrokinetic term is incidental (Scholar snippet).
+    - title: Improving the frictional properties of the tool/chip interface of micro-textured ceramics tools by using electromagnetic-assisted nanofluids
+      year: 2024
+      found_by:
+        - search:2026-09-20-p-1043a15e01/gs-mp12
+      access: metadata-only
+      decision: wrong-coupling
+      reason: Magnetic-nanofluid lubrication of a cutting tool; both terms appear in passing, no energy conversion (Scholar snippet).
+    - title: Numerical modeling of microscale mixing using lattice Boltzmann method (thesis)
+      year: 2008
+      found_by:
+        - search:2026-09-20-p-1043a15e01/gs-mp12
+        - search:2026-09-20-p-1043a15e01/gs-wc
+        - search:2026-09-20-p-1043a15e01/gs-dp
+      access: metadata-only
+      decision: simulation-only
+      reason: A lab-on-a-chip mixing thesis that models electroosmotic and thermomagnetic actuation separately; it is the single result of the whole-chain and precision forms and is not a device (Scholar snippet).
   result: inconclusive
   completeness: partial
   reviewed_by: Ava Kim's loop-3 lane (Claude Opus 5), with ChatGPT (GPT-5 Thinking) as second reader of the title lists; abstracts, Pini 2015's full text and the citation-chase titles read by the lane; Google Scholar runs by hand and their screening on 21/09 (pass 23)

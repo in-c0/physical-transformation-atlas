@@ -496,6 +496,10 @@ export const SearchRun = z.object({
   /** route-search-v1 Google Scholar query-length exception (loop-3 pass 22): true when the submitted string is a compaction of the frozen bundles; expanded_query holds the unabridged form it stands for. */
   query_compacted: z.boolean().optional(),
   expanded_query: z.string().optional(),
+  /** Scholar throttling and continuation (loop-3 pass 23): a mandatory run screened over several sittings carries a segment number, the result positions this segment screened and why it stopped. */
+  segment: z.number().int().positive().optional(),
+  positions_screened: z.string().optional(),
+  interruption: z.string().optional(),
   executed_at: isoDateTime,
   /** The request URL with any private mailto removed. */
   request_url: z.string().optional(),

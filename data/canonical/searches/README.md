@@ -119,6 +119,14 @@ these conditions fulfils the same mandatory `query_key` as the expanded form. Th
 (about 32 words on 21/09/2026) is recorded in the run's note, not here: the invariant is concept
 preservation, not a Scholar threshold.
 
+Scholar throttling and continuation. A mandatory Google Scholar query may be screened over
+multiple sittings when CAPTCHA, throttling or session limits interrupt pagination. Each
+continuation stores the same `query_key` and literal query, a `segment` number, the result
+positions screened, and the interruption reason. Screening depth is cumulative over de-duplicated
+result positions. The mandatory form is complete only when the protocol's required screening depth
+has been reached; until then the search remains `partial`. Engine throttling never makes a
+mandatory query form optional and does not count as a negative result.
+
 ### 3. What qualifies as a route demonstration
 
 A hit `qualifies` only when all of these are true:

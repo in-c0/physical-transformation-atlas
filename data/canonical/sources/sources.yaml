@@ -531,6 +531,7 @@
   year: 2015
   venue: Nature Communications 6, 7346
   doi: 10.1038/ncomms8346
+  notes: "Open access, read in full (loop-3 pass 23). Bacterial-spore artificial muscles (HYDRAs) above a water surface drive a self-starting relaxation oscillator (shutters and a bistable beam) and a rotary engine; the oscillator coupled by a thread to an electromagnetic generator (a magnet stack rotating between coils) lit two LEDs in alternation, and across a 100 kΩ resistor delivered bursts reaching 60 μW with an average of 1.8 μW, water at 30 °C, HYDRAs covering 9.6 cm × 7.6 cm; the rotary engine drove a 0.1 kg car."
 - id: source:xu-2020-droplet
   type: paper
   title: "A droplet-based electricity generator with high instantaneous power density"
@@ -1301,3 +1302,20 @@
   venue: "Proceedings of the National Academy of Sciences 110(14), 5309–5314"
   doi: 10.1073/pnas.1301004110
   notes: "Abstract read (open access; OSTI 1386838). The μTPV generator: a silicon propane microcombustor, an integrated high-temperature photonic-crystal selective thermal emitter, four 0.55 eV GaInAsSb thermophotovoltaic diodes and a maximum-power-point-tracking converter; operated to 800 °C combustor temperature with 13.7 W of thermal input, generating 344 mW of electric power over a 1 cm² area — 2.5 % measured against a 2.7 % prediction for the simplified system (up to 32 % predicted for the full design)."
+# Loop-3 pass 23: the thermocapillary micro heat engine's earlier paper and the pico waterwheel generator.
+- id: source:glockner-naterer-2006-thermocapillary-pumping
+  type: paper
+  title: "Surface tension and frictional resistance of thermocapillary pumping in a closed microchannel"
+  authors: [P. S. Glockner, G. F. Naterer]
+  year: 2006
+  venue: "International Journal of Heat and Mass Transfer 49(23–24), 4424–4436"
+  doi: 10.1016/j.ijheatmasstransfer.2006.05.005
+  notes: "Metadata verified on OpenAlex; cited by Odukoya & Naterer 2013 as the earlier analytical model of thermocapillary pumping of a droplet in a closed microchannel (surface tension and friction), which over-predicted the measured displacement. Not read; recorded as the theory behind the confined-plug regime."
+- id: source:asim-2022-pico-waterwheel
+  type: paper
+  title: "Design and Parametric Optimization of the High-Speed Pico Waterwheel for Rural Electrification of Pakistan"
+  authors: [M. Asim, S. Muhammad, M. Amjad, M. Abdullah, M. A. Mujtaba, M. A. Kalam, et al.]
+  year: 2022
+  venue: "Sustainability 14(11), 6930"
+  doi: 10.3390/su14116930
+  notes: "Open access, read on the publisher's page. A pico waterwheel (C-, V- and straight blades; CFD and experiment; undershot efficiency 72–77 %, best at a 45° conduit) tested in an irrigation-channel rig; 'the turbine was connected to a 3 kilowatt (kW) electrical generator, and the voltage and current were measured at full load conditions', the load being three 100 W bulbs, two 120 W fans and a 1 kW cutting machine. Installation needs channel velocities above 3 m/s and a head of about 1.5 m."

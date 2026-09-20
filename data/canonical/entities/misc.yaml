@@ -643,3 +643,19 @@
   knowledge_level: K6
   summary: "A β⁻ emitter (⁶³Ni) excites a phosphor (ZnS:Cu,Al) whose radioluminescence is converted by a spectrally matched InGaP photovoltaic cell (Russo et al. 2017: 3.35 nW cm⁻², 0.289 % total conversion efficiency in the volumetric configuration)."
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 22 (Scholar runs, the parallel-driver rule and the head rule; abstract read)" }
+# Loop-3 pass 23: the evaporation-driven generator, a known device the head rule had hidden.
+- id: transducer:evaporation-driven-generator
+  type: transducer
+  name: Evaporation-driven oscillator generator
+  aliases: [HYDRA generator, evaporation-driven electricity generator, spore-muscle generator]
+  knowledge_level: K6
+  summary: "Hygroscopy-driven artificial muscles (bacterial spores on tape) form a shutter-controlled relaxation oscillator above evaporating water; its piston-like motion turns an electromagnetic generator (Chen et al. 2015: LEDs lit, 60 μW bursts and 1.8 μW average into 100 kΩ)."
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 23 (triage of the released candidates; source read in full)" }
+# Loop-3 pass 23: the waterwheel generator.
+- id: transducer:waterwheel-generator
+  type: transducer
+  name: Waterwheel generator (pico hydro)
+  aliases: [pico-hydro waterwheel, undershot wheel generator, stream wheel generator]
+  knowledge_level: K7
+  summary: "An undershot or overshot waterwheel in an open channel driving an electrical generator directly (Asim et al. 2022: a 3 kW generator at full load on a 1.54 kW appliance load)."
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 23 (triage of the released candidates; Asim 2022 read on the publisher's page)" }

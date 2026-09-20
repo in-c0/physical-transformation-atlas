@@ -607,3 +607,55 @@
   evidence: [source:russo-2017-radioluminescent-nuclear-battery]
   status: demonstrated
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 22 (Scholar runs, the parallel-driver rule and the head rule; abstract read)" }
+# Loop-3 pass 23: the evaporation-driven generator.
+- id: claim:evaporation-implemented-generator
+  subject: phenomenon:evaporation
+  predicate: implemented_by
+  object: transducer:evaporation-driven-generator
+  evidence: [source:chen-2015-evaporation]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 23 (triage of the released candidates; source read in full)" }
+- id: claim:induction-implemented-evaporation-generator
+  subject: phenomenon:electromagnetic-induction
+  predicate: implemented_by
+  object: transducer:evaporation-driven-generator
+  evidence: [source:chen-2015-evaporation]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 23 (triage of the released candidates; source read in full)" }
+# Loop-3 pass 23: the thermocapillary micro heat engine — a confined-plug regime of the Marangoni effect and
+# the pressure it manufactures (the reviewer's spelling; the free-surface claim is untouched).
+- id: claim:marangoni-produces-confined-flow
+  subject: phenomenon:marangoni-effect
+  predicate: produces
+  object: carrier:fluid-flow
+  conditions: ["thermocapillary pumping of a liquid plug or droplet confined in a microchannel; the surface-tension gradient translates the plug rather than producing only local interfacial circulation"]
+  energy: { input: kinetic, output: kinetic, dissipation: thermal }
+  evidence: [source:glockner-naterer-2006-thermocapillary-pumping, source:odukoya-naterer-2013-thermocapillary-mhe]
+  handoff: { provides: [flow:liquid, flow:confined, flow:bulk, flow:directed-momentum] }
+  status: demonstrated
+  notes: "Thermocapillary pumping (TCP) of a discrete droplet in a closed microchannel: the plug's displacement and velocity were measured on the PZT device of Odukoya & Naterer 2013 and in their 2010 experiments. The confined translating plug is bulk, loadable flow; that fact must not leak onto open-surface Marangoni circulation, which keeps its own claim and tokens."
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 23 (triage of the released candidates; Odukoya 2013 read in full)" }
+- id: claim:marangoni-produces-pressure
+  subject: phenomenon:marangoni-effect
+  predicate: produces
+  object: disequilibrium:pressure-gradient
+  conditions: ["a thermocapillary-driven liquid plug moves in a closed-ended microchannel and compresses the trapped gas; the pressure rise is the load presented to the compliant membrane"]
+  energy: { input: kinetic, output: mechanical, dissipation: thermal }
+  evidence: [source:glockner-naterer-2006-thermocapillary-pumping, source:odukoya-naterer-2013-thermocapillary-mhe]
+  status: theoretically-predicted
+  notes: "Kept below demonstrated: the Odukoya device measured heater and droplet behaviour, while the pressure field feeding the membrane (about 0.1 kPa for a 13 μm deflection in the model) comes from the force balance, not a measurement."
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 23 (triage of the released candidates; Odukoya 2013 read in full)" }
+- id: claim:descent-implemented-waterwheel-generator
+  subject: phenomenon:hydrostatic-descent
+  predicate: implemented_by
+  object: transducer:waterwheel-generator
+  evidence: [source:asim-2022-pico-waterwheel]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 23 (triage of the released candidates; Asim 2022 read on the publisher's page)" }
+- id: claim:induction-implemented-waterwheel-generator
+  subject: phenomenon:electromagnetic-induction
+  predicate: implemented_by
+  object: transducer:waterwheel-generator
+  evidence: [source:asim-2022-pico-waterwheel]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 23 (triage of the released candidates; Asim 2022 read on the publisher's page)" }
