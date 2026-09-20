@@ -75,11 +75,21 @@ test("negative control: a claim with a dangling entity is rejected by validation
   assert.ok(new ValidationError(["x"]).message.includes("validation problem"));
 });
 
-test("derived means mechanism overlap with a demonstrated pathway: a shared head, the whole pathway or two shared phenomena — never a generic tail; candidates have none of it and every handoff provided", () => {
+test("derived means mechanism overlap with a demonstrated pathway: the whole pathway, a strict prefix or suffix, two shared phenomena, or a shared head that diverges within the same coupling family — never a generic tail or a head that changes family; candidates have none of it and every handoff provided", () => {
   const pathwayById = new Map(canon.pathways.map((pw) => [pw.id, pw]));
   const claimById = new Map(canon.claims.map((c) => [c.id, c]));
   const entityType = new Map(canon.entities.map((e) => [e.id, e.type]));
   const phenomenaOf = (ids: string[]) => new Set(ids.flatMap((id) => [claimById.get(id)?.subject, claimById.get(id)?.object]).filter((n) => n && entityType.get(n) === "phenomenon"));
+  const familiesOf = new Map<string, Set<string>>();
+  for (const c of canon.claims) if (c.predicate === "member_of") familiesOf.set(c.subject, new Set([...(familiesOf.get(c.subject) ?? []), c.object]));
+  const nextPhenomenon = (seq: string[]) => {
+    for (const cid of seq) {
+      const c = claimById.get(cid);
+      if (!c) continue;
+      for (const n of [c.subject, c.object]) if (entityType.get(n) === "phenomenon") return n;
+    }
+    return null;
+  };
   for (const p of graph.paths) {
     const ov = p.known_pathway_overlap;
     const steps = ov ? (pathwayById.get(ov.pathway)?.steps ?? []) : [];
@@ -88,9 +98,17 @@ test("derived means mechanism overlap with a demonstrated pathway: a shared head
     for (const id of p.claims) if (j < steps.length && steps[j] === id) (shared.add(id), j++);
     let k = 0;
     for (const st of steps) if (k < p.claims.length && p.claims[k] === st) (shared.add(st), k++);
+    // loop-3 pass 22: a shared head counts only when the first divergence stays in one coupling family
     let head = 0;
-    while (head < steps.length && shared.has(steps[head])) head++;
-    const byClaims = !!ov && ov.shared_claims >= 2 && (head >= 2 || steps.every((st) => shared.has(st)) || phenomenaOf([...shared]).size >= 2);
+    while (head < steps.length && head < p.claims.length && steps[head] === p.claims[head]) head++;
+    let sameFamily = false;
+    if (head >= 2 && head < steps.length && head < p.claims.length) {
+      const a = nextPhenomenon(p.claims.slice(head));
+      const b = nextPhenomenon(steps.slice(head));
+      if (a && b) sameFamily = [...(familiesOf.get(a) ?? [])].some((f) => familiesOf.get(b)?.has(f));
+    }
+    const strict = !!ov && (ov.relation === "prefix" || ov.relation === "suffix");
+    const byClaims = !!ov && ov.shared_claims >= 2 && (strict || steps.every((st) => shared.has(st)) || phenomenaOf([...shared]).size >= 2 || (head >= 2 && sameFamily));
     const ck = p.closest_known_pathway;
     const variant = !!ck && ck.relation !== "mechanism-subsequence" && ck.shared_phenomena >= 2;
     if (p.frontier_class === "candidate") {

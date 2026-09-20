@@ -179,14 +179,15 @@
 - id: pathway:solutocapillary-streaming-generator
   name: Solutocapillary streaming-potential generator (proposed)
   steps: [claim:surface-drives-marangoni, claim:marangoni-produces-flow, claim:fluid-flow-carrier-drives-streaming, claim:streaming-produces-ions, claim:ionic-current-converts-electricity]
-  evidence: [source:pini-2015-surface-tension-streaming]
+  evidence: [source:pini-2015-surface-tension-streaming, source:zhang-2026-marangoni-hydrovoltaic]
   status: proposed
   knowledge_level: K3
   performance:
     theoretical_limit: "the same analysis finds concentration-driven (destillocapillary) flows more promising than thermocapillary ones"
+    notes: "Zhang et al. 2026 physically demonstrated a graphene-oxide evaporator in which a programmed chemical/surface-tension gradient sustained Marangoni microcirculation alongside capillary flow while the device delivered 25 μA short-circuit current, 0.7 V open-circuit voltage and powered an LED. Route review: driver-only-modifies because capillary and Marangoni transport are simultaneous co-drivers and the electrical contribution of the Marangoni branch was not isolated. Its figures belong to the combined device and are not recorded here."
   environment: [state-liquid, env-aqueous, charged-surface-required]
-  summary: A surfactant-concentration difference along a free electrolyte surface drives a solutocapillary shear flow past a charged wall, whose streaming potential is the electrical output. Theoretical and numerical only; the route stays a candidate.
-  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics; abstract read)" }
+  summary: A surfactant-concentration difference along a free electrolyte surface drives a solutocapillary shear flow past a charged wall, whose streaming potential is the electrical output. Theoretical and numerical only; the route stays a candidate — the nearest physical device (Zhang 2026) runs the Marangoni flow as a co-driver beside capillary transport.
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 22 (Zhang 2026 abstract read; the co-driver device recorded as a note under the parallel-driver rule)" }
 # Loop-3 pass 20: the last two candidate compositions. The resonance-expanded spellings the frontier
 # showed are representation-equivalent to these direct routes; a resonance is an operating condition, not
 # a conversion of its own.
@@ -300,3 +301,68 @@
   environment: [state-liquid, medium-membrane, env-aqueous, temp-gradient-required, charged-surface-required]
   summary: A temperature difference drives vapour transport through a hydrophobic membrane, producing pressurised fresh water; the water then traverses a charged electrokinetic microchannel module and delivers electrical power — the explicit-flow spelling of the nanofluidic thermo-osmotic converter, with a bulk stream between the two mechanisms.
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 21 (TOEC route search; abstracts read; Huang 2021's figures not recorded until its text is read)" }
+# Loop-3 pass 22: known devices the shared-head rule had classed as derived variants of other pathways.
+- id: pathway:combustion-microthermophotovoltaic-generator
+  name: Combustion-driven micro-thermophotovoltaic generator
+  steps: [claim:combustion-drives, claim:combustion-produces-hot-gas, claim:hot-gas-drives-thermal-emission, claim:thermal-emission-produces-photons, claim:photons-drive-pv, claim:pv-produces-pairs, claim:pairs-convert-electricity]
+  demonstrated_with: [transducer:micro-thermophotovoltaic-generator]
+  evidence: [source:chan-2013-microthermophotovoltaic]
+  status: demonstrated
+  knowledge_level: K6
+  performance:
+    measurements:
+      - quantity: heat-to-electricity efficiency
+        value: "2.5 %"
+        value_numeric: 0.025
+        unit: "1"
+        metric: conversion-efficiency
+        basis: "electrical output over the thermal input to the microcombustor (13.7 W)"
+        scope: laboratory
+        conditions: "propane microcombustor at up to 800 °C; photonic-crystal selective emitter; four 0.55 eV GaInAsSb cells with maximum-power-point tracking; the simplified system predicted at 2.7 %"
+        sources: [source:chan-2013-microthermophotovoltaic]
+        year: 2013
+      - quantity: electrical power density
+        value: "344 mW over 1 cm²"
+        value_numeric: 3440
+        unit: W/m²
+        metric: power-density
+        basis: "electric power per emitter/cell area"
+        scope: laboratory
+        conditions: "the same run; 13.7 W thermal input"
+        sources: [source:chan-2013-microthermophotovoltaic]
+        year: 2013
+  environment: [state-gas, temp-gradient-required]
+  summary: Fuel burns in a microcombustor, the hot gas heats a selective emitter, and the emitter's thermal radiation is converted by low-bandgap photovoltaic cells — the combustion-fed cousin of the thermophotovoltaic pathway, recorded as its own composition because its driver is chemical, not a temperature gradient supplied from outside.
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 22 (Scholar runs, the parallel-driver rule and the head rule; abstract read)" }
+- id: pathway:radioluminescent-nuclear-battery
+  name: Radioluminescent (beta-photovoltaic) nuclear battery
+  steps: [claim:binding-drives-decay, claim:decay-produces-particles, claim:beta-drives-radioluminescence, claim:radioluminescence-produces-photons, claim:photons-drive-pv, claim:pv-produces-pairs, claim:pairs-convert-electricity]
+  demonstrated_with: [transducer:radioluminescent-nuclear-battery]
+  evidence: [source:russo-2017-radioluminescent-nuclear-battery]
+  status: demonstrated
+  knowledge_level: K6
+  performance:
+    measurements:
+      - quantity: total power conversion efficiency
+        value: "0.289 %"
+        value_numeric: 0.00289
+        unit: "1"
+        metric: conversion-efficiency
+        basis: "electrical output over the β⁻ source power, volumetric configuration at 15 mCi ⁶³Ni and 200 μm"
+        scope: laboratory
+        conditions: "⁶³Ni chloride solution mixed with ZnS:Cu,Al phosphor on an InGaP cell; the planar configuration reached 0.0638 % at 50 μm"
+        sources: [source:russo-2017-radioluminescent-nuclear-battery]
+        year: 2017
+      - quantity: electrical power density
+        value: "3.35 nW/cm²"
+        value_numeric: 0.0000335
+        unit: W/m²
+        metric: power-density
+        basis: "electrical power per cell area at 30 mCi ⁶³Ni"
+        scope: laboratory
+        conditions: "volumetric configuration"
+        sources: [source:russo-2017-radioluminescent-nuclear-battery]
+        year: 2017
+  environment: [state-solid]
+  summary: A β⁻ emitter excites a phosphor and a photovoltaic cell matched to the phosphor's spectrum converts the light — the indirect (scintillator) nuclear battery, distinct from the betavoltaic cell that absorbs the electrons directly.
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 22 (Scholar runs, the parallel-driver rule and the head rule; abstract read)" }

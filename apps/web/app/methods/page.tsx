@@ -298,9 +298,11 @@ export default function MethodsPage() {
             or experiment exists outside the atlas.
           </p>
           <p>
-            “Derived” means the route shares with a demonstrated pathway at least two ordered claims that span two or more phenomena (or contain the whole pathway), or at least two phenomena as a
-            source-variant or sink-variant of the closest demonstrated pathway: it extends, truncates or re-drives something known and is shown apart from fresh candidates. Sharing only a generic tail
-            (a produced carrier turning a rotor, a rotor turning a generator) does not make a route derived.
+            “Derived” means the route shares with a demonstrated pathway ordered claims that contain the whole pathway, form a strict prefix or suffix of it, span two or more of its phenomena, or
+            share its driver step and first conversion and then diverge into the same coupling family; or at least two phenomena as a source-variant or sink-variant of the closest demonstrated
+            pathway: it extends, truncates or re-drives something known and is shown apart from fresh candidates. Sharing only a generic tail (a produced carrier turning a rotor, a rotor turning a
+            generator) does not make a route derived, and neither does a shared first mechanism whose next conversion changes coupling family — coupling a familiar mechanism into a different
+            family is a new composition.
           </p>
           <p>A matrix cell takes the first of these that applies, in this order:</p>
           <ol className={styles.precedence}>

@@ -225,12 +225,36 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
       let k = 0;
       for (const st of steps) if (k < ids.length && ids[k] === st) (shared.add(st), k++);
       const containsWhole = steps.length > 0 && steps.every((st) => shared.has(st));
-      // A shared head (the pathway's driver step and first conversion) means the route re-uses the recorded
-      // mechanism and diverges later; a shared generic tail (a produced carrier turning a rotor) does not.
-      let head = 0;
-      while (head < steps.length && shared.has(steps[head])) head++;
+      // A strict ordered prefix or suffix — the route truncates the pathway, or extends it at one end — is derived.
+      const strictPrefixOrSuffix = known_pathway_overlap.relation === "prefix" || known_pathway_overlap.relation === "suffix";
       const spanned = phenomenaOf([...shared].map((id) => claimById.get(id)!).filter(Boolean));
-      return containsWhole || head >= 2 || spanned.length >= 2;
+      // A shared head (the pathway's driver step and first conversion) makes the route derived only when, at
+      // the first divergence, the route's next conversion phenomenon and the pathway's next conversion
+      // phenomenon share a coupling family (loop-3 pass 22). Sharing one demonstrated mechanism says nothing
+      // about whether coupling it into a different family is known: a family change is a new composition.
+      // A route or pathway that ends at the shared head is a strict prefix, handled above — the absence of a
+      // next phenomenon is never a family match. A shared generic tail (a produced carrier turning a rotor)
+      // never counts on its own.
+      let head = 0;
+      while (head < steps.length && head < ids.length && steps[head] === ids[head]) head++;
+      const nextPhenomenon = (seq: string[]) => {
+        for (const cid of seq) {
+          const c = claimById.get(cid);
+          if (!c) continue;
+          for (const n of [c.subject, c.object]) if (entity.get(n)?.type === "phenomenon") return n;
+        }
+        return null;
+      };
+      let sameFamilyAtDivergence = false;
+      if (head >= 2 && head < steps.length && head < ids.length) {
+        const routeNext = nextPhenomenon(ids.slice(head));
+        const pathNext = nextPhenomenon(steps.slice(head));
+        if (routeNext && pathNext) {
+          const a = new Set(memberOf.get(routeNext) ?? []);
+          sameFamilyAtDivergence = (memberOf.get(pathNext) ?? []).some((f) => a.has(f));
+        }
+      }
+      return containsWhole || strictPrefixOrSuffix || spanned.length >= 2 || (head >= 2 && sameFamilyAtDivergence);
     })();
     const handoff = handoffReport(claims);
     const magnitude_screen = magnitudeScreen(claims, pathway);

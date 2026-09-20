@@ -20,7 +20,7 @@
 - id: phenomenon:marangoni-effect
   type: phenomenon
   name: Marangoni effect
-  aliases: [surface-tension-driven flow, thermocapillary flow, solutocapillary flow, thermocapillary, solutocapillary, destillocapillarity]
+  aliases: [surface-tension-gradient-driven flow, thermocapillary flow, solutocapillary flow, thermocapillary, solutocapillary, destillocapillarity, thermal Marangoni, thermal Marangoni effect]
   domain: fluid-mechanics
   year_first_reported: 1865
   condition_tags: [state-liquid]

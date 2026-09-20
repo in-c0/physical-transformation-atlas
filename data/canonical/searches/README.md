@@ -107,6 +107,18 @@ OpenAlex and Google Scholar use their Boolean/phrase syntax. Semantic Scholar `p
 relevance query, not a Boolean engine: submit the same concepts as a plain keyword string and store
 that literal string. Do not pretend its spaces or quotation marks have Boolean semantics.
 
+Google Scholar query-length exception. Google Scholar may reject or silently empty an expanded
+Boolean query that exceeds its practical term limit. When that occurs, the mandatory run may use a
+compact query selected only from the target search record's frozen term bundles. The compact query
+must retain at least one term for every concept required by that query form: `D`, each required
+`M_i`, `O` where required, and one demonstration term for `demonstration-precision`. Compaction
+may omit aliases but may not omit a required concept, introduce an unrecorded synonym, or change
+the target composition. Store the literal submitted query, mark the run `query_compacted: true`,
+and store the corresponding unabridged bundle/query as `expanded_query`. A compact run satisfying
+these conditions fulfils the same mandatory `query_key` as the expanded form. The observed limit
+(about 32 words on 21/09/2026) is recorded in the run's note, not here: the invariant is concept
+preservation, not a Scholar threshold.
+
 ### 3. What qualifies as a route demonstration
 
 A hit `qualifies` only when all of these are true:
@@ -118,6 +130,15 @@ A hit `qualifies` only when all of these are true:
 4. `O` is physically measured or delivered by the chain. A voltage/current with no extractable load
    need only qualify when the target output itself is that measured electrical response under the
    route's recorded meaning.
+
+   Parallel-driver rule. When a target mechanism is one of two or more simultaneous drivers of the
+   carrier entering the next target mechanism, the hit qualifies only if the experiment resolves the
+   target mechanism's causal contribution to the downstream observable — for example by suppressing
+   or reversing that driver while retaining the others, or by directly measuring the carrier
+   attributable to that driver at the handoff. If the target driver or mechanism only enhances,
+   amplifies or modifies a downstream device whose output is independently driven by another
+   mechanism, classify the hit `driver-only-modifies`. If the target mechanism is physically observed
+   but its contribution to the downstream output is not established, classify it `constituent-only`.
 5. The evidence is a physical experiment or device, not theory, simulation or a proposed design.
 6. No additional conversion phenomenon is required between two mechanisms that the target route
    records as consecutive.

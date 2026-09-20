@@ -493,6 +493,9 @@ export const SearchRun = z.object({
   query_key: z.string().optional(),
   /** The literal syntax actually submitted; never reconstructed later from aliases. */
   query: z.string(),
+  /** route-search-v1 Google Scholar query-length exception (loop-3 pass 22): true when the submitted string is a compaction of the frozen bundles; expanded_query holds the unabridged form it stands for. */
+  query_compacted: z.boolean().optional(),
+  expanded_query: z.string().optional(),
   executed_at: isoDateTime,
   /** The request URL with any private mailto removed. */
   request_url: z.string().optional(),

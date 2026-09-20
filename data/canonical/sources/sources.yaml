@@ -1260,3 +1260,44 @@
   venue: "Environmental Science & Technology 51(21), 12925–12937"
   doi: 10.1021/acs.est.7b02213
   notes: "Abstract read. The first energy-efficiency analysis of TOEC with vapour-gap membranes and water: an optimised system reaches 4.1 % heat-to-electricity (34 % of Carnot) at 60/20 °C and 5 MPa; lower efficiencies at high power density (> 5 W m⁻²) and with finite heat exchangers; asymmetric pores, pressure resistance, high porosity and 30–100 μm thickness matter most. Model, no experiment."
+# Loop-3 pass 22: the Google Scholar runs for the thermocapillary streaming route, and the two known devices the head rule had hidden.
+- id: source:zhang-2026-marangoni-hydrovoltaic
+  type: paper
+  title: "Chemical-Gradient-Induced Marangoni Flows Boost Solar-Brine Desalination and Enable Concurrent Power Generation"
+  authors: [J. Zhang, P. Cui, H. Cai, H. Li, Y. Huang, et al.]
+  year: 2026
+  venue: "Advanced Functional Materials"
+  doi: 10.1002/adfm.78354
+  notes: "Abstract read (OpenAlex). A graphene-oxide aerogel evaporator with a longitudinal gradient of oxygen-containing groups: the persistent surface-tension disparity sustains Marangoni microcirculation that co-drives water transport with capillary flow ('a dual-driving transport regime'); 540 kg m⁻³ h⁻¹ (2.7 kg m⁻² h⁻¹) in 20 wt% NaCl under 1 sun for 12 h, with a short-circuit current of 25 μA and an open-circuit voltage of 0.7 V, series devices powering an LED. The electrical contribution of the Marangoni branch is not isolated from the capillary one."
+- id: source:odukoya-naterer-2013-thermocapillary-mhe
+  type: paper
+  title: "Transient response of thermocapillary pumping of a droplet in a micro heat engine"
+  authors: [A. Odukoya, G. F. Naterer]
+  year: 2013
+  venue: "International Journal of Heat and Mass Transfer 58, 202–212"
+  doi: 10.1016/j.ijheatmasstransfer.2012.11.009
+  notes: "Full text read (author copy, Memorial University repository). A micro heat engine fabricated on a PZT substrate with Ti-W microheaters: heat supplied by the heaters drives thermocapillary pumping of a droplet plug along a closed 60 × 60 × 15,000 μm channel, and the plug's pressure is to deflect a piezoelectric membrane. The experiments characterise the microheaters (four-point probe, heat flux 1.2–120 μW m⁻² per channel) and the droplet motion; the membrane deflection, the 1.2–1.3 mV (0.5 mV for a 300 nm membrane) and the ≈ 1.6 % efficiency are simulation results for that geometry, not measurements. Earlier droplet-motion experiments: Odukoya & Naterer 2010; Yang, Odukoya & Naterer 2010."
+- id: source:glockner-naterer-2007-microfluidic-power
+  type: paper
+  title: "Recent advances in nano-electromechanical and microfluidic power generation"
+  authors: [P. S. Glockner, G. F. Naterer]
+  year: 2007
+  venue: "International Journal of Energy Research 31, 603–618"
+  doi: 10.1002/er.1282
+  notes: "Abstract read. A review whose centrepiece is the thermocapillary micro heat engine: 'thermocapillary pumping of a discrete droplet in a microchannel converts heat input to droplet motion, then flexing of a piezoelectric membrane to generate electricity'; also microchannel streaming-current batteries and a nano-engine. Found by the Google Scholar mechanism-pair run of 21/09/2026."
+- id: source:russo-2017-radioluminescent-nuclear-battery
+  type: paper
+  title: "A radioluminescent nuclear battery using volumetric configuration: 63Ni solution/ZnS:Cu,Al/InGaP"
+  authors: [J. Russo, M. Litz, W. B. Ray, B. A. Smith, R. L. Moyers]
+  year: 2017
+  venue: "Applied Radiation and Isotopes 130, 66–74"
+  doi: 10.1016/j.apradiso.2017.09.018
+  notes: "Abstract and highlights read on the publisher's page (an OSTI copy exists, 1820702). A beta-photovoltaic nuclear battery: ⁶³Ni in chloride solution mixed with ZnS:Cu,Al phosphor (volumetric configuration) converts the β⁻ energy to light, and an InGaP photovoltaic cell matched to the radioluminescence spectrum converts the light to electricity; with 15 mCi the total power-conversion efficiency reached 0.289 % (0.0638 % for the planar configuration), and the highest electrical power was 3.35 nW cm⁻² at 30 mCi."
+- id: source:chan-2013-microthermophotovoltaic
+  type: paper
+  title: "Toward high-energy-density, high-efficiency, and moderate-temperature chip-scale thermophotovoltaics"
+  authors: [W. R. Chan, P. Bermel, R. C. N. Pilawa-Podgurski, C. H. Marton, K. F. Jensen, J. J. Senkevich, J. D. Joannopoulos, M. Soljačić, I. Celanovic]
+  year: 2013
+  venue: "Proceedings of the National Academy of Sciences 110(14), 5309–5314"
+  doi: 10.1073/pnas.1301004110
+  notes: "Abstract read (open access; OSTI 1386838). The μTPV generator: a silicon propane microcombustor, an integrated high-temperature photonic-crystal selective thermal emitter, four 0.55 eV GaInAsSb thermophotovoltaic diodes and a maximum-power-point-tracking converter; operated to 800 °C combustor temperature with 13.7 W of thermal input, generating 344 mW of electric power over a 1 cm² area — 2.5 % measured against a 2.7 % prediction for the simplified system (up to 32 % predicted for the full design)."

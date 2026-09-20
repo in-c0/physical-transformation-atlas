@@ -14,7 +14,7 @@
       - claim:ionic-current-converts-electricity
   protocol_version: route-search-v1
   started_at: 2026-09-20T22:45:00+10:00
-  completed_at: 2026-09-20T23:40:00+10:00
+  completed_at: 2026-09-21T03:20:00+10:00
   objective: exact-composition
   inclusion_criteria:
     - a physical experiment or device in which the route's driver is imposed or naturally present, every conversion phenomenon occurs in the recorded order, the carrier crosses every handoff, and an electrical response (streaming voltage, current or power) is measured (route-search-v1 §3)
@@ -136,10 +136,78 @@
       records_retrieved: 155
       records_screened: 155
       records_read: 0
+    - id: search:2026-09-20-p-423a19acdd/gs-dm1
+      engine: google-scholar
+      query_form: route-driver-mechanism
+      query_key: driver-mechanism:1
+      query: ("temperature gradient" OR "temperature difference" OR "thermal gradient" OR "waste heat") ("Marangoni effect" OR thermocapillary OR solutocapillary OR destillocapillarity)
+      executed_at: 2026-09-21T03:20:00+10:00
+      request_url: https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=(%22temperature%20gradient%22%20OR%20%22temperature%20difference%22%20OR%20%22thermal%20gradient%22%20OR%20%22waste%20heat%22)%20(%22Marangoni%20effect%22%20OR%20thermocapillary%20OR%20solutocapillary%20OR%20destillocapillarity)
+      engine_version: null
+      index_snapshot: null
+      sort: relevance (Scholar default)
+      result_count_reported: 19200
+      records_retrieved: 100
+      records_screened: 100
+      records_read: 0
+      note: "Run by hand in the owner's Chrome (no captcha). Google Scholar silently returns nothing for a query beyond about 32 words, so the form was submitted as a compact string drawn from the record's frozen bundles: the driver bundle without ΔT, the mechanism bundle without the two-word phrases (surface-tension-driven flow, thermocapillary flow, solutocapillary flow), the output bundle reduced to electricity. Scholar indexes full text, so it matches phrases anywhere in a paper. About 19,200 results; the first 100 by relevance screened at title level: thermocapillary fluid mechanics only."
+      query_compacted: true
+      expanded_query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Marangoni effect" OR "surface-tension-driven flow" OR "thermocapillary flow" OR "solutocapillary flow" OR thermocapillary OR solutocapillary OR destillocapillarity)
+    - id: search:2026-09-20-p-423a19acdd/gs-mp12
+      engine: google-scholar
+      query_form: route-mechanism-pair
+      query_key: mechanism-pair:1-2
+      query: ("Marangoni effect" OR thermocapillary OR solutocapillary OR destillocapillarity) ("streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming")
+      executed_at: 2026-09-21T03:20:00+10:00
+      request_url: https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=(%22Marangoni%20effect%22%20OR%20thermocapillary%20OR%20solutocapillary%20OR%20destillocapillarity)%20(%22streaming%20potential%22%20OR%20%22streaming%20current%22%20OR%20%22electrokinetic%20effect%22%20OR%20%22electrokinetic%20streaming%22)
+      engine_version: null
+      index_snapshot: null
+      sort: relevance (Scholar default)
+      result_count_reported: 282
+      records_retrieved: 100
+      records_screened: 100
+      records_read: 0
+      note: "Run by hand in the owner's Chrome (no captcha). Google Scholar silently returns nothing for a query beyond about 32 words, so the form was submitted as a compact string drawn from the record's frozen bundles: the driver bundle without ΔT, the mechanism bundle without the two-word phrases (surface-tension-driven flow, thermocapillary flow, solutocapillary flow), the output bundle reduced to electricity. Scholar indexes full text, so it matches phrases anywhere in a paper. About 282 results; the first 100 by relevance screened with Scholar's snippets."
+      query_compacted: true
+      expanded_query: ("Marangoni effect" OR "surface-tension-driven flow" OR "thermocapillary flow" OR "solutocapillary flow" OR thermocapillary OR solutocapillary OR destillocapillarity) AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming")
+    - id: search:2026-09-20-p-423a19acdd/gs-wc
+      engine: google-scholar
+      query_form: route-whole-chain
+      query_key: whole-chain
+      query: ("temperature gradient" OR "temperature difference" OR "thermal gradient" OR "waste heat") ("Marangoni effect" OR thermocapillary OR solutocapillary OR destillocapillarity) ("streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming") electricity
+      executed_at: 2026-09-21T03:20:00+10:00
+      request_url: https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=(%22temperature%20gradient%22%20OR%20%22temperature%20difference%22%20OR%20%22thermal%20gradient%22%20OR%20%22waste%20heat%22)%20(%22Marangoni%20effect%22%20OR%20thermocapillary%20OR%20solutocapillary%20OR%20destillocapillarity)%20(%22streaming%20potential%22%20OR%20%22streaming%20current%22%20OR%20%22electrokinetic%20effect%22%20OR%20%22electrokinetic%20streaming%22)%20electricity
+      engine_version: null
+      index_snapshot: null
+      sort: relevance (Scholar default)
+      result_count_reported: 105
+      records_retrieved: 95
+      records_screened: 95
+      records_read: 3
+      note: "Run by hand in the owner's Chrome (no captcha). Google Scholar silently returns nothing for a query beyond about 32 words, so the form was submitted as a compact string drawn from the record's frozen bundles: the driver bundle without ΔT, the mechanism bundle without the two-word phrases (surface-tension-driven flow, thermocapillary flow, solutocapillary flow), the output bundle reduced to electricity. Scholar indexes full text, so it matches phrases anywhere in a paper. About 105 results, 95 delivered; a first submission without the output term (107 results, 97 delivered) was screened as well. Abstracts of the plausible hits read on the publishers' pages or OpenAlex."
+      query_compacted: true
+      expanded_query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Marangoni effect" OR "surface-tension-driven flow" OR "thermocapillary flow" OR "solutocapillary flow" OR thermocapillary OR solutocapillary OR destillocapillarity) AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power")
+    - id: search:2026-09-20-p-423a19acdd/gs-dp
+      engine: google-scholar
+      query_form: route-demonstration-precision
+      query_key: demonstration-precision
+      query: ("temperature gradient" OR "temperature difference" OR "thermal gradient" OR "waste heat") ("Marangoni effect" OR thermocapillary OR solutocapillary OR destillocapillarity) ("streaming potential" OR "streaming current") electricity (experiment OR measured OR device OR prototype)
+      executed_at: 2026-09-21T03:20:00+10:00
+      request_url: https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=(%22temperature%20gradient%22%20OR%20%22temperature%20difference%22%20OR%20%22thermal%20gradient%22%20OR%20%22waste%20heat%22)%20(%22Marangoni%20effect%22%20OR%20thermocapillary%20OR%20solutocapillary%20OR%20destillocapillarity)%20(%22streaming%20potential%22%20OR%20%22streaming%20current%22)%20electricity%20(experiment%20OR%20measured%20OR%20device%20OR%20prototype)
+      engine_version: null
+      index_snapshot: null
+      sort: relevance (Scholar default)
+      result_count_reported: 79
+      records_retrieved: 69
+      records_screened: 69
+      records_read: 0
+      note: "Run by hand in the owner's Chrome (no captcha). Google Scholar silently returns nothing for a query beyond about 32 words, so the form was submitted as a compact string drawn from the record's frozen bundles: the driver bundle without ΔT, the mechanism bundle without the two-word phrases (surface-tension-driven flow, thermocapillary flow, solutocapillary flow), the output bundle reduced to electricity. Scholar indexes full text, so it matches phrases anywhere in a paper. About 79 results, 69 delivered, all screened; a subset of the whole-chain list."
+      query_compacted: true
+      expanded_query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Marangoni effect" OR "surface-tension-driven flow" OR "thermocapillary flow" OR "solutocapillary flow" OR thermocapillary OR solutocapillary OR destillocapillarity) AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power") AND (experiment OR experimental OR measured OR device OR prototype)
   screening:
-    records_retrieved: 152
-    unique_records: 152
-    title_abstract_screened: 152
+    records_retrieved: 516
+    unique_records: 161
+    title_abstract_screened: 161
     full_text_read: 4
   hits:
     - title: Energy conversion by surface-tension-driven charge separation
@@ -183,16 +251,101 @@
       access: metadata-only
       decision: wrong-coupling
       reason: "Title: an applied electric field drives the flow (electrohydrodynamics) with the Marangoni effect as a modifier; the electrical side is the driver, not an output. Not read beyond the title."
+    - title: Gradient architecture solar evaporator for efficient hypersaline wastewater treatment and freshwater-salt-electricity Trigeneration
+      year: 2025
+      doi: 10.1016/j.cej.2025.172116
+      found_by:
+        - search:2026-09-20-p-423a19acdd/gs-wc
+        - search:2026-09-20-p-423a19acdd/gs-mp12
+        - search:2026-09-20-p-423a19acdd/gs-dp
+      access: abstract
+      decision: driver-only-modifies
+      reason: Thermal Marangoni/thermocapillary circulation manages salt transport in a solar evaporator, while the reported electrical potential (0.3 V open-circuit over 10 h) is attributed to the engineered salt/ionic gradient; no Marangoni-attributable streaming output is isolated (abstract read on the publisher's page).
+    - title: A 3D fabric evaporator with yarn arrays enables sustainable salt-resistant desalination and electricity generation
+      year: 2025
+      doi: 10.1016/j.compositesb.2025.113111
+      found_by:
+        - search:2026-09-20-p-423a19acdd/gs-wc
+        - search:2026-09-20-p-423a19acdd/gs-dp
+      access: abstract
+      decision: driver-only-modifies
+      reason: Thermocapillary force is an auxiliary transport mechanism inside an evaporation-driven hydrovoltaic device (0.503 V); no control resolves its contribution to the output (abstract read; the Marangoni discussion is in the text).
+    - title: Layered 3D aerogel evaporator with bioinspired architecture for high-performance solar desalination
+      year: 2026
+      doi: 10.1016/j.jece.2026.123594
+      found_by:
+        - search:2026-09-20-p-423a19acdd/gs-wc
+        - search:2026-09-20-p-423a19acdd/gs-dp
+      access: metadata-only
+      decision: driver-only-modifies
+      reason: The paper's own wording — a thermal Marangoni flow 'amplifies the resulting streaming potential' — makes it an enhancer/co-driver of an evaporation-driven output, not an isolated D → M1 → M2 demonstration (Scholar snippet; journal version J. Environ. Chem. Eng. 2026, not read).
+    - title: Achieving Ultrahigh Voltage Over 100 V and Remarkable Freshwater Harvesting Based on Thermodiffusion Enhanced Hydrovoltaic Generator
+      year: 2024
+      doi: 10.1002/aenm.202400529
+      found_by:
+        - search:2026-09-20-p-423a19acdd/gs-wc
+        - search:2026-09-20-p-423a19acdd/gs-mp12
+        - search:2026-09-20-p-423a19acdd/gs-dp
+      access: abstract
+      decision: driver-only-modifies
+      reason: Thermo-capillary convection occurs inside a thermodiffusion/evaporation hydrovoltaic system (45.6 μW cm⁻²; 105 V from 192 units), but the electrical output is not experimentally decomposed into a Marangoni-driven component (abstract read on OpenAlex).
+    - title: Synergistic interfacial evaporation and electricity generation enabled by Fe–Co PBA derived natural sponges
+      year: 2026
+      doi: 10.1039/d6ta01227b
+      found_by:
+        - search:2026-09-20-p-423a19acdd/gs-wc
+        - search:2026-09-20-p-423a19acdd/gs-dp
+      access: abstract
+      decision: driver-only-modifies
+      reason: Marangoni transport is invoked within coupled interfacial-evaporation and moisture electricity generation without isolation of the Marangoni → streaming contribution (one-sentence publisher abstract and Scholar snippet).
+    - title: Chemical-Gradient-Induced Marangoni Flows Boost Solar-Brine Desalination and Enable Concurrent Power Generation
+      year: 2026
+      doi: 10.1002/adfm.78354
+      found_by:
+        - search:2026-09-20-p-423a19acdd/gs-wc
+        - search:2026-09-20-p-423a19acdd/gs-mp12
+        - search:2026-09-20-p-423a19acdd/gs-dp
+      access: abstract
+      decision: driver-only-modifies
+      reason: "A solutocapillary co-driver, relevant to the sibling route p-41cb505083 (surface energy difference → Marangoni → streaming), where it is recorded: a programmed surface-tension gradient sustains Marangoni microcirculation alongside capillary flow in a hydrovoltaic evaporator (25 μA, 0.7 V, an LED lit) without isolating the Marangoni branch. For this thermal route it is the wrong driver (abstract read on OpenAlex)."
+    - title: Recent advances in nano-electromechanical and microfluidic power generation
+      year: 2006
+      doi: 10.1002/er.1282
+      found_by:
+        - search:2026-09-20-p-423a19acdd/gs-wc
+        - search:2026-09-20-p-423a19acdd/gs-mp12
+        - search:2026-09-20-p-423a19acdd/gs-dp
+      access: abstract
+      decision: constituent-only
+      reason: "Thermocapillary droplet pumping supplies mechanical pressure/deformation to a piezoelectric converter rather than a streaming-potential stage; evidence for the target M1 with a different downstream conversion. The primary experimental paper is Odukoya & Naterer 2013 (IJHMT 58:202, read in full): the micro heat engine was fabricated on PZT with Ti-W microheaters, the droplet pumping was measured, and the 1.2–1.3 mV and ≈ 1.6 % are simulation results — a search/pathway target for Temperature gradient → thermocapillary pumping → mechanical stress → piezoelectric effect → electricity, not for this route (abstract read)."
+    - title: Field-enhanced electrokinetic charge separation induced by thermocapillarity-driven flow in a liquid film
+      year: 2011
+      found_by:
+        - search:2026-09-20-p-423a19acdd/gs-wc
+        - search:2026-09-20-p-423a19acdd/gs-mp12
+      access: metadata-only
+      decision: theory-only
+      reason: "APS DFD 2011 abstract: thermocapillary stresses in a thin liquid film in a lateral thermal gradient induce a streaming potential through the electrokinetic effect, with the upper limit of the streaming potential derived — the theoretical precursor of Pini 2015; no experiment (title and meeting abstract only)."
+    - title: Hydroelectric power plant on a paper strip
+      year: 2018
+      doi: 10.1039/c7lc01350g
+      found_by:
+        - search:2026-09-20-p-423a19acdd/gs-mp12
+      access: metadata-only
+      decision: wrong-driver
+      reason: Capillary wicking through paper drives the flow whose streaming potential is harvested; a surface-tension-driven imbibition with no surface-tension gradient, so not the Marangoni effect. Caught by the alias 'surface-tension-driven flow', which pass 22 removed from the phenomenon (Scholar snippet; not read).
   result: inconclusive
   completeness: partial
-  reviewed_by: Ava Kim's loop-3 lane (Claude Opus 5), with ChatGPT (GPT-5 Thinking) as second reader of the title lists; abstracts, Pini 2015's full text and the citation-chase titles read by the lane
-  reviewed_on: 2026-09-20
+  reviewed_by: Ava Kim's loop-3 lane (Claude Opus 5), with ChatGPT (GPT-5 Thinking) as second reader of the title lists; abstracts, Pini 2015's full text and the citation-chase titles read by the lane; Google Scholar runs by hand and their screening on 21/09 with ChatGPT as second reader (pass 22)
+  reviewed_on: 2026-09-21
   limitations:
-    - Semantic Scholar runs not made (anonymous API pool answered HTTP 429 throughout; key requested from the owner) and Google Scholar runs not made; both are mandatory for a negative
+    - Semantic Scholar runs not made (anonymous API pool answered HTTP 429 throughout; key requested from the owner, exception e953), mandatory for a negative; Google Scholar's four forms were run by hand on 21/09 as compact strings (Scholar's ~32-word limit) — see the run notes
     - "OpenAlex driver-mechanism query: 1,393 works reported, the first 100 by relevance and the first 50 newest screened at title level (protocol depth), the rest unscreened"
     - "citation chase done on OpenAlex's reference lists and citing works only (Pini 2015: 40 references, 3 citers; Massing 2019: 54 references, 101 of 103 citers), screened at title level with an electrokinetic/electrical vocabulary filter; no full-text chase"
     - the mechanism-pair, whole-chain and demonstration-precision queries returned 2, 0 and 0 works
-  conclusion: No physical demonstration of temperature gradient → Marangoni flow → streaming potential → electrical output was found in the OpenAlex protocol runs or the two citation chases; the route's only literature is the Pini 2015 theoretical proposal. Inconclusive until the Semantic Scholar and Google Scholar runs exist.
+    - "Google Scholar: the driver-mechanism form reports about 19,200 works, of which the first 100 by relevance were screened at title level (protocol depth); the mechanism-pair form 282, the first 100 screened; Scholar's full-text index surfaces papers that only mention the mechanisms in passing, so its lists are noisier than OpenAlex's"
+    - the two Elsevier chase hits (Ruckenstein 1981; Pal et al. 2011) remain unread
+  conclusion: "No physical demonstration of temperature gradient → Marangoni flow → streaming potential → electrical output was found in the OpenAlex protocol runs, the two citation chases or the four Google Scholar forms run by hand on 21/09/2026 (Scholar's full-text index screened at the protocol depth). The route's only literature is the Pini 2015 theoretical proposal and its 2011 precursor; the solar-evaporator hydrovoltaic papers that invoke a thermal Marangoni flow use it as a co-driver or enhancer of an evaporation-driven streaming output and never isolate its contribution (parallel-driver rule: driver-only-modifies); the thermocapillary micro heat engine converts the droplet motion through a piezoelectric membrane, a different second mechanism. Inconclusive until the Semantic Scholar runs exist and the two unread chase hits are read."
   source_run_ids:
     - search:2026-09-20-p-423a19acdd
 - id: search:2026-09-20-p-41cb505083-partial
@@ -207,7 +360,7 @@
       - claim:ionic-current-converts-electricity
   protocol_version: route-search-v1
   started_at: 2026-09-20T22:45:00+10:00
-  completed_at: 2026-09-20T23:40:00+10:00
+  completed_at: 2026-09-21T03:25:00+10:00
   objective: exact-composition
   inclusion_criteria:
     - a physical experiment or device in which the route's driver is imposed or naturally present, every conversion phenomenon occurs in the recorded order, the carrier crosses every handoff, and an electrical response (streaming voltage, current or power) is measured (route-search-v1 §3)
@@ -376,15 +529,25 @@
       access: metadata-only
       decision: wrong-driver
       reason: "Title: the electrokinetic (sedimentation) potential arises from gravity-driven drop motion, with Marangoni effects as a modifier of drop mobility; the driver is gravity, not a surface-energy difference. Not read beyond the title."
+    - title: Chemical-Gradient-Induced Marangoni Flows Boost Solar-Brine Desalination and Enable Concurrent Power Generation
+      year: 2026
+      doi: 10.1002/adfm.78354
+      found_by:
+        - search:2026-09-20-p-423a19acdd/gs-wc
+        - search:2026-09-20-p-423a19acdd/gs-mp12
+      access: abstract
+      decision: driver-only-modifies
+      reason: "Surfaced by the sibling thermal route's Google Scholar runs (21/09/2026). A graphene-oxide evaporator with a programmed longitudinal gradient of oxygen-containing groups: the persistent surface-tension disparity sustains Marangoni microcirculation that co-drives water transport with capillary flow ('a dual-driving transport regime'), while the device delivers 25 μA short-circuit current and 0.7 V open-circuit voltage and series units power an LED. D → M1 is physical, but capillary transport is a simultaneous independent driver and the electrical output is not decomposed into capillary-driven and Marangoni-driven parts (parallel-driver rule). The nearest physical device to this route; recorded as a note on the proposed pathway, its figures kept off the pathway's measurements."
   result: inconclusive
   completeness: partial
   reviewed_by: Ava Kim's loop-3 lane (Claude Opus 5), with ChatGPT (GPT-5 Thinking) as second reader of the title lists; abstracts, Pini 2015's full text and the citation-chase titles read by the lane
-  reviewed_on: 2026-09-20
+  reviewed_on: 2026-09-21
   limitations:
     - Semantic Scholar and Google Scholar runs not made (see p-423a19acdd); both are mandatory for a negative
     - "OpenAlex driver-mechanism query: 515 works reported, the first 100 by relevance and the first 50 newest screened at title level, the rest unscreened"
     - "citation chase on OpenAlex reference lists and citing works only (Pini 2015: 40 references, 3 citers; Kim et al. 2017: 26 of 28 references, 133 of 134 citers), title-level with a vocabulary filter"
     - the mechanism-pair, whole-chain and demonstration-precision queries returned 2, 0 and 0 works
+    - Google Scholar's mandatory forms not yet run for this route (pass 23); the Zhang 2026 co-driver device was found by the thermal sibling's Scholar runs
   conclusion: No physical demonstration of a surface-energy difference → Marangoni flow → streaming potential → electrical output was found; the only literature is the Pini 2015 proposal. Inconclusive until the Semantic Scholar and Google Scholar runs exist.
   source_run_ids:
     - search:2026-09-20-p-41cb505083

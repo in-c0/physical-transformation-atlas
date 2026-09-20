@@ -578,3 +578,32 @@
   status: demonstrated
   notes: The small hydro-turbine generator of layout 1, fed from the elevated tank; the bulb was lit, no output figure is reported.
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 21 (TOEC route search; source read in full)" }
+# Loop-3 pass 22: the two known devices behind the routes the head rule had hidden.
+- id: claim:thermal-emission-implemented-microtpv
+  subject: phenomenon:thermal-emission
+  predicate: implemented_by
+  object: transducer:micro-thermophotovoltaic-generator
+  evidence: [source:chan-2013-microthermophotovoltaic]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 22 (Scholar runs, the parallel-driver rule and the head rule; abstract read)" }
+- id: claim:pv-implemented-microtpv
+  subject: phenomenon:photovoltaic-effect
+  predicate: implemented_by
+  object: transducer:micro-thermophotovoltaic-generator
+  evidence: [source:chan-2013-microthermophotovoltaic]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 22 (Scholar runs, the parallel-driver rule and the head rule; abstract read)" }
+- id: claim:radioluminescence-implemented-rl-battery
+  subject: phenomenon:radioluminescence
+  predicate: implemented_by
+  object: transducer:radioluminescent-nuclear-battery
+  evidence: [source:russo-2017-radioluminescent-nuclear-battery]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 22 (Scholar runs, the parallel-driver rule and the head rule; abstract read)" }
+- id: claim:pv-implemented-rl-battery
+  subject: phenomenon:photovoltaic-effect
+  predicate: implemented_by
+  object: transducer:radioluminescent-nuclear-battery
+  evidence: [source:russo-2017-radioluminescent-nuclear-battery]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 22 (Scholar runs, the parallel-driver rule and the head rule; abstract read)" }

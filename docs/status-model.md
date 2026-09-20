@@ -54,11 +54,17 @@ current compiler never assigns them; there is no review queue in this release.
      is recorded;
    - otherwise `derived` when the route overlaps a **demonstrated** pathway (status other than
      `proposed`) in one of two ways: by claims — at least two ordered claims shared
-     (`known_pathway_overlap`) that form the pathway's head (its driver step and first conversion),
-     contain the whole pathway, or span two or more phenomena, so that a shared generic tail (a
-     produced carrier turning a rotor, a rotor turning a generator) does not count — or by phenomena
-     — at least two shared as a `source-variant` or `sink-variant` of the closest demonstrated
-     pathway (`closest_known_pathway`; a `mechanism-subsequence` does not count);
+     (`known_pathway_overlap`) such that (a) the route contains the pathway's complete ordered
+     claim sequence, (b) the route is a strict ordered prefix or suffix of the pathway, or the
+     pathway of the route, (c) the ordered shared claims span two or more distinct conversion
+     phenomena, or (d) the route and pathway share the driver step and first conversion and, at the
+     first divergence, the route's next conversion phenomenon and the pathway's next conversion
+     phenomenon share at least one coupling family; sharing only the driver step and one
+     conversion phenomenon is not sufficient when the first divergence changes coupling family —
+     that route remains a candidate (loop-3 pass 22) — and a shared generic tail (a produced
+     carrier turning a rotor, a rotor turning a generator) never counts on its own — or by
+     phenomena — at least two shared as a `source-variant` or `sink-variant` of the closest
+     demonstrated pathway (`closest_known_pathway`; a `mechanism-subsequence` does not count);
    - otherwise `candidate`. A pathway with status `proposed` is attached to its exact route
      (`p.pathway`) and shown as a proposal, but is ignored for overlap and never changes the class;
 5. `weak` — a constituent claim is below `demonstrated`.

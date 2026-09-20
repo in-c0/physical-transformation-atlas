@@ -51,10 +51,11 @@ test("a proposed pathway (TOEC) is attached to its route and never makes it demo
   assert.notEqual(toec!.frontier_class, "demonstrated");
   assert.notEqual(toec!.search_status, "demonstrated");
   assert.equal(toec!.structural_kind, "composition");
-  // Loop-3 pass 21: the thermal-osmosis → electrokinetic pathway (demonstrated) shares the route's head — driver
-  // step and first conversion — so the head-overlap rule classes the turbine route derived. The proposal itself
-  // is still ignored for overlap: the overlap named is the sibling, never the TOEC proposal.
-  assert.equal(toec!.frontier_class, "derived");
+  // Loop-3 pass 22: the thermal-osmosis → electrokinetic pathway (demonstrated) shares the route's head — driver
+  // step and first conversion — but the route diverges into a different coupling family (turbomachinery, not
+  // electrokinetic), so the head no longer makes it derived: it is a candidate with the sibling named as its
+  // claim overlap. The proposal itself is still ignored for overlap.
+  assert.equal(toec!.frontier_class, "candidate");
   assert.equal(toec!.known_pathway_overlap?.pathway, "pathway:thermal-osmosis-electrokinetic-generator");
   // The reviewed route search is attached: an honest partial whose only turbine run is a longer chain.
   assert.equal(toec!.search_status, "search-incomplete");
@@ -142,4 +143,27 @@ test("resonance-expanded spellings are representation-equivalent to the direct v
   // The bending-actuated cooler starts at the stress row and is demonstrated on its own.
   const bending = paths.find((p) => p.pathway === "pathway:bending-actuated-elastocaloric-cooler");
   assert.ok(bending && bending.source === "disequilibrium:mechanical-stress" && bending.search_status === "demonstrated");
+});
+
+test("a shared head makes a route derived only when the first divergence stays in the same coupling family (loop-3 pass 22): head-divergent routes stay candidates", () => {
+  const phen = (p: CompiledPath) => p.nodes.filter((n) => n.startsWith("phenomenon:")).map((n) => n.split(":")[1]).join(">");
+  const find = (sig: string, source: string) => paths.find((p) => p.nodes[0] === source && phen(p) === sig && p.structural_kind === "composition");
+  // family changes at the first divergence: candidates
+  for (const [sig, source] of [
+    ["thermomagnetic-ferrofluid-convection>streaming-potential", "disequilibrium:temperature-gradient"],
+    ["thermal-expansion>flexoelectric-effect", "disequilibrium:temperature-gradient"],
+    ["elastic-deformation>elastocaloric-effect", "disequilibrium:mechanical-vibration"],
+    ["marangoni-effect>generator-action", "disequilibrium:temperature-gradient"],
+  ] as const) {
+    const p = find(sig, source);
+    assert.ok(p, sig + " compiled");
+    assert.equal(p!.frontier_class, "candidate", sig + " is a candidate, not derived by its shared head");
+  }
+  // true truncations of a demonstrated pathway stay derived (strict prefix, or shared claims spanning two phenomena)
+  const pro = paths.find((p) => p.nodes[0] === "disequilibrium:salinity-gradient" && phen(p) === "pressure-retarded-osmosis>aerodynamic-lift" && p.sink === "output:mechanical-work");
+  assert.ok(pro, "PRO → lift compiled");
+  assert.equal(pro!.frontier_class, "derived");
+  const fission = paths.find((p) => p.nodes[0] === "disequilibrium:nuclear-binding-difference" && phen(p) === "nuclear-fission>working-fluid-expansion" && p.sink === "output:mechanical-work");
+  assert.ok(fission, "fission → expansion compiled");
+  assert.equal(fission!.frontier_class, "derived");
 });

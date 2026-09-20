@@ -628,3 +628,18 @@
   knowledge_level: K5
   summary: A permeate-gap membrane-distillation module pressurises its own permeate into an elevated tank; the released stream drives a small hydro-turbine generator (Xiao et al. 2024, 32 cm², a 2 W-rated bulb lit at about 1.5 m head). Gravitational storage sits between the thermo-osmotic flow and the turbine, so it is a longer-chain relative of the TOEC composition.
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 21 (TOEC route search; source read in full)" }
+# Loop-3 pass 22: the two known devices the shared-head rule had hidden from the frontier.
+- id: transducer:micro-thermophotovoltaic-generator
+  type: transducer
+  name: Combustion-driven micro-thermophotovoltaic generator (μTPV)
+  aliases: [μTPV generator, microcombustor TPV, combustion TPV, micro-TPV]
+  knowledge_level: K6
+  summary: "A propane microcombustor heats a photonic-crystal selective emitter whose thermal radiation falls on low-bandgap GaInAsSb photovoltaic cells (Chan et al. 2013: 344 mW over 1 cm², 2.5 % of 13.7 W thermal input)."
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 22 (Scholar runs, the parallel-driver rule and the head rule; abstract read)" }
+- id: transducer:radioluminescent-nuclear-battery
+  type: transducer
+  name: Radioluminescent (beta-photovoltaic) nuclear battery
+  aliases: [β-PV nuclear battery, radiophotovoltaic battery, scintillator–photovoltaic nuclear battery, RL nuclear battery]
+  knowledge_level: K6
+  summary: "A β⁻ emitter (⁶³Ni) excites a phosphor (ZnS:Cu,Al) whose radioluminescence is converted by a spectrally matched InGaP photovoltaic cell (Russo et al. 2017: 3.35 nW cm⁻², 0.289 % total conversion efficiency in the volumetric configuration)."
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 22 (Scholar runs, the parallel-driver rule and the head rule; abstract read)" }
