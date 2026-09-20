@@ -24,7 +24,8 @@ pipelines/           validate · build-graph · verify-sources · literature-sea
 apps/web             Next.js static site: /, /atlas, /matrix, /path/[id], /phenomenon/[id], /frontier, /coverage, /methods, /api/*.json
 worker/              Cloudflare Worker serving the static export
 design/              brief, design system, review transcripts, current screenshots
-tools/               static server and headless verification
+docs/                ontology, evidence model, status model, candidate generation, generated vocabulary
+tools/               static server and headless verification (screenshots, keyboard model, axe-core)
 ```
 
 ## Run it
@@ -32,7 +33,7 @@ tools/               static server and headless verification
 ```bash
 pnpm install
 pnpm validate            # referential integrity of data/canonical
-pnpm build:graph         # data/canonical → apps/web/generated/{graph,paths}.json
+pnpm build:graph         # data/canonical → apps/web/generated/{graph,paths}.json, and docs/vocabulary.md
 pnpm test                # physics and compiler invariants, with negative controls
 pnpm dev                 # next dev on http://localhost:3000
 pnpm build               # static export to apps/web/out

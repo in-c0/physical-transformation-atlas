@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use the atlas or its data, cite it as below and name the dataset revision (meta.revision in every /api export) you used."
+title: "Physical Transformation Atlas"
+abstract: "A live map of known and unexplored pathways for converting physical disequilibria into useful work: evidence-backed claims about physical energy transformations, compiled into every conversion route they compose, with seven physics checks and a record of what has actually been searched."
+type: dataset
+authors:
+  - family-names: Kim
+    given-names: Ava
+    email: wldud5192@gmail.com
+repository-code: "https://github.com/in-c0/physical-transformation-atlas"
+url: "https://physical-transformation-atlas.wldud5192.workers.dev"
+version: 0.2.0
+date-released: 2026-09-20
+keywords:
+  - energy conversion
+  - thermodynamics
+  - knowledge graph
+  - evidence
+  - physics
