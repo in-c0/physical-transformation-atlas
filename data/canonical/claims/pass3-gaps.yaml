@@ -168,20 +168,20 @@
   object: phenomenon:acoustoelectric-effect
   condition_tags: [state-solid, medium-semiconductor]
   energy: { input: acoustic, output: electrical, dissipation: thermal }
-  evidence: [source:weinreich-white-1957]
+  evidence: [source:weinreich-white-1957, source:parmenter-1953]
   status: established
 - id: claim:acoustoelectric-produces
   subject: phenomenon:acoustoelectric-effect
   predicate: produces
   object: carrier:charge-carriers
   energy: { input: electrical, output: electrical }
-  evidence: [source:weinreich-white-1957]
+  evidence: [source:weinreich-white-1957, source:parmenter-1953]
   status: established
 - id: claim:acoustoelectric-member
   subject: phenomenon:acoustoelectric-effect
   predicate: member_of
   object: coupling:acoustoelectric
-  evidence: [source:parmenter-1953]
+  evidence: [source:parmenter-1953, source:weinreich-white-1957]
   status: established
 - id: claim:acoustic-field-drives-piezo
   subject: disequilibrium:acoustic-field
@@ -210,7 +210,7 @@
   predicate: produces
   object: carrier:spin-current
   energy: { input: spin, output: spin }
-  evidence: [source:meyer-2017-spin-nernst]
+  evidence: [source:meyer-2017-spin-nernst, source:bose-tulapurkar-2019-spin-nernst]
   status: established
 - id: claim:spin-nernst-member
   subject: phenomenon:spin-nernst-effect
@@ -285,7 +285,7 @@
   predicate: produces
   object: carrier:charge-carriers
   energy: { input: electrical, output: electrical }
-  evidence: [source:ehd-generator-1977]
+  evidence: [source:ehd-generator-1977, source:ehd-review-2025]
   status: established
 - id: claim:ehd-member
   subject: phenomenon:electrohydrodynamic-generation
@@ -335,7 +335,7 @@
   predicate: produces
   object: carrier:mechanical-motion
   energy: { input: mechanical, output: mechanical }
-  evidence: [source:sma-heat-engine-2019]
+  evidence: [source:sma-heat-engine-2019, source:otsuka-wayman-1998]
   status: established
 - id: claim:shape-memory-member
   subject: phenomenon:thermally-driven-shape-memory-effect
@@ -347,7 +347,7 @@
   subject: phenomenon:thermally-driven-shape-memory-effect
   predicate: bounded_by
   object: constraint:carnot-limit
-  evidence: [source:sma-heat-engine-2019]
+  evidence: [source:sma-heat-engine-2019, source:bejan-2016]
   status: established
 - id: claim:shape-memory-observed-niti
   subject: phenomenon:thermally-driven-shape-memory-effect
