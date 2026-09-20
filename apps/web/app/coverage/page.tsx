@@ -99,8 +99,8 @@ export default function CoveragePage() {
           <dd>
             {c.matrix_cells} cells · {c.matrix_cells_empty} without a direct relation · {c.matrix_cells_unsearched} not searched
           </dd>
-          <dt>indexed through</dt>
-          <dd>{a.graph.meta.built_at.slice(0, 10)}</dd>
+          <dt>searches through</dt>
+          <dd>{a.graph.meta.search_indexed_through ?? "no search record yet"} · compiled {a.graph.meta.built_at.slice(0, 10)}</dd>
         </dl>
       </section>
 
