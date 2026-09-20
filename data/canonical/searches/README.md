@@ -66,6 +66,134 @@ a temperature gradient merely changes the efficiency is `driver-only-modifies`; 
 `theory-only`; a proposed harvester is `proposal-only`. A demonstrated multi-effect chain is evidence
 for a **route** search (`target.kind: path`), not automatically a direct cell relation.
 
+## Reviewed route searches — protocol `route-search-v1`
+
+A route search asks one question: has one physical experiment or device demonstrated this exact
+recorded composition? `target.kind` is `path`, `target.claims` lists the route's ordered claim ids
+(the loader checks that their hash is the route id), `objective` is `exact-composition`, and the
+target route is fixed before searching. Constituent evidence is not evidence for the composition.
+
+### 1. Terms
+
+Let `D` be the route's source disequilibrium; `M_1 … M_k` be its conversion phenomena in route
+order, excluding carriers, bookkeeping nodes and the terminal output projection; and `O` be its
+output.
+
+For each `D`, `M_i` and `O`, construct the search term bundle only from that entity's canonical name
+and recorded aliases. Engine-specific punctuation normalisation, such as replacing a hyphen with a
+space for Semantic Scholar, is allowed; introducing a new lexical synonym is not. Add a
+scientifically necessary term to the entity's aliases before using it in a query.
+
+Freeze the term bundles in the search record (`driver_terms`, `phenomenon_terms`). Do not
+reconstruct them later from a newer atlas revision.
+
+### 2. Mandatory query forms
+
+Run every mandatory form on OpenAlex, Semantic Scholar and Google Scholar. Each run carries its
+`query_form` and a `query_key` that names which required query it is.
+
+- `route-driver-mechanism`, key `driver-mechanism:1`: `D AND M_1`.
+- `route-mechanism-pair`, key `mechanism-pair:i-(i+1)`: one query for every consecutive pair
+  `M_i AND M_(i+1)`, for `i = 1 … k-1`.
+- `route-whole-chain`, key `whole-chain`: `D AND M_1 AND … AND M_k AND O`.
+- `route-demonstration-precision`, key `demonstration-precision`:
+  `D AND M_1 AND … AND M_k AND O AND (experiment OR experimental OR measured OR device OR prototype)`.
+
+All four forms are mandatory for a protocol-complete negative; `route-mechanism-pair` must cover
+every consecutive mechanism pair. Record the literal submitted string, engine, execution time,
+request URL where available, result count, retrieval depth, screening depth and reading depth.
+
+OpenAlex and Google Scholar use their Boolean/phrase syntax. Semantic Scholar `paper/search` is a
+relevance query, not a Boolean engine: submit the same concepts as a plain keyword string and store
+that literal string. Do not pretend its spaces or quotation marks have Boolean semantics.
+
+### 3. What qualifies as a route demonstration
+
+A hit `qualifies` only when all of these are true:
+
+1. `D` is physically imposed or naturally present as the causal source of the experiment or device.
+2. Every `M_i` occurs physically in the same experiment or device, in the recorded order.
+3. Energy or the relevant physical carrier crosses every consecutive `M_i → M_(i+1)` handoff; merely
+   mentioning both mechanisms in one paper is insufficient.
+4. `O` is physically measured or delivered by the chain. A voltage/current with no extractable load
+   need only qualify when the target output itself is that measured electrical response under the
+   route's recorded meaning.
+5. The evidence is a physical experiment or device, not theory, simulation or a proposed design.
+6. No additional conversion phenomenon is required between two mechanisms that the target route
+   records as consecutive.
+
+The paper need not use the atlas's carrier-node vocabulary. A physically equivalent carrier
+description is allowed if the conversion phenomena and their causal order are the same.
+
+A paper demonstrating only one constituent mechanism or one adjacent pair is `constituent-only`, not
+`qualifies`. The same ordered mechanisms and output with a different causal source are
+`source-variant`: record the actual driver in the reason and review it as a possible different
+pathway. The same source and ordered mechanisms with a different final output are `sink-variant`. A
+physical chain that contains the target mechanisms but requires one or more additional conversion
+phenomena between the target's recorded steps is `longer-chain`: evidence for that longer route, not
+for the exact target. Extra instrumentation, reservoirs, electrodes, loads or non-converting
+apparatus do not make a hit `longer-chain`.
+
+### 4. Decisions
+
+Route decisions: `qualifies` (the complete target composition is physically demonstrated);
+`constituent-only`; `source-variant`; `sink-variant`; `longer-chain`, as defined above. The cell
+decisions remain available: `theory-only`, `simulation-only`, `proposal-only`, `review-only`,
+`wrong-driver`, `wrong-coupling`, `driver-only-modifies`, `duplicate`, `insufficient-information`
+and `route-only` — the last is primarily a cell-search decision; do not use it when one of the route
+decisions applies. Every plausible hit receives one decision and one checkable reason.
+
+### 5. Screening depth and citation chase
+
+For each mandatory query, screen every result when the engine reports 100 or fewer. Above 100,
+retrieve and screen the first 100 by relevance plus the first 50 newest where the engine exposes a
+newest/date ordering; de-duplicate across runs and engines. Read the abstract or full text of every
+plausible hit. Metadata alone cannot establish `qualifies`.
+
+For a negative, citation chasing is mandatory. Take the two most relevant theory, review,
+proposed-device or constituent-only papers and inspect both their reference lists and citing works
+for an earlier or later whole-chain experiment. Record this as `citation-chase` runs (one per seed
+paper) and record every plausible discovered hit.
+
+### 6. Completeness and the negative gate (machine-checked by the loader)
+
+A route may say `result: no-demonstration-found` only when: `protocol_version` is
+`route-search-v1`; `target.kind` is `path` with `target.claims`; `objective` is
+`exact-composition`; `completeness` is `protocol-complete-negative`; `reviewed_by` names a
+reviewer; no hit has `decision: qualifies`; runs exist for all three discovery engines; each engine
+has a run keyed `driver-mechanism:1`, every required `mechanism-pair:i-(i+1)` for the target route
+(the loader derives `k` and the ordered `M_i` from `target.claims`), `whole-chain` and
+`demonstration-precision`; every mandatory run records `records_screened` of at least the smaller of
+100 and the reported count; and at least two `citation-chase` runs exist (one per seed paper).
+
+If an engine fails, a mandatory query is absent, relevant results beyond the screening cap remain
+unaccounted for, a plausible hit cannot be read well enough to classify, or citation chasing is
+incomplete, the result is `inconclusive` with completeness `partial` or `blocked`. Presence of the
+generic query-form name alone is insufficient; the keys are what the gate checks.
+
+### 7. What the result changes
+
+A conclusive positive changes only the target route's composition search state to `demonstrated`.
+It does not change the evidence status of any constituent claim and does not create a direct matrix
+relation. A person must then perform `follow_up.canonical_pathway_review`: if the paper demonstrates
+the compiled route as recorded, add a canonical `Pathway` whose `steps` are that route's ordered
+claim ids, add and verify the source, and record only measurements actually reported by the source;
+set the field to `completed` when that review is committed. The compiler never authors a pathway.
+
+A protocol-complete negative changes only that route's search state to
+`searched-no-demonstration-found` as of the search completion date. It does not lower constituent
+claim statuses, alter any matrix cell, classify the composition as impossible, or assert that no
+demonstration exists outside the searched record.
+
+### Query plans
+
+The literal strings for a route search are written once, as a plan under
+`data/canonical/searches/plans/<route id>.yaml` (protocol version, frozen term bundles, one entry
+per engine × key with the exact query), and executed by
+`pnpm --filter @pta/pipelines literature-search --path <route id> --plan <file>`, which freezes the
+OpenAlex and Semantic Scholar result lists as an automated run. Google Scholar runs are recorded by
+hand in the reviewed record.
+
 ## Promoting an automated run
 
 `pnpm --filter @pta/pipelines literature-search` writes `data/generated/search-runs.json`: for each

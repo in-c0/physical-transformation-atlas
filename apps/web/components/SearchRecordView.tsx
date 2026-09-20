@@ -100,12 +100,15 @@ export function AutomatedRunView({ run }: { run: AutomatedSearchRun }) {
     .sort()
     .at(-1);
   const reported = run.runs.reduce((n, r) => n + (r.result_count_reported ?? 0), 0);
+  const engines = [...new Set(run.runs.map((r) => r.engine))].map((e) => ENGINE_SHORT[e] ?? e).join(" + ");
+  const notes = run.notes ?? "";
+  const notRun = notes.indexOf("Planned runs");
   return (
     <div className={styles.claim}>
       <div className={styles.claimLine}>
         <span className="t-data">Index query only · {last}</span>
         <span className="t-data secondary">
-          OpenAlex · {run.runs.length} quer{run.runs.length === 1 ? "y" : "ies"}
+          {engines} · {run.runs.length} quer{run.runs.length === 1 ? "y" : "ies"}
         </span>
         <span className={styles.status}>not reviewed</span>
       </div>
@@ -113,6 +116,18 @@ export function AutomatedRunView({ run }: { run: AutomatedSearchRun }) {
         {reported} indexed works reported across the queries, {run.works.length} unique retrieved; nobody has read them for a qualifying demonstration. A person can screen this frozen list and promote
         it to a reviewed record without re-running the query.
       </p>
+      <ul className={styles.runList}>
+        {run.runs.map((r) => (
+          <li key={r.id}>
+            <span>{ENGINE_ABBR[r.engine] ?? r.engine}</span>
+            <span>{r.query_key ?? r.query_form}</span>
+            <span className="secondary">
+              {r.result_count_reported ?? "?"} reported · {r.records_retrieved} retrieved
+            </span>
+          </li>
+        ))}
+      </ul>
+      {notRun >= 0 && <p className={styles.stateSecondary}>{notes.slice(notRun)}</p>}
     </div>
   );
 }

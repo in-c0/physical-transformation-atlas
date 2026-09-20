@@ -390,18 +390,41 @@ export type Pathway = z.infer<typeof Pathway>;
 
 export const SearchTarget = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("cell"), row: EntityId, col: EntityId }),
-  z.object({ kind: z.literal("path"), path: z.string() }),
+  /** claims: the route's ordered claim ids, so the loader can derive its mechanisms and check the id (required for route-search-v1). */
+  z.object({ kind: z.literal("path"), path: z.string(), claims: z.array(ClaimId).optional() }),
   z.object({ kind: z.literal("claim"), claim: ClaimId }),
 ]);
 
 const isoDateTime = z.string().regex(/^\d{4}-\d{2}-\d{2}(T\d{2}:\d{2}(:\d{2}(\.\d{1,3})?)?([+-]\d{2}:\d{2}|Z))?$/, "ISO 8601 date or date-time");
 
 export const SEARCH_ENGINES = ["openalex", "semantic-scholar", "google-scholar", "crossref", "manual"] as const;
-export const QUERY_FORMS = ["driver-family", "driver-phenomenon", "demonstration-precision", "citation-chase"] as const;
-/** route-only: a real experiment, but the driver reaches the family through a separately resolvable intermediate conversion — evidence for a route, not for a direct cell relation. */
+/** Cell forms (cell-search-v1) and route forms (route-search-v1); citation-chase serves both. */
+export const QUERY_FORMS = [
+  "driver-family",
+  "driver-phenomenon",
+  "demonstration-precision",
+  "citation-chase",
+  "route-driver-mechanism",
+  "route-mechanism-pair",
+  "route-whole-chain",
+  "route-demonstration-precision",
+] as const;
+/**
+ * route-only: a real experiment, but the driver reaches the family through a separately resolvable
+ * intermediate conversion — evidence for a route, not for a direct cell relation. The four route
+ * decisions (route-search-v1): constituent-only = one mechanism or one adjacent pair demonstrated, not
+ * the whole composition; source-variant = the ordered mechanisms and output demonstrated from a
+ * different causal driver; sink-variant = driver and mechanisms match but the demonstrated output
+ * differs; longer-chain = the experiment needs an extra conversion phenomenon between two steps the
+ * target records as consecutive (evidence for that longer route, not this one).
+ */
 export const HIT_DECISIONS = [
   "qualifies",
   "route-only",
+  "constituent-only",
+  "source-variant",
+  "sink-variant",
+  "longer-chain",
   "theory-only",
   "simulation-only",
   "proposal-only",
@@ -418,6 +441,8 @@ export const SearchRun = z.object({
   id: z.string(),
   engine: z.enum(SEARCH_ENGINES),
   query_form: z.enum(QUERY_FORMS),
+  /** route-search-v1: which required query this run is — driver-mechanism:1, mechanism-pair:i-(i+1), whole-chain, demonstration-precision — so the gate can check coverage, not just form names. */
+  query_key: z.string().optional(),
   /** The literal syntax actually submitted; never reconstructed later from aliases. */
   query: z.string(),
   executed_at: isoDateTime,
@@ -483,6 +508,8 @@ export const SearchRecord = z.object({
   follow_up: z
     .object({
       canonical_claim_review: z.enum(["needed", "completed", "not-applicable"]),
+      /** For a positive route search: whether a person has written the Pathway record (the compiler never does). */
+      canonical_pathway_review: z.enum(["needed", "completed", "not-applicable"]).optional(),
       candidate_source_ids: z.array(SourceId).default([]),
       candidate_claim: z.object({ subject: EntityId, predicate: z.literal("drives"), object: EntityId }).optional(),
     })

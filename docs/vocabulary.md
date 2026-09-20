@@ -173,6 +173,49 @@ Used in: `paths[].frontier_class`
 - `forbidden` — at least one physics check fails
 - `circular` — the source disequilibrium and the sink carry the same energy form
 
+## `search.engine`
+
+Used in: `searches[].runs[].engine`, `search_runs[].runs[].engine`
+
+- `openalex` — the OpenAlex works API (title/abstract search; boolean and phrase syntax); a discovery engine
+- `semantic-scholar` — the Semantic Scholar graph API relevance search (plain keyword strings, no boolean semantics); a discovery engine
+- `google-scholar` — Google Scholar, run by hand in a browser and recorded literally; a discovery engine
+- `crossref` — the Crossref API; verifies DOIs and metadata, never counts as a discovery engine
+- `manual` — a hand search, reference-list inspection or web search; records provenance but never counts as a discovery engine
+
+## `search.query_form`
+
+Used in: `searches[].runs[].query_form`, `search_runs[].runs[].query_form`
+
+- `driver-family` — cell-search-v1: the driver's terms AND the coupling family's terms
+- `driver-phenomenon` — cell-search-v1: the driver's terms AND one member phenomenon's terms (one run per member)
+- `demonstration-precision` — cell-search-v1: driver AND (family OR members) AND experiment/experimental/measured/device/prototype
+- `citation-chase` — reference lists and citing works of a seed paper, inspected for an experimental predecessor or successor; mandatory for negatives
+- `route-driver-mechanism` — route-search-v1, key driver-mechanism:1: the driver's terms AND the first conversion phenomenon's terms
+- `route-mechanism-pair` — route-search-v1, key mechanism-pair:i-(i+1): two consecutive conversion phenomena's terms (one run per consecutive pair)
+- `route-whole-chain` — route-search-v1, key whole-chain: driver AND every conversion phenomenon AND the output
+- `route-demonstration-precision` — route-search-v1, key demonstration-precision: the whole chain AND experiment/experimental/measured/device/prototype
+
+## `search.hit_decision`
+
+Used in: `searches[].hits[].decision`
+
+- `qualifies` — a physical experiment or device demonstrates exactly what was searched for (the direct cell relation, or the whole composition)
+- `route-only` — cell searches: a real experiment whose driver reaches the family through a separately resolvable intermediate conversion — evidence for a route, never for the direct cell
+- `constituent-only` — route searches: one mechanism or one adjacent pair is demonstrated, not the whole composition
+- `source-variant` — route searches: the ordered mechanisms and output are demonstrated from a different causal driver (the reason names it)
+- `sink-variant` — route searches: driver and ordered mechanisms match but the demonstrated output differs
+- `longer-chain` — route searches: the experiment needs an additional conversion phenomenon between two steps the target records as consecutive — evidence for that longer route
+- `theory-only` — a theoretical treatment; no physical experiment
+- `simulation-only` — a numerical study; no physical experiment
+- `proposal-only` — a proposed design or concept; not built or measured
+- `review-only` — a review that cites others' work; the cited experiments are screened separately
+- `wrong-driver` — the experiment's causal driver is not the searched one
+- `wrong-coupling` — the measured phenomenon is not in the searched family or chain
+- `driver-only-modifies` — the driver only modulates an effect that another driver causes
+- `duplicate` — the same work already decided under another record
+- `insufficient-information` — the accessible text does not allow a decision
+
 ## `check.result`
 
 Used in: `paths[].checks[].result`

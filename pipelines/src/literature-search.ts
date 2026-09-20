@@ -189,33 +189,37 @@ if (onlyPath) {
     protocol_version: string;
     driver_terms: string[];
     phenomenon_terms: Record<string, string[]>;
-    runs: { id: string; engine: "openalex" | "semantic-scholar"; form: SearchRun["query_form"]; query: string }[];
+    claims?: string[];
+    runs: { id: string; engine: "openalex" | "semantic-scholar"; form: SearchRun["query_form"]; key?: string; query: string }[];
     notes?: string;
   };
+  if (plan.claims && plan.claims.join(">") !== route.claims.join(">")) throw new Error(`plan claims do not match route ${onlyPath}`);
   const runs: SearchRun[] = [];
   const works = new Map<string, Work>();
+  const failedRuns: string[] = [];
+  // --engines openalex,semantic-scholar limits which planned engines are run now; the others are
+  // listed in the bundle's notes as not run, so a reviewer sees exactly what the frozen list lacks.
+  const enginesArg = process.argv.indexOf("--engines");
+  const enginesNow = enginesArg >= 0 ? new Set(process.argv[enginesArg + 1].split(",")) : null;
+  const skippedRuns = enginesNow ? plan.runs.filter((q) => !enginesNow.has(q.engine)).map((q) => `${q.id} (${q.engine})`) : [];
   for (const q of plan.runs) {
-    const res = q.engine === "openalex" ? await openalex(q.query, q.id) : await semanticScholar(q.query, q.id);
+    if (enginesNow && !enginesNow.has(q.engine)) continue;
+    const call = () => (q.engine === "openalex" ? openalex(q.query, q.id) : semanticScholar(q.query, q.id));
+    let res = await call();
+    // Semantic Scholar's anonymous pool throttles hard: back off up to four times before giving the run up.
+    for (let attempt = 1; "error" in res && res.status === 429 && attempt <= 4; attempt++) {
+      console.log(`  … ${q.id}: HTTP 429, waiting ${60 * attempt} s`);
+      await new Promise((r) => setTimeout(r, 60000 * attempt));
+      res = await call();
+    }
     if ("error" in res) {
-      console.log(`  ? ${q.id} (${q.engine}): ${res.error}`);
-      if (res.status === 429) {
-        await new Promise((r) => setTimeout(r, 30000));
-        const again = q.engine === "openalex" ? await openalex(q.query, q.id) : await semanticScholar(q.query, q.id);
-        if ("error" in again) throw new Error(`${q.id}: ${again.error} after retry`);
-        again.run.query_form = q.form;
-        runs.push(again.run);
-        for (const w of again.works) {
-          const key = w.doi ?? w.openalex_id ?? w.title;
-          const seen = works.get(key);
-          if (seen) seen.found_by.push(q.id);
-          else works.set(key, w);
-        }
-        await new Promise((r) => setTimeout(r, delayMs));
-        continue;
-      }
-      throw new Error(`${q.id}: ${res.error}`);
+      console.log(`  ? ${q.id} (${q.engine}): ${res.error} — run skipped, recorded as failed`);
+      failedRuns.push(`${q.id} (${q.engine}: ${res.error})`);
+      await new Promise((r) => setTimeout(r, delayMs));
+      continue;
     }
     res.run.query_form = q.form;
+    res.run.query_key = q.key;
     runs.push(res.run);
     console.log(`  ${q.id} (${q.engine}, ${q.form}): ${res.run.result_count_reported ?? "?"} reported, ${res.works.length} retrieved`);
     for (const w of res.works) {
@@ -226,10 +230,11 @@ if (onlyPath) {
     }
     await new Promise((r) => setTimeout(r, delayMs));
   }
+  if (runs.length === 0) throw new Error("every planned run failed; nothing recorded");
   const stamp = new Date().toISOString().slice(0, 10);
   const rec: AutomatedSearchRun = {
     id: `search:${stamp}-${onlyPath}`,
-    target: { kind: "path", path: onlyPath },
+    target: { kind: "path", path: onlyPath, claims: route.claims },
     dataset_hash: graph.meta.data_hash,
     driver_terms: plan.driver_terms,
     family_terms: [],
@@ -238,7 +243,10 @@ if (onlyPath) {
     works: [...works.values()],
     screening_status: "not-reviewed",
     result: "inconclusive",
-    notes: plan.notes ?? `Automated ${plan.protocol_version} index queries from ${planFile}; the result list is frozen for a reviewer and nothing here has been read for a qualifying demonstration.`,
+    notes:
+      (plan.notes ?? `Automated ${plan.protocol_version} index queries from ${planFile}; the result list is frozen for a reviewer and nothing here has been read for a qualifying demonstration.`) +
+      (failedRuns.length ? ` Planned runs that failed and are NOT in this bundle: ${failedRuns.join("; ")}.` : "") +
+      (skippedRuns.length ? ` Planned runs NOT run in this bundle (engine unavailable): ${skippedRuns.join("; ")}.` : ""),
   };
   byKey.set(`path|${onlyPath}`, rec);
   save();

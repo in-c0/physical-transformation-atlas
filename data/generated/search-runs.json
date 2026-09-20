@@ -994,5 +994,3073 @@
   "screening_status": "not-reviewed",
   "result": "inconclusive",
   "notes": "Automated OpenAlex title/abstract queries; the result list is frozen for a reviewer and nothing here has been read for a qualifying demonstration."
+ },
+ {
+  "id": "search:2026-09-20-p-1043a15e01",
+  "target": {
+   "kind": "path",
+   "path": "p-1043a15e01",
+   "claims": [
+    "claim:temperature-drives-ferrofluid-convection",
+    "claim:ferrofluid-convection-produces-flow",
+    "claim:fluid-flow-carrier-drives-streaming",
+    "claim:streaming-produces-ions",
+    "claim:ionic-current-converts-electricity"
+   ]
+  },
+  "dataset_hash": "4f7c93086d83",
+  "driver_terms": [
+   "temperature gradient",
+   "temperature difference",
+   "thermal gradient",
+   "ΔT",
+   "waste heat"
+  ],
+  "family_terms": [],
+  "phenomenon_terms": {
+   "phenomenon:thermomagnetic-ferrofluid-convection": [
+    "thermomagnetic convection",
+    "ferrofluid convection",
+    "magnetocaloric pumping in ferrofluids",
+    "thermomagnetic pumping"
+   ],
+   "phenomenon:streaming-potential": [
+    "streaming potential",
+    "streaming current",
+    "electrokinetic effect"
+   ]
+  },
+  "runs": [
+   {
+    "id": "search:2026-09-20-p-1043a15e01/oa-dm1",
+    "engine": "openalex",
+    "query_form": "route-driver-mechanism",
+    "query": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermomagnetic convection\" OR \"ferrofluid convection\" OR \"magnetocaloric pumping in ferrofluids\" OR \"thermomagnetic pumping\")",
+    "executed_at": "2026-09-20T10:35:50.895Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermomagnetic+convection%22+OR+%22ferrofluid+convection%22+OR+%22magnetocaloric+pumping+in+ferrofluids%22+OR+%22thermomagnetic+pumping%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermomagnetic convection\" OR \"ferrofluid convection\" OR \"magnetocaloric pumping in ferrofluids\" OR \"thermomagnetic pumping\")",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 39,
+    "records_retrieved": 39,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "driver-mechanism:1"
+   },
+   {
+    "id": "search:2026-09-20-p-1043a15e01/oa-mp12",
+    "engine": "openalex",
+    "query_form": "route-mechanism-pair",
+    "query": "(\"Thermomagnetic convection\" OR \"ferrofluid convection\" OR \"magnetocaloric pumping in ferrofluids\" OR \"thermomagnetic pumping\") AND (\"Streaming potential\" OR \"streaming current\" OR \"electrokinetic effect\")",
+    "executed_at": "2026-09-20T10:35:55.097Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Thermomagnetic+convection%22+OR+%22ferrofluid+convection%22+OR+%22magnetocaloric+pumping+in+ferrofluids%22+OR+%22thermomagnetic+pumping%22%29+AND+%28%22Streaming+potential%22+OR+%22streaming+current%22+OR+%22electrokinetic+effect%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Thermomagnetic convection\" OR \"ferrofluid convection\" OR \"magnetocaloric pumping in ferrofluids\" OR \"thermomagnetic pumping\") AND (\"Streaming potential\" OR \"streaming current\" OR \"electrokinetic effect\")",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 0,
+    "records_retrieved": 0,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "mechanism-pair:1-2"
+   },
+   {
+    "id": "search:2026-09-20-p-1043a15e01/oa-wc",
+    "engine": "openalex",
+    "query_form": "route-whole-chain",
+    "query": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermomagnetic convection\" OR \"ferrofluid convection\" OR \"magnetocaloric pumping in ferrofluids\" OR \"thermomagnetic pumping\") AND (\"Streaming potential\" OR \"streaming current\" OR \"electrokinetic effect\") AND (\"Electrical work\" OR electricity OR \"electrical output\" OR \"DC power\")",
+    "executed_at": "2026-09-20T10:35:58.602Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermomagnetic+convection%22+OR+%22ferrofluid+convection%22+OR+%22magnetocaloric+pumping+in+ferrofluids%22+OR+%22thermomagnetic+pumping%22%29+AND+%28%22Streaming+potential%22+OR+%22streaming+current%22+OR+%22electrokinetic+effect%22%29+AND+%28%22Electrical+work%22+OR+electricity+OR+%22electrical+output%22+OR+%22DC+power%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermomagnetic convection\" OR \"ferrofluid convection\" OR \"magnetocaloric pumping in ferrofluids\" OR \"thermomagnetic pumping\") AND (\"Streaming potential\" OR \"streaming current\" OR \"electrokinetic effect\") AND (\"Electrical work\" OR electricity OR \"electrical output\" OR \"DC power\")",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 0,
+    "records_retrieved": 0,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "whole-chain"
+   },
+   {
+    "id": "search:2026-09-20-p-1043a15e01/oa-dp",
+    "engine": "openalex",
+    "query_form": "route-demonstration-precision",
+    "query": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermomagnetic convection\" OR \"ferrofluid convection\" OR \"magnetocaloric pumping in ferrofluids\" OR \"thermomagnetic pumping\") AND (\"Streaming potential\" OR \"streaming current\" OR \"electrokinetic effect\") AND (\"Electrical work\" OR electricity OR \"electrical output\" OR \"DC power\") AND (experiment OR experimental OR measured OR device OR prototype)",
+    "executed_at": "2026-09-20T10:36:01.566Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermomagnetic+convection%22+OR+%22ferrofluid+convection%22+OR+%22magnetocaloric+pumping+in+ferrofluids%22+OR+%22thermomagnetic+pumping%22%29+AND+%28%22Streaming+potential%22+OR+%22streaming+current%22+OR+%22electrokinetic+effect%22%29+AND+%28%22Electrical+work%22+OR+electricity+OR+%22electrical+output%22+OR+%22DC+power%22%29+AND+%28experiment+OR+experimental+OR+measured+OR+device+OR+prototype%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermomagnetic convection\" OR \"ferrofluid convection\" OR \"magnetocaloric pumping in ferrofluids\" OR \"thermomagnetic pumping\") AND (\"Streaming potential\" OR \"streaming current\" OR \"electrokinetic effect\") AND (\"Electrical work\" OR electricity OR \"electrical output\" OR \"DC power\") AND (experiment OR experimental OR measured OR device OR prototype)",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 0,
+    "records_retrieved": 0,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "demonstration-precision"
+   }
+  ],
+  "works": [
+   {
+    "openalex_id": "W2070813097",
+    "doi": "10.1063/1.1736691",
+    "title": "Thermomagnetic convection in a square enclosure using a line dipole",
+    "year": 2004,
+    "type": "article",
+    "cited_by_count": 83,
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2064490907",
+    "doi": "10.1016/s0304-8853(02)00653-4",
+    "title": "To the influence of uniform magnetic field on thermomagnetic convection in square cavity",
+    "year": 2002,
+    "type": "article",
+    "cited_by_count": 88,
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2092862595",
+    "doi": "10.1016/j.jmmm.2011.06.016",
+    "title": "Characterization of a ferrofluid-based thermomagnetic pump for microfluidic applications",
+    "year": 2011,
+    "type": "article",
+    "cited_by_count": 62,
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2550963265",
+    "doi": "10.1016/j.aej.2016.11.007",
+    "title": "Ferrofluid convective heat transfer under the influence of external magnetic source",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 48,
+    "open_access_url": "https://www.sciencedirect.com/science/article/pii/S1110016816303052/pdf",
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1967706561",
+    "doi": "10.1088/0953-8984/20/20/204135",
+    "title": "Parametric modulation of thermomagnetic convection in magnetic fluids",
+    "year": 2008,
+    "type": "article",
+    "cited_by_count": 23,
+    "open_access_url": "https://iopscience.iop.org/article/10.1088/0953-8984/20/20/204135/pdf",
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1963481705",
+    "doi": "10.1016/j.compfluid.2007.12.003",
+    "title": "CFD simulation and evaluation of controllable parameters effect on thermomagnetic convection in ferrofluids using Taguchi technique",
+    "year": 2008,
+    "type": "article",
+    "cited_by_count": 32,
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2022158950",
+    "doi": "10.1103/physreve.86.016301",
+    "title": "Thermomagnetic convective flows in a vertical layer of ferrocolloid: Perturbation energy analysis and experimental study",
+    "year": 2012,
+    "type": "article",
+    "cited_by_count": 27,
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2592512602",
+    "doi": "10.1016/j.ijthermalsci.2017.02.004",
+    "title": "Using infrared thermography to investigate thermomagnetic convection under spatial non-uniform magnetic field",
+    "year": 2017,
+    "type": "article",
+    "cited_by_count": 24,
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2948171921",
+    "doi": "10.1016/j.jmmm.2019.165383",
+    "title": "Numerical simulation of combined natural and thermomagnetic convection around a current carrying wire in ferrofluid",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 18,
+    "open_access_url": "http://hdl.handle.net/10072/394246",
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2069895942",
+    "doi": "10.1016/j.jmmm.2004.11.080",
+    "title": "Influence of gravitational sedimentation of magnetic particles on ferrofluid convection in experiments and numerical simulations",
+    "year": 2004,
+    "type": "article",
+    "cited_by_count": 15,
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2010876631",
+    "doi": "10.1103/physreve.83.066305",
+    "title": "Patterns of thermomagnetic convection in magnetic fluids subjected to spatially modulated magnetic fields",
+    "year": 2011,
+    "type": "article",
+    "cited_by_count": 8,
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2264883453",
+    "doi": "10.2298/tsci141128155b",
+    "title": "Thermomagnetic convection of a magnetic nanofluid influenced by a magnetic field",
+    "year": 2015,
+    "type": "article",
+    "cited_by_count": 5,
+    "open_access_url": "http://www.doiserbia.nb.rs/ft.aspx?id=0354-98361500155B",
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2887645728",
+    "doi": "10.1108/ec-06-2017-0202",
+    "title": "Numerical study of the effect of magnetic field on Fe3O4 –water ferrofluid convection with thermal radiation",
+    "year": 2018,
+    "type": "article",
+    "cited_by_count": 8,
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1988212919",
+    "doi": "10.1016/j.phpro.2010.11.039",
+    "title": "Thermomagnetic convection in magnetic fluids subjected to spatially modulated magnetic fields",
+    "year": 2010,
+    "type": "article",
+    "cited_by_count": 5,
+    "open_access_url": "https://www.sciencedirect.com/science/article/pii/S1875389210007388/pdf",
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1990705820",
+    "doi": "10.1002/pamm.200910230",
+    "title": "Influence of parametric modulation on the onset of thermomagnetic convection",
+    "year": 2009,
+    "type": "article",
+    "cited_by_count": 3,
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3048842568",
+    "doi": "10.32604/fdmp.2016.012.137",
+    "title": "Thermomagnetic Convection-Surface Radiation Interactions in Microgravity Environment",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 3,
+    "open_access_url": "https://doi.org/10.32604/fdmp.2016.012.137",
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2017638166",
+    "doi": "10.1002/pamm.200810951",
+    "title": "Thermomagnetic convection in magnetic fluids influenced by a time‐modulated magnetic field",
+    "year": 2008,
+    "type": "article",
+    "cited_by_count": 3,
+    "open_access_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/pamm.200810951",
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2027050715",
+    "doi": "10.1063/1.3658868",
+    "title": "Enhancement of thermal conductivity upon application of magnetic field to Fe3O4 nanofluids",
+    "year": 2011,
+    "type": "article",
+    "cited_by_count": 87,
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1990021759",
+    "doi": "10.1016/j.applthermaleng.2011.01.033",
+    "title": "Electronic cooling using an automatic energy transport device based on thermomagnetic effect",
+    "year": 2011,
+    "type": "article",
+    "cited_by_count": 69,
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2589515287",
+    "doi": "10.1016/j.aej.2017.01.027",
+    "title": "Study of Fe3O4-water nanofluid with convective heat transfer in the presence of magnetic source",
+    "year": 2017,
+    "type": "article",
+    "cited_by_count": 71,
+    "open_access_url": "https://www.sciencedirect.com/science/article/pii/S1110016817300443/pdf",
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2052282880",
+    "doi": "10.1002/gamm.200790007",
+    "title": "Heat and mass transfer phenomena in magnetic fluids",
+    "year": 2007,
+    "type": "article",
+    "cited_by_count": 19,
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3101978763",
+    "doi": "10.1088/1402-4896/abc981",
+    "title": "Thermal transmittance and thermo-magnetization of unsteady free convection viscous fluid through non-singular differentiations",
+    "year": 2020,
+    "type": "article",
+    "cited_by_count": 22,
+    "open_access_url": "https://iopscience.iop.org/article/10.1088/1402-4896/abc981/pdf",
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3005241913",
+    "doi": "10.1007/s00162-020-00515-1",
+    "title": "A numerical study on heat transfer of a ferrofluid flow in a square cavity under simultaneous gravitational and magnetic convection",
+    "year": 2020,
+    "type": "article",
+    "cited_by_count": 26,
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2888706843",
+    "doi": "10.1007/978-3-319-94427-2_6",
+    "title": "Experimental Investigation of Thermomagnetic Convection in Ferrofluids",
+    "year": 2018,
+    "type": "book-chapter",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3213354168",
+    "doi": "10.1016/j.applthermaleng.2021.117777",
+    "title": "A novel magnetic cooling device for long distance heat transfer",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 19,
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2963009675",
+    "doi": "10.1016/j.enconman.2019.111819",
+    "title": "A self-regulating multi-torus magneto-fluidic device for kilowatt level cooling",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 11,
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4416012845",
+    "doi": "10.1134/s0021894425020099",
+    "title": "Formation of Thermomagnetic Convection of Stratified Magnetic Fluid in a Hele–Shaw Cell",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2619792251",
+    "doi": "10.4236/am.2017.85052",
+    "title": "Thermomagnetic Convection of Magnetic Fluid in an Annular Space under a Non-Uniform Magnetic and Thermal Field",
+    "year": 2017,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "http://www.scirp.org/journal/PaperDownload.aspx?paperID=76330",
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3208255019",
+    "doi": "10.1016/j.ijheatmasstransfer.2021.122082",
+    "title": "Superior cooling performance of low footprint, hybrid magneto-fluidic heat transfer devices",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 6,
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1973130440",
+    "doi": "10.1109/tmag.1980.1060627",
+    "title": "Some aspects of heat and mass transfer in magnetic fluids",
+    "year": 1980,
+    "type": "article",
+    "cited_by_count": 4,
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4385394754",
+    "doi": "10.1016/j.ijthermalsci.2023.108560",
+    "title": "Thermomagnetic cooling of current carrying micro-wire in ferrofluid: Two-phase approach",
+    "year": 2023,
+    "type": "article",
+    "cited_by_count": 3,
+    "open_access_url": "https://doi.org/10.1016/j.ijthermalsci.2023.108560",
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3186938101",
+    "doi": "10.17072/1994-3598-2021-2-14-22",
+    "title": "Convection of magnetic fluid in a closed hydrodynamic loop",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 3,
+    "open_access_url": "http://press.psu.ru/index.php/phys/article/download/4545/3364",
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1616471033",
+    "doi": "10.22364/mhd.41.4.10",
+    "title": "Microconvection and mass transfer near bodies in non-uniformly magnetized ferrofluid",
+    "year": 2005,
+    "type": "article",
+    "cited_by_count": 5,
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W7165668288",
+    "doi": "10.1063/5.0326564",
+    "title": "Magnetic control of convection and thermal gradients in liquid gallium with internal heat generation",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2596791629",
+    "title": "Convective Heat Transfer in Quasi-one-dimensional Magnetic Fluid in Horizontal Field and Temperature Gradients",
+    "year": 2015,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://stars.library.ucf.edu/etd/1457",
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4211137121",
+    "doi": "10.1007/s13204-022-02356-2",
+    "title": "Turbulent magnetohydrodynamic natural convection in a heat pipe-assisted cavity using disk-shaped magnesium ferrite nanoparticles",
+    "year": 2022,
+    "type": "article",
+    "cited_by_count": 2,
+    "open_access_url": "https://repository.up.ac.za/bitstream/2263/93118/1/Ajith_Turbulent_2022.pdf",
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1989839826",
+    "doi": "10.4028/www.scientific.net/amm.553.109",
+    "title": "Magnetic Convection Heat Transfer in an Open Ended Enclosure Filled with Paramagnetic Fluids",
+    "year": 2014,
+    "type": "article",
+    "cited_by_count": 1,
+    "open_access_url": "https://www.scientific.net/AMM.553.109.pdf",
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1545935106",
+    "doi": "10.22364/mhd.47.2.8",
+    "title": "A note on the magnetic spatial forcing of a ferrofluid layer",
+    "year": 2011,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "http://www.mhd.sal.lv/Download/download.php?ed=rn&vol=47&nr=2&an=9&p1=175&p2=175",
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4416979110",
+    "doi": "10.21869/2223-1528-2025-15-3-67-79",
+    "title": "Thermal convection of magnetic fluid in a vertical loop: influence of thermal and magnetic Rayleigh numbers on heat transfer intensity",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://techusgu.elpub.ru/jour/article/download/350/260",
+    "found_by": [
+     "search:2026-09-20-p-1043a15e01/oa-dm1"
+    ]
+   }
+  ],
+  "screening_status": "not-reviewed",
+  "result": "inconclusive",
+  "notes": "Automated route-search-v1 index queries from data/canonical/searches/plans/p-1043a15e01.yaml; the result list is frozen for a reviewer and nothing here has been read for a qualifying demonstration. Planned runs NOT run in this bundle (engine unavailable): search:2026-09-20-p-1043a15e01/s2-dm1 (semantic-scholar); search:2026-09-20-p-1043a15e01/s2-mp12 (semantic-scholar); search:2026-09-20-p-1043a15e01/s2-wc (semantic-scholar); search:2026-09-20-p-1043a15e01/s2-dp (semantic-scholar)."
+ },
+ {
+  "id": "search:2026-09-20-p-41cb505083",
+  "target": {
+   "kind": "path",
+   "path": "p-41cb505083",
+   "claims": [
+    "claim:surface-drives-marangoni",
+    "claim:marangoni-produces-flow",
+    "claim:fluid-flow-carrier-drives-streaming",
+    "claim:streaming-produces-ions",
+    "claim:ionic-current-converts-electricity"
+   ]
+  },
+  "dataset_hash": "4f7c93086d83",
+  "driver_terms": [
+   "surface energy difference",
+   "surface-tension gradient",
+   "interfacial tension gradient",
+   "Marangoni stress"
+  ],
+  "family_terms": [],
+  "phenomenon_terms": {
+   "phenomenon:marangoni-effect": [
+    "marangoni effect",
+    "surface-tension-driven flow",
+    "thermocapillary flow",
+    "solutocapillary flow",
+    "thermocapillary",
+    "solutocapillary"
+   ],
+   "phenomenon:streaming-potential": [
+    "streaming potential",
+    "streaming current",
+    "electrokinetic effect"
+   ]
+  },
+  "runs": [
+   {
+    "id": "search:2026-09-20-p-41cb505083/oa-dm1",
+    "engine": "openalex",
+    "query_form": "route-driver-mechanism",
+    "query": "(\"Surface energy difference\" OR \"surface-tension gradient\" OR \"interfacial tension gradient\" OR \"Marangoni stress\") AND (\"Marangoni effect\" OR \"surface-tension-driven flow\" OR \"thermocapillary flow\" OR \"solutocapillary flow\" OR thermocapillary OR solutocapillary)",
+    "executed_at": "2026-09-20T10:35:33.803Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Surface+energy+difference%22+OR+%22surface-tension+gradient%22+OR+%22interfacial+tension+gradient%22+OR+%22Marangoni+stress%22%29+AND+%28%22Marangoni+effect%22+OR+%22surface-tension-driven+flow%22+OR+%22thermocapillary+flow%22+OR+%22solutocapillary+flow%22+OR+thermocapillary+OR+solutocapillary%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Surface energy difference\" OR \"surface-tension gradient\" OR \"interfacial tension gradient\" OR \"Marangoni stress\") AND (\"Marangoni effect\" OR \"surface-tension-driven flow\" OR \"thermocapillary flow\" OR \"solutocapillary flow\" OR thermocapillary OR solutocapillary)",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 515,
+    "records_retrieved": 100,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "driver-mechanism:1"
+   },
+   {
+    "id": "search:2026-09-20-p-41cb505083/oa-mp12",
+    "engine": "openalex",
+    "query_form": "route-mechanism-pair",
+    "query": "(\"Marangoni effect\" OR \"surface-tension-driven flow\" OR \"thermocapillary flow\" OR \"solutocapillary flow\" OR thermocapillary OR solutocapillary) AND (\"Streaming potential\" OR \"streaming current\" OR \"electrokinetic effect\")",
+    "executed_at": "2026-09-20T10:35:38.260Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Marangoni+effect%22+OR+%22surface-tension-driven+flow%22+OR+%22thermocapillary+flow%22+OR+%22solutocapillary+flow%22+OR+thermocapillary+OR+solutocapillary%29+AND+%28%22Streaming+potential%22+OR+%22streaming+current%22+OR+%22electrokinetic+effect%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Marangoni effect\" OR \"surface-tension-driven flow\" OR \"thermocapillary flow\" OR \"solutocapillary flow\" OR thermocapillary OR solutocapillary) AND (\"Streaming potential\" OR \"streaming current\" OR \"electrokinetic effect\")",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 1,
+    "records_retrieved": 1,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "mechanism-pair:1-2"
+   },
+   {
+    "id": "search:2026-09-20-p-41cb505083/oa-wc",
+    "engine": "openalex",
+    "query_form": "route-whole-chain",
+    "query": "(\"Surface energy difference\" OR \"surface-tension gradient\" OR \"interfacial tension gradient\" OR \"Marangoni stress\") AND (\"Marangoni effect\" OR thermocapillary OR solutocapillary) AND (\"Streaming potential\" OR \"streaming current\" OR \"electrokinetic effect\") AND (\"Electrical work\" OR electricity OR \"electrical output\" OR \"DC power\")",
+    "executed_at": "2026-09-20T10:35:41.826Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Surface+energy+difference%22+OR+%22surface-tension+gradient%22+OR+%22interfacial+tension+gradient%22+OR+%22Marangoni+stress%22%29+AND+%28%22Marangoni+effect%22+OR+thermocapillary+OR+solutocapillary%29+AND+%28%22Streaming+potential%22+OR+%22streaming+current%22+OR+%22electrokinetic+effect%22%29+AND+%28%22Electrical+work%22+OR+electricity+OR+%22electrical+output%22+OR+%22DC+power%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Surface energy difference\" OR \"surface-tension gradient\" OR \"interfacial tension gradient\" OR \"Marangoni stress\") AND (\"Marangoni effect\" OR thermocapillary OR solutocapillary) AND (\"Streaming potential\" OR \"streaming current\" OR \"electrokinetic effect\") AND (\"Electrical work\" OR electricity OR \"electrical output\" OR \"DC power\")",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 0,
+    "records_retrieved": 0,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "whole-chain"
+   },
+   {
+    "id": "search:2026-09-20-p-41cb505083/oa-dp",
+    "engine": "openalex",
+    "query_form": "route-demonstration-precision",
+    "query": "(\"Surface energy difference\" OR \"surface-tension gradient\" OR \"interfacial tension gradient\" OR \"Marangoni stress\") AND (\"Marangoni effect\" OR thermocapillary OR solutocapillary) AND (\"Streaming potential\" OR \"streaming current\" OR \"electrokinetic effect\") AND (\"Electrical work\" OR electricity OR \"electrical output\" OR \"DC power\") AND (experiment OR experimental OR measured OR device OR prototype)",
+    "executed_at": "2026-09-20T10:35:44.738Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Surface+energy+difference%22+OR+%22surface-tension+gradient%22+OR+%22interfacial+tension+gradient%22+OR+%22Marangoni+stress%22%29+AND+%28%22Marangoni+effect%22+OR+thermocapillary+OR+solutocapillary%29+AND+%28%22Streaming+potential%22+OR+%22streaming+current%22+OR+%22electrokinetic+effect%22%29+AND+%28%22Electrical+work%22+OR+electricity+OR+%22electrical+output%22+OR+%22DC+power%22%29+AND+%28experiment+OR+experimental+OR+measured+OR+device+OR+prototype%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Surface energy difference\" OR \"surface-tension gradient\" OR \"interfacial tension gradient\" OR \"Marangoni stress\") AND (\"Marangoni effect\" OR thermocapillary OR solutocapillary) AND (\"Streaming potential\" OR \"streaming current\" OR \"electrokinetic effect\") AND (\"Electrical work\" OR electricity OR \"electrical output\" OR \"DC power\") AND (experiment OR experimental OR measured OR device OR prototype)",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 0,
+    "records_retrieved": 0,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "demonstration-precision"
+   }
+  ],
+  "works": [
+   {
+    "openalex_id": "W2032978968",
+    "doi": "10.1021/jp0609232",
+    "title": "Marangoni Effect Reverses Coffee-Ring Depositions",
+    "year": 2006,
+    "type": "article",
+    "cited_by_count": 1638,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2092573760",
+    "doi": "10.1016/0022-0248(78)90387-1",
+    "title": "Experiments on surface tension driven flow in floating zone melting",
+    "year": 1978,
+    "type": "article",
+    "cited_by_count": 299,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1983781130",
+    "doi": "10.1016/0021-9797(81)90011-4",
+    "title": "Can phoretic motions be treated as interfacial tension gradient driven phenomena?",
+    "year": 1981,
+    "type": "article",
+    "cited_by_count": 175,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2089951790",
+    "doi": "10.1103/physreve.87.013010",
+    "title": "Phase-field-based lattice Boltzmann finite-difference model for simulating thermocapillary flows",
+    "year": 2013,
+    "type": "article",
+    "cited_by_count": 143,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2102583759",
+    "doi": "10.1016/j.jcp.2013.08.054",
+    "title": "Lattice Boltzmann phase-field modeling of thermocapillary flows in a confined microchannel",
+    "year": 2013,
+    "type": "article",
+    "cited_by_count": 115,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2020058944",
+    "doi": "10.1016/j.jcp.2012.02.015",
+    "title": "Modeling and simulation of thermocapillary flows using lattice Boltzmann method",
+    "year": 2012,
+    "type": "article",
+    "cited_by_count": 92,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2049620513",
+    "doi": "10.1016/0017-9310(95)00137-x",
+    "title": "Thermocapillary flow effects on convective droplet evaporation",
+    "year": 1996,
+    "type": "article",
+    "cited_by_count": 58,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2000357079",
+    "doi": "10.1021/jp002605n",
+    "title": "Rings and Hexagons Made of Nanocrystals: A Marangoni Effect",
+    "year": 2000,
+    "type": "article",
+    "cited_by_count": 217,
+    "open_access_url": "https://hal.science/hal-05177264",
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1999527584",
+    "doi": "10.1016/j.ijheatfluidflow.2009.01.009",
+    "title": "Surface tension-driven flow in wickless heat pipes with self-rewetting fluids",
+    "year": 2009,
+    "type": "article",
+    "cited_by_count": 111,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2036421529",
+    "doi": "10.1021/ed081p824",
+    "title": "Surface Tension Gradients Induced by Temperature: The Thermal Marangoni Effect",
+    "year": 2004,
+    "type": "article",
+    "cited_by_count": 43,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2230501278",
+    "doi": "10.1007/978-3-642-73205-8_2",
+    "title": "Surface-Tension-Driven Flow in Crystal Growth Melts",
+    "year": 1988,
+    "type": "book-chapter",
+    "cited_by_count": 73,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1993336112",
+    "doi": "10.1063/1.1605097",
+    "title": "Thermocapillary flow and rupture in films of molten metal on a substrate",
+    "year": 2003,
+    "type": "article",
+    "cited_by_count": 51,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1997904125",
+    "doi": "10.1021/la971292t",
+    "title": "Spreading and Instabilities Induced by a Solutal Marangoni Effect",
+    "year": 1998,
+    "type": "article",
+    "cited_by_count": 157,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1994717366",
+    "doi": "10.1016/0017-9310(86)90090-6",
+    "title": "A numerical study of thermocapillary flow in a rectangular cavity during laser melting",
+    "year": 1986,
+    "type": "article",
+    "cited_by_count": 56,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3015589705",
+    "doi": "10.1021/acs.jpclett.0c01116",
+    "title": "Marangoni Effect-Driven Transfer and Compression at Three-Phase Interfaces for Highly Reproducible Nanoparticle Monolayers",
+    "year": 2020,
+    "type": "article",
+    "cited_by_count": 233,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1983465165",
+    "doi": "10.1007/bf02870945",
+    "title": "Effect of rotation on surface tension driven flow during protein crystallization",
+    "year": 2003,
+    "type": "article",
+    "cited_by_count": 48,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2750720081",
+    "doi": "10.1002/adfm.201702946",
+    "title": "Direct Laser Writing of Superhydrophobic PDMS Elastomers for Controllable Manipulation via Marangoni Effect",
+    "year": 2017,
+    "type": "article",
+    "cited_by_count": 160,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2142074455",
+    "doi": "10.1039/c1sm06002c",
+    "title": "Surface tension gradient control of bacterial swarming in colonies of Pseudomonas aeruginosa",
+    "year": 2011,
+    "type": "article",
+    "cited_by_count": 73,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2743777542",
+    "doi": "10.1002/adfm.201703443",
+    "title": "Marangoni‐Effect‐Assisted Bar‐Coating Method for High‐Quality Organic Crystals with Compressive and Tensile Strains",
+    "year": 2017,
+    "type": "article",
+    "cited_by_count": 180,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2035465390",
+    "doi": "10.1006/jcis.2000.7210",
+    "title": "Thermocapillary Flow and Aggregation of Bubbles on a Solid Wall",
+    "year": 2000,
+    "type": "article",
+    "cited_by_count": 24,
+    "open_access_url": "https://ntrs.nasa.gov/api/citations/20010025010/downloads/20010025010.pdf",
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1969307010",
+    "doi": "10.1017/s0022112083001524",
+    "title": "Instabilities of dynamic thermocapillary liquid layers. Part 2. Surface-wave instabilities",
+    "year": 1983,
+    "type": "article",
+    "cited_by_count": 215,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2020887638",
+    "doi": "10.1063/1.2193471",
+    "title": "Steady three-dimensional thermocapillary flows and dryout inside a V-shaped wedge",
+    "year": 2006,
+    "type": "article",
+    "cited_by_count": 33,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2056848884",
+    "doi": "10.1063/1.342121",
+    "title": "Effect of surface tension gradient driven convection in a laser melt pool: Three-dimensional perturbation model",
+    "year": 1988,
+    "type": "article",
+    "cited_by_count": 71,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1968823667",
+    "doi": "10.1063/1.2397586",
+    "title": "Marangoni effect and heat pipe dry-out",
+    "year": 2006,
+    "type": "article",
+    "cited_by_count": 69,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W829720577",
+    "doi": "10.1016/j.physleta.2015.11.033",
+    "title": "Continuous surface force based lattice Boltzmann equation method for simulating thermocapillary flow",
+    "year": 2015,
+    "type": "article",
+    "cited_by_count": 29,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2058800357",
+    "doi": "10.1006/jcis.1999.6226",
+    "title": "Marginal Regeneration and the Marangoni Effect",
+    "year": 1999,
+    "type": "article",
+    "cited_by_count": 48,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2092772295",
+    "doi": "10.1063/1.869900",
+    "title": "Numerical investigation of thermocapillary flow around a bubble",
+    "year": 1999,
+    "type": "article",
+    "cited_by_count": 16,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2021492529",
+    "doi": "10.1017/s0022112003005809",
+    "title": "Thermocapillary instability and wave formation on a film falling down a uniformly heated plane",
+    "year": 2003,
+    "type": "article",
+    "cited_by_count": 138,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2033993858",
+    "doi": "10.1017/s0022112005005422",
+    "title": "Thermocapillary long waves in a liquid film flow. Part 1. Low-dimensional formulation",
+    "year": 2005,
+    "type": "article",
+    "cited_by_count": 119,
+    "open_access_url": "https://dipot.ulb.ac.be/dspace/bitstream/2013/20439/3/2005_JFM_538_199.pdf",
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2037463300",
+    "doi": "10.1103/physreve.78.036312",
+    "title": "Dynamics of a falling film with solutal Marangoni effect",
+    "year": 2008,
+    "type": "article",
+    "cited_by_count": 50,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2876105961",
+    "doi": "10.1063/1.5026874",
+    "title": "Marangoni effect on the motion of a droplet covered with insoluble surfactant in a square microchannel",
+    "year": 2018,
+    "type": "article",
+    "cited_by_count": 55,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2049815827",
+    "doi": "10.1016/s0022-0248(01)02201-1",
+    "title": "Buoyant-thermocapillary and pure thermocapillary convective instabilities in Czochralski systems",
+    "year": 2002,
+    "type": "article",
+    "cited_by_count": 47,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2076388660",
+    "doi": "10.1111/j.1151-2916.1985.tb15318.x",
+    "title": "Surface‐Tension‐Driven Flow in a Glass Melt",
+    "year": 1985,
+    "type": "article",
+    "cited_by_count": 14,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2027224878",
+    "doi": "10.1063/1.2752477",
+    "title": "Experimental investigation of steady buoyant-thermocapillary convection near an evaporating meniscus",
+    "year": 2007,
+    "type": "article",
+    "cited_by_count": 81,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2492006976",
+    "doi": "10.1002/srin.200300172",
+    "title": "Motion of Fine Particles under Interfacial Tension Gradient in Relation to Continuous Casting Process",
+    "year": 2003,
+    "type": "article",
+    "cited_by_count": 27,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2003487160",
+    "doi": "10.1016/0094-5765(82)90024-8",
+    "title": "A regular perturbation approach to surface tension driven flows",
+    "year": 1982,
+    "type": "article",
+    "cited_by_count": 16,
+    "open_access_url": "http://oa.upm.es/13749/",
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2095142151",
+    "doi": "10.1063/1.2387866",
+    "title": "Decomposition of a two-layer thin liquid film flowing under the action of Marangoni stresses",
+    "year": 2006,
+    "type": "article",
+    "cited_by_count": 39,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2036701490",
+    "doi": "10.1016/j.ijmultiphaseflow.2004.05.010",
+    "title": "Investigation of thermocapillary convective patterns and their role in the enhancement of evaporation from pores",
+    "year": 2004,
+    "type": "article",
+    "cited_by_count": 94,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2037127124",
+    "doi": "10.1063/1.1850374",
+    "title": "Chaotic mixing in thermocapillary-driven microdroplets",
+    "year": 2005,
+    "type": "article",
+    "cited_by_count": 65,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1999847943",
+    "doi": "10.1063/1.3692267",
+    "title": "Thermocapillary instabilities in an evaporating drop deposited onto a heated substrate",
+    "year": 2012,
+    "type": "article",
+    "cited_by_count": 86,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2888385088",
+    "doi": "10.1016/j.ijheatmasstransfer.2018.08.003",
+    "title": "Marangoni effect on pool boiling heat transfer enhancement of self-rewetting fluid",
+    "year": 2018,
+    "type": "article",
+    "cited_by_count": 53,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2169459173",
+    "doi": "10.1103/physrevlett.115.198302",
+    "title": "Bursting of Dilute Emulsion-Based Liquid Sheets Driven by a Marangoni Effect",
+    "year": 2015,
+    "type": "article",
+    "cited_by_count": 46,
+    "open_access_url": "https://arxiv.org/pdf/1511.00451",
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2076495605",
+    "doi": "10.1134/s1061933x07030040",
+    "title": "The rupture of a liquid layer by solutocapillary flow",
+    "year": 2007,
+    "type": "article",
+    "cited_by_count": 4,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2399134533",
+    "doi": "10.1515/revce-2015-0067",
+    "title": "Marangoni effect in nonequilibrium multiphase system of material processing",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 37,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2062575722",
+    "doi": "10.1016/0166-6622(89)80045-9",
+    "title": "Spreading involving the marangoni effect: Some preliminary results",
+    "year": 1989,
+    "type": "article",
+    "cited_by_count": 36,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2298033513",
+    "doi": "10.1007/s11998-015-9752-6",
+    "title": "Orange peel formation due to surface tension-driven flows within drying paint films",
+    "year": 2015,
+    "type": "article",
+    "cited_by_count": 22,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1986339821",
+    "doi": "10.1063/1.2218767",
+    "title": "On the paradox of thermocapillary flow about a stationary bubble",
+    "year": 2006,
+    "type": "article",
+    "cited_by_count": 8,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2082528795",
+    "doi": "10.1016/j.jcp.2014.09.015",
+    "title": "Modelling thermocapillary migration of a microfluidic droplet on a solid surface",
+    "year": 2014,
+    "type": "article",
+    "cited_by_count": 58,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2057453890",
+    "doi": "10.1016/j.ijheatmasstransfer.2014.02.065",
+    "title": "Thermocapillary flow in evaporating thin liquid films with long-wave evolution model",
+    "year": 2014,
+    "type": "article",
+    "cited_by_count": 12,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4200312355",
+    "doi": "10.1016/j.enganabound.2021.11.021",
+    "title": "On the free surface boundary of moving particle semi-implicit method for thermocapillary flow",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 12,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2098128465",
+    "doi": "10.1021/la4014027",
+    "title": "Effect of Contact Line Dynamics on the Thermocapillary Motion of a Droplet on an Inclined Plate",
+    "year": 2013,
+    "type": "article",
+    "cited_by_count": 84,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2080091489",
+    "doi": "10.1017/s0022112097005156",
+    "title": "Surfactant-induced retardation of the thermocapillary migration of a droplet",
+    "year": 1997,
+    "type": "article",
+    "cited_by_count": 53,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2005567728",
+    "doi": "10.1007/bf00384144",
+    "title": "The effect of temperature induced surface tension gradients on bubble mechanics",
+    "year": 1974,
+    "type": "article",
+    "cited_by_count": 20,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2033979018",
+    "doi": "10.1007/bf02698025",
+    "title": "Surface-tension-driven flows of coatings: Bondline readout formation",
+    "year": 2001,
+    "type": "article",
+    "cited_by_count": 13,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1970871788",
+    "doi": "10.1017/s0022112083001123",
+    "title": "Thermocapillary convection in a rectangular cavity: asymptotic theory and numerical simulation",
+    "year": 1983,
+    "type": "article",
+    "cited_by_count": 64,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2165632856",
+    "doi": "10.1070/pu1998v041n03abeh000374",
+    "title": "The Benard–Marangoni thermocapillary-instability problem",
+    "year": 1998,
+    "type": "article",
+    "cited_by_count": 39,
+    "open_access_url": "https://iopscience.iop.org/article/10.1070/PU1998v041n03ABEH000374/pdf",
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2072703639",
+    "doi": "10.1002/fld.1650020405",
+    "title": "Surface tension driven flows in micro‐gravity conditions",
+    "year": 1982,
+    "type": "article",
+    "cited_by_count": 10,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1979957399",
+    "doi": "10.1063/1.2714778",
+    "title": "Transient enhancement of thermocapillary flow in a two-dimensional cavity by a surfactant",
+    "year": 2007,
+    "type": "article",
+    "cited_by_count": 8,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1995225878",
+    "doi": "10.1103/physreve.62.6522",
+    "title": "Internal waves excited by the Marangoni effect",
+    "year": 2000,
+    "type": "article",
+    "cited_by_count": 23,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2010157980",
+    "doi": "10.1080/01457632.2011.562753",
+    "title": "Noncontact Bubble Manipulation in Microchannel by Using Photothermal Marangoni Effect",
+    "year": 2011,
+    "type": "article",
+    "cited_by_count": 26,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1998123537",
+    "doi": "10.1016/j.icheatmasstransfer.2004.06.012",
+    "title": "Experimental study on Marangoni effect induced by heat and mass transfer",
+    "year": 2005,
+    "type": "article",
+    "cited_by_count": 33,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W198474992",
+    "doi": "10.1007/978-1-4613-0707-5_23",
+    "title": "On Thermocapillary Flows in Containers with Differentially Heated Side Walls",
+    "year": 1988,
+    "type": "book-chapter",
+    "cited_by_count": 6,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2013012485",
+    "doi": "10.1108/09615530710730139",
+    "title": "A numerical model for the thermocapillary flow and heat transfer in a thin liquid film on a microstructured wall",
+    "year": 2007,
+    "type": "article",
+    "cited_by_count": 10,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2088600619",
+    "doi": "10.1051/jphys:0197700380100127500",
+    "title": "Marangoni effect in nematic liquid crystals",
+    "year": 1977,
+    "type": "article",
+    "cited_by_count": 20,
+    "open_access_url": "https://hal.science/jpa-00208697",
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2500225772",
+    "doi": "10.1007/978-3-7091-2598-4_3",
+    "title": "Pattern Selection in Surface Tension Driven Flows",
+    "year": 1998,
+    "type": "book-chapter",
+    "cited_by_count": 7,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3108052726",
+    "doi": "10.1088/2051-672x/abd07c",
+    "title": "Thermocapillary lubricant migration on textured surfaces - a review of theoretical and experimental insights",
+    "year": 2020,
+    "type": "article",
+    "cited_by_count": 56,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3101066700",
+    "doi": "10.1021/acsami.0c15764",
+    "title": "Controllable and Continuous Hollow Fiber Swimmers Based on the Marangoni Effect",
+    "year": 2020,
+    "type": "article",
+    "cited_by_count": 26,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2026412605",
+    "doi": "10.1063/1.4771903",
+    "title": "Stability characteristics of solutocapillary Marangoni motion in evaporating thin films",
+    "year": 2012,
+    "type": "article",
+    "cited_by_count": 26,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1965142184",
+    "doi": "10.1002/crat.200900435",
+    "title": "Solutocapillary convection in germanium‐silicon melts",
+    "year": 2009,
+    "type": "article",
+    "cited_by_count": 14,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2969639934",
+    "doi": "10.1017/jfm.2019.390",
+    "title": "Dewetting of liquid film via vapour-mediated Marangoni effect",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 22,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2133178928",
+    "doi": "10.1115/1.2820798",
+    "title": "Thermocapillary Convection in Floating Zones",
+    "year": 2008,
+    "type": "article",
+    "cited_by_count": 26,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1988079060",
+    "doi": "10.1007/bf01267986",
+    "title": "Thermocapillary instability of a viscoelastic liquid layer",
+    "year": 1985,
+    "type": "article",
+    "cited_by_count": 26,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2094055054",
+    "doi": "10.1063/1.1369604",
+    "title": "Thermocapillary migration of long bubbles in polygonal tubes. I. Theory",
+    "year": 2001,
+    "type": "article",
+    "cited_by_count": 42,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2903680077",
+    "doi": "10.1016/j.ijheatmasstransfer.2018.11.149",
+    "title": "Numerical investigation of wafer drying induced by the thermal Marangoni effect",
+    "year": 2018,
+    "type": "article",
+    "cited_by_count": 22,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2035111548",
+    "doi": "10.1016/j.ijmecsci.2012.09.013",
+    "title": "Numerical investigation of thermocapillary and buoyancy driven convection of nanofluids in a floating zone",
+    "year": 2012,
+    "type": "article",
+    "cited_by_count": 40,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4410720495",
+    "doi": "10.1016/j.csite.2025.106408",
+    "title": "Effects of the Cattaneo–Christov flux model on thermally radiative flow of tetra hybrid nanofluid with surface tension gradient",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 20,
+    "open_access_url": "https://doi.org/10.1016/j.csite.2025.106408",
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2560078624",
+    "doi": "10.1063/1.4971396",
+    "title": "On the motion of a sessile drop on an incline: Effect of non-monotonic thermocapillary stresses",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 24,
+    "open_access_url": "https://www.research.ed.ac.uk/files/29524911/Mamalisetal_AsAccepted_PDF.pdf",
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1564524654",
+    "doi": "10.1063/1.4922597",
+    "title": "Thermocapillary migration of a spherical drop in an arbitrary transient Stokes flow",
+    "year": 2015,
+    "type": "article",
+    "cited_by_count": 35,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2027902214",
+    "doi": "10.1016/s0009-2509(98)00112-2",
+    "title": "Marangoni effect in the presence of bulk turbulence",
+    "year": 1998,
+    "type": "article",
+    "cited_by_count": 12,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4386101757",
+    "doi": "10.1016/j.jcp.2023.112441",
+    "title": "Volume of fluid based modeling of thermocapillary flow applied to a free surface lattice Boltzmann method",
+    "year": 2023,
+    "type": "article",
+    "cited_by_count": 6,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2781806341",
+    "doi": "10.1016/j.jcis.2018.01.019",
+    "title": "Contact angle hysteresis effect on the thermocapillary migration of liquid droplets",
+    "year": 2018,
+    "type": "article",
+    "cited_by_count": 31,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2025211847",
+    "doi": "10.1063/1.869394",
+    "title": "Thermocapillary interaction between a solid particle and a liquid-gas interface",
+    "year": 1997,
+    "type": "article",
+    "cited_by_count": 25,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1563316891",
+    "doi": "10.1016/0255-2701(91)87016-v",
+    "title": "On the evaluation of the interfacial turbulence (the Marangoni effect) in gas (vapour)—liquid mass transfer",
+    "year": 1991,
+    "type": "article",
+    "cited_by_count": 21,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2927711394",
+    "doi": "10.1103/physreve.99.043101",
+    "title": "Thermocapillary thin-film flows on a compliant substrate",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 21,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4413041525",
+    "doi": "10.1063/5.0280822",
+    "title": "Thermal Marangoni stress induced droplet mobilization in a microfluidic confinement",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 12,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2138053940",
+    "doi": "10.1017/s0022112009005874",
+    "title": "On the thermocapillary motion of partially engulfed compound drops",
+    "year": 2009,
+    "type": "article",
+    "cited_by_count": 20,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2738237984",
+    "doi": "10.1021/acs.langmuir.7b01655",
+    "title": "Exploiting the Marangoni Effect To Initiate Instabilities and Direct the Assembly of Liquid Metal Filaments",
+    "year": 2017,
+    "type": "article",
+    "cited_by_count": 16,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1970148484",
+    "doi": "10.1063/1.1607326",
+    "title": "Planar thermocapillary migration of two bubbles in microgravity environment",
+    "year": 2003,
+    "type": "article",
+    "cited_by_count": 21,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2089540903",
+    "doi": "10.1007/s10404-010-0569-4",
+    "title": "Dramatic squat and trim phenomena of mm-scaled SU-8 boats induced by Marangoni effect",
+    "year": 2010,
+    "type": "article",
+    "cited_by_count": 20,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2075582456",
+    "doi": "10.1016/0093-6413(95)00026-n",
+    "title": "Finite element solution of surface-tension driven flows in laser surface-melting",
+    "year": 1995,
+    "type": "article",
+    "cited_by_count": 5,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2803266334",
+    "doi": "10.1017/jfm.2018.306",
+    "title": "Thermocapillary migration of droplets under molecular and gravitational forces",
+    "year": 2018,
+    "type": "article",
+    "cited_by_count": 22,
+    "open_access_url": "http://hdl.handle.net/11336/86162",
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1982525321",
+    "doi": "10.1103/physreve.79.046311",
+    "title": "Bubble and droplet motion in binary mixtures: Evaporation-condensation mechanism and Marangoni effect",
+    "year": 2009,
+    "type": "article",
+    "cited_by_count": 15,
+    "open_access_url": "https://arxiv.org/pdf/0903.3335",
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3127419731",
+    "doi": "10.1063/5.0021312",
+    "title": "Effect of thermal convection on thermocapillary migration of a surfactant-laden droplet in a microchannel",
+    "year": 2020,
+    "type": "article",
+    "cited_by_count": 23,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2346640869",
+    "doi": "10.1016/j.actaastro.2016.05.001",
+    "title": "Thermocapillary migration of an isolated droplet and interaction of two droplets in zero gravity",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 22,
+    "open_access_url": "https://research.manchester.ac.uk/en/publications/3e492289-cdef-4ac9-b02c-130669339fcb",
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4407421373",
+    "doi": "10.1002/adfm.202424235",
+    "title": "Marangoni Effect Enabling Autonomously Miniatured Swimmers: Mechanisms, Design Strategy, and Applications",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 13,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2623992529",
+    "doi": "10.1016/j.ces.2017.06.016",
+    "title": "Evaporating foam films of pure liquid stabilized via the thermal Marangoni effect",
+    "year": 2017,
+    "type": "article",
+    "cited_by_count": 15,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4220704268",
+    "doi": "10.1016/j.egyr.2022.03.011",
+    "title": "An understanding of oil–water replacement mechanism based on interfacial tension gradient during the well shut-in",
+    "year": 2022,
+    "type": "article",
+    "cited_by_count": 7,
+    "open_access_url": "https://doi.org/10.1016/j.egyr.2022.03.011",
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2011626482",
+    "doi": "10.1016/s0017-9310(02)00457-x",
+    "title": "Effect of thermocapillary convection in an industrial Czochralski crucible: numerical simulation",
+    "year": 2003,
+    "type": "article",
+    "cited_by_count": 22,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3082415335",
+    "doi": "10.1103/physrevfluids.5.084006",
+    "title": "Retarding spreading of surfactant drops on solid surfaces: Interplay between the Marangoni effect and capillary flows",
+    "year": 2020,
+    "type": "article",
+    "cited_by_count": 15,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2570833770",
+    "doi": "10.1016/j.ijheatmasstransfer.2016.12.111",
+    "title": "A hydrodynamic analysis of thermocapillary convection in evaporating thin liquid films",
+    "year": 2017,
+    "type": "article",
+    "cited_by_count": 15,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2090956556",
+    "doi": "10.1021/la1044656",
+    "title": "Electro-Marangoni Effect in Thin Liquid Films",
+    "year": 2011,
+    "type": "article",
+    "cited_by_count": 19,
+    "found_by": [
+     "search:2026-09-20-p-41cb505083/oa-mp12"
+    ]
+   }
+  ],
+  "screening_status": "not-reviewed",
+  "result": "inconclusive",
+  "notes": "Automated route-search-v1 index queries from data/canonical/searches/plans/p-41cb505083.yaml; the result list is frozen for a reviewer and nothing here has been read for a qualifying demonstration. Planned runs NOT run in this bundle (engine unavailable): search:2026-09-20-p-41cb505083/s2-dm1 (semantic-scholar); search:2026-09-20-p-41cb505083/s2-mp12 (semantic-scholar); search:2026-09-20-p-41cb505083/s2-wc (semantic-scholar); search:2026-09-20-p-41cb505083/s2-dp (semantic-scholar)."
+ },
+ {
+  "id": "search:2026-09-20-p-423a19acdd",
+  "target": {
+   "kind": "path",
+   "path": "p-423a19acdd",
+   "claims": [
+    "claim:temperature-drives-marangoni",
+    "claim:marangoni-produces-flow",
+    "claim:fluid-flow-carrier-drives-streaming",
+    "claim:streaming-produces-ions",
+    "claim:ionic-current-converts-electricity"
+   ]
+  },
+  "dataset_hash": "4f7c93086d83",
+  "driver_terms": [
+   "temperature gradient",
+   "temperature difference",
+   "thermal gradient",
+   "ΔT",
+   "waste heat"
+  ],
+  "family_terms": [],
+  "phenomenon_terms": {
+   "phenomenon:marangoni-effect": [
+    "marangoni effect",
+    "surface-tension-driven flow",
+    "thermocapillary flow",
+    "solutocapillary flow",
+    "thermocapillary",
+    "solutocapillary"
+   ],
+   "phenomenon:streaming-potential": [
+    "streaming potential",
+    "streaming current",
+    "electrokinetic effect"
+   ]
+  },
+  "runs": [
+   {
+    "id": "search:2026-09-20-p-423a19acdd/oa-dm1",
+    "engine": "openalex",
+    "query_form": "route-driver-mechanism",
+    "query": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Marangoni effect\" OR \"surface-tension-driven flow\" OR \"thermocapillary flow\" OR \"solutocapillary flow\" OR thermocapillary OR solutocapillary)",
+    "executed_at": "2026-09-20T10:35:16.609Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Marangoni+effect%22+OR+%22surface-tension-driven+flow%22+OR+%22thermocapillary+flow%22+OR+%22solutocapillary+flow%22+OR+thermocapillary+OR+solutocapillary%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Marangoni effect\" OR \"surface-tension-driven flow\" OR \"thermocapillary flow\" OR \"solutocapillary flow\" OR thermocapillary OR solutocapillary)",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 1393,
+    "records_retrieved": 100,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "driver-mechanism:1"
+   },
+   {
+    "id": "search:2026-09-20-p-423a19acdd/oa-mp12",
+    "engine": "openalex",
+    "query_form": "route-mechanism-pair",
+    "query": "(\"Marangoni effect\" OR \"surface-tension-driven flow\" OR \"thermocapillary flow\" OR \"solutocapillary flow\" OR thermocapillary OR solutocapillary) AND (\"Streaming potential\" OR \"streaming current\" OR \"electrokinetic effect\")",
+    "executed_at": "2026-09-20T10:35:20.999Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Marangoni+effect%22+OR+%22surface-tension-driven+flow%22+OR+%22thermocapillary+flow%22+OR+%22solutocapillary+flow%22+OR+thermocapillary+OR+solutocapillary%29+AND+%28%22Streaming+potential%22+OR+%22streaming+current%22+OR+%22electrokinetic+effect%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Marangoni effect\" OR \"surface-tension-driven flow\" OR \"thermocapillary flow\" OR \"solutocapillary flow\" OR thermocapillary OR solutocapillary) AND (\"Streaming potential\" OR \"streaming current\" OR \"electrokinetic effect\")",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 1,
+    "records_retrieved": 1,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "mechanism-pair:1-2"
+   },
+   {
+    "id": "search:2026-09-20-p-423a19acdd/oa-wc",
+    "engine": "openalex",
+    "query_form": "route-whole-chain",
+    "query": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Marangoni effect\" OR thermocapillary OR solutocapillary) AND (\"Streaming potential\" OR \"streaming current\" OR \"electrokinetic effect\") AND (\"Electrical work\" OR electricity OR \"electrical output\" OR \"DC power\")",
+    "executed_at": "2026-09-20T10:35:24.560Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Marangoni+effect%22+OR+thermocapillary+OR+solutocapillary%29+AND+%28%22Streaming+potential%22+OR+%22streaming+current%22+OR+%22electrokinetic+effect%22%29+AND+%28%22Electrical+work%22+OR+electricity+OR+%22electrical+output%22+OR+%22DC+power%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Marangoni effect\" OR thermocapillary OR solutocapillary) AND (\"Streaming potential\" OR \"streaming current\" OR \"electrokinetic effect\") AND (\"Electrical work\" OR electricity OR \"electrical output\" OR \"DC power\")",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 0,
+    "records_retrieved": 0,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "whole-chain"
+   },
+   {
+    "id": "search:2026-09-20-p-423a19acdd/oa-dp",
+    "engine": "openalex",
+    "query_form": "route-demonstration-precision",
+    "query": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Marangoni effect\" OR thermocapillary OR solutocapillary) AND (\"Streaming potential\" OR \"streaming current\" OR \"electrokinetic effect\") AND (\"Electrical work\" OR electricity OR \"electrical output\" OR \"DC power\") AND (experiment OR experimental OR measured OR device OR prototype)",
+    "executed_at": "2026-09-20T10:35:27.603Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Marangoni+effect%22+OR+thermocapillary+OR+solutocapillary%29+AND+%28%22Streaming+potential%22+OR+%22streaming+current%22+OR+%22electrokinetic+effect%22%29+AND+%28%22Electrical+work%22+OR+electricity+OR+%22electrical+output%22+OR+%22DC+power%22%29+AND+%28experiment+OR+experimental+OR+measured+OR+device+OR+prototype%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Marangoni effect\" OR thermocapillary OR solutocapillary) AND (\"Streaming potential\" OR \"streaming current\" OR \"electrokinetic effect\") AND (\"Electrical work\" OR electricity OR \"electrical output\" OR \"DC power\") AND (experiment OR experimental OR measured OR device OR prototype)",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 0,
+    "records_retrieved": 0,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "demonstration-precision"
+   }
+  ],
+  "works": [
+   {
+    "openalex_id": "W1981763257",
+    "doi": "10.1017/s0022112082001840",
+    "title": "Steady thermocapillary flows in two-dimensional slots",
+    "year": 1982,
+    "type": "article",
+    "cited_by_count": 249,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2092573760",
+    "doi": "10.1016/0022-0248(78)90387-1",
+    "title": "Experiments on surface tension driven flow in floating zone melting",
+    "year": 1978,
+    "type": "article",
+    "cited_by_count": 299,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1978859269",
+    "doi": "10.1103/physreve.69.056308",
+    "title": "Turbulent transition of thermocapillary flow induced by water evaporation",
+    "year": 2004,
+    "type": "article",
+    "cited_by_count": 141,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2005516985",
+    "doi": "10.1017/s0022112001004979",
+    "title": "Stability of thermocapillary flows with inclined temperature gradient",
+    "year": 2001,
+    "type": "article",
+    "cited_by_count": 59,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1989159039",
+    "doi": "10.1017/s0022112003007687",
+    "title": "Thermocapillary flows under an inclined temperature gradient",
+    "year": 2004,
+    "type": "article",
+    "cited_by_count": 53,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1999392922",
+    "doi": "10.1016/0017-9310(84)90048-6",
+    "title": "Thermogravitational and thermocapillary flows in a horizontal liquid layer under the conditions of a horizontal temperature gradient",
+    "year": 1984,
+    "type": "article",
+    "cited_by_count": 77,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2118933384",
+    "doi": "10.1017/s0022112089002521",
+    "title": "Combined buoyant-thermocapillary flow in a cavity",
+    "year": 1989,
+    "type": "article",
+    "cited_by_count": 72,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1991794005",
+    "doi": "10.1017/s0022112083001512",
+    "title": "Instabilities of dynamic thermocapillary liquid layers. Part 1. Convective instabilities",
+    "year": 1983,
+    "type": "article",
+    "cited_by_count": 674,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2083937230",
+    "doi": "10.1016/j.ijmultiphaseflow.2011.06.005",
+    "title": "Direct numerical simulation of thermocapillary flow based on the Volume of Fluid method",
+    "year": 2011,
+    "type": "article",
+    "cited_by_count": 97,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2057426049",
+    "doi": "10.1063/1.1398536",
+    "title": "Buoyant-thermocapillary instabilities in extended liquid layers subjected to a horizontal temperature gradient",
+    "year": 2001,
+    "type": "article",
+    "cited_by_count": 158,
+    "open_access_url": "https://pubs.aip.org/aip/pof/article-pdf/13/10/2773/12275116/2773_1_online.pdf",
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2060678577",
+    "doi": "10.1038/346824a0",
+    "title": "Fingering instability of thin spreading films driven by temperature gradients",
+    "year": 1990,
+    "type": "article",
+    "cited_by_count": 422,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1976992058",
+    "doi": "10.1002/aic.690160120",
+    "title": "Thermocapillary flow around hemispherical bubble",
+    "year": 1970,
+    "type": "article",
+    "cited_by_count": 59,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3141600390",
+    "doi": "10.1126/scirobotics.abd3557",
+    "title": "A microrobotic platform actuated by thermocapillary flows for manipulation at the air-water interface",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 79,
+    "open_access_url": "https://dipot.ulb.ac.be/dspace/bitstream/2013/321992/3/Combined.pdf",
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2516849796",
+    "doi": "10.1016/j.ijheatmasstransfer.2016.08.068",
+    "title": "A lattice Boltzmann method for axisymmetric thermocapillary flows",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 55,
+    "open_access_url": "https://strathprints.strath.ac.uk/57502/1/Liu_etal_IJHMT2016_Lattice_Boltzmann_method_for_axisymmetric_thermocapillary_flows.pdf",
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2062796517",
+    "doi": "10.1103/physreve.82.037301",
+    "title": "Thermocapillary flow on superhydrophobic surfaces",
+    "year": 2010,
+    "type": "article",
+    "cited_by_count": 39,
+    "open_access_url": "https://arxiv.org/pdf/1003.4161",
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1983741105",
+    "doi": "10.1016/s0273-1177(01)00654-8",
+    "title": "Thermocapillary flow instabilities in an annulus under microgravity — results of the experiment magia",
+    "year": 2002,
+    "type": "article",
+    "cited_by_count": 59,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2087515225",
+    "doi": "10.1017/s0022112083000324",
+    "title": "Steady and oscillatory thermocapillary convection in liquid columns with free cylindrical surface",
+    "year": 1983,
+    "type": "article",
+    "cited_by_count": 403,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2230501278",
+    "doi": "10.1007/978-3-642-73205-8_2",
+    "title": "Surface-Tension-Driven Flow in Crystal Growth Melts",
+    "year": 1988,
+    "type": "book-chapter",
+    "cited_by_count": 73,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2467644354",
+    "doi": "10.1021/acs.langmuir.6b01614",
+    "title": "Thermocapillary Migration of Liquid Droplets Induced by a Unidirectional Thermal Gradient",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 81,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2057621345",
+    "doi": "10.1016/j.jcrysgro.2003.07.034",
+    "title": "Three-dimensional numerical simulation of thermocapillary flow of moderate Prandtl number fluid in an annular pool",
+    "year": 2003,
+    "type": "article",
+    "cited_by_count": 68,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1985969964",
+    "doi": "10.1017/s0022112097007477",
+    "title": "Thermocapillary flow in a Hele-Shaw cell",
+    "year": 1997,
+    "type": "article",
+    "cited_by_count": 32,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2054833075",
+    "doi": "10.1007/bf00914697",
+    "title": "Thermocapillary convection in a horizontal layer of liquid",
+    "year": 1966,
+    "type": "article",
+    "cited_by_count": 232,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2079934156",
+    "doi": "10.1016/s0017-9310(03)00098-x",
+    "title": "Free surface heat loss effect on oscillatory thermocapillary flow in liquid bridges of high Prandtl number fluids",
+    "year": 2003,
+    "type": "article",
+    "cited_by_count": 83,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2026339449",
+    "doi": "10.1016/s0022-0248(08)80117-0",
+    "title": "The instability of surface tension driven flow in models for floating zones under normal and reduced gravity",
+    "year": 1990,
+    "type": "article",
+    "cited_by_count": 69,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1996260084",
+    "doi": "10.1002/aic.690450215",
+    "title": "Thermocapillary pumping of discrete drops in microfabricated analysis devices",
+    "year": 1999,
+    "type": "article",
+    "cited_by_count": 281,
+    "open_access_url": "https://hdl.handle.net/2027.42/34237",
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2116663020",
+    "doi": "10.1017/jfm.2012.519",
+    "title": "Thermocapillary flow regimes and instability caused by a gas stream along the interface",
+    "year": 2013,
+    "type": "article",
+    "cited_by_count": 47,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2009222109",
+    "doi": "10.1017/s0022112084000446",
+    "title": "The effect of surface contamination on thermocapillary flow in a two-dimensional slot",
+    "year": 1984,
+    "type": "article",
+    "cited_by_count": 41,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2056154050",
+    "doi": "10.1016/s0017-9310(05)80125-5",
+    "title": "Buoyant-thermocapillary instabilities in medium-Prandtl-number fluid layers subject to a horizontal temperature gradient",
+    "year": 1993,
+    "type": "article",
+    "cited_by_count": 77,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2100838978",
+    "doi": "10.1109/jmems.2003.820267",
+    "title": "Thermocapillary actuation of droplets on chemically patterned surfaces by programmable microheater arrays",
+    "year": 2003,
+    "type": "article",
+    "cited_by_count": 237,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2004220445",
+    "doi": "10.1007/bf01170374",
+    "title": "Thermocapillary flow in a liquid layer at minimum in surface tension",
+    "year": 1998,
+    "type": "article",
+    "cited_by_count": 29,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2027030975",
+    "doi": "10.1063/1.864756",
+    "title": "Convective thermocapillary instabilities in liquid bridges",
+    "year": 1984,
+    "type": "article",
+    "cited_by_count": 154,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1988560761",
+    "doi": "10.1016/s0022-0248(01)01538-x",
+    "title": "Experimental study on transition to oscillatory thermocapillary flow in a low Prandtl number liquid bridge",
+    "year": 2001,
+    "type": "article",
+    "cited_by_count": 46,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2168373603",
+    "doi": "10.1017/s0022112001003561",
+    "title": "Diffuse-interface modelling of thermocapillary flow instabilities in a Hele-Shaw cell",
+    "year": 2001,
+    "type": "article",
+    "cited_by_count": 35,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2035465390",
+    "doi": "10.1006/jcis.2000.7210",
+    "title": "Thermocapillary Flow and Aggregation of Bubbles on a Solid Wall",
+    "year": 2000,
+    "type": "article",
+    "cited_by_count": 24,
+    "open_access_url": "https://ntrs.nasa.gov/api/citations/20010025010/downloads/20010025010.pdf",
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2169397461",
+    "doi": "10.1017/s0022112090003494",
+    "title": "Thermocapillary convection in long horizontal layers of low-Prandtl-number melts subject to a horizontal temperature gradient",
+    "year": 1990,
+    "type": "article",
+    "cited_by_count": 77,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2063176318",
+    "doi": "10.1063/1.868256",
+    "title": "Thermocapillary flow near a cold wall",
+    "year": 1994,
+    "type": "article",
+    "cited_by_count": 21,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2028015001",
+    "doi": "10.1021/la7036839",
+    "title": "Thermocapillary Motion of a Liquid Drop on a Horizontal Solid Surface",
+    "year": 2008,
+    "type": "article",
+    "cited_by_count": 161,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2096749115",
+    "doi": "10.1063/1.1819979",
+    "title": "Effect of contact angle hysteresis on thermocapillary droplet actuation",
+    "year": 2004,
+    "type": "article",
+    "cited_by_count": 157,
+    "open_access_url": "https://research.tue.nl/en/publications/533fb93a-02bc-4296-9bfa-bbe49937b2bf",
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1979710114",
+    "doi": "10.1016/0021-9797(84)90295-9",
+    "title": "The thermocapillary motion of two bubbles oriented arbitrarily relative to a thermal gradient",
+    "year": 1984,
+    "type": "article",
+    "cited_by_count": 51,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2149626734",
+    "doi": "10.1002/adma.201302777",
+    "title": "Direct‐Write Thermocapillary Dewetting of Polymer Thin Films by a Laser‐Induced Thermal Gradient",
+    "year": 2013,
+    "type": "article",
+    "cited_by_count": 58,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2133822509",
+    "doi": "10.1186/s40638-014-0014-3",
+    "title": "Interactive actuation of multiple opto-thermocapillary flow-addressed bubble microrobots",
+    "year": 2014,
+    "type": "article",
+    "cited_by_count": 31,
+    "open_access_url": "https://jrobio.springeropen.com/counter/pdf/10.1186/s40638-014-0014-3",
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2068212519",
+    "doi": "10.1115/1.4023394",
+    "title": "Magnetohydrodynamics Thermocapillary Marangoni Convection Heat Transfer of Power-Law Fluids Driven by Temperature Gradient",
+    "year": 2013,
+    "type": "article",
+    "cited_by_count": 67,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1969307010",
+    "doi": "10.1017/s0022112083001524",
+    "title": "Instabilities of dynamic thermocapillary liquid layers. Part 2. Surface-wave instabilities",
+    "year": 1983,
+    "type": "article",
+    "cited_by_count": 215,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2020887638",
+    "doi": "10.1063/1.2193471",
+    "title": "Steady three-dimensional thermocapillary flows and dryout inside a V-shaped wedge",
+    "year": 2006,
+    "type": "article",
+    "cited_by_count": 33,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2066379330",
+    "doi": "10.1016/0094-5765(95)00004-j",
+    "title": "An experimental study of free surface deformation in oscillatory thermocapillary flow",
+    "year": 1995,
+    "type": "article",
+    "cited_by_count": 27,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2028702999",
+    "doi": "10.1063/1.868811",
+    "title": "Suppression of coalescence by shear and temperature gradients",
+    "year": 1996,
+    "type": "article",
+    "cited_by_count": 106,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2086609490",
+    "doi": "10.1016/s0017-9310(00)00026-0",
+    "title": "Thermocapillary flow in an annular liquid layer painted on a moving fiber",
+    "year": 2000,
+    "type": "article",
+    "cited_by_count": 26,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2050739483",
+    "doi": "10.1016/s0017-9310(00)00124-1",
+    "title": "The origin of thermocapillary convection in subcooled nucleate pool boiling",
+    "year": 2001,
+    "type": "article",
+    "cited_by_count": 119,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2088913096",
+    "doi": "10.1016/j.ijheatmasstransfer.2007.02.035",
+    "title": "Oscillatory thermocapillary flow in liquid bridges of high Prandtl number fluid with free surface heat gain",
+    "year": 2007,
+    "type": "article",
+    "cited_by_count": 42,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2058716637",
+    "doi": "10.1016/0021-9797(89)90294-4",
+    "title": "The migration of liquid drops in a vertical temperature gradient",
+    "year": 1989,
+    "type": "article",
+    "cited_by_count": 106,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2047406287",
+    "doi": "10.1063/1.858726",
+    "title": "Radiation-driven thermocapillary flows in optically thick liquid films",
+    "year": 1993,
+    "type": "article",
+    "cited_by_count": 24,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2064598939",
+    "doi": "10.1016/s0301-9322(03)00084-3",
+    "title": "Thermocapillary interaction of two bubbles or drops",
+    "year": 2003,
+    "type": "article",
+    "cited_by_count": 118,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2059260800",
+    "doi": "10.1016/j.jcrysgro.2004.02.033",
+    "title": "Thermocapillary flow in a shallow molten silicon pool with Czochralski configuration",
+    "year": 2004,
+    "type": "article",
+    "cited_by_count": 23,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1974293695",
+    "doi": "10.1016/0022-0248(93)90399-h",
+    "title": "Bouyant and thermocapillary flow in liquid encapsulated floating zone",
+    "year": 1993,
+    "type": "article",
+    "cited_by_count": 20,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1979162960",
+    "doi": "10.1016/j.ijheatmasstransfer.2011.10.038",
+    "title": "Solutions of special type describing the three dimensional thermocapillary flows with an interface",
+    "year": 2011,
+    "type": "article",
+    "cited_by_count": 25,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1974114666",
+    "doi": "10.1016/0022-0248(89)90243-1",
+    "title": "Coupling and separation of buoyant and thermocapillary convection",
+    "year": 1989,
+    "type": "article",
+    "cited_by_count": 91,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2064547874",
+    "doi": "10.1063/1.1562628",
+    "title": "Thermocapillary actuation of liquid flow on chemically patterned surfaces",
+    "year": 2003,
+    "type": "article",
+    "cited_by_count": 113,
+    "open_access_url": "https://pubs.aip.org/aip/pof/article-pdf/15/5/1295/12534532/1295_1_online.pdf",
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1444620767",
+    "doi": "10.1007/s00348-015-2051-2",
+    "title": "Thermocapillary convection inside a stationary sessile water droplet on a horizontal surface with an imposed temperature gradient",
+    "year": 2015,
+    "type": "article",
+    "cited_by_count": 50,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1993851649",
+    "doi": "10.1016/0301-9322(85)90026-6",
+    "title": "Droplet interactions in thermocapillary motion",
+    "year": 1985,
+    "type": "article",
+    "cited_by_count": 94,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2987303777",
+    "doi": "10.1016/j.optlastec.2019.105914",
+    "title": "Analysis of surface tension driven flow and solidification behavior in laser linear welding of stainless steel",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 43,
+    "open_access_url": "https://doi.org/10.1016/j.optlastec.2019.105914",
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1997308365",
+    "doi": "10.1016/j.ijheatmasstransfer.2008.01.040",
+    "title": "New alcohol solutions for heat pipes: Marangoni effect and heat transfer enhancement",
+    "year": 2008,
+    "type": "article",
+    "cited_by_count": 93,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2978294433",
+    "doi": "10.1140/epje/i2019-11896-5",
+    "title": "Effect of surface-active contaminants on radial thermocapillary flows",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 17,
+    "open_access_url": "https://arxiv.org/pdf/1912.04148",
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3151140032",
+    "title": "Thermocapillary flow in a Hele-Shaw cell",
+    "year": 1997,
+    "type": "article",
+    "cited_by_count": 14,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2017158124",
+    "doi": "10.1016/s0273-1177(99)00751-6",
+    "title": "Experiments on the transition to chaotic thermocapillary flow in floating zones under microgravity",
+    "year": 1999,
+    "type": "article",
+    "cited_by_count": 21,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2332466164",
+    "doi": "10.1103/physreve.85.026310",
+    "title": "Thermocapillary migration in small-scale temperature gradients: Application to optofluidic drop dispensing",
+    "year": 2012,
+    "type": "article",
+    "cited_by_count": 37,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2019154657",
+    "doi": "10.1063/1.868096",
+    "title": "Thermocapillary migration of an attached drop on a solid surface",
+    "year": 1994,
+    "type": "article",
+    "cited_by_count": 104,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3100541840",
+    "doi": "10.1017/jfm.2020.747",
+    "title": "Thermocapillary instabilities in a liquid layer subjected to an oblique temperature gradient",
+    "year": 2020,
+    "type": "article",
+    "cited_by_count": 30,
+    "open_access_url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/BB9349C22DDC3C4A16F950536A6E1270/S0022112020007478a.pdf/div-class-title-thermocapillary-instabilities-in-a-liquid-layer-subjected-to-an-oblique-temperature-gradient-div.pdf",
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2061607412",
+    "doi": "10.1140/epjst/e2015-02363-5",
+    "title": "Surface waves in thermocapillary flow–revisited",
+    "year": 2015,
+    "type": "article",
+    "cited_by_count": 14,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2004793950",
+    "doi": "10.1007/bf00191690",
+    "title": "On the influence of buoyancy on the surface tension driven flow around a bubble on a heated wall",
+    "year": 1996,
+    "type": "article",
+    "cited_by_count": 30,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2101976699",
+    "doi": "10.1016/0273-1177(83)90239-9",
+    "title": "Thermocapillary migration of bubbles and droplets",
+    "year": 1983,
+    "type": "article",
+    "cited_by_count": 87,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1991991151",
+    "doi": "10.1063/1.1459099",
+    "title": "Motion of droplets along thin fibers with temperature gradient",
+    "year": 2002,
+    "type": "article",
+    "cited_by_count": 92,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2902251804",
+    "doi": "10.1017/jfm.2018.812",
+    "title": "Thermocapillary flows on heated substrates with sinusoidal topography",
+    "year": 2018,
+    "type": "article",
+    "cited_by_count": 14,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2037041060",
+    "doi": "10.1016/s1296-2147(01)01232-x",
+    "title": "Effects of curvature on hydrothermal waves instability of radial thermocapillary flows",
+    "year": 2001,
+    "type": "article",
+    "cited_by_count": 19,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3009045056",
+    "doi": "10.1016/j.ijheatmasstransfer.2020.119587",
+    "title": "Thermocapillary flow transition in an evaporating liquid layer in a heated cylindrical cell",
+    "year": 2020,
+    "type": "article",
+    "cited_by_count": 19,
+    "open_access_url": "https://www.sciencedirect.com/science/article/am/pii/S0017931019361587",
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2037581138",
+    "doi": "10.1063/1.352850",
+    "title": "Control of thermocapillary convection in a liquid bridge by vibration",
+    "year": 1993,
+    "type": "article",
+    "cited_by_count": 72,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2902890555",
+    "doi": "10.1016/j.electacta.2018.11.187",
+    "title": "Thermocapillary convection during hydrogen evolution at microelectrodes",
+    "year": 2018,
+    "type": "article",
+    "cited_by_count": 103,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1969246950",
+    "doi": "10.1016/j.euromechflu.2006.07.001",
+    "title": "Thermocapillary flows in a three-layer system with a temperature gradient along the interfaces",
+    "year": 2006,
+    "type": "article",
+    "cited_by_count": 8,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2888485406",
+    "doi": "10.3390/nano8090645",
+    "title": "Micropatterning of Metal Nanoparticle Ink by Laser-Induced Thermocapillary Flow",
+    "year": 2018,
+    "type": "article",
+    "cited_by_count": 17,
+    "open_access_url": "https://www.mdpi.com/2079-4991/8/9/645/pdf?version=1534926644",
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2110113452",
+    "doi": "10.1080/108939599199729",
+    "title": "MARANGONI EFFECT IN MICROBUBBLE SYSTEMS",
+    "year": 1999,
+    "type": "article",
+    "cited_by_count": 41,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2031105216",
+    "doi": "10.1016/j.expthermflusci.2014.10.015",
+    "title": "Experimental study on thermocapillary convection of binary mixture in a shallow annular pool with radial temperature gradient",
+    "year": 2014,
+    "type": "article",
+    "cited_by_count": 40,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2004409068",
+    "doi": "10.1063/1.868920",
+    "title": "Buoyant-thermocapillary instabilities of differentially heated liquid layers",
+    "year": 1996,
+    "type": "article",
+    "cited_by_count": 97,
+    "open_access_url": "https://hal.science/hal-00162322",
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3178466189",
+    "doi": "10.1063/5.0055373",
+    "title": "Effect of insoluble surfactants on a thermocapillary flow",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 11,
+    "open_access_url": "https://aip.scitation.org/doi/pdf/10.1063/5.0055373",
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2503026773",
+    "doi": "10.1103/physreve.94.063302",
+    "title": "Lattice Boltzmann simulations of droplet formation in confined channels with thermocapillary flows",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 18,
+    "open_access_url": "https://arxiv.org/pdf/1607.05562",
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2027456749",
+    "doi": "10.1016/j.ijheatmasstransfer.2007.06.029",
+    "title": "Effect of pool rotation on flow pattern transition of silicon melt thermocapillary flow in a slowly rotating shallow annular pool",
+    "year": 2007,
+    "type": "article",
+    "cited_by_count": 31,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2043078735",
+    "doi": "10.1017/s0022112095002862",
+    "title": "Thermocapillary migration of a two-dimensional liquid droplet on a solid surface",
+    "year": 1995,
+    "type": "article",
+    "cited_by_count": 113,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2037206874",
+    "doi": "10.1063/1.2766959",
+    "title": "Nonlinear buoyant-thermocapillary flows in a three-layer system with a temperature gradient along the interfaces",
+    "year": 2007,
+    "type": "article",
+    "cited_by_count": 9,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2053001829",
+    "doi": "10.1007/bf00190295",
+    "title": "Thermocapillary migration of liquid droplets in a temperature gradient in a density matched system",
+    "year": 1991,
+    "type": "article",
+    "cited_by_count": 24,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2046567133",
+    "doi": "10.1007/s003480050107",
+    "title": "Temporal and spatial elements of thermocapillary convection in floating zones",
+    "year": 1997,
+    "type": "article",
+    "cited_by_count": 100,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2098023661",
+    "doi": "10.1016/j.ijheatfluidflow.2008.02.011",
+    "title": "Thermocapillary flows in liquid bridges of molten tin with small aspect ratios",
+    "year": 2008,
+    "type": "article",
+    "cited_by_count": 17,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2945073273",
+    "doi": "10.1017/jfm.2019.362",
+    "title": "Thermocapillary flow between grooved superhydrophobic surfaces: transverse temperature gradients",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 7,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2090011567",
+    "doi": "10.1063/1.870330",
+    "title": "The migration of a drop in a uniform temperature gradient at large Marangoni numbers",
+    "year": 2000,
+    "type": "article",
+    "cited_by_count": 79,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2051097131",
+    "doi": "10.1007/bf01176772",
+    "title": "Marangoni-effect velocity distribution due to time-oscillatory temperature gradients in zero-gravity environment",
+    "year": 1983,
+    "type": "article",
+    "cited_by_count": 25,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2049815827",
+    "doi": "10.1016/s0022-0248(01)02201-1",
+    "title": "Buoyant-thermocapillary and pure thermocapillary convective instabilities in Czochralski systems",
+    "year": 2002,
+    "type": "article",
+    "cited_by_count": 47,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2322725301",
+    "doi": "10.1021/la404221p",
+    "title": "Thermocapillary Flow in Glass Tubes Coated with Photoresponsive Layers",
+    "year": 2014,
+    "type": "article",
+    "cited_by_count": 13,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1999530806",
+    "doi": "10.1063/1.869182",
+    "title": "Thermocapillary motion of deformable drops at finite Reynolds and Marangoni numbers",
+    "year": 1997,
+    "type": "article",
+    "cited_by_count": 97,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2059146939",
+    "doi": "10.1007/s10404-007-0235-7",
+    "title": "Thermocapillary actuation of droplet in a planar microchannel",
+    "year": 2007,
+    "type": "article",
+    "cited_by_count": 73,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2076388660",
+    "doi": "10.1111/j.1151-2916.1985.tb15318.x",
+    "title": "Surface‐Tension‐Driven Flow in a Glass Melt",
+    "year": 1985,
+    "type": "article",
+    "cited_by_count": 14,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2103599240",
+    "doi": "10.1017/s0022112090001884",
+    "title": "Particle migration in suspensions by thermocapillary or electrophoretic motion",
+    "year": 1990,
+    "type": "article",
+    "cited_by_count": 81,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2021582379",
+    "doi": "10.1016/s0017-9310(97)00277-9",
+    "title": "Thermocapillary convection in two-layer systems",
+    "year": 1998,
+    "type": "article",
+    "cited_by_count": 77,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2044555281",
+    "doi": "10.1007/bf02915739",
+    "title": "Marangoni effect on wave structure in liquid films",
+    "year": 2007,
+    "type": "article",
+    "cited_by_count": 35,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2090956556",
+    "doi": "10.1021/la1044656",
+    "title": "Electro-Marangoni Effect in Thin Liquid Films",
+    "year": 2011,
+    "type": "article",
+    "cited_by_count": 19,
+    "found_by": [
+     "search:2026-09-20-p-423a19acdd/oa-mp12"
+    ]
+   }
+  ],
+  "screening_status": "not-reviewed",
+  "result": "inconclusive",
+  "notes": "Automated route-search-v1 index queries from data/canonical/searches/plans/p-423a19acdd.yaml; the result list is frozen for a reviewer and nothing here has been read for a qualifying demonstration. Planned runs NOT run in this bundle (engine unavailable): search:2026-09-20-p-423a19acdd/s2-dm1 (semantic-scholar); search:2026-09-20-p-423a19acdd/s2-mp12 (semantic-scholar); search:2026-09-20-p-423a19acdd/s2-wc (semantic-scholar); search:2026-09-20-p-423a19acdd/s2-dp (semantic-scholar)."
  }
 ]

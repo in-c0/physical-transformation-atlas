@@ -1,0 +1,54 @@
+# route-search-v1 query plan — p-41cb505083
+# Surface energy difference → Marangoni effect → Fluid flow → Streaming potential → Ionic current → Electrical work
+# D = Surface energy difference; M_1 = Marangoni effect; M_2 = Streaming potential; O = Electrical work (k = 2).
+# The p-423a19acdd templates with the driver bundle substituted, so the three route searches share one
+# construction. Written in loop-3 pass 17.
+protocol_version: route-search-v1
+route: p-41cb505083
+claims: [claim:surface-drives-marangoni, claim:marangoni-produces-flow, claim:fluid-flow-carrier-drives-streaming, claim:streaming-produces-ions, claim:ionic-current-converts-electricity]
+driver_terms: [surface energy difference, surface-tension gradient, interfacial tension gradient, Marangoni stress]
+phenomenon_terms:
+  phenomenon:marangoni-effect: [marangoni effect, surface-tension-driven flow, thermocapillary flow, solutocapillary flow, thermocapillary, solutocapillary]
+  phenomenon:streaming-potential: [streaming potential, streaming current, electrokinetic effect]
+output_terms: [electrical work, electricity, electrical output, DC power]
+runs:
+  - id: search:2026-09-20-p-41cb505083/oa-dm1
+    engine: openalex
+    form: route-driver-mechanism
+    key: driver-mechanism:1
+    query: '("Surface energy difference" OR "surface-tension gradient" OR "interfacial tension gradient" OR "Marangoni stress") AND ("Marangoni effect" OR "surface-tension-driven flow" OR "thermocapillary flow" OR "solutocapillary flow" OR thermocapillary OR solutocapillary)'
+  - id: search:2026-09-20-p-41cb505083/oa-mp12
+    engine: openalex
+    form: route-mechanism-pair
+    key: mechanism-pair:1-2
+    query: '("Marangoni effect" OR "surface-tension-driven flow" OR "thermocapillary flow" OR "solutocapillary flow" OR thermocapillary OR solutocapillary) AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect")'
+  - id: search:2026-09-20-p-41cb505083/oa-wc
+    engine: openalex
+    form: route-whole-chain
+    key: whole-chain
+    query: '("Surface energy difference" OR "surface-tension gradient" OR "interfacial tension gradient" OR "Marangoni stress") AND ("Marangoni effect" OR thermocapillary OR solutocapillary) AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power")'
+  - id: search:2026-09-20-p-41cb505083/oa-dp
+    engine: openalex
+    form: route-demonstration-precision
+    key: demonstration-precision
+    query: '("Surface energy difference" OR "surface-tension gradient" OR "interfacial tension gradient" OR "Marangoni stress") AND ("Marangoni effect" OR thermocapillary OR solutocapillary) AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power") AND (experiment OR experimental OR measured OR device OR prototype)'
+  - id: search:2026-09-20-p-41cb505083/s2-dm1
+    engine: semantic-scholar
+    form: route-driver-mechanism
+    key: driver-mechanism:1
+    query: Surface energy difference surface tension gradient interfacial tension gradient Marangoni stress Marangoni effect surface tension driven flow thermocapillary flow solutocapillary flow thermocapillary solutocapillary
+  - id: search:2026-09-20-p-41cb505083/s2-mp12
+    engine: semantic-scholar
+    form: route-mechanism-pair
+    key: mechanism-pair:1-2
+    query: Marangoni effect thermocapillary solutocapillary streaming potential streaming current electrokinetic effect
+  - id: search:2026-09-20-p-41cb505083/s2-wc
+    engine: semantic-scholar
+    form: route-whole-chain
+    key: whole-chain
+    query: Surface energy difference surface tension gradient interfacial tension gradient Marangoni stress Marangoni effect thermocapillary solutocapillary streaming potential streaming current electrokinetic effect Electrical work electricity electrical output DC power
+  - id: search:2026-09-20-p-41cb505083/s2-dp
+    engine: semantic-scholar
+    form: route-demonstration-precision
+    key: demonstration-precision
+    query: Surface energy difference surface tension gradient interfacial tension gradient Marangoni stress Marangoni effect thermocapillary solutocapillary streaming potential streaming current electrokinetic effect Electrical work electricity electrical output DC power experiment experimental measured device prototype

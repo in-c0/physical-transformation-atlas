@@ -4,6 +4,7 @@
  * atlas fails with a readable message.
  */
 import { readdirSync, readFileSync, existsSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { join, relative } from "node:path";
 import { parse } from "yaml";
 import { z } from "zod";
@@ -126,6 +127,8 @@ export function loadCanon(root: string): Canon {
   // The negative gate: "no demonstration found" is a schema-level privilege, not a reviewer's choice.
   const MANDATORY_ENGINES = ["openalex", "semantic-scholar", "google-scholar"];
   const MANDATORY_FORMS = ["driver-family", "driver-phenomenon", "demonstration-precision"];
+  const claimById = new Map(claims.map((c) => [c.id, c]));
+  const entityType = new Map(entities.map((e) => [e.id, e.type]));
   for (const s of searches) {
     const qualifies = s.hits.some((h) => h.decision === "qualifies");
     if (s.result === "demonstration-found" && !qualifies) problems.push(`${s.id}: demonstration-found without a hit whose decision is "qualifies"`);
@@ -137,7 +140,37 @@ export function loadCanon(root: string): Canon {
       if (s.completeness !== "protocol-complete-negative") problems.push(`${s.id}: no-demonstration-found requires completeness protocol-complete-negative (got ${s.completeness})`);
       if (qualifies) problems.push(`${s.id}: no-demonstration-found but a hit qualifies`);
       if (missingE.length) problems.push(`${s.id}: no-demonstration-found requires every discovery engine; missing ${missingE.join(", ")}`);
-      if (missingF.length) problems.push(`${s.id}: no-demonstration-found requires every mandatory query form; missing ${missingF.join(", ")}`);
+      if (s.target.kind === "cell" && missingF.length) problems.push(`${s.id}: no-demonstration-found requires every mandatory query form; missing ${missingF.join(", ")}`);
+    }
+    // Route searches (route-search-v1): the target must carry its claim sequence, the id must be the
+    // hash of that sequence, and a negative must cover every mandatory query key on every engine.
+    if (s.target.kind === "path") {
+      const claimSeq = s.target.claims;
+      if (!claimSeq || claimSeq.length === 0) problems.push(`${s.id}: a route search must list target.claims (the route's ordered claim ids)`);
+      else {
+        const sha = createHash("sha1").update(claimSeq.join(">")).digest("hex").slice(0, 10);
+        if (`p-${sha}` !== s.target.path) problems.push(`${s.id}: target.path ${s.target.path} is not the id of target.claims (p-${sha})`);
+        for (const id of claimSeq) if (!claimById.has(id)) problems.push(`${s.id}: target.claims names unknown claim ${id}`);
+        if (s.objective !== "exact-composition") problems.push(`${s.id}: a route search must have objective exact-composition`);
+        if (s.result === "no-demonstration-found") {
+          const mechanisms = [...new Set(claimSeq.flatMap((id) => [claimById.get(id)?.subject, claimById.get(id)?.object]).filter((n) => n && entityType.get(n) === "phenomenon"))];
+          const k = mechanisms.length;
+          const required = ["driver-mechanism:1", ...Array.from({ length: Math.max(0, k - 1) }, (_, i) => `mechanism-pair:${i + 1}-${i + 2}`), "whole-chain", "demonstration-precision"];
+          if (s.protocol_version !== "route-search-v1") problems.push(`${s.id}: a route negative requires protocol_version route-search-v1`);
+          for (const engine of MANDATORY_ENGINES) {
+            const keys = new Set(s.runs.filter((r) => r.engine === engine).map((r) => r.query_key));
+            const missing = required.filter((key) => !keys.has(key));
+            if (missing.length) problems.push(`${s.id}: no-demonstration-found requires ${engine} runs for ${missing.join(", ")}`);
+          }
+          for (const r of s.runs) {
+            if (!r.query_key || !required.includes(r.query_key)) continue;
+            const due = Math.min(100, r.result_count_reported ?? r.records_retrieved);
+            if (r.records_screened < due) problems.push(`${s.id}: run ${r.id} screened ${r.records_screened} of the ${due} the protocol requires`);
+          }
+          if (s.runs.filter((r) => r.query_form === "citation-chase").length < 2) problems.push(`${s.id}: a route negative requires citation-chase runs for two seed papers`);
+        }
+        if (s.result === "demonstration-found" && !s.follow_up?.canonical_pathway_review) problems.push(`${s.id}: a route positive needs follow_up.canonical_pathway_review`);
+      }
     }
     if (s.result === "demonstration-found" && s.completeness !== "conclusive-positive") problems.push(`${s.id}: demonstration-found should carry completeness conclusive-positive`);
     if (s.result === "demonstration-found" && !s.follow_up) problems.push(`${s.id}: demonstration-found needs follow_up.canonical_claim_review`);

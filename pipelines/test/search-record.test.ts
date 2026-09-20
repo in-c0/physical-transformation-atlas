@@ -26,7 +26,10 @@ test("a route-only hit is recorded as a canonical coupling claim, never as a dir
   assert.ok(c, "the coupling claim exists");
   assert.equal(c!.predicate, "couples_to");
   assert.equal(c!.status, "demonstrated");
-  assert.ok(!claims.some((x) => x.subject === "disequilibrium:temperature-gradient" && x.object === "phenomenon:streaming-potential"), "no direct temperature-gradient → streaming-potential claim was manufactured");
+  assert.ok(
+    !claims.some((x) => x.subject === "disequilibrium:temperature-gradient" && x.object === "phenomenon:streaming-potential"),
+    "no direct temperature-gradient → streaming-potential claim was manufactured",
+  );
 });
 
 /** Copy data/canonical into a scratch root with one extra search file, and run the loader on it. */
@@ -94,6 +97,90 @@ test("negative control: a positive without a qualifying hit is rejected", () => 
   const problems = loadWith(yaml);
   assert.ok(
     problems.some((p) => p.includes('without a hit whose decision is "qualifies"')),
+    problems.join("\n"),
+  );
+});
+
+/** route-search-v1: a route negative skeleton for p-423a19acdd (k = 2: Marangoni effect, streaming potential). */
+const routeRun = (id: string, engine: string, form: string, key: string, screened = 10) =>
+  `    - { id: ${id}, engine: ${engine}, query_form: ${form}, query_key: "${key}", query: q, executed_at: "2026-09-21T10:00:00+10:00", result_count_reported: 10, records_retrieved: 10, records_screened: ${screened}, records_read: 2 }`;
+const routeRunsFor = (engine: string, tag: string, screened = 10) =>
+  [
+    routeRun(`${tag}-dm`, engine, "route-driver-mechanism", "driver-mechanism:1", screened),
+    routeRun(`${tag}-mp`, engine, "route-mechanism-pair", "mechanism-pair:1-2", screened),
+    routeRun(`${tag}-wc`, engine, "route-whole-chain", "whole-chain", screened),
+    routeRun(`${tag}-dp`, engine, "route-demonstration-precision", "demonstration-precision", screened),
+  ].join("\n");
+const routeNegative = (runs: string, over = "") => `
+- id: search:2026-09-21-p-423a19acdd
+  target: { kind: path, path: p-423a19acdd, claims: [claim:temperature-drives-marangoni, claim:marangoni-produces-flow, claim:fluid-flow-carrier-drives-streaming, claim:streaming-produces-ions, claim:ionic-current-converts-electricity] }
+  protocol_version: route-search-v1
+  started_at: "2026-09-21T10:00:00+10:00"
+  completed_at: "2026-09-21T11:00:00+10:00"
+  objective: exact-composition
+  inclusion_criteria: [x]
+  exclusion_criteria: [y]
+  runs:
+${runs}
+  screening: { records_retrieved: 10, unique_records: 10, title_abstract_screened: 10, full_text_read: 2 }
+  hits: []
+  result: no-demonstration-found
+  completeness: protocol-complete-negative
+  reviewed_by: test
+  reviewed_on: 2026-09-21
+  conclusion: none found
+${over}`;
+
+test("route negative gate: a complete route-search-v1 negative (every engine × every key, two citation chases) passes", () => {
+  const runs = [
+    routeRunsFor("openalex", "oa"),
+    routeRunsFor("semantic-scholar", "s2"),
+    routeRunsFor("google-scholar", "gs"),
+    routeRun("cc1", "manual", "citation-chase", "citation-chase:seed-1"),
+    routeRun("cc2", "manual", "citation-chase", "citation-chase:seed-2"),
+  ].join("\n");
+  const problems = loadWith(routeNegative(runs));
+  assert.deepEqual(
+    problems.filter((p) => p.includes("search:2026-09-21")),
+    [],
+  );
+});
+
+test("negative control: a route negative missing the mechanism-pair key on one engine, or a citation chase, is rejected", () => {
+  const runs = [
+    routeRunsFor("openalex", "oa"),
+    routeRunsFor("semantic-scholar", "s2"),
+    routeRun("gs-dm", "google-scholar", "route-driver-mechanism", "driver-mechanism:1"),
+    routeRun("gs-wc", "google-scholar", "route-whole-chain", "whole-chain"),
+    routeRun("gs-dp", "google-scholar", "route-demonstration-precision", "demonstration-precision"),
+    routeRun("cc1", "manual", "citation-chase", "citation-chase:seed-1"),
+  ].join("\n");
+  const problems = loadWith(routeNegative(runs));
+  assert.ok(
+    problems.some((p) => p.includes("google-scholar runs for mechanism-pair:1-2")),
+    problems.join("\n"),
+  );
+  assert.ok(
+    problems.some((p) => p.includes("citation-chase runs for two seed papers")),
+    problems.join("\n"),
+  );
+});
+
+test("negative control: a route record whose target.path is not the hash of target.claims, or whose mandatory run under-screened, is rejected", () => {
+  const runs = [
+    routeRunsFor("openalex", "oa", 3),
+    routeRunsFor("semantic-scholar", "s2"),
+    routeRunsFor("google-scholar", "gs"),
+    routeRun("cc1", "manual", "citation-chase", "c1"),
+    routeRun("cc2", "manual", "citation-chase", "c2"),
+  ].join("\n");
+  const problems = loadWith(routeNegative(runs).replace("path: p-423a19acdd,", "path: p-000000dead,"));
+  assert.ok(
+    problems.some((p) => p.includes("is not the id of target.claims")),
+    problems.join("\n"),
+  );
+  assert.ok(
+    problems.some((p) => p.includes("screened 3 of the 10")),
     problems.join("\n"),
   );
 });

@@ -6,7 +6,7 @@ import { Checksum } from "./Checksum";
 import { EvidenceList } from "./EvidenceList";
 import { CiteBlock } from "./CiteBlock";
 import { ConditionTags, Explore, MatrixLegendLine } from "./Pieces";
-import { searchRouteSentence } from "./SearchRecordView";
+import { AutomatedRunView, SearchRecordView, searchRouteSentence } from "./SearchRecordView";
 import styles from "./PathView.module.css";
 
 export function pathTitle(index: AtlasIndex, p: CompiledPath): string {
@@ -27,6 +27,7 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
   const families = path.coupling_families.map((f) => index.colAxis(f)).filter(Boolean);
   const comp = compositionState(path.search_status, path.last_searched);
   const routeSearch = index.graph.searches.find((x) => x.target.kind === "path" && x.target.path === path.id);
+  const routeRuns = (index.graph.search_runs ?? []).filter((x) => x.target.kind === "path" && x.target.path === path.id);
   const overlap = path.known_pathway_overlap;
   const overlapPathway = overlap ? index.pathway.get(overlap.pathway) : undefined;
   const overlapPath = overlapPathway ? index.graph.paths.find((p) => p.pathway === overlapPathway.id) : undefined;
@@ -129,6 +130,19 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
           )}
         </p>
       </section>
+
+      {(routeSearch || routeRuns.length > 0) && (
+        <section className={styles.section} id="search">
+          <h2 className="label">Literature search for this exact composition</h2>
+          {routeSearch && <SearchRecordView record={routeSearch} />}
+          {routeRuns.map((x) => (
+            <AutomatedRunView key={x.id} run={x} />
+          ))}
+          <p className="t-micro secondary" style={{ marginTop: 6 }}>
+            Protocol route-search-v1: a frozen index run changes only the search state; only a reviewed record can say that a demonstration was or was not found.
+          </p>
+        </section>
+      )}
 
       <section className={styles.section} id="checks" aria-label="Physics checks">
         <Checksum checks={path.checks} claims={path.claims} />
