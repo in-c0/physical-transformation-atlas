@@ -4,13 +4,14 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build-graph": "tsx src/build-graph.ts",
+    "build-graph": "tsx src/build-graph.ts && tsx src/docs-vocabulary.ts",
     "validate": "tsx src/validate.ts",
     "literature-search": "tsx src/literature-search.ts",
     "test": "node --import tsx --test test/*.test.ts",
     "verify-sources": "tsx src/verify-sources.ts",
     "inspect": "tsx src/inspect.ts",
-    "source-from-doi": "tsx src/source-from-doi.ts"
+    "source-from-doi": "tsx src/source-from-doi.ts",
+    "docs-vocabulary": "tsx src/docs-vocabulary.ts"
   },
   "dependencies": {
     "@pta/schema": "workspace:*",

@@ -14,7 +14,8 @@
     "test": "pnpm -r --if-present test",
     "dev": "pnpm build:graph && pnpm --filter @pta/web dev",
     "build": "pnpm build:graph && pnpm --filter @pta/web build",
-    "deploy": "pnpm build && pnpm --filter @pta/worker deploy"
+    "deploy": "pnpm build && pnpm --filter @pta/worker deploy",
+    "docs:vocabulary": "pnpm --filter @pta/pipelines docs-vocabulary"
   },
   "devDependencies": {
     "axe-core": "^4.13.0"
