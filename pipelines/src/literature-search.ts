@@ -11,6 +11,7 @@
  *   pnpm --filter @pta/pipelines literature-search           # cells not yet queried
  *   pnpm --filter @pta/pipelines literature-search --all     # re-query everything
  *   pnpm --filter @pta/pipelines literature-search --limit 20 --delay 2000
+ *   pnpm --filter @pta/pipelines literature-search --cell D.04:C.01   # one cell, re-queried
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve, join } from "node:path";
@@ -25,6 +26,9 @@ const limit = limitArg >= 0 ? Number(process.argv[limitArg + 1]) : Infinity;
 const delayArg = process.argv.indexOf("--delay");
 /** Pause between requests. OpenAlex documents 10 req/s but throttles the anonymous pool well below that. */
 const delayMs = delayArg >= 0 ? Number(process.argv[delayArg + 1]) : 1500;
+const cellArg = process.argv.indexOf("--cell");
+/** Query one cell by address, e.g. --cell D.04:C.01 (implies --all for that cell). */
+const onlyCell = cellArg >= 0 ? process.argv[cellArg + 1] : undefined;
 const PER_PAGE = 100;
 
 const prev: AutomatedSearchRun[] = existsSync(outFile) ? JSON.parse(readFileSync(outFile, "utf8")) : [];
@@ -43,7 +47,9 @@ const entity = new Map(canon.entities.map((e) => [e.id, e]));
 const members = new Map<string, string[]>();
 for (const c of canon.claims) if (c.predicate === "member_of") members.set(c.object, [...(members.get(c.object) ?? []), c.subject]);
 const forbidden = new Set(graph.matrix.cells.filter((c) => c.status === "forbidden").map((c) => `${c.row}|${c.col}`));
-const todo = graph.matrix.cells.filter((c) => c.direct_claims.length === 0 && !forbidden.has(`${c.row}|${c.col}`) && (all || !byKey.has(`${c.row}|${c.col}`))).slice(0, limit);
+const todo = graph.matrix.cells
+  .filter((c) => (onlyCell ? c.address === onlyCell : c.direct_claims.length === 0 && !forbidden.has(`${c.row}|${c.col}`) && (all || !byKey.has(`${c.row}|${c.col}`))))
+  .slice(0, limit);
 console.log(`${todo.length} cell(s) to query`);
 
 function save() {

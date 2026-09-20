@@ -181,5 +181,818 @@
   "screening_status": "not-reviewed",
   "result": "inconclusive",
   "notes": "Migrated from the v0.1 runner (top three by citation count only); re-run with the v0.2 bundle before screening."
+ },
+ {
+  "id": "search:2026-09-20-d-04-c-01",
+  "target": {
+   "kind": "cell",
+   "row": "disequilibrium:salinity-gradient",
+   "col": "coupling:thermoelectric"
+  },
+  "dataset_hash": "036254f3a7d2",
+  "driver_terms": [
+   "salinity gradient",
+   "salinity difference",
+   "blue energy",
+   "river–sea mixing",
+   "osmotic power"
+  ],
+  "family_terms": [
+   "thermoelectric",
+   "seebeck",
+   "thermocouple",
+   "thermopile"
+  ],
+  "phenomenon_terms": {
+   "phenomenon:seebeck-effect": [
+    "seebeck effect",
+    "thermoelectric effect",
+    "thermo-emf"
+   ],
+   "phenomenon:peltier-effect": [
+    "peltier effect"
+   ],
+   "phenomenon:thomson-effect": [
+    "thomson effect"
+   ],
+   "phenomenon:phonon-drag": [
+    "phonon drag"
+   ],
+   "phenomenon:nernst-effect": [
+    "nernst effect",
+    "nernst–ettingshausen effect"
+   ],
+   "phenomenon:ettingshausen-effect": [
+    "ettingshausen effect"
+   ]
+  },
+  "runs": [
+   {
+    "id": "search:2026-09-20-d-04-c-01/oa-family",
+    "engine": "openalex",
+    "query_form": "driver-family",
+    "query": "(\"salinity gradient\" OR \"salinity difference\" OR \"blue energy\" OR \"river–sea mixing\" OR \"osmotic power\") AND (thermoelectric OR seebeck OR thermocouple OR thermopile)",
+    "executed_at": "2026-09-20T06:37:57.757Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22salinity+gradient%22+OR+%22salinity+difference%22+OR+%22blue+energy%22+OR+%22river%E2%80%93sea+mixing%22+OR+%22osmotic+power%22%29+AND+%28thermoelectric+OR+seebeck+OR+thermocouple+OR+thermopile%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"salinity gradient\" OR \"salinity difference\" OR \"blue energy\" OR \"river–sea mixing\" OR \"osmotic power\") AND (thermoelectric OR seebeck OR thermocouple OR thermopile)",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 51,
+    "records_retrieved": 51,
+    "records_screened": 0,
+    "records_read": 0
+   },
+   {
+    "id": "search:2026-09-20-d-04-c-01/oa-seebeck-effect",
+    "engine": "openalex",
+    "query_form": "driver-phenomenon",
+    "query": "(\"salinity gradient\" OR \"salinity difference\" OR \"blue energy\" OR \"river–sea mixing\" OR \"osmotic power\") AND (\"seebeck effect\" OR \"thermoelectric effect\" OR thermo-emf)",
+    "executed_at": "2026-09-20T06:38:03.798Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22salinity+gradient%22+OR+%22salinity+difference%22+OR+%22blue+energy%22+OR+%22river%E2%80%93sea+mixing%22+OR+%22osmotic+power%22%29+AND+%28%22seebeck+effect%22+OR+%22thermoelectric+effect%22+OR+thermo-emf%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"salinity gradient\" OR \"salinity difference\" OR \"blue energy\" OR \"river–sea mixing\" OR \"osmotic power\") AND (\"seebeck effect\" OR \"thermoelectric effect\" OR thermo-emf)",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 2,
+    "records_retrieved": 2,
+    "records_screened": 0,
+    "records_read": 0
+   },
+   {
+    "id": "search:2026-09-20-d-04-c-01/oa-peltier-effect",
+    "engine": "openalex",
+    "query_form": "driver-phenomenon",
+    "query": "(\"salinity gradient\" OR \"salinity difference\" OR \"blue energy\" OR \"river–sea mixing\" OR \"osmotic power\") AND (\"peltier effect\")",
+    "executed_at": "2026-09-20T06:38:08.230Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22salinity+gradient%22+OR+%22salinity+difference%22+OR+%22blue+energy%22+OR+%22river%E2%80%93sea+mixing%22+OR+%22osmotic+power%22%29+AND+%28%22peltier+effect%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"salinity gradient\" OR \"salinity difference\" OR \"blue energy\" OR \"river–sea mixing\" OR \"osmotic power\") AND (\"peltier effect\")",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 0,
+    "records_retrieved": 0,
+    "records_screened": 0,
+    "records_read": 0
+   },
+   {
+    "id": "search:2026-09-20-d-04-c-01/oa-thomson-effect",
+    "engine": "openalex",
+    "query_form": "driver-phenomenon",
+    "query": "(\"salinity gradient\" OR \"salinity difference\" OR \"blue energy\" OR \"river–sea mixing\" OR \"osmotic power\") AND (\"thomson effect\")",
+    "executed_at": "2026-09-20T06:38:12.742Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22salinity+gradient%22+OR+%22salinity+difference%22+OR+%22blue+energy%22+OR+%22river%E2%80%93sea+mixing%22+OR+%22osmotic+power%22%29+AND+%28%22thomson+effect%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"salinity gradient\" OR \"salinity difference\" OR \"blue energy\" OR \"river–sea mixing\" OR \"osmotic power\") AND (\"thomson effect\")",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 0,
+    "records_retrieved": 0,
+    "records_screened": 0,
+    "records_read": 0
+   },
+   {
+    "id": "search:2026-09-20-d-04-c-01/oa-phonon-drag",
+    "engine": "openalex",
+    "query_form": "driver-phenomenon",
+    "query": "(\"salinity gradient\" OR \"salinity difference\" OR \"blue energy\" OR \"river–sea mixing\" OR \"osmotic power\") AND (\"phonon drag\")",
+    "executed_at": "2026-09-20T06:38:17.842Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22salinity+gradient%22+OR+%22salinity+difference%22+OR+%22blue+energy%22+OR+%22river%E2%80%93sea+mixing%22+OR+%22osmotic+power%22%29+AND+%28%22phonon+drag%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"salinity gradient\" OR \"salinity difference\" OR \"blue energy\" OR \"river–sea mixing\" OR \"osmotic power\") AND (\"phonon drag\")",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 0,
+    "records_retrieved": 0,
+    "records_screened": 0,
+    "records_read": 0
+   },
+   {
+    "id": "search:2026-09-20-d-04-c-01/oa-nernst-effect",
+    "engine": "openalex",
+    "query_form": "driver-phenomenon",
+    "query": "(\"salinity gradient\" OR \"salinity difference\" OR \"blue energy\" OR \"river–sea mixing\" OR \"osmotic power\") AND (\"nernst effect\" OR \"nernst–ettingshausen effect\")",
+    "executed_at": "2026-09-20T06:38:22.346Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22salinity+gradient%22+OR+%22salinity+difference%22+OR+%22blue+energy%22+OR+%22river%E2%80%93sea+mixing%22+OR+%22osmotic+power%22%29+AND+%28%22nernst+effect%22+OR+%22nernst%E2%80%93ettingshausen+effect%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"salinity gradient\" OR \"salinity difference\" OR \"blue energy\" OR \"river–sea mixing\" OR \"osmotic power\") AND (\"nernst effect\" OR \"nernst–ettingshausen effect\")",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 0,
+    "records_retrieved": 0,
+    "records_screened": 0,
+    "records_read": 0
+   },
+   {
+    "id": "search:2026-09-20-d-04-c-01/oa-ettingshausen-effect",
+    "engine": "openalex",
+    "query_form": "driver-phenomenon",
+    "query": "(\"salinity gradient\" OR \"salinity difference\" OR \"blue energy\" OR \"river–sea mixing\" OR \"osmotic power\") AND (\"ettingshausen effect\")",
+    "executed_at": "2026-09-20T06:38:26.762Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22salinity+gradient%22+OR+%22salinity+difference%22+OR+%22blue+energy%22+OR+%22river%E2%80%93sea+mixing%22+OR+%22osmotic+power%22%29+AND+%28%22ettingshausen+effect%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"salinity gradient\" OR \"salinity difference\" OR \"blue energy\" OR \"river–sea mixing\" OR \"osmotic power\") AND (\"ettingshausen effect\")",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 0,
+    "records_retrieved": 0,
+    "records_screened": 0,
+    "records_read": 0
+   },
+   {
+    "id": "search:2026-09-20-d-04-c-01/oa-precision",
+    "engine": "openalex",
+    "query_form": "demonstration-precision",
+    "query": "(\"salinity gradient\" OR \"salinity difference\" OR \"blue energy\" OR \"river–sea mixing\" OR \"osmotic power\") AND (thermoelectric OR seebeck OR thermocouple OR thermopile OR \"seebeck effect\" OR \"thermoelectric effect\") AND (experiment OR experimental OR measured OR device OR prototype)",
+    "executed_at": "2026-09-20T06:38:31.243Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22salinity+gradient%22+OR+%22salinity+difference%22+OR+%22blue+energy%22+OR+%22river%E2%80%93sea+mixing%22+OR+%22osmotic+power%22%29+AND+%28thermoelectric+OR+seebeck+OR+thermocouple+OR+thermopile+OR+%22seebeck+effect%22+OR+%22thermoelectric+effect%22%29+AND+%28experiment+OR+experimental+OR+measured+OR+device+OR+prototype%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"salinity gradient\" OR \"salinity difference\" OR \"blue energy\" OR \"river–sea mixing\" OR \"osmotic power\") AND (thermoelectric OR seebeck OR thermocouple OR thermopile OR \"seebeck effect\" OR \"thermoelectric effect\") AND (experiment OR experimental OR measured OR device OR prototype)",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 29,
+    "records_retrieved": 29,
+    "records_screened": 0,
+    "records_read": 0
+   }
+  ],
+  "works": [
+   {
+    "openalex_id": "W2573696012",
+    "doi": "10.1016/j.enconman.2017.01.031",
+    "title": "Power generation enhancement in a salinity-gradient solar pond power plant using thermoelectric generator",
+    "year": 2017,
+    "type": "article",
+    "cited_by_count": 199,
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family"
+    ]
+   },
+   {
+    "openalex_id": "W2043118309",
+    "doi": "10.1103/physrevlett.101.108302",
+    "title": "Transport in Charged Colloids Driven by Thermoelectricity",
+    "year": 2008,
+    "type": "article",
+    "cited_by_count": 251,
+    "open_access_url": "https://arxiv.org/pdf/1401.7447",
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family",
+     "search:2026-09-20-d-04-c-01/oa-precision"
+    ]
+   },
+   {
+    "openalex_id": "W2929533111",
+    "doi": "10.1016/j.desal.2019.04.001",
+    "title": "Feasibility investigation of a humidification-dehumidification (HDH) desalination system with thermoelectric generator operated by a salinity-gradient solar pond",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 79,
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family"
+    ]
+   },
+   {
+    "openalex_id": "W2913427899",
+    "doi": "10.1016/j.energy.2019.01.167",
+    "title": "Investigating potential benefits of a salinity gradient solar pond for ejector refrigeration cycle coupled with a thermoelectric generator",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 62,
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family",
+     "search:2026-09-20-d-04-c-01/oa-precision"
+    ]
+   },
+   {
+    "openalex_id": "W1967729612",
+    "doi": "10.1016/j.solener.2010.11.012",
+    "title": "Electric power generation from solar pond using combined thermosyphon and thermoelectric modules",
+    "year": 2011,
+    "type": "article",
+    "cited_by_count": 146,
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family",
+     "search:2026-09-20-d-04-c-01/oa-precision"
+    ]
+   },
+   {
+    "openalex_id": "W4221122623",
+    "doi": "10.1016/j.rser.2022.112283",
+    "title": "Extracting energy from ocean thermal and salinity gradients to power unmanned underwater vehicles: State of the art, current limitations, and future outlook",
+    "year": 2022,
+    "type": "article",
+    "cited_by_count": 73,
+    "open_access_url": "https://doi.org/10.1016/j.rser.2022.112283",
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family"
+    ]
+   },
+   {
+    "openalex_id": "W4382050955",
+    "doi": "10.1016/j.desal.2023.116803",
+    "title": "Benefits of an innovative polygeneration system integrated with salinity gradient solar pond and desalination unit",
+    "year": 2023,
+    "type": "article",
+    "cited_by_count": 34,
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family"
+    ]
+   },
+   {
+    "openalex_id": "W4307217313",
+    "doi": "10.1016/j.applthermaleng.2022.119539",
+    "title": "Comparing and optimizing the potential advantages of a salinity-gradient solar pond for either absorption-based or ejector-based refrigeration cycles combined with thermoelectric generators",
+    "year": 2022,
+    "type": "article",
+    "cited_by_count": 17,
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family"
+    ]
+   },
+   {
+    "openalex_id": "W2535412909",
+    "doi": "10.1007/s11664-016-5009-0",
+    "title": "Experimental Analysis of Thermoelectric Heat Exchanger for Power Generation from Salinity Gradient Solar Pond Using Low-Grade Heat",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 13,
+    "open_access_url": "https://figshare.com/articles/journal_contribution/Experimental_analysis_of_thermoelectric_heat_exchanger_for_power_generation_from_salinity_gradient_solar_pond_using_low-grade_heat/27334521",
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family",
+     "search:2026-09-20-d-04-c-01/oa-precision"
+    ]
+   },
+   {
+    "openalex_id": "W3020729985",
+    "doi": "10.1016/j.renene.2020.04.043",
+    "title": "Performance comparison of two new cogeneration systems for freshwater and power production based on organic Rankine and Kalina cycles driven by salinity-gradient solar pond",
+    "year": 2020,
+    "type": "article",
+    "cited_by_count": 43,
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family",
+     "search:2026-09-20-d-04-c-01/oa-precision"
+    ]
+   },
+   {
+    "openalex_id": "W1956798589",
+    "doi": "10.11113/jt.v76.5527",
+    "title": "DESIGN AND CONSTRUCTION OF A SIMPLE THERMOELECTRIC GENERATOR HEAT EXCHANGER FOR POWER GENERATION FROM SALINITY GRADIENT SOLAR POND",
+    "year": 2015,
+    "type": "article",
+    "cited_by_count": 9,
+    "open_access_url": "https://doi.org/10.11113/jt.v76.5527",
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family",
+     "search:2026-09-20-d-04-c-01/oa-precision"
+    ]
+   },
+   {
+    "openalex_id": "W3118689310",
+    "doi": "10.1016/j.ijheatmasstransfer.2020.120844",
+    "title": "Thermo-economic evaluation of a combined Kalina cycle and humidification-dehumidification (HDH) desalination system integrated with thermoelectric generator and solar pond",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 71,
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family"
+    ]
+   },
+   {
+    "openalex_id": "W3080634759",
+    "doi": "10.31635/ccschem.020.202000366",
+    "title": "A Solar Thermoelectric Nanofluidic Device for Solar Thermal Energy Harvesting",
+    "year": 2020,
+    "type": "article",
+    "cited_by_count": 32,
+    "open_access_url": "https://doi.org/10.31635/ccschem.020.202000366",
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family",
+     "search:2026-09-20-d-04-c-01/oa-precision"
+    ]
+   },
+   {
+    "openalex_id": "W2064411575",
+    "doi": "10.4028/www.scientific.net/amm.393.809",
+    "title": "Experimental Investigation of Power Generation from Salinity Gradient Solar Pond Using Thermoelectric Generators for Renewable Energy Application",
+    "year": 2013,
+    "type": "article",
+    "cited_by_count": 4,
+    "open_access_url": "https://doi.org/10.4028/www.scientific.net/amm.393.809",
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family",
+     "search:2026-09-20-d-04-c-01/oa-precision"
+    ]
+   },
+   {
+    "openalex_id": "W3217457745",
+    "doi": "10.1016/j.jclepro.2021.129908",
+    "title": "Proposal of a new low-temperature thermodynamic cycle: 3E analysis and optimization of a solar pond integrated with fuel cell and thermoelectric generator",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 44,
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family"
+    ]
+   },
+   {
+    "openalex_id": "W2743065768",
+    "doi": "10.25439/rmt.27580770",
+    "title": "Power generation from salinity gradient solar ponds using thermoelectric generators",
+    "year": 2017,
+    "type": "article",
+    "cited_by_count": 2,
+    "open_access_url": "https://doi.org/10.25439/rmt.27580770",
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family",
+     "search:2026-09-20-d-04-c-01/oa-precision"
+    ]
+   },
+   {
+    "openalex_id": "W4205833121",
+    "doi": "10.1016/j.ijhydene.2021.12.102",
+    "title": "RETRACTED: Thermo-economic investigation on the hydrogen production through the stored solar energy in a salinity gradient solar pond: A comparative study by employing APC and ORC with zeotropic mixture",
+    "year": 2022,
+    "type": "article",
+    "cited_by_count": 17,
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family"
+    ]
+   },
+   {
+    "openalex_id": "W4317470189",
+    "doi": "10.1016/j.apenergy.2023.120681",
+    "title": "Synergy between ionic thermoelectric conversion and nanofluidic reverse electrodialysis for high power density generation",
+    "year": 2023,
+    "type": "article",
+    "cited_by_count": 19,
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family"
+    ]
+   },
+   {
+    "openalex_id": "W3185334562",
+    "doi": "10.1016/b978-0-12-821709-2.00004-9",
+    "title": "Nanogenerators: a new paradigm in blue energy harvesting",
+    "year": 2021,
+    "type": "book-chapter",
+    "cited_by_count": 5,
+    "open_access_url": "https://eartharxiv.org/repository/object/3212/download/6456/",
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family",
+     "search:2026-09-20-d-04-c-01/oa-precision"
+    ]
+   },
+   {
+    "openalex_id": "W4407853786",
+    "doi": "10.1016/j.energy.2025.135234",
+    "title": "Multi-aspect evaluation and optimization of a tri-generation scheme integrating a geothermal power plant with a salinity-gradient solar pond",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 8,
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family"
+    ]
+   },
+   {
+    "openalex_id": "W4206169222",
+    "doi": "10.1002/adma.202108560",
+    "title": "MXenes for Energy Harvesting",
+    "year": 2022,
+    "type": "article",
+    "cited_by_count": 316,
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family",
+     "search:2026-09-20-d-04-c-01/oa-precision"
+    ]
+   },
+   {
+    "openalex_id": "W7163922900",
+    "doi": "10.1002/admt.202501775",
+    "title": "Enhanced Energy Output Achieved in Ionic Thermoelectric Hydrogels via an Asymmetric Configuration",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family",
+     "search:2026-09-20-d-04-c-01/oa-precision"
+    ]
+   },
+   {
+    "openalex_id": "W4412161839",
+    "doi": "10.1038/s41467-025-61244-9",
+    "title": "Bioinspired photothermal zwitterionic fibrous membrane for high-efficiency solar desalination and electricity generation",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 79,
+    "open_access_url": "https://www.nature.com/articles/s41467-025-61244-9.pdf",
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family"
+    ]
+   },
+   {
+    "openalex_id": "W4291512744",
+    "doi": "10.3390/nano12162774",
+    "title": "Charge Regulation and pH Effects on Thermo-Osmotic Conversion",
+    "year": 2022,
+    "type": "article",
+    "cited_by_count": 10,
+    "open_access_url": "https://www.mdpi.com/2079-4991/12/16/2774/pdf?version=1660378866",
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family"
+    ]
+   },
+   {
+    "openalex_id": "W2177103758",
+    "doi": "10.1016/j.energy.2015.09.108",
+    "title": "Thermodynamic study of a distiller-electrochemical cell system for energy production from low temperature heat sources",
+    "year": 2015,
+    "type": "article",
+    "cited_by_count": 46,
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family",
+     "search:2026-09-20-d-04-c-01/oa-seebeck-effect",
+     "search:2026-09-20-d-04-c-01/oa-precision"
+    ]
+   },
+   {
+    "openalex_id": "W4405307772",
+    "doi": "10.1016/j.rser.2024.115211",
+    "title": "Electrical power generation and utilization in advanced desalination systems",
+    "year": 2024,
+    "type": "article",
+    "cited_by_count": 14,
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family",
+     "search:2026-09-20-d-04-c-01/oa-precision"
+    ]
+   },
+   {
+    "openalex_id": "W3012229496",
+    "doi": "10.1021/acsami.0c02214",
+    "title": "Thermal Dependence of the Mesoscale Ionic Diode: Modeling and Experimental Verification",
+    "year": 2020,
+    "type": "article",
+    "cited_by_count": 28,
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family",
+     "search:2026-09-20-d-04-c-01/oa-precision"
+    ]
+   },
+   {
+    "openalex_id": "W4395053642",
+    "doi": "10.1016/j.cej.2024.151600",
+    "title": "Two-dimensional MXenes: A route from synthesis to applications in self-powered IoT devices",
+    "year": 2024,
+    "type": "article",
+    "cited_by_count": 23,
+    "open_access_url": "https://portal.findresearcher.sdu.dk/da/publications/7074dc62-0cdc-453e-8b4a-88eca57b426e",
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family",
+     "search:2026-09-20-d-04-c-01/oa-precision"
+    ]
+   },
+   {
+    "openalex_id": "W4403511299",
+    "doi": "10.1073/pnas.2411613121",
+    "title": "Hydroelectric energy conversion of waste flows through hydroelectronic drag",
+    "year": 2024,
+    "type": "article",
+    "cited_by_count": 16,
+    "open_access_url": "https://www.pnas.org/doi/pdf/10.1073/pnas.2411613121",
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family"
+    ]
+   },
+   {
+    "openalex_id": "W2905220435",
+    "doi": "10.1007/978-3-319-98002-7_11",
+    "title": "Emerging Materials for Energy Harvesting",
+    "year": 2018,
+    "type": "book-chapter",
+    "cited_by_count": 13,
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family",
+     "search:2026-09-20-d-04-c-01/oa-precision"
+    ]
+   },
+   {
+    "openalex_id": "W4399902867",
+    "doi": "10.1016/j.ijhydene.2024.06.183",
+    "title": "Energy and exergy-economic performance comparison of wind, solar pond, and ocean thermal energy conversion systems for green hydrogen production",
+    "year": 2024,
+    "type": "article",
+    "cited_by_count": 19,
+    "open_access_url": "https://doi.org/10.1016/j.ijhydene.2024.06.183",
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family"
+    ]
+   },
+   {
+    "openalex_id": "W3213796837",
+    "doi": "10.1016/b978-0-08-102847-6.00009-7",
+    "title": "Coupling salinity gradient heat engines with power generation systems and industrial processes",
+    "year": 2021,
+    "type": "book-chapter",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family"
+    ]
+   },
+   {
+    "openalex_id": "W2892742061",
+    "doi": "10.1016/j.mset.2018.07.002",
+    "title": "Relative study of steel solar pond with sodium chloride and pebbles",
+    "year": 2018,
+    "type": "article",
+    "cited_by_count": 7,
+    "open_access_url": "https://www.sciencedirect.com/science/article/pii/S2589299118300375/pdf",
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family",
+     "search:2026-09-20-d-04-c-01/oa-precision"
+    ]
+   },
+   {
+    "openalex_id": "W4391960722",
+    "doi": "10.3390/polym16040555",
+    "title": "A Review of Polymer-Based Environment-Induced Nanogenerators: Power Generation Performance and Polymer Material Manipulations",
+    "year": 2024,
+    "type": "article",
+    "cited_by_count": 10,
+    "open_access_url": "https://www.mdpi.com/2073-4360/16/4/555/pdf?version=1708255571",
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family"
+    ]
+   },
+   {
+    "openalex_id": "W3183724227",
+    "doi": "10.31635/ccschem.021.202101125",
+    "title": "Bionic Thermosensation Inspired Temperature Gradient Sensor Based on Covalent Organic Framework Nanofluidic Membrane with Ultrahigh Sensitivity",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 38,
+    "open_access_url": "https://doi.org/10.31635/ccschem.021.202101125",
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family",
+     "search:2026-09-20-d-04-c-01/oa-seebeck-effect",
+     "search:2026-09-20-d-04-c-01/oa-precision"
+    ]
+   },
+   {
+    "openalex_id": "W2054685979",
+    "title": "Design and initial operation of a 400 m/sup 2/ solar pond",
+    "year": 1980,
+    "type": "article",
+    "cited_by_count": 4,
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family",
+     "search:2026-09-20-d-04-c-01/oa-precision"
+    ]
+   },
+   {
+    "openalex_id": "W2053144833",
+    "doi": "10.5293/kfma.2013.16.1.061",
+    "title": "Study on Water / Energy / Mutual-changing Technology by RO/PRO Process",
+    "year": 2013,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family",
+     "search:2026-09-20-d-04-c-01/oa-precision"
+    ]
+   },
+   {
+    "openalex_id": "W4417105216",
+    "doi": "10.1002/adfm.202526429",
+    "title": "Synergistic Water–Electricity Harvesting: From Multifunctional Solar‐Driven Interfacial Evaporator toward Sustainable Water–Electricity Cogeneration",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 4,
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family"
+    ]
+   },
+   {
+    "openalex_id": "W4415621260",
+    "doi": "10.1002/adfm.202522614",
+    "title": "A High‐Performance Integrated Solar‐Driven Evaporator‐Triboelectric Nanogenerator Hybrid System for Simultaneous Water and Electricity Harvesting",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 4,
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family",
+     "search:2026-09-20-d-04-c-01/oa-precision"
+    ]
+   },
+   {
+    "openalex_id": "W2966878787",
+    "doi": "10.1007/s00603-019-01937-y",
+    "title": "Self-Potential Response in Laboratory Scale EGS Stimulation",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 5,
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family"
+    ]
+   },
+   {
+    "openalex_id": "W4367321850",
+    "doi": "10.18280/mmep.100217",
+    "title": "Performance of Solar Pond Integrated with Thermoelectric Generator: A Theoretical Study",
+    "year": 2023,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://www.iieta.org/download/file/fid/95360",
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family"
+    ]
+   },
+   {
+    "openalex_id": "W7133358043",
+    "doi": "10.1016/j.apenergy.2026.127516",
+    "title": "Hybrid solar-driven interfacial evaporation systems for water-energy nexus: recent advances in freshwater and energy sustainability",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 4,
+    "open_access_url": "https://doi.org/10.1016/j.apenergy.2026.127516",
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family"
+    ]
+   },
+   {
+    "openalex_id": "W2610391713",
+    "title": "Experimental Study on Portable Mini Solar Pond Using Salt and Pebbles",
+    "year": 2017,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family",
+     "search:2026-09-20-d-04-c-01/oa-precision"
+    ]
+   },
+   {
+    "openalex_id": "W2526759571",
+    "doi": "10.25560/9152",
+    "title": "Free and Confined Buoyant Flows",
+    "year": 2011,
+    "type": "article",
+    "cited_by_count": 3,
+    "open_access_url": "http://hdl.handle.net/10044/1/9152",
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family",
+     "search:2026-09-20-d-04-c-01/oa-precision"
+    ]
+   },
+   {
+    "openalex_id": "W1485429518",
+    "title": "RO/PRO 공정에 의한 물/에너지/상호변환기술에 관한 연구",
+    "year": 2013,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family",
+     "search:2026-09-20-d-04-c-01/oa-precision"
+    ]
+   },
+   {
+    "openalex_id": "W4380904652",
+    "doi": "10.1016/b978-0-12-818022-8.00007-7",
+    "title": "Other technologies",
+    "year": 2023,
+    "type": "book-chapter",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family",
+     "search:2026-09-20-d-04-c-01/oa-precision"
+    ]
+   },
+   {
+    "openalex_id": "W4417421133",
+    "doi": "10.1093/ce/zkaf074",
+    "title": "Turning riverbeds into power sources: the untapped energy potential of alluvial soils",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.1093/ce/zkaf074",
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family"
+    ]
+   },
+   {
+    "openalex_id": "W4380904686",
+    "doi": "10.1016/b978-0-12-818022-8.00006-5",
+    "title": "Summary and future outlook",
+    "year": 2023,
+    "type": "book-chapter",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family",
+     "search:2026-09-20-d-04-c-01/oa-precision"
+    ]
+   },
+   {
+    "openalex_id": "W4403771778",
+    "doi": "10.1016/b978-0-443-21691-6.00013-5",
+    "title": "Nanoengineering low-dimensional materials for energy harvesting",
+    "year": 2024,
+    "type": "book-chapter",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family",
+     "search:2026-09-20-d-04-c-01/oa-precision"
+    ]
+   },
+   {
+    "openalex_id": "W4415727259",
+    "doi": "10.1016/j.energy.2025.139124",
+    "title": "Multi-stage solar energy utilization through perovskite-silicon tandem structures integrated with a capacitive salinity/heat engine",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family"
+    ]
+   },
+   {
+    "openalex_id": "W3214376401",
+    "doi": "10.4028/www.scientific.net/aef.43.59",
+    "title": "Experimental Investigations on Salt Gradient Solar Pond with Additional Non-Convective Zone for Improved Thermal Performance and Stability",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-20-d-04-c-01/oa-family",
+     "search:2026-09-20-d-04-c-01/oa-precision"
+    ]
+   }
+  ],
+  "screening_status": "not-reviewed",
+  "result": "inconclusive",
+  "notes": "Automated OpenAlex title/abstract queries; the result list is frozen for a reviewer and nothing here has been read for a qualifying demonstration."
  }
 ]
