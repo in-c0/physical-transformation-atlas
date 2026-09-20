@@ -1,7 +1,17 @@
+import Link from "next/link";
 import type { Source } from "@pta/schema";
+import { sourceHref } from "@/lib/format";
 import styles from "./EvidenceList.module.css";
 
-export type Verification = Record<string, { verified: boolean; checked_at: string; crossref_title?: string; note?: string }>;
+export type Verification = Record<
+  string,
+  {
+    verified: boolean;
+    checked_at: string;
+    crossref_title?: string;
+    note?: string;
+  }
+>;
 
 export function EvidenceList({ sources, verification = {}, numbering }: { sources: Source[]; verification?: Verification; numbering?: (id: string) => number; startAt?: number }) {
   if (sources.length === 0) return <p className="t-data secondary">No source recorded.</p>;
@@ -43,6 +53,10 @@ export function EvidenceList({ sources, verification = {}, numbering }: { source
                   </>
                 )}
                 {!s.doi && !s.url && <span> · {s.type}, no DOI</span>}
+                {" · "}
+                <Link href={sourceHref(s.id)} aria-label={`Open the record for ${s.id}`}>
+                  record
+                </Link>
               </div>
             </div>
           </li>

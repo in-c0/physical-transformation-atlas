@@ -128,6 +128,11 @@ export function n(x: number): string {
   return x.toLocaleString("en-AU");
 }
 
+/** Page href for a claim id (claim:slug → /claim/slug). */
+export const claimHref = (id: string) => `/claim/${id.split(":")[1]}`;
+/** Page href for a source id (source:slug → /source/slug). */
+export const sourceHref = (id: string) => `/source/${id.split(":")[1]}`;
+
 /** Page href for any entity id. */
 export function hrefFor(id: string): string {
   const [type, slug] = id.split(":");

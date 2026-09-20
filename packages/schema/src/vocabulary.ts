@@ -3,7 +3,20 @@
  * machine-readable vocabulary behind /api/vocabulary.json and docs/vocabulary.md; both are
  * generated from it, so the documentation cannot drift from the code.
  */
-import { AVAILABILITY, DOMAINS, ENERGY_FORMS, ENTITY_TYPES, EVIDENCE_STATUSES, FRONTIER_CLASSES, KNOWLEDGE_LEVELS, KNOWLEDGE_LEVEL_LABEL, MATRIX_CELL_STATUSES, PREDICATES, SEARCH_STATUSES, STRUCTURAL_KINDS } from "@pta/schema";
+import {
+  AVAILABILITY,
+  DOMAINS,
+  ENERGY_FORMS,
+  ENTITY_TYPES,
+  EVIDENCE_STATUSES,
+  FRONTIER_CLASSES,
+  KNOWLEDGE_LEVELS,
+  KNOWLEDGE_LEVEL_LABEL,
+  MATRIX_CELL_STATUSES,
+  PREDICATES,
+  SEARCH_STATUSES,
+  STRUCTURAL_KINDS,
+} from "@pta/schema";
 
 export interface VocabularyTerm {
   id: string;
@@ -156,7 +169,8 @@ export const VOCABULARY: VocabularyEnum[] = [
       composition: "two or more conversion phenomena with a real handoff; the only kind the frontier treats as a fresh composition",
       "known-device-likely": "every step already appears in one recorded device pathway, so the route most likely restates that device",
       "energy-backtracking": "the energy-form sequence returns to a form it already left",
-      "representation-dominated": "a shorter route with the same source, sink form and an ordered subset of its phenomena exists with no more mechanism seams or energy transitions; the field dominated_by names it",
+      "representation-dominated":
+        "a shorter route with the same source, sink form and an ordered subset of its phenomena exists with no more mechanism seams or energy transitions; the field dominated_by names it",
       "representation-equivalent": "same mechanism core (source, ordered phenomena, sink form) as a recorded pathway, spelled with different claims",
       atomic: "fewer than two conversion phenomena; nothing to compose",
     }),
@@ -193,10 +207,22 @@ export const VOCABULARY: VocabularyEnum[] = [
     name: "check.result",
     used_in: ["paths[].checks[].result"],
     terms: [
-      { id: "pass", definition: "the check examined the recorded data and found no problem" },
-      { id: "fail", definition: "the check found a contradiction in the recorded data" },
-      { id: "unresolved", definition: "the data needed to decide is partly present" },
-      { id: "unknown", definition: "none of the data needed to decide is recorded yet" },
+      {
+        id: "pass",
+        definition: "the check examined the recorded data and found no problem",
+      },
+      {
+        id: "fail",
+        definition: "the check found a contradiction in the recorded data",
+      },
+      {
+        id: "unresolved",
+        definition: "the data needed to decide is partly present",
+      },
+      {
+        id: "unknown",
+        definition: "none of the data needed to decide is recorded yet",
+      },
     ],
   },
 ];

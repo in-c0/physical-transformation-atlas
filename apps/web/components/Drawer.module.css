@@ -63,3 +63,5 @@
   .drawer { flex: none; width: 100%; border-left: 0; border-top: var(--border-strong); border-bottom: var(--border-strong); animation: none; }
   .body { max-height: none; overflow: visible; }
 }
+.claimLine .recordLink { font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-secondary); white-space: nowrap; text-decoration: underline; text-underline-offset: 2px; }
+.claimLine .recordLink:hover { color: var(--ink); }

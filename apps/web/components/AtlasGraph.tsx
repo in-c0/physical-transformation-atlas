@@ -13,13 +13,7 @@ import { EvidenceList } from "./EvidenceList";
 import { pathTitle } from "./PathView";
 import styles from "./AtlasGraph.module.css";
 
-const GRAPH_TYPES: Entity["type"][] = [
-  "disequilibrium",
-  "phenomenon",
-  "carrier",
-  "output",
-  "coupling",
-];
+const GRAPH_TYPES: Entity["type"][] = ["disequilibrium", "phenomenon", "carrier", "output", "coupling"];
 const EDGE_COLOUR: Record<string, string> = {
   established: "#1b1a18",
   replicated: "#1b1a18",
@@ -47,31 +41,17 @@ const EDGE_DASH: Record<string, number[] | null> = {
 
 /** Animation duration honouring prefers-reduced-motion; every graph animation goes through here. */
 function graphDuration(ms: number): number {
-  return typeof window !== "undefined" &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    ? 0
-    : ms;
+  return typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : ms;
 }
 
-type Selection =
-  { kind: "entity"; id: string } | { kind: "claim"; id: string } | null;
+type Selection = { kind: "entity"; id: string } | { kind: "claim"; id: string } | null;
 
-export function AtlasGraph({
-  initial,
-  route,
-}: {
-  initial?: string;
-  route?: string;
-}) {
+export function AtlasGraph({ initial, route }: { initial?: string; route?: string }) {
   const atlas = useAtlas();
   const host = useRef<HTMLDivElement>(null);
   const cyRef = useRef<Core | null>(null);
-  const [sel, setSel] = useState<Selection>(
-    initial ? { kind: "entity", id: initial } : null,
-  );
-  const [types, setTypes] = useState<Set<Entity["type"]>>(
-    () => new Set(GRAPH_TYPES.filter((t) => t !== "coupling")),
-  );
+  const [sel, setSel] = useState<Selection>(initial ? { kind: "entity", id: initial } : null);
+  const [types, setTypes] = useState<Set<Entity["type"]>>(() => new Set(GRAPH_TYPES.filter((t) => t !== "coupling")));
   const [layoutDone, setLayoutDone] = useState(false);
   const [layoutMode, setLayoutMode] = useState<"layered" | "force">("layered");
 
@@ -91,17 +71,10 @@ export function AtlasGraph({
     const PHEN_X = [380, 580, 780, 980];
     const STEP = 34;
     const byType = new Map<string, Entity[]>();
-    for (const e of g.entities)
-      if (types.has(e.type))
-        byType.set(e.type, [...(byType.get(e.type) ?? []), e]);
+    for (const e of g.entities) if (types.has(e.type)) byType.set(e.type, [...(byType.get(e.type) ?? []), e]);
     const pos = new Map<string, { x: number; y: number }>();
     for (const [type, list] of byType) {
-      const sorted = [...list].sort(
-        (p, q) =>
-          (p.domain ?? "").localeCompare(q.domain ?? "") ||
-          (p.energy_form ?? "").localeCompare(q.energy_form ?? "") ||
-          p.name.localeCompare(q.name),
-      );
+      const sorted = [...list].sort((p, q) => (p.domain ?? "").localeCompare(q.domain ?? "") || (p.energy_form ?? "").localeCompare(q.energy_form ?? "") || p.name.localeCompare(q.name));
       if (type === "phenomenon") {
         const rows = Math.ceil(sorted.length / PHEN_X.length);
         const height = (rows - 1) * STEP;
@@ -113,9 +86,7 @@ export function AtlasGraph({
         );
       } else {
         const height = (sorted.length - 1) * STEP;
-        sorted.forEach((e, i) =>
-          pos.set(e.id, { x: COL_X[type], y: i * STEP - height / 2 }),
-        );
+        sorted.forEach((e, i) => pos.set(e.id, { x: COL_X[type], y: i * STEP - height / 2 }));
       }
     }
     const nodes: ElementDefinition[] = g.entities
@@ -126,13 +97,7 @@ export function AtlasGraph({
       }));
     const present = new Set(nodes.map((n) => n.data.id));
     const edges: ElementDefinition[] = g.claims
-      .filter(
-        (c) =>
-          ((PROCESS_PREDICATES as readonly string[]).includes(c.predicate) ||
-            c.predicate === "member_of") &&
-          present.has(c.subject) &&
-          present.has(c.object),
-      )
+      .filter((c) => ((PROCESS_PREDICATES as readonly string[]).includes(c.predicate) || c.predicate === "member_of") && present.has(c.subject) && present.has(c.object))
       .map((c) => ({
         data: {
           id: c.id,
@@ -298,12 +263,8 @@ export function AtlasGraph({
               } as never),
       });
       cyRef.current = cy;
-      cy.on("tap", "node", (ev) =>
-        setSel({ kind: "entity", id: ev.target.id() }),
-      );
-      cy.on("tap", "edge", (ev) =>
-        setSel({ kind: "claim", id: ev.target.id() }),
-      );
+      cy.on("tap", "node", (ev) => setSel({ kind: "entity", id: ev.target.id() }));
+      cy.on("tap", "edge", (ev) => setSel({ kind: "claim", id: ev.target.id() }));
       cy.on("tap", (ev) => {
         if (ev.target === cy) setSel(null);
       });
@@ -317,20 +278,13 @@ export function AtlasGraph({
             for (const id of ids) eles = eles.union(cy!.getElementById(id));
             cy!.elements().difference(eles).addClass("dim");
             eles.addClass("route");
-            cy!.animate(
-              { fit: { eles, padding: 80 } },
-              { duration: graphDuration(280), easing: "ease-out-cubic" },
-            );
+            cy!.animate({ fit: { eles, padding: 80 } }, { duration: graphDuration(280), easing: "ease-out-cubic" });
             return;
           }
         }
         if (initial) {
           const n = cy!.getElementById(initial);
-          if (n.nonempty())
-            cy!.animate(
-              { fit: { eles: n.closedNeighborhood(), padding: 60 } },
-              { duration: graphDuration(280), easing: "ease-out-cubic" },
-            );
+          if (n.nonempty()) cy!.animate({ fit: { eles: n.closedNeighborhood(), padding: 60 } }, { duration: graphDuration(280), easing: "ease-out-cubic" });
         }
       });
     })();
@@ -352,16 +306,10 @@ export function AtlasGraph({
     cy.elements().removeClass("dim sel route");
     const target = cy.getElementById(sel.id);
     if (target.empty()) return;
-    const hood =
-      sel.kind === "entity"
-        ? target.closedNeighborhood()
-        : target.union(target.connectedNodes());
+    const hood = sel.kind === "entity" ? target.closedNeighborhood() : target.union(target.connectedNodes());
     cy.elements().difference(hood).addClass("dim");
     target.addClass("sel");
-    cy.animate(
-      { fit: { eles: hood, padding: 80 } },
-      { duration: graphDuration(280), easing: "ease-out-cubic" },
-    );
+    cy.animate({ fit: { eles: hood, padding: 80 } }, { duration: graphDuration(280), easing: "ease-out-cubic" });
   }, [sel, layoutDone, route]);
 
   const toggleType = (t: Entity["type"]) =>
@@ -378,13 +326,7 @@ export function AtlasGraph({
         <div className={styles.toolbar}>
           <span className="label">Show</span>
           {GRAPH_TYPES.map((t) => (
-            <button
-              key={t}
-              type="button"
-              className={`${styles.chip} ${types.has(t) ? styles.chipOn : ""}`}
-              aria-pressed={types.has(t) ? "true" : "false"}
-              onClick={() => toggleType(t)}
-            >
+            <button key={t} type="button" className={`${styles.chip} ${types.has(t) ? styles.chipOn : ""}`} aria-pressed={types.has(t) ? "true" : "false"} onClick={() => toggleType(t)}>
               {t}
             </button>
           ))}
@@ -412,76 +354,43 @@ export function AtlasGraph({
             className={styles.chip}
             onClick={() => {
               setSel(null);
-              cyRef.current?.animate(
-                { fit: { eles: cyRef.current.elements(), padding: 30 } },
-                { duration: graphDuration(280), easing: "ease-out-cubic" },
-              );
+              cyRef.current?.animate({ fit: { eles: cyRef.current.elements(), padding: 30 } }, { duration: graphDuration(280), easing: "ease-out-cubic" });
             }}
           >
             reset view
           </button>
           {route && atlas.status === "ready" && atlas.index.path.get(route) && (
             <span className="t-data" style={{ marginLeft: 8 }}>
-              route {route} highlighted ·{" "}
-              <Link href={`/path/${route.slice(2)}`}>open path</Link>
+              route {route} highlighted · <Link href={`/path/${route.slice(2)}`}>open path</Link>
             </span>
           )}
           <span className={`t-micro secondary ${styles.legend}`}>
-            ■ disequilibrium · ● phenomenon · ◆ carrier · ⬢ output · ▭ coupling
-            family · edge: solid established · long dash demonstrated · dash
-            theoretical · short dash disputed · dotted contradicted
+            ■ disequilibrium · ● phenomenon · ◆ carrier · ⬢ output · ▭ coupling family · edge: solid established · long dash demonstrated · dash theoretical · short dash disputed · dotted contradicted
           </span>
         </div>
         <div className={styles.canvasWrap}>
-          {atlas.status === "loading" && (
-            <div className={styles.state}>Loading atlas index…</div>
-          )}
+          {atlas.status === "loading" && <div className={styles.state}>Loading atlas index…</div>}
           {atlas.status === "error" && (
             <div className={styles.state}>
               Atlas data could not be loaded.{" "}
-              <button
-                type="button"
-                className={ds.linkBtn}
-                onClick={atlas.retry}
-              >
+              <button type="button" className={ds.linkBtn} onClick={atlas.retry}>
                 Retry
               </button>
             </div>
           )}
-          {atlas.status === "ready" && (
-            <GraphNavigator
-              index={atlas.index}
-              types={types}
-              selected={sel}
-              onSelect={(id) => setSel({ kind: "entity", id })}
-            />
-          )}
+          {atlas.status === "ready" && <GraphNavigator index={atlas.index} types={types} selected={sel} onSelect={(id) => setSel({ kind: "entity", id })} />}
           <div ref={host} className={styles.canvas} aria-hidden="true" />
         </div>
       </div>
       <span role="status" aria-live="polite" className="srOnly">
-        {sel && atlas.status === "ready"
-          ? sel.kind === "entity"
-            ? `${atlas.index.entity.get(sel.id)?.name ?? sel.id} selected`
-            : `claim ${sel.id} selected`
-          : ""}
+        {sel && atlas.status === "ready" ? (sel.kind === "entity" ? `${atlas.index.entity.get(sel.id)?.name ?? sel.id} selected` : `claim ${sel.id} selected`) : ""}
       </span>
       {sel &&
         atlas.status === "ready" &&
         (sel.kind === "entity" ? (
-          <EntityDrawer
-            id={sel.id}
-            index={atlas.index}
-            onClose={() => setSel(null)}
-            onSelect={(id) => setSel({ kind: "entity", id })}
-            onSelectClaim={(id) => setSel({ kind: "claim", id })}
-          />
+          <EntityDrawer id={sel.id} index={atlas.index} onClose={() => setSel(null)} onSelect={(id) => setSel({ kind: "entity", id })} onSelectClaim={(id) => setSel({ kind: "claim", id })} />
         ) : (
-          <ClaimDrawer
-            id={sel.id}
-            index={atlas.index}
-            onClose={() => setSel(null)}
-          />
+          <ClaimDrawer id={sel.id} index={atlas.index} onClose={() => setSel(null)} />
         ))}
     </div>
   );
@@ -491,76 +400,30 @@ export function AtlasGraph({
  * The keyboard and screen-reader route into the graph: the canvas is a raster, so every node is
  * also reachable from this list. Same selection state as tapping a node.
  */
-function GraphNavigator({
-  index,
-  types,
-  selected,
-  onSelect,
-}: {
-  index: AtlasIndex;
-  types: Set<Entity["type"]>;
-  selected: Selection;
-  onSelect: (id: string) => void;
-}) {
+function GraphNavigator({ index, types, selected, onSelect }: { index: AtlasIndex; types: Set<Entity["type"]>; selected: Selection; onSelect: (id: string) => void }) {
   const [q, setQ] = useState("");
   const listId = useId();
   const entities = useMemo(() => {
     const needle = q.trim().toLowerCase();
     return index.graph.entities
       .filter((e) => types.has(e.type))
-      .filter(
-        (e) =>
-          !needle ||
-          e.name.toLowerCase().includes(needle) ||
-          e.id.toLowerCase().includes(needle),
-      )
-      .sort(
-        (a, b) =>
-          GRAPH_TYPES.indexOf(a.type) - GRAPH_TYPES.indexOf(b.type) ||
-          a.name.localeCompare(b.name),
-      );
+      .filter((e) => !needle || e.name.toLowerCase().includes(needle) || e.id.toLowerCase().includes(needle))
+      .sort((a, b) => GRAPH_TYPES.indexOf(a.type) - GRAPH_TYPES.indexOf(b.type) || a.name.localeCompare(b.name));
   }, [index, types, q]);
   const shown = entities.slice(0, 60);
   return (
     <details className={styles.nav}>
       <summary className={styles.navSummary}>Navigate nodes</summary>
-      <p className="srOnly">
-        The graph itself is a visual rendering. Select a node here to open its
-        record; arrow keys and Enter work in the list.
-      </p>
-      <input
-        type="search"
-        className={styles.navSearch}
-        value={q}
-        onChange={(e) => setQ(e.target.value)}
-        placeholder="Filter nodes"
-        aria-label="Filter graph nodes"
-        aria-controls={listId}
-      />
-      <div
-        className="t-micro secondary"
-        role="status"
-        aria-live="polite"
-        aria-atomic="true"
-      >
+      <p className="srOnly">The graph itself is a visual rendering. Select a node here to open its record; arrow keys and Enter work in the list.</p>
+      <input type="search" className={styles.navSearch} value={q} onChange={(e) => setQ(e.target.value)} placeholder="Filter nodes" aria-label="Filter graph nodes" aria-controls={listId} />
+      <div className="t-micro secondary" role="status" aria-live="polite" aria-atomic="true">
         {entities.length} node{entities.length === 1 ? "" : "s"}
-        {entities.length > shown.length
-          ? ` · first ${shown.length} shown, keep typing to narrow`
-          : ""}
+        {entities.length > shown.length ? ` · first ${shown.length} shown, keep typing to narrow` : ""}
       </div>
       <ul id={listId} className={styles.navList} aria-label="Graph nodes">
         {shown.map((e) => (
           <li key={e.id}>
-            <button
-              type="button"
-              className={styles.navItem}
-              aria-current={
-                selected?.kind === "entity" && selected.id === e.id
-                  ? "true"
-                  : undefined
-              }
-              onClick={() => onSelect(e.id)}
-            >
+            <button type="button" className={styles.navItem} aria-current={selected?.kind === "entity" && selected.id === e.id ? "true" : undefined} onClick={() => onSelect(e.id)}>
               <span className="t-micro secondary">{e.type}</span> {e.name}
             </button>
           </li>
@@ -570,45 +433,18 @@ function GraphNavigator({
   );
 }
 
-function EntityDrawer({
-  id,
-  index,
-  onClose,
-  onSelect,
-  onSelectClaim,
-}: {
-  id: string;
-  index: AtlasIndex;
-  onClose: () => void;
-  onSelect: (id: string) => void;
-  onSelectClaim: (id: string) => void;
-}) {
+function EntityDrawer({ id, index, onClose, onSelect, onSelectClaim }: { id: string; index: AtlasIndex; onClose: () => void; onSelect: (id: string) => void; onSelectClaim: (id: string) => void }) {
   const e = index.entity.get(id);
   if (!e) return null;
   const about = index.claimsAbout(id);
-  const process = about.filter((c: Claim) =>
-    (PROCESS_PREDICATES as readonly string[]).includes(c.predicate),
-  );
-  const other = about.filter(
-    (c: Claim) =>
-      !(PROCESS_PREDICATES as readonly string[]).includes(c.predicate),
-  );
+  const process = about.filter((c: Claim) => (PROCESS_PREDICATES as readonly string[]).includes(c.predicate));
+  const other = about.filter((c: Claim) => !(PROCESS_PREDICATES as readonly string[]).includes(c.predicate));
   const paths = index.pathsThrough(id);
-  const unsearched = paths.filter(
-    (p) =>
-      p.search_status === "not-searched" && p.frontier_class === "candidate",
-  );
+  const unsearched = paths.filter((p) => p.search_status === "not-searched" && p.frontier_class === "candidate");
   const sources = index.sourcesFor(about);
-  const conserve = index
-    .claimsFrom(id)
-    .filter((c: Claim) => c.predicate === "bounded_by");
+  const conserve = index.claimsFrom(id).filter((c: Claim) => c.predicate === "bounded_by");
   return (
-    <Drawer
-      label={e.type}
-      title={e.name}
-      subtitle={e.symbol ? `${e.symbol} · ${e.id}` : e.id}
-      onClose={onClose}
-    >
+    <Drawer label={e.type} title={e.name} subtitle={e.symbol ? `${e.symbol} · ${e.id}` : e.id} onClose={onClose}>
       <DrawerSection title="Summary">
         <p className={ds.state}>{e.summary}</p>
         <p className="t-data secondary" style={{ marginTop: 6 }}>
@@ -620,28 +456,11 @@ function EntityDrawer({
           {process.map((c: Claim) => (
             <div key={c.id}>
               <ClaimLine claim={c} index={index} showConditions={false} />
-              <div
-                className={ds.bridgeActions}
-                style={{ marginLeft: 0, marginTop: 0, marginBottom: 4 }}
-              >
-                <button
-                  type="button"
-                  className={ds.linkBtn}
-                  onClick={() =>
-                    onSelect(c.subject === id ? c.object : c.subject)
-                  }
-                >
-                  focus{" "}
-                  {
-                    index.entity.get(c.subject === id ? c.object : c.subject)
-                      ?.name
-                  }
+              <div className={ds.bridgeActions} style={{ marginLeft: 0, marginTop: 0, marginBottom: 4 }}>
+                <button type="button" className={ds.linkBtn} onClick={() => onSelect(c.subject === id ? c.object : c.subject)}>
+                  focus {index.entity.get(c.subject === id ? c.object : c.subject)?.name}
                 </button>
-                <button
-                  type="button"
-                  className={ds.linkBtn}
-                  onClick={() => onSelectClaim(c.id)}
-                >
+                <button type="button" className={ds.linkBtn} onClick={() => onSelectClaim(c.id)}>
                   open claim
                 </button>
               </div>
@@ -654,12 +473,8 @@ function EntityDrawer({
           <ul className={ds.conditions}>
             {conserve.map((c: Claim) => (
               <li key={c.id}>
-                <Link href={hrefFor(c.object)}>
-                  {index.entity.get(c.object)?.name}
-                </Link>
-                {index.entity.get(c.object)?.bound
-                  ? ` — ${index.entity.get(c.object)?.bound}`
-                  : ""}
+                <Link href={hrefFor(c.object)}>{index.entity.get(c.object)?.name}</Link>
+                {index.entity.get(c.object)?.bound ? ` — ${index.entity.get(c.object)?.bound}` : ""}
               </li>
             ))}
           </ul>
@@ -668,12 +483,7 @@ function EntityDrawer({
       <DrawerSection title="Other relations" count={other.length}>
         <div className={ds.list}>
           {other.map((c: Claim) => (
-            <ClaimLine
-              key={c.id}
-              claim={c}
-              index={index}
-              showConditions={false}
-            />
+            <ClaimLine key={c.id} claim={c} index={index} showConditions={false} />
           ))}
         </div>
       </DrawerSection>
@@ -685,48 +495,30 @@ function EntityDrawer({
                 {pathTitle(index, p)}
               </Link>
               <div className="t-micro secondary">
-                {p.established_steps}/{p.length} established ·{" "}
-                {FRONTIER_LABEL[p.frontier_class]}
+                {p.established_steps}/{p.length} established · {FRONTIER_LABEL[p.frontier_class]}
               </div>
             </li>
           ))}
         </ul>
         <p className="t-data secondary" style={{ marginTop: 6 }}>
-          Unsearched candidate compositions through this node:{" "}
-          {unsearched.length}
+          Unsearched candidate compositions through this node: {unsearched.length}
         </p>
       </DrawerSection>
       <DrawerSection title="Evidence" count={sources.length}>
-        <EvidenceList
-          sources={sources}
-          verification={index.graph.source_verification}
-        />
+        <EvidenceList sources={sources} verification={index.graph.source_verification} />
       </DrawerSection>
     </Drawer>
   );
 }
 
-function ClaimDrawer({
-  id,
-  index,
-  onClose,
-}: {
-  id: string;
-  index: AtlasIndex;
-  onClose: () => void;
-}) {
+function ClaimDrawer({ id, index, onClose }: { id: string; index: AtlasIndex; onClose: () => void }) {
   const c = index.claim.get(id);
   if (!c) return null;
   const s = index.entity.get(c.subject);
   const o = index.entity.get(c.object);
   const sources = index.sourcesFor([c]);
   return (
-    <Drawer
-      label="Claim"
-      title={`${s?.name} → ${o?.name}`}
-      subtitle={`${c.id} · ${EVIDENCE_LABEL[c.status]}`}
-      onClose={onClose}
-    >
+    <Drawer label="Claim" title={`${s?.name} → ${o?.name}`} subtitle={`${c.id} · ${EVIDENCE_LABEL[c.status]}`} onClose={onClose}>
       <DrawerSection title="Relation">
         <ClaimLine claim={c} index={index} />
         {c.energy && (
@@ -742,10 +534,7 @@ function ClaimDrawer({
         </p>
       </DrawerSection>
       <DrawerSection title="Evidence" count={sources.length}>
-        <EvidenceList
-          sources={sources}
-          verification={index.graph.source_verification}
-        />
+        <EvidenceList sources={sources} verification={index.graph.source_verification} />
       </DrawerSection>
     </Drawer>
   );

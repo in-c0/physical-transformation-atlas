@@ -8,19 +8,12 @@ import styles from "./Checksum.module.css";
 /** One terse fact for the third line, when the detail carries one. */
 function fact(k: CheckResult): string {
   if (k.result === "unknown") return "not known";
-  if (k.id === "energy-form-continuity" && k.result === "pass")
-    return "continuous";
+  if (k.id === "energy-form-continuity" && k.result === "pass") return "continuous";
   if (k.id === "type-chain" && k.result === "pass") return "chain";
   if (k.id === "conservation" && k.result === "pass") return "ΔG < 0";
   if (k.id === "dimensional" && k.result === "pass") return "valid";
-  if (k.id === "boundary-compatibility" && k.result === "pass")
-    return "compatible";
-  if (
-    k.id === "boundary-compatibility" &&
-    k.result === "unresolved" &&
-    k.detail.startsWith("interface")
-  )
-    return "interface";
+  if (k.id === "boundary-compatibility" && k.result === "pass") return "compatible";
+  if (k.id === "boundary-compatibility" && k.result === "unresolved" && k.detail.startsWith("interface")) return "interface";
   if (k.id === "thermodynamic-bound") {
     const m = k.detail.match(/≤ ([\d.]+%)/);
     if (m) return `η ≤ ${m[1]}`;
@@ -35,15 +28,7 @@ function fact(k: CheckResult): string {
   return "—";
 }
 
-export function Checksum({
-  checks,
-  claims,
-  compact = false,
-}: {
-  checks: CheckResult[];
-  claims?: string[];
-  compact?: boolean;
-}) {
+export function Checksum({ checks, claims, compact = false }: { checks: CheckResult[]; claims?: string[]; compact?: boolean }) {
   const [open, setOpen] = useState<string | null>(null);
   const active = checks.find((k) => k.id === open);
   const detailId = useId();
@@ -72,20 +57,12 @@ export function Checksum({
         ))}
       </div>
       {active && (
-        <div
-          className={styles.detail}
-          id={detailId}
-          role="region"
-          aria-label={`${CHECK_NAME[active.id]} details`}
-        >
+        <div className={styles.detail} id={detailId} role="region" aria-label={`${CHECK_NAME[active.id]} details`}>
           <dl>
             <dt className="label">Check</dt>
             <dd>{CHECK_NAME[active.id]}</dd>
             <dt className="label">Result</dt>
-            <dd
-              className={`check-${active.result}`}
-              style={{ color: `var(--check-${active.result})` }}
-            >
+            <dd className={`check-${active.result}`} style={{ color: `var(--check-${active.result})` }}>
               {active.result}
             </dd>
             <dt className="label">Basis</dt>

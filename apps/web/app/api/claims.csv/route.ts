@@ -2,7 +2,25 @@ import { atlas } from "@/lib/data";
 
 export const dynamic = "force-static";
 
-const COLUMNS = ["id", "subject", "predicate", "object", "status", "knowledge_level", "energy_input", "energy_output", "energy_dissipation", "conditions", "condition_tags", "evidence", "relation_formula", "relation_coefficient_unit", "last_reviewed", "canonical", "notes"] as const;
+const COLUMNS = [
+  "id",
+  "subject",
+  "predicate",
+  "object",
+  "status",
+  "knowledge_level",
+  "energy_input",
+  "energy_output",
+  "energy_dissipation",
+  "conditions",
+  "condition_tags",
+  "evidence",
+  "relation_formula",
+  "relation_coefficient_unit",
+  "last_reviewed",
+  "canonical",
+  "notes",
+] as const;
 
 const cell = (v: unknown): string => {
   const s = v === undefined || v === null ? "" : String(v);
@@ -35,5 +53,7 @@ export function GET() {
       .join(","),
   );
   const body = [COLUMNS.join(","), ...rows].join("\n") + "\n";
-  return new Response(body, { headers: { "content-type": "text/csv; charset=utf-8" } });
+  return new Response(body, {
+    headers: { "content-type": "text/csv; charset=utf-8" },
+  });
 }

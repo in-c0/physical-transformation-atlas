@@ -34,6 +34,8 @@ const PAGES = [
   "/e/disequilibrium/temperature-gradient",
   "/path/d4b83f7f17",
   "/path/87c18f5e4c",
+  "/claim/seebeck-drives",
+  "/source/seebeck-1826",
 ];
 const VIEWPORTS = [
   { name: "desktop", width: 1440, height: 900, mobile: false },
@@ -42,10 +44,7 @@ const VIEWPORTS = [
 
 // axe-core runs once per page at the desktop width: WCAG 2.x A/AA rules, serious and critical
 // violations fail the run. Loop-3 pass 6 made this a regression gate rather than an audit.
-const axeSource = await readFile(
-  join(here, "..", "node_modules", "axe-core", "axe.min.js"),
-  "utf8",
-);
+const axeSource = await readFile(join(here, "..", "node_modules", "axe-core", "axe.min.js"), "utf8");
 const AXE_TAGS = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"];
 const edge = await launchEdge({ args: ["--window-size=1440,900"] });
 const problems = [];
@@ -79,8 +78,7 @@ try {
         });
       })()`);
       const meta = JSON.parse(info);
-      const slug =
-        path.replace(/[^a-z0-9]+/gi, "-").replace(/^-|-$/g, "") || "home";
+      const slug = path.replace(/[^a-z0-9]+/gi, "-").replace(/^-|-$/g, "") || "home";
       const png = await tab.screenshot();
       const file = join(outDir, `${vp.name}-${slug}.png`);
       await writeFile(file, png);
@@ -94,18 +92,14 @@ try {
         for (const v of axe) {
           const line = `${path}: ${v.id} (${v.impact}) ×${v.count} at ${v.target} — ${v.help}`;
           axeSummary.push(line);
-          if (v.impact === "serious" || v.impact === "critical")
-            problems.push(`axe ${line}`);
+          if (v.impact === "serious" || v.impact === "critical") problems.push(`axe ${line}`);
         }
       }
+      // A record page that fell through to the 404 page carries the bare site title; catch it.
+      if (path !== "/" && meta.title === "Physical Transformation Atlas") problems.push(`${vp.name} ${path}: not found (bare site title)`);
       const overflow = meta.scrollWidth > meta.innerWidth + 1;
-      if (overflow)
-        problems.push(
-          `${vp.name} ${path}: horizontal overflow ${meta.scrollWidth} > ${meta.innerWidth}`,
-        );
-      console.log(
-        `${vp.name.padEnd(7)} ${path.padEnd(42)} title="${meta.title}" cells=${meta.cells} drawer=${meta.drawer} overflow=${overflow ? "YES" : "no"} fonts=${meta.fonts.join("|")}`,
-      );
+      if (overflow) problems.push(`${vp.name} ${path}: horizontal overflow ${meta.scrollWidth} > ${meta.innerWidth}`);
+      console.log(`${vp.name.padEnd(7)} ${path.padEnd(42)} title="${meta.title}" cells=${meta.cells} drawer=${meta.drawer} overflow=${overflow ? "YES" : "no"} fonts=${meta.fonts.join("|")}`);
       await tab.close();
     }
   }

@@ -65,9 +65,7 @@ try {
         lastRow: Array.from(document.querySelectorAll('[role=rowheader]')).at(-1)?.getAttribute('aria-label')?.split(' ')[0]
       })`),
     );
-  await tab.eval(
-    `document.querySelector('[role=gridcell][tabindex="0"]').focus()`,
-  );
+  await tab.eval(`document.querySelector('[role=gridcell][tabindex="0"]').focus()`);
   let s = await state();
   check("first cell focusable", s.active?.startsWith("D.01 × C.01"), s.active);
   await key("ArrowRight");
@@ -77,50 +75,26 @@ try {
   check("probe follows focus", s.probe?.includes("D.02 × C.02"), s.probe);
   await key("End");
   s = await state();
-  check(
-    "End moves to the last cell of the row",
-    s.active?.startsWith(`D.02 × ${s.lastCol}`),
-    `${s.active} (last col ${s.lastCol})`,
-  );
+  check("End moves to the last cell of the row", s.active?.startsWith(`D.02 × ${s.lastCol}`), `${s.active} (last col ${s.lastCol})`);
   await key("Home");
   s = await state();
-  check(
-    "Home moves to the first cell of the row",
-    s.active?.startsWith("D.02 × C.01"),
-    s.active,
-  );
+  check("Home moves to the first cell of the row", s.active?.startsWith("D.02 × C.01"), s.active);
   await key("End", 2); // ctrl
   s = await state();
-  check(
-    "Ctrl+End moves to the last cell of the grid",
-    s.active?.startsWith(`${s.lastRow} × ${s.lastCol}`),
-    `${s.active} (last ${s.lastRow} × ${s.lastCol})`,
-  );
+  check("Ctrl+End moves to the last cell of the grid", s.active?.startsWith(`${s.lastRow} × ${s.lastCol}`), `${s.active} (last ${s.lastRow} × ${s.lastCol})`);
   await key("Home", 2);
   s = await state();
-  check(
-    "Ctrl+Home moves to the first cell of the grid",
-    s.active?.startsWith("D.01 × C.01"),
-    s.active,
-  );
+  check("Ctrl+Home moves to the first cell of the grid", s.active?.startsWith("D.01 × C.01"), s.active);
   await key("ArrowDown");
   await key("ArrowRight");
   await key("ArrowRight", 2); // ctrl
   s = await state();
   const afterCtrl = s.active;
-  check(
-    "Ctrl+ArrowRight jumps to the next family",
-    afterCtrl !== "D.02 × C.02",
-    afterCtrl,
-  );
+  check("Ctrl+ArrowRight jumps to the next family", afterCtrl !== "D.02 × C.02", afterCtrl);
   await key("Enter");
   s = await state();
   check("Enter opens the drawer", s.drawer, `cell=${s.cell}`);
-  check(
-    "opening announces via role=status",
-    (s.status ?? "").includes("opened"),
-    s.status,
-  );
+  check("opening announces via role=status", (s.status ?? "").includes("opened"), s.status);
   check(
     "drawer is labelled by its h2",
     !!(await tab.eval(
@@ -131,11 +105,7 @@ try {
   check("URL carries ?cell=", !!s.cell && s.cell.startsWith("D.02:"), s.cell);
   await key("Escape");
   s = await state();
-  check(
-    "Escape closes the drawer and restores focus",
-    !s.drawer && s.active?.startsWith("D.02"),
-    s.active,
-  );
+  check("Escape closes the drawer and restores focus", !s.drawer && s.active?.startsWith("D.02"), s.active);
   await tab.close();
 } finally {
   await edge.close();

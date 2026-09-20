@@ -4,7 +4,43 @@
  */
 import type { Claim, CompiledPath, Entity, Graph, MatrixCell, Pathway, Source } from "@pta/schema";
 
-const STOP = new Set(["the", "and", "for", "with", "from", "into", "that", "this", "what", "which", "how", "can", "does", "are", "was", "were", "has", "have", "you", "your", "its", "than", "then", "when", "where", "about", "using", "use", "via", "any", "all", "one", "two", "energy", "effect"]);
+const STOP = new Set([
+  "the",
+  "and",
+  "for",
+  "with",
+  "from",
+  "into",
+  "that",
+  "this",
+  "what",
+  "which",
+  "how",
+  "can",
+  "does",
+  "are",
+  "was",
+  "were",
+  "has",
+  "have",
+  "you",
+  "your",
+  "its",
+  "than",
+  "then",
+  "when",
+  "where",
+  "about",
+  "using",
+  "use",
+  "via",
+  "any",
+  "all",
+  "one",
+  "two",
+  "energy",
+  "effect",
+]);
 
 export class AtlasIndex {
   readonly entity: Map<string, Entity>;
@@ -17,7 +53,16 @@ export class AtlasIndex {
   private bySubject = new Map<string, Claim[]>();
   private byObject = new Map<string, Claim[]>();
   private pathsByNode = new Map<string, CompiledPath[]>();
-  private searchDocs: { id: string; name: string; nameWords: string[]; textWords: string[]; type: string }[];
+  private pathsByClaim = new Map<string, CompiledPath[]>();
+  private claimsBySource = new Map<string, Claim[]>();
+  private pathwaysBySource = new Map<string, Pathway[]>();
+  private searchDocs: {
+    id: string;
+    name: string;
+    nameWords: string[];
+    textWords: string[];
+    type: string;
+  }[];
 
   constructor(public readonly graph: Graph) {
     this.entity = new Map(graph.entities.map((e) => [e.id, e]));
@@ -33,8 +78,19 @@ export class AtlasIndex {
     }
     for (const p of graph.paths) {
       for (const n of new Set(p.nodes)) this.pathsByNode.set(n, [...(this.pathsByNode.get(n) ?? []), p]);
+      for (const c of new Set(p.claims)) this.pathsByClaim.set(c, [...(this.pathsByClaim.get(c) ?? []), p]);
     }
-    const words = (s: string) => s.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+    for (const c of graph.claims) for (const s of new Set(c.evidence)) this.claimsBySource.set(s, [...(this.claimsBySource.get(s) ?? []), c]);
+    for (const p of graph.pathways) {
+      const cited = new Set<string>(p.evidence ?? []);
+      for (const m of p.performance?.measurements ?? []) for (const s of m.sources) cited.add(s);
+      for (const s of cited) this.pathwaysBySource.set(s, [...(this.pathwaysBySource.get(s) ?? []), p]);
+    }
+    const words = (s: string) =>
+      s
+        .toLowerCase()
+        .split(/[^a-z0-9]+/)
+        .filter(Boolean);
     this.searchDocs = graph.entities.map((e) => ({
       id: e.id,
       name: e.name.toLowerCase(),
@@ -55,6 +111,18 @@ export class AtlasIndex {
   }
   pathsThrough(id: string): CompiledPath[] {
     return this.pathsByNode.get(id) ?? [];
+  }
+  /** Every enumerated route that uses this claim as a step. */
+  pathsWithClaim(claimId: string): CompiledPath[] {
+    return this.pathsByClaim.get(claimId) ?? [];
+  }
+  /** Claims citing this source. */
+  claimsCiting(sourceId: string): Claim[] {
+    return this.claimsBySource.get(sourceId) ?? [];
+  }
+  /** Named pathways citing this source, in their evidence or a measurement. */
+  pathwaysCiting(sourceId: string): Pathway[] {
+    return this.pathwaysBySource.get(sourceId) ?? [];
   }
   /** Ids of entities one claim away from `id`. */
   neighbours(id: string): string[] {
@@ -81,12 +149,13 @@ export class AtlasIndex {
   sourcesFor(claims: Claim[]): Source[] {
     const seen = new Set<string>();
     const out: Source[] = [];
-    for (const c of claims) for (const s of c.evidence) {
-      if (seen.has(s)) continue;
-      seen.add(s);
-      const src = this.source.get(s);
-      if (src) out.push(src);
-    }
+    for (const c of claims)
+      for (const s of c.evidence) {
+        if (seen.has(s)) continue;
+        seen.add(s);
+        const src = this.source.get(s);
+        if (src) out.push(src);
+      }
     return out;
   }
   /**

@@ -11,21 +11,9 @@ import styles from "./Matrix.module.css";
 
 type Pos = { r: number; c: number };
 
-export function Matrix({
-  data,
-  density,
-  fill = false,
-  filters = false,
-}: {
-  data: MatrixPayload;
-  density: "home" | "full";
-  fill?: boolean;
-  filters?: boolean;
-}) {
+export function Matrix({ data, density, fill = false, filters = false }: { data: MatrixPayload; density: "home" | "full"; fill?: boolean; filters?: boolean }) {
   const { rows, cols } = data;
-  const [shown, setShown] = useState<Set<MatrixCellStatus>>(
-    () => new Set(MATRIX_CELL_STATUSES),
-  );
+  const [shown, setShown] = useState<Set<MatrixCellStatus>>(() => new Set(MATRIX_CELL_STATUSES));
   const toggleStatus = (s: MatrixCellStatus) =>
     setShown((prev) => {
       const next = new Set(prev);
@@ -38,10 +26,7 @@ export function Matrix({
     for (const c of data.cells) m.set(`${c.row}|${c.col}`, c);
     return m;
   }, [data]);
-  const cell = useCallback(
-    (r: number, c: number) => cellAt.get(`${rows[r].id}|${cols[c].id}`)!,
-    [cellAt, rows, cols],
-  );
+  const cell = useCallback((r: number, c: number) => cellAt.get(`${rows[r].id}|${cols[c].id}`)!, [cellAt, rows, cols]);
 
   const [focus, setFocus] = useState<Pos>({ r: 0, c: 0 });
   const [hover, setHover] = useState<Pos | null>(null);
@@ -69,11 +54,7 @@ export function Matrix({
       setSelected(p);
       setBridgeIdx(0);
       const url = new URL(window.location.href);
-      if (p)
-        url.searchParams.set(
-          "cell",
-          `${rows[p.r].address}:${cols[p.c].address}`,
-        );
+      if (p) url.searchParams.set("cell", `${rows[p.r].address}:${cols[p.c].address}`);
       else url.searchParams.delete("cell");
       window.history.replaceState(null, "", url.toString());
     },
@@ -86,11 +67,7 @@ export function Matrix({
     el?.focus({ preventScroll: false });
   }, []);
 
-  const familyEdge = (
-    i: number,
-    axis: { family: string }[],
-    dir: 1 | -1,
-  ): number => {
+  const familyEdge = (i: number, axis: { family: string }[], dir: 1 | -1): number => {
     const fam = axis[i].family;
     if (dir === 1) {
       let j = i;
@@ -135,9 +112,7 @@ export function Matrix({
         next = mod ? { r: 0, c: 0 } : { r, c: 0 };
         break;
       case "End":
-        next = mod
-          ? { r: rows.length - 1, c: cols.length - 1 }
-          : { r, c: cols.length - 1 };
+        next = mod ? { r: rows.length - 1, c: cols.length - 1 } : { r, c: cols.length - 1 };
         break;
       case "Enter":
       case " ":
@@ -200,44 +175,23 @@ export function Matrix({
   }, [cols]);
 
   // Home density fills the available width between 24×20 and 40×32; /matrix is fixed at 40×32.
-  const cellW =
-    density === "home"
-      ? "clamp(var(--matrix-cell-home-w), calc((100vw - var(--matrix-row-axis) - 2 * var(--gutter) - 12px) / var(--cols)), var(--matrix-cell-w))"
-      : "var(--matrix-cell-w)";
+  const cellW = density === "home" ? "clamp(var(--matrix-cell-home-w), calc((100vw - var(--matrix-row-axis) - 2 * var(--gutter) - 12px) / var(--cols)), var(--matrix-cell-w))" : "var(--matrix-cell-w)";
   const cellH =
-    density === "home"
-      ? "clamp(var(--matrix-cell-home-h), calc(0.8 * (100vw - var(--matrix-row-axis) - 2 * var(--gutter) - 12px) / var(--cols)), var(--matrix-cell-h))"
-      : "var(--matrix-cell-h)";
+    density === "home" ? "clamp(var(--matrix-cell-home-h), calc(0.8 * (100vw - var(--matrix-row-axis) - 2 * var(--gutter) - 12px) / var(--cols)), var(--matrix-cell-h))" : "var(--matrix-cell-h)";
 
   return (
-    <div
-      className={`${styles.wrap} ${selected ? styles.withDrawer : ""} ${fill ? styles.fill : ""}`}
-    >
+    <div className={`${styles.wrap} ${selected ? styles.withDrawer : ""} ${fill ? styles.fill : ""}`}>
       <div className={styles.main}>
         {filters && (
-          <div
-            className={styles.filters}
-            role="group"
-            aria-label="Show cells with status"
-          >
+          <div className={styles.filters} role="group" aria-label="Show cells with status">
             <span className="label">Show</span>
             {MATRIX_CELL_STATUSES.map((s) => (
-              <button
-                key={s}
-                type="button"
-                className={`${styles.filter} ${shown.has(s) ? styles.filterOn : ""}`}
-                aria-pressed={shown.has(s)}
-                onClick={() => toggleStatus(s)}
-              >
+              <button key={s} type="button" className={`${styles.filter} ${shown.has(s) ? styles.filterOn : ""}`} aria-pressed={shown.has(s)} onClick={() => toggleStatus(s)}>
                 <StatusMark status={s} />
                 <span>{CELL_STATUS_LABEL[s]}</span>
               </button>
             ))}
-            <button
-              type="button"
-              className={styles.filterReset}
-              onClick={() => setShown(new Set(MATRIX_CELL_STATUSES))}
-            >
+            <button type="button" className={styles.filterReset} onClick={() => setShown(new Set(MATRIX_CELL_STATUSES))}>
               all
             </button>
           </div>
@@ -248,12 +202,9 @@ export function Matrix({
             {rows[probe.r].address} × {cols[probe.c].address}
           </span>
           <span className={styles.probeNames}>
-            {rows[probe.r].name.toUpperCase()} →{" "}
-            {cols[probe.c].name.toUpperCase()}
+            {rows[probe.r].name.toUpperCase()} → {cols[probe.c].name.toUpperCase()}
           </span>
-          <span className={`${styles.probeStatus} st-${probeCell.status}`}>
-            {CELL_STATUS_SHORT[probeCell.status]}
-          </span>
+          <span className={`${styles.probeStatus} st-${probeCell.status}`}>{CELL_STATUS_SHORT[probeCell.status]}</span>
         </div>
         <div className={styles.scroller}>
           <div
@@ -273,25 +224,14 @@ export function Matrix({
             {/* Header row: corner + family bands + column headers. display:contents keeps them direct
                 grid children for layout while the a11y tree sees one row (axe aria-required-children). */}
             <div role="row" aria-rowindex={1} className={styles.row}>
-              <div
-                className={styles.corner}
-                role="columnheader"
-                aria-label="Driver rows by coupling columns"
-              >
+              <div className={styles.corner} role="columnheader" aria-label="Driver rows by coupling columns">
                 <span className="t-micro">DRIVER ↓ D.</span>
                 <span className="t-micro">COUPLING → C.</span>
               </div>
               <div className={styles.bands} aria-hidden="true">
                 {colBands.map((b) => (
-                  <div
-                    key={b.start}
-                    className={styles.band}
-                    style={{ gridColumn: `span ${b.span}` }}
-                    title={b.family.replace(/-/g, " ")}
-                  >
-                    {(density === "full" ? b.span >= 2 : b.span >= 3) && (
-                      <span>{b.family.replace(/-/g, " ")}</span>
-                    )}
+                  <div key={b.start} className={styles.band} style={{ gridColumn: `span ${b.span}` }} title={b.family.replace(/-/g, " ")}>
+                    {(density === "full" ? b.span >= 2 : b.span >= 3) && <span>{b.family.replace(/-/g, " ")}</span>}
                   </div>
                 ))}
               </div>
@@ -304,32 +244,19 @@ export function Matrix({
                     title={col.name}
                     aria-label={`${col.address} ${col.name}, ${col.family.replace(/-/g, " ")} family`}
                   >
-                    <span
-                      className={`address ${c === activeCol ? "active" : ""}`}
-                    >
-                      {density === "home" ? col.address.slice(2) : col.address}
-                    </span>
+                    <span className={`address ${c === activeCol ? "active" : ""}`}>{density === "home" ? col.address.slice(2) : col.address}</span>
                   </div>
                 ))}
               </div>
             </div>
             {rows.map((row, r) => (
-              <div
-                role="row"
-                key={row.id}
-                className={styles.row}
-                aria-rowindex={r + 2}
-              >
+              <div role="row" key={row.id} className={styles.row} aria-rowindex={r + 2}>
                 <div
                   role="rowheader"
                   className={`${styles.rowHead} ${r === activeRow ? styles.rowHeadActive : ""} ${r > 0 && rows[r - 1].family !== row.family ? styles.familyStartRow : ""}`}
                   aria-label={`${row.address} ${row.name}`}
                 >
-                  <span
-                    className={`address ${r === activeRow ? "active" : ""}`}
-                  >
-                    {row.address}
-                  </span>
+                  <span className={`address ${r === activeRow ? "active" : ""}`}>{row.address}</span>
                   <span className={styles.rowName}>{row.name}</span>
                 </div>
                 {cols.map((col, c) => {
@@ -343,12 +270,8 @@ export function Matrix({
                     r === activeRow ? styles.guideRow : "",
                     c === activeCol ? styles.guideCol : "",
                     isSel ? styles.selected : "",
-                    c > 0 && cols[c - 1].family !== col.family
-                      ? styles.familyStartCol
-                      : "",
-                    r > 0 && rows[r - 1].family !== row.family
-                      ? styles.familyStartRow
-                      : "",
+                    c > 0 && cols[c - 1].family !== col.family ? styles.familyStartCol : "",
+                    r > 0 && rows[r - 1].family !== row.family ? styles.familyStartRow : "",
                     cl.status === "insufficient" ? "hatch" : "",
                     shown.has(cl.status) ? "" : styles.dimmed,
                   ].join(" ");
@@ -377,9 +300,7 @@ export function Matrix({
                       }}
                     >
                       <StatusMark status={cl.status} />
-                      {wp && (
-                        <span className={styles.waypoint}>{wp.join("")}</span>
-                      )}
+                      {wp && <span className={styles.waypoint}>{wp.join("")}</span>}
                     </button>
                   );
                 })}
@@ -395,9 +316,7 @@ export function Matrix({
         </div>
       </div>
       <span role="status" aria-live="polite" className="srOnly">
-        {selected
-          ? `Cell ${rows[selected.r].address} × ${cols[selected.c].address} opened`
-          : ""}
+        {selected ? `Cell ${rows[selected.r].address} × ${cols[selected.c].address} opened` : ""}
       </span>
       {selected && (
         <CellDrawer

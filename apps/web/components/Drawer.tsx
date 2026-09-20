@@ -28,12 +28,7 @@ export function Drawer({
     return () => el?.removeEventListener("keydown", onKey);
   }, [onClose]);
   return (
-    <aside
-      ref={ref}
-      id={id}
-      className={styles.drawer}
-      aria-labelledby={titleId}
-    >
+    <aside ref={ref} id={id} className={styles.drawer} aria-labelledby={titleId}>
       <div className={styles.head}>
         <div className={styles.title}>
           <div className="label">{label}</div>
@@ -42,12 +37,7 @@ export function Drawer({
           </h2>
           {subtitle && <div className="t-data secondary">{subtitle}</div>}
         </div>
-        <button
-          type="button"
-          className={styles.close}
-          onClick={onClose}
-          aria-label={`Close ${label.toLowerCase()} drawer`}
-        >
+        <button type="button" className={styles.close} onClick={onClose} aria-label={`Close ${label.toLowerCase()} drawer`}>
           ESC
         </button>
       </div>
@@ -56,22 +46,12 @@ export function Drawer({
   );
 }
 
-export function DrawerSection({
-  title,
-  count,
-  children,
-}: {
-  title: string;
-  count?: number | string;
-  children: React.ReactNode;
-}) {
+export function DrawerSection({ title, count, children }: { title: string; count?: number | string; children: React.ReactNode }) {
   return (
     <section className={styles.section}>
       <div className={styles.sectionHead}>
         <h3 className="label">{title}</h3>
-        {count !== undefined && (
-          <span className={styles.count}>{String(count).padStart(2, "0")}</span>
-        )}
+        {count !== undefined && <span className={styles.count}>{String(count).padStart(2, "0")}</span>}
       </div>
       {children}
     </section>

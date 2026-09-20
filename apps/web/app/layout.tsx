@@ -27,20 +27,12 @@ export const metadata: Metadata = {
     default: "Physical Transformation Atlas",
     template: "%s · Physical Transformation Atlas",
   },
-  description:
-    "A live map of known and unexplored pathways for converting physical disequilibria into useful work.",
+  description: "A live map of known and unexplored pathways for converting physical disequilibria into useful work.",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="en"
-      className={`${serif.variable} ${sans.variable} ${mono.variable}`}
-    >
+    <html lang="en" className={`${serif.variable} ${sans.variable} ${mono.variable}`}>
       <body>
         <a href="#main-content" className="skipLink">
           Skip to main content

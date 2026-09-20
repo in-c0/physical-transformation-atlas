@@ -21,7 +21,7 @@ export function loadAtlas(): Promise<AtlasIndex> {
         }),
         fetch("/api/paths.json").then((r) => {
           if (!r.ok) throw new Error(`paths.json ${r.status}`);
-          return r.json() as Promise<CompiledPath[]>;
+          return r.json().then((j: { paths: CompiledPath[] }) => j.paths);
         }),
       ]);
       g.paths = p;
