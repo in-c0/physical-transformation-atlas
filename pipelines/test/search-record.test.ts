@@ -11,12 +11,22 @@ import { tmpdir } from "node:os";
 const root = resolve(import.meta.dirname, "..", "..");
 const first = parse(readFileSync(join(root, "data", "canonical", "searches", "2026-09-20-d-01-c-23.yaml"), "utf8"))[0];
 
-test("the first reviewed search record parses and is a conclusive positive with a qualifying hit", () => {
+test("the first reviewed search record parses: an honest partial whose physical hit is route-only and whose follow-up is completed", () => {
   const r = SearchRecord.parse(first);
-  assert.equal(r.result, "demonstration-found");
-  assert.equal(r.completeness, "conclusive-positive");
-  assert.ok(r.hits.some((h) => h.decision === "qualifies" && h.doi === "10.1039/D0NA00429D"));
-  assert.equal(r.follow_up?.canonical_claim_review, "needed");
+  assert.equal(r.result, "inconclusive");
+  assert.equal(r.completeness, "partial");
+  assert.ok(r.hits.some((h) => h.decision === "route-only" && h.doi === "10.1039/D0NA00429D"));
+  assert.ok(!r.hits.some((h) => h.decision === "qualifies"), "a route-only hit never qualifies a cell");
+  assert.equal(r.follow_up?.canonical_claim_review, "completed");
+});
+
+test("a route-only hit is recorded as a canonical coupling claim, never as a direct cell relation", () => {
+  const claims = parse(readFileSync(join(root, "data", "canonical", "claims", "pass3-gaps.yaml"), "utf8")) as { id: string; subject: string; predicate: string; object: string; status: string }[];
+  const c = claims.find((x) => x.id === "claim:thermo-osmosis-couples-streaming");
+  assert.ok(c, "the coupling claim exists");
+  assert.equal(c!.predicate, "couples_to");
+  assert.equal(c!.status, "demonstrated");
+  assert.ok(!claims.some((x) => x.subject === "disequilibrium:temperature-gradient" && x.object === "phenomenon:streaming-potential"), "no direct temperature-gradient → streaming-potential claim was manufactured");
 });
 
 /** Copy data/canonical into a scratch root with one extra search file, and run the loader on it. */

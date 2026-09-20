@@ -1075,6 +1075,14 @@
   authors: [K. Otsuka (ed.), C. M. Wayman (ed.)]
   year: 1998
   venue: Cambridge University Press
+- id: source:zhao-2020-thermo-nanofluidics
+  type: paper
+  title: "pH-regulated thermo-driven nanofluidics for nanoconfined mass transport and energy conversion"
+  authors: [X. Zhao, L. Li, W. Xie, Y. Qian, W. Chen, B. Niu, J. Chen, X.-Y. Kong, L. Jiang, L. Wen]
+  year: 2020
+  venue: "Nanoscale Advances 2, 4070–4076"
+  doi: 10.1039/D0NA00429D
+  notes: "Open access (PMC9419229). Found by the atlas's first reviewed search; recorded as the demonstration of thermo-osmosis coupling into the streaming potential."
 - id: source:straub-2016-toec
   type: paper
   title: "Harvesting low-grade heat energy using thermo-osmotic vapour transport through nanoporous membranes"

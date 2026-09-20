@@ -13,8 +13,12 @@ import { EvidenceList } from "./EvidenceList";
 import { AutomatedRunView, SearchRecordView, searchCompact } from "./SearchRecordView";
 import { CORE_CHECK_IDS } from "@pta/physics/definitions";
 
-/** Search terms a reviewer would use: row and column names plus their aliases, quoted. */
-function searchDraft(index: AtlasIndex, row: MatrixAxis, col: MatrixAxis): { engine: string; query: string; url: string } {
+/**
+ * The cell-search-v1 query bundle (data/canonical/searches/README.md): driver × family, driver × each
+ * member phenomenon, and a demonstration-precision query — the same bundle the runner and a reviewer
+ * use, built from the recorded aliases only.
+ */
+function searchDraft(index: AtlasIndex, row: MatrixAxis, col: MatrixAxis): { form: string; query: string; url: string }[] {
   const terms = (id: string) => {
     const e = index.entity.get(id);
     const names = [e?.name ?? id, ...(e?.aliases ?? [])].map((x) => x.replace(/\(.*?\)/g, "").trim()).filter((x) => x.length > 3 && /^[A-Za-z0-9 \-–]+$/.test(x));
@@ -27,9 +31,17 @@ function searchDraft(index: AtlasIndex, row: MatrixAxis, col: MatrixAxis): { eng
       ")"
     );
   };
-  const query = `${terms(row.id)} AND ${terms(col.id)}`;
-  const url = `https://api.openalex.org/works?filter=title_and_abstract.search:${encodeURIComponent(query)}&per-page=25&sort=cited_by_count:desc`;
-  return { engine: "openalex", query, url };
+  const url = (q: string) => `https://api.openalex.org/works?filter=title_and_abstract.search:${encodeURIComponent(q)},type:article|review|book-chapter&per-page=100&sort=relevance_score:desc`;
+  const D = terms(row.id);
+  const members = index
+    .claimsTo(col.id)
+    .filter((c) => c.predicate === "member_of")
+    .map((c) => c.subject);
+  const bundle = [{ form: "driver-family", query: `${D} AND ${terms(col.id)}` }];
+  for (const ph of members) bundle.push({ form: `driver-phenomenon · ${index.entity.get(ph)?.name ?? ph}`, query: `${D} AND ${terms(ph)}` });
+  const all = [col.id, ...members].map(terms).join(" OR ").replace(/[()]/g, "");
+  bundle.push({ form: "demonstration-precision", query: `${D} AND (${all}) AND (experiment OR experimental OR measured OR device OR prototype)` });
+  return bundle.map((b) => ({ ...b, url: url(b.query) }));
 }
 
 /** Observed materials per phenomenon of a bridge, from `observed_in` claims. */
@@ -331,16 +343,22 @@ export function CellDrawer({
         {showSearch && (
           <div id="cell-search-panel" style={{ marginTop: 8 }}>
             <p className={s.stateSecondary}>
-              A draft, not a record. Run it, read the hits, and only then add a reviewed entry to <code>data/canonical/searches</code>; automated hits never change a cell&apos;s status.
+              The cell-search-v1 bundle — a draft, not a record. A negative needs every query below on OpenAlex, Semantic Scholar and Google Scholar, every hit decided, and a reviewed entry in{" "}
+              <code>data/canonical/searches</code>; automated hits never change a cell&apos;s status.
             </p>
-            <p className="t-data" style={{ marginTop: 4, wordBreak: "break-word" }}>
-              {draft.engine} · {draft.query}
-            </p>
-            <p className="t-data" style={{ marginTop: 4 }}>
-              <a href={draft.url} target="_blank" rel="noopener" className={s.linkBtn}>
-                Run on OpenAlex
-              </a>
-            </p>
+            <ol className={s.conditions} style={{ marginTop: 6 }}>
+              {draft.map((q) => (
+                <li key={q.form}>
+                  <span className="t-micro secondary">{q.form}</span>
+                  <div className="t-data" style={{ wordBreak: "break-word" }}>
+                    {q.query}
+                  </div>
+                  <a href={q.url} target="_blank" rel="noopener" className={s.linkBtn}>
+                    Run on OpenAlex
+                  </a>
+                </li>
+              ))}
+            </ol>
           </div>
         )}
       </DrawerSection>

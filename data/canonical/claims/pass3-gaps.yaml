@@ -275,6 +275,25 @@
   evidence: [source:barragan-kjelstrup-2017-thermo-osmosis]
   handoff: { provides: [flow:liquid, flow:confined] }
   status: established
+# Thermo-osmotic flow in a charged nanochannel carries the double-layer counter-ions with it: the
+# first reviewed search (D.01 × C.23) found this composition demonstrated, not a direct relation.
+- id: claim:thermo-osmosis-couples-streaming
+  subject: phenomenon:thermo-osmosis
+  predicate: couples_to
+  object: phenomenon:streaming-potential
+  conditions:
+    - a charged, ion-selective nanochannel or nanoporous membrane contains an electrolyte
+    - a sustained temperature difference drives thermo-osmotic liquid motion along the charged interface
+    - electrical-double-layer counter-ions are preferentially transported by that flow
+    - no external electrical bias is required for the measured short-circuit current
+    - pressure-driven current is absent, negligible or separately controlled when the thermo-driven contribution is attributed
+  condition_tags: [env-aqueous, medium-membrane, temp-gradient-required, flow-required]
+  energy: { input: kinetic, output: electrical, dissipation: thermal }
+  handoff: { provides: [flow:liquid, flow:confined, surface:charged] }
+  evidence: [source:zhao-2020-thermo-nanofluidics]
+  status: demonstrated
+  notes: "One physical experiment (Zhao et al. 2020): a track-etched polyimide membrane between hot and cold reservoirs gave a streaming current rising linearly with ΔT to 14 nA at 47.5 °C over 0.5 cm², direction set by the surface charge (pH). One paper is demonstrated, not established."
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 13 (follow-up review of the first reviewed search; mechanism read in the PMC full text)" }
 - id: claim:thermo-osmosis-implemented-toec
   subject: phenomenon:thermo-osmosis
   predicate: implemented_by

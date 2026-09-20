@@ -398,8 +398,10 @@ const isoDateTime = z.string().regex(/^\d{4}-\d{2}-\d{2}(T\d{2}:\d{2}(:\d{2}(\.\
 
 export const SEARCH_ENGINES = ["openalex", "semantic-scholar", "google-scholar", "crossref", "manual"] as const;
 export const QUERY_FORMS = ["driver-family", "driver-phenomenon", "demonstration-precision", "citation-chase"] as const;
+/** route-only: a real experiment, but the driver reaches the family through a separately resolvable intermediate conversion — evidence for a route, not for a direct cell relation. */
 export const HIT_DECISIONS = [
   "qualifies",
+  "route-only",
   "theory-only",
   "simulation-only",
   "proposal-only",

@@ -1,7 +1,9 @@
-# The atlas's first reviewed search. Loop-3 pass 12 (20/09/2026): the cell was expected to be the
-# first "no demonstration found"; the review found a physical positive instead. Every DOI below was
-# resolved against Crossref and the qualifying paper's method was read in its open-access full text
-# (PMC9419229) before this record was written.
+# The atlas's first reviewed search. Loop-3 pass 12 (20/09/2026) found a physical experiment; pass 13
+# re-read its mechanism section ("investigated from the aspect of thermoosmosis", direction set by the
+# surface charge) and reclassified it: the temperature gradient reaches the electrokinetic family
+# through thermo-osmotic flow, a separately resolvable conversion, so the paper demonstrates a
+# composition (recorded as claim:thermo-osmosis-couples-streaming), not a direct cell relation. Every
+# DOI was resolved against Crossref and the paper's method read in its open-access full text.
 - id: search:2026-09-20-d-01-c-23
   target: { kind: cell, row: disequilibrium:temperature-gradient, col: coupling:electrokinetic }
   protocol_version: cell-search-v1
@@ -56,8 +58,8 @@
       external_ids: { openalex: W3042301273, pmc: PMC9419229, pubmed: "36132795" }
       found_by: [run:web-01, run:s2-01]
       access: full-text
-      decision: qualifies
-      reason: "An ion-track-etched polyimide membrane with conical nanochannels (base ~750 nm, tip ~180 nm, polydopamine-coated) was placed between hot and cold electrolyte reservoirs and a steady streaming current was measured, rising linearly with the imposed temperature difference to 14 nA at ΔT = 47.5 °C through 0.5 cm² of membrane; the paper states the current depends on the temperature gradient rather than a pressure difference."
+      decision: route-only
+      reason: "A physical experiment: an ion-track-etched polyimide membrane between hot and cold electrolyte reservoirs gave a steady streaming current rising linearly with ΔT to 14 nA at 47.5 °C. But the authors analyse it from the aspect of thermo-osmosis — ΔT drives thermo-osmotic liquid motion, the double layer makes that motion ion-selective, the moving counter-charge is the current, and its direction reverses with surface charge (pH). The temperature gradient reaches the family through a separately resolvable thermo-osmotic step, so this demonstrates the composition, not a direct Temperature gradient → Electrokinetic relation."
     - title: Flow and streaming potential of an electrolyte in a channel with an axial temperature gradient
       year: 2017
       doi: 10.1017/jfm.2016.844
@@ -86,16 +88,15 @@
       access: abstract
       decision: wrong-coupling
       reason: An experiment in which a temperature gradient drives fluid flow, but no electrokinetic electrical output is measured; it supports the thermo-osmotic family, not this cell.
-  result: demonstration-found
-  completeness: conclusive-positive
-  reviewed_by: "Ava Kim (loop-3 pass 12; hits proposed by the ChatGPT review, each DOI resolved and the qualifying paper's method read by the lane)"
+  result: inconclusive
+  completeness: partial
+  reviewed_by: "Ava Kim (loop-3 passes 12–13; hits proposed by the ChatGPT review, each DOI resolved and the Zhao paper's method and mechanism read by the lane)"
   reviewed_on: 2026-09-20
   limitations:
-    - The search stopped once an unambiguous qualifying experimental demonstration was verified; this is not an exhaustive bibliography of the relation.
-    - Only one manual web run and one Semantic Scholar lookup were made; a protocol-complete negative would have required OpenAlex, Semantic Scholar and Google Scholar with all query forms.
-  conclusion: A physical temperature-gradient-driven electrokinetic demonstration is recorded in Zhao et al. 2020; this cell must not be described as unsearched or as having no demonstration found. Whether the observation warrants a canonical direct-relation claim is a separate data review.
+    - Only one manual web run and one Semantic Scholar lookup were made; a protocol-complete negative would require OpenAlex, Semantic Scholar and Google Scholar with all query forms and a citation chase.
+    - The one physical experiment found demonstrates a composition through thermo-osmosis; no direct-relation experiment was found, but the protocol was not completed, so no negative is claimed.
+  conclusion: No direct temperature-gradient → electrokinetic demonstration was found in this partial review. The one physical experiment (Zhao et al. 2020) demonstrates the composition thermo-osmosis → streaming potential and is now recorded as claim:thermo-osmosis-couples-streaming; the cell keeps its composed-bridge status.
   source_run_ids: []
   follow_up:
-    canonical_claim_review: needed
-    candidate_source_ids: []
-    candidate_claim: { subject: disequilibrium:temperature-gradient, predicate: drives, object: phenomenon:streaming-potential }
+    canonical_claim_review: completed
+    candidate_source_ids: [source:zhao-2020-thermo-nanofluidics]

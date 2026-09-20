@@ -678,5 +678,10 @@
     "verified": true,
     "checked_at": "2026-09-20T04:55:37.057Z",
     "crossref_title": "Characterization of miniature automatic energy transport devices based on the thermomagnetic effect"
+  },
+  "source:zhao-2020-thermo-nanofluidics": {
+    "verified": true,
+    "checked_at": "2026-09-20T06:56:40.416Z",
+    "crossref_title": "pH-regulated thermo-driven nanofluidics for nanoconfined mass transport and energy conversion"
   }
 }

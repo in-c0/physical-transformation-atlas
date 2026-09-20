@@ -1,0 +1,137 @@
+# Salinity gradient × Thermoelectric: a strong negative candidate, reviewed in loop-3 pass 13 as far as
+# a web session allows and recorded honestly as PARTIAL. The false-positive taxonomy is now known in
+# advance: solar-pond TEGs are wrong-driver (the pond's temperature difference drives the Seebeck
+# device; the salinity gradient only suppresses convection and stores heat); PRO, RED and CapMix are
+# wrong-coupling; ionic Peltier and Seebeck analogues in nanopores are wrong-coupling. The frozen
+# OpenAlex bundle search:2026-09-20-d-04-c-01 (51 unique works) is referenced so the protocol can be
+# completed without re-running it. This record does NOT make the cell "searched, no demonstration
+# found"; the loader would refuse that from these runs.
+- id: search:2026-09-20-d-04-c-01-partial
+  target: { kind: cell, row: disequilibrium:salinity-gradient, col: coupling:thermoelectric }
+  protocol_version: cell-search-v1
+  started_at: "2026-09-20T22:30:00+10:00"
+  completed_at: "2026-09-20T23:40:00+10:00"
+  objective: direct-relation
+  inclusion_criteria:
+    - the salinity or concentration difference is the imposed causal energy source
+    - a Seebeck, Peltier or Thomson-family response in a solid conductor is measured
+    - a physical experiment or operating device
+    - no separately resolvable thermal, electrochemical, osmotic or ionic-thermoelectric conversion supplies the thermoelectric driver
+  exclusion_criteria:
+    - a thermoelectric generator driven by a temperature difference in a salinity-gradient solar pond
+    - RED, PRO, CapMix or other osmotic or electrochemical conversion
+    - an ionic or nanofluidic analogue of Seebeck or Peltier rather than the solid-state thermoelectric family
+    - theory or simulation only
+  runs:
+    - id: run:oa-bundle
+      engine: openalex
+      query_form: driver-family
+      query: '("salinity gradient" OR "salinity difference" OR "blue energy" OR "river–sea mixing" OR "osmotic power") AND (thermoelectric OR seebeck OR thermocouple OR thermopile)'
+      executed_at: "2026-09-20T22:35:00+10:00"
+      request_url: "frozen bundle search:2026-09-20-d-04-c-01 in data/generated/search-runs.json (8 queries: family, six per-phenomenon, precision)"
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      result_count_reported: 51
+      records_retrieved: 51
+      records_screened: 12
+      records_read: 0
+    - id: run:web-family
+      engine: manual
+      query_form: driver-family
+      query: '("salinity gradient" OR "salinity difference" OR "blue energy" OR "river-sea mixing" OR "osmotic power" OR "salinity-gradient power") AND (thermoelectric OR Seebeck OR thermocouple OR thermopile)'
+      executed_at: "2026-09-20T22:50:00+10:00"
+      result_count_reported: null
+      records_retrieved: 8
+      records_screened: 8
+      records_read: 8
+    - id: run:web-phenomena
+      engine: manual
+      query_form: driver-phenomenon
+      query: '("salinity gradient" OR "salinity difference" OR "blue energy" OR "river-sea mixing" OR "osmotic power" OR "salinity-gradient power") AND ("Seebeck effect" OR "thermoelectric effect" OR "thermo-EMF" OR "Peltier effect" OR "Thomson effect")'
+      executed_at: "2026-09-20T23:00:00+10:00"
+      result_count_reported: null
+      records_retrieved: 8
+      records_screened: 8
+      records_read: 8
+    - id: run:web-precision
+      engine: manual
+      query_form: demonstration-precision
+      query: '("salinity gradient" OR "salinity difference" OR "blue energy" OR "river-sea mixing" OR "osmotic power" OR "salinity-gradient power") AND (thermoelectric OR Seebeck OR thermocouple OR thermopile OR "Seebeck effect" OR "thermoelectric effect" OR "thermo-EMF" OR "Peltier effect" OR "Thomson effect") AND (experiment OR experimental OR measured OR device OR prototype)'
+      executed_at: "2026-09-20T23:10:00+10:00"
+      result_count_reported: null
+      records_retrieved: 8
+      records_screened: 8
+      records_read: 8
+  screening:
+    records_retrieved: 75
+    unique_records: 55
+    title_abstract_screened: 20
+    full_text_read: 0
+  hits:
+    - title: Electric power generation from solar pond using combined thermosyphon and thermoelectric modules
+      year: 2011
+      doi: 10.1016/j.solener.2010.11.012
+      found_by: [run:oa-bundle, run:web-family]
+      access: abstract
+      decision: wrong-driver
+      reason: "The Seebeck modules are driven by the pond's 40–60 °C temperature difference; the salinity gradient suppresses convection and stores solar heat."
+    - title: Small Scale Power Generation using Low Grade Heat from Solar Pond
+      year: 2012
+      doi: 10.1016/j.proeng.2012.10.111
+      found_by: [run:web-family]
+      access: abstract
+      decision: wrong-driver
+      reason: "Same architecture, an experimentally tested TEG on pond heat; the driver is the temperature difference."
+    - title: Power generation enhancement in a salinity-gradient solar pond power plant using thermoelectric generator
+      year: 2017
+      doi: 10.1016/j.enconman.2017.01.031
+      found_by: [run:oa-bundle, run:web-family]
+      access: abstract
+      decision: wrong-driver
+      reason: "A modelled plant in which the TEG extracts the pond's thermal energy, not the mixing free energy."
+    - title: Peltier cooling for thermal management in nanofluidic devices
+      year: 2024
+      doi: 10.1016/j.device.2023.100188
+      found_by: [run:web-phenomena]
+      access: abstract
+      decision: wrong-coupling
+      reason: "An ionic Peltier analogue in electrolyte nanopores under externally driven ion transport, not the solid-state thermoelectric family."
+    - title: Gate-Tunable Ionothermoelectric Cooling in a Solid-State Nanopore
+      year: 2025
+      doi: 10.1021/acsnano.5c13339
+      found_by: [run:web-phenomena]
+      access: abstract
+      decision: wrong-coupling
+      reason: "Salinity changes ionic permselectivity; the measured cooling is an ionic analogue of Peltier under ion transport."
+    - title: "Salinity gradient power: influences of temperature and nanopore size"
+      year: 2016
+      doi: 10.1039/C5NR07563G
+      found_by: [run:web-phenomena]
+      access: abstract
+      decision: wrong-coupling
+      reason: "Theoretical nanofluidic reverse electrodialysis in which temperature modifies RED performance."
+    - title: "Salinity Gradients for Sustainable Energy: Primer, Progress, and Prospects"
+      year: 2016
+      doi: 10.1021/acs.est.6b03448
+      found_by: [run:web-family]
+      access: abstract
+      decision: review-only
+      reason: "Reviews PRO, RED and CapMix as the salinity-gradient mechanisms; no solid-state thermoelectric demonstration."
+    - title: "Harvesting Blue Energy Based on Salinity and Temperature Gradient: Challenges, Solutions, and Opportunities"
+      year: 2023
+      doi: 10.1021/acs.chemrev.3c00168
+      found_by: [run:web-family]
+      access: abstract
+      decision: review-only
+      reason: "Treats salinity-gradient and temperature-gradient conversion as distinct or hybrid mechanisms; no direct demonstration."
+  result: inconclusive
+  completeness: partial
+  reviewed_by: "Ava Kim (loop-3 pass 13; hits proposed by the ChatGPT web review, each DOI resolved against Crossref by the lane; OpenAlex bundle frozen but only its twelve most-cited works screened)"
+  reviewed_on: 2026-09-20
+  limitations:
+    - Semantic Scholar and Google Scholar were not run; OpenAlex was run as a frozen bundle but only its twelve most-cited works were screened.
+    - No full texts were read for this negative review.
+    - Citation chasing was targeted (the two major salinity-gradient reviews), not exhaustive.
+  conclusion: "No direct salinity-gradient-driven solid-state Seebeck, Peltier or Thomson demonstration was found. The nearest hits are temperature-driven TEGs on salinity-gradient solar ponds, osmotic or electrochemical converters, and ionic thermoelectric analogues. The cell is a strong negative candidate, not yet a protocol-complete negative; completing the OpenAlex screen, Semantic Scholar and Google Scholar against the false-positive taxonomy above is the next step."
+  source_run_ids: [search:2026-09-20-d-04-c-01]
