@@ -2,54 +2,62 @@
 # Temperature gradient → Marangoni effect → Fluid flow → Streaming potential → Ionic current → Electrical work
 # D = Temperature gradient; M_1 = Marangoni effect; M_2 = Streaming potential; O = Electrical work (k = 2).
 # Written in loop-3 pass 17 from the recorded names and aliases (thermocapillary / solutocapillary added
-# as aliases of the Marangoni effect first). Google Scholar runs are performed by hand and recorded in
+# as aliases of the Marangoni effect first); pass 18 added the aliases electrokinetic streaming /
+# destillocapillarity and the 50-newest run. Google Scholar runs are performed by hand and recorded in
 # the reviewed record, not here.
 protocol_version: route-search-v1
 route: p-423a19acdd
 claims: [claim:temperature-drives-marangoni, claim:marangoni-produces-flow, claim:fluid-flow-carrier-drives-streaming, claim:streaming-produces-ions, claim:ionic-current-converts-electricity]
 driver_terms: [temperature gradient, temperature difference, thermal gradient, ΔT, waste heat]
 phenomenon_terms:
-  phenomenon:marangoni-effect: [marangoni effect, surface-tension-driven flow, thermocapillary flow, solutocapillary flow, thermocapillary, solutocapillary]
-  phenomenon:streaming-potential: [streaming potential, streaming current, electrokinetic effect]
+  phenomenon:marangoni-effect: [marangoni effect, surface-tension-driven flow, thermocapillary flow, solutocapillary flow, thermocapillary, solutocapillary, destillocapillarity]
+  phenomenon:streaming-potential: [streaming potential, streaming current, electrokinetic effect, electrokinetic streaming]
 output_terms: [electrical work, electricity, electrical output, DC power]
 runs:
   - id: search:2026-09-20-p-423a19acdd/oa-dm1
     engine: openalex
     form: route-driver-mechanism
     key: driver-mechanism:1
-    query: '("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Marangoni effect" OR "surface-tension-driven flow" OR "thermocapillary flow" OR "solutocapillary flow" OR thermocapillary OR solutocapillary)'
+    query: '("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Marangoni effect" OR "surface-tension-driven flow" OR "thermocapillary flow" OR "solutocapillary flow" OR thermocapillary OR solutocapillary OR destillocapillarity)'
+  - id: search:2026-09-20-p-423a19acdd/oa-dm1-newest
+    engine: openalex
+    form: route-driver-mechanism
+    key: driver-mechanism:1
+    sort: newest
+    per_page: 50
+    query: '("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Marangoni effect" OR "surface-tension-driven flow" OR "thermocapillary flow" OR "solutocapillary flow" OR thermocapillary OR solutocapillary OR destillocapillarity)'
   - id: search:2026-09-20-p-423a19acdd/oa-mp12
     engine: openalex
     form: route-mechanism-pair
     key: mechanism-pair:1-2
-    query: '("Marangoni effect" OR "surface-tension-driven flow" OR "thermocapillary flow" OR "solutocapillary flow" OR thermocapillary OR solutocapillary) AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect")'
+    query: '("Marangoni effect" OR "surface-tension-driven flow" OR "thermocapillary flow" OR "solutocapillary flow" OR thermocapillary OR solutocapillary OR destillocapillarity) AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming")'
   - id: search:2026-09-20-p-423a19acdd/oa-wc
     engine: openalex
     form: route-whole-chain
     key: whole-chain
-    query: '("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Marangoni effect" OR thermocapillary OR solutocapillary) AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power")'
+    query: '("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Marangoni effect" OR thermocapillary OR solutocapillary OR destillocapillarity) AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power")'
   - id: search:2026-09-20-p-423a19acdd/oa-dp
     engine: openalex
     form: route-demonstration-precision
     key: demonstration-precision
-    query: '("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Marangoni effect" OR thermocapillary OR solutocapillary) AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power") AND (experiment OR experimental OR measured OR device OR prototype)'
+    query: '("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Marangoni effect" OR thermocapillary OR solutocapillary OR destillocapillarity) AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power") AND (experiment OR experimental OR measured OR device OR prototype)'
   - id: search:2026-09-20-p-423a19acdd/s2-dm1
     engine: semantic-scholar
     form: route-driver-mechanism
     key: driver-mechanism:1
-    query: Temperature gradient temperature difference thermal gradient ΔT waste heat Marangoni effect surface tension driven flow thermocapillary flow solutocapillary flow thermocapillary solutocapillary
+    query: Temperature gradient temperature difference thermal gradient ΔT waste heat Marangoni effect surface tension driven flow thermocapillary flow solutocapillary flow thermocapillary solutocapillary destillocapillarity
   - id: search:2026-09-20-p-423a19acdd/s2-mp12
     engine: semantic-scholar
     form: route-mechanism-pair
     key: mechanism-pair:1-2
-    query: Marangoni effect thermocapillary solutocapillary streaming potential streaming current electrokinetic effect
+    query: Marangoni effect thermocapillary solutocapillary destillocapillarity streaming potential streaming current electrokinetic effect electrokinetic streaming
   - id: search:2026-09-20-p-423a19acdd/s2-wc
     engine: semantic-scholar
     form: route-whole-chain
     key: whole-chain
-    query: Temperature gradient thermocapillary Marangoni effect streaming potential streaming current Electrical work electricity electrical output DC power
+    query: Temperature gradient thermocapillary destillocapillarity Marangoni effect streaming potential streaming current electrokinetic streaming Electrical work electricity electrical output DC power
   - id: search:2026-09-20-p-423a19acdd/s2-dp
     engine: semantic-scholar
     form: route-demonstration-precision
     key: demonstration-precision
-    query: Temperature gradient thermocapillary Marangoni effect streaming potential streaming current Electrical work electricity electrical output DC power experiment experimental measured device prototype
+    query: Temperature gradient thermocapillary destillocapillarity Marangoni effect streaming potential streaming current electrokinetic streaming Electrical work electricity electrical output DC power experiment experimental measured device prototype

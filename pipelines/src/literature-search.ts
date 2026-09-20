@@ -72,7 +72,8 @@ function save() {
 
 type Work = AutomatedSearchRun["works"][number];
 
-async function openalex(query: string, runId: string): Promise<{ run: SearchRun; works: Work[] } | { error: string; status?: number }> {
+async function openalex(query: string, runId: string, opts: { sort?: "relevance" | "newest"; perPage?: number } = {}): Promise<{ run: SearchRun; works: Work[] } | { error: string; status?: number }> {
+  const sortParam = opts.sort === "newest" ? "publication_date:desc" : "relevance_score:desc";
   const url = new URL("https://api.openalex.org/works");
   const filters = { "title_and_abstract.search": query, type: "article|review|book-chapter" };
   url.searchParams.set(
@@ -81,8 +82,8 @@ async function openalex(query: string, runId: string): Promise<{ run: SearchRun;
       .map(([k, v]) => `${k}:${v}`)
       .join(","),
   );
-  url.searchParams.set("per-page", String(PER_PAGE));
-  url.searchParams.set("sort", "relevance_score:desc");
+  url.searchParams.set("per-page", String(opts.perPage ?? PER_PAGE));
+  url.searchParams.set("sort", sortParam);
   url.searchParams.set("select", "id,title,publication_year,doi,type,cited_by_count,open_access");
   const publicUrl = url.toString();
   // OpenAlex serves its "polite pool" (faster, rarely throttled) to requests that carry a contact
@@ -115,7 +116,7 @@ async function openalex(query: string, runId: string): Promise<{ run: SearchRun;
       request_url: publicUrl,
       engine_version: null,
       index_snapshot: null,
-      sort: "relevance_score:desc",
+      sort: sortParam,
       filters,
       result_count_reported: j.meta.count,
       records_retrieved: works.length,
@@ -190,7 +191,7 @@ if (onlyPath) {
     driver_terms: string[];
     phenomenon_terms: Record<string, string[]>;
     claims?: string[];
-    runs: { id: string; engine: "openalex" | "semantic-scholar"; form: SearchRun["query_form"]; key?: string; query: string }[];
+    runs: { id: string; engine: "openalex" | "semantic-scholar"; form: SearchRun["query_form"]; key?: string; sort?: "relevance" | "newest"; per_page?: number; query: string }[];
     notes?: string;
   };
   if (plan.claims && plan.claims.join(">") !== route.claims.join(">")) throw new Error(`plan claims do not match route ${onlyPath}`);
@@ -204,7 +205,7 @@ if (onlyPath) {
   const skippedRuns = enginesNow ? plan.runs.filter((q) => !enginesNow.has(q.engine)).map((q) => `${q.id} (${q.engine})`) : [];
   for (const q of plan.runs) {
     if (enginesNow && !enginesNow.has(q.engine)) continue;
-    const call = () => (q.engine === "openalex" ? openalex(q.query, q.id) : semanticScholar(q.query, q.id));
+    const call = () => (q.engine === "openalex" ? openalex(q.query, q.id, { sort: q.sort, perPage: q.per_page }) : semanticScholar(q.query, q.id));
     let res = await call();
     // Semantic Scholar's anonymous pool throttles hard: back off up to four times before giving the run up.
     for (let attempt = 1; "error" in res && res.status === 429 && attempt <= 4; attempt++) {

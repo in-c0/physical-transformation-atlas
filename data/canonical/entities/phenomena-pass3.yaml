@@ -20,7 +20,7 @@
 - id: phenomenon:marangoni-effect
   type: phenomenon
   name: Marangoni effect
-  aliases: [surface-tension-driven flow, thermocapillary flow, solutocapillary flow, thermocapillary, solutocapillary]
+  aliases: [surface-tension-driven flow, thermocapillary flow, solutocapillary flow, thermocapillary, solutocapillary, destillocapillarity]
   domain: fluid-mechanics
   year_first_reported: 1865
   condition_tags: [state-liquid]
@@ -87,7 +87,7 @@
 - id: phenomenon:thermomagnetic-ferrofluid-convection
   type: phenomenon
   name: Thermomagnetic convection
-  aliases: [ferrofluid convection, magnetocaloric pumping in ferrofluids, thermomagnetic pumping]
+  aliases: [ferrofluid convection, magnetocaloric pumping in ferrofluids, thermomagnetic pumping, thermomagnetic pump]
   domain: fluid-mechanics
   year_first_reported: 1970
   condition_tags: [state-liquid, field-magnetic-required, temp-gradient-required]

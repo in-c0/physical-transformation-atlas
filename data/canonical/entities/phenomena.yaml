@@ -507,7 +507,7 @@
 - id: phenomenon:streaming-potential
   type: phenomenon
   name: Streaming potential
-  aliases: [electrokinetic effect, streaming current]
+  aliases: [electrokinetic effect, streaming current, electrokinetic streaming]
   domain: surface-interface
   year_first_reported: 1859
   condition_tags: [env-aqueous, flow-required]

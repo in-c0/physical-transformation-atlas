@@ -1,0 +1,566 @@
+# Loop-3 pass 18: the first three reviewed ROUTE searches (route-search-v1), each an honest partial —
+# the OpenAlex protocol runs and two citation chases were made and screened, the Semantic Scholar and
+# Google Scholar runs were not (the anonymous Semantic Scholar pool refused every request; the key is an
+# owner action). A partial can never say no-demonstration-found; the loader enforces it.
+- id: search:2026-09-20-p-423a19acdd-partial
+  target:
+    kind: path
+    path: p-423a19acdd
+    claims:
+      - claim:temperature-drives-marangoni
+      - claim:marangoni-produces-flow
+      - claim:fluid-flow-carrier-drives-streaming
+      - claim:streaming-produces-ions
+      - claim:ionic-current-converts-electricity
+  protocol_version: route-search-v1
+  started_at: 2026-09-20T22:45:00+10:00
+  completed_at: 2026-09-20T23:40:00+10:00
+  objective: exact-composition
+  inclusion_criteria:
+    - a physical experiment or device in which the route's driver is imposed or naturally present, every conversion phenomenon occurs in the recorded order, the carrier crosses every handoff, and an electrical response (streaming voltage, current or power) is measured (route-search-v1 §3)
+  exclusion_criteria:
+    - theory, simulation or proposals (recorded as such, never as demonstrations)
+    - one mechanism or one adjacent pair demonstrated alone (constituent-only)
+    - the same mechanisms from a different driver or to a different output (source-variant / sink-variant), or with an extra conversion phenomenon between recorded steps (longer-chain)
+  runs:
+    - id: search:2026-09-20-p-423a19acdd/oa-dm1
+      engine: openalex
+      query_form: route-driver-mechanism
+      query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Marangoni effect" OR "surface-tension-driven flow" OR "thermocapillary flow" OR "solutocapillary flow" OR thermocapillary OR solutocapillary OR destillocapillarity)
+      executed_at: 2026-09-20T11:06:07.654Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Marangoni+effect%22+OR+%22surface-tension-driven+flow%22+OR+%22thermocapillary+flow%22+OR+%22solutocapillary+flow%22+OR+thermocapillary+OR+solutocapillary+OR+destillocapillarity%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Marangoni effect" OR "surface-tension-driven flow" OR "thermocapillary flow" OR "solutocapillary flow" OR thermocapillary OR solutocapillary OR destillocapillarity)
+        type: article|review|book-chapter
+      result_count_reported: 1393
+      records_retrieved: 100
+      records_screened: 100
+      records_read: 4
+      query_key: driver-mechanism:1
+    - id: search:2026-09-20-p-423a19acdd/oa-dm1-newest
+      engine: openalex
+      query_form: route-driver-mechanism
+      query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Marangoni effect" OR "surface-tension-driven flow" OR "thermocapillary flow" OR "solutocapillary flow" OR thermocapillary OR solutocapillary OR destillocapillarity)
+      executed_at: 2026-09-20T11:06:11.682Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Marangoni+effect%22+OR+%22surface-tension-driven+flow%22+OR+%22thermocapillary+flow%22+OR+%22solutocapillary+flow%22+OR+thermocapillary+OR+solutocapillary+OR+destillocapillarity%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=50&sort=publication_date%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: publication_date:desc
+      filters:
+        title_and_abstract.search: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Marangoni effect" OR "surface-tension-driven flow" OR "thermocapillary flow" OR "solutocapillary flow" OR thermocapillary OR solutocapillary OR destillocapillarity)
+        type: article|review|book-chapter
+      result_count_reported: 1393
+      records_retrieved: 50
+      records_screened: 50
+      records_read: 0
+      query_key: driver-mechanism:1
+    - id: search:2026-09-20-p-423a19acdd/oa-mp12
+      engine: openalex
+      query_form: route-mechanism-pair
+      query: ("Marangoni effect" OR "surface-tension-driven flow" OR "thermocapillary flow" OR "solutocapillary flow" OR thermocapillary OR solutocapillary OR destillocapillarity) AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming")
+      executed_at: 2026-09-20T11:06:15.436Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Marangoni+effect%22+OR+%22surface-tension-driven+flow%22+OR+%22thermocapillary+flow%22+OR+%22solutocapillary+flow%22+OR+thermocapillary+OR+solutocapillary+OR+destillocapillarity%29+AND+%28%22Streaming+potential%22+OR+%22streaming+current%22+OR+%22electrokinetic+effect%22+OR+%22electrokinetic+streaming%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Marangoni effect" OR "surface-tension-driven flow" OR "thermocapillary flow" OR "solutocapillary flow" OR thermocapillary OR solutocapillary OR destillocapillarity) AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming")
+        type: article|review|book-chapter
+      result_count_reported: 2
+      records_retrieved: 2
+      records_screened: 2
+      records_read: 0
+      query_key: mechanism-pair:1-2
+    - id: search:2026-09-20-p-423a19acdd/oa-wc
+      engine: openalex
+      query_form: route-whole-chain
+      query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Marangoni effect" OR thermocapillary OR solutocapillary OR destillocapillarity) AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power")
+      executed_at: 2026-09-20T11:06:18.944Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Marangoni+effect%22+OR+thermocapillary+OR+solutocapillary+OR+destillocapillarity%29+AND+%28%22Streaming+potential%22+OR+%22streaming+current%22+OR+%22electrokinetic+effect%22+OR+%22electrokinetic+streaming%22%29+AND+%28%22Electrical+work%22+OR+electricity+OR+%22electrical+output%22+OR+%22DC+power%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Marangoni effect" OR thermocapillary OR solutocapillary OR destillocapillarity) AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power")
+        type: article|review|book-chapter
+      result_count_reported: 0
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      query_key: whole-chain
+    - id: search:2026-09-20-p-423a19acdd/oa-dp
+      engine: openalex
+      query_form: route-demonstration-precision
+      query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Marangoni effect" OR thermocapillary OR solutocapillary OR destillocapillarity) AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power") AND (experiment OR experimental OR measured OR device OR prototype)
+      executed_at: 2026-09-20T11:06:21.821Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Marangoni+effect%22+OR+thermocapillary+OR+solutocapillary+OR+destillocapillarity%29+AND+%28%22Streaming+potential%22+OR+%22streaming+current%22+OR+%22electrokinetic+effect%22+OR+%22electrokinetic+streaming%22%29+AND+%28%22Electrical+work%22+OR+electricity+OR+%22electrical+output%22+OR+%22DC+power%22%29+AND+%28experiment+OR+experimental+OR+measured+OR+device+OR+prototype%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Marangoni effect" OR thermocapillary OR solutocapillary OR destillocapillarity) AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power") AND (experiment OR experimental OR measured OR device OR prototype)
+        type: article|review|book-chapter
+      result_count_reported: 0
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      query_key: demonstration-precision
+    - id: search:2026-09-20-p-423a19acdd/cc-pini
+      engine: openalex
+      query_form: citation-chase
+      query_key: citation-chase:pini-2015
+      query: referenced_works of W3102446872 (Energy conversion by surface-tension-driven charge separation) and filter=cites:W3102446872
+      executed_at: 2026-09-20T23:40:00+10:00
+      request_url: https://api.openalex.org/works?filter=cites:W3102446872
+      engine_version: null
+      index_snapshot: null
+      sort: none (reference list and citing works)
+      result_count_reported: 43
+      records_retrieved: 43
+      records_screened: 43
+      records_read: 0
+    - id: search:2026-09-20-p-423a19acdd/cc-massing
+      engine: openalex
+      query_form: citation-chase
+      query_key: citation-chase:massing-2019
+      query: referenced_works of W2902890555 (Thermocapillary convection during hydrogen evolution at microelectrodes) and filter=cites:W2902890555
+      executed_at: 2026-09-20T23:40:00+10:00
+      request_url: https://api.openalex.org/works?filter=cites:W2902890555
+      engine_version: null
+      index_snapshot: null
+      sort: none (reference list and citing works)
+      result_count_reported: 157
+      records_retrieved: 155
+      records_screened: 155
+      records_read: 0
+  screening:
+    records_retrieved: 152
+    unique_records: 152
+    title_abstract_screened: 152
+    full_text_read: 4
+  hits:
+    - title: Energy conversion by surface-tension-driven charge separation
+      year: 2015
+      doi: 10.1007/s10404-015-1597-x
+      found_by:
+        - search:2026-09-20-p-423a19acdd/oa-mp12
+        - search:2026-09-20-p-423a19acdd/oa-dm1-newest
+      access: full-text
+      decision: theory-only
+      reason: Pini, Baier & Dietzel analyse the streaming potential of thermocapillary and destillocapillary free-surface flows analytically and numerically (arXiv 1609.09404 read in full); no experiment is reported. Recorded as the route's proposed pathway.
+    - title: Electro-Marangoni Effect in Thin Liquid Films
+      year: 2011
+      doi: 10.1021/la1044656
+      found_by:
+        - search:2026-09-20-p-423a19acdd/oa-mp12
+      access: abstract
+      decision: wrong-coupling
+      reason: Film drainage (not a temperature gradient) drives the liquid outflow that generates a streaming potential; the Marangoni effect is the reverse surface flow the potential produces. The chain runs drainage → streaming potential → electro-Marangoni, the opposite order to the route (abstract).
+    - title: Thermocapillary convection during hydrogen evolution at microelectrodes
+      year: 2019
+      doi: 10.1016/j.electacta.2018.11.187
+      found_by:
+        - search:2026-09-20-p-423a19acdd/oa-dm1
+      access: abstract
+      decision: constituent-only
+      reason: Ohmic heating at a Pt microelectrode sets up a temperature gradient whose thermocapillary stress drives electrolyte flow at hydrogen bubbles; velocity and temperature fields are measured (PTV, luminescence lifetime imaging). Temperature gradient → Marangoni flow is demonstrated; no streaming potential or current is measured (abstract).
+    - title: Particle migration in suspensions by thermocapillary or electrophoretic motion
+      year: 1990
+      doi: 10.1017/s0022112090001884
+      found_by:
+        - search:2026-09-20-p-423a19acdd/oa-dm1
+      access: abstract
+      decision: wrong-coupling
+      reason: Two mathematically analogous problems (thermocapillary bubble migration; electrophoresis of colloids) treated in parallel; thermocapillary flow does not generate the electrokinetic response (abstract).
+    - title: "Heat transfer enhancement driven by thermo-electro-hydrodynamics (TEHD): Influence of the Marangoni effect"
+      year: 2026
+      doi: 10.1016/j.elstat.2026.104289
+      found_by:
+        - search:2026-09-20-p-423a19acdd/oa-dm1-newest
+      access: metadata-only
+      decision: wrong-coupling
+      reason: "Title: an applied electric field drives the flow (electrohydrodynamics) with the Marangoni effect as a modifier; the electrical side is the driver, not an output. Not read beyond the title."
+  result: inconclusive
+  completeness: partial
+  reviewed_by: Ava Kim's loop-3 lane (Claude Opus 5), with ChatGPT (GPT-5 Thinking) as second reader of the title lists; abstracts, Pini 2015's full text and the citation-chase titles read by the lane
+  reviewed_on: 2026-09-20
+  limitations:
+    - Semantic Scholar runs not made (anonymous API pool answered HTTP 429 throughout; key requested from the owner) and Google Scholar runs not made; both are mandatory for a negative
+    - "OpenAlex driver-mechanism query: 1,393 works reported, the first 100 by relevance and the first 50 newest screened at title level (protocol depth), the rest unscreened"
+    - "citation chase done on OpenAlex's reference lists and citing works only (Pini 2015: 40 references, 3 citers; Massing 2019: 54 references, 101 of 103 citers), screened at title level with an electrokinetic/electrical vocabulary filter; no full-text chase"
+    - the mechanism-pair, whole-chain and demonstration-precision queries returned 2, 0 and 0 works
+  conclusion: No physical demonstration of temperature gradient → Marangoni flow → streaming potential → electrical output was found in the OpenAlex protocol runs or the two citation chases; the route's only literature is the Pini 2015 theoretical proposal. Inconclusive until the Semantic Scholar and Google Scholar runs exist.
+  source_run_ids:
+    - search:2026-09-20-p-423a19acdd
+- id: search:2026-09-20-p-41cb505083-partial
+  target:
+    kind: path
+    path: p-41cb505083
+    claims:
+      - claim:surface-drives-marangoni
+      - claim:marangoni-produces-flow
+      - claim:fluid-flow-carrier-drives-streaming
+      - claim:streaming-produces-ions
+      - claim:ionic-current-converts-electricity
+  protocol_version: route-search-v1
+  started_at: 2026-09-20T22:45:00+10:00
+  completed_at: 2026-09-20T23:40:00+10:00
+  objective: exact-composition
+  inclusion_criteria:
+    - a physical experiment or device in which the route's driver is imposed or naturally present, every conversion phenomenon occurs in the recorded order, the carrier crosses every handoff, and an electrical response (streaming voltage, current or power) is measured (route-search-v1 §3)
+  exclusion_criteria:
+    - theory, simulation or proposals (recorded as such, never as demonstrations)
+    - one mechanism or one adjacent pair demonstrated alone (constituent-only)
+    - the same mechanisms from a different driver or to a different output (source-variant / sink-variant), or with an extra conversion phenomenon between recorded steps (longer-chain)
+  runs:
+    - id: search:2026-09-20-p-41cb505083/oa-dm1
+      engine: openalex
+      query_form: route-driver-mechanism
+      query: ("Surface energy difference" OR "surface-tension gradient" OR "interfacial tension gradient" OR "Marangoni stress") AND ("Marangoni effect" OR "surface-tension-driven flow" OR "thermocapillary flow" OR "solutocapillary flow" OR thermocapillary OR solutocapillary OR destillocapillarity)
+      executed_at: 2026-09-20T11:06:29.048Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Surface+energy+difference%22+OR+%22surface-tension+gradient%22+OR+%22interfacial+tension+gradient%22+OR+%22Marangoni+stress%22%29+AND+%28%22Marangoni+effect%22+OR+%22surface-tension-driven+flow%22+OR+%22thermocapillary+flow%22+OR+%22solutocapillary+flow%22+OR+thermocapillary+OR+solutocapillary+OR+destillocapillarity%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Surface energy difference" OR "surface-tension gradient" OR "interfacial tension gradient" OR "Marangoni stress") AND ("Marangoni effect" OR "surface-tension-driven flow" OR "thermocapillary flow" OR "solutocapillary flow" OR thermocapillary OR solutocapillary OR destillocapillarity)
+        type: article|review|book-chapter
+      result_count_reported: 515
+      records_retrieved: 100
+      records_screened: 100
+      records_read: 2
+      query_key: driver-mechanism:1
+    - id: search:2026-09-20-p-41cb505083/oa-dm1-newest
+      engine: openalex
+      query_form: route-driver-mechanism
+      query: ("Surface energy difference" OR "surface-tension gradient" OR "interfacial tension gradient" OR "Marangoni stress") AND ("Marangoni effect" OR "surface-tension-driven flow" OR "thermocapillary flow" OR "solutocapillary flow" OR thermocapillary OR solutocapillary OR destillocapillarity)
+      executed_at: 2026-09-20T11:06:33.247Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Surface+energy+difference%22+OR+%22surface-tension+gradient%22+OR+%22interfacial+tension+gradient%22+OR+%22Marangoni+stress%22%29+AND+%28%22Marangoni+effect%22+OR+%22surface-tension-driven+flow%22+OR+%22thermocapillary+flow%22+OR+%22solutocapillary+flow%22+OR+thermocapillary+OR+solutocapillary+OR+destillocapillarity%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=50&sort=publication_date%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: publication_date:desc
+      filters:
+        title_and_abstract.search: ("Surface energy difference" OR "surface-tension gradient" OR "interfacial tension gradient" OR "Marangoni stress") AND ("Marangoni effect" OR "surface-tension-driven flow" OR "thermocapillary flow" OR "solutocapillary flow" OR thermocapillary OR solutocapillary OR destillocapillarity)
+        type: article|review|book-chapter
+      result_count_reported: 515
+      records_retrieved: 50
+      records_screened: 50
+      records_read: 0
+      query_key: driver-mechanism:1
+    - id: search:2026-09-20-p-41cb505083/oa-mp12
+      engine: openalex
+      query_form: route-mechanism-pair
+      query: ("Marangoni effect" OR "surface-tension-driven flow" OR "thermocapillary flow" OR "solutocapillary flow" OR thermocapillary OR solutocapillary OR destillocapillarity) AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming")
+      executed_at: 2026-09-20T11:06:36.386Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Marangoni+effect%22+OR+%22surface-tension-driven+flow%22+OR+%22thermocapillary+flow%22+OR+%22solutocapillary+flow%22+OR+thermocapillary+OR+solutocapillary+OR+destillocapillarity%29+AND+%28%22Streaming+potential%22+OR+%22streaming+current%22+OR+%22electrokinetic+effect%22+OR+%22electrokinetic+streaming%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Marangoni effect" OR "surface-tension-driven flow" OR "thermocapillary flow" OR "solutocapillary flow" OR thermocapillary OR solutocapillary OR destillocapillarity) AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming")
+        type: article|review|book-chapter
+      result_count_reported: 2
+      records_retrieved: 2
+      records_screened: 2
+      records_read: 0
+      query_key: mechanism-pair:1-2
+    - id: search:2026-09-20-p-41cb505083/oa-wc
+      engine: openalex
+      query_form: route-whole-chain
+      query: ("Surface energy difference" OR "surface-tension gradient" OR "interfacial tension gradient" OR "Marangoni stress") AND ("Marangoni effect" OR thermocapillary OR solutocapillary OR destillocapillarity) AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power")
+      executed_at: 2026-09-20T11:06:39.908Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Surface+energy+difference%22+OR+%22surface-tension+gradient%22+OR+%22interfacial+tension+gradient%22+OR+%22Marangoni+stress%22%29+AND+%28%22Marangoni+effect%22+OR+thermocapillary+OR+solutocapillary+OR+destillocapillarity%29+AND+%28%22Streaming+potential%22+OR+%22streaming+current%22+OR+%22electrokinetic+effect%22+OR+%22electrokinetic+streaming%22%29+AND+%28%22Electrical+work%22+OR+electricity+OR+%22electrical+output%22+OR+%22DC+power%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Surface energy difference" OR "surface-tension gradient" OR "interfacial tension gradient" OR "Marangoni stress") AND ("Marangoni effect" OR thermocapillary OR solutocapillary OR destillocapillarity) AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power")
+        type: article|review|book-chapter
+      result_count_reported: 0
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      query_key: whole-chain
+    - id: search:2026-09-20-p-41cb505083/oa-dp
+      engine: openalex
+      query_form: route-demonstration-precision
+      query: ("Surface energy difference" OR "surface-tension gradient" OR "interfacial tension gradient" OR "Marangoni stress") AND ("Marangoni effect" OR thermocapillary OR solutocapillary OR destillocapillarity) AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power") AND (experiment OR experimental OR measured OR device OR prototype)
+      executed_at: 2026-09-20T11:06:42.806Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Surface+energy+difference%22+OR+%22surface-tension+gradient%22+OR+%22interfacial+tension+gradient%22+OR+%22Marangoni+stress%22%29+AND+%28%22Marangoni+effect%22+OR+thermocapillary+OR+solutocapillary+OR+destillocapillarity%29+AND+%28%22Streaming+potential%22+OR+%22streaming+current%22+OR+%22electrokinetic+effect%22+OR+%22electrokinetic+streaming%22%29+AND+%28%22Electrical+work%22+OR+electricity+OR+%22electrical+output%22+OR+%22DC+power%22%29+AND+%28experiment+OR+experimental+OR+measured+OR+device+OR+prototype%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Surface energy difference" OR "surface-tension gradient" OR "interfacial tension gradient" OR "Marangoni stress") AND ("Marangoni effect" OR thermocapillary OR solutocapillary OR destillocapillarity) AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power") AND (experiment OR experimental OR measured OR device OR prototype)
+        type: article|review|book-chapter
+      result_count_reported: 0
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      query_key: demonstration-precision
+    - id: search:2026-09-20-p-41cb505083/cc-pini
+      engine: openalex
+      query_form: citation-chase
+      query_key: citation-chase:pini-2015
+      query: referenced_works of W3102446872 (Energy conversion by surface-tension-driven charge separation) and filter=cites:W3102446872
+      executed_at: 2026-09-20T23:40:00+10:00
+      request_url: https://api.openalex.org/works?filter=cites:W3102446872
+      engine_version: null
+      index_snapshot: null
+      sort: none (reference list and citing works)
+      result_count_reported: 43
+      records_retrieved: 43
+      records_screened: 43
+      records_read: 0
+    - id: search:2026-09-20-p-41cb505083/cc-kim
+      engine: openalex
+      query_form: citation-chase
+      query_key: citation-chase:kim-2017
+      query: referenced_works of W2742148709 (Solutal Marangoni flows of miscible liquids drive transport without surface contamination) and filter=cites:W2742148709
+      executed_at: 2026-09-20T23:40:00+10:00
+      request_url: https://api.openalex.org/works?filter=cites:W2742148709
+      engine_version: null
+      index_snapshot: null
+      sort: none (reference list and citing works)
+      result_count_reported: 162
+      records_retrieved: 159
+      records_screened: 159
+      records_read: 0
+  screening:
+    records_retrieved: 152
+    unique_records: 151
+    title_abstract_screened: 151
+    full_text_read: 2
+  hits:
+    - title: Energy conversion by surface-tension-driven charge separation
+      year: 2015
+      doi: 10.1007/s10404-015-1597-x
+      found_by:
+        - search:2026-09-20-p-41cb505083/oa-mp12
+        - search:2026-09-20-p-41cb505083/oa-dm1-newest
+      access: full-text
+      decision: theory-only
+      reason: The same analysis covers destillocapillary (surfactant-concentration-driven) streaming and finds it more promising than thermocapillary drive; theory and numerics only (arXiv 1609.09404 read in full). Recorded as the route's proposed pathway.
+    - title: Electro-Marangoni Effect in Thin Liquid Films
+      year: 2011
+      doi: 10.1021/la1044656
+      found_by:
+        - search:2026-09-20-p-41cb505083/oa-mp12
+      access: abstract
+      decision: wrong-coupling
+      reason: "Drainage → streaming potential → electro-Marangoni surface flow: the streaming potential is upstream of the Marangoni effect, the reverse of the route (abstract)."
+    - title: Can phoretic motions be treated as interfacial tension gradient driven phenomena?
+      year: 1981
+      doi: 10.1016/0021-9797(81)90011-4
+      found_by:
+        - search:2026-09-20-p-41cb505083/oa-dm1
+      access: metadata-only
+      decision: wrong-coupling
+      reason: "Title: phoretic particle motions (diffusio-/thermophoresis) treated as interfacial-tension-gradient phenomena; particle motion, not a streaming electrical output. Abstract not accessible (Elsevier 1981); not read beyond the title."
+    - title: Sustained interfacial powering through self-generated mantle and siphon of a gelling droplet
+      year: 2026
+      doi: 10.1038/s41467-026-69481-2
+      found_by:
+        - search:2026-09-20-p-41cb505083/cc-kim
+      access: abstract
+      decision: wrong-coupling
+      reason: "A long-lived solutal Marangoni motor (self-propelled gelling droplet): the output is mechanical self-propulsion, no electrical response (abstract)."
+    - title: "Sedimentation potential in a dilute suspension of ion-adsorbed liquid drops under gravity: Marangoni effects and interfacial charge"
+      year: 2025
+      doi: 10.1007/s00396-025-05494-5
+      found_by:
+        - search:2026-09-20-p-41cb505083/oa-dm1-newest
+      access: metadata-only
+      decision: wrong-driver
+      reason: "Title: the electrokinetic (sedimentation) potential arises from gravity-driven drop motion, with Marangoni effects as a modifier of drop mobility; the driver is gravity, not a surface-energy difference. Not read beyond the title."
+  result: inconclusive
+  completeness: partial
+  reviewed_by: Ava Kim's loop-3 lane (Claude Opus 5), with ChatGPT (GPT-5 Thinking) as second reader of the title lists; abstracts, Pini 2015's full text and the citation-chase titles read by the lane
+  reviewed_on: 2026-09-20
+  limitations:
+    - Semantic Scholar and Google Scholar runs not made (see p-423a19acdd); both are mandatory for a negative
+    - "OpenAlex driver-mechanism query: 515 works reported, the first 100 by relevance and the first 50 newest screened at title level, the rest unscreened"
+    - "citation chase on OpenAlex reference lists and citing works only (Pini 2015: 40 references, 3 citers; Kim et al. 2017: 26 of 28 references, 133 of 134 citers), title-level with a vocabulary filter"
+    - the mechanism-pair, whole-chain and demonstration-precision queries returned 2, 0 and 0 works
+  conclusion: No physical demonstration of a surface-energy difference → Marangoni flow → streaming potential → electrical output was found; the only literature is the Pini 2015 proposal. Inconclusive until the Semantic Scholar and Google Scholar runs exist.
+  source_run_ids:
+    - search:2026-09-20-p-41cb505083
+- id: search:2026-09-20-p-1043a15e01-partial
+  target:
+    kind: path
+    path: p-1043a15e01
+    claims:
+      - claim:temperature-drives-ferrofluid-convection
+      - claim:ferrofluid-convection-produces-flow
+      - claim:fluid-flow-carrier-drives-streaming
+      - claim:streaming-produces-ions
+      - claim:ionic-current-converts-electricity
+  protocol_version: route-search-v1
+  started_at: 2026-09-20T22:45:00+10:00
+  completed_at: 2026-09-20T23:40:00+10:00
+  objective: exact-composition
+  inclusion_criteria:
+    - a physical experiment or device in which the route's driver is imposed or naturally present, every conversion phenomenon occurs in the recorded order, the carrier crosses every handoff, and an electrical response (streaming voltage, current or power) is measured (route-search-v1 §3)
+  exclusion_criteria:
+    - theory, simulation or proposals (recorded as such, never as demonstrations)
+    - one mechanism or one adjacent pair demonstrated alone (constituent-only)
+    - the same mechanisms from a different driver or to a different output (source-variant / sink-variant), or with an extra conversion phenomenon between recorded steps (longer-chain)
+  runs:
+    - id: search:2026-09-20-p-1043a15e01/oa-dm1
+      engine: openalex
+      query_form: route-driver-mechanism
+      query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermomagnetic convection" OR "ferrofluid convection" OR "magnetocaloric pumping in ferrofluids" OR "thermomagnetic pumping" OR "thermomagnetic pump")
+      executed_at: 2026-09-20T11:06:49.337Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermomagnetic+convection%22+OR+%22ferrofluid+convection%22+OR+%22magnetocaloric+pumping+in+ferrofluids%22+OR+%22thermomagnetic+pumping%22+OR+%22thermomagnetic+pump%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermomagnetic convection" OR "ferrofluid convection" OR "magnetocaloric pumping in ferrofluids" OR "thermomagnetic pumping" OR "thermomagnetic pump")
+        type: article|review|book-chapter
+      result_count_reported: 39
+      records_retrieved: 39
+      records_screened: 39
+      records_read: 0
+      query_key: driver-mechanism:1
+    - id: search:2026-09-20-p-1043a15e01/oa-dm1-newest
+      engine: openalex
+      query_form: route-driver-mechanism
+      query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermomagnetic convection" OR "ferrofluid convection" OR "magnetocaloric pumping in ferrofluids" OR "thermomagnetic pumping" OR "thermomagnetic pump")
+      executed_at: 2026-09-20T11:06:52.658Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermomagnetic+convection%22+OR+%22ferrofluid+convection%22+OR+%22magnetocaloric+pumping+in+ferrofluids%22+OR+%22thermomagnetic+pumping%22+OR+%22thermomagnetic+pump%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=50&sort=publication_date%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: publication_date:desc
+      filters:
+        title_and_abstract.search: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermomagnetic convection" OR "ferrofluid convection" OR "magnetocaloric pumping in ferrofluids" OR "thermomagnetic pumping" OR "thermomagnetic pump")
+        type: article|review|book-chapter
+      result_count_reported: 39
+      records_retrieved: 39
+      records_screened: 39
+      records_read: 0
+      query_key: driver-mechanism:1
+    - id: search:2026-09-20-p-1043a15e01/oa-mp12
+      engine: openalex
+      query_form: route-mechanism-pair
+      query: ("Thermomagnetic convection" OR "ferrofluid convection" OR "magnetocaloric pumping in ferrofluids" OR "thermomagnetic pumping" OR "thermomagnetic pump") AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming")
+      executed_at: 2026-09-20T11:06:55.762Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Thermomagnetic+convection%22+OR+%22ferrofluid+convection%22+OR+%22magnetocaloric+pumping+in+ferrofluids%22+OR+%22thermomagnetic+pumping%22+OR+%22thermomagnetic+pump%22%29+AND+%28%22Streaming+potential%22+OR+%22streaming+current%22+OR+%22electrokinetic+effect%22+OR+%22electrokinetic+streaming%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Thermomagnetic convection" OR "ferrofluid convection" OR "magnetocaloric pumping in ferrofluids" OR "thermomagnetic pumping" OR "thermomagnetic pump") AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming")
+        type: article|review|book-chapter
+      result_count_reported: 0
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      query_key: mechanism-pair:1-2
+    - id: search:2026-09-20-p-1043a15e01/oa-wc
+      engine: openalex
+      query_form: route-whole-chain
+      query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermomagnetic convection" OR "ferrofluid convection" OR "magnetocaloric pumping in ferrofluids" OR "thermomagnetic pumping" OR "thermomagnetic pump") AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power")
+      executed_at: 2026-09-20T11:06:58.597Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermomagnetic+convection%22+OR+%22ferrofluid+convection%22+OR+%22magnetocaloric+pumping+in+ferrofluids%22+OR+%22thermomagnetic+pumping%22+OR+%22thermomagnetic+pump%22%29+AND+%28%22Streaming+potential%22+OR+%22streaming+current%22+OR+%22electrokinetic+effect%22+OR+%22electrokinetic+streaming%22%29+AND+%28%22Electrical+work%22+OR+electricity+OR+%22electrical+output%22+OR+%22DC+power%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermomagnetic convection" OR "ferrofluid convection" OR "magnetocaloric pumping in ferrofluids" OR "thermomagnetic pumping" OR "thermomagnetic pump") AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power")
+        type: article|review|book-chapter
+      result_count_reported: 0
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      query_key: whole-chain
+    - id: search:2026-09-20-p-1043a15e01/oa-dp
+      engine: openalex
+      query_form: route-demonstration-precision
+      query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermomagnetic convection" OR "ferrofluid convection" OR "magnetocaloric pumping in ferrofluids" OR "thermomagnetic pumping" OR "thermomagnetic pump") AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power") AND (experiment OR experimental OR measured OR device OR prototype)
+      executed_at: 2026-09-20T11:07:01.504Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermomagnetic+convection%22+OR+%22ferrofluid+convection%22+OR+%22magnetocaloric+pumping+in+ferrofluids%22+OR+%22thermomagnetic+pumping%22+OR+%22thermomagnetic+pump%22%29+AND+%28%22Streaming+potential%22+OR+%22streaming+current%22+OR+%22electrokinetic+effect%22+OR+%22electrokinetic+streaming%22%29+AND+%28%22Electrical+work%22+OR+electricity+OR+%22electrical+output%22+OR+%22DC+power%22%29+AND+%28experiment+OR+experimental+OR+measured+OR+device+OR+prototype%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermomagnetic convection" OR "ferrofluid convection" OR "magnetocaloric pumping in ferrofluids" OR "thermomagnetic pumping" OR "thermomagnetic pump") AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power") AND (experiment OR experimental OR measured OR device OR prototype)
+        type: article|review|book-chapter
+      result_count_reported: 0
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      query_key: demonstration-precision
+    - id: search:2026-09-20-p-1043a15e01/cc-pal
+      engine: openalex
+      query_form: citation-chase
+      query_key: citation-chase:pal-2011
+      query: referenced_works of W2092862595 (Characterization of a ferrofluid-based thermomagnetic pump for microfluidic applications) and filter=cites:W2092862595
+      executed_at: 2026-09-20T23:40:00+10:00
+      request_url: https://api.openalex.org/works?filter=cites:W2092862595
+      engine_version: null
+      index_snapshot: null
+      sort: none (reference list and citing works)
+      result_count_reported: 90
+      records_retrieved: 88
+      records_screened: 88
+      records_read: 0
+    - id: search:2026-09-20-p-1043a15e01/cc-nguyen
+      engine: openalex
+      query_form: citation-chase
+      query_key: citation-chase:nguyen-2012
+      query: "referenced_works of W1967669309 (Micro-magnetofluidics: interactions between magnetism and fluid flow on the microscale) and filter=cites:W1967669309"
+      executed_at: 2026-09-20T23:40:00+10:00
+      request_url: https://api.openalex.org/works?filter=cites:W1967669309
+      engine_version: null
+      index_snapshot: null
+      sort: none (reference list and citing works)
+      result_count_reported: 486
+      records_retrieved: 486
+      records_screened: 486
+      records_read: 0
+  screening:
+    records_retrieved: 78
+    unique_records: 39
+    title_abstract_screened: 39
+    full_text_read: 0
+  hits:
+    - title: Characterization of a ferrofluid-based thermomagnetic pump for microfluidic applications
+      year: 2011
+      doi: 10.1016/j.jmmm.2011.06.016
+      found_by:
+        - search:2026-09-20-p-1043a15e01/oa-dm1
+      access: metadata-only
+      decision: constituent-only
+      reason: "Title and venue: a thermomagnetic ferrofluid pump characterised for microfluidics — temperature gradient → thermomagnetic flow as a pump, no electrokinetic output named. Abstract behind a ScienceDirect captcha; not read beyond the title. Used as a citation-chase seed."
+    - title: Synthesis and characterization of Mn0.5Zn0.5Fe2O4 and Fe3O4 nanoparticle ferrofluids for thermo-electric conversion
+      year: 2013
+      doi: 10.1016/j.jmmm.2013.02.012
+      found_by:
+        - search:2026-09-20-p-1043a15e01/cc-pal
+      access: metadata-only
+      decision: insufficient-information
+      reason: Title names ferrofluids for thermo-electric conversion; nothing indicates a streaming (electrokinetic) step rather than electromagnetic induction; no abstract accessible. To be read when the text is available.
+    - title: Flow in Thermomagnetic Energy Conversion Loops
+      year: 2016
+      doi: 10.1007/978-81-322-2743-4_151
+      found_by:
+        - search:2026-09-20-p-1043a15e01/cc-pal
+      access: metadata-only
+      decision: insufficient-information
+      reason: Book chapter on flow in thermomagnetic energy-conversion loops; no abstract accessible; nothing indicates an electrokinetic step.
+  result: inconclusive
+  completeness: partial
+  reviewed_by: Ava Kim's loop-3 lane (Claude Opus 5), with ChatGPT (GPT-5 Thinking) as second reader of the title lists; abstracts, Pini 2015's full text and the citation-chase titles read by the lane
+  reviewed_on: 2026-09-20
+  limitations:
+    - Semantic Scholar and Google Scholar runs not made (see p-423a19acdd); both are mandatory for a negative
+    - "OpenAlex driver-mechanism query: 39 works reported and all screened at title level; none names an electrokinetic or streaming response"
+    - "citation chase on OpenAlex reference lists and citing works only (Pal et al. 2011: 27 of 28 references, 61 of 62 citers; Nguyen 2012: 96 references, 390 citers), title-level with a vocabulary filter; two chase hits could not be read"
+    - the mechanism-pair, whole-chain and demonstration-precision queries returned 0 works
+  conclusion: No physical demonstration of temperature gradient → thermomagnetic convection → streaming potential → electrical output was found, and no retrieved title combines a thermomagnetic flow with an electrokinetic response. Inconclusive until the Semantic Scholar and Google Scholar runs exist and the two unread chase hits are read.
+  source_run_ids:
+    - search:2026-09-20-p-1043a15e01

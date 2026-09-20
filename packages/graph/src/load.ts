@@ -176,6 +176,8 @@ export function loadCanon(root: string): Canon {
     if (s.result === "demonstration-found" && !s.follow_up) problems.push(`${s.id}: demonstration-found needs follow_up.canonical_claim_review`);
     if (s.screening.full_text_read > s.screening.title_abstract_screened || s.screening.unique_records > s.screening.records_retrieved) problems.push(`${s.id}: screening counts are inconsistent`);
     for (const runId of s.source_run_ids) if (!searchRuns.some((r) => r.id === runId)) problems.push(`${s.id}: source run ${runId} is not in data/generated/search-runs.json`);
+    // A reviewed statement and a frozen bundle are different records; a shared id would count the bundle as reviewed.
+    if (searchRuns.some((r) => r.id === s.id)) problems.push(`${s.id}: a reviewed record shares its id with an automated run; suffix it (for example -partial)`);
   }
   let sourceVerification: Canon["sourceVerification"] = {};
   const verFile = join(generated, "source-verification.json");

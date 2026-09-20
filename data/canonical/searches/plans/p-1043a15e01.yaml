@@ -2,53 +2,60 @@
 # Temperature gradient → Thermomagnetic convection → Fluid flow → Streaming potential → Ionic current → Electrical work
 # D = Temperature gradient; M_1 = Thermomagnetic convection; M_2 = Streaming potential; O = Electrical work (k = 2).
 # The p-423a19acdd templates with the mechanism bundle substituted ("thermomagnetic pumping" added as an
-# alias first). Written in loop-3 pass 17.
+# alias first). Written in loop-3 pass 17; pass 18 added the aliases and the 50-newest run.
 protocol_version: route-search-v1
 route: p-1043a15e01
 claims: [claim:temperature-drives-ferrofluid-convection, claim:ferrofluid-convection-produces-flow, claim:fluid-flow-carrier-drives-streaming, claim:streaming-produces-ions, claim:ionic-current-converts-electricity]
 driver_terms: [temperature gradient, temperature difference, thermal gradient, ΔT, waste heat]
 phenomenon_terms:
-  phenomenon:thermomagnetic-ferrofluid-convection: [thermomagnetic convection, ferrofluid convection, magnetocaloric pumping in ferrofluids, thermomagnetic pumping]
-  phenomenon:streaming-potential: [streaming potential, streaming current, electrokinetic effect]
+  phenomenon:thermomagnetic-ferrofluid-convection: [thermomagnetic convection, ferrofluid convection, magnetocaloric pumping in ferrofluids, thermomagnetic pumping, thermomagnetic pump]
+  phenomenon:streaming-potential: [streaming potential, streaming current, electrokinetic effect, electrokinetic streaming]
 output_terms: [electrical work, electricity, electrical output, DC power]
 runs:
   - id: search:2026-09-20-p-1043a15e01/oa-dm1
     engine: openalex
     form: route-driver-mechanism
     key: driver-mechanism:1
-    query: '("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermomagnetic convection" OR "ferrofluid convection" OR "magnetocaloric pumping in ferrofluids" OR "thermomagnetic pumping")'
+    query: '("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermomagnetic convection" OR "ferrofluid convection" OR "magnetocaloric pumping in ferrofluids" OR "thermomagnetic pumping" OR "thermomagnetic pump")'
+  - id: search:2026-09-20-p-1043a15e01/oa-dm1-newest
+    engine: openalex
+    form: route-driver-mechanism
+    key: driver-mechanism:1
+    sort: newest
+    per_page: 50
+    query: '("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermomagnetic convection" OR "ferrofluid convection" OR "magnetocaloric pumping in ferrofluids" OR "thermomagnetic pumping" OR "thermomagnetic pump")'
   - id: search:2026-09-20-p-1043a15e01/oa-mp12
     engine: openalex
     form: route-mechanism-pair
     key: mechanism-pair:1-2
-    query: '("Thermomagnetic convection" OR "ferrofluid convection" OR "magnetocaloric pumping in ferrofluids" OR "thermomagnetic pumping") AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect")'
+    query: '("Thermomagnetic convection" OR "ferrofluid convection" OR "magnetocaloric pumping in ferrofluids" OR "thermomagnetic pumping" OR "thermomagnetic pump") AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming")'
   - id: search:2026-09-20-p-1043a15e01/oa-wc
     engine: openalex
     form: route-whole-chain
     key: whole-chain
-    query: '("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermomagnetic convection" OR "ferrofluid convection" OR "magnetocaloric pumping in ferrofluids" OR "thermomagnetic pumping") AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power")'
+    query: '("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermomagnetic convection" OR "ferrofluid convection" OR "magnetocaloric pumping in ferrofluids" OR "thermomagnetic pumping" OR "thermomagnetic pump") AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power")'
   - id: search:2026-09-20-p-1043a15e01/oa-dp
     engine: openalex
     form: route-demonstration-precision
     key: demonstration-precision
-    query: '("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermomagnetic convection" OR "ferrofluid convection" OR "magnetocaloric pumping in ferrofluids" OR "thermomagnetic pumping") AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power") AND (experiment OR experimental OR measured OR device OR prototype)'
+    query: '("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermomagnetic convection" OR "ferrofluid convection" OR "magnetocaloric pumping in ferrofluids" OR "thermomagnetic pumping" OR "thermomagnetic pump") AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power") AND (experiment OR experimental OR measured OR device OR prototype)'
   - id: search:2026-09-20-p-1043a15e01/s2-dm1
     engine: semantic-scholar
     form: route-driver-mechanism
     key: driver-mechanism:1
-    query: Temperature gradient temperature difference thermal gradient ΔT waste heat Thermomagnetic convection ferrofluid convection magnetocaloric pumping in ferrofluids thermomagnetic pumping
+    query: Temperature gradient temperature difference thermal gradient ΔT waste heat Thermomagnetic convection ferrofluid convection magnetocaloric pumping in ferrofluids thermomagnetic pumping thermomagnetic pump
   - id: search:2026-09-20-p-1043a15e01/s2-mp12
     engine: semantic-scholar
     form: route-mechanism-pair
     key: mechanism-pair:1-2
-    query: Thermomagnetic convection ferrofluid convection thermomagnetic pumping streaming potential streaming current electrokinetic effect
+    query: Thermomagnetic convection ferrofluid convection thermomagnetic pumping thermomagnetic pump streaming potential streaming current electrokinetic effect electrokinetic streaming
   - id: search:2026-09-20-p-1043a15e01/s2-wc
     engine: semantic-scholar
     form: route-whole-chain
     key: whole-chain
-    query: Temperature gradient thermal gradient ΔT waste heat Thermomagnetic convection ferrofluid convection thermomagnetic pumping streaming potential streaming current electrokinetic effect Electrical work electricity electrical output DC power
+    query: Temperature gradient thermal gradient ΔT waste heat Thermomagnetic convection ferrofluid convection thermomagnetic pumping thermomagnetic pump streaming potential streaming current electrokinetic effect electrokinetic streaming Electrical work electricity electrical output DC power
   - id: search:2026-09-20-p-1043a15e01/s2-dp
     engine: semantic-scholar
     form: route-demonstration-precision
     key: demonstration-precision
-    query: Temperature gradient thermal gradient ΔT waste heat Thermomagnetic convection ferrofluid convection thermomagnetic pumping streaming potential streaming current electrokinetic effect Electrical work electricity electrical output DC power experiment experimental measured device prototype
+    query: Temperature gradient thermal gradient ΔT waste heat Thermomagnetic convection ferrofluid convection thermomagnetic pumping thermomagnetic pump streaming potential streaming current electrokinetic effect electrokinetic streaming Electrical work electricity electrical output DC power experiment experimental measured device prototype
