@@ -28,7 +28,7 @@
 - id: phenomenon:acoustoelectric-effect
   type: phenomenon
   name: Acoustoelectric effect
-  aliases: [acoustoelectric current, phonon drag by a travelling wave]
+  aliases: [acoustoelectric current, phonon drag by a travelling wave, acousto-electric effect, acoustoelectric voltage, acoustoelectric drag, Weinreich relation]
   domain: condensed-matter
   year_first_reported: 1957
   condition_tags: [state-solid]

@@ -36,7 +36,7 @@
 - id: phenomenon:thermoacoustic-effect
   type: phenomenon
   name: Thermoacoustic effect
-  aliases: [Rijke tube, Sondhauss tube, thermoacoustic oscillation]
+  aliases: [Rijke tube, Sondhauss tube, thermoacoustic oscillation, thermoacoustic engine, thermoacoustic prime mover, thermoacoustic heat engine, thermoacoustic instability]
   domain: thermodynamics
   year_first_reported: 1850
   condition_tags: [state-gas, temp-gradient-required]
