@@ -64,8 +64,14 @@
      shadow; the surface colour and the strong border separate it. Dismiss = ESC button or the
      Escape key; the scrim closes it too. */
   .scrim { position: fixed; inset: 0; z-index: calc(var(--z-drawer) - 1); background: transparent; }
-  .drawer { position: fixed; left: 0; right: 0; bottom: 0; z-index: var(--z-drawer); width: 100%; max-height: 85vh; border-left: 0; border-top: var(--border-strong); animation: rise var(--duration-drawer) var(--ease-drawer); }
-  .body { max-height: none; overflow: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
+  .drawer { position: fixed; left: 0; right: 0; bottom: 0; z-index: var(--z-drawer); width: 100%; max-height: 85vh; max-height: 85dvh; border-left: 0; border-top: var(--border-strong); animation: rise var(--duration-drawer) var(--ease-drawer); }
+  .body { max-height: none; overflow: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; padding-bottom: calc(24px + env(safe-area-inset-bottom)); }
+  .claimLine { flex-wrap: wrap; column-gap: 6px; row-gap: 2px; }
+  .claimLine .status { margin-left: 0; }
+  .bridgeActions { flex-wrap: wrap; gap: 4px 12px; margin-left: 0; }
+  .axisLinks { grid-template-columns: 1fr; }
+  .linkBtn { display: inline-flex; align-items: center; min-height: 24px; font-size: 12px; }
+  .state, .stateSecondary { font-size: 14px; line-height: 20px; }
   .head { position: sticky; top: 0; background: var(--surface); z-index: 1; }
   .close { min-width: 44px; min-height: 32px; }
 }

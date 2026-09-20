@@ -37,3 +37,18 @@
 .decision > span::before { content: "· "; }
 .decision > span:first-child::before { content: ""; }
 .decision a { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
+@media (max-width: 640px) {
+  .decision { display: block; font-size: 12px; line-height: 16px; }
+  .decision > span { display: block; }
+  .decision > span::before { content: ""; }
+  .link, .filterToggle > summary, .detailToggle > summary { min-height: 24px; display: inline-flex; align-items: center; font-size: 12px; }
+  .desktopOnly { display: none; }
+}
+.filterToggle > summary, .detailToggle > summary { cursor: pointer; list-style: none; font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-secondary); }
+.filterToggle > summary::-webkit-details-marker, .detailToggle > summary::-webkit-details-marker { display: none; }
+.filterToggle > summary::before, .detailToggle > summary::before { content: "▸ "; }
+.filterToggle[open] > summary::before, .detailToggle[open] > summary::before { content: "▾ "; }
+@media (min-width: 641px) {
+  /* Above phone width the disclosures are always open and their summaries hidden: the desktop layout is unchanged. */
+  .filterToggle > summary, .detailToggle > summary { display: none; }
+}

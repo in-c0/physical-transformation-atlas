@@ -37,12 +37,66 @@ export default function CoveragePage() {
       <h1 className="t-title" style={{ margin: "6px 0 10px" }}>
         What the atlas covers
       </h1>
-      <p className={styles.lead}>
+      <p className={`${styles.lead} ${styles.leadPhone}`}>
+        These counts describe this atlas, not the completeness of physics or the literature. Scope fill uses the atlas's editorial checklist; citation completeness only asks whether each claim record
+        cites a source.
+      </p>
+      <p className={`${styles.lead} ${styles.leadDesk}`}>
         These measures describe this atlas, not the completeness of physics or the scientific literature. Scope fill compares phenomenon records in this revision with an editorial first-release
         checklist per domain. Citation completeness reports the fraction of claim records carrying at least one cited source; it does not mean the literature has been comprehensively searched. Every
         number below is a count over the records of revision r{m.data_hash}.
       </p>
 
+      {/* Phone: one definition-list record per domain (the same data), separated by hairlines; the table stays above 640 px. */}
+      <div className={styles.phoneList}>
+        {rows.map((r) => (
+          <dl key={r.domain} className={styles.domainRecord}>
+            <dt className={styles.domainName}>{r.name}</dt>
+            <dd>
+              <span className="label">scope fill</span>
+              <span className="t-data">
+                <Bar value={r.ontology_coverage} /> {pct(r.ontology_coverage)}
+              </span>
+            </dd>
+            <dd>
+              <span className="label">recorded / target</span>
+              <span className="t-data">
+                {r.phenomena} / {r.target_phenomena}
+              </span>
+            </dd>
+            <dd>
+              <span className="label">claims sourced</span>
+              <span className="t-data">
+                {r.claims_with_evidence} / {r.claims}
+              </span>
+            </dd>
+            <dd>
+              <span className="label">established+replicated / demonstrated / open</span>
+              <span className="t-data">
+                {r.claims_established} / {r.claims_demonstrated} / {r.open_status_claims}
+              </span>
+            </dd>
+            <dd>
+              <span className="label">no-search / matrix</span>
+              <span className="t-data">{r.matrix_cells ? `${r.matrix_cells_without_search_record} / ${r.matrix_cells}` : "no coupling column"}</span>
+            </dd>
+            <dd>
+              <span className="label">reviewed / index-only</span>
+              <span className="t-data">
+                {r.reviewed_searches} / {r.index_only_searches}
+              </span>
+            </dd>
+            <dd>
+              <span className="label">newest cited</span>
+              <span className="t-data">{r.newest_source_year ?? "—"}</span>
+            </dd>
+            <dd>
+              <span className="label">named pathways</span>
+              <span className="t-data">{r.named_pathways}</span>
+            </dd>
+          </dl>
+        ))}
+      </div>
       <div className={styles.tableWrap}>
         <table className={styles.table}>
           <thead>

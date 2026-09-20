@@ -27,3 +27,16 @@
   .canvasWrap { height: 60vh; }
   .legend { margin-left: 0; }
 }
+/* Phone: one-finger pan, pinch zoom, tap selects (touch-action: none hands gestures to Cytoscape); controls behind a disclosure. */
+.controls > summary { display: none; }
+@media (max-width: 640px) {
+  .canvas { touch-action: none; }
+  .controls > summary { display: inline-flex; align-items: center; min-height: 28px; padding: 0 var(--gutter); cursor: pointer; list-style: none; font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-secondary); border-bottom: var(--border); width: 100%; }
+  .controls > summary::-webkit-details-marker { display: none; }
+  .controls > summary::before { content: "▸ "; }
+  .controls[open] > summary::before { content: "▾ "; }
+  .controls:not([open]) .toolbar { display: none; }
+  .navSummary, .navSearch, .navItem { font-size: 12px; }
+  .navItem { min-height: 28px; }
+  .nav { max-width: calc(100% - 2 * var(--gutter)); }
+}

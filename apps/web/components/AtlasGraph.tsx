@@ -5,6 +5,7 @@ import type { Core, ElementDefinition } from "cytoscape";
 import type { Claim, Entity } from "@pta/schema";
 import { PROCESS_PREDICATES } from "@pta/schema";
 import { useAtlas } from "@/lib/client-data";
+import { useWide } from "@/lib/useWide";
 import type { AtlasIndex } from "@pta/graph/query";
 import { EVIDENCE_LABEL, FRONTIER_LABEL, hrefFor } from "@/lib/format";
 import { Drawer, DrawerSection, drawerStyles as ds } from "./Drawer";
@@ -54,6 +55,7 @@ export function AtlasGraph({ initial, route }: { initial?: string; route?: strin
   const [types, setTypes] = useState<Set<Entity["type"]>>(() => new Set(GRAPH_TYPES.filter((t) => t !== "coupling")));
   const [layoutDone, setLayoutDone] = useState(false);
   const [layoutMode, setLayoutMode] = useState<"layered" | "force">("layered");
+  const wideOpen = useWide();
 
   const elements = useMemo<ElementDefinition[] | null>(() => {
     if (atlas.status !== "ready") return null;
@@ -117,6 +119,7 @@ export function AtlasGraph({ initial, route }: { initial?: string; route?: strin
     (async () => {
       const cytoscape = (await import("cytoscape")).default;
       if (cancelled || !host.current) return;
+      const phone = window.matchMedia("(max-width: 640px)").matches;
       cy = cytoscape({
         container: host.current,
         elements,
@@ -158,7 +161,7 @@ export function AtlasGraph({ initial, route }: { initial?: string; route?: strin
               height: 16,
               "background-color": "#1b1a18",
               color: "#1b1a18",
-              "font-size": 10,
+              "font-size": phone ? 12 : 10,
               "font-weight": 500,
               "min-zoomed-font-size": 5,
             },
@@ -174,7 +177,7 @@ export function AtlasGraph({ initial, route }: { initial?: string; route?: strin
               width: 20,
               height: 20,
               "border-width": 2,
-              "font-size": 10,
+              "font-size": phone ? 12 : 10,
               "font-weight": 500,
               "min-zoomed-font-size": 5,
             },
@@ -239,7 +242,7 @@ export function AtlasGraph({ initial, route }: { initial?: string; route?: strin
               "border-width": 2,
               "border-color": "#1b1a18",
               "background-color": "#fbf9f4",
-              "font-size": 10,
+              "font-size": phone ? 12 : 10,
               "font-weight": 500,
               "min-zoomed-font-size": 4,
             },
@@ -265,8 +268,25 @@ export function AtlasGraph({ initial, route }: { initial?: string; route?: strin
       cyRef.current = cy;
       cy.on("tap", "node", (ev) => setSel({ kind: "entity", id: ev.target.id() }));
       cy.on("tap", "edge", (ev) => setSel({ kind: "claim", id: ev.target.id() }));
+      const coarse = window.matchMedia("(pointer: coarse)").matches;
+      const graph = cy;
       cy.on("tap", (ev) => {
-        if (ev.target === cy) setSel(null);
+        if (ev.target !== graph) return;
+        if (coarse) {
+          // A finger cannot hit a 14 px node exactly: take the nearest visible node within 18 rendered px.
+          const p = ev.renderedPosition;
+          let best: { id: string; d: number } | null = null;
+          graph.nodes(":visible").forEach((n) => {
+            const q = n.renderedPosition();
+            const d = Math.hypot(q.x - p.x, q.y - p.y);
+            if (d <= 18 && (!best || d < best.d)) best = { id: n.id(), d };
+          });
+          if (best) {
+            setSel({ kind: "entity", id: (best as { id: string }).id });
+            return;
+          }
+        }
+        setSel(null);
       });
       cy.ready(() => {
         setLayoutDone(true);
@@ -323,51 +343,55 @@ export function AtlasGraph({ initial, route }: { initial?: string; route?: strin
   return (
     <div className={`${styles.wrap} ${sel ? styles.withDrawer : ""}`}>
       <div className={styles.main}>
-        <div className={styles.toolbar}>
-          <span className="label">Show</span>
-          {GRAPH_TYPES.map((t) => (
-            <button key={t} type="button" className={`${styles.chip} ${types.has(t) ? styles.chipOn : ""}`} aria-pressed={types.has(t) ? "true" : "false"} onClick={() => toggleType(t)}>
-              {t}
-            </button>
-          ))}
-          <span className="label" style={{ marginLeft: 8 }}>
-            Layout
-          </span>
-          <button
-            type="button"
-            className={`${styles.chip} ${layoutMode === "layered" ? styles.chipOn : ""}`}
-            aria-pressed={layoutMode === "layered" ? "true" : "false"}
-            onClick={() => setLayoutMode("layered")}
-          >
-            layered · drivers → effects → carriers → outputs
-          </button>
-          <button
-            type="button"
-            className={`${styles.chip} ${layoutMode === "force" ? styles.chipOn : ""}`}
-            aria-pressed={layoutMode === "force" ? "true" : "false"}
-            onClick={() => setLayoutMode("force")}
-          >
-            force-directed
-          </button>
-          <button
-            type="button"
-            className={styles.chip}
-            onClick={() => {
-              setSel(null);
-              cyRef.current?.animate({ fit: { eles: cyRef.current.elements(), padding: 30 } }, { duration: graphDuration(280), easing: "ease-out-cubic" });
-            }}
-          >
-            reset view
-          </button>
-          {route && atlas.status === "ready" && atlas.index.path.get(route) && (
-            <span className="t-data" style={{ marginLeft: 8 }}>
-              route {route} highlighted · <Link href={`/path/${route.slice(2)}`}>open path</Link>
+        <details className={styles.controls} open={wideOpen}>
+          <summary>Graph controls</summary>
+          <div className={styles.toolbar}>
+            <span className="label">Show</span>
+            {GRAPH_TYPES.map((t) => (
+              <button key={t} type="button" className={`${styles.chip} ${types.has(t) ? styles.chipOn : ""}`} aria-pressed={types.has(t) ? "true" : "false"} onClick={() => toggleType(t)}>
+                {t}
+              </button>
+            ))}
+            <span className="label" style={{ marginLeft: 8 }}>
+              Layout
             </span>
-          )}
-          <span className={`t-micro secondary ${styles.legend}`}>
-            ■ disequilibrium · ● phenomenon · ◆ carrier · ⬢ output · ▭ coupling family · edge: solid established · long dash demonstrated · dash theoretical · short dash disputed · dotted contradicted
-          </span>
-        </div>
+            <button
+              type="button"
+              className={`${styles.chip} ${layoutMode === "layered" ? styles.chipOn : ""}`}
+              aria-pressed={layoutMode === "layered" ? "true" : "false"}
+              onClick={() => setLayoutMode("layered")}
+            >
+              layered · drivers → effects → carriers → outputs
+            </button>
+            <button
+              type="button"
+              className={`${styles.chip} ${layoutMode === "force" ? styles.chipOn : ""}`}
+              aria-pressed={layoutMode === "force" ? "true" : "false"}
+              onClick={() => setLayoutMode("force")}
+            >
+              force-directed
+            </button>
+            <button
+              type="button"
+              className={styles.chip}
+              onClick={() => {
+                setSel(null);
+                cyRef.current?.animate({ fit: { eles: cyRef.current.elements(), padding: 30 } }, { duration: graphDuration(280), easing: "ease-out-cubic" });
+              }}
+            >
+              reset view
+            </button>
+            {route && atlas.status === "ready" && atlas.index.path.get(route) && (
+              <span className="t-data" style={{ marginLeft: 8 }}>
+                route {route} highlighted · <Link href={`/path/${route.slice(2)}`}>open path</Link>
+              </span>
+            )}
+            <span className={`t-micro secondary ${styles.legend}`}>
+              ■ disequilibrium · ● phenomenon · ◆ carrier · ⬢ output · ▭ coupling family · edge: solid established · long dash demonstrated · dash theoretical · short dash disputed · dotted
+              contradicted
+            </span>
+          </div>
+        </details>
         <div className={styles.canvasWrap}>
           {atlas.status === "loading" && <div className={styles.state}>Loading atlas index…</div>}
           {atlas.status === "error" && (

@@ -21,13 +21,19 @@ export default function FrontierPage() {
           Compositions assembled from recorded physical relations
         </h1>
         <p style={{ maxWidth: "72ch", marginTop: 8 }} className="secondary">
-          Each route is assembled from relations the atlas holds as established or demonstrated. The default view shows candidate compositions: two or more conversion phenomena with a real handoff,
-          whose exact composition has not been assessed and which do not simply extend or truncate a recorded pathway. Routes that are one effect plus bookkeeping, carrier-expanded copies of a shorter
-          route, a recorded pathway drawn at another resolution, or an energy round trip are classed by structure and can be shown with the Structure toggles. The order is a fixed research-priority
-          order (structure, then resolution of the core physics checks, then unresolved carrier handoffs, then how much a recorded device already implements, then whether any number bounds the route,
-          then search state, then evidence floor, then driver availability, then length), never a score. Each row opens with one line for the decision: driver, search state, weakest step, handoff,
-          closest recorded mechanism. Neither label says anything about nature — only about what this atlas has recorded.
+          Default: candidate compositions assembled from recorded established or demonstrated relations whose exact composition has not been assessed. Rows follow the atlas's recorded
+          research-priority order; this reports the atlas, not nature.
         </p>
+        <details className="leadMore">
+          <summary className="label">How routes are classed and ordered</summary>
+          <p style={{ maxWidth: "72ch", marginTop: 8 }} className="secondary">
+            Each route is assembled from relations the atlas holds as established or demonstrated. Routes that are one effect plus bookkeeping, carrier-expanded copies of a shorter route, a recorded
+            pathway drawn at another resolution, a preparation of an ambient driver for a recorded composition, or an energy round trip are classed by structure and can be shown with the Structure
+            toggles. The order is structure, then resolution of the core physics checks, then unresolved carrier handoffs, then how much a recorded device already implements, then whether any number
+            bounds the route, then search state, then evidence floor, then driver availability, then length. Each row opens with one line for the decision: driver, search state, weakest step, handoff,
+            closest recorded mechanism.
+          </p>
+        </details>
       </div>
       <FrontierList />
     </main>

@@ -148,3 +148,10 @@ code, kbd, .mono { font-family: var(--font-mono); }
 #main-content:focus { outline: none; }
 
 /* Reduced-motion: nothing here animates by default; durations are tokens. */
+
+/* Method text behind a disclosure: the summary is a ledger label, the marker a plain triangle. */
+.leadMore { margin-top: 8px; max-width: 72ch; }
+.leadMore > summary { cursor: pointer; list-style: none; min-height: 24px; display: inline-flex; align-items: center; }
+.leadMore > summary::-webkit-details-marker { display: none; }
+.leadMore > summary::before { content: "▸ "; }
+.leadMore[open] > summary::before { content: "▾ "; }

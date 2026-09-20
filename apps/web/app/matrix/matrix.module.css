@@ -6,3 +6,5 @@
 .list li { break-inside: avoid; display: flex; gap: 8px; }
 @media (max-width: 900px) { .list { columns: 1; } }
 @media (max-width: 640px) { .head { flex-direction: column; align-items: flex-start; gap: 8px; } .index { grid-template-columns: 1fr; } }
+.phoneNote { display: none; }
+@media (max-width: 640px) { .phoneNote { display: block; } .deskNote { display: none; } }

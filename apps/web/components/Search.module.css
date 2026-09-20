@@ -47,7 +47,9 @@
 .hitName { font-size: var(--text-ui); line-height: var(--leading-ui); font-weight: var(--weight-medium); }
 @media (max-width: 640px) {
   .box { flex: 0 0 100%; width: 100%; max-width: none; height: 32px; margin: 0; border-top: var(--border); }
-  .input { height: 26px; border: 0; background: transparent; padding: 0; }
+  .input { height: 26px; border: 0; background: transparent; padding: 0; font-size: 12px; }
+  .hitName { font-size: 12px; }
+  .hit { min-height: 28px; }
   .results { left: 0; right: 0; width: auto; }
   .hit { grid-template-columns: 72px 1fr; }
 }

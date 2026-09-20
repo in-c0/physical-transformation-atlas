@@ -20,9 +20,9 @@
 .compact .abbrPhone { display: inline; }
 .compact .abbr { font: 500 8px/10px var(--font-mono); letter-spacing: 0.02em; overflow-wrap: anywhere; white-space: normal; text-align: center; }
 @media (max-width: 640px) {
-  .strip { height: 48px; }
+  .strip { height: 56px; min-height: 56px; }
   .abbrDesk { display: none; }
-  .abbrPhone { display: inline; font-size: 9px; }
+  .abbrPhone { display: inline; font-size: 12px; line-height: 14px; }
   .glyph { font-size: 15px; }
   .fact { display: none; }
 }

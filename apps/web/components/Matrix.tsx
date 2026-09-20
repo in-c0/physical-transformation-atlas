@@ -2,6 +2,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { MatrixPayload, MatrixCellLite } from "@/lib/data";
 import { useAtlas } from "@/lib/client-data";
+import { useWide } from "@/lib/useWide";
 import { CELL_STATUS_SHORT, CELL_STATUS_LABEL } from "@/lib/format";
 import { MATRIX_CELL_STATUSES, type MatrixCellStatus } from "@pta/schema";
 import { StatusMark } from "./StatusMark";
@@ -14,6 +15,7 @@ type Pos = { r: number; c: number };
 export function Matrix({ data, density, fill = false, filters = false }: { data: MatrixPayload; density: "home" | "full"; fill?: boolean; filters?: boolean }) {
   const { rows, cols } = data;
   const [shown, setShown] = useState<Set<MatrixCellStatus>>(() => new Set(MATRIX_CELL_STATUSES));
+  const filtersOpen = useWide();
   const toggleStatus = (s: MatrixCellStatus) =>
     setShown((prev) => {
       const next = new Set(prev);
@@ -183,18 +185,21 @@ export function Matrix({ data, density, fill = false, filters = false }: { data:
     <div className={`${styles.wrap} ${selected ? styles.withDrawer : ""} ${fill ? styles.fill : ""}`}>
       <div className={styles.main}>
         {filters && (
-          <div className={styles.filters} role="group" aria-label="Show cells with status">
-            <span className="label">Show</span>
-            {MATRIX_CELL_STATUSES.map((s) => (
-              <button key={s} type="button" className={`${styles.filter} ${shown.has(s) ? styles.filterOn : ""}`} aria-pressed={shown.has(s)} onClick={() => toggleStatus(s)}>
-                <StatusMark status={s} />
-                <span>{CELL_STATUS_LABEL[s]}</span>
+          <details className={styles.filterToggle} open>
+            <summary>Show cell states</summary>
+            <div className={styles.filters} role="group" aria-label="Show cells with status">
+              <span className="label">Show</span>
+              {MATRIX_CELL_STATUSES.map((s) => (
+                <button key={s} type="button" className={`${styles.filter} ${shown.has(s) ? styles.filterOn : ""}`} aria-pressed={shown.has(s)} onClick={() => toggleStatus(s)}>
+                  <StatusMark status={s} />
+                  <span>{CELL_STATUS_LABEL[s]}</span>
+                </button>
+              ))}
+              <button type="button" className={styles.filterReset} onClick={() => setShown(new Set(MATRIX_CELL_STATUSES))}>
+                all
               </button>
-            ))}
-            <button type="button" className={styles.filterReset} onClick={() => setShown(new Set(MATRIX_CELL_STATUSES))}>
-              all
-            </button>
-          </div>
+            </div>
+          </details>
         )}
         <div className={styles.probe} data-probe>
           <span className={styles.probeLabel}>PROBE</span>

@@ -29,4 +29,6 @@
   .item:nth-child(6) { order: 8; }
   .item:nth-child(7) { order: 9; }
   .value { font-size: 14px; line-height: 18px; }
+  .label { font-size: 0; } /* the short phone label is the ::after content; the full label stays in the accessible name */
+  .label::after { content: attr(data-short); font-size: var(--text-micro); }
 }

@@ -48,7 +48,8 @@
   .brandLong { display: none; }
   .brandShort { display: inline; }
   .brand { height: 40px; padding-right: 12px; }
-  .nav { height: 40px; flex: 1 1 auto; overflow-x: auto; white-space: nowrap; scrollbar-width: none; }
+  /* brand + nav share one 40 px row: the nav takes the remaining width and scrolls sideways, never wraps */
+  .nav { height: 40px; flex: 1 1 0; min-width: 0; overflow-x: auto; white-space: nowrap; scrollbar-width: none; }
   .nav::-webkit-scrollbar { display: none; }
-  .navItem { padding: 0 10px; font-size: 11px; }
+  .navItem { padding: 0 9px; font-size: 12px; flex: 0 0 auto; }
 }

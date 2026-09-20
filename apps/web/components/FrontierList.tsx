@@ -5,6 +5,7 @@ import type { CompiledPath, FrontierClass, StructuralKind } from "@pta/schema";
 import { FRONTIER_CLASSES, STRUCTURAL_KINDS } from "@pta/schema";
 import { researchOrder } from "@pta/graph/order";
 import { useAtlas } from "@/lib/client-data";
+import { useWide } from "@/lib/useWide";
 import { EVIDENCE_LABEL, FRONTIER_LABEL, OVERLAP_LABEL, STRUCTURE_LABEL, compositionState, hrefFor } from "@/lib/format";
 import { CheckGlyph } from "./StatusMark";
 import styles from "./FrontierList.module.css";
@@ -38,6 +39,7 @@ const DEFAULT: Filters = {
 export function FrontierList() {
   const atlas = useAtlas();
   const [f, setF] = useState<Filters>(DEFAULT);
+  const wideOpen = useWide();
   const [limit, setLimit] = useState(60);
 
   const data = useMemo(() => {
@@ -106,84 +108,87 @@ export function FrontierList() {
 
   return (
     <div className={styles.wrap}>
-      <form className={styles.filters} onSubmit={(e) => e.preventDefault()}>
-        <label>
-          <span className="label">Input</span>
-          <select value={f.source} onChange={(e) => set({ source: e.target.value })}>
-            <option value="">all</option>
-            {sources.map((s) => (
-              <option key={s.id} value={s.id}>
-                {s.address} {s.name}
-              </option>
+      <details className={styles.filterToggle} open={wideOpen}>
+        <summary>Filters</summary>
+        <form className={styles.filters} onSubmit={(e) => e.preventDefault()}>
+          <label>
+            <span className="label">Input</span>
+            <select value={f.source} onChange={(e) => set({ source: e.target.value })}>
+              <option value="">all</option>
+              {sources.map((s) => (
+                <option key={s.id} value={s.id}>
+                  {s.address} {s.name}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label>
+            <span className="label">Output</span>
+            <select value={f.sink} onChange={(e) => set({ sink: e.target.value })}>
+              <option value="">all</option>
+              {sinks.map((s) => (
+                <option key={s.id} value={s.id}>
+                  {s.name}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label>
+            <span className="label">Coupling</span>
+            <select value={f.family} onChange={(e) => set({ family: e.target.value })}>
+              <option value="">all</option>
+              {families.map((s) => (
+                <option key={s.id} value={s.id}>
+                  {s.address} {s.name}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label>
+            <span className="label">Environment</span>
+            <select value={f.env} onChange={(e) => set({ env: e.target.value })}>
+              <option value="">any</option>
+              {envs.map((t) => (
+                <option key={t} value={t}>
+                  {t}
+                </option>
+              ))}
+            </select>
+          </label>
+          <fieldset>
+            <legend className="label">Effects</legend>
+            <span className={styles.range}>
+              <input type="number" min={1} max={7} value={f.minLen} onChange={(e) => set({ minLen: Number(e.target.value) })} aria-label="minimum conversion phenomena" />
+              –
+              <input type="number" min={1} max={7} value={f.maxLen} onChange={(e) => set({ maxLen: Number(e.target.value) })} aria-label="maximum conversion phenomena" />
+            </span>
+          </fieldset>
+          <label className={styles.check}>
+            <input type="checkbox" checked={f.establishedOnly} onChange={(e) => set({ establishedOnly: e.target.checked })} />
+            <span className="label">established edges only</span>
+          </label>
+          <label>
+            <span className="label">Contains</span>
+            <input type="search" value={f.q} placeholder="phenomenon or carrier" onChange={(e) => set({ q: e.target.value })} />
+          </label>
+          <div className={styles.classes} role="group" aria-label="Evidence class">
+            <span className="label">Evidence</span>
+            {FRONTIER_CLASSES.map((c) => (
+              <button key={c} type="button" className={`${styles.chip} ${f.classes.has(c) ? styles.chipOn : ""}`} aria-pressed={f.classes.has(c)} onClick={() => toggleClass(c)}>
+                {FRONTIER_LABEL[c]}
+              </button>
             ))}
-          </select>
-        </label>
-        <label>
-          <span className="label">Output</span>
-          <select value={f.sink} onChange={(e) => set({ sink: e.target.value })}>
-            <option value="">all</option>
-            {sinks.map((s) => (
-              <option key={s.id} value={s.id}>
-                {s.name}
-              </option>
+          </div>
+          <div className={styles.classes} role="group" aria-label="Structure">
+            <span className="label">Structure</span>
+            {STRUCTURAL_KINDS.map((k) => (
+              <button key={k} type="button" className={`${styles.chip} ${f.kinds.has(k) ? styles.chipOn : ""}`} aria-pressed={f.kinds.has(k)} onClick={() => toggleKind(k)}>
+                {STRUCTURE_LABEL[k]}
+              </button>
             ))}
-          </select>
-        </label>
-        <label>
-          <span className="label">Coupling</span>
-          <select value={f.family} onChange={(e) => set({ family: e.target.value })}>
-            <option value="">all</option>
-            {families.map((s) => (
-              <option key={s.id} value={s.id}>
-                {s.address} {s.name}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label>
-          <span className="label">Environment</span>
-          <select value={f.env} onChange={(e) => set({ env: e.target.value })}>
-            <option value="">any</option>
-            {envs.map((t) => (
-              <option key={t} value={t}>
-                {t}
-              </option>
-            ))}
-          </select>
-        </label>
-        <fieldset>
-          <legend className="label">Effects</legend>
-          <span className={styles.range}>
-            <input type="number" min={1} max={7} value={f.minLen} onChange={(e) => set({ minLen: Number(e.target.value) })} aria-label="minimum conversion phenomena" />
-            –
-            <input type="number" min={1} max={7} value={f.maxLen} onChange={(e) => set({ maxLen: Number(e.target.value) })} aria-label="maximum conversion phenomena" />
-          </span>
-        </fieldset>
-        <label className={styles.check}>
-          <input type="checkbox" checked={f.establishedOnly} onChange={(e) => set({ establishedOnly: e.target.checked })} />
-          <span className="label">established edges only</span>
-        </label>
-        <label>
-          <span className="label">Contains</span>
-          <input type="search" value={f.q} placeholder="phenomenon or carrier" onChange={(e) => set({ q: e.target.value })} />
-        </label>
-        <div className={styles.classes} role="group" aria-label="Evidence class">
-          <span className="label">Evidence</span>
-          {FRONTIER_CLASSES.map((c) => (
-            <button key={c} type="button" className={`${styles.chip} ${f.classes.has(c) ? styles.chipOn : ""}`} aria-pressed={f.classes.has(c)} onClick={() => toggleClass(c)}>
-              {FRONTIER_LABEL[c]}
-            </button>
-          ))}
-        </div>
-        <div className={styles.classes} role="group" aria-label="Structure">
-          <span className="label">Structure</span>
-          {STRUCTURAL_KINDS.map((k) => (
-            <button key={k} type="button" className={`${styles.chip} ${f.kinds.has(k) ? styles.chipOn : ""}`} aria-pressed={f.kinds.has(k)} onClick={() => toggleKind(k)}>
-              {STRUCTURE_LABEL[k]}
-            </button>
-          ))}
-        </div>
-      </form>
+          </div>
+        </form>
+      </details>
 
       <div className={styles.count} role="status" aria-live="polite" aria-atomic="true">
         <span className="t-data">
@@ -256,93 +261,96 @@ export function FrontierList() {
                   )}
                 </span>
               </p>
-              <dl className={styles.facts}>
-                <dt>mechanism</dt>
-                <dd>
-                  {p.effective_length} effect
-                  {p.effective_length === 1 ? "" : "s"} · {p.family_seam_count} cross-family seam{p.family_seam_count === 1 ? "" : "s"} · {p.energy_form_sequence.join(" → ") || "no energy ledger"}
-                </dd>
-                <dt>boundary tags</dt>
-                <dd>
-                  {p.checks.find((k) => k.id === "boundary-compatibility")?.result === "fail" ? "a recorded conflict within a step" : "0 recorded conflicts"} ·{" "}
-                  {p.implied_interface_count === 0
-                    ? "0 tag-conflict interfaces"
-                    : `${p.implied_interface_count} tag-conflict interface${p.implied_interface_count === 1 ? "" : "s"}: ${p.implied_interfaces.map((x) => x.replace(/^claim:[^ ]+ → claim:[^:]+: /, "").replace(/ vs /, " | ")).join("; ")}`}
-                  {" · tags only say what conflicts; a rotor, bluff body, charged channel or membrane the prose requires shows under handoff"}
-                </dd>
-                <dt>magnitude screen</dt>
-                <dd>
-                  {p.magnitude_screen.status}
-                  {p.magnitude_screen.bottleneck_claim ? (
+              <details className={styles.detailToggle} open={wideOpen}>
+                <summary>Technical record</summary>
+                <dl className={styles.facts}>
+                  <dt>mechanism</dt>
+                  <dd>
+                    {p.effective_length} effect
+                    {p.effective_length === 1 ? "" : "s"} · {p.family_seam_count} cross-family seam{p.family_seam_count === 1 ? "" : "s"} · {p.energy_form_sequence.join(" → ") || "no energy ledger"}
+                  </dd>
+                  <dt>boundary tags</dt>
+                  <dd>
+                    {p.checks.find((k) => k.id === "boundary-compatibility")?.result === "fail" ? "a recorded conflict within a step" : "0 recorded conflicts"} ·{" "}
+                    {p.implied_interface_count === 0
+                      ? "0 tag-conflict interfaces"
+                      : `${p.implied_interface_count} tag-conflict interface${p.implied_interface_count === 1 ? "" : "s"}: ${p.implied_interfaces.map((x) => x.replace(/^claim:[^ ]+ → claim:[^:]+: /, "").replace(/ vs /, " | ")).join("; ")}`}
+                    {" · tags only say what conflicts; a rotor, bluff body, charged channel or membrane the prose requires shows under handoff"}
+                  </dd>
+                  <dt>magnitude screen</dt>
+                  <dd>
+                    {p.magnitude_screen.status}
+                    {p.magnitude_screen.bottleneck_claim ? (
+                      <>
+                        {" "}
+                        · bottleneck <Link href={`/claim/${p.magnitude_screen.bottleneck_claim.split(":")[1]}`}>{describeClaim(p.magnitude_screen.bottleneck_claim)}</Link>
+                      </>
+                    ) : null}{" "}
+                    · {p.magnitude_screen.detail}
+                  </dd>
+                  {p.structural_kind !== "composition" && (
                     <>
-                      {" "}
-                      · bottleneck <Link href={`/claim/${p.magnitude_screen.bottleneck_claim.split(":")[1]}`}>{describeClaim(p.magnitude_screen.bottleneck_claim)}</Link>
+                      <dt>structure</dt>
+                      <dd>
+                        {STRUCTURE_LABEL[p.structural_kind]}
+                        {p.dominated_by ? (
+                          <>
+                            {" "}
+                            · {p.structural_kind === "source-preparation" ? "the composition itself" : "representative"} <Link href={`/path/${p.dominated_by.slice(2)}`}>{p.dominated_by}</Link>
+                          </>
+                        ) : null}
+                        {p.semantic_overlap ? ` · same mechanism core as ${index.pathway.get(p.semantic_overlap)?.name ?? p.semantic_overlap}` : ""}
+                      </dd>
                     </>
-                  ) : null}{" "}
-                  · {p.magnitude_screen.detail}
-                </dd>
-                {p.structural_kind !== "composition" && (
-                  <>
-                    <dt>structure</dt>
-                    <dd>
-                      {STRUCTURE_LABEL[p.structural_kind]}
-                      {p.dominated_by ? (
-                        <>
-                          {" "}
-                          · {p.structural_kind === "source-preparation" ? "the composition itself" : "representative"} <Link href={`/path/${p.dominated_by.slice(2)}`}>{p.dominated_by}</Link>
-                        </>
-                      ) : null}
-                      {p.semantic_overlap ? ` · same mechanism core as ${index.pathway.get(p.semantic_overlap)?.name ?? p.semantic_overlap}` : ""}
-                    </dd>
-                  </>
-                )}
-                <dt>constituents</dt>
-                <dd>
-                  {p.established_steps}/{p.length} established · weakest{" "}
-                  {p.established_steps === p.length ? (
-                    "none below established"
-                  ) : (
+                  )}
+                  <dt>constituents</dt>
+                  <dd>
+                    {p.established_steps}/{p.length} established · weakest{" "}
+                    {p.established_steps === p.length ? (
+                      "none below established"
+                    ) : (
+                      <>
+                        {EVIDENCE_LABEL[p.evidence_status]} at <Link href={`/claim/${p.weakest_claim.split(":")[1]}`}>{describeClaim(p.weakest_claim)}</Link>
+                      </>
+                    )}{" "}
+                    · maturity floor {p.constituent_floor}
+                  </dd>
+                  <dt>devices</dt>
+                  <dd>
+                    {p.device_coverage.implemented} of {p.device_coverage.of} effects have a recorded implementing device
+                    {p.closest_known_device ? (
+                      <>
+                        {" "}
+                        · most shared: <Link href={hrefFor(p.closest_known_device.transducer)}>{index.entity.get(p.closest_known_device.transducer)?.name ?? p.closest_known_device.transducer}</Link> (
+                        {p.closest_known_device.shared_steps})
+                      </>
+                    ) : null}
+                  </dd>
+                  <dt>exact composition</dt>
+                  <dd>{compositionState(p.search_status, p.last_searched).long}</dd>
+                  {p.known_pathway_overlap && p.known_pathway_overlap.relation !== "exact" && (
                     <>
-                      {EVIDENCE_LABEL[p.evidence_status]} at <Link href={`/claim/${p.weakest_claim.split(":")[1]}`}>{describeClaim(p.weakest_claim)}</Link>
+                      <dt>recorded pathway</dt>
+                      <dd>
+                        {OVERLAP_LABEL[p.known_pathway_overlap.relation]} {index.pathway.get(p.known_pathway_overlap.pathway)?.name} · {p.known_pathway_overlap.shared_claims}/
+                        {p.known_pathway_overlap.route_claims} relations
+                      </dd>
                     </>
-                  )}{" "}
-                  · maturity floor {p.constituent_floor}
-                </dd>
-                <dt>devices</dt>
-                <dd>
-                  {p.device_coverage.implemented} of {p.device_coverage.of} effects have a recorded implementing device
-                  {p.closest_known_device ? (
-                    <>
-                      {" "}
-                      · most shared: <Link href={hrefFor(p.closest_known_device.transducer)}>{index.entity.get(p.closest_known_device.transducer)?.name ?? p.closest_known_device.transducer}</Link> (
-                      {p.closest_known_device.shared_steps})
-                    </>
-                  ) : null}
-                </dd>
-                <dt>exact composition</dt>
-                <dd>{compositionState(p.search_status, p.last_searched).long}</dd>
-                {p.known_pathway_overlap && p.known_pathway_overlap.relation !== "exact" && (
-                  <>
-                    <dt>recorded pathway</dt>
-                    <dd>
-                      {OVERLAP_LABEL[p.known_pathway_overlap.relation]} {index.pathway.get(p.known_pathway_overlap.pathway)?.name} · {p.known_pathway_overlap.shared_claims}/
-                      {p.known_pathway_overlap.route_claims} relations
-                    </dd>
-                  </>
-                )}
-                <dt>checks</dt>
-                <dd className={styles.checks}>
-                  {p.checks.map((k) => (
-                    <span key={k.id} role="img" aria-label={`${k.label}: ${k.result}. ${k.detail}`} title={`${k.label}: ${k.result} — ${k.detail}`}>
-                      <CheckGlyph result={k.result} />
-                    </span>
-                  ))}
-                </dd>
-                <dt>sources</dt>
-                <dd>
-                  {p.composition_source_ids.length} for the composition · {p.constituent_source_ids.length} for the constituent relations
-                </dd>
-              </dl>
+                  )}
+                  <dt>checks</dt>
+                  <dd className={styles.checks}>
+                    {p.checks.map((k) => (
+                      <span key={k.id} role="img" aria-label={`${k.label}: ${k.result}. ${k.detail}`} title={`${k.label}: ${k.result} — ${k.detail}`}>
+                        <CheckGlyph result={k.result} />
+                      </span>
+                    ))}
+                  </dd>
+                  <dt>sources</dt>
+                  <dd>
+                    {p.composition_source_ids.length} for the composition · {p.constituent_source_ids.length} for the constituent relations
+                  </dd>
+                </dl>
+              </details>
               <div className={styles.actions}>
                 <Link className={styles.link} href={`/path/${p.id.slice(2)}`}>
                   Open path

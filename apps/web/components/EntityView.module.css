@@ -26,3 +26,11 @@
 .explore { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: baseline; margin-top: 10px; font-family: var(--font-mono); font-size: var(--text-data); }
 .explore a { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
 .record { max-width: 72ch; margin-top: 8px; font-size: var(--text-ui); line-height: var(--leading-ui); }
+@media (max-width: 640px) {
+  .record { font-size: 14px; line-height: 20px; }
+  .meta { font-size: 12px; line-height: 16px; }
+  .cellLink { font-size: 12px; line-height: 16px; min-height: 24px; white-space: normal; align-items: flex-start; }
+  .explore { font-size: 12px; line-height: 16px; }
+  .explore a { display: inline-flex; align-items: center; min-height: 24px; }
+  .header h1 a { overflow-wrap: anywhere; }
+}
