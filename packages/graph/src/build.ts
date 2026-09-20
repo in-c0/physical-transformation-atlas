@@ -23,8 +23,6 @@ import {
   type SearchRecord,
   type AutomatedSearchRun,
   searchDate,
-  type AutomatedSearchRun,
-  searchDate,
   type SearchStatus,
 } from "@pta/schema";
 import { CORE_CHECK_IDS, UnitTable, boundaryReport, runAllChecks, type PhysicsContext } from "@pta/physics";

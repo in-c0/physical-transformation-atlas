@@ -12,9 +12,13 @@
  *   pnpm --filter @pta/pipelines literature-search --all     # re-query everything
  *   pnpm --filter @pta/pipelines literature-search --limit 20 --delay 2000
  *   pnpm --filter @pta/pipelines literature-search --cell D.04:C.01   # one cell, re-queried
+ *   pnpm --filter @pta/pipelines literature-search --path p-423a19acdd --plan data/canonical/searches/plans/p-423a19acdd.yaml
+ *       # one route (exact composition) from a query plan written under route-search-v1: every run's
+ *       # engine, form and literal query comes from the plan, never from the aliases at run time.
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve, join } from "node:path";
+import { parse as parseYaml } from "yaml";
 import { loadCanon, buildGraph } from "@pta/graph";
 import type { AutomatedSearchRun, Entity, SearchRun } from "@pta/schema";
 
@@ -29,10 +33,16 @@ const delayMs = delayArg >= 0 ? Number(process.argv[delayArg + 1]) : 1500;
 const cellArg = process.argv.indexOf("--cell");
 /** Query one cell by address, e.g. --cell D.04:C.01 (implies --all for that cell). */
 const onlyCell = cellArg >= 0 ? process.argv[cellArg + 1] : undefined;
+const pathArg = process.argv.indexOf("--path");
+/** Query one route by id from a plan file: --path p-423a19acdd --plan <yaml>. */
+const onlyPath = pathArg >= 0 ? process.argv[pathArg + 1] : undefined;
+const planArg = process.argv.indexOf("--plan");
+const planFile = planArg >= 0 ? process.argv[planArg + 1] : undefined;
 const PER_PAGE = 100;
 
 const prev: AutomatedSearchRun[] = existsSync(outFile) ? JSON.parse(readFileSync(outFile, "utf8")) : [];
-const byKey = new Map(prev.filter((r) => r.target.kind === "cell").map((r) => [`${(r.target as { row: string }).row}|${(r.target as { col: string }).col}`, r]));
+const keyOf = (r: AutomatedSearchRun) => (r.target.kind === "cell" ? `${r.target.row}|${r.target.col}` : r.target.kind === "path" ? `path|${r.target.path}` : `claim|${r.target.claim}`);
+const byKey = new Map(prev.map((r) => [keyOf(r), r]));
 
 /** Names and aliases usable as search terms: multi-word phrases quoted, symbols and one-letter aliases dropped. */
 function termList(e: Entity): string[] {
@@ -47,10 +57,12 @@ const entity = new Map(canon.entities.map((e) => [e.id, e]));
 const members = new Map<string, string[]>();
 for (const c of canon.claims) if (c.predicate === "member_of") members.set(c.object, [...(members.get(c.object) ?? []), c.subject]);
 const forbidden = new Set(graph.matrix.cells.filter((c) => c.status === "forbidden").map((c) => `${c.row}|${c.col}`));
-const todo = graph.matrix.cells
-  .filter((c) => (onlyCell ? c.address === onlyCell : c.direct_claims.length === 0 && !forbidden.has(`${c.row}|${c.col}`) && (all || !byKey.has(`${c.row}|${c.col}`))))
-  .slice(0, limit);
-console.log(`${todo.length} cell(s) to query`);
+const todo = onlyPath
+  ? []
+  : graph.matrix.cells
+      .filter((c) => (onlyCell ? c.address === onlyCell : c.direct_claims.length === 0 && !forbidden.has(`${c.row}|${c.col}`) && (all || !byKey.has(`${c.row}|${c.col}`))))
+      .slice(0, limit);
+console.log(onlyPath ? `route ${onlyPath} from plan ${planFile}` : `${todo.length} cell(s) to query`);
 
 function save() {
   const outList = [...byKey.values()].sort((a, b) => a.id.localeCompare(b.id));
@@ -112,6 +124,126 @@ async function openalex(query: string, runId: string): Promise<{ run: SearchRun;
     },
     works,
   };
+}
+
+/** Semantic Scholar's relevance search: plain keyword strings, no boolean guarantees; the literal string is recorded. */
+async function semanticScholar(query: string, runId: string): Promise<{ run: SearchRun; works: Work[] } | { error: string; status?: number }> {
+  const url = new URL("https://api.semanticscholar.org/graph/v1/paper/search");
+  url.searchParams.set("query", query);
+  url.searchParams.set("limit", String(PER_PAGE));
+  url.searchParams.set("fields", "title,year,externalIds,openAccessPdf,citationCount,publicationTypes");
+  const publicUrl = url.toString();
+  const executed_at = new Date().toISOString();
+  const headers: Record<string, string> = { "User-Agent": "physical-transformation-atlas/0.3 (literature index pipeline)" };
+  if (process.env.S2_API_KEY) headers["x-api-key"] = process.env.S2_API_KEY;
+  const r = await fetch(url, { headers, signal: AbortSignal.timeout(30000) });
+  if (!r.ok) return { error: `HTTP ${r.status}`, status: r.status };
+  const j = (await r.json()) as {
+    total?: number;
+    data?: {
+      paperId: string;
+      title: string | null;
+      year?: number | null;
+      externalIds?: { DOI?: string };
+      openAccessPdf?: { url?: string } | null;
+      citationCount?: number;
+      publicationTypes?: string[] | null;
+    }[];
+  };
+  const works: Work[] = (j.data ?? []).map((w) => ({
+    doi: w.externalIds?.DOI ? w.externalIds.DOI : undefined,
+    title: w.title ?? "(untitled)",
+    year: w.year ?? undefined,
+    type: w.publicationTypes?.[0]?.toLowerCase(),
+    cited_by_count: w.citationCount,
+    open_access_url: w.openAccessPdf?.url ?? undefined,
+    found_by: [runId],
+  }));
+  return {
+    run: {
+      id: runId,
+      engine: "semantic-scholar",
+      query_form: "driver-family",
+      query,
+      executed_at,
+      request_url: publicUrl,
+      engine_version: null,
+      index_snapshot: null,
+      sort: "relevance",
+      filters: { limit: PER_PAGE },
+      result_count_reported: j.total ?? null,
+      records_retrieved: works.length,
+      records_screened: 0,
+      records_read: 0,
+    },
+    works,
+  };
+}
+
+// Route mode: the plan supplies every run (engine, form, literal query) plus the term lists it was built from.
+if (onlyPath) {
+  if (!planFile) throw new Error("--path needs --plan <yaml>");
+  const route = graph.paths.find((p) => p.id === onlyPath);
+  if (!route) throw new Error(`no route ${onlyPath}`);
+  const plan = parseYaml(readFileSync(resolve(root, planFile), "utf8")) as {
+    protocol_version: string;
+    driver_terms: string[];
+    phenomenon_terms: Record<string, string[]>;
+    runs: { id: string; engine: "openalex" | "semantic-scholar"; form: SearchRun["query_form"]; query: string }[];
+    notes?: string;
+  };
+  const runs: SearchRun[] = [];
+  const works = new Map<string, Work>();
+  for (const q of plan.runs) {
+    const res = q.engine === "openalex" ? await openalex(q.query, q.id) : await semanticScholar(q.query, q.id);
+    if ("error" in res) {
+      console.log(`  ? ${q.id} (${q.engine}): ${res.error}`);
+      if (res.status === 429) {
+        await new Promise((r) => setTimeout(r, 30000));
+        const again = q.engine === "openalex" ? await openalex(q.query, q.id) : await semanticScholar(q.query, q.id);
+        if ("error" in again) throw new Error(`${q.id}: ${again.error} after retry`);
+        again.run.query_form = q.form;
+        runs.push(again.run);
+        for (const w of again.works) {
+          const key = w.doi ?? w.openalex_id ?? w.title;
+          const seen = works.get(key);
+          if (seen) seen.found_by.push(q.id);
+          else works.set(key, w);
+        }
+        await new Promise((r) => setTimeout(r, delayMs));
+        continue;
+      }
+      throw new Error(`${q.id}: ${res.error}`);
+    }
+    res.run.query_form = q.form;
+    runs.push(res.run);
+    console.log(`  ${q.id} (${q.engine}, ${q.form}): ${res.run.result_count_reported ?? "?"} reported, ${res.works.length} retrieved`);
+    for (const w of res.works) {
+      const key = w.doi ?? w.openalex_id ?? w.title;
+      const seen = works.get(key);
+      if (seen) seen.found_by.push(q.id);
+      else works.set(key, w);
+    }
+    await new Promise((r) => setTimeout(r, delayMs));
+  }
+  const stamp = new Date().toISOString().slice(0, 10);
+  const rec: AutomatedSearchRun = {
+    id: `search:${stamp}-${onlyPath}`,
+    target: { kind: "path", path: onlyPath },
+    dataset_hash: graph.meta.data_hash,
+    driver_terms: plan.driver_terms,
+    family_terms: [],
+    phenomenon_terms: plan.phenomenon_terms,
+    runs,
+    works: [...works.values()],
+    screening_status: "not-reviewed",
+    result: "inconclusive",
+    notes: plan.notes ?? `Automated ${plan.protocol_version} index queries from ${planFile}; the result list is frozen for a reviewer and nothing here has been read for a qualifying demonstration.`,
+  };
+  byKey.set(`path|${onlyPath}`, rec);
+  save();
+  console.log(`route ${onlyPath}: ${runs.length} run(s), ${rec.works.length} unique works; ${byKey.size} automated run(s) on file`);
+  process.exit(0);
 }
 
 let n = 0;
