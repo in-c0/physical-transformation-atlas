@@ -6,6 +6,8 @@ Two independent dimensions, plus a knowledge scale.
 
 established · replicated · demonstrated · reported · theoretically-predicted · hypothesised · disputed · contradicted · invalid
 
+These are allowed vocabulary values; a value need not occur in every dataset revision. Current occurrence counts are published in `/api/stats.json` (`counts.claims_by_status`, `counts.paths_by_search_status`, `counts.paths_by_frontier_class`, `counts.matrix_cells_by_status`). Definitions of every value: [vocabulary.md](vocabulary.md).
+
 ## Search status (per route, per matrix cell)
 
 | status | meaning |

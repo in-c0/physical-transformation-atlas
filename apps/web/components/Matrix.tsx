@@ -311,7 +311,7 @@ export function Matrix({ data, density, fill = false, filters = false }: { data:
         <div className={styles.rail}>
           <Legend compact />
           <span className={`t-micro ${styles.stamp}`}>
-            INDEXED THROUGH {data.indexed_through} · DATASET r{data.data_hash}
+            {data.indexed_through ? `SEARCHES THROUGH ${data.indexed_through}` : "NO SEARCH RECORDS"} · DATASET r{data.data_hash}
           </span>
         </div>
       </div>

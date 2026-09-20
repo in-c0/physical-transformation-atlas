@@ -1,13 +1,8 @@
-import { exportMeta } from "@/lib/api";
+import { ENDPOINTS, exportMeta } from "@/lib/api";
 
 export const dynamic = "force-static";
 
-/** Dataset revision, build time, counts and the list of exports. */
+/** Dataset revision, build provenance, counts and occurrence maps, and the list of every export. */
 export function GET() {
-  const meta = exportMeta("stats");
-  const endpoints = ["stats", "graph", "entities", "claims", "sources", "pathways", "paths", "matrix", "coverage", "checks", "vocabulary"].map((e) => `/api/${e}.json`);
-  return Response.json({
-    ...meta,
-    endpoints: [...endpoints, "/api/claims.csv"],
-  });
+  return Response.json({ meta: exportMeta("stats", { record_kind: "none" }), data: { endpoints: ENDPOINTS } });
 }

@@ -12,6 +12,7 @@
   status: established
   knowledge_level: K6
   notes: "Solar sails (IKAROS 2010, LightSail 2 2019) convert this momentum flux into spacecraft kinetic energy in flight."
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 7 audit (ChatGPT review, applied and source-verified by the lane)" }
 - id: claim:radiation-pressure-produces-motion
   subject: phenomenon:radiation-pressure
   predicate: produces
@@ -20,6 +21,7 @@
   energy: { input: mechanical, output: mechanical }
   evidence: [source:trowbridge-2025-radiation-pressure]
   status: established
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 7 audit (ChatGPT review, applied and source-verified by the lane)" }
 - id: claim:radiation-pressure-member
   subject: phenomenon:radiation-pressure
   predicate: member_of
@@ -36,6 +38,7 @@
   evidence: [source:gibson-1970-photon-drag, source:strait-2019-photon-drag]
   status: established
   knowledge_level: K4
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 7 audit (ChatGPT review, applied and source-verified by the lane)" }
 - id: claim:photon-drag-produces
   subject: phenomenon:photon-drag-effect
   predicate: produces
@@ -60,6 +63,7 @@
   evidence: [source:rowley-horne-1978-dufour, source:degroot-mazur-1962]
   status: established
   knowledge_level: K4
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 7 audit (ChatGPT review, applied and source-verified by the lane)" }
 - id: claim:dufour-produces-heat
   subject: phenomenon:dufour-effect
   predicate: produces
@@ -80,6 +84,7 @@
   conditions: ["near equilibrium the properly defined heat–mass Onsager cross-coefficients are reciprocal when fluxes and conjugate forces use the same convention; this does not imply numerical equality of the convention-dependent Soret and Dufour coefficients"]
   evidence: [source:onsager-1931, source:rowley-horne-1978-dufour, source:degroot-mazur-1962, source:wurger-2014-dufour-onsager]
   status: established
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 7 audit (ChatGPT review, applied and source-verified by the lane)" }
 - id: claim:soret-member
   subject: phenomenon:soret-effect
   predicate: member_of
@@ -163,6 +168,7 @@
   status: demonstrated
   notes: "Parmenter 1953 is the theoretical prediction; Weinreich and White 1957 the one experimental observation recorded so far, so the atlas threshold for established (two independent groups, or a review or book) is not yet met."
   knowledge_level: K4
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 7 audit (ChatGPT review, applied and source-verified by the lane)" }
 - id: claim:acoustic-wave-drives-acoustoelectric
   subject: carrier:acoustic-wave
   predicate: drives
@@ -171,6 +177,7 @@
   energy: { input: acoustic, output: electrical, dissipation: thermal }
   evidence: [source:weinreich-white-1957, source:parmenter-1953]
   status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 7 audit (ChatGPT review, applied and source-verified by the lane)" }
 - id: claim:acoustoelectric-produces
   subject: phenomenon:acoustoelectric-effect
   predicate: produces
@@ -178,6 +185,7 @@
   energy: { input: electrical, output: electrical }
   evidence: [source:weinreich-white-1957, source:parmenter-1953]
   status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 7 audit (ChatGPT review, applied and source-verified by the lane)" }
 - id: claim:acoustoelectric-member
   subject: phenomenon:acoustoelectric-effect
   predicate: member_of
@@ -194,6 +202,7 @@
   evidence: [source:nye-1985, source:erturk-inman-2011]
   status: established
   knowledge_level: K8
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 7 audit (ChatGPT review, applied and source-verified by the lane)" }
 
 # --- Spin Nernst ------------------------------------------------------------------------
 - id: claim:temperature-drives-spin-nernst
@@ -231,6 +240,7 @@
   evidence: [source:johnston-2002-dember, source:apostolopoulos-barnes-2014-dember, source:schetzina-1975-dember]
   status: established
   knowledge_level: K4
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 7 audit (ChatGPT review, applied and source-verified by the lane)" }
 - id: claim:dember-produces-charge
   subject: phenomenon:photo-dember-effect
   predicate: produces
@@ -289,6 +299,7 @@
   energy: { input: electrical, output: electrical }
   evidence: [source:ehd-generator-1977, source:ehd-review-2025]
   status: established
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 7 audit (ChatGPT review, applied and source-verified by the lane)" }
 - id: claim:fluid-space-charge-converts-electricity
   subject: carrier:fluid-space-charge
   predicate: converts_into
@@ -297,6 +308,7 @@
   energy: { input: electrical, output: electrical, dissipation: thermal }
   evidence: [source:ehd-generator-1977, source:ehd-review-2025]
   status: established
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 7 audit (ChatGPT review, applied and source-verified by the lane)" }
 - id: claim:ehd-member
   subject: phenomenon:electrohydrodynamic-generation
   predicate: member_of
@@ -360,6 +372,7 @@
   conditions: ["applies when the shape-memory effect is operated cyclically as a heat engine between hot and cold reservoirs; it does not bound a one-shot thermally triggered shape-recovery event"]
   evidence: [source:sma-heat-engine-2019, source:bejan-2016]
   status: established
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 7 audit (ChatGPT review, applied and source-verified by the lane)" }
 - id: claim:shape-memory-observed-niti
   subject: phenomenon:thermally-driven-shape-memory-effect
   predicate: observed_in
@@ -405,6 +418,7 @@
   conditions: ["for an ideal solar thermochemical process the heat-to-work (exergy) factor is bounded by 1 − T_L/T_H, with T_H the receiver/process temperature and T_L the heat-rejection reservoir, usually the environment; T_L is not in general the re-oxidation temperature; the receiver absorption efficiency multiplies this factor"]
   evidence: [source:steinfeld-2005-thermochemical]
   status: established
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 7 audit (ChatGPT review, applied and source-verified by the lane)" }
 
 # --- Alpha / beta split, radioluminescence ---------------------------------------------------
 - id: claim:decay-produces-alpha

@@ -3,13 +3,23 @@
  * import). Fails loudly on validation problems.
  */
 import { mkdirSync, writeFileSync } from "node:fs";
+import { execFileSync } from "node:child_process";
 import { resolve, join } from "node:path";
 import { loadCanon, buildGraph, ValidationError } from "@pta/graph";
 
 const root = resolve(import.meta.dirname, "..", "..");
+const sourceCommit = (() => {
+  try {
+    const dirty = execFileSync("git", ["status", "--porcelain", "--", "data/canonical"], { cwd: root, encoding: "utf8" }).trim().length > 0;
+    const sha = execFileSync("git", ["rev-parse", "HEAD"], { cwd: root, encoding: "utf8" }).trim();
+    return dirty ? `${sha}-dirty` : sha;
+  } catch {
+    return null;
+  }
+})();
 try {
   const canon = loadCanon(root);
-  const graph = buildGraph(canon, { version: "0.1.0" });
+  const graph = buildGraph(canon, { version: "0.2.0", sourceCommit });
   const outDir = join(root, "data", "generated");
   mkdirSync(outDir, { recursive: true });
   // Two files: the core graph (entities, claims, sources, pathways, matrix, coverage)
@@ -17,6 +27,7 @@ try {
   // frontier needs them.
   const { paths, ...core } = graph;
   const coreJson = JSON.stringify({ ...core, paths: [] });
+  void paths;
   const pathsJson = JSON.stringify(paths);
   const json = JSON.stringify(graph);
   for (const dir of [outDir, join(root, "apps", "web", "generated")]) {

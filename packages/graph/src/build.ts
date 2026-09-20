@@ -49,7 +49,7 @@ function pathId(claimIds: string[]): string {
   return "p-" + createHash("sha1").update(claimIds.join(">")).digest("hex").slice(0, 10);
 }
 
-export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: string } = {}): Graph {
+export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: string; sourceCommit?: string | null } = {}): Graph {
   const entity = new Map(canon.entities.map((e) => [e.id, e]));
   const claimById = new Map(canon.claims.map((c) => [c.id, c]));
   const units = new UnitTable(canon.units);
@@ -418,12 +418,29 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
   const coverage_mean = coverage.reduce((a, c) => a + c.ontology_coverage * c.target_phenomena, 0) / (totalTargets || 1);
   const count = (t: Entity["type"]) => canon.entities.filter((e) => e.type === t).length;
   const cellsEmpty = cells.filter((c) => c.direct_claims.length === 0).length;
+  const tally = <T,>(xs: T[], key: (x: T) => string): Record<string, number> => {
+    const m: Record<string, number> = {};
+    for (const x of xs) m[key(x)] = (m[key(x)] ?? 0) + 1;
+    return Object.fromEntries(Object.entries(m).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])));
+  };
+  const searchDates = allSearches.map((x) => x.date).filter(Boolean).sort();
+  // Route ids are ten hex characters of a SHA-1 over the ordered claim ids; a collision between two
+  // different claim sequences would silently merge two routes, so it is a build failure.
+  const seenIds = new Map<string, string>();
+  for (const p of paths) {
+    const key = p.claims.join(">");
+    const prev = seenIds.get(p.id);
+    if (prev !== undefined && prev !== key) throw new Error(`route id collision: ${p.id} is claimed by two different claim sequences`);
+    seenIds.set(p.id, key);
+  }
 
   return {
     meta: {
       version: opts.version ?? "0.1.0",
       built_at: opts.builtAt ?? new Date().toISOString(),
       data_hash,
+      source_commit: opts.sourceCommit ?? null,
+      search_indexed_through: searchDates.length ? searchDates[searchDates.length - 1] : null,
       counts: {
         entities: canon.entities.length,
         phenomena: count("phenomenon"),
@@ -441,6 +458,13 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
         matrix_cells_empty: cellsEmpty,
         matrix_cells_unsearched: cells.filter((c) => c.status === "not-searched").length,
         coverage_mean,
+        claims_by_status: tally(canon.claims, (c) => c.status),
+        claims_by_predicate: tally(canon.claims, (c) => c.predicate),
+        paths_by_search_status: tally(paths, (p) => p.search_status),
+        paths_by_frontier_class: tally(paths, (p) => p.frontier_class),
+        paths_by_structural_kind: tally(paths, (p) => p.structural_kind),
+        matrix_cells_by_status: tally(cells, (c) => c.status),
+        entities_by_type: tally(canon.entities, (e) => e.type),
       },
     },
     entities: canon.entities,

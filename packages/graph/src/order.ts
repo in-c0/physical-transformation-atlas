@@ -17,7 +17,7 @@ export const KIND_RANK: Record<StructuralKind, number> = {
   "representation-equivalent": 4,
   atomic: 5,
 };
-const SEARCH_RANK: Record<string, number> = { demonstrated: 0, "searched-no-demonstration-found": 1, "search-incomplete": 2, "not-searched": 3, "not-indexed": 3 };
+const SEARCH_RANK: Record<string, number> = { demonstrated: 0, "searched-no-demonstration-found": 1, "search-incomplete": 2, "not-searched": 3 };
 const AVAIL_RANK: Record<string, number> = Object.fromEntries(AVAILABILITY.map((a, i) => [a, i]));
 const seamScore = (n: number) => (n === 1 ? 0 : n === 2 ? 1 : n === 0 ? 2 : 3);
 

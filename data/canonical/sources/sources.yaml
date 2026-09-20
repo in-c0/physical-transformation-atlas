@@ -941,6 +941,7 @@
   year: 2014
   venue: "The European Physical Journal E 37, 96"
   doi: 10.1140/epje/i2014-14096-y
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 7 audit (ChatGPT review, applied and source-verified by the lane)" }
 - id: source:schetzina-1975-dember
   type: paper
   title: "Steady-state transport in trap-dominated relaxation semiconductors"
@@ -948,6 +949,7 @@
   year: 1975
   venue: "Physical Review B 11, 4994–4998"
   doi: 10.1103/PhysRevB.11.4994
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 7 audit (ChatGPT review, applied and source-verified by the lane)" }
 - id: source:ehd-review-2025
   type: review
   title: "Interfacial electro-hydrodynamics inspired micro/nano-fluidic energy conversion: from mechanism to applications"
@@ -976,6 +978,7 @@
   year: 2023
   venue: "ASME Journal of Heat and Mass Transfer 145(3), 030801 (online December 2022)"
   doi: 10.1115/1.4055343
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 7 audit (ChatGPT review, applied and source-verified by the lane)" }
 - id: source:sma-heat-engine-2019
   type: paper
   title: "Shape memory alloy engine for high efficiency low-temperature gradient thermal to electrical conversion"

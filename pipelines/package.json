@@ -11,7 +11,8 @@
     "verify-sources": "tsx src/verify-sources.ts",
     "inspect": "tsx src/inspect.ts",
     "source-from-doi": "tsx src/source-from-doi.ts",
-    "docs-vocabulary": "tsx src/docs-vocabulary.ts"
+    "docs-vocabulary": "tsx src/docs-vocabulary.ts",
+    "changelog": "tsx src/changelog.ts"
   },
   "dependencies": {
     "@pta/schema": "workspace:*",

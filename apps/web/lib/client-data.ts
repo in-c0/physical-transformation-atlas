@@ -17,11 +17,12 @@ export function loadAtlas(): Promise<AtlasIndex> {
       const [g, p] = await Promise.all([
         fetch("/api/graph.json").then((r) => {
           if (!r.ok) throw new Error(`graph.json ${r.status}`);
-          return r.json() as Promise<Graph>;
+          // The export envelope is {meta, data}; the graph the index needs is data plus the compiler meta.
+          return r.json().then((j: { meta: Graph["meta"]; data: Omit<Graph, "meta" | "paths"> }) => ({ ...j.data, meta: j.meta, paths: [] }) as Graph);
         }),
         fetch("/api/paths.json").then((r) => {
           if (!r.ok) throw new Error(`paths.json ${r.status}`);
-          return r.json().then((j: { paths: CompiledPath[] }) => j.paths);
+          return r.json().then((j: { data: CompiledPath[] }) => j.data);
         }),
       ]);
       g.paths = p;

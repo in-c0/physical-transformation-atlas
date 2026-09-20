@@ -541,6 +541,7 @@
   energy: { input: mechanical, output: mechanical, dissipation: thermal }
   evidence: [source:dixon-hall-2014]
   status: established
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 7 audit (ChatGPT review, applied and source-verified by the lane)" }
 - id: claim:gravity-drives-descent
   subject: disequilibrium:gravitational-potential-difference
   predicate: drives

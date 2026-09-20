@@ -6,6 +6,7 @@
   energy_form: electrical
   condition_tags: [state-liquid]
   summary: Net electrical charge transported with a dielectric liquid, as in liquid electrohydrodynamic generators; collected at an electrode it becomes electrical output.
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 7 audit (ChatGPT review, applied and source-verified by the lane)" }
 - id: carrier:charge-carriers
   type: carrier
   name: Charge carriers

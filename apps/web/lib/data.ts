@@ -37,7 +37,7 @@ export function matrixPayload() {
       last_searched: c.last_searched ?? null,
       works_found: c.works_found ?? null,
     })),
-    indexed_through: a.graph.meta.built_at.slice(0, 10),
+    indexed_through: a.graph.meta.search_indexed_through,
     data_hash: a.graph.meta.data_hash,
   };
 }

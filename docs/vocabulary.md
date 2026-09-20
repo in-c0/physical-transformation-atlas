@@ -62,7 +62,6 @@ Used in: `claims[].status`, `paths[].evidence_status`
 
 Used in: `paths[].search_status`, `searches[].status`
 
-- `not-indexed` — the composition is not covered by any literature index the atlas queries
 - `not-searched` — no search record exists; the atlas has not looked
 - `search-incomplete` — only an automated index query has run; nobody has read the hits
 - `searched-no-demonstration-found` — a reviewed search record says no qualifying demonstration was found in indexed evidence through its date

@@ -79,7 +79,6 @@ export const EVIDENCE_RANK: Record<EvidenceStatus, number> = {
 };
 
 export const SEARCH_STATUSES = [
-  "not-indexed",
   "not-searched",
   "search-incomplete",
   "searched-no-demonstration-found",
@@ -226,6 +225,17 @@ export type ConditionConflict = z.infer<typeof ConditionConflict>;
 // Entities
 // ---------------------------------------------------------------------------
 
+/**
+ * Review provenance on a canonical record. `last_reviewed` is null unless a person (or a logged
+ * review pass) actually re-read the record on that date; the schema never manufactures a date.
+ */
+export const ReviewMeta = z.object({
+  canonical: z.boolean().default(true),
+  last_reviewed: isoDate.nullable().default(null),
+  reviewer: z.string().optional(),
+});
+export type ReviewMeta = z.infer<typeof ReviewMeta>;
+
 export const Entity = z.object({
   id: EntityId,
   type: z.enum(ENTITY_TYPES),
@@ -259,6 +269,7 @@ export const Entity = z.object({
   year_first_reported: z.number().int().optional(),
   wikidata: z.string().optional(),
   tags: z.array(Slug).default([]),
+  review: ReviewMeta.default({ canonical: true, last_reviewed: null }),
 });
 export type Entity = z.infer<typeof Entity>;
 
@@ -276,6 +287,7 @@ export const Source = z.object({
   doi: z.string().optional(),
   url: z.string().optional(),
   notes: z.string().optional(),
+  review: ReviewMeta.default({ canonical: true, last_reviewed: null }),
 });
 export type Source = z.infer<typeof Source>;
 
@@ -321,13 +333,7 @@ export const Claim = z.object({
   status: z.enum(EVIDENCE_STATUSES),
   /** Where the physics sits on the K-scale, if the claim is a phenomenon-level claim. */
   knowledge_level: z.enum(KNOWLEDGE_LEVELS).optional(),
-  review: z
-    .object({
-      canonical: z.boolean().default(true),
-      last_reviewed: isoDate,
-      reviewer: z.string().optional(),
-    })
-    .default({ canonical: true, last_reviewed: "2026-09-19" }),
+  review: ReviewMeta.default({ canonical: true, last_reviewed: null }),
   notes: z.string().optional(),
 });
 export type Claim = z.infer<typeof Claim>;
@@ -369,9 +375,7 @@ export const Pathway = z.object({
     .optional(),
   environment: z.array(Slug).default([]),
   summary: z.string(),
-  review: z
-    .object({ canonical: z.boolean().default(true), last_reviewed: isoDate })
-    .default({ canonical: true, last_reviewed: "2026-09-19" }),
+  review: ReviewMeta.default({ canonical: true, last_reviewed: null }),
 });
 export type Pathway = z.infer<typeof Pathway>;
 
@@ -513,6 +517,10 @@ export type Graph = {
     version: string;
     built_at: string;
     data_hash: string;
+    /** Git commit of the canonical files the build read, when the build ran inside the repository. */
+    source_commit: string | null;
+    /** Latest date any search record (reviewed or automated) covers; null when none exists. */
+    search_indexed_through: string | null;
     counts: {
       entities: number;
       phenomena: number;
@@ -530,6 +538,14 @@ export type Graph = {
       matrix_cells_empty: number;
       matrix_cells_unsearched: number;
       coverage_mean: number;
+      /** Occurrence maps: which vocabulary values this revision actually uses, and how often. */
+      claims_by_status: Record<string, number>;
+      claims_by_predicate: Record<string, number>;
+      paths_by_search_status: Record<string, number>;
+      paths_by_frontier_class: Record<string, number>;
+      paths_by_structural_kind: Record<string, number>;
+      matrix_cells_by_status: Record<string, number>;
+      entities_by_type: Record<string, number>;
     };
   };
   entities: Entity[];

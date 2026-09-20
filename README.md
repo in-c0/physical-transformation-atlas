@@ -28,6 +28,8 @@ docs/                ontology, evidence model, status model, candidate generatio
 tools/               static server and headless verification (screenshots, keyboard model, axe-core)
 ```
 
+Dataset contract: [docs/data-api.md](docs/data-api.md) · machine schema: `/api/schema/v0.2.0.json` · revision history: [docs/dataset-changelog.md](docs/dataset-changelog.md) · reuse terms: [docs/licensing.md](docs/licensing.md) (none declared yet) · how to cite: [CITATION.cff](CITATION.cff).
+
 ## Run it
 
 ```bash
@@ -39,6 +41,7 @@ pnpm dev                 # next dev on http://localhost:3000
 pnpm build               # static export to apps/web/out
 node tools/verify.mjs    # headless screenshots + overflow/console probes of the export
 pnpm deploy              # build, then wrangler deploy from worker/
+pnpm changelog --note "…" # record the current data_hash in docs/dataset-changelog.md (run after committing data)
 ```
 
 Pipelines that talk to the outside world:

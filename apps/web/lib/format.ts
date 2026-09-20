@@ -40,7 +40,6 @@ export const EVIDENCE_LABEL: Record<EvidenceStatus, string> = {
 };
 
 export const SEARCH_LABEL: Record<SearchStatus, string> = {
-  "not-indexed": "not indexed",
   "not-searched": "not searched",
   "search-incomplete": "index queried, not reviewed",
   "searched-no-demonstration-found": "searched · no demonstration found",
@@ -73,7 +72,6 @@ export function compositionState(status: SearchStatus, lastSearched?: string): {
     case "search-incomplete":
       return { short: "index query only", long: `Not reviewed — index query only${lastSearched ? ` · through ${lastSearched}` : ""}.` };
     case "not-searched":
-    case "not-indexed":
       return { short: "not assessed", long: "Not assessed — complete composition not searched." };
     default:
       return { short: SEARCH_LABEL[status], long: SEARCH_LABEL[status] };

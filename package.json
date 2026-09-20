@@ -15,9 +15,12 @@
     "dev": "pnpm build:graph && pnpm --filter @pta/web dev",
     "build": "pnpm build:graph && pnpm --filter @pta/web build",
     "deploy": "pnpm build && pnpm --filter @pta/worker deploy",
-    "docs:vocabulary": "pnpm --filter @pta/pipelines docs-vocabulary"
+    "docs:vocabulary": "pnpm --filter @pta/pipelines docs-vocabulary",
+    "changelog": "pnpm --filter @pta/pipelines changelog"
   },
   "devDependencies": {
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
     "axe-core": "^4.13.0"
   }
 }

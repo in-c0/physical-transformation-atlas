@@ -185,6 +185,7 @@
     notes: "≈ 3–4 protons per ATP; the rotary motor runs at ~100 revolutions per second in vivo"
   environment: [env-aqueous, medium-membrane]
   summary: A transmembrane proton-motive force drives ATP synthase to make ATP; the central bioenergetic mechanism of respiratory and photosynthetic phosphorylation.
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 7 audit (ChatGPT review, applied and source-verified by the lane)" }
 
 - id: pathway:steam-engine
   name: Steam engine (shaft work)
@@ -198,6 +199,7 @@
     theoretical_limit: "Carnot between boiler and condenser"
   environment: [temp-gradient-required]
   summary: Heat raises steam; the piston or turbine delivers shaft work.
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 7 audit (ChatGPT review, applied and source-verified by the lane)" }
 
 - id: pathway:windmill
   name: Windmill (mechanical)
@@ -220,6 +222,7 @@
     efficiency_typical: 0.6
   environment: [state-liquid]
   summary: Falling water turns a wheel; the wheel turns a millstone.
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 7 audit (ChatGPT review, applied and source-verified by the lane)" }
 
 - id: pathway:wave-energy-plant
   name: Wave energy converter
@@ -285,6 +288,7 @@
         year: 2019
   environment: [state-solid, temp-gradient-required]
   summary: NiTi elements cycled between warm and cold baths turn a shaft that drives a generator; a low-grade-heat engine with no working fluid.
+  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 7 audit (ChatGPT review, applied and source-verified by the lane)" }
 - id: pathway:shape-memory-actuator
   name: Shape-memory heat engine (mechanical)
   steps: [claim:temperature-drives-shape-memory, claim:shape-memory-produces-motion, claim:motion-converts-mechanical-work]
