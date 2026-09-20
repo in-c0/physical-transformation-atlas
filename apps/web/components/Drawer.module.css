@@ -60,8 +60,24 @@
 .axisLinks { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: var(--text-ui); line-height: var(--leading-ui); }
 .axisLinks a { text-decoration: underline; text-underline-offset: 2px; }
 @media (max-width: 640px) {
-  .drawer { flex: none; width: 100%; border-left: 0; border-top: var(--border-strong); border-bottom: var(--border-strong); animation: none; }
-  .body { max-height: none; overflow: visible; }
+  /* Phone: a bottom sheet over the page, not a block below 23 matrix rows. Hairline top edge, no
+     shadow; the surface colour and the strong border separate it. Dismiss = ESC button or the
+     Escape key; the scrim closes it too. */
+  .scrim { position: fixed; inset: 0; z-index: calc(var(--z-drawer) - 1); background: transparent; }
+  .drawer { position: fixed; left: 0; right: 0; bottom: 0; z-index: var(--z-drawer); width: 100%; max-height: 85vh; border-left: 0; border-top: var(--border-strong); animation: rise var(--duration-drawer) var(--ease-drawer); }
+  .body { max-height: none; overflow: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
+  .head { position: sticky; top: 0; background: var(--surface); z-index: 1; }
+  .close { min-width: 44px; min-height: 32px; }
+}
+@keyframes rise {
+  from { transform: translateY(24px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .drawer { animation: none; }
 }
 .claimLine .recordLink { font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-secondary); white-space: nowrap; text-decoration: underline; text-underline-offset: 2px; }
 .claimLine .recordLink:hover { color: var(--ink); }
+/* The scrim only exists on phones; elsewhere the drawer is a column beside the content. */
+.scrim { display: none; }
+@media (max-width: 640px) { .scrim { display: block; } }

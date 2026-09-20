@@ -27,22 +27,26 @@ export function Drawer({
     el?.addEventListener("keydown", onKey);
     return () => el?.removeEventListener("keydown", onKey);
   }, [onClose]);
+  // On a phone the sheet covers the page; a tap outside it closes it (the scrim is inert on wider screens).
   return (
-    <aside ref={ref} id={id} className={styles.drawer} aria-labelledby={titleId}>
-      <div className={styles.head}>
-        <div className={styles.title}>
-          <div className="label">{label}</div>
-          <h2 id={titleId} className="t-sub">
-            {title}
-          </h2>
-          {subtitle && <div className="t-data secondary">{subtitle}</div>}
+    <>
+      <div className={styles.scrim} onClick={onClose} aria-hidden="true" />
+      <aside ref={ref} id={id} className={styles.drawer} aria-labelledby={titleId} role="dialog" aria-modal="false">
+        <div className={styles.head}>
+          <div className={styles.title}>
+            <div className="label">{label}</div>
+            <h2 id={titleId} className="t-sub">
+              {title}
+            </h2>
+            {subtitle && <div className="t-data secondary">{subtitle}</div>}
+          </div>
+          <button type="button" className={styles.close} onClick={onClose} aria-label={`Close ${label.toLowerCase()} drawer`}>
+            ESC
+          </button>
         </div>
-        <button type="button" className={styles.close} onClick={onClose} aria-label={`Close ${label.toLowerCase()} drawer`}>
-          ESC
-        </button>
-      </div>
-      <div className={styles.body}>{children}</div>
-    </aside>
+        <div className={styles.body}>{children}</div>
+      </aside>
+    </>
   );
 }
 
