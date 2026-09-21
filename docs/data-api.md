@@ -205,7 +205,7 @@ dimensionally valid constitutive relation — a `drives` or `couples_to` step, o
 `relation_requirement` is `required`, as in the dimensional check; a `produces` step projects a carrier
 and is not asked for one; no route magnitude is asserted, which is why the value is not called bounded —
 `missing` otherwise; `incompatible` is reserved for a recorded contradiction), `magnitude_data_coverage`, `representation_signature`,
-`semantic_overlap`, `structural_kind`, `dominated_by`, `source_availability`,
+`semantic_overlap` (`known_pathway_overlap.relation` gains `stage-omission` in pass 43, with `omitted_phenomena[]` and `supplies[]` on that relation only), `structural_kind`, `dominated_by`, `source_availability`,
 `known_pathway_overlap`, `composition_observation` (`observed-not-converted` when the exact route
 carries an `observed` pathway, else null). Enumerations: vocabulary `path.search_status`,
 `path.frontier_class`, `path.structural_kind`, `path.composition_observation`,

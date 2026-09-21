@@ -156,6 +156,13 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
               <>
                 {OVERLAP_LABEL[overlap.relation]} {overlapPath ? <Link href={`/path/${overlapPath.id.slice(2)}`}>{overlapPathway.name}</Link> : overlapPathway.name} · {overlap.shared_claims}/
                 {overlap.route_claims} relations shared
+                {overlap.relation === "stage-omission" && (
+                  <>
+                    {" "}
+                    · omits {(overlap.omitted_phenomena ?? []).map((id) => index.entity.get(id)?.name ?? id).join(", ")}, which supplies {(overlap.supplies ?? []).join(", ")} — the regime or
+                    handoff this shortened spelling leaves unresolved (pass 43)
+                  </>
+                )}
               </>
             )}
           </dd>

@@ -1183,9 +1183,19 @@ export const CompiledPath = z.object({
   known_pathway_overlap: z
     .object({
       pathway: PathwayId,
-      relation: z.enum(["exact", "prefix", "suffix", "subsequence"]),
+      /**
+       * stage-omission (loop-3 pass 43): the route's source entity, sink entity, first and last phenomena are a
+       * demonstrated pathway's, its ordered phenomena are a proper subsequence of the pathway's, and the omitted
+       * segment supplies a regime or handoff token the shortened route leaves unresolved — the route omits a
+       * required stage of a recorded pathway. Never fires on one matching end (source-variant / sink-variant),
+       * never on a bare subsequence, and an exact demonstration of the route still outranks it.
+       */
+      relation: z.enum(["exact", "prefix", "suffix", "subsequence", "stage-omission"]),
       shared_claims: z.number().int(),
       route_claims: z.number().int(),
+      /** stage-omission only: the phenomena the route omits, and the tokens the omitted segment supplies that the route lacks. */
+      omitted_phenomena: z.array(EntityId).optional(),
+      supplies: z.array(z.string()).optional(),
     })
     .nullable(),
   /**

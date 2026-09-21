@@ -66,3 +66,57 @@ architecture.
 Result: revision 1bdf7567ce28 — 348 entities · 520 claims · 227 sources · 92 pathways · 2 systems ·
 771 routes · 86 demonstrated · 18 regime tokens · 81/81 · axe clean · exports valid against v0.5.0 ·
 three audit gates consistent · live, with the frozen v0.4.0 served byte-identical.
+
+## Reviewed (sent 8:03 pm; ChatGPT High, ~9 min, with web search; PIVOT — 34 findings)
+
+1. The re-spelling accepted (finding 1): combustion produces hot gas, gas-dynamic expansion creates
+   the moving fluid, MHD consumes that flow.
+2. (B1) Yes to `stage-omission`, but guarded (findings 2–10), never the bare subsequence rule: the
+   comparison pathway demonstrated / prototype / commercial; the exact same source entity AND sink
+   entity (energy forms are not enough); ordered phenomena a proper subsequence of the pathway's;
+   first and last phenomena the pathway's; at least one omitted phenomenon between retained ones;
+   and the omitted segment supplying a machine-readable regime or handoff token the shortened route
+   otherwise leaves unresolved — the guard that makes the compact MHD spelling safe (the omitted
+   stage produces `disequilibrium:fluid-flow`, which supplies exactly the missing token). Class
+   derived, its own phrase "omits a required stage of a recorded pathway" (never "extends"); a
+   demonstration of the shortened route still wins; one matching end stays under source- /
+   sink-variant. Regressions: p-d7374879fd stage-omission / derived; the flow requirement removed in
+   a synthetic copy → no relation; one end changed → not stage-omission; an exact demonstrated
+   pathway on the compact route → demonstrated wins.
+3. (B2) The four restorations named exactly (findings 11–34): the 18.4 % / 3.46 kW / 650 °C / 25 °C
+   generator is Bi, Wu, Zhang, Yu, Luo & Dai, Applied Energy 185 (2017) 1355–1361,
+   10.1016/j.apenergy.2015.12.034 — not 2014 — and every number is in the publisher abstract (I had
+   already read it in her Chrome: 4.69 kW at 15.6 %, 18.4 % at 3.46 kW, 6 MPa helium, 650 / 25 °C);
+   record the maximum-efficiency point with T_h 923.15 K / T_c 298.15 K and the maximum-power point
+   separately, never combined. Also Wu, Zhang, Dai & Luo, Applied Energy 124 (2014) 140–147,
+   10.1016/j.apenergy.2014.02.063: 19.8 % at 970 W and 1043 W at 17.7 %, 4.0 MPa, 650 / 15 °C.
+   Backhaus 2004 stays a full-text item; later quotations are never canon. The ⁶³Ni / SiC source is
+   Zhang et al., Nanomaterials 15(9), 635 (2025), 10.3390/nano15090635, whose 7.31 % is the
+   semiconductor DEVICE efficiency η_d, not the isotope-to-electricity efficiency (total ≈ 2.34–2.56 %
+   as η_s × η_d) — a device-stage metric only after the paper's equation is read; the stronger
+   whole-route candidate is Kim et al., Carbon Energy 8(5), e70149, 10.1002/cey2.70149 (¹⁴C
+   perovskite, 10.79 % ECE, 4.5 µCi source, J_sc 10.60 nA/cm², V_oc 76.92 mV, FF 17.41), whose SI
+   defines the denominator. NREL/CP-500-38157 (Migliore, Green, Calley & Lonjaret, August 2005):
+   peak rotor C_p ≈ 0.45 deduced from field-test electrical power with dynamometer-measured
+   alternator efficiency, a broad region near 0.43 — `power-coefficient`, field, derived, on the
+   Betz basis. DOE/OSTI 10.2172/1346739 (Schneider, Schneider, McKinstry & Harwood 2017, award
+   DE-EE0005420): Monroe Hydro SLH100, 267 kW maximum, 60 % water-to-wire plant efficiency, 73 %
+   hydraulic — plant scope, derived, the 73 % a separate subsystem datum. Order: thermoacoustic
+   (Wu 2014 + Bi 2017), wind, hydro, betavoltaic (Zhang basis audit + Kim whole-route). Planck and
+   PEC stay out. Regressions listed in finding 34.
+
+## Closed (8:15–8:24 pm; findings 2–10 applied, live at r1bdf7567ce28 — no data changed)
+
+- `known_pathway_overlap.relation` gains `stage-omission` with `omitted_phenomena[]` and
+  `supplies[]`; the compiler computes it after the checks from the route's unresolved regime and
+  handoff tokens against every demonstrated pathway's omitted claims (their `regime_provides`,
+  `handoff.provides` and the `regime_provides` of the disequilibria they produce), only when the
+  source entity, sink entity, first and last phenomena match and the phenomena are a proper ordered
+  subsequence; `search_status: demonstrated` is tested first, so a demonstration outranks it.
+- Exactly one route fires: p-d7374879fd → derived, "omits a required stage of a recorded pathway:
+  Combustion MHD generator · omits Gas-dynamic expansion, which supplies flow:bulk-fluid-motion" on
+  the route page and the frontier row. The fission → hot gas → MHD spelling (a different source
+  entity) does not. Class tally: demonstrated 86 · candidate 185 · derived 309 · incomplete-handoff
+  45 · weak 47 · same-form 99.
+- The four regressions of finding 10 in the suite; the status model and the data-API contract
+  document the relation. 82/82, axe clean, exports valid, gates consistent.

@@ -125,7 +125,8 @@ test("derived means mechanism overlap with a demonstrated pathway: the whole pat
       assert.ok(!byClaims && !variant, `${p.id} is a candidate but overlaps ${ov?.pathway ?? ck?.pathway}`);
       assert.equal(p.handoff_unresolved_count, 0, `${p.id} is a candidate with an unresolved handoff`);
     }
-    if (p.frontier_class === "derived") assert.ok(byClaims || variant, `${p.id} is derived with only a generic overlap`);
+    const omission = ov?.relation === "stage-omission"; // loop-3 pass 43: omits a required stage of a demonstrated pathway
+    if (p.frontier_class === "derived") assert.ok(byClaims || variant || omission, `${p.id} is derived with only a generic overlap`);
     if (p.frontier_class === "incomplete-handoff") assert.ok(p.handoff_unresolved_count > 0, `${p.id} is incomplete-handoff with nothing unresolved`);
     if (p.search_status === "demonstrated") assert.equal(p.handoff_unresolved_count, 0, `${p.id} is demonstrated yet a handoff is unresolved: the tokens are wrong`);
     // A proposed or observed pathway is attached to its route but never counts as overlap with a demonstrated one.
@@ -485,6 +486,72 @@ test("theoretical_limit retired into the typed constraint graph (loop-3 pass 42)
   assert.throws(() => loadCanon(tmp2), /only an upper-bound or formula-bound constraint is a pathway bound/);
   rmSync(tmp, { recursive: true, force: true });
   rmSync(tmp2, { recursive: true, force: true });
+});
+
+test("stage omission (loop-3 pass 43 close): a route that omits a required stage of a demonstrated pathway is derived, never on one matching end, never without an unresolved token the omitted stage supplies, and a demonstration still wins", () => {
+  const compact = graph.paths.find((p) => p.id === "p-d7374879fd")!;
+  assert.deepEqual(compact.claims, ["claim:combustion-drives", "claim:combustion-produces-hot-gas", "claim:hot-gas-drives-mhd", "claim:mhd-produces", "claim:charge-carriers-convert-electricity"]);
+  assert.equal(compact.known_pathway_overlap?.relation, "stage-omission");
+  assert.equal(compact.known_pathway_overlap?.pathway, "pathway:mhd-generator");
+  assert.deepEqual(compact.known_pathway_overlap?.omitted_phenomena, ["phenomenon:gas-dynamic-expansion"]);
+  assert.deepEqual(compact.known_pathway_overlap?.supplies, ["flow:bulk-fluid-motion"]);
+  assert.equal(compact.closest_known_pathway?.pathway, "pathway:mhd-generator");
+  assert.equal(compact.frontier_class, "derived");
+  // the invariant behind the relation: exact source and sink entities, first and last phenomena, a proper ordered subsequence
+  const claimById = new Map(canon.claims.map((c) => [c.id, c]));
+  const phen = (ids: string[]) => [...new Set(ids.flatMap((id) => [claimById.get(id)!.subject, claimById.get(id)!.object]).filter((n) => canon.entities.find((e) => e.id === n)?.type === "phenomenon"))];
+  for (const p of graph.paths.filter((q) => q.known_pathway_overlap?.relation === "stage-omission")) {
+    const pw = canon.pathways.find((x) => x.id === p.known_pathway_overlap!.pathway)!;
+    assert.ok(isDemonstratedPathway(pw));
+    assert.equal(claimById.get(pw.steps[0])!.subject, p.source, `${p.id}: same source entity`);
+    assert.equal(claimById.get(pw.steps[pw.steps.length - 1])!.object, p.sink, `${p.id}: same sink entity`);
+    const a = phen(p.claims), b = phen(pw.steps);
+    assert.ok(a.length < b.length && a[0] === b[0] && a[a.length - 1] === b[b.length - 1], `${p.id}: proper subsequence with the same ends`);
+    assert.notEqual(p.search_status, "demonstrated", "a demonstration outranks the relation");
+  }
+  // one matching end is never enough: the fission → hot gas → MHD spelling shares the sink only and stays outside the relation
+  const fissionCompact = graph.paths.find((p) => p.claims.includes("claim:fission-produces-hot-gas") && p.claims.includes("claim:hot-gas-drives-mhd"))!;
+  assert.notEqual(fissionCompact.known_pathway_overlap?.relation, "stage-omission");
+  assert.ok(!fissionCompact.closest_known_pathway || fissionCompact.closest_known_pathway.relation !== "exact");
+  // without an unresolved token the omitted stage supplies, the relation must not fire (a bare subsequence is never enough)
+  const tmpA = mkdtempSync(join(tmpdir(), "pta-omit-a-"));
+  cpSync(join(root, "data", "canonical"), join(tmpA, "data", "canonical"), { recursive: true });
+  cpSync(join(root, "data", "generated"), join(tmpA, "data", "generated"), { recursive: true });
+  const cf = join(tmpA, "data", "canonical", "claims", "mechanical.yaml");
+  const ct = readFileSync(cf, "utf8");
+  const reqLine = ct.split("\n").find((l) => l.startsWith("  regime_requires: [flow:bulk-fluid-motion, field:transverse-magnetic-field]"))!;
+  assert.ok(reqLine);
+  writeFileSync(cf, ct.replace(reqLine, "  regime_requires: [field:transverse-magnetic-field]"));
+  const gA = buildGraph(loadCanon(tmpA), { builtAt: "2026-01-01T00:00:00.000Z" });
+  const compactA = gA.paths.find((p) => p.id === "p-d7374879fd")!;
+  assert.notEqual(compactA.known_pathway_overlap?.relation, "stage-omission", "nothing unresolved, nothing omitted that matters");
+  assert.equal(compactA.checks.find((k) => k.id === "driver-regime-sufficiency")!.result, "pass");
+  rmSync(tmpA, { recursive: true, force: true });
+  // an exact demonstrated pathway on the compact spelling outranks the relation
+  const tmpB = mkdtempSync(join(tmpdir(), "pta-omit-b-"));
+  cpSync(join(root, "data", "canonical"), join(tmpB, "data", "canonical"), { recursive: true });
+  cpSync(join(root, "data", "generated"), join(tmpB, "data", "generated"), { recursive: true });
+  const pf = join(tmpB, "data", "canonical", "pathways", "pathways.yaml");
+  writeFileSync(
+    pf,
+    readFileSync(pf, "utf8") +
+      `
+- id: pathway:test-compact-mhd
+  name: Test compact MHD spelling
+  steps: [claim:combustion-drives, claim:combustion-produces-hot-gas, claim:hot-gas-drives-mhd, claim:mhd-produces, claim:charge-carriers-convert-electricity]
+  demonstrated_with: [transducer:mhd-generator]
+  evidence: [source:rosa-1961-mhd]
+  status: prototype
+  knowledge_level: K7
+  summary: A synthetic demonstration of the compact spelling, for the regression only.
+`,
+  );
+  const gB = buildGraph(loadCanon(tmpB), { builtAt: "2026-01-01T00:00:00.000Z" });
+  const compactB = gB.paths.find((p) => p.id === "p-d7374879fd")!;
+  assert.equal(compactB.search_status, "demonstrated");
+  assert.equal(compactB.frontier_class, "demonstrated");
+  assert.equal(compactB.known_pathway_overlap?.relation, "exact");
+  rmSync(tmpB, { recursive: true, force: true });
 });
 
 test("the forced-advection closure (loop-3 pass 41): advection requires bulk fluid motion, which only a recorded pump auxiliary or an upstream flow step supplies", () => {

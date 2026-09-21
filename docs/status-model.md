@@ -60,7 +60,13 @@ current compiler never assigns them; there is no review queue in this release.
      and `fail` only when two requirements of one step conflict in the same scope on the same
      region; `implied_interface_count` counts the unrecorded transitions, `interfaces_recorded`
      lists the recorded ones of any status);
-   - otherwise `derived` when the route overlaps a **demonstrated** pathway (status `demonstrated`,
+   - otherwise `derived` when the route omits a required stage of a **demonstrated** pathway
+     (`known_pathway_overlap.relation: stage-omission`, loop-3 pass 43: the same source entity and sink
+     entity, the same first and last phenomena, its ordered phenomena a proper subsequence of the
+     pathway's, and the omitted segment supplying a regime or handoff token the shortened route leaves
+     unresolved — the compact combustion → hot gas → MHD spelling against the nozzle route; a
+     demonstration of the shortened route still outranks it; one matching end never counts), or when the
+     route overlaps a **demonstrated** pathway (status `demonstrated`,
      `prototype` or `commercial`) in one of two ways: by claims — at least two ordered claims shared
      (`known_pathway_overlap`) such that (a) the route contains the pathway's complete ordered
      claim sequence, (b) the route is a strict ordered prefix or suffix of the pathway, or the

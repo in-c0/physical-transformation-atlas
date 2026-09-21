@@ -152,11 +152,12 @@ export function compositionState(status: SearchStatus, lastSearched?: string): {
   }
 }
 
-export const OVERLAP_LABEL: Record<"exact" | "prefix" | "suffix" | "subsequence", string> = {
+export const OVERLAP_LABEL: Record<"exact" | "prefix" | "suffix" | "subsequence" | "stage-omission", string> = {
   exact: "same relations",
   prefix: "shares its opening relations with",
   suffix: "shares its closing relations with",
   subsequence: "shares relations, in order, with",
+  "stage-omission": "omits a required stage of a recorded pathway:",
 };
 
 export const CHECK_ABBR: Record<CheckResult["id"], string> = {

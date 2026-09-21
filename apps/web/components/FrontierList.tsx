@@ -341,6 +341,9 @@ export function FrontierList() {
                       <dd>
                         {OVERLAP_LABEL[p.known_pathway_overlap.relation]} {index.pathway.get(p.known_pathway_overlap.pathway)?.name} · {p.known_pathway_overlap.shared_claims}/
                         {p.known_pathway_overlap.route_claims} relations
+                        {p.known_pathway_overlap.relation === "stage-omission"
+                          ? ` · omits ${(p.known_pathway_overlap.omitted_phenomena ?? []).map((id) => index.entity.get(id)?.name ?? id).join(", ")}, which supplies ${(p.known_pathway_overlap.supplies ?? []).join(", ")}`
+                          : ""}
                       </dd>
                     </>
                   )}

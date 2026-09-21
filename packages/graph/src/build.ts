@@ -27,7 +27,7 @@ import {
   type SearchStatus,
   type CompiledSystemPathway,
 } from "@pta/schema";
-import { CORE_CHECK_IDS, UnitTable, boundaryReport, relationRequirement, runAllChecks, type PhysicsContext } from "@pta/physics";
+import { CORE_CHECK_IDS, UnitTable, boundaryReport, relationRequirement, runAllChecks, type CheckResult, type PhysicsContext } from "@pta/physics";
 import type { Canon } from "./load.js";
 import { classify, collapseForms, familySeams, signature, type RouteCore } from "./structure.js";
 import { researchOrder } from "./order.js";
@@ -227,8 +227,12 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
     // Recorded-pathway overlap: does a reviewed pathway share this claim sequence, or a prefix,
     // suffix or ordered subsequence of it? A generated route that merely extends or truncates a
     // recorded pathway is "derived", not a fresh candidate.
-    const known_pathway_overlap = pathwayOverlap(ids, pathway);
     const phenomenaOf = (cl: Claim[]) => [...new Set(cl.flatMap((c) => [c.subject, c.object]).filter((n) => entity.get(n)?.type === "phenomenon"))];
+    const handoff = handoffReport(claims);
+    // Loop-3 pass 43: a route that omits a required stage of a demonstrated pathway. Demonstration outranks it: an exact
+    // demonstrated pathway or a reviewed demonstration keeps "exact" / its own class (the frontier rule tests search_status first).
+    const omission = search_status === "demonstrated" ? null : stageOmission(claims, phenomenaOf(claims), checks, handoff);
+    const known_pathway_overlap = omission ?? pathwayOverlap(ids, pathway);
     const closest_known_pathway = closestPathway(ids, phenomenaOf(claims), pathway);
     const derivedByClaims = (() => {
       if (!known_pathway_overlap || known_pathway_overlap.shared_claims < 2) return false;
@@ -270,7 +274,6 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
       }
       return containsWhole || strictPrefixOrSuffix || spanned.length >= 2 || (head >= 2 && sameFamilyAtDivergence);
     })();
-    const handoff = handoffReport(claims);
     const magnitude_screen = magnitudeScreen(claims, pathway);
 
     const srcForm = entity.get(claims[0].subject)?.energy_form;
@@ -279,6 +282,7 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
     if (failed) frontier_class = "forbidden";
     else if (search_status === "demonstrated") frontier_class = "demonstrated";
     else if (srcForm && sinkForm && srcForm === sinkForm) frontier_class = "same-form";
+    else if (omission) frontier_class = "derived";
     else if (EVIDENCE_RANK[weakest] >= EVIDENCE_RANK.demonstrated) {
       // A declared carrier requirement nothing upstream provides: the composition is not research-ready
       // (loop-3 pass 16). Derived: extends or truncates a demonstrated pathway by claim overlap that spans
@@ -413,6 +417,50 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
     return [...out];
   }
 
+  /**
+   * Stage omission (loop-3 pass 43): the route's source and sink ENTITIES, its first and its last phenomenon are those of a
+   * demonstrated pathway (demonstrated / prototype / commercial), its ordered phenomena are a proper subsequence of the
+   * pathway's, and the claims of the omitted segment — or the disequilibria they produce — supply a regime or handoff token
+   * the shortened route's checks leave unresolved. One matching end is never enough; a bare subsequence is never enough.
+   */
+  function stageOmission(claims: Claim[], phen: string[], checks: CheckResult[], handoff: CompiledPath["handoff_issues"]): CompiledPath["known_pathway_overlap"] {
+    const regime = checks.find((k) => k.id === "driver-regime-sufficiency");
+    const missing = new Set<string>();
+    if (regime?.result === "unresolved") for (const m of regime.detail.matchAll(/requires ([a-z]+:[a-z0-9-]+); nothing before it records supplying it/g)) missing.add(m[1]);
+    for (const h of handoff) for (const t of h.missing) missing.add(t);
+    if (missing.size === 0) return null;
+    const source = claims[0].subject;
+    const sink = claims[claims.length - 1].object;
+    const routeClaimIds = new Set(claims.map((c) => c.id));
+    let best: CompiledPath["known_pathway_overlap"] = null;
+    for (const p of recordedPathways) {
+      if (!isDemonstratedPathway(p)) continue;
+      const steps = p.steps.map((id) => claimById.get(id)).filter((c): c is Claim => !!c);
+      if (steps.length !== p.steps.length) continue;
+      if (steps[0].subject !== source || steps[steps.length - 1].object !== sink) continue;
+      const pp = pathwayPhenomena.get(p.id)!;
+      if (phen.length < 1 || phen.length >= pp.length) continue;
+      if (phen[0] !== pp[0] || phen[phen.length - 1] !== pp[pp.length - 1]) continue;
+      let j = 0;
+      for (const ph of pp) if (j < phen.length && phen[j] === ph) j++;
+      if (j !== phen.length) continue; // not an ordered subsequence
+      const omitted = pp.filter((ph) => !phen.includes(ph));
+      if (omitted.length === 0) continue;
+      const supplies = new Set<string>();
+      for (const c of steps) {
+        if (routeClaimIds.has(c.id)) continue;
+        for (const t of c.regime_provides) supplies.add(t);
+        for (const t of c.handoff?.provides ?? []) supplies.add(t);
+        const produced = entity.get(c.object);
+        if (produced?.type === "disequilibrium") for (const t of produced.regime_provides ?? []) supplies.add(t);
+      }
+      const supplied = [...missing].filter((t) => supplies.has(t));
+      if (supplied.length === 0) continue;
+      const shared = lcs(p.steps, claims.map((c) => c.id));
+      if (!best || shared > best.shared_claims) best = { pathway: p.id, relation: "stage-omission", shared_claims: shared, route_claims: claims.length, omitted_phenomena: omitted, supplies: supplied };
+    }
+    return best;
+  }
   /** Best overlap between a route's claim sequence and the recorded pathways. */
   function pathwayOverlap(ids: string[], exact: Pathway | undefined): CompiledPath["known_pathway_overlap"] {
     if (exact && isDemonstratedPathway(exact)) return { pathway: exact.id, relation: "exact", shared_claims: ids.length, route_claims: ids.length };
