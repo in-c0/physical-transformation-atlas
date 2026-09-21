@@ -78,3 +78,41 @@ unsupported-generic 5 · migrate-to-measurement 3 · ambiguous-basis 40 · verif
 
 Result: revision b5dc2d347ba3 — 340 entities · 507 claims · 217 sources · 89 pathways · 1 system ·
 751 routes · 74/74 · axe clean · exports valid · live.
+
+## Reviewed (sent 3:05 pm; ChatGPT High, ~8 min, with web search; PIVOT — 33 findings) and applied (3:14–3:22 pm)
+
+1. The machinery accepted (finding 1).
+2. Every remaining `efficiency_typical` removed (findings 2–7): "visible" meant in the audit record
+   with `was` and the missing basis, not as an asserted pathway number — the 24 book- or
+   review-cited typicals (the gas turbine's 0.4 among them, doubly incommensurate with its
+   expansion-only route) are gone from the canonical data, their values kept as `was` in the
+   dispositions (action removed); `efficiency_typical` is no longer a writable Pathway field, the
+   bound check and the coverage summary no longer read it, and no "typical" is derived from one or
+   two measurements — a future typical needs an explicit population rule.
+3. The Rankine record migrated (findings 8–14) without waiting for the Bugge 2006 owner read: the
+   IEA Clean Coal Centre's open report CCC/255 (Nicol 2015, read in full on the USEA-hosted PDF)
+   states Nordjylland unit 3 "reaches 47% net electrical efficiency (LHV) in power only mode" and was
+   the world's most efficient pulverised-coal unit as of December 2014, with Table 4's 2005
+   performance (411 MWe generator, 26 MWe auxiliaries, 385 MWe to the 400 kV grid, boiler efficiency
+   94.2 %, 10 °C seawater cooling, 580/580/580 °C at 29 MPa) — recorded as a plant datum with the
+   reviewer's basis wording (net, LHV, power-only, not annual), `T_turbine_inlet_K` 853.15 and
+   `T_cooling_water_inlet_K` 283.15 as operating states, and the naked 0.47 deleted, the display
+   deriving it. The reviewer's "Morrison 2008" IEA CCC citation could not be located; CCC/255 cites
+   Morrison 2011 for the same fact, and the table's own calorific-value labelling ambiguity is in the
+   note.
+4. Regression controls extended: no stored typical anywhere; the Nordjylland datum carries its LHV
+   basis. 74/74.
+5. Pass 36 set (findings 15–31): the gas-turbine / expansion-carrier closure — `carrier:hot-gas`
+   renamed "Hot gas" with a summary that implies no pressure; the token
+   `thermodynamic:expansion-pressure-drop` frozen and required by `claim:hot-gas-drives-expansion`
+   only; supplied by `pathway:combustion-gas-turbine.regime_provides` from Al Mhanna's 9.4 bar
+   compressor discharge; no compressor claim and no combustion → pressure claim (a feedback branch,
+   not a serial step); a pathway annotation `auxiliary_requirements[]` (kind recirculating-work,
+   energy form, purpose, conditions, evidence) that never enters enumeration; a loader rule that a
+   pathway supplying the token on a route through the expansion step must have a preceding provider
+   or such an auxiliary; the nuclear plant left unresolved on purpose; the ideal-Brayton expression
+   moved out of `theoretical_limit`; six regressions. Pass 37: `power_density` with the same
+   machinery.
+
+Result: revision cb2460d934f4 — 340 entities · 507 claims · 218 sources · 89 pathways · 1 system ·
+751 routes · 0 stored typicals · 74/74 · axe clean · exports valid · live.

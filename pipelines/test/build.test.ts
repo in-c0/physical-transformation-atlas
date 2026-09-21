@@ -233,6 +233,12 @@ test("the legacy performance audit's regression controls (loop-3 pass 35)", () =
   // Every surviving legacy field has a disposition, and no disposition contradicts the data: the audit gate.
   const gate = spawnSync(process.execPath, [join(root, "tools", "audit-performance.mjs"), "--check"], { encoding: "utf8" });
   assert.equal(gate.status, 0, gate.stderr || gate.stdout);
+  // Pass 35 closing: no stored typical anywhere, and the Rankine 47 % is discoverable from its plant datum with its basis.
+  assert.equal(graph.pathways.filter((p) => "efficiency_typical" in (p.performance ?? {})).length, 0, "efficiency_typical is gone from every pathway");
+  const rankine = pw("rankine-steam-plant");
+  assert.equal(rankine.performance?.efficiency_record, undefined);
+  const nord = (rankine.performance?.measurements ?? []).find((m) => m.value_numeric === 0.47);
+  assert.ok(nord && nord.scope === "plant" && /lower-heating-value/.test(nord.basis ?? ""), "the Nordjylland datum carries its LHV basis");
   // The combined cycle's efficiency exists only as a structured system measurement.
   assert.equal(graph.pathways.filter((p) => JSON.stringify(p).includes("0.4693")).length, 0);
   assert.ok(graph.systems.some((s) => (s.performance?.measurements ?? []).some((m) => m.value_numeric === 0.4693)));

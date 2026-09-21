@@ -1610,3 +1610,12 @@
   venue: "ACS Energy Letters 3, 1795–1800"
   doi: 10.1021/acsenergylett.8b00920
   notes: "Metadata verified on Crossref; abstract read on OpenAlex. A monolithic tandem photocathode (III–V, TiO₂ interphase, Rh nanoparticle catalyst) reaching solar-to-hydrogen efficiencies of 19.3 % in acidic and 18.5 % in neutral electrolyte under simulated AM 1.5G, 0.85 of the theoretical limit for its gap combination."
+# Loop-3 pass 35: the open report that settles the ultra-supercritical Rankine record's basis.
+- id: source:nicol-2015-ieaccc-double-reheat
+  type: report
+  title: "Application and development prospects of double-reheat coal-fired power units"
+  authors: [K. Nicol]
+  year: 2015
+  venue: "IEA Clean Coal Centre, CCC/255, ISBN 978-92-9029-577-8"
+  url: https://usea.org/sites/default/files/media/Application%20and%20development%20prospects%20of%20double-reheat%20coal-fired%20power%20units%20-%20ccc255.pdf
+  notes: "Read in full (open PDF hosted by USEA). Section 7.2.6: Nordjylland unit 3 (415 MWe, commissioned 1998, once-through USC Benson tower boiler, double reheat, 580 °C / 580 °C / 580 °C at 29 MPa) 'reaches 47% net electrical efficiency (LHV) in power only mode, and is currently (Dec 2014) the world's most efficient PCC unit' (citing Morrison 2011, Poulsen & Bendixen 2006, Vattenfall 2014); low-temperature (10 °C) seawater cooling, high superheat and double reheat named as the reasons. Table 4 (Poulsen & Bendixen 2006, 2005 results): power-only mode at 100 % load, condensing, 10 °C cooling water — generator 411 MWe, auxiliaries 26 MWe, 385 MWe to the 400 kV grid, boiler efficiency 94.2 %, heat rate 7151.4 kJ/kWh on generator output, thermal efficiency (400 kV to grid) 47.2 %; CHP mode 339.5 MWe + 422 MJ/s district heat, 90 % total. The table labels the coal's 26 MJ/kg a gross calorific value while the text gives the fuel as 25.2 MJ/kg LHV / 26.4 MJ/kg HHV, so the 47.2 % row's basis is not unambiguous; the 47 % (LHV, net, power-only) statement of §7.2.6 is the figure the atlas records."

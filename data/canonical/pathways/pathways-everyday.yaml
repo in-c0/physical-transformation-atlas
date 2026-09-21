@@ -19,9 +19,7 @@
   evidence: [source:bejan-2016]
   status: commercial
   knowledge_level: K8
-  performance:
-    efficiency_typical: 0.9
-    # pass 35: theoretical_limit "the higher heating value of the fuel" removed — an energy-input accounting basis, not a limit
+  # pass 35: performance emptied — efficiency_typical 0.9 removed (a typical needs a population source whose page has been read) and theoretical_limit "the higher heating value of the fuel" removed (an energy-input accounting basis, not a limit); the values stay in the audit record
   environment: [state-gas, temp-high]
   summary: Fuel burns; the hot gas gives its enthalpy to water, air or a process stream.
 
@@ -56,7 +54,7 @@
   status: commercial
   knowledge_level: K8
   performance:
-    efficiency_typical: 0.5
+    # pass 35: efficiency_typical 0.5 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     theoretical_limit: "absorptance of the surface minus its re-emission; selective surfaces reach ~0.9"
   environment: [illumination-required]
   summary: A dark absorber under glass heats water in tubes.
@@ -194,7 +192,7 @@
   status: commercial
   knowledge_level: K8
   performance:
-    efficiency_typical: 0.1
+    # pass 35: efficiency_typical 0.1 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     theoretical_limit: "Carnot between boiler and condenser"
   environment: [temp-gradient-required]
   summary: Heat raises steam; the piston or turbine delivers shaft work.
@@ -217,8 +215,7 @@
   evidence: [source:dixon-hall-2014]
   status: commercial
   knowledge_level: K8
-  performance:
-    efficiency_typical: 0.6
+  # pass 35: performance emptied — efficiency_typical 0.6 removed (a typical needs a population source whose page has been read); the value stays in the audit record
   environment: [state-liquid]
   summary: Falling water turns a wheel; the wheel turns a millstone.
   review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 7 audit (ChatGPT review, applied and source-verified by the lane)" }

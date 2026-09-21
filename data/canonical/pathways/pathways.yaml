@@ -9,7 +9,7 @@
   status: commercial
   knowledge_level: K8
   performance:
-    efficiency_typical: 0.05
+    # pass 35: efficiency_typical 0.05 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     # pass 35: efficiency_record 0.12 removed — exactly the structured Zhang 2017 datum below (the positive control); the display derives it
     theoretical_limit: "η = η_Carnot · (√(1+ZT) − 1)/(√(1+ZT) + T_c/T_h), the ideal-module relation for a constant-property leg pair, evaluated from a datum's own ZT and temperatures"
     power_density: "≈ 1 W/cm² of module at ΔT = 200 K"
@@ -65,7 +65,7 @@
   status: prototype
   knowledge_level: K7
   performance:
-    efficiency_typical: 0.08
+    # pass 35: efficiency_typical 0.08 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     # pass 35: efficiency_record 0.15 removed — no device, temperatures or load basis behind it; returns as a measurement when a named converter datum exists
     theoretical_limit: "Carnot; practically limited by space charge and radiative loss from the cathode"
   environment: [env-vacuum, temp-high]
@@ -93,7 +93,7 @@
   status: demonstrated
   knowledge_level: K6
   performance:
-    efficiency_typical: 0.01
+    # pass 35: efficiency_typical 0.01 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     theoretical_limit: "Carnot for the temperature swing; Olsen cycles reach a few per cent of Carnot"
     power_density: "µW–mW/cm² under thermal cycling at ~1 Hz"
   environment: [state-solid, transient-only]
@@ -107,7 +107,7 @@
   status: demonstrated
   knowledge_level: K6
   performance:
-    efficiency_typical: 0.005
+    # pass 35: efficiency_typical 0.005 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     theoretical_limit: "Carnot; relative efficiency (η/η_Carnot) of a few per cent reported"
     power_density: "≈ 1–10 W/m² of electrode"
   environment: [env-aqueous, temp-gradient-required]
@@ -158,7 +158,7 @@
   status: demonstrated
   knowledge_level: K6
   performance:
-    efficiency_typical: 0.001
+    # pass 35: efficiency_typical 0.001 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     theoretical_limit: "Carnot for the small ΔT around the Curie point; material limits are far below it"
     measurements:
       - quantity: electrical output power
@@ -206,14 +206,26 @@
   name: Steam Rankine plant
   steps: [claim:expansion-drives, claim:expansion-produces-motion, claim:motion-drives-generator, claim:generator-produces-carriers, claim:charge-carriers-convert-electricity]
   demonstrated_with: [transducer:rankine-cycle-plant]
-  evidence: [source:bejan-2016, source:shaheed-2023-al-mosyab]
+  evidence: [source:bejan-2016, source:shaheed-2023-al-mosyab, source:nicol-2015-ieaccc-double-reheat]
   status: commercial
   knowledge_level: K8
   performance:
-    efficiency_typical: 0.38
-    efficiency_record: 0.47
+    # pass 35: efficiency_typical 0.38 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
+    # pass 35: efficiency_record 0.47 migrated to the Nordjylland 3 datum below (net, LHV, power-only, not annual); the display derives it
     theoretical_limit: "Carnot between the reservoirs a source defines; Curzon–Ahlborn is a benchmark at maximum power, never a bound"
     measurements:
+      - quantity: net plant electrical efficiency
+        value: "47%"
+        value_numeric: 0.47
+        unit: "1"
+        metric: conversion-efficiency
+        basis: "operating net electrical efficiency (electrical output to the 400 kV grid over fuel energy); fuel lower-heating-value basis; power-only (condensing) mode — an operating figure, not an annual one"
+        parameters: { T_turbine_inlet_K: 853.15, T_cooling_water_inlet_K: 283.15 }
+        scope: plant
+        conditions: "Nordjylland unit 3, Denmark (415 MWe, commissioned 1998): once-through ultra-supercritical Benson tower boiler, double reheat, 580 °C / 580 °C / 580 °C at 29 MPa, 10 °C seawater cooling; 2005 performance in power-only mode at 100 % load — generator 411 MWe, auxiliaries 26 MWe, 385 MWe to grid, boiler efficiency 94.2 %, heat rate 7151.4 kJ/kWh on generator output; the world's most efficient pulverised-coal unit as of December 2014 per the IEA Clean Coal Centre"
+        sources: [source:nicol-2015-ieaccc-double-reheat]
+        year: 2015
+        note: "read in full in CCC/255 §7.2.6 and Table 4 (Poulsen & Bendixen 2006); the table's own 47.2 % (400 kV to grid) row sits beside a coal calorific value labelled gross (26 MJ/kg) while the text gives 25.2 MJ/kg LHV / 26.4 MJ/kg HHV, so the atlas records the text's explicit net-LHV statement; the second reader's Morrison 2008 IEA CCC citation (47 % LHV / 44.9 % HHV) could not be located — CCC/255 cites Morrison 2011 for the same fact; the steam temperature and cooling-water temperature are operating states, never the Carnot reservoirs"
       # Loop-3 pass 33: Shaheed, Mohammed & Radhi 2023 read in full — the unit's readings and the computed efficiency kept apart (findings 15–16).
       - quantity: unit electrical load at the recorded operating state
         value: "225 MW"
@@ -248,7 +260,7 @@
   status: commercial
   knowledge_level: K8
   performance:
-    efficiency_typical: 0.40
+    # pass 35: efficiency_typical 0.40 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     # pass 34: efficiency_record 0.64 removed — it was the combined cycle's figure, which lives on system-pathway:natural-gas-combined-cycle
     theoretical_limit: "Carnot between a hot and a cold reservoir a source defines — none recorded: the turbine inlet temperature is an operating state, not a reservoir (pass 31); the ideal Brayton cycle's own limit is 1 − r_p^((1−γ)/γ) at pressure ratio r_p"
     measurements:
@@ -273,7 +285,7 @@
   status: prototype
   knowledge_level: K7
   performance:
-    efficiency_typical: 0.03
+    # pass 35: efficiency_typical 0.03 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     theoretical_limit: "Carnot between the warm surface water and the deep cold water a source defines"
     measurements:
       # Loop-3 pass 33: Lu et al. 2024 read in full — the design point and the experiment kept apart (the reviewer's finding 12).
@@ -333,7 +345,7 @@
   status: commercial
   knowledge_level: K8
   performance:
-    efficiency_typical: 0.1
+    # pass 35: efficiency_typical 0.1 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     theoretical_limit: "k² of the stored strain energy per cycle (k² ≈ 0.1–0.5 for PZT)"
     power_density: "10–100 µW/cm³ at ambient vibration levels"
   environment: [state-solid]
@@ -408,7 +420,7 @@
   status: commercial
   knowledge_level: K8
   performance:
-    efficiency_typical: 0.45
+    # pass 35: efficiency_typical 0.45 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     efficiency_record: 0.52
     theoretical_limit: "Betz: 59.3% of the kinetic power through the rotor disc"
   environment: [flow-required]
@@ -422,7 +434,7 @@
   status: commercial
   knowledge_level: K8
   performance:
-    efficiency_typical: 0.90
+    # pass 35: efficiency_typical 0.90 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     efficiency_record: 0.95
     theoretical_limit: "no thermodynamic ceiling below 100%; losses are hydraulic and electrical"
   environment: [state-liquid]
@@ -436,7 +448,7 @@
   status: prototype
   knowledge_level: K7
   performance:
-    efficiency_typical: 0.3
+    # pass 35: efficiency_typical 0.3 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     theoretical_limit: "free energy of mixing, ≈ 0.8 kWh per m³ of river water"
     power_density: "≈ 1–2 W/m² of membrane"
   environment: [env-aqueous, medium-membrane]
@@ -464,7 +476,7 @@
   status: commercial
   knowledge_level: K8
   performance:
-    efficiency_typical: 0.22
+    # pass 35: efficiency_typical 0.22 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     theoretical_limit: "Shockley–Queisser 33.7% for one junction; Landsberg 93.3% overall"
     power_density: "≈ 200 W/m² at 1000 W/m² irradiance"
     measurements:
@@ -490,7 +502,7 @@
   status: commercial
   knowledge_level: K8
   performance:
-    efficiency_typical: 0.16
+    # pass 35: efficiency_typical 0.16 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     theoretical_limit: "Landsberg 93.3% for the solar conversion; Carnot between the receiver's reservoir and the sink a source defines"
   environment: [illumination-required, temp-gradient-required]
   summary: Mirrors heat a receiver; the receiver drives a steam cycle.
@@ -527,7 +539,7 @@
   status: commercial
   knowledge_level: K8
   performance:
-    efficiency_typical: 0.02
+    # pass 35: efficiency_typical 0.02 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     efficiency_record: 0.06
     power_density: "µW/cm² for tritium and Ni-63 sources; decades of life"
   environment: [state-solid, radioisotope-required]
@@ -541,7 +553,7 @@
   status: commercial
   knowledge_level: K8
   performance:
-    efficiency_typical: 0.06
+    # pass 35: efficiency_typical 0.06 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     power_density: "≈ 5 W(e) per kg for Pu-238 units"
   environment: [state-solid, radioisotope-required]
   summary: Decay heat across thermoelectric couples; powers deep-space probes.
@@ -605,7 +617,7 @@
   status: commercial
   knowledge_level: K8
   performance:
-    efficiency_typical: 0.5
+    # pass 35: efficiency_typical 0.5 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     efficiency_record: 0.65
     theoretical_limit: "ΔG/ΔH ≈ 83% for H₂/O₂ at 25 °C"
   environment: [medium-membrane]
@@ -619,7 +631,7 @@
   status: commercial
   knowledge_level: K8
   performance:
-    efficiency_typical: 0.9
+    # pass 35: efficiency_typical 0.9 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     theoretical_limit: "−ΔG of the cell reaction"
   environment: [env-aqueous]
   summary: Stored reaction free energy delivered as current.
@@ -658,7 +670,7 @@
   status: commercial
   knowledge_level: K8
   performance:
-    efficiency_typical: 0.33
+    # pass 35: efficiency_typical 0.33 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     theoretical_limit: "Carnot between the reservoirs a source defines — the steam temperature is an operating state, not a reservoir"
   environment: [temp-high]
   summary: Fission heat raises steam for a conventional turbine.
@@ -670,7 +682,7 @@
   status: commercial
   knowledge_level: K8
   performance:
-    efficiency_typical: 0.01
+    # pass 35: efficiency_typical 0.01 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     efficiency_record: 0.045
     theoretical_limit: "≈ 12% solar-to-biomass (two photosystems, 8 photons per CO₂)"
   environment: [env-aqueous, illumination-required]

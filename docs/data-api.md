@@ -132,7 +132,7 @@ names; theoretical and proposed records are shown and leave the boundary check u
 `observed` — vocabulary `pathway.status`), `observed_through` (required iff `status: observed`: the
 last step the evidence physically established, never the final one), `regime_provides[]` (pass 30: the
 operating regime this exact pathway's evidence establishes, seen only by its own route),
-`knowledge_level`, `performance` (`efficiency_typical`, `efficiency_record`, `theoretical_limit`,
+`knowledge_level`, `performance` (`efficiency_record`, `theoretical_limit`,
 `power_density`, `notes`, and `measurements[]` — one record per number with the quantity, the value
 as written in the source, the scope, the regime, the sources and the year, and optionally its
 structured form: `value_numeric`, `unit`, `metric` (which bounded quantity it is), `basis` (what the

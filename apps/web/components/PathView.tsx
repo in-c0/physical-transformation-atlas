@@ -256,12 +256,6 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
             </ol>
           )}
           <dl className={styles.facts} style={{ marginTop: measurements.length ? 12 : 8 }}>
-            {named.performance.efficiency_typical !== undefined && (
-              <>
-                <dt>typical efficiency (summary)</dt>
-                <dd>{(named.performance.efficiency_typical * 100).toFixed(1)}%</dd>
-              </>
-            )}
             {named.performance.efficiency_record !== undefined && (
               <>
                 <dt>record efficiency (summary)</dt>

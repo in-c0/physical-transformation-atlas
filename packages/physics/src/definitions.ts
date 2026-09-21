@@ -84,7 +84,7 @@ export const CHECK_DEFINITIONS: CheckDefinition[] = [
       "constraint.requires_basis",
       "constraint.applies_to_sources / _outputs / _phenomena",
       "pathway.performance.measurements[].value_numeric / metric / basis / parameters",
-      "pathway.performance.efficiency_typical / efficiency_record",
+      "pathway.performance.efficiency_record",
     ],
     core: true,
     implementation: "packages/physics/src/checks.ts#checkThermodynamicBound",
@@ -105,9 +105,12 @@ export const CHECK_DEFINITIONS: CheckDefinition[] = [
   {
     id: "boundary-compatibility",
     label: "Boundary compatibility",
-    definition: "Do the scoped condition requirements of one step conflict on the same region, or does the active medium change state between two adjacent steps without a demonstrated interface record (for example a thermoacoustic gas column next to a solid acoustoelectric element)?",
-    pass_when: "no two requirements of one step conflict in the same scope on the same region, no environment requirements conflict anywhere on the route, and every adjacent-step medium transition has a demonstrated interface record",
-    fail_when: "two requirements of one step conflict in the same scope on the same region (a listed pair, or two members of one exclusive group), or environment requirements on the same region conflict anywhere on the route",
+    definition:
+      "Do the scoped condition requirements of one step conflict on the same region, or does the active medium change state between two adjacent steps without a demonstrated interface record (for example a thermoacoustic gas column next to a solid acoustoelectric element)?",
+    pass_when:
+      "no two requirements of one step conflict in the same scope on the same region, no environment requirements conflict anywhere on the route, and every adjacent-step medium transition has a demonstrated interface record",
+    fail_when:
+      "two requirements of one step conflict in the same scope on the same region (a listed pair, or two members of one exclusive group), or environment requirements on the same region conflict anywhere on the route",
     unresolved_when: "an adjacent-step medium transition has no interface record, or only a theoretical or proposed one",
     unknown_when: "no step carries a scoped condition requirement",
     reads: ["claim.condition_requirements (or condition_tags with default scopes)", "ontology/conditions.yaml conflicts and exclusive_groups", "data/canonical/interfaces"],
@@ -117,8 +120,10 @@ export const CHECK_DEFINITIONS: CheckDefinition[] = [
   {
     id: "driver-regime-sufficiency",
     label: "Driver / regime sufficiency",
-    definition: "Does each conversion step get the regime it needs from its causal source — not merely a syntactically valid edge? Pyroelectricity needs a temperature that changes in time; a static temperature gradient supplies a spatial gradient, not that.",
-    pass_when: "every regime requirement recorded on a step is supplied by the route source's regime_provides, a preceding step's regime_provides (or that of the disequilibrium it produces), the exact reviewed pathway's regime_provides, or an independent external condition the step records (never a property of its own subject)",
+    definition:
+      "Does each conversion step get the regime it needs from its causal source — not merely a syntactically valid edge? Pyroelectricity needs a temperature that changes in time; a static temperature gradient supplies a spatial gradient, not that.",
+    pass_when:
+      "every regime requirement recorded on a step is supplied by the route source's regime_provides, a preceding step's regime_provides (or that of the disequilibrium it produces), the exact reviewed pathway's regime_provides, or an independent external condition the step records (never a property of its own subject)",
     fail_when: "the route source's regime_excludes names a required regime nothing else supplies",
     unresolved_when: "a requirement is recorded but no provider is recorded",
     unknown_when: "no step records a machine-readable regime requirement",
@@ -134,7 +139,7 @@ export const CHECK_DEFINITIONS: CheckDefinition[] = [
     fail_when: "a structured datum is malformed: a conversion efficiency or power coefficient outside [0, 1]",
     unresolved_when: "only summary figures or prose are recorded",
     unknown_when: "no performance record exists for this composition (the honest state of an undemonstrated route)",
-    reads: ["pathway.performance.measurements", "pathway.performance.efficiency_typical / efficiency_record / power_density"],
+    reads: ["pathway.performance.measurements", "pathway.performance.efficiency_record / power_density"],
     core: false,
     implementation: "packages/physics/src/checks.ts#checkPracticalMagnitude",
   },

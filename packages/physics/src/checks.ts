@@ -6,7 +6,21 @@
  * is partly present; "unknown" means none of it is recorded yet. The site shows
  * the sentence, never just the verdict.
  */
-import type { CheckResult, Claim, ConditionConflict, ConditionRequirement, Entity, EntityType, EnergyForm, ExclusiveGroup, Interface, InterfaceKind, InterfaceStatus, Pathway, Predicate } from "@pta/schema";
+import type {
+  CheckResult,
+  Claim,
+  ConditionConflict,
+  ConditionRequirement,
+  Entity,
+  EntityType,
+  EnergyForm,
+  ExclusiveGroup,
+  Interface,
+  InterfaceKind,
+  InterfaceStatus,
+  Pathway,
+  Predicate,
+} from "@pta/schema";
 import { UnitTable, add, equal, format, dim } from "./dimensions.js";
 
 export interface PhysicsContext {
@@ -249,12 +263,11 @@ export function checkThermodynamicBound(ctx: PhysicsContext, claims: Claim[], pa
   type Datum = { value: number; metric: string; basis?: string; parameters?: Record<string, number>; label: string; model: boolean };
   const data: Datum[] = [];
   for (const m of pathway?.performance?.measurements ?? []) {
-    if (m.value_numeric !== undefined && m.metric) data.push({ value: m.value_numeric, metric: m.metric, basis: m.basis, parameters: m.parameters, label: `${m.quantity} ${m.value}`, model: m.scope === "model" });
+    if (m.value_numeric !== undefined && m.metric)
+      data.push({ value: m.value_numeric, metric: m.metric, basis: m.basis, parameters: m.parameters, label: `${m.quantity} ${m.value}`, model: m.scope === "model" });
   }
   if (pathway?.performance?.efficiency_record !== undefined)
     data.push({ value: pathway.performance.efficiency_record, metric: "conversion-efficiency", label: `record efficiency ${(pathway.performance.efficiency_record * 100).toFixed(1)}%`, model: false });
-  if (pathway?.performance?.efficiency_typical !== undefined)
-    data.push({ value: pathway.performance.efficiency_typical, metric: "conversion-efficiency", label: `typical efficiency ${(pathway.performance.efficiency_typical * 100).toFixed(1)}%`, model: false });
 
   const evaluated: string[] = [];
   const failures: string[] = [];
@@ -307,9 +320,15 @@ export function checkThermodynamicBound(ctx: PhysicsContext, claims: Claim[], pa
     ...(modelInconsistent.length ? [`model-inconsistent · ${modelInconsistent.join("; ")} (a model prediction above the bound marks the model inconsistent; it does not forbid the route)`] : []),
   ];
   if (failures.length) return { id: "thermodynamic-bound", label, result: "fail", detail: [failures.join("; "), ...modelText].join("; ") + otherText };
-  if (evaluated.length) return { id: "thermodynamic-bound", label, result: "pass", detail: `${[evaluated.join("; "), ...modelText].join("; ")}${pending.length ? `; unresolved: ${pending.join("; ")}` : ""}${otherText}` };
+  if (evaluated.length)
+    return { id: "thermodynamic-bound", label, result: "pass", detail: `${[evaluated.join("; "), ...modelText].join("; ")}${pending.length ? `; unresolved: ${pending.join("; ")}` : ""}${otherText}` };
   if (modelText.length)
-    return { id: "thermodynamic-bound", label, result: "unresolved", detail: `${modelText.join("; ")}; no comparable physical datum can be evaluated against ${hard.map((b) => b.name).join(", ")}${pending.length ? `: ${pending.join("; ")}` : ""}${otherText}` };
+    return {
+      id: "thermodynamic-bound",
+      label,
+      result: "unresolved",
+      detail: `${modelText.join("; ")}; no comparable physical datum can be evaluated against ${hard.map((b) => b.name).join(", ")}${pending.length ? `: ${pending.join("; ")}` : ""}${otherText}`,
+    };
   return { id: "thermodynamic-bound", label, result: "unresolved", detail: `hard bound recorded (${hard.map((b) => b.name).join(", ")}) but not evaluable: ${pending.join("; ")}${otherText}` };
 }
 
@@ -429,11 +448,13 @@ export function boundaryReport(ctx: PhysicsContext, claims: Claim[]): BoundaryRe
   const recorded: BoundaryReport["recorded"] = [];
   for (const f of ctx.interfaces) {
     if ("within_claim" in f.location) {
-      if (claims.some((c) => c.id === f.location.within_claim)) recorded.push({ interface: f.id, kind: f.kind, status: f.status, location: `within ${f.location.within_claim}`, relation: !!f.relation });
+      if (claims.some((c) => c.id === f.location.within_claim))
+        recorded.push({ interface: f.id, kind: f.kind, status: f.status, location: `within ${f.location.within_claim}`, relation: !!f.relation });
     } else {
       const { from_claim, to_claim } = f.location.between_claims;
       for (let i = 1; i < claims.length; i++)
-        if (claims[i - 1].id === from_claim && claims[i].id === to_claim) recorded.push({ interface: f.id, kind: f.kind, status: f.status, location: `${from_claim} → ${to_claim}`, relation: !!f.relation });
+        if (claims[i - 1].id === from_claim && claims[i].id === to_claim)
+          recorded.push({ interface: f.id, kind: f.kind, status: f.status, location: `${from_claim} → ${to_claim}`, relation: !!f.relation });
     }
   }
   return { within, adjacent, recorded, untagged: reqs.filter((r) => r.length === 0).length, tagCount: all.size };
@@ -446,7 +467,11 @@ export function checkBoundaryCompatibility(ctx: PhysicsContext, claims: Claim[])
   if (tagCount === 0) return { id: "boundary-compatibility", label, result: "unknown", detail: "no scoped condition requirements recorded on any step" };
   const open = adjacent.filter((a) => !a.interface || a.interface.status !== "demonstrated");
   if (open.length) {
-    const items = open.map((a) => (a.interface ? `${a.interface.status} interface recorded: ${a.interface.id} (${a.interface.kind}) for ${a.from} → ${a.to}, ${a.pair}` : `interface unrecorded: ${a.from} → ${a.to}: ${a.pair} on region ${a.region}`));
+    const items = open.map((a) =>
+      a.interface
+        ? `${a.interface.status} interface recorded: ${a.interface.id} (${a.interface.kind}) for ${a.from} → ${a.to}, ${a.pair}`
+        : `interface unrecorded: ${a.from} → ${a.to}: ${a.pair} on region ${a.region}`,
+    );
     return { id: "boundary-compatibility", label, result: "unresolved", detail: items.join("; ") };
   }
   const demonstrated = recorded.filter((r) => r.status === "demonstrated").length;
@@ -508,7 +533,6 @@ export function checkPracticalMagnitude(pathway?: Pathway): CheckResult {
       return { id: "practical-magnitude", label, result: "fail", detail: `${m.quantity} ${m.value} is outside [0, 1] for a ${m.metric}` };
   }
   const parts: string[] = [];
-  if (p.efficiency_typical !== undefined) parts.push(`typical efficiency ${(p.efficiency_typical * 100).toFixed(1)}%`);
   if (p.efficiency_record !== undefined) parts.push(`record ${(p.efficiency_record * 100).toFixed(1)}%`);
   if (p.power_density) parts.push(`power density ${p.power_density}`);
   if (structured.length)
