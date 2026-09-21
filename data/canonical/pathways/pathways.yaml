@@ -832,11 +832,12 @@
   evidence: [source:nrc-pressurized-water-reactors]
   status: commercial
   knowledge_level: K8
+  regime_provides: [flow:bulk-fluid-motion]  # pass 41: supplied to the route through the auxiliary below (the loader requires that explanation)
   auxiliary_requirements:
     - kind: external-input
       energy_form: electrical
       purpose: reactor coolant pumps
-      establishes: []
+      establishes: [flow:bulk-fluid-motion]  # pass 41: the pumps are what makes the primary loop's advection advection
       conditions:
         - "electrically powered reactor coolant pumps circulate the pressurised primary water through the core and the steam generator; the loop's heat transport is forced, not buoyant"
       evidence: [source:nrc-pressurized-water-reactors]

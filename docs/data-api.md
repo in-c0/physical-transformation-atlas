@@ -106,7 +106,7 @@ pathways `regime_provides[]` for the operating regime their evidence establishes
 the eighth check, `driver-regime-sufficiency`, compares them and never infers a provider from prose.
 Since pass 36 every token is frozen in a registry with its definition (`REGIME_TOKENS`, served as
 vocabulary `regime.token`; an unregistered token fails validation): the thermal, field, mechanical
-and light tokens of pass 30 and `thermodynamic:expansion-pressure-drop` — an upstream pressure state and
+and light tokens of pass 30 `flow:bulk-fluid-motion` (pass 41: nonzero bulk motion of the heat-carrying fluid, required by advective heat transport and supplied only by a reviewed pathway's pump auxiliary or an upstream flow-producing step) and `thermodynamic:expansion-pressure-drop` — an upstream pressure state and
 a lower downstream one sufficient for the working fluid to perform expansion work, required by the
 hot-gas → expansion step and supplied by a reviewed pathway only with a preceding providing step or an
 `auxiliary_requirements` entry explaining how its implementation establishes it), `evidence` (source ids), `status`

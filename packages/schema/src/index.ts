@@ -119,6 +119,10 @@ export const REGIME_TOKENS = {
   "mechanical:stress-cycling": { definition: "the active material's stress state is repeatedly loaded and unloaded through a mechanical cycle", provider_needs_explanation: false },
   "light:incident-photon-flux": { definition: "a photon flux incident on the active element", provider_needs_explanation: false },
   "light:above-bandgap-photon-flux": { definition: "an incident photon flux containing absorbable photons with hν > E_g of the active absorber", provider_needs_explanation: false },
+  "flow:bulk-fluid-motion": {
+    definition: "nonzero bulk motion of the heat-carrying fluid through the region over which thermal enthalpy is transported",
+    provider_needs_explanation: true,
+  },
   "thermodynamic:expansion-pressure-drop": {
     definition: "an upstream pressure state and downstream lower-pressure state sufficient for the working fluid to perform expansion work",
     provider_needs_explanation: true,

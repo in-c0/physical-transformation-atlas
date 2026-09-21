@@ -1140,10 +1140,11 @@
   condition_requirements:
     - { tag: flow-required, scope: medium, region: fluid-loop }
     - { tag: temp-gradient-required, scope: medium, region: fluid-loop }
+  regime_requires: [thermal:spatial-temperature-gradient, flow:bulk-fluid-motion]  # pass 41: the gradient its source supplies AND the bulk motion that makes advection advection — never regime_external on the generic claim; a reviewed pathway's auxiliary or an upstream flow-producing step must record where the flow comes from
   energy: { input: thermal, output: thermal }
-  evidence: [source:bejan-2016, source:nrc-pressurized-water-reactors]
+  evidence: [source:bejan-2016, source:nrc-pressurized-water-reactors, source:doe-hdbk-1012-2-92]
   status: established
-  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 40 (the second reader's spelling; Bejan 2016 for the physics, the NRC's PWR description for the forced primary loop)" }
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 41 (the flow regime required; the DOE handbook's forced-convection definition read); pass 40 (the second reader's spelling; Bejan 2016 for the physics, the NRC's PWR description for the forced primary loop)" }
 - id: claim:advective-heat-transport-produces-heat-flow
   subject: phenomenon:advective-heat-transport
   predicate: produces

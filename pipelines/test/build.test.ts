@@ -356,7 +356,8 @@ test("the pressurised-water reactor as a system (loop-3 pass 40): advective tran
   assert.equal(fourier.relation?.formula, "q = −κ · ∇T", "Fourier conduction keeps its relation and its name");
   assert.equal(canon.claims.find((c) => c.id === "claim:temperature-drives-advective-heat-transport")!.relation, undefined, "no fake Fourier relation on advection");
   assert.equal(primary.status, "commercial");
-  assert.ok(primary.auxiliary_requirements.some((a) => a.kind === "external-input" && /coolant pump/.test(a.purpose) && a.establishes.length === 0));
+  // pass 41: the coolant pumps now establish the flow token (they had established nothing in pass 40)
+  assert.ok(primary.auxiliary_requirements.some((a) => a.kind === "external-input" && /coolant pump/.test(a.purpose) && a.establishes.includes("flow:bulk-fluid-motion")));
   const pwr = graph.systems.find((s) => s.id === "system-pathway:pressurized-water-reactor-steam-plant")!;
   assert.ok(pwr, "the PWR system compiles");
   assert.equal(pwr.status, "commercial");
@@ -407,6 +408,56 @@ test("the pressurised-water reactor as a system (loop-3 pass 40): advective tran
     0,
     "none of them is a fresh candidate composition — each is dominated by, prepares, or is derived from a heat-delivery spelling the atlas already records",
   );
+});
+
+test("the forced-advection closure (loop-3 pass 41): advection requires bulk fluid motion, which only a recorded pump auxiliary or an upstream flow step supplies", () => {
+  const regime = (p: (typeof graph.paths)[number]) => p.checks.find((k) => k.id === "driver-regime-sufficiency")!;
+  const claim = canon.claims.find((c) => c.id === "claim:temperature-drives-advective-heat-transport")!;
+  assert.deepEqual([...claim.regime_requires].sort(), ["flow:bulk-fluid-motion", "thermal:spatial-temperature-gradient"]);
+  assert.deepEqual(claim.regime_external, [], "the generic claim never self-certifies the flow");
+  assert.ok(
+    claim.condition_requirements.some((r) => r.tag === "flow-required"),
+    "the condition layer keeps flow-required beside the regime",
+  );
+  // negative control: every advective route with no pathway is unresolved specifically on the flow token
+  const generic = graph.paths.filter((p) => !p.pathway && p.claims.includes("claim:temperature-drives-advective-heat-transport"));
+  assert.equal(generic.length, 8);
+  for (const p of generic) {
+    assert.equal(regime(p).result, "unresolved", p.id);
+    assert.match(regime(p).detail, /requires flow:bulk-fluid-motion/);
+    assert.doesNotMatch(regime(p).detail, /requires thermal:spatial-temperature-gradient/, "the gradient is supplied; only the flow is missing");
+  }
+  // positive controls: the PWR primary through its electrical coolant pumps, the forced-circulation loop through its mechanical pump
+  const pwr = graph.paths.find((p) => p.pathway === "pathway:pwr-primary-heat-delivery")!;
+  const loop = graph.paths.find((p) => p.pathway === "pathway:forced-circulation-heat-delivery")!;
+  assert.equal(regime(pwr).result, "pass");
+  assert.equal(regime(loop).result, "pass");
+  const pwrAux = canon.pathways.find((p) => p.id === "pathway:pwr-primary-heat-delivery")!.auxiliary_requirements[0];
+  const loopAux = canon.pathways.find((p) => p.id === "pathway:forced-circulation-heat-delivery")!.auxiliary_requirements[0];
+  assert.equal(pwrAux.energy_form, "electrical");
+  assert.equal(loopAux.energy_form, "mechanical");
+  assert.ok(pwrAux.establishes.includes("flow:bulk-fluid-motion") && loopAux.establishes.includes("flow:bulk-fluid-motion"));
+  // the flow token comes from nowhere but a recorded provider: no disequilibrium, carrier or claim provides it by name
+  assert.equal(canon.entities.filter((e) => (e.regime_provides ?? []).includes("flow:bulk-fluid-motion")).length, 0);
+  assert.equal(canon.claims.filter((c) => c.regime_provides.includes("flow:bulk-fluid-motion") || c.regime_external.includes("flow:bulk-fluid-motion")).length, 0);
+  // conduction and advection stay distinct mechanisms on the same source and sink
+  const cond = graph.paths.find((p) => p.pathway === "pathway:heat-exchanger")!;
+  assert.notEqual(cond.id, loop.id);
+  assert.equal(loop.dominated_by, null, "the advective loop is not collapsed onto the conduction spelling");
+  // provider_needs_explanation: cutting the PWR's auxiliary while keeping its provider fails validation
+  const tmp = mkdtempSync(join(tmpdir(), "pta-flow-"));
+  cpSync(join(root, "data", "canonical"), join(tmp, "data", "canonical"), { recursive: true });
+  cpSync(join(root, "data", "generated"), join(tmp, "data", "generated"), { recursive: true });
+  const file = join(tmp, "data", "canonical", "pathways", "pathways.yaml");
+  const text = readFileSync(file, "utf8");
+  const start = text.indexOf("  auxiliary_requirements:", text.indexOf("- id: pathway:pwr-primary-heat-delivery"));
+  const end = text.indexOf("  environment:", start);
+  assert.ok(start > 0 && end > start);
+  writeFileSync(file, text.slice(0, start) + text.slice(end));
+  assert.throws(() => loadCanon(tmp), /supplies flow:bulk-fluid-motion but no preceding step of its route provides it and no auxiliary_requirements entry establishes it/);
+  rmSync(tmp, { recursive: true, force: true });
+  // the route count did not move: this pass added no process edge
+  assert.equal(graph.paths.length, 761);
 });
 
 test("the gas-turbine / expansion-carrier closure (loop-3 pass 36): the pressure regime is required by the expansion step, supplied only through an explained auxiliary, and never by the carrier or by combustion", () => {

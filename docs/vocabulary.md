@@ -165,6 +165,7 @@ Used in: `claims[].regime_requires / regime_provides / regime_external`, `entiti
 - `mechanical:stress-cycling` — the active material's stress state is repeatedly loaded and unloaded through a mechanical cycle
 - `light:incident-photon-flux` — a photon flux incident on the active element
 - `light:above-bandgap-photon-flux` — an incident photon flux containing absorbable photons with hν > E_g of the active absorber
+- `flow:bulk-fluid-motion` — nonzero bulk motion of the heat-carrying fluid through the region over which thermal enthalpy is transported — a pathway may supply it only with a preceding providing step or an auxiliary requirement explaining how its implementation establishes it
 - `thermodynamic:expansion-pressure-drop` — an upstream pressure state and downstream lower-pressure state sufficient for the working fluid to perform expansion work — a pathway may supply it only with a preceding providing step or an auxiliary requirement explaining how its implementation establishes it
 
 ## `pathway.auxiliary_requirement.kind`

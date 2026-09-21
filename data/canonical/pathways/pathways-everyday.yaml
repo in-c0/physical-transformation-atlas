@@ -380,3 +380,24 @@
   environment: [state-solid, temp-gradient-required]
   summary: A bimetallic strip snapping between hot and cold plates strikes a piezoelectric element; a demonstrated thermal-to-electrical harvester with no working fluid.
   review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 10 (frontier as a research instrument)" }
+# Loop-3 pass 41: forced circulation delivering heat — the advective twin of the heat exchanger, an ordinary and heavily
+# engineered transport implementation (the second reader's finding 14).
+- id: pathway:forced-circulation-heat-delivery
+  name: Forced-circulation heat-delivery loop
+  steps: [claim:temperature-drives-advective-heat-transport, claim:advective-heat-transport-produces-heat-flow, claim:heat-flow-converts-useful-heat]
+  evidence: [source:doe-hdbk-1012-2-92, source:nrc-pressurized-water-reactors]
+  status: commercial
+  knowledge_level: K8
+  regime_provides: [flow:bulk-fluid-motion]  # supplied by the circulation pump below
+  auxiliary_requirements:
+    - kind: external-input
+      energy_form: mechanical
+      purpose: circulation pump
+      establishes: [flow:bulk-fluid-motion]
+      conditions:
+        - "external pump or equivalent circulation machinery maintains bulk motion of the heat-carrying fluid through the hot and cold regions"
+      evidence: [source:doe-hdbk-1012-2-92]
+      note: "mechanical because that is the work supplied to the fluid; an implementation may obtain the shaft work electrically (the PWR's reactor coolant pumps do)"
+  environment: [flow-required, temp-gradient-required]
+  summary: "A pumped fluid carries enthalpy from a hot region to a cold one and delivers it as useful heat — forced convection in the DOE handbook's sense, the fluid motion caused by an outside force such as a pump, with the pumped heat exchanger as its canonical example and a reactor's primary coolant loop as a commercial one. A transport subsystem, not a converter: thermal in, thermal out."
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 41 (the second reader's findings 14–19; DOE-HDBK-1012/2-92 read)" }

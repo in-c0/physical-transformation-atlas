@@ -645,5 +645,5 @@
   name: Advective heat transport
   aliases: [thermal advection, bulk convective heat transport, sensible-heat transport by fluid flow]
   domain: fluid-mechanics
-  summary: "Bulk motion of a fluid transports enthalpy from a hotter region to a colder region. In a forced loop the fluid motion may be maintained by a pump; the thermal energy transported remains heat."
+  summary: "Bulk motion of a fluid carries its enthalpy between regions. The thermal energy transported belongs to the fluid's thermal state; the fluid motion itself must be established separately by an upstream flow process, buoyancy or an external circulation device such as a pump."
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 40 (the second reader's spelling for the PWR primary loop)" }

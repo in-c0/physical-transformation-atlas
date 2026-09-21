@@ -1648,3 +1648,12 @@
   venue: "NASA CR-135194 (Raytheon Company, contract NAS3-19722), NASA Technical Reports Server 19770024669"
   url: https://ntrs.nasa.gov/citations/19770024669
   notes: "Read in full (open NTRS PDF, loop-3 pass 39). The rectenna element improved under the study (higher-impedance microwave circuit, higher DC load resistance, improved diodes) reached 'an efficiency of 90.5 ± 0.5 % at the 8 watt input level and 79.5 ± 0.5 % at the 50 milliwatt level', and 45 % at 1 mW, at 2450 MHz; the certified overall DC-to-DC transmission efficiency of March 1975 at Raytheon was 54 %; the Goldstone demonstration converted over 82 % of the microwave power impinging on a 264 ft² rectenna into over 30 kW of DC over 1.6 km. The 90.6 % the later reviews quote is not in this report — its own element figure is 90.5 ± 0.5 %."
+# Loop-3 pass 41: the open authoritative definition of forced convection.
+- id: source:doe-hdbk-1012-2-92
+  type: report
+  title: "DOE Fundamentals Handbook: Thermodynamics, Heat Transfer, and Fluid Flow, Volume 2 of 3 (DOE-HDBK-1012/2-92)"
+  authors: [U.S. Department of Energy]
+  year: 1992
+  venue: "DOE-HDBK-1012/2-92, June 1992"
+  url: https://www.energy.gov/sites/default/files/2026-04/DOE-HDBK-1012-92_VOL2.pdf
+  notes: "Read (open PDF on energy.gov, loop-3 pass 41). 'Convection involves the transfer of heat by the motion and mixing of macroscopic portions of a fluid … The term natural convection is used if this motion and mixing is caused by density variations resulting from temperature differences within the fluid. The term forced convection is used if this motion and mixing is caused by an outside force, such as a pump. … The transfer of heat from the surface of a heat exchanger to the bulk of a fluid being pumped through the heat exchanger is an example of forced convection.'"
