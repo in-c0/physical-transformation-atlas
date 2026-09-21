@@ -138,6 +138,7 @@ export const CHECK_ABBR: Record<CheckResult["id"], string> = {
   "thermodynamic-bound": "THERMO BOUND",
   dimensional: "DIMENSIONAL",
   "boundary-compatibility": "BOUNDARY",
+  "driver-regime-sufficiency": "REGIME",
   "practical-magnitude": "COVERAGE",
 };
 export const CHECK_PHONE: Record<CheckResult["id"], string> = {
@@ -147,6 +148,7 @@ export const CHECK_PHONE: Record<CheckResult["id"], string> = {
   "thermodynamic-bound": "BOUND",
   dimensional: "DIM",
   "boundary-compatibility": "BC",
+  "driver-regime-sufficiency": "REG",
   "practical-magnitude": "COV",
 };
 export const CHECK_NAME: Record<CheckResult["id"], string> = {
@@ -156,6 +158,7 @@ export const CHECK_NAME: Record<CheckResult["id"], string> = {
   "thermodynamic-bound": "Thermodynamic bound",
   dimensional: "Dimensional consistency",
   "boundary-compatibility": "Boundary compatibility",
+  "driver-regime-sufficiency": "Driver / regime sufficiency",
   "practical-magnitude": "Measured performance coverage",
 };
 export const CHECK_GLYPH: Record<CheckResult["result"], string> = { pass: "✓", fail: "×", unresolved: "?", unknown: "—" };

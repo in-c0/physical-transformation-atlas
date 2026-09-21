@@ -11,6 +11,10 @@
   domain: thermodynamics
   quantity: quantity:temperature
   exergy: positive
+  # Regime tokens (pass 30): a temperature gradient supplies a spatial gradient and says nothing about time — a step
+  # that needs the temperature to change in time (pyroelectricity) is unresolved under it, not failed, because the
+  # disequilibrium is generic (a modulated source would supply the change through a recorded step or condition).
+  regime_provides: [thermal:spatial-temperature-gradient]
   condition_tags: [temp-gradient-required]
   summary: Two regions at different temperatures. Heat flows down the gradient, and a fraction bounded by Carnot can be diverted into work.
 - id: disequilibrium:pressure-gradient

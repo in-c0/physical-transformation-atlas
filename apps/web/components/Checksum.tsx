@@ -24,6 +24,8 @@ function fact(k: CheckResult): string {
     if (m) return `η ≤ ${m[1]}`;
     if (k.result === "pass") return "bounded";
   }
+  if (k.id === "driver-regime-sufficiency" && k.result === "pass") return "supplied";
+  if (k.id === "driver-regime-sufficiency" && k.result === "unresolved") return "regime unsupplied";
   if (k.id === "practical-magnitude" && k.result === "pass") {
     const m = k.detail.match(/record ([\d.]+%)|typical efficiency ([\d.]+%)/);
     if (m) return `η ${m[1] ?? m[2]}`;

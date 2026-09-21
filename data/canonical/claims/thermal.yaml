@@ -7,6 +7,7 @@
   subject: disequilibrium:temperature-gradient
   predicate: drives
   object: phenomenon:seebeck-effect
+  regime_requires: [thermal:spatial-temperature-gradient]
   conditions:
     - a spatial temperature difference across a conductor or semiconductor
     - a closed circuit of dissimilar materials, or a single material with ends at different temperatures
@@ -242,6 +243,8 @@
     - temperature gradient along the stack steeper than the critical gradient set by the acoustic pressure and displacement amplitudes
     - a resonant gas column
   condition_tags: [state-gas, temp-gradient-required]
+  regime_requires: [thermal:spatial-temperature-gradient, thermal:gradient-above-thermoacoustic-critical]
+  regime_external: [thermal:gradient-above-thermoacoustic-critical]
   energy: { input: thermal, output: acoustic, dissipation: thermal }
   relation:
     formula: "|∇T_crit| = β T_m ω |p₁| / (ρ_m c_p |u₁|); prime-mover onset requires |∇T| > |∇T_crit|"
@@ -349,6 +352,7 @@
     - "the temperature of the polar material must change in time (dT/dt ≠ 0); a static spatial temperature gradient alone produces no pyroelectric current"
     - the material must be below its Curie temperature
   condition_tags: [state-solid, medium-ferroelectric, transient-only]
+  regime_requires: [thermal:temporal-temperature-change]
   energy: { input: thermal, output: electrical, dissipation: thermal }
   relation:
     formula: "ΔP = p · ΔT"

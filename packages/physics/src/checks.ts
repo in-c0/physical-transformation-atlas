@@ -441,6 +441,44 @@ export function checkBoundaryCompatibility(ctx: PhysicsContext, claims: Claim[])
   };
 }
 
+/**
+ * Driver / regime sufficiency (loop-3 pass 30): does each conversion step get the regime it needs from
+ * what precedes it? Requirements are machine-readable tokens on the step; providers are the route
+ * source's regime_provides, any preceding step's regime_provides (or the regime_provides of the
+ * disequilibrium it produces), and the step's own regime_external. Nothing is inferred from aliases
+ * or prose. PASS = every requirement met; FAIL = the route source excludes a requirement; UNRESOLVED
+ * = a requirement nothing recorded provides; UNKNOWN = no step records a requirement.
+ */
+export function checkDriverRegimeSufficiency(ctx: PhysicsContext, claims: Claim[]): CheckResult {
+  const id = "driver-regime-sufficiency";
+  const label = "driver / regime sufficiency";
+  const source = ctx.entity(claims[0]?.subject);
+  const requiring = claims.filter((c) => (c.predicate === "drives" || c.predicate === "couples_to") && c.regime_requires.length > 0);
+  if (requiring.length === 0) return { id, label, result: "unknown", detail: "no conversion step records a machine-readable regime requirement" };
+  const excluded = new Set(source?.regime_excludes ?? []);
+  const failures: string[] = [];
+  const unresolved: string[] = [];
+  const met: string[] = [];
+  for (const c of requiring) {
+    const i = claims.indexOf(c);
+    const providers = new Set<string>(source?.regime_provides ?? []);
+    for (let k = 0; k < i; k++) {
+      for (const t of claims[k].regime_provides) providers.add(t);
+      const produced = ctx.entity(claims[k].object);
+      if (produced?.type === "disequilibrium") for (const t of produced.regime_provides) providers.add(t);
+    }
+    for (const t of c.regime_external) providers.add(t);
+    for (const t of c.regime_requires) {
+      if (excluded.has(t) && !providers.has(t)) failures.push(`${c.id} requires ${t}, which ${source?.id ?? "the source"} cannot supply`);
+      else if (!providers.has(t)) unresolved.push(`${c.id} requires ${t}; nothing before it records supplying it`);
+      else met.push(`${c.id}: ${t}`);
+    }
+  }
+  if (failures.length) return { id, label, result: "fail", detail: failures.join("; ") };
+  if (unresolved.length) return { id, label, result: "unresolved", detail: unresolved.join("; ") };
+  return { id, label, result: "pass", detail: `every regime requirement is supplied by the source, a preceding step or the step's stated condition: ${met.join("; ")}` };
+}
+
 export function checkPracticalMagnitude(pathway?: Pathway): CheckResult {
   // Loop-3 pass 19: a coverage statement about recorded measurements, not a physics validity check.
   const label = "measured performance coverage";
@@ -474,6 +512,7 @@ export function runAllChecks(ctx: PhysicsContext, claims: Claim[], pathway?: Pat
     checkThermodynamicBound(ctx, claims, pathway),
     checkDimensional(ctx, claims),
     checkBoundaryCompatibility(ctx, claims),
+    checkDriverRegimeSufficiency(ctx, claims),
     checkPracticalMagnitude(pathway),
   ];
 }

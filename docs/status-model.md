@@ -44,7 +44,7 @@ current compiler never assigns them; there is no review queue in this release.
 
 ## Frontier class (per route), in precedence order
 
-1. `forbidden` — at least one of the seven checks returns `fail`;
+1. `forbidden` — at least one of the eight checks returns `fail`;
 2. `demonstrated` — search status is `demonstrated`;
 3. `circular` — the source disequilibrium and the sink carry the same energy form;
 4. if every constituent claim is at least `demonstrated`:

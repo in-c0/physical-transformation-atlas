@@ -18,7 +18,7 @@ data/canonical/      reviewed knowledge, YAML, the only thing that is edited by 
   ontology/          units (for dimensional analysis), domains (for coverage), condition tags and conflicts
 data/generated/      compiled graph, Crossref verification, automated OpenAlex index queries
 packages/schema      zod schemas and the vocabulary
-packages/physics     dimensional analysis and the seven route checks
+packages/physics     dimensional analysis and the eight route checks
 packages/graph       loader with referential validation, compiler, browser-safe query index
 pipelines/           validate · build-graph · verify-sources · literature-search · inspect · tests
 apps/web             Next.js static site: /, /atlas, /matrix, /path/[id], /phenomenon/[id], /frontier, /coverage, /methods, /api/*.json

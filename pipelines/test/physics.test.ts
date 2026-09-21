@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { UnitTable, checkDimensional, checkBoundaryCompatibility, checkConservation, dim, equal, format, type PhysicsContext } from "@pta/physics";
+import { UnitTable, checkDimensional, checkBoundaryCompatibility, checkConservation, checkDriverRegimeSufficiency, dim, equal, format, type PhysicsContext } from "@pta/physics";
 import type { Claim, Entity, UnitDef } from "@pta/schema";
 
 const units: UnitDef[] = [
@@ -27,7 +27,7 @@ test("unit parsing handles quotients, products and powers", () => {
 const entities: Entity[] = [
   { id: "quantity:temperature-difference", type: "quantity", name: "ΔT", aliases: [], summary: "", dimension: dim({ Th: 1 }), condition_tags: [], tags: [] },
   { id: "quantity:electric-potential", type: "quantity", name: "V", aliases: [], summary: "", dimension: dim({ M: 1, L: 2, T: -3, I: -1 }), condition_tags: [], tags: [] },
-  { id: "disequilibrium:temperature-gradient", type: "disequilibrium", name: "∇T", aliases: [], summary: "", exergy: "positive", condition_tags: [], tags: [] },
+  { id: "disequilibrium:temperature-gradient", type: "disequilibrium", name: "∇T", aliases: [], summary: "", exergy: "positive", condition_tags: [], tags: [], regime_provides: ["thermal:spatial-temperature-gradient"], regime_excludes: [] },
   { id: "disequilibrium:uniform-thermal-energy", type: "disequilibrium", name: "T0", aliases: [], summary: "", exergy: "none", condition_tags: [], tags: [] },
   { id: "phenomenon:seebeck-effect", type: "phenomenon", name: "Seebeck", aliases: [], summary: "", condition_tags: [], tags: [] },
   { id: "phenomenon:thermogalvanic-effect", type: "phenomenon", name: "Thermogalvanic", aliases: [], summary: "", condition_tags: [], tags: [] },
@@ -47,6 +47,9 @@ const base: Omit<Claim, "id" | "subject" | "predicate" | "object"> = {
   conditions: [],
   condition_tags: [],
   condition_requirements: [],
+  regime_requires: [],
+  regime_provides: [],
+  regime_external: [],
   evidence: ["source:x"],
   status: "established",
   review: { canonical: true, last_reviewed: "2026-09-19" },
@@ -105,4 +108,23 @@ test("conservation check: a source with no exergy fails (second law)", () => {
   assert.equal(checkConservation(ctx, [c]).result, "fail");
   const ok: Claim = { ...c, id: "claim:ok", subject: "disequilibrium:temperature-gradient" };
   assert.equal(checkConservation(ctx, [ok]).result, "pass");
+});
+
+test("driver / regime sufficiency (loop-3 pass 30): a static gradient supplies a spatial gradient, not temporal change; a stated external condition supplies its own regime; an excluding source fails", () => {
+  const seebeck: Claim = { ...base, id: "claim:s", subject: "disequilibrium:temperature-gradient", predicate: "drives", object: "phenomenon:seebeck-effect", regime_requires: ["thermal:spatial-temperature-gradient"] };
+  assert.equal(checkDriverRegimeSufficiency(ctx, [seebeck]).result, "pass");
+  const pyro: Claim = { ...seebeck, id: "claim:p", regime_requires: ["thermal:temporal-temperature-change"] };
+  const r = checkDriverRegimeSufficiency(ctx, [pyro]);
+  assert.equal(r.result, "unresolved");
+  assert.match(r.detail, /nothing before it records supplying it/);
+  const thermoacoustic: Claim = { ...seebeck, id: "claim:t", regime_requires: ["thermal:spatial-temperature-gradient", "thermal:gradient-above-critical"], regime_external: ["thermal:gradient-above-critical"] };
+  assert.equal(checkDriverRegimeSufficiency(ctx, [thermoacoustic]).result, "pass");
+  const none: Claim = { ...seebeck, id: "claim:n", regime_requires: [] };
+  assert.equal(checkDriverRegimeSufficiency(ctx, [none]).result, "unknown");
+  // a preceding step's produced disequilibrium supplies its regime to later steps
+  const chain: Claim = { ...base, id: "claim:c", subject: "disequilibrium:uniform-thermal-energy", predicate: "produces", object: "disequilibrium:temperature-gradient" };
+  assert.equal(checkDriverRegimeSufficiency(ctx, [chain, seebeck]).result, "pass");
+  // an excluding source fails rather than waits
+  const strict = { ...ctx, entity: (id: string) => (id === "disequilibrium:temperature-gradient" ? { ...entities.find((e) => e.id === id)!, regime_excludes: ["thermal:temporal-temperature-change"] } : entities.find((e) => e.id === id)) };
+  assert.equal(checkDriverRegimeSufficiency(strict, [pyro]).result, "fail");
 });

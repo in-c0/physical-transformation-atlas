@@ -252,3 +252,17 @@ test("scoped conditions and interface records (loop-3 pass 26): a demonstrated i
     assert.equal(p.implied_interface_count, 0, `${p.pathway} shows an unrecorded interface`);
   }
 });
+
+test("driver / regime sufficiency on real routes (loop-3 pass 30): the pyroelectric spelling from a static gradient is unresolved, the thermoelectric generator passes, the thermoacoustic generator passes through its stated critical-gradient condition", () => {
+  const regime = (pw: string) => paths.find((p) => p.pathway === pw)!.checks.find((c) => c.id === "driver-regime-sufficiency")!;
+  assert.equal(regime("pathway:pyroelectric-harvester").result, "unresolved");
+  assert.match(regime("pathway:pyroelectric-harvester").detail, /thermal:temporal-temperature-change/);
+  assert.equal(regime("pathway:thermoelectric-generator").result, "pass");
+  assert.equal(regime("pathway:thermoacoustic-generator").result, "pass");
+  // no route fails: no disequilibrium excludes a regime yet, and nothing is inferred from prose
+  for (const p of paths) assert.notEqual(p.checks.find((c) => c.id === "driver-regime-sufficiency")!.result, "fail", p.id);
+  // a route through combustion → temperature gradient → Seebeck passes because the produced disequilibrium supplies the gradient
+  const viaCombustion = paths.find((p) => p.claims.join(">").startsWith("claim:combustion-drives>claim:combustion-produces-gradient>claim:seebeck-drives"));
+  assert.ok(viaCombustion, "combustion → gradient → Seebeck compiled");
+  assert.equal(viaCombustion!.checks.find((c) => c.id === "driver-regime-sufficiency")!.result, "pass");
+});

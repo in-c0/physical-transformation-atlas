@@ -97,7 +97,11 @@ constitutive `relation` (`formula`, `input` and `output` quantities, `coefficien
 time-averaged momentum along a propagation direction, which a pure standing wave does not provide;
 the compiler checks them across each carrier), an optional
 `relation_requirement` (`required` / `not-applicable` / `unknown`; drives and couples_to steps default
-to unknown, produces and converts_into to not-applicable), `evidence` (source ids), `status`
+to unknown, produces and converts_into to not-applicable), `regime_requires[]` / `regime_provides[]` /
+`regime_external[]` (pass 30: regime tokens such as `thermal:temporal-temperature-change` a drives or
+couples_to step needs from its causal source, supplies to later steps, or has supplied by its own stated
+condition; disequilibria carry `regime_provides[]` and `regime_excludes[]`; the eighth check,
+`driver-regime-sufficiency`, compares them and never infers a provider from prose), `evidence` (source ids), `status`
 (vocabulary `claim.status`), optional `knowledge_level`, `review` and `notes`. The four process predicates (`drives`, `produces`,
 `couples_to`, `converts_into`) carry energy between nodes and are the only ones routes are built
 from; the rest are descriptive (vocabulary `claim.predicate`).
@@ -131,7 +135,7 @@ makes it demonstrated and is ignored when other routes are classified as derived
 **CompiledPath** (generated) — `id` is `p-` plus ten hex characters of a SHA-1 over the ordered
 claim ids; `nodes`, `claims`, `source`, `sink`, `length`; `evidence_status` (the weakest
 constituent), `established_steps`, `search_status`, `frontier_class`, `knowledge_level`,
-`pathway` (when a named pathway records exactly this route), `checks[]` (seven results, each
+`pathway` (when a named pathway records exactly this route), `checks[]` (eight results, each
 `{ id, label, result, detail }`), `coupling_families`, `domains`, `literature`,
 `constituent_source_ids` versus `composition_source_ids` (evidence for the steps is never evidence
 for the composition), `constituent_floor`, `phenomena`, `effective_length`,

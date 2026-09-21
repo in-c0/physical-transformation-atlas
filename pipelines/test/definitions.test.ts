@@ -24,7 +24,7 @@ test("every (check, result) pair the dataset produces has a description in CHECK
   assert.deepEqual(problems, []);
   // Every check id in the registry is one the compiler ran, and vice versa.
   assert.deepEqual([...seen.keys()].sort(), CHECK_DEFINITIONS.map((d) => d.id).sort());
-  assert.deepEqual([...CORE_CHECK_IDS].sort(), ["boundary-compatibility", "conservation", "energy-form-continuity", "thermodynamic-bound"]);
+  assert.deepEqual([...CORE_CHECK_IDS].sort(), ["boundary-compatibility", "conservation", "driver-regime-sufficiency", "energy-form-continuity", "thermodynamic-bound"]);
 });
 
 // Results the current dataset happens not to exercise are pinned with synthetic routes so the

@@ -115,6 +115,18 @@ export const CHECK_DEFINITIONS: CheckDefinition[] = [
     implementation: "packages/physics/src/checks.ts#checkBoundaryCompatibility",
   },
   {
+    id: "driver-regime-sufficiency",
+    label: "Driver / regime sufficiency",
+    definition: "Does each conversion step get the regime it needs from its causal source — not merely a syntactically valid edge? Pyroelectricity needs a temperature that changes in time; a static temperature gradient supplies a spatial gradient, not that.",
+    pass_when: "every regime requirement recorded on a drives or couples_to step is supplied by the route source's regime_provides, a preceding step's regime_provides (or that of the disequilibrium it produces), or the step's own stated external condition",
+    fail_when: "the route source's regime_excludes names a required regime nothing else supplies",
+    unresolved_when: "a requirement is recorded but no provider is recorded",
+    unknown_when: "no conversion step records a machine-readable regime requirement",
+    reads: ["claim.regime_requires / regime_provides / regime_external", "entity.regime_provides / regime_excludes"],
+    core: true,
+    implementation: "packages/physics/src/checks.ts#checkDriverRegimeSufficiency",
+  },
+  {
     id: "practical-magnitude",
     label: "Measured performance coverage",
     definition: "Does the recorded pathway carry a structured measurement — value, unit, regime and source — for this composition? A coverage statement, not a physics verdict.",

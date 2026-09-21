@@ -10,7 +10,7 @@ import styles from "./methods.module.css";
 
 export const metadata: Metadata = {
   title: "Methods",
-  description: "How every public state of the atlas is derived: claims, route construction, the seven checks, the five state layers, search records, counts, a worked example and the limits.",
+  description: "How every public state of the atlas is derived: claims, route construction, the eight checks, the five state layers, search records, counts, a worked example and the limits.",
 };
 
 const DOCS = `${REPO}/blob/main`;
@@ -96,7 +96,7 @@ export default function MethodsPage() {
             <a href="#routes">Route construction</a>
           </li>
           <li>
-            <a href="#checks">The seven checks</a>
+            <a href="#checks">The eight checks</a>
           </li>
           <li>
             <a href="#states">Five state layers</a>
@@ -197,12 +197,12 @@ export default function MethodsPage() {
       </section>
 
       <section className={styles.section} id="checks">
-        <h2 className="t-section">3. The seven checks</h2>
+        <h2 className="t-section">3. The eight checks</h2>
         <div className="prose">
           <p>
-            Every route is passed through seven checks. Each returns pass, fail, unresolved (the data needed to decide is partly present) or unknown (none of it is recorded), and a sentence saying
+            Every route is passed through eight checks. Each returns pass, fail, unresolved (the data needed to decide is partly present) or unknown (none of it is recorded), and a sentence saying
             what was examined; the site shows the sentence, never just the verdict. The definitions below are the registry served as <Link href="/api/checks.json">/api/checks.json</Link>, rendered
-            here so this page cannot drift from the code. The four marked core decide whether a composition is physically coherent. Since pass 19 a check passes only when it has actually decided
+            here so this page cannot drift from the code. The five marked core decide whether a composition is physically coherent — the fifth, driver / regime sufficiency (loop-3 pass 30), asks whether each conversion step gets the regime it needs from its causal source rather than merely a typed edge: pyroelectricity needs a temperature that changes in time, which a static gradient does not supply, so the pyroelectric spelling from a temperature gradient reads unresolved until a route step or a stated condition supplies the change. Requirements and providers are machine-readable tokens on claims and disequilibria; nothing is inferred from prose. Since pass 19 a check passes only when it has actually decided
             something: the thermodynamic bound passes only when a hard limit (an upper bound with its stated basis, or a formula such as Carnot evaluated from the datum's own recorded temperatures)
             has been compared with a comparable measurement, the dimensional check only when every conversion step carries a balanced relation, and the coverage check only when a structured datum
             exists. Benchmarks such as Curzon–Ahlborn and relations such as Onsager–Casimir reciprocity are listed as recorded limits and never decide. Most routes therefore read unresolved or
@@ -237,7 +237,7 @@ export default function MethodsPage() {
             ))}
           </dl>
           <p>
-            Measured performance coverage is one of the seven checks and asks whether the recorded pathway carries a structured measurement for the whole composition; it is a coverage statement, not a
+            Measured performance coverage is one of the eight checks and asks whether the recorded pathway carries a structured measurement for the whole composition; it is a coverage statement, not a
             physics verdict. <code>magnitude_screen</code> is a separate frontier-ordering diagnostic: <em>quantified</em> means whole-composition measurements exist; <em>relation-complete</em> means every
             relation-required conversion step — a <em>drives</em> or <em>couples_to</em> step, or one whose <code>relation_requirement</code> is required; a <em>produces</em> step projects the
             carrier its phenomenon emits and is not asked for one, the same notion the dimensional check uses — carries a dimensionally valid constitutive relation, and no route magnitude is

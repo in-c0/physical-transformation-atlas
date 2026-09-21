@@ -307,6 +307,13 @@ export const Entity = z.object({
   applies_to_phenomena: z.array(EntityId).default([]),
   /** Typical condition tags (env:*, state:*, temp:*, field:*), used by the boundary check. */
   condition_tags: z.array(Slug).default([]),
+  /**
+   * Regime tokens a disequilibrium supplies to the steps it drives (pass 30): a temperature gradient
+   * supplies "thermal:spatial-temperature-gradient", not "thermal:temporal-temperature-change". A token
+   * in regime_excludes is one the source cannot supply, so a step requiring it fails rather than waits.
+   */
+  regime_provides: z.array(z.string()).default([]),
+  regime_excludes: z.array(z.string()).default([]),
   /** For transducers: readiness of the real device. */
   knowledge_level: z.enum(KNOWLEDGE_LEVELS).optional(),
   year_first_reported: z.number().int().optional(),
@@ -398,6 +405,19 @@ export const Claim = z.object({
       requires_any: z.array(z.string()).default([]),
     })
     .optional(),
+  /**
+   * Driver / regime sufficiency (loop-3 pass 30). A drives or couples_to step may require a regime of
+   * its causal source that a syntactically valid edge does not guarantee — pyroelectricity needs a
+   * temperature that changes in time, which a static gradient does not supply. regime_requires lists
+   * such tokens ("thermal:temporal-temperature-change"); regime_provides lists tokens a step's output
+   * supplies to later steps; regime_external lists tokens the step's own stated conditions supply from
+   * outside the route (a stack held above Swift's critical gradient). Providers are never inferred from
+   * aliases or prose: only the route source's regime_provides, a preceding step's regime_provides (or
+   * that of the disequilibrium it produces), and the step's own regime_external count.
+   */
+  regime_requires: z.array(z.string()).default([]),
+  regime_provides: z.array(z.string()).default([]),
+  regime_external: z.array(z.string()).default([]),
   evidence: z.array(SourceId).default([]),
   status: z.enum(EVIDENCE_STATUSES),
   /** Where the physics sits on the K-scale, if the claim is a phenomenon-level claim. */
@@ -729,7 +749,7 @@ export type AutomatedSearchRun = z.infer<typeof AutomatedSearchRun>;
 // ---------------------------------------------------------------------------
 
 export const CheckResult = z.object({
-  id: z.enum(["type-chain", "energy-form-continuity", "conservation", "thermodynamic-bound", "dimensional", "boundary-compatibility", "practical-magnitude"]),
+  id: z.enum(["type-chain", "energy-form-continuity", "conservation", "thermodynamic-bound", "dimensional", "boundary-compatibility", "driver-regime-sufficiency", "practical-magnitude"]),
   label: z.string(),
   result: z.enum(["pass", "fail", "unresolved", "unknown"]),
   detail: z.string(),
