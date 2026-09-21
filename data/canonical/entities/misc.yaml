@@ -691,3 +691,11 @@
   knowledge_level: K8
   summary: "Compressor, combustor and turbine on one shaft driving an alternator; the hot combustion gas expands through the turbine (Brayton cycle). Open cycle on its own; the topping member of a combined cycle when its exhaust raises steam."
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 34 (the second reader's finding 22; Dixon & Hall 2014, Al Mhanna 2024)" }
+# Loop-3 pass 38: the boiling-water reactor as a transducer of its own — the direct-steam topology.
+- id: transducer:boiling-water-reactor-plant
+  type: transducer
+  name: Boiling-water reactor plant
+  aliases: [BWR, boiling water reactor, direct-cycle reactor plant]
+  knowledge_level: K8
+  summary: "A light-water reactor whose coolant boils in the reactor vessel: the steam–water mixture leaves the core, passes two stages of moisture separation and goes by steamline to the main turbine-generator; the exhaust is condensed and pumped back to the vessel. The same circuit is reactor coolant and turbine working fluid — the defining distinction from a pressurised-water reactor, whose steam generator makes a separate secondary steam."
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 38 (the second reader's spelling; the NRC's BWR description read in full)" }

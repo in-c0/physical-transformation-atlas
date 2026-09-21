@@ -547,3 +547,11 @@
   object: interaction:electromagnetic
   evidence: [source:bard-faulkner-2001]
   status: established
+# Loop-3 pass 38: fission implemented by the direct-steam reactor plant.
+- id: claim:fission-implemented-bwr
+  subject: phenomenon:nuclear-fission
+  predicate: implemented_by
+  object: transducer:boiling-water-reactor-plant
+  evidence: [source:nrc-boiling-water-reactors]
+  status: demonstrated  # one primary (the regulator's description of the commercial fleet); established needs a second group or a review
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 38 (the NRC's BWR description read in full)" }

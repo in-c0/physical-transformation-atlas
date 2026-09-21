@@ -785,3 +785,25 @@
     notes: "COP ≈ 0.5–1 for small ΔT; electrical work in, cooling out"
   environment: [state-solid]
   summary: Current through a thermoelectric junction pumps heat from the cold side.
+# Loop-3 pass 38: the boiling-water reactor's own spelling — the direct-steam route the generic nuclear plant left.
+- id: pathway:boiling-water-reactor-direct-steam-plant
+  name: Boiling-water reactor direct-steam plant
+  steps: [claim:binding-drives-fission, claim:fission-produces-hot-gas, claim:hot-gas-drives-expansion, claim:expansion-produces-motion, claim:motion-drives-generator, claim:generator-produces-carriers, claim:charge-carriers-convert-electricity]
+  demonstrated_with: [transducer:boiling-water-reactor-plant]
+  evidence: [source:nrc-boiling-water-reactors]
+  status: commercial
+  knowledge_level: K8
+  regime_provides: [thermodynamic:expansion-pressure-drop]  # the reactor vessel's steam is delivered to a lower-pressure turbine / condenser side; explained by the auxiliary below
+  auxiliary_requirements:
+    - kind: external-input
+      energy_form: electrical
+      purpose: condensate / feedwater pumping and cycle-pressure restoration
+      establishes: [thermodynamic:expansion-pressure-drop]
+      conditions:
+        - "turbine exhaust is condensed and pumped back to the reactor vessel; reactor-vessel steam is delivered to a lower-pressure turbine / condenser side"
+        - "the NRC's generic description: the resulting water is pumped out of the condenser with a series of pumps, reheated, and pumped back to the reactor vessel; the core is cooled by water circulated using electrically powered pumps"
+      evidence: [source:nrc-boiling-water-reactors]
+      note: "spelled as an external electrical input, not recirculating work, because the generic description does not say whether a given unit's main feedwater pumps are turbine-driven or motor-driven — a named plant would settle it (the second reader's finding 7)"
+  environment: [temp-high]
+  summary: The reactor coolant itself boils in the vessel and its steam drives the main turbine-generator — the direct-cycle topology, distinct from the generic nuclear steam plant (fission establishes a temperature gradient a heat-engine cycle converts) and from the pressurised-water reactor, whose steam generator belongs to the system layer.
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 38 (the second reader's finding 2: the BWR recorded on the direct-steam route p-dc7d860e03; the NRC description read in full)" }

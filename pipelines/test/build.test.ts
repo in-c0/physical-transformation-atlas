@@ -314,6 +314,17 @@ test("the steam / nuclear architecture audit (loop-3 pass 38): the direct-carrie
     "the two fission search records still target their routes",
   );
   assert.equal(canon.pathways.find((p) => p.id === "pathway:steam-engine")!.name, "Steam Rankine cycle (shaft work)");
+  // pass 38 closing: the direct-steam route carries the BWR as a commercial pathway and passes the pressure regime only through it
+  const bwr = graph.paths.find((p) => p.pathway === "pathway:boiling-water-reactor-direct-steam-plant")!;
+  assert.ok(bwr, "the BWR pathway compiles to its route");
+  assert.deepEqual(bwr.claims.slice(0, 3), ["claim:binding-drives-fission", "claim:fission-produces-hot-gas", "claim:hot-gas-drives-expansion"]);
+  assert.equal(bwr.search_status, "demonstrated");
+  assert.equal(graph.pathways.find((p) => p.id === "pathway:boiling-water-reactor-direct-steam-plant")!.status, "commercial");
+  const bwrRegime = bwr.checks.find((k) => k.id === "driver-regime-sufficiency")!;
+  assert.equal(bwrRegime.result, "pass");
+  assert.match(bwrRegime.detail, /thermodynamic:expansion-pressure-drop/);
+  for (const p of graph.paths.filter((q) => !q.pathway && q.claims.includes("claim:fission-produces-hot-gas") && q.claims.includes("claim:hot-gas-drives-expansion")))
+    assert.equal(p.checks.find((k) => k.id === "driver-regime-sufficiency")!.result, "unresolved", `${p.id}: no pathway, no provider`);
 });
 
 test("the gas-turbine / expansion-carrier closure (loop-3 pass 36): the pressure regime is required by the expansion step, supplied only through an explained auxiliary, and never by the carrier or by combustion", () => {
