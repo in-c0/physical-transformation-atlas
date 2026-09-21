@@ -387,6 +387,15 @@ export function loadCanon(root: string): Canon {
       for (const s of e.evidence) if (!sourceIds.has(s)) problems.push(`${p.id}: regime_establishments evidence names unknown source ${s}`);
     }
   }
+  // Pass 46: a variant shares its parent's exact claim sequence; the parent is not itself a variant.
+  const pathwayById46 = new Map(pathways.map((p) => [p.id, p]));
+  for (const p of pathways) {
+    if (!p.variant_of) continue;
+    const parent = pathwayById46.get(p.variant_of);
+    if (!parent) { problems.push(`${p.id}: variant_of names unknown pathway ${p.variant_of}`); continue; }
+    if (parent.variant_of) problems.push(`${p.id}: variant_of names ${p.variant_of}, which is itself a variant — a variant cannot have variants`);
+    if (parent.steps.join(">") !== p.steps.join(">")) problems.push(`${p.id}: a variant must carry exactly its parent's steps (${p.variant_of})`);
+  }
   // Pass 42: a pathway bound names an existing hard constraint (upper-bound | formula-bound) with evidence, and never one the
   // route already reaches through a bounded_by claim on one of its nodes — the escape hatch is for architecture-specific physics.
   const boundedByOf = new Map<string, string[]>();

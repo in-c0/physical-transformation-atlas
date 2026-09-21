@@ -17,6 +17,12 @@ test("every named pathway compiles to a demonstrated path with the same claim se
   for (const pw of canon.pathways) {
     const p = bySeq.get(pw.steps.join(">"));
     assert.ok(p, `${pw.id} has no compiled path`);
+    if (pw.variant_of) {
+      // pass 46: a variant shares its parent's route and is evaluated beside it
+      assert.equal(p.pathway, pw.variant_of);
+      assert.ok(p.variants.some((v) => v.pathway === pw.id), `${pw.id} is listed as a variant of its route`);
+      continue;
+    }
     assert.equal(p.pathway, pw.id);
     if (isDemonstratedPathway(pw)) assert.equal(p.search_status, "demonstrated", pw.id);
     else assert.notEqual(p.search_status, "demonstrated", `${pw.id} (${pw.status}) must not make its route demonstrated`);
@@ -486,6 +492,48 @@ test("theoretical_limit retired into the typed constraint graph (loop-3 pass 42)
   assert.throws(() => loadCanon(tmp2), /only an upper-bound or formula-bound constraint is a pathway bound/);
   rmSync(tmp, { recursive: true, force: true });
   rmSync(tmp2, { recursive: true, force: true });
+});
+
+test("the PEC architecture bounds (loop-3 pass 46): water-splitting-scoped ideal limits, realistic-case benchmarks, and Cheng 2018's gap-pair limit on a variant pathway that never touches the generic route", () => {
+  const generic = graph.paths.find((p) => p.pathway === "pathway:photoelectrochemical-water-splitting")!;
+  const bound = (checks: (typeof generic)["checks"]) => checks.find((k) => k.id === "thermodynamic-bound")!;
+  // the generic route: the two ideal limits reachable (single- and dual-junction), no datum on it any more, the pair limit absent
+  assert.match(bound(generic.checks).detail, /PEC water-splitting ideal limit, single junction/);
+  assert.match(bound(generic.checks).detail, /PEC water-splitting ideal limit, dual junction/);
+  assert.doesNotMatch(bound(generic.checks).detail, /GaInP\/GaInAs/);
+  assert.equal(bound(generic.checks).result, "unresolved");
+  assert.equal((canon.pathways.find((p) => p.id === "pathway:photoelectrochemical-water-splitting")!.performance?.measurements ?? []).length, 0);
+  // the variant: the same route, its own data, its own bound — evaluated: 19.3 % ≤ 22.8 % (its pair) and ≤ 40.0 % (the dual-junction ideal)
+  const v = generic.variants.find((x) => x.pathway === "pathway:tandem-pec-gainp-gainas-1p78-1p26ev")!;
+  assert.ok(v);
+  assert.equal(bound(v.checks).result, "pass", bound(v.checks).detail);
+  assert.match(bound(v.checks).detail, /19\.3% ≤ Theoretical STH limit for the GaInP\/GaInAs 1\.78 \/ 1\.26 eV tandem \(Cheng 2018\) \(22\.8%\)/);
+  assert.match(bound(v.checks).detail, /19\.3% ≤ PEC water-splitting ideal limit, dual junction \(40\.0%\)/);
+  assert.match(bound(v.checks).detail, /18\.5% ≤/);
+  assert.match(bound(v.checks).detail, /single junction: .*does not state the basis/, "the single-junction limit does not apply to a dual-junction datum");
+  const vp = canon.pathways.find((p) => p.id === "pathway:tandem-pec-gainp-gainas-1p78-1p26ev")!;
+  assert.equal(vp.variant_of, "pathway:photoelectrochemical-water-splitting");
+  assert.deepEqual(vp.bounds.map((b) => b.constraint), ["constraint:pec-tandem-gainp-gainas-1p78-1p26ev-limit"]);
+  // the benchmarks are listed on the route and never decide
+  for (const name of ["realistic limiting efficiency, high-performance", "realistic limiting efficiency, Earth-abundant"]) {
+    const c = canon.entities.find((e) => e.type === "constraint" && e.name.includes(name))!;
+    assert.equal(c.constraint_kind, "benchmark");
+    assert.ok(canon.claims.some((cl) => cl.object === c.id && cl.predicate === "governed_by"));
+  }
+  // the ideal limits are scoped to water splitting by their basis
+  for (const id of ["constraint:pec-water-splitting-single-junction-ideal-limit", "constraint:pec-water-splitting-dual-junction-ideal-limit"])
+    assert.match(canon.entities.find((e) => e.id === id)!.requires_basis!, /^PEC water splitting, /);
+  // a variant must carry its parent's exact steps, and a variant of a variant is refused
+  const tmp = mkdtempSync(join(tmpdir(), "pta-variant-"));
+  cpSync(join(root, "data", "canonical"), join(tmp, "data", "canonical"), { recursive: true });
+  cpSync(join(root, "data", "generated"), join(tmp, "data", "generated"), { recursive: true });
+  const pf = join(tmp, "data", "canonical", "pathways", "pathways.yaml");
+  const pt = readFileSync(pf, "utf8");
+  writeFileSync(pf, pt.replace("  variant_of: pathway:photoelectrochemical-water-splitting\n  steps: [claim:pec-drives, claim:pec-converts-fuel]", "  variant_of: pathway:photoelectrochemical-water-splitting\n  steps: [claim:pec-drives]"));
+  assert.throws(() => loadCanon(tmp), /must carry exactly its parent's steps/);
+  writeFileSync(pf, pt + "\n- id: pathway:test-variant-of-variant\n  name: x\n  variant_of: pathway:tandem-pec-gainp-gainas-1p78-1p26ev\n  steps: [claim:pec-drives, claim:pec-converts-fuel]\n  demonstrated_with: []\n  evidence: [source:cheng-2018-pec-19-percent]\n  status: demonstrated\n  knowledge_level: K5\n  summary: x\n");
+  assert.throws(() => loadCanon(tmp), /a variant cannot have variants/);
+  rmSync(tmp, { recursive: true, force: true });
 });
 
 test("the stage-versus-route measurement audit (loop-3 pass 45): every efficiency datum classified by its boundaries; a stage figure never the route's; a handbook range never a measurement", () => {

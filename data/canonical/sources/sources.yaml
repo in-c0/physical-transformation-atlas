@@ -1612,7 +1612,7 @@
   year: 2018
   venue: "ACS Energy Letters 3, 1795–1800"
   doi: 10.1021/acsenergylett.8b00920
-  notes: "Metadata verified on Crossref; abstract read on OpenAlex. A monolithic tandem photocathode (III–V, TiO₂ interphase, Rh nanoparticle catalyst) reaching solar-to-hydrogen efficiencies of 19.3 % in acidic and 18.5 % in neutral electrolyte under simulated AM 1.5G, 0.85 of the theoretical limit for its gap combination."
+  notes: "Metadata verified on Crossref; abstract read on OpenAlex; the full text read on the arXiv version 1706.01493 (loop-3 pass 46). A monolithic tandem photocathode — Ga₀.₄₁In₀.₅₉P / Ga₀.₈₉In₀.₁₁As dual-junction absorber with bandgaps 1.78 eV / 1.26 eV grown by metal-organic vapour-phase epitaxy, a crystalline TiO₂ interlayer by atomic-layer deposition, Rh nanoparticle catalyst — reaching solar-to-hydrogen efficiencies of 19.3 % in acidic perchlorate electrolyte and 18.5 % at pH 7 under simulated AM 1.5G, unassisted. 'With the energy bandgap combination (GaInP/GaInAs with 1.78 eV/1.26 eV), a theoretical efficiency of 22.8 % under AM 1.5G conditions can be reached, assuming 100 % above bandgap absorption and 100 % external radiative efficiency (ERE)', in the SQwater framework of Fountaine, Lewerenz & Atwater 2016 (Figure 1c: catalytic exchange current density {1, 10⁻³} mA cm⁻², R_S = 0, R_SH = ∞); Table S1: STH 19.3 %, SQwater 22.8 %, ratio 0.85 for this work."
 # Loop-3 pass 35: the open report that settles the ultra-supercritical Rankine record's basis.
 - id: source:nicol-2015-ieaccc-double-reheat
   type: report
@@ -1748,3 +1748,12 @@
   venue: "Carbon Energy 8(5), e70149 (open access; first published 18 December 2025)"
   doi: 10.1002/cey2.70149
   notes: "Main text and Supporting Information read in the owner's Chrome (loop-3 pass 44; the SI .docx was parsed in the page). 'The MACl-FAPbI3 device integrated with a 14C source (4.5 μCi) exhibits a Jsc of 10.60 nA cm−2, a Voc of 76.92 mV, a FF of 17.41, and an ECE of 10.79%'. SI Equation 1: η = P_max / P_source = J_sc × V_oc × FF / (E_avg × e × A), A = 0.0045 mCi per 1.0 cm² of active area, E_avg = 49.4 keV per decay for ¹⁴C, 1 Ci = 3.7 × 10¹⁰ decays/s; the worked values 0.142 nW / 1.316 nW ≅ 10.79 % — the denominator is the source's total decay power from its nominal activity, with no self-absorption correction. Stack FTO/SnO₂/MACl-FAPbI₃/Spiro-MeOTAD/¹⁴CNP/CQD/FTO; I–V by sourcemeter over −0.1 to +0.8 V; over 15 h continuous operation."
+# Loop-3 pass 46: the PEC efficiency-limit framework.
+- id: source:fountaine-2016-pec-limits
+  type: paper
+  title: "Efficiency limits for photoelectrochemical water-splitting"
+  authors: [Katherine T. Fountaine, Hans Joachim Lewerenz, Harry A. Atwater]
+  year: 2016
+  venue: "Nature Communications 7, 13706 (open access)"
+  doi: 10.1038/ncomms13706
+  notes: "Read in full (open Nature page and PDF, loop-3 pass 46). Ideal case (Table 1: absorption fraction 1, external radiative efficiency 1, catalytic exchange current densities infinite, series resistance 0, shunt resistance infinite; nine assumptions listed — AM1.5G, complete above-gap absorption, detailed-balance dark current with only radiative recombination, ideality 1, negligible catalytic overpotentials, charge-transfer coefficients 0.5, no series resistance, E_rxn = 1.23 V, unity Faradaic efficiency): 'The maximum single and dual junction efficiencies are 30.6% at a bandgap of 1.59 eV, and 40.0% with bandgaps of 0.52 and 1.40 eV, respectively'; the ideal triple junction maximum is 28.3 % — additional junctions add nothing because photovoltage beyond that needed to split water does not raise efficiency. Realistic cases: Real1 (high-performance materials: f_abs 0.9, ERE 0.03, j0,cat {1, 10⁻³} mA cm⁻² cathodic/anodic, r_s 0, r_sh ∞) η_max 15.1 % at 2.05 eV single junction and 28.3 % at 1.59 / 0.92 eV dual junction; Real2 (Earth-abundant: f_abs 0.9, ERE 10⁻⁶, j0,cat {1, 10⁻⁵}, r_s 0.1, r_sh 10, normalised resistivities) 5.4 % at 2.53 eV and 16.2 % at 1.93 / 1.38 eV — the paper's words are 'realistic limiting efficiencies', maxima of parameterised model cases."

@@ -114,6 +114,7 @@ export class AtlasIndex {
         .split(/[^a-z0-9]+/)
         .filter(Boolean);
     const routeOfPathway = new Map(graph.paths.filter((p) => p.pathway).map((p) => [p.pathway!, p.id]));
+    for (const p of graph.paths) for (const v of p.variants ?? []) routeOfPathway.set(v.pathway, p.id);
     this.searchDocs = graph.entities.map((e) => ({
       kind: "entity" as const,
       id: e.id,

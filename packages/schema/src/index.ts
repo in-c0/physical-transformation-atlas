@@ -721,6 +721,14 @@ const PathwayBase = z.object({
   auxiliary_requirements: z.array(AuxiliaryRequirement).default([]),
   /** Pass 43: regimes the implementation establishes through its own internal processes (see RegimeEstablishment). */
   regime_establishments: z.array(RegimeEstablishment).default([]),
+  /**
+   * Pass 46: a variant is a narrower recorded architecture on the SAME exact route as its parent pathway — identical
+   * steps (loader-checked), its own evidence, status, data and bounds. A route keeps its parent as `pathway`; the
+   * compiler evaluates each variant's checks beside the route's and lists them in CompiledPath.variants. This is how an
+   * architecture-specific bound (Cheng 2018's 22.8 % for one gap pair) lives on its architecture and never on the
+   * generic route. A variant cannot itself have variants.
+   */
+  variant_of: PathwayId.optional(),
   /** Pass 42: bounds valid only for this exact architecture (see PathwayBound); generic bounds live on phenomena as bounded_by claims. */
   bounds: z.array(PathwayBound).default([]),
   knowledge_level: z.enum(KNOWLEDGE_LEVELS),
@@ -1129,6 +1137,8 @@ export const CompiledPath = z.object({
   knowledge_level: z.enum(KNOWLEDGE_LEVELS),
   pathway: PathwayId.optional(),
   checks: z.array(CheckResult),
+  /** Pass 46: the variants recorded on this exact route (Pathway.variant_of), each with the eight checks run for its own data and bounds. */
+  variants: z.array(z.object({ pathway: PathwayId, checks: z.array(CheckResult) })).default([]),
   coupling_families: z.array(EntityId),
   domains: z.array(z.enum(DOMAINS)),
   last_searched: isoDate.optional(),

@@ -137,7 +137,7 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
       return [p.id, [...new Set(cl.flatMap((c) => [c.subject, c.object]).filter((n) => entity.get(n)?.type === "phenomenon"))]] as const;
     }),
   );
-  for (const p of canon.pathways) pathwayBySeq.set(p.steps.join(">"), p);
+  for (const p of canon.pathways) if (!p.variant_of) pathwayBySeq.set(p.steps.join(">"), p);
 
   // Search records ----------------------------------------------------------------
   // A cell or route sees both kinds of search: reviewed records (statements) and automated runs
@@ -167,7 +167,10 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
   // Only pathways with a demonstration (demonstrated, prototype, commercial) can make a route "derived";
   // a proposal, or an observation whose output was never delivered (status observed, loop-3 pass 24),
   // is recorded on the route (p.pathway) but leaves it a candidate.
-  const recordedPathways = canon.pathways.filter(isDemonstratedPathway);
+  // Pass 46: variants share their parent's route; the parent represents the route everywhere, the variant is evaluated beside it.
+  const recordedPathways = canon.pathways.filter((p) => isDemonstratedPathway(p) && !p.variant_of);
+  const variantsBySeq = new Map<string, Pathway[]>();
+  for (const p of canon.pathways) if (p.variant_of) variantsBySeq.set(p.steps.join(">"), [...(variantsBySeq.get(p.steps.join(">")) ?? []), p]);
 
   // Path enumeration ---------------------------------------------------------------
   const paths: CompiledPath[] = [];
@@ -209,6 +212,10 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
     // transition temperature between T_h and T_c → straddled; a cycle frequency with both sides → cyclic
     // exposure. Swift's threshold is never inferred from temperatures alone.
     const checks = runAllChecks(ctx, claims, pathway ? { ...pathway, regime_provides: [...pathway.regime_provides, ...derivedRegimes(pathway)] } : undefined);
+    const variants = (variantsBySeq.get(ids.join(">")) ?? []).map((v) => ({
+      pathway: v.id,
+      checks: runAllChecks(ctx, claims, { ...v, regime_provides: [...v.regime_provides, ...derivedRegimes(v)] }),
+    }));
     const weakest = claims.reduce<EvidenceStatus>((acc, c) => (EVIDENCE_RANK[c.status] < EVIDENCE_RANK[acc] ? c.status : acc), "established");
     const established = claims.filter((c) => c.status === "established" || c.status === "replicated").length;
     const failed = checks.some((k) => k.result === "fail");
@@ -381,6 +388,7 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
       pathway: pathway?.id,
       composition_observation: pathway?.status === "observed" ? "observed-not-converted" : null,
       checks,
+      variants,
       coupling_families: [...families],
       domains: [...domains] as CompiledPath["domains"],
       last_searched,

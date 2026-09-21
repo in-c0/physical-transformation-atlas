@@ -643,20 +643,55 @@
   knowledge_level: K5
   performance:
     # pass 42: theoretical_limit retired (generic-bound-missing, typed) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
+    # pass 35: the legacy record 0.19 was cited to the 1972 discovery; it is Cheng et al. 2018's device
+    # pass 46: Cheng 2018's 19.3 % moved to pathway:tandem-pec-gainp-gainas-1p78-1p26ev, the exact architecture (a variant of this
+    # pathway on the same route) that also carries the 22.8 % limit for its own gap pair — the generic route keeps no gap-pair ceiling
+    measurements: []
+  environment: [env-aqueous, illumination-required]
+  summary: Photogenerated carriers split water at a semiconductor–electrolyte interface.
+
+# Loop-3 pass 46: Cheng et al. 2018's exact architecture as a variant of the generic photoelectrochemical pathway — the same
+# claim sequence, its own record: the 19.3 % / 18.5 % data and the 22.8 % theoretical limit for its 1.78 / 1.26 eV gap pair.
+- id: pathway:tandem-pec-gainp-gainas-1p78-1p26ev
+  name: Tandem PEC photocathode, GaInP/GaInAs 1.78 / 1.26 eV (Cheng 2018)
+  variant_of: pathway:photoelectrochemical-water-splitting
+  steps: [claim:pec-drives, claim:pec-converts-fuel]
+  demonstrated_with: [transducer:photoelectrochemical-cell]
+  evidence: [source:cheng-2018-pec-19-percent]
+  status: demonstrated
+  knowledge_level: K5
+  bounds:
+    - constraint: constraint:pec-tandem-gainp-gainas-1p78-1p26ev-limit
+      evidence: [source:cheng-2018-pec-19-percent, source:fountaine-2016-pec-limits]
+      conditions: ["the limit is computed for exactly this gap pair, 1.78 eV / 1.26 eV, in the SQwater framework; the global dual-junction maximum (40.0 % at 0.52 / 1.40 eV) reaches the same route through the phenomenon"]
+      note: "the first architecture-specific bound in the atlas: it lives here and never on the generic photoelectrochemical route"
+  performance:
     measurements:
-      # pass 35: the legacy record 0.19 was cited to the 1972 discovery; it is Cheng et al. 2018's device
-      - quantity: solar-to-hydrogen efficiency
+      - quantity: solar-to-hydrogen efficiency (acidic electrolyte)
         value: "19.3%"
         value_numeric: 0.193
         unit: "1"
         metric: conversion-efficiency
-        basis: "hydrogen free-energy output over incident solar power under simulated AM 1.5G, unassisted"
+        basis: "PEC water splitting, dual-junction absorber, AM1.5G"
         scope: device
-        conditions: "monolithic III–V tandem photocathode with a crystalline TiO₂ interphase and Rh nanoparticle catalyst, acidic electrolyte; 18.5 % in neutral electrolyte"
+        datum_kind: measured
+        conditions: "hydrogen free-energy output over incident simulated AM 1.5G solar power, unassisted; monolithic Ga₀.₄₁In₀.₅₉P / Ga₀.₈₉In₀.₁₁As tandem photocathode (1.78 / 1.26 eV) with a crystalline TiO₂ interlayer and Rh nanoparticle catalyst, acidic perchlorate electrolyte, the initial efficiency; the authors place it at 0.85 of the 22.8 % theoretical limit for this gap combination"
+        sources: [source:cheng-2018-pec-19-percent]
+        year: 2018
+      - quantity: solar-to-hydrogen efficiency (neutral electrolyte)
+        value: "18.5%"
+        value_numeric: 0.185
+        unit: "1"
+        metric: conversion-efficiency
+        basis: "PEC water splitting, dual-junction absorber, AM1.5G"
+        scope: device
+        datum_kind: measured
+        conditions: "the same device in a buffered solution at pH 7, unassisted, under simulated AM 1.5G"
         sources: [source:cheng-2018-pec-19-percent]
         year: 2018
   environment: [env-aqueous, illumination-required]
-  summary: Photogenerated carriers split water at a semiconductor–electrolyte interface.
+  summary: Cheng et al.'s monolithic tandem photocathode — a GaInP/GaInAs dual junction of 1.78 and 1.26 eV, a TiO₂ interlayer and Rh catalyst — splits water unassisted at 19.3 % solar-to-hydrogen in acid, 0.85 of the theoretical limit for its own gap pair. A variant of the generic photoelectrochemical pathway on the same route, holding the data and the bound that belong to this architecture alone.
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 46 (Cheng 2018 full text read on arXiv 1706.01493; Fountaine 2016 read)" }
 
 - id: pathway:betavoltaic-battery
   name: Betavoltaic battery

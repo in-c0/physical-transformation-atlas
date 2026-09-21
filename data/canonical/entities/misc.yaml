@@ -755,3 +755,62 @@
   applies_to_phenomena: [phenomenon:photosynthesis]
   summary: The maximum a plant can reach once the known physiological losses are subtracted from the ≈ 12 % free-energy limit — a benchmark for crops, never a ceiling on the phenomenon, so it is listed on a route and never decides it.
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 42 (typed from Blankenship et al. 2011's attribution to Zhu, Long & Ort 2010)" }
+# Loop-3 pass 46: the photoelectrochemical water-splitting limits, typed by architecture and assumption set (Fountaine 2016; Cheng 2018).
+- id: constraint:pec-water-splitting-single-junction-ideal-limit
+  type: constraint
+  name: PEC water-splitting ideal limit, single junction
+  bound: "η_STH ≤ 30.6 % for a single-junction photoelectrochemical water-splitting device under AM1.5G in the ideal case (E_g 1.59 eV at the maximum)"
+  constraint_kind: upper-bound
+  metric: conversion-efficiency
+  max_efficiency: 0.306
+  requires_basis: "PEC water splitting, single-junction absorber, AM1.5G"
+  applies_to_sources: [disequilibrium:radiation-flux]
+  applies_to_phenomena: [phenomenon:photoelectrochemical-effect]
+  summary: "Fountaine, Lewerenz & Atwater's ideal-case limit for photoelectrochemical water splitting with one absorber: complete above-gap absorption, detailed-balance dark current with only radiative recombination, ideality 1, negligible catalytic overpotentials, no series resistance, E_rxn = 1.23 V, unity Faradaic efficiency, AM1.5G. A bound on water splitting, not on every manifestation of the photoelectrochemical effect: a datum is compared only when it states this basis."
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 46 (Fountaine 2016 read in full)" }
+- id: constraint:pec-water-splitting-dual-junction-ideal-limit
+  type: constraint
+  name: PEC water-splitting ideal limit, dual junction
+  bound: "η_STH ≤ 40.0 % for a dual-junction photoelectrochemical water-splitting device under AM1.5G in the ideal case (E_g 0.52 / 1.40 eV at the maximum); a third junction adds nothing (the ideal triple-junction maximum is 28.3 %)"
+  constraint_kind: upper-bound
+  metric: conversion-efficiency
+  max_efficiency: 0.4
+  requires_basis: "PEC water splitting, dual-junction absorber, AM1.5G"
+  applies_to_sources: [disequilibrium:radiation-flux]
+  applies_to_phenomena: [phenomenon:photoelectrochemical-effect]
+  summary: "The same ideal assumptions as the single-junction limit, for two absorbers in series: the global maximum over all gap pairs. A particular gap pair has a lower ceiling of its own (Cheng 2018's 1.78 / 1.26 eV tandem: 22.8 %), which lives on that architecture's pathway, never here."
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 46 (Fountaine 2016 read in full)" }
+- id: constraint:pec-water-splitting-realistic-high-performance
+  type: constraint
+  name: PEC water-splitting realistic limiting efficiency, high-performance materials (Fountaine Real1)
+  bound: "η_max 15.1 % single junction (E_g 2.05 eV) and 28.3 % dual junction (1.59 / 0.92 eV) for absorption fraction 0.9, external radiative efficiency 0.03, catalytic exchange current densities {1, 10⁻³} mA cm⁻² (cathodic, anodic), series resistance 0, shunt resistance infinite"
+  constraint_kind: benchmark
+  metric: conversion-efficiency
+  reference_value: 0.283
+  reference_regime: "dual junction, 1.59 / 0.92 eV, the Real1 parameter bundle of Table 1; 15.1 % for the single junction at 2.05 eV"
+  applies_to_phenomena: [phenomenon:photoelectrochemical-effect]
+  summary: "The maxima of a parameterised model case — Fountaine, Lewerenz & Atwater's 'realistic limiting efficiencies' for high-performance materials — a benchmark listed on a route, never a bound that decides it; the parameter bundle is the record, not the four numbers alone."
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 46 (Fountaine 2016 read in full; Table 1)" }
+- id: constraint:pec-water-splitting-realistic-earth-abundant
+  type: constraint
+  name: PEC water-splitting realistic limiting efficiency, Earth-abundant materials (Fountaine Real2)
+  bound: "η_max 5.4 % single junction (E_g 2.53 eV) and 16.2 % dual junction (1.93 / 1.38 eV) for absorption fraction 0.9, external radiative efficiency 10⁻⁶, catalytic exchange current densities {1, 10⁻⁵} mA cm⁻², normalised series resistivity 0.1 and shunt resistivity 10"
+  constraint_kind: benchmark
+  metric: conversion-efficiency
+  reference_value: 0.162
+  reference_regime: "dual junction, 1.93 / 1.38 eV, the Real2 parameter bundle of Table 1; 5.4 % for the single junction at 2.53 eV"
+  applies_to_phenomena: [phenomenon:photoelectrochemical-effect]
+  summary: "The maxima of the Earth-abundant-materials model case of Fountaine, Lewerenz & Atwater — 'realistic limiting efficiencies', a benchmark listed on a route and never decisive."
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 46 (Fountaine 2016 read in full; Table 1)" }
+- id: constraint:pec-tandem-gainp-gainas-1p78-1p26ev-limit
+  type: constraint
+  name: Theoretical STH limit for the GaInP/GaInAs 1.78 / 1.26 eV tandem (Cheng 2018)
+  bound: "η_STH ≤ 22.8 % for the 1.78 eV / 1.26 eV GaInP/GaInAs dual-junction photocathode under AM1.5G, assuming 100 % above-bandgap absorption and 100 % external radiative efficiency (catalytic exchange current densities {1, 10⁻³} mA cm⁻², R_S = 0, R_SH = ∞)"
+  constraint_kind: upper-bound
+  metric: conversion-efficiency
+  max_efficiency: 0.228
+  requires_basis: "PEC water splitting, dual-junction absorber, AM1.5G"
+  applies_to_sources: [disequilibrium:radiation-flux]
+  applies_to_phenomena: [phenomenon:photoelectrochemical-effect]
+  summary: "The theoretical efficiency for one gap combination in the SQwater framework — Cheng et al. 2018 report their device at 0.85 of it (19.3 / 22.8). It is an architecture-specific bound: it is recorded only in the exact tandem pathway's bounds, never on the generic photoelectrochemical route, whose ceiling is the global dual-junction maximum."
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 46 (Cheng 2018 full text read on arXiv 1706.01493)" }

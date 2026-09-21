@@ -105,7 +105,8 @@ produced flow) → `energy-backtracking` → `known-device-likely` → `composit
 route becomes `source-preparation` (`dominated_by` names the suffix); two compositions with the
 same source, ordered coupling families (phenomena with no family, such as pure transport, are
 transparent) and sink form collapse to one representative — a recorded pathway when the group has one,
-chosen by shared cited sources, otherwise the shortest spelling. A route that exactly matches a recorded
+chosen by shared cited sources, otherwise the shortest spelling. A variant pathway (`variant_of`, loop-3 pass 46) shares its parent's exact route: the parent stays
+the route's `pathway`, the variant's checks are listed in `variants[]`. A route that exactly matches a recorded
 pathway is never marked as dominated; it is shown as `composition` unless it carries a single conversion
 phenomenon, in which case it stays `atomic` — its evidence lives in `frontier_class` and `search_status`,
 not in its structure (loop-3 pass 41). The rules are spelled out in

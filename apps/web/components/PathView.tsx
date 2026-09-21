@@ -372,6 +372,57 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
         </section>
       )}
 
+      {path.variants.length > 0 && (
+        <section className={styles.section} id="variants">
+          <h2 className="label">Recorded variants on this exact route</h2>
+          <p className="t-micro secondary" style={{ marginBottom: 8 }}>
+            A variant is a narrower recorded architecture with the same claim sequence — its own evidence, data and bounds, evaluated beside the route (pass 46). Its figures and
+            its architecture-specific limits belong to it, never to the generic pathway above.
+          </p>
+          {path.variants.map((v) => {
+            const vp = index.pathway.get(v.pathway);
+            if (!vp) return null;
+            const vBound = v.checks.find((k) => k.id === "thermodynamic-bound");
+            const vCover = v.checks.find((k) => k.id === "practical-magnitude");
+            return (
+              <div key={v.pathway} style={{ marginTop: 10 }}>
+                <p className="t-ui" style={{ fontWeight: 600 }}>
+                  {vp.name} <span className="t-data secondary">· {PATHWAY_STATUS_LABEL[vp.status]} · {vp.id}</span>
+                </p>
+                <p className="secondary" style={{ maxWidth: "72ch" }}>{vp.summary}</p>
+                {(vp.performance?.measurements ?? []).length > 0 && (
+                  <ul className={styles.conditions}>
+                    {(vp.performance?.measurements ?? []).map((m, i) => (
+                      <li key={i}>
+                        {m.quantity}: {m.value} — {m.scope}
+                        {m.basis ? ` · basis: ${m.basis}` : ""} · refs {m.sources.map(refNo).filter((n) => n > 0).map((n) => `[${n}]`).join(" ")}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {vp.bounds.length > 0 && (
+                  <ul className={styles.conditions}>
+                    {vp.bounds.map((b) => (
+                      <li key={b.constraint}>
+                        bound: <Link href={hrefFor(b.constraint)}>{index.entity.get(b.constraint)?.name ?? b.constraint}</Link>
+                        {b.conditions.length ? `: ${b.conditions.join("; ")}` : ""}
+                        {b.note ? ` — ${b.note}` : ""}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {vBound && (
+                  <p className="t-data secondary" style={{ marginTop: 4 }}>
+                    thermodynamic bound · {vBound.result.toUpperCase()} · {vBound.detail}
+                    {vCover ? ` · coverage · ${vCover.result.toUpperCase()}` : ""}
+                  </p>
+                )}
+              </div>
+            );
+          })}
+        </section>
+      )}
+
       {typedBounds.length > 0 && (
         <section className={styles.section} id="bounds">
           <h2 className="label">Typed bounds on this route</h2>
