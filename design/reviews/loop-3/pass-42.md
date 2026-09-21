@@ -61,3 +61,51 @@ is gone, and every limit the atlas holds is a constraint record reached through 
 Result: revision a16833fcc7f7 — 347 entities · 517 claims · 226 sources · 92 pathways · 2 systems ·
 761 routes · 86 demonstrated · 18 regime tokens · 80/80 · axe clean · exports valid · three audit
 gates consistent · live.
+
+## Reviewed (sent 7:31 pm; ChatGPT High, ~8 min, with web search; PIVOT — 46 findings)
+
+1. Pass 42 accepted (finding 1): performance facts are measurements, physical limits are
+   constraints, benchmarks are typed as benchmarks, and pathway-specific bounds have a narrow typed
+   escape hatch rather than another prose channel. No data changed in this closing — the rulings
+   are pass 43's build.
+2. (B1) The MHD provider is not an annotation (findings 2–11): Smith 1979 exposes a missing
+   transformation stage — the Mach-2 nozzle converts the hot pressurised combustion products'
+   enthalpy and pressure availability into directed bulk kinetic flow before the MHD conversion.
+   Add `phenomenon:gas-dynamic-expansion` (never widen `phenomenon:working-fluid-expansion`, whose
+   output is shaft work), `claim:hot-gas-drives-gas-dynamic-expansion` (requires
+   `thermodynamic:expansion-pressure-drop`; thermal → kinetic) and
+   `claim:gas-dynamic-expansion-produces-flow` (→ `disequilibrium:fluid-flow`, which already provides
+   the flow token); re-spell `pathway:mhd-generator` through them (seven claims); keep
+   `claim:hot-gas-drives-mhd` and its searched routes as the compact generic spelling that stays
+   unresolved on flow.
+3. The new explanation kind is justified for the PRESSURE DROP, not the flow (findings 12–19):
+   `Pathway.regime_establishments[]` = `{ token, kind: implementation-process, component?,
+   explanation, evidence[] }`, defined as "a physical process or operating arrangement inside the
+   named implementation that establishes a required regime but is not an off-route load/input and
+   is not itself omitted when it constitutes a distinct source→sink conversion stage"; loader rules
+   (the token in `regime_provides`; required somewhere on the route; registry
+   `provider_needs_explanation: true`; evidence known; never doubling a preceding provider or an
+   auxiliary's `establishes`); the PWR pumps stay `external-input`, the compressor
+   `recirculating-work`. The exact combustion MHD route then REGIME PASSES.
+4. Pass 43 = the MHD re-spelling ahead of source restoration (findings 20–21): the route count
+   will move; report and classify every new route `gas-dynamic-expansion` generates
+   (source-preparation, representation-equivalent or a genuine new composition).
+5. (B2) Pass 44 = source restoration in this order (findings 22–36): the 2014 travelling-wave
+   thermoacoustic electrical generator (18.4 % at 3.46 kW, 650 °C / 25 °C → 923.15 K / 298.15 K,
+   evaluated against Carnot; Backhaus 2004 recorded only if its full text can be read); an open
+   ⁶³Ni betavoltaic primary (7.31 % SiC — read the efficiency's denominator first); NREL's field
+   test rotor C_p ≈ 0.45 as a `power-coefficient` datum, `datum_kind: derived`, on the Betz basis;
+   DOE's Monroe Hydro 60 % water-to-wire once the denominator and grid boundary are read. PEC is
+   bound-model curation, a separate pass (Fountaine 2016's 30.6 % single-junction / 40.0 % dual-
+   junction maxima need `requires_basis` per architecture or a named tandem pathway; never divide
+   Cheng's 19.3 % by 0.85); Planck integration waits for a datum with an emitter temperature.
+6. (B3) Bump to v0.5.0 now (findings 37–46): the boundary is before pass 35 (the first schema
+   contraction); freeze `/api/schema/v0.4.0.json` from the pass-34 contract recovered from that
+   revision, immutable, hashed by a regression; build `/api/schema/v0.5.0.json` from the current
+   contract after the pass-43 `regime_establishments` field lands; one migration boundary carrying
+   the four removed keys, `Measurement.normalization` / `datum_kind` / `reference_constraint`,
+   `Pathway.bounds` / `auxiliary_requirements` / `regime_establishments`, the system layer,
+   `circular → same-form` and the token vocabulary; a compact v0.4 → v0.5 migration document; every
+   export declares `version: "0.5.0"` and points at the new schema; `SCHEMA_VERSION`, the graph
+   build version, the JSON Schema `$id`, README / API docs, validation tooling and CITATION.cff move
+   together. Pass 44 is then a dataset revision under an unchanged format.
