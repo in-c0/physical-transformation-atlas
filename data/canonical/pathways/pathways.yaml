@@ -26,34 +26,9 @@
         sources: [source:zhang-2017-segmented-teg]
         year: 2017
         note: record for a segmented module at the time of publication
-      - quantity: module conversion efficiency
-        value: "≈ 4–6%"
-        value_numeric: 0.06
-        unit: "1"
-        metric: conversion-efficiency
-        basis: "module: electrical output over heat flow, upper end of the handbook range"
-        parameters: { T_h_K: 500, T_c_K: 300 }
-        scope: module
-        conditions: "commercial Bi₂Te₃ modules, T_h ≈ 500 K, T_c ≈ 300 K (ΔT ≈ 200 K), matched load"
-        sources: [source:rowe-2006, source:goldsmid-2016]
-        note: the working figure for waste-heat modules; handbook values, not one experiment
-      - quantity: system efficiency (solar-thermal to electric)
-        value: "4.6%"
-        scope: device
-        conditions: "flat-panel solar thermoelectric generator, nanostructured Bi₂Te₃ legs, AM1.5G 1 kW/m² with ~200× thermal concentration, vacuum enclosure, T_h ≈ 470 K"
-        sources: [source:kraemer-2011-steg]
-        year: 2011
-      - quantity: system efficiency (radioisotope heat to electric)
-        value: "≈ 6–7%"
-        value_numeric: 0.07
-        unit: "1"
-        metric: conversion-efficiency
-        basis: "system: electrical output over radioisotope heat, upper end of the range"
-        parameters: { T_h_K: 800, T_c_K: 470 }
-        scope: system
-        conditions: "Pu-238 RTGs (MMRTG-class), PbTe/TAGS couples, T_h ≈ 800 K, T_c ≈ 470 K, beginning of life"
-        sources: [source:prelas-2014, source:rowe-2006]
-        note: end-of-life output falls with isotope decay and couple degradation
+      # pass 45: the handbook range "≈ 4–6 %" (Rowe 2006; Goldsmid 2016; T_h ≈ 500 K / T_c ≈ 300 K, matched load) removed — a population statement with no page read, a typical in a measurement's clothing; it returns only as a read population statement with its rule (design/reviews/loop-3/pass-45-dispositions.yaml)
+      # pass 45: the solar-thermoelectric figure "4.6 %" (Kraemer 2011: flat-panel STEG, nanostructured Bi₂Te₃, AM1.5G with ~200× thermal concentration, vacuum, T_h ≈ 470 K) removed — another route's figure (radiation → absorber heat → thermoelectric) on the temperature-gradient pathway, unstructured; it belongs to a solar-thermoelectric pathway the atlas does not yet record
+      # pass 45: the RTG system range "≈ 6–7 %" (Prelas 2014; Rowe 2006; Pu-238 MMRTG-class, T_h ≈ 800 K / T_c ≈ 470 K) removed — another route's figure (decay heat → thermoelectric) on the temperature-gradient pathway, and a handbook range with no page read; it returns on pathway:radioisotope-thermoelectric-generator once a read primary gives a named generator's system efficiency
   environment: [state-solid, temp-gradient-required]
   summary: Heat flows through n- and p-type legs; the Seebeck voltage drives the load. Used from radioisotope generators to waste-heat recovery.
 
@@ -255,7 +230,7 @@
         value_numeric: 0.411
         unit: "1"
         metric: conversion-efficiency
-        basis: "electrical output over net radiative heat absorbed by the cell, with sub-bandgap radiation reflected back to the emitter"
+        basis: "electrical output over the net radiative heat absorbed by the cell, sub-bandgap radiation reflected back to the emitter — the emitter is the route's hot reservoir, so the net radiation it delivers to the cell is the heat the route draws from its source (the route's Q_h); the emitter's own supply losses lie outside the route's thermodynamic boundary, which is why this is the route's figure and not a stage figure (pass 45)"
         parameters: { T_emitter_K: 2673.15 }
         scope: device
         conditions: "1.4/1.2 eV two-junction III–V tandem with a highly reflective back-surface reflector, emitter at 2400 °C, power density 2.39 W cm⁻²; a 1.2/1.0 eV device reached 39.3 ± 1 %"
@@ -380,8 +355,8 @@
         value: "2.63%"
         value_numeric: 0.0263
         unit: "1"
-        metric: conversion-efficiency
-        basis: "as reported: the engineering-calibration check value of the 50 kW design (Table 2); the table's turbine output 50.3 kW and evaporator heat absorption 1608.56 kW do not reproduce it by simple ratio, so the definition is the authors'"
+        metric: device-stage-efficiency
+        basis: "the organic-Rankine stage alone: net cycle work W_net = W_T − W_P (turbine work minus working-fluid pump work) over the evaporator heat Q_e — the paper's Equations 7 and 9, read again in pass 45 — before the generator the pathway ends in; it reproduces the design value (0.0263 × 1608.56 kW = 42.3 kW net, the 50.3 kW turbine less ≈ 8 kW of pump work), which the plain turbine-over-evaporator ratio did not"
         parameters: { T_h_K: 301.15, T_c_K: 277.15 }
         scope: model
         datum_kind: design-point
@@ -394,7 +369,7 @@
         value_numeric: 0.0246
         unit: "1"
         metric: conversion-efficiency
-        basis: "as reported: the authors' actual thermal efficiency in the stable-operation phase (Figure 12), defined as in their design check"
+        basis: "as reported: the authors' actual thermal efficiency in the stable-operation phase (Figure 12). The paper defines thermal efficiency as net cycle work over evaporator heat (Equation 9) and reports 2.46 % beside the 47.4 kW maximum grid-connected power without saying which numerator the actual figure uses — a route figure if the grid-connected power, an organic-Rankine-stage figure if the net cycle work; the boundary is unresolved (pass 45)"
         scope: laboratory
         conditions: "the same platform run on land with a heat-pump unit simulating the seawater; the conclusion states the heat source was held at 24–28 °C and the cold source at 4–8 °C, while Figure 11 shows the warm water at ≈ 27.5–30.5 °C and the cold water at ≈ 4.5–7 °C over the 6000 s run with the flows stepped from ≈ 530 to ≈ 740 m³/h; the turbine supply valve fully open from ≈ 3900 s"
         sources: [source:lu-2024-otec-platform]

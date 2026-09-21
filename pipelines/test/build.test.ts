@@ -488,6 +488,33 @@ test("theoretical_limit retired into the typed constraint graph (loop-3 pass 42)
   rmSync(tmp2, { recursive: true, force: true });
 });
 
+test("the stage-versus-route measurement audit (loop-3 pass 45): every efficiency datum classified by its boundaries; a stage figure never the route's; a handbook range never a measurement", () => {
+  const gate = spawnSync(process.execPath, [join(root, "tools", "audit-stage-route.mjs"), "--check"], { encoding: "utf8" });
+  assert.equal(gate.status, 0, gate.stderr || gate.stdout);
+  const pw = (slug: string) => graph.pathways.find((p) => p.id === `pathway:${slug}`)!;
+  const data = (slug: string) => pw(slug).performance?.measurements ?? [];
+  // the waterwheel's 72–77 % is the wheel stage's range; the pathway has no route conversion-efficiency datum
+  const wheel = data("waterwheel-electric-generator").find((m) => m.value_range !== undefined)!;
+  assert.deepEqual(wheel.value_range, [0.72, 0.77]);
+  assert.equal(wheel.metric, "device-stage-efficiency");
+  assert.equal(wheel.value_numeric, undefined);
+  assert.ok(!data("waterwheel-electric-generator").some((m) => m.metric === "conversion-efficiency"));
+  // the TEG pathway keeps the Zhang 2017 module datum and nothing from a handbook or another route
+  const teg = data("thermoelectric-generator");
+  assert.deepEqual(teg.filter((m) => m.metric === "conversion-efficiency").map((m) => m.value_numeric), [0.12]);
+  assert.ok(!teg.some((m) => /radioisotope|solar-thermal/.test(m.quantity)));
+  // the OTEC design point is the organic-Rankine stage's figure (model), the actual 2.46 % stays the route's reported figure with its ambiguity written down
+  const otec = data("otec-plant");
+  assert.equal(otec.find((m) => m.value_numeric === 0.0263)!.metric, "device-stage-efficiency");
+  assert.match(otec.find((m) => m.value_numeric === 0.0263)!.basis!, /W_T − W_P/);
+  assert.equal(otec.find((m) => m.value_numeric === 0.0246)!.metric, "conversion-efficiency");
+  assert.match(otec.find((m) => m.value_numeric === 0.0246)!.basis!, /unresolved/);
+  // every route conversion-efficiency datum's basis names a denominator on the route's boundary — the words the audit read
+  for (const p of graph.pathways)
+    for (const m of p.performance?.measurements ?? [])
+      if (m.metric === "conversion-efficiency") assert.ok((m.basis ?? "").length > 20, `${p.id} "${m.quantity}": a conversion-efficiency datum states its basis`);
+});
+
 test("source restoration (loop-3 pass 44): six primaries as typed measurements with their denominators; operating points never combined; a stage efficiency never the route's", () => {
   const pw = (slug: string) => graph.pathways.find((p) => p.id === `pathway:${slug}`)!;
   const data = (slug: string) => pw(slug).performance?.measurements ?? [];

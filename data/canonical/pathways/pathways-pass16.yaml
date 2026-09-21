@@ -330,7 +330,7 @@
         value_numeric: 0.025
         unit: "1"
         metric: conversion-efficiency
-        basis: "electrical output over the thermal input to the microcombustor (13.7 W)"
+        basis: "electrical output of the generator (after its maximum-power-point converter) over the 13.7 W input thermal power to the propane microcombustor the abstract states — the fuel's heat release, which under complete combustion is the route's chemical input; the abstract calls the figure heat-to-electricity (pass 45)"
         scope: laboratory
         conditions: "propane microcombustor at up to 800 °C; photonic-crystal selective emitter; four 0.55 eV GaInAsSb cells with maximum-power-point tracking; the simplified system predicted at 2.7 %"
         sources: [source:chan-2013-microthermophotovoltaic]
@@ -467,10 +467,10 @@
         note: the connected load the generator ran, as the paper lists it; the generator's measured electrical output is not quoted here
       - quantity: waterwheel efficiency
         value: "72–77 % (undershot), best at a 45° conduit"
-        value_numeric: 0.77
+        value_range: [0.72, 0.77]
         unit: "1"
-        metric: conversion-efficiency
-        basis: "wheel shaft power over the stream power available, from the braked-torque tests"
+        metric: device-stage-efficiency
+        basis: "the waterwheel stage alone: wheel shaft power over the stream power available at the wheel, from the braked-torque tests — before the generator the pathway ends in, whose electrical output the paper does not quote; a range over blade shapes and conduit angles, never a scalar (pass 45)"
         scope: laboratory
         conditions: "C-shape blade at a tip-speed ratio of 0.88; efficiency rose 4.87 % with the conduit inclined at 45°"
         sources: [source:asim-2022-pico-waterwheel]
