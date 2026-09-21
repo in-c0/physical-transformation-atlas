@@ -10,8 +10,8 @@
   knowledge_level: K8
   performance:
     efficiency_typical: 0.05
-    efficiency_record: 0.12
-    theoretical_limit: "η = η_Carnot · (√(1+ZT) − 1)/(√(1+ZT) + T_c/T_h), the ideal-module relation for a constant-property leg pair; with ZT ≈ 1 and T_h = 500 K, T_c = 300 K it gives ≈ 8%"
+    # pass 35: efficiency_record 0.12 removed — exactly the structured Zhang 2017 datum below (the positive control); the display derives it
+    theoretical_limit: "η = η_Carnot · (√(1+ZT) − 1)/(√(1+ZT) + T_c/T_h), the ideal-module relation for a constant-property leg pair, evaluated from a datum's own ZT and temperatures"
     power_density: "≈ 1 W/cm² of module at ΔT = 200 K"
     measurements:
       - quantity: module conversion efficiency
@@ -66,7 +66,7 @@
   knowledge_level: K7
   performance:
     efficiency_typical: 0.08
-    efficiency_record: 0.15
+    # pass 35: efficiency_record 0.15 removed — no device, temperatures or load basis behind it; returns as a measurement when a named converter datum exists
     theoretical_limit: "Carnot; practically limited by space charge and radiative loss from the cathode"
   environment: [env-vacuum, temp-high]
   summary: A cathode above 1500 K emits electrons collected across a caesium-vapour gap; flown in space reactors.
@@ -80,9 +80,8 @@
   status: prototype
   knowledge_level: K7
   performance:
-    efficiency_typical: 0.15
-    efficiency_record: 0.32
-    theoretical_limit: "Carnot; travelling-wave engines have reached ≈ 40% of Carnot"
+    # pass 35: efficiency_typical 0.15 and efficiency_record 0.32 removed — the record was an engine's thermal-to-acoustic figure on an engine-plus-alternator pathway, the typical rested on a 1988 review of standing-wave engines; the thermal-to-electric figure of Backhaus, Tward & Petach 2004 is the datum to record once read
+    theoretical_limit: "Carnot between the hot and ambient heat exchangers a source defines"
   environment: [state-gas, temp-gradient-required]
   summary: Heat makes a gas column oscillate; the oscillation drives a piston in a coil.
 
@@ -121,8 +120,32 @@
   status: demonstrated
   knowledge_level: K5
   performance:
-    efficiency_record: 0.057
-    theoretical_limit: "Carnot between the charge and discharge temperatures (≈ 13% for 10–60 °C)"
+    theoretical_limit: "Carnot between the charge and discharge temperatures"
+    measurements:
+      # pass 35: the legacy record 0.057 migrated — it silently assumed 50 % heat recuperation (Lee et al. 2014, read on the open Nature page)
+      - quantity: heat-to-electricity cycle efficiency (no heat recuperation)
+        value: "3.7%"
+        value_numeric: 0.037
+        unit: "1"
+        metric: conversion-efficiency
+        basis: "electrical energy per cycle over heat absorbed, cycled between 10 °C and 60 °C, without heat recuperation"
+        parameters: { T_h_K: 333.15, T_c_K: 283.15 }
+        scope: device
+        conditions: "copper hexacyanoferrate cathode against a Cu/Cu²⁺ anode, a thermally regenerative electrochemical cycle charged at one temperature and discharged at the other"
+        sources: [source:lee-2014-trec]
+        year: 2014
+      - quantity: heat-to-electricity cycle efficiency (50 % heat recuperation assumed)
+        value: "5.7%"
+        value_numeric: 0.057
+        unit: "1"
+        metric: conversion-efficiency
+        basis: "the same cycle with 50 % of the rejected heat assumed recuperated into the heating step"
+        parameters: { T_h_K: 333.15, T_c_K: 283.15 }
+        scope: model
+        conditions: "the same device and temperatures; the recuperation is an assumption, not a measured heat exchanger"
+        sources: [source:lee-2014-trec]
+        year: 2014
+        note: "the figure the abstract leads with; the atlas records it as a model datum because the 50 % recuperation is assumed"
   environment: [env-aqueous, temp-gradient-required]
   summary: Charge cold, discharge warm; 5.7% efficiency between 10 and 60 °C with heat recuperation.
 
@@ -160,9 +183,22 @@
   status: demonstrated
   knowledge_level: K7
   performance:
-    efficiency_record: 0.40
     theoretical_limit: "Carnot between emitter and cell; > 50% projected with better photon recycling"
     power_density: "≈ 2 W/cm² at a 2400 °C emitter"
+    measurements:
+      # pass 35: the legacy record 0.40 migrated to LaPotin et al. 2022's own figures (abstract read)
+      - quantity: thermophotovoltaic cell efficiency
+        value: "41.1 ± 1 %"
+        value_numeric: 0.411
+        unit: "1"
+        metric: conversion-efficiency
+        basis: "electrical output over net radiative heat absorbed by the cell, with sub-bandgap radiation reflected back to the emitter"
+        parameters: { T_emitter_K: 2673.15 }
+        scope: device
+        conditions: "1.4/1.2 eV two-junction III–V tandem with a highly reflective back-surface reflector, emitter at 2400 °C, power density 2.39 W cm⁻²; a 1.2/1.0 eV device reached 39.3 ± 1 %"
+        sources: [source:lapotin-2022]
+        year: 2022
+        note: "the cell temperature is not in the abstract, so T_c_K is not recorded and the Carnot check stays unresolved on this datum"
   environment: [temp-high]
   summary: A 2400 °C emitter radiates into a tandem III–V cell with a back reflector; 40% measured.
 
@@ -176,7 +212,7 @@
   performance:
     efficiency_typical: 0.38
     efficiency_record: 0.47
-    theoretical_limit: "Carnot ≈ 65% for 873 K against 300 K; Curzon–Ahlborn ≈ 41% at maximum power"
+    theoretical_limit: "Carnot between the reservoirs a source defines; Curzon–Ahlborn is a benchmark at maximum power, never a bound"
     measurements:
       # Loop-3 pass 33: Shaheed, Mohammed & Radhi 2023 read in full — the unit's readings and the computed efficiency kept apart (findings 15–16).
       - quantity: unit electrical load at the recorded operating state
@@ -238,7 +274,7 @@
   knowledge_level: K7
   performance:
     efficiency_typical: 0.03
-    theoretical_limit: "Carnot ≈ 6.7% for 300 K against 280 K"
+    theoretical_limit: "Carnot between the warm surface water and the deep cold water a source defines"
     measurements:
       # Loop-3 pass 33: Lu et al. 2024 read in full — the design point and the experiment kept apart (the reviewer's finding 12).
       - quantity: system thermal efficiency (design point)
@@ -429,9 +465,20 @@
   knowledge_level: K8
   performance:
     efficiency_typical: 0.22
-    efficiency_record: 0.27
     theoretical_limit: "Shockley–Queisser 33.7% for one junction; Landsberg 93.3% overall"
     power_density: "≈ 200 W/m² at 1000 W/m² irradiance"
+    measurements:
+      # pass 35: the legacy record 0.27 was the single-junction silicon cell record rounded up (26.8 ± 0.4 %, LONGi HJT, Table 1 of Version 63); a module pathway records the module table
+      - quantity: confirmed module efficiency (crystalline silicon)
+        value: "24.7 ± 0.3 %"
+        value_numeric: 0.247
+        unit: "1"
+        metric: conversion-efficiency
+        basis: "designated-area module efficiency under the global AM1.5 spectrum (1000 W/m²) at a cell temperature of 25 °C, independently confirmed"
+        scope: module
+        conditions: "Maxeon 112-cell crystalline-silicon module, 17,806 cm² designated area, V_oc 83.04 V, I_sc 6.384 A, fill factor 82.9 %, NREL 4/23 — Table 4 of Green et al. 2024 (Version 63); the multijunction module record in the same table is 32.65 ± 0.7 % (Sharp InGaP/GaAs/InGaAs, 965 cm²)"
+        sources: [source:green-2024-tables]
+        year: 2024
   environment: [state-solid, illumination-required]
   summary: Photons make electron–hole pairs; the junction separates them.
 
@@ -444,7 +491,7 @@
   knowledge_level: K8
   performance:
     efficiency_typical: 0.16
-    theoretical_limit: "Landsberg 93.3% overall; Carnot at the receiver temperature"
+    theoretical_limit: "Landsberg 93.3% for the solar conversion; Carnot between the receiver's reservoir and the sink a source defines"
   environment: [illumination-required, temp-gradient-required]
   summary: Mirrors heat a receiver; the receiver drives a steam cycle.
 
@@ -452,12 +499,23 @@
   name: Photoelectrochemical water splitting
   steps: [claim:pec-drives, claim:pec-converts-fuel]
   demonstrated_with: [transducer:photoelectrochemical-cell]
-  evidence: [source:fujishima-honda-1972]
+  evidence: [source:fujishima-honda-1972, source:cheng-2018-pec-19-percent]
   status: demonstrated
   knowledge_level: K5
   performance:
-    efficiency_record: 0.19
     theoretical_limit: "≈ 30% solar-to-hydrogen for a tandem absorber"
+    measurements:
+      # pass 35: the legacy record 0.19 was cited to the 1972 discovery; it is Cheng et al. 2018's device
+      - quantity: solar-to-hydrogen efficiency
+        value: "19.3%"
+        value_numeric: 0.193
+        unit: "1"
+        metric: conversion-efficiency
+        basis: "hydrogen free-energy output over incident solar power under simulated AM 1.5G, unassisted"
+        scope: device
+        conditions: "monolithic III–V tandem photocathode with a crystalline TiO₂ interphase and Rh nanoparticle catalyst, acidic electrolyte; 18.5 % in neutral electrolyte"
+        sources: [source:cheng-2018-pec-19-percent]
+        year: 2018
   environment: [env-aqueous, illumination-required]
   summary: Photogenerated carriers split water at a semiconductor–electrolyte interface.
 
@@ -574,8 +632,8 @@
   status: prototype
   knowledge_level: K7
   performance:
-    efficiency_typical: 0.2
-    theoretical_limit: "Carnot at the plasma temperature; topping-cycle combinations projected at 50–60%"
+    # pass 35: efficiency_typical 0.2 removed — one 1961 paper is not a population source; the topping-cycle projection belongs to the system layer
+    theoretical_limit: "Carnot between the reservoirs a source defines — the plasma temperature is an operating state, not a reservoir"
   environment: [state-plasma, temp-high, field-magnetic-required]
   summary: Seeded combustion plasma crosses a magnet; electrodes collect the transverse current.
 
@@ -587,8 +645,7 @@
   status: prototype
   knowledge_level: K6
   performance:
-    efficiency_typical: 0.15
-    efficiency_record: 0.2
+    # pass 35: efficiency_typical 0.15 and efficiency_record 0.2 removed — Cole 1983's "20 to 40 percent" is a projection for a mature design, not a measurement
     theoretical_limit: "Carnot between the evaporator and condenser temperatures"
   environment: [temp-high, state-liquid]
   summary: Sodium ions cross a solid electrolyte; electrons take the external circuit.
@@ -602,7 +659,7 @@
   knowledge_level: K8
   performance:
     efficiency_typical: 0.33
-    theoretical_limit: "Carnot at ~600 K steam ≈ 50%"
+    theoretical_limit: "Carnot between the reservoirs a source defines — the steam temperature is an operating state, not a reservoir"
   environment: [temp-high]
   summary: Fission heat raises steam for a conventional turbine.
 

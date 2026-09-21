@@ -1,0 +1,120 @@
+// Loop-3 pass 35: the legacy performance audit as a deterministic table. Joins design/reviews/loop-3/pass-35-dispositions.yaml
+// to the compiled graph and writes design/reviews/loop-3/pass-35-audit.md. Fails when a legacy field (efficiency_typical,
+// efficiency_record, theoretical_limit on any pathway) has no disposition, or when a kept disposition names a field that
+// no longer exists — so the table cannot drift from the data. Run after `pnpm build:graph`:
+//   node tools/audit-performance.mjs [--check]     (--check writes nothing, only gates)
+import { readFileSync, writeFileSync } from "node:fs";
+import { join, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+import { parse } from "yaml";
+
+const here = resolve(fileURLToPath(import.meta.url), "..");
+const root = join(here, "..");
+const check = process.argv.includes("--check");
+const graph = JSON.parse(readFileSync(join(root, "data", "generated", "graph.json"), "utf8"));
+const disp = parse(readFileSync(join(root, "design", "reviews", "loop-3", "pass-35-dispositions.yaml"), "utf8"));
+const FIELDS = ["efficiency_typical", "efficiency_record", "theoretical_limit"];
+const DISPOSITIONS = new Set([
+  "verified-same-architecture",
+  "different-architecture",
+  "unsupported-generic",
+  "ambiguous-basis",
+  "model-only",
+  "benchmark-not-bound",
+  "wrong-quantity",
+  "migrate-to-measurement",
+  "remove",
+]);
+const KEPT = new Set(["kept", "kept-visible"]);
+
+const pathwayById = new Map(graph.pathways.map((p) => [p.id, p]));
+const sourceById = new Map(graph.sources.map((s) => [s.id, s]));
+const problems = [];
+const key = (p, f) => `${p}|${f}`;
+const byKey = new Map();
+for (const d of disp.dispositions) {
+  if (!DISPOSITIONS.has(d.disposition)) problems.push(`${d.pathway} ${d.field}: unknown disposition ${d.disposition}`);
+  if (!FIELDS.includes(d.field)) problems.push(`${d.pathway} ${d.field}: not a legacy field`);
+  if (!pathwayById.has(d.pathway)) problems.push(`${d.pathway}: unknown pathway`);
+  if (byKey.has(key(d.pathway, d.field))) problems.push(`${d.pathway} ${d.field}: disposed twice`);
+  byKey.set(key(d.pathway, d.field), d);
+}
+// Completeness: every legacy field present in the data has a disposition; consistency: a kept field still exists.
+for (const p of graph.pathways) {
+  const perf = p.performance ?? {};
+  for (const f of FIELDS) if (perf[f] !== undefined && !byKey.has(key(p.id, f))) problems.push(`${p.id} ${f} (${JSON.stringify(perf[f])}) has no disposition`);
+}
+for (const d of disp.dispositions) {
+  const perf = pathwayById.get(d.pathway)?.performance ?? {};
+  const present = perf[d.field] !== undefined;
+  if (KEPT.has(d.action) && !present) problems.push(`${d.pathway} ${d.field}: disposed as ${d.action} but the field is gone`);
+  if (d.action === "removed" && present) problems.push(`${d.pathway} ${d.field}: disposed as removed but the field is still there`);
+  if (d.action === "migrated" && present) problems.push(`${d.pathway} ${d.field}: disposed as migrated but the legacy field is still there`);
+}
+if (problems.length) {
+  console.error("audit-performance: " + problems.length + " problem(s)\n  " + problems.join("\n  "));
+  process.exit(1);
+}
+
+const fmt = (v) => (v === undefined ? "—" : typeof v === "number" ? String(v) : `"${String(v).replace(/\|/g, "\\|")}"`);
+const arch = (p) => `${p.steps.length} steps · ${p.demonstrated_with.length ? p.demonstrated_with.map((t) => t.replace("transducer:", "")).join(", ") : "no transducer"} · ${p.status}`;
+const evidence = (p) => (p.evidence ?? []).map((id) => `${id.replace("source:", "")} (${sourceById.get(id)?.type ?? "?"})`).join(", ") || "none";
+const support = (d) => {
+  if (d.disposition === "verified-same-architecture" || d.disposition === "migrate-to-measurement") return "yes";
+  if (d.disposition === "ambiguous-basis" || d.disposition === "benchmark-not-bound") return "unverified";
+  return "no";
+};
+const basisKnown = (d) => (d.disposition === "verified-same-architecture" || d.disposition === "migrate-to-measurement" || d.disposition === "wrong-quantity" ? "yes" : "no");
+const order = [
+  "different-architecture",
+  "wrong-quantity",
+  "model-only",
+  "benchmark-not-bound",
+  "unsupported-generic",
+  "migrate-to-measurement",
+  "ambiguous-basis",
+  "verified-same-architecture",
+  "remove",
+];
+const rows = disp.dispositions
+  .map((d) => {
+    const p = pathwayById.get(d.pathway);
+    const value = d.was !== undefined ? d.was : (p.performance ?? {})[d.field];
+    return { d, p, value };
+  })
+  .sort((a, b) => order.indexOf(a.d.disposition) - order.indexOf(b.d.disposition) || a.d.pathway.localeCompare(b.d.pathway) || a.d.field.localeCompare(b.d.field));
+const tally = {};
+for (const r of rows) tally[r.d.disposition] = (tally[r.d.disposition] ?? 0) + 1;
+const actions = {};
+for (const r of rows) actions[r.d.action] = (actions[r.d.action] ?? 0) + 1;
+
+const lines = [];
+lines.push("# Pass 35 — the legacy performance audit (generated by tools/audit-performance.mjs; do not edit by hand)");
+lines.push("");
+lines.push(
+  `Revision ${graph.meta.data_hash} · ${rows.length} legacy fields on ${new Set(rows.map((r) => r.d.pathway)).size} pathways · dispositions: ${Object.entries(tally)
+    .map(([k, v]) => `${k} ${v}`)
+    .join(" · ")} · actions: ${Object.entries(actions)
+    .map(([k, v]) => `${k} ${v}`)
+    .join(" · ")}.`,
+);
+lines.push("");
+lines.push("Policy (from the dispositions file):");
+for (const [k, v] of Object.entries(disp.policy)) lines.push(`- **${k}** — ${v}`);
+lines.push("");
+lines.push("| pathway | field | value at audit | pathway architecture | current evidence | source support | basis known | disposition | action | reason |");
+lines.push("|---|---|---|---|---|---|---|---|---|---|");
+for (const { d, p, value } of rows) {
+  lines.push(
+    `| ${d.pathway.replace("pathway:", "")} | ${d.field} | ${fmt(value)} | ${arch(p)} | ${evidence(p)} | ${support(d)} | ${basisKnown(d)} | ${d.disposition} | ${d.action} | ${d.reason.replace(/\|/g, "\\|")} |`,
+  );
+}
+lines.push("");
+lines.push(
+  "Columns: *value at audit* is the field's value when the audit was taken (`was` in the dispositions file for fields since changed, else the current value); *pathway architecture* is the route length, the transducer(s) recorded and the status; *source support* says whether a named source supports that quantity for this architecture (yes / unverified / no); *basis known* whether the quantity's definition (net or gross, LHV or HHV, cell or module, engine or system) is stated.",
+);
+const out = lines.join("\n") + "\n";
+if (!check) {
+  writeFileSync(join(root, "design", "reviews", "loop-3", "pass-35-audit.md"), out);
+  console.log(`audit-performance: ${rows.length} fields disposed, table written`);
+} else console.log(`audit-performance: ${rows.length} fields disposed, consistent`);

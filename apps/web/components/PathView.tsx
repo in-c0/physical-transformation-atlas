@@ -34,6 +34,10 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
   const overlapPath = overlapPathway ? index.graph.paths.find((p) => p.pathway === overlapPathway.id) : undefined;
   const measurements = named?.performance?.measurements ?? [];
   const systems = named ? index.systemsOfPathway(named.id) : [];
+  // Pass 35: the best recorded efficiency is derived from the structured physical measurements (never a model datum),
+  // so a pathway needs no legacy efficiency_record for the page to say what has been measured.
+  const PHYSICAL = new Set(["laboratory", "device", "module", "system", "plant", "field"]);
+  const best = measurements.filter((m) => m.metric === "conversion-efficiency" && m.value_numeric !== undefined && PHYSICAL.has(m.scope)).sort((a, b) => b.value_numeric! - a.value_numeric!)[0];
 
   return (
     <article className={styles.article}>
@@ -58,8 +62,8 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
                 {i > 0 ? ", " : ""}
                 <Link href={`/system/${s.id.split(":")[1]}`}>{s.name}</Link> as its {s.members.find((m) => m.pathway === named!.id)?.role}
               </span>
-            ))}
-            {" "}— a system whose other members and handoffs carry what this route alone cannot.
+            ))}{" "}
+            — a system whose other members and handoffs carry what this route alone cannot.
           </p>
         )}
 
@@ -141,7 +145,12 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
                     {"between_claims" in f.location
                       ? ` · between ${f.location.between_claims.from_claim.split(":")[1]} and ${f.location.between_claims.to_claim.split(":")[1]}`
                       : ` · within ${f.location.within_claim.split(":")[1]}`}
-                    {f.relation ? <div className="t-data">{f.relation.formula}{f.relation.conventions ? <span className="secondary"> — {f.relation.conventions}</span> : null}</div> : null}
+                    {f.relation ? (
+                      <div className="t-data">
+                        {f.relation.formula}
+                        {f.relation.conventions ? <span className="secondary"> — {f.relation.conventions}</span> : null}
+                      </div>
+                    ) : null}
                     {f.conditions.map((x) => (
                       <div key={x} className="secondary">
                         {x}
@@ -257,6 +266,15 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
               <>
                 <dt>record efficiency (summary)</dt>
                 <dd>{(named.performance.efficiency_record * 100).toFixed(1)}%</dd>
+              </>
+            )}
+            {best && (
+              <>
+                <dt>best recorded efficiency (derived)</dt>
+                <dd>
+                  {(best.value_numeric! * 100).toFixed(1)}% — {best.quantity}, {best.scope}
+                  {best.year ? `, ${best.year}` : ""}; derived from the structured data above, not a stored number
+                </dd>
               </>
             )}
             {named.performance.power_density && (

@@ -1601,3 +1601,12 @@
   venue: "Energies 17, 3986"
   doi: 10.3390/en17163986
   notes: "Metadata verified on Crossref; full text read (open access). An Aspen Plus model of one gas-turbine train of a 678 MW combined-cycle station in Oman (three gas turbines, two steam turbines), validated against the plant's data before a parabolic-trough integration is simulated. Table 2 (plant inputs): air 505.36 kg/s at 26.6 °C and 0.9981 bar, compressor discharge 9.4 bar (isentropic efficiency 0.883), natural-gas fuel 9.2 kg/s at 22.8 bar and 15.6 °C (LHV 43,662 kJ/kg; 92.5 % methane), turbine discharge 1 bar (isentropic efficiency 0.85), HRSG feed 235,400 + 40,000 kg/h. Table 3 (local plant data vs simulation): gas-turbine work output 127 MW (126.45), steam-turbine work output 61.5 MW (59.47), gas-turbine inlet 1050 °C (1010.46), exhaust 540.7 °C (556.93), efficiency 46.93 % (46.28) — the efficiency is the combined cycle's: (127 + 61.5) MW over 9.2 kg/s × 43,662 kJ/kg = 401.7 MW reproduces 46.93 % exactly."
+# Loop-3 pass 35: the source the photoelectrochemical record actually comes from.
+- id: source:cheng-2018-pec-19-percent
+  type: paper
+  title: "Monolithic Photoelectrochemical Device for Direct Water Splitting with 19% Efficiency"
+  authors: [W.-H. Cheng, M. H. Richter, M. M. May, J. Ohlmann, D. Lackner, F. Dimroth, T. Hannappel, H. A. Atwater, H.-J. Lewerenz]
+  year: 2018
+  venue: "ACS Energy Letters 3, 1795–1800"
+  doi: 10.1021/acsenergylett.8b00920
+  notes: "Metadata verified on Crossref; abstract read on OpenAlex. A monolithic tandem photocathode (III–V, TiO₂ interphase, Rh nanoparticle catalyst) reaching solar-to-hydrogen efficiencies of 19.3 % in acidic and 18.5 % in neutral electrolyte under simulated AM 1.5G, 0.85 of the theoretical limit for its gap combination."

@@ -8,7 +8,7 @@
   status: commercial
   knowledge_level: K8
   performance:
-    efficiency_typical: 0.02
+    # pass 35: efficiency_typical 0.02 removed — cited only to a thermodynamics paper, no population source for lamps
     theoretical_limit: "set by the fraction of the Planck spectrum that is visible at the filament temperature"
   environment: [temp-high]
   summary: A filament at ~2800 K radiates; a few per cent of the power lands in the visible band.
@@ -21,7 +21,7 @@
   knowledge_level: K8
   performance:
     efficiency_typical: 0.9
-    theoretical_limit: "the higher heating value of the fuel"
+    # pass 35: theoretical_limit "the higher heating value of the fuel" removed — an energy-input accounting basis, not a limit
   environment: [state-gas, temp-high]
   summary: Fuel burns; the hot gas gives its enthalpy to water, air or a process stream.
 
@@ -78,8 +78,7 @@
   evidence: [source:schwede-2010]
   status: demonstrated
   knowledge_level: K4
-  performance:
-    theoretical_limit: "> 40% projected for concentrated sunlight with a thermal bottoming cycle"
+  # pass 35: theoretical_limit "> 40% projected … with a thermal bottoming cycle" removed — a projection for a converter-plus-bottoming-cycle system, and the source's claim for the converter alone unverified
   environment: [env-vacuum, temp-high, illumination-required]
   summary: Concentrated sunlight photoexcites a hot GaN cathode that then emits thermionically; laboratory demonstration.
 
@@ -124,7 +123,7 @@
   status: demonstrated
   knowledge_level: K4
   performance:
-    efficiency_typical: 0.01
+    # pass 35: efficiency_typical 0.01 removed — one device paper cannot establish a typical; the note keeps what the paper reports
     notes: "streaming current from water forced through a glass microchannel array; efficiencies below 1%"
   environment: [env-aqueous, flow-required]
   summary: Pressure-driven electrolyte flow through charged channels produces a streaming current.

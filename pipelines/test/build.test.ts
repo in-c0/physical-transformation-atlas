@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { join, resolve } from "node:path";
 import { cpSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
+import { spawnSync } from "node:child_process";
 import { loadCanon, buildGraph, ValidationError } from "@pta/graph";
 import { Claim, Measurement, SystemPathway, isDemonstratedPathway } from "@pta/schema";
 
@@ -217,6 +218,24 @@ test("the system layer (loop-3 pass 34): a system joins whole pathways by handof
   assert.deepEqual(graph.pathways.find((p) => p.id === "pathway:combustion-gas-turbine")?.demonstrated_with, ["transducer:gas-turbine-generator"]);
   // A system never enters route enumeration or the frontier: no route is enumerated from a handoff.
   assert.equal(graph.paths.filter((p) => p.frontier_class === "candidate" && p.claims.some((c) => c.includes("system"))).length, 0);
+});
+
+test("the legacy performance audit's regression controls (loop-3 pass 35)", () => {
+  const pw = (id: string) => graph.pathways.find((p) => p.id === `pathway:${id}`)!;
+  assert.equal(pw("combustion-gas-turbine").performance?.efficiency_record, undefined, "the gas turbine carries no combined-cycle record");
+  assert.equal(pw("combustion-heater").performance?.theoretical_limit, undefined, "the combustion heater has no HHV 'limit'");
+  assert.doesNotMatch(pw("otec-plant").performance?.theoretical_limit ?? "", /300 K|280 K|6\.7/, "OTEC has no hard-coded representative Carnot number");
+  // The TEG record is discoverable from its structured datum after the legacy duplicate is gone.
+  const teg = pw("thermoelectric-generator");
+  assert.equal(teg.performance?.efficiency_record, undefined);
+  const best = (teg.performance?.measurements ?? []).filter((m) => m.metric === "conversion-efficiency" && m.scope !== "model").sort((a, b) => b.value_numeric! - a.value_numeric!)[0];
+  assert.equal(best?.value_numeric, 0.12);
+  // Every surviving legacy field has a disposition, and no disposition contradicts the data: the audit gate.
+  const gate = spawnSync(process.execPath, [join(root, "tools", "audit-performance.mjs"), "--check"], { encoding: "utf8" });
+  assert.equal(gate.status, 0, gate.stderr || gate.stdout);
+  // The combined cycle's efficiency exists only as a structured system measurement.
+  assert.equal(graph.pathways.filter((p) => JSON.stringify(p).includes("0.4693")).length, 0);
+  assert.ok(graph.systems.some((s) => (s.performance?.measurements ?? []).some((m) => m.value_numeric === 0.4693)));
 });
 
 test("the system layer's loader gate (loop-3 pass 34): a handoff must name the disequilibrium its receiving member's route starts from; the schema refuses unknown members", () => {
