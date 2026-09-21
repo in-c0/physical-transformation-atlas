@@ -61,3 +61,41 @@ with its denominator, its operating point and its scope, under the unchanged v0.
 Result: revision 7695b278343a — 348 entities · 520 claims · 233 sources · 92 pathways · 2 systems ·
 771 routes · 86 demonstrated · 83/83 · axe clean · exports valid against v0.5.0 · three audit gates
 consistent · live.
+
+## Reviewed (sent 8:55 pm in the new chat https://chatgpt.com/c/6ab10cd2-b9ec-83ec-9d17-df9b724c1153; ChatGPT High, ~8 min, with web search; PASS — 14 findings)
+
+1. The four restorations accepted (findings 1–5, 9): Wu 2014 and Bi 2017 verified separating
+   the maximum-power and maximum-efficiency points; the Carnot factors 68.79 % / 67.70 % confirmed;
+   the Storm as a field / derived / power-coefficient datum; Monroe split at the system boundary
+   with a conservative basis; Zhang's η_d never a whole-battery efficiency; Kim eligible as the
+   whole-device record with the SI's denominator.
+2. One correction carried immediately (findings 6–8): a range is never a scalar. `Measurement`
+   is a scalar-or-range union — `value_range: [low, high]` mutually exclusive with `value_numeric`;
+   Zhang's 2.34–2.56 % has no per-device tuple in Table 4 or §3.4.2, so no scalar; individual
+   source rows stay scalars, aggregate ranges stay ranges; the best-efficiency reducer never
+   scalarises a range (Kim's 10.79 % is the scalar best; Zhang is separately a reported range); a
+   bound passes a range whose upper end is within it, fails one whose lower end exceeds it, and
+   leaves a straddling range unresolved; regressions for all four rules and a round-trip export.
+3. The order set (findings 10–14): pass 45 = range semantics (landed here) + the stage-versus-route
+   measurement audit of the TREC, TPV, PV, rectenna and every other efficiency-bearing pathway —
+   read each source's denominator and classify the datum as route conversion-efficiency,
+   device-stage-efficiency, another metric, or unresolved; the denominator boundary, never the
+   scope label, decides; pass 46 = the PEC architecture bounds (Fountaine 2016's 30.6 % single /
+   40.0 % dual as assumption-conditioned limits; Cheng 2018's own GaInP/GaInAs 1.78 / 1.26 eV pair
+   with its 22.8 % theoretical limit as the first exact Pathway.bounds entry); pass 47 = the
+   generalised stage-omission report as an audit, not a classifier; Planck last, never a
+   temperature-free datum.
+
+## Closed (9:05–9:14 pm; findings 6–8 applied, live at r55e058fc2336)
+
+- `Measurement.value_range` (`[low, high]`, tuple) with a refinement refusing a scalar beside it
+  and a reversed pair; the bound evaluator carries a range's ends (within → pass, straddling →
+  unresolved "straddles the bound", lower end above → fail "at its lower end"); the coverage
+  check counts a range as structured and screens both ends against [0, 1]; the route page lists
+  "reported range" rows beside the derived best, which ignores them; Zhang's datum is now
+  `value_range: [0.0234, 0.0256]` with the basis saying why no scalar exists.
+- Regressions: the Zhang range carries no scalar; 2.56 % is never an independently observed datum;
+  a range with a scalar and a reversed range are refused by the schema; the export preserves both
+  ends; the derived bests are unchanged (19.8 % / 60 % / 10.79 %); the synthetic within /
+  straddling / above cases decide as ruled. 84/84, axe clean, exports valid, gates consistent.
+- Additive within v0.5.0, documented in the contract's record description and format history.

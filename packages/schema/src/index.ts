@@ -581,6 +581,14 @@ export const Measurement = z.object({
   value: z.string(), // keep as written in the source, e.g. "12%", "1.2 W/cm²", "≈ 6 µV/K"
   /** Structured form of the datum (loop-3 pass 19): the number, its unit, which bounded quantity it is, the basis it is defined on, and the parameters a formula bound needs (T_h_K, T_c_K, ZT, T_s_K …). */
   value_numeric: z.number().optional(),
+  /**
+   * Pass 44 close: a datum a source reports only as an aggregate range over its devices or runs (Zhang 2025's
+   * "2.34–2.56 %" for its SiC batteries). Mutually exclusive with value_numeric — a range never carries a scalar,
+   * and no reducer ever turns its upper end into a record; a bound passes a range whose upper end is within it,
+   * fails one whose lower end exceeds it, and leaves a straddling range unresolved. Individual source rows are
+   * recorded as individual scalars, never collapsed into a range.
+   */
+  value_range: z.tuple([z.number(), z.number()]).optional(),
   unit: z.string().optional(),
   metric: z.enum(BOUND_METRICS).optional(),
   basis: z.string().optional(),
@@ -602,6 +610,11 @@ export const Measurement = z.object({
   sources: z.array(SourceId).min(1),
   year: z.number().int().optional(),
   note: z.string().optional(),
+}).superRefine((m, ctx) => {
+  if (m.value_range !== undefined && m.value_numeric !== undefined)
+    ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["value_range"], message: "a measurement is a scalar (value_numeric) or a range (value_range), never both" });
+  if (m.value_range !== undefined && m.value_range[0] > m.value_range[1])
+    ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["value_range"], message: "value_range must be [low, high]" });
 });
 export type Measurement = z.infer<typeof Measurement>;
 

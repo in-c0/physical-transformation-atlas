@@ -191,6 +191,27 @@ const pathwayWith = (eff: number, params?: Record<string, number>, scope: "devic
     },
   }) as unknown as Pathway;
 
+// Pass 44 close: a range datum is decided by its ends — within, straddling, or above the bound; never reduced to its upper end.
+const pathwayWithRange = (lo: number, hi: number, params?: Record<string, number>): Pathway =>
+  ({
+    ...pathwayWith(0, params),
+    performance: {
+      measurements: [{ quantity: "efficiency", value: lo + "–" + hi, value_range: [lo, hi], unit: "1", metric: "conversion-efficiency", parameters: params, scope: "device", conditions: "", sources: ["source:s"] }],
+    },
+  }) as unknown as Pathway;
+
+test("pass 44 close: a range datum passes when its upper end is within the bound, straddles when the bound falls inside it, and fails when its lower end exceeds it", () => {
+  const within = checkThermodynamicBound(ctx([carnot]), claims, pathwayWithRange(0.1, 0.2, { T_h_K: 600, T_c_K: 300 }));
+  assert.equal(within.result, "pass");
+  assert.match(within.detail, /\(range\) ≤ Carnot limit \(50\.0%\)/);
+  const straddling = checkThermodynamicBound(ctx([carnot]), claims, pathwayWithRange(0.4, 0.6, { T_h_K: 600, T_c_K: 300 }));
+  assert.equal(straddling.result, "unresolved");
+  assert.match(straddling.detail, /straddles the bound/);
+  const above = checkThermodynamicBound(ctx([carnot]), claims, pathwayWithRange(0.6, 0.7, { T_h_K: 600, T_c_K: 300 }));
+  assert.equal(above.result, "fail");
+  assert.match(above.detail, /exceeds Carnot limit \(50\.0%\) at its lower end/);
+});
+
 test("pass 33: a model-scope datum is evaluated against the bound but never decides the physical route", () => {
   assert.equal(checkThermodynamicBound(ctx([carnot]), claims, pathwayWith(0.03, { T_h_K: 300, T_c_K: 280 })).result, "pass");
   const model = checkThermodynamicBound(ctx([carnot]), claims, pathwayWith(0.03, { T_h_K: 300, T_c_K: 280 }, "model"));

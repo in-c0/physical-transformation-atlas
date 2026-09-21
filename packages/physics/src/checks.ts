@@ -266,11 +266,15 @@ export function checkThermodynamicBound(ctx: PhysicsContext, claims: Claim[], pa
   // conversion-efficiency data without a basis or parameters. Pass 33: a model-scope datum is evaluated
   // against the bound and its result kept, but it never decides the physical route — exactly as a model
   // datum supplies no regime (pass 31). A model above the bound is an inconsistent model, not a forbidden route.
-  type Datum = { value: number; metric: string; basis?: string; parameters?: Record<string, number>; label: string; model: boolean };
+  // Pass 44 close: a range datum carries its ends — it passes when its upper end is within the bound, fails when its lower end
+  // exceeds it, and is otherwise straddling (unresolved); it is never reduced to its upper end.
+  type Datum = { value: number; low?: number; metric: string; basis?: string; parameters?: Record<string, number>; label: string; model: boolean };
   const data: Datum[] = [];
   for (const m of pathway?.performance?.measurements ?? []) {
     if (m.value_numeric !== undefined && m.metric)
       data.push({ value: m.value_numeric, metric: m.metric, basis: m.basis, parameters: m.parameters, label: `${m.quantity} ${m.value}`, model: m.scope === "model" });
+    else if (m.value_range !== undefined && m.metric)
+      data.push({ value: m.value_range[1], low: m.value_range[0], metric: m.metric, basis: m.basis, parameters: m.parameters, label: `${m.quantity} ${m.value} (range)`, model: m.scope === "model" });
   }
 
   const evaluated: string[] = [];
@@ -313,8 +317,13 @@ export function checkThermodynamicBound(ctx: PhysicsContext, claims: Claim[], pa
         else modelConsistent.push(`${d.label} ≤ ${b.name} (${pct(ceiling)})${at}`);
         continue;
       }
+      if (d.low !== undefined && d.low <= ceiling && d.value > ceiling) {
+        pending.push(`${b.name}: ${d.label} straddles the bound (${pct(ceiling)})`);
+        continue;
+      }
       decided = true;
-      if (d.value > ceiling) failures.push(`${d.label} exceeds ${b.name} (${pct(ceiling)})`);
+      if (d.low !== undefined && d.low > ceiling) failures.push(`${d.label} exceeds ${b.name} (${pct(ceiling)}) at its lower end`);
+      else if (d.value > ceiling) failures.push(`${d.label} exceeds ${b.name} (${pct(ceiling)})`);
       else evaluated.push(`${d.label} ≤ ${b.name} (${pct(ceiling)})`);
     }
     if (!decided && comparable.length) continue;
@@ -531,9 +540,11 @@ export function checkPracticalMagnitude(pathway?: Pathway): CheckResult {
   const label = "measured performance coverage";
   const p = pathway?.performance;
   if (!p) return { id: "practical-magnitude", label, result: "unknown", detail: "no performance record for this composition (unknown is the honest state of an undemonstrated route)" };
-  const structured = (p.measurements ?? []).filter((m) => m.value_numeric !== undefined && m.unit && m.sources.length);
+  const structured = (p.measurements ?? []).filter((m) => (m.value_numeric !== undefined || m.value_range !== undefined) && m.unit && m.sources.length);
   for (const m of structured) {
-    if ((m.metric === "conversion-efficiency" || m.metric === "power-coefficient") && (m.value_numeric! < 0 || m.value_numeric! > 1))
+    const hi = m.value_numeric ?? m.value_range![1];
+    const lo = m.value_numeric ?? m.value_range![0];
+    if ((m.metric === "conversion-efficiency" || m.metric === "power-coefficient") && (lo < 0 || hi > 1))
       return { id: "practical-magnitude", label, result: "fail", detail: `${m.quantity} ${m.value} is outside [0, 1] for a ${m.metric}` };
   }
   // Pass 42: no summary figure survives on any pathway (the four legacy keys are gone), so coverage is structured data or nothing.

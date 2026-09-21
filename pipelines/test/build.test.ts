@@ -528,7 +528,7 @@ test("source restoration (loop-3 pass 44): six primaries as typed measurements w
   // betavoltaic: the whole-route ECEs state the isotope's decay power as denominator; Zhang's 7.31 % can never satisfy the route metric
   const beta = data("betavoltaic-battery");
   const kim = beta.find((m) => m.value_numeric === 0.1079)!;
-  const zhangTotal = beta.find((m) => m.value_numeric === 0.0256)!;
+  const zhangTotal = beta.find((m) => m.value_range !== undefined)!;
   const zhangDevice = beta.find((m) => m.value_numeric === 0.0731)!;
   assert.equal(kim.metric, "conversion-efficiency");
   assert.match(kim.basis!, /total decay power/);
@@ -537,7 +537,16 @@ test("source restoration (loop-3 pass 44): six primaries as typed measurements w
   assert.match(zhangTotal.basis!, /isotope source power/);
   assert.equal(zhangDevice.metric, "device-stage-efficiency");
   for (const m of beta.filter((x) => x.metric === "conversion-efficiency")) assert.match(m.basis!, /decay power|isotope source power/, `${m.quantity}: an isotope-energy denominator`);
-  // the derived best efficiency on each page ignores stage efficiencies: hydro's best is 60 %, betavoltaic's 10.79 %
+  // pass 44 close: Zhang's aggregate is a range — never a scalar, never a best, both ends preserved through the export
+  const zhangRange = beta.find((m) => m.value_range !== undefined)!;
+  assert.deepEqual(zhangRange.value_range, [0.0234, 0.0256]);
+  assert.equal(zhangRange.value_numeric, undefined, "a range never carries a scalar");
+  assert.ok(!beta.some((m) => m.value_numeric === 0.0256), "2.56 % is never an independently observed datum");
+  assert.throws(() => Measurement.parse({ ...zhangRange, value_numeric: 0.0256 }), /never both/);
+  assert.throws(() => Measurement.parse({ ...zhangRange, value_range: [0.0256, 0.0234] }), /\[low, high\]/);
+  const exported = JSON.parse(JSON.stringify(graph.pathways.find((p) => p.id === "pathway:betavoltaic-battery")!.performance!.measurements.find((m) => m.value_range)));
+  assert.deepEqual(exported.value_range, [0.0234, 0.0256]);
+  // the derived best efficiency on each page ignores stage efficiencies and ranges: hydro's best is 60 %, betavoltaic's 10.79 %
   const PHYSICAL = new Set(["laboratory", "device", "module", "system", "plant", "field"]);
   const best = (slug: string) => data(slug).filter((m) => m.metric === "conversion-efficiency" && m.value_numeric !== undefined && PHYSICAL.has(m.scope)).sort((a, b) => b.value_numeric! - a.value_numeric!)[0]?.value_numeric;
   assert.equal(best("hydroelectric-plant"), 0.6);

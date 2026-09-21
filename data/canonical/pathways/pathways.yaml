@@ -705,12 +705,12 @@
         conditions: "FTO/SnO₂/MACl-FAPbI₃/Spiro-MeOTAD/¹⁴C-nanoparticle/CQD/FTO cell; J_sc 10.60 nA cm⁻², V_oc 76.92 mV, FF 17.41 %; I–V by sourcemeter over −0.1 to +0.8 V; over 15 h of continuous operation"
         sources: [source:kim-2026-c14-perovskite-betavoltaic]
         year: 2026
-      - quantity: total energy conversion efficiency of a 4H-SiC betavoltaic under a ⁶³Ni source
+      - quantity: total energy conversion efficiency of the 4H-SiC betavoltaics under a ⁶³Ni source
         value: "2.34–2.56%"
-        value_numeric: 0.0256
+        value_range: [0.0234, 0.0256]
         unit: "1"
         metric: conversion-efficiency
-        basis: "battery output power over the isotope source power A·E_ave·q (Equation 1); η = η_s × η_d, the source efficiency η_s ≈ 35 % for 500 nm ⁶³Ni with single-side emission; the range spans the measured devices (Table 4), value_numeric the upper end"
+        basis: "battery output power over the isotope source power A·E_ave·q (Equation 1); η = η_s × η_d, the source efficiency η_s ≈ 35 % for 500 nm ⁶³Ni with single-side emission; an aggregate range over the measured devices (Table 4, 'This work (SiC)') — the paper gives no per-device tuple, so no scalar is recorded and the upper end is never a record"
         scope: device
         datum_kind: derived
         conditions: "4H-SiC PIN devices under a ⁶³Ni source of 1 × 3 cm² active area and 15 mCi total activity; V_oc 1.22–1.41 V, FF 0.81–0.89"

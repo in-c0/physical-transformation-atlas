@@ -61,6 +61,8 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
   // so a pathway needs no legacy efficiency_record for the page to say what has been measured.
   const PHYSICAL = new Set(["laboratory", "device", "module", "system", "plant", "field"]);
   const best = measurements.filter((m) => m.metric === "conversion-efficiency" && m.value_numeric !== undefined && PHYSICAL.has(m.scope)).sort((a, b) => b.value_numeric! - a.value_numeric!)[0];
+  // Pass 44 close: a range a source reports over its devices is never scalarised into a record — listed as a reported range.
+  const ranges = measurements.filter((m) => m.metric === "conversion-efficiency" && m.value_range !== undefined && PHYSICAL.has(m.scope));
   // Pass 37: the best recorded power density, per unit (densities in different units are not comparable), physical scopes only.
   // Two W/m² data with different normalisation bases never compete for one "best" (pass 37).
   const densityKey = (m: (typeof measurements)[number]) => `${m.metric}|${m.unit}|${m.normalization?.kind ?? "?"}|${m.normalization?.basis ?? "?"}`;
@@ -351,6 +353,15 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
                 </dd>
               </>
             )}
+            {ranges.map((m) => (
+              <div key={m.quantity + m.value} style={{ display: "contents" }}>
+                <dt>reported range</dt>
+                <dd>
+                  {(m.value_range![0] * 100).toFixed(2)}–{(m.value_range![1] * 100).toFixed(2)}% — {m.quantity}, {m.scope}
+                  {m.year ? `, ${m.year}` : ""}; an aggregate the source reports over its devices, never a single record (its upper end is not a best)
+                </dd>
+              </div>
+            ))}
             {named.performance.notes && (
               <>
                 <dt>notes</dt>
