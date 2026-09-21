@@ -701,3 +701,45 @@
   evidence: [source:li-2026-thermoacoustic-teng]
   status: demonstrated
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 27 (abstract read)" }
+# Loop-3 pass 28: the thermopolarization effect's claims — status reported: the measurements are real (Kholkin 1982 read in full)
+# but the separation of the direct effect from the thermal-expansion → flexoelectric contribution rests on Trepakov 1989's
+# abstract; demonstrated once a primary experiment establishing that separation has been read.
+- id: claim:temperature-drives-thermopolarization
+  subject: disequilibrium:temperature-gradient
+  predicate: drives
+  object: phenomenon:thermopolarization-effect
+  conditions:
+    - a spatial temperature gradient is applied across an insulating dielectric
+    - "this claim represents the direct thermopolarization contribution; a signal established to arise through thermal expansion → strain gradient → flexoelectricity belongs to that longer pathway instead"
+  condition_requirements:
+    - { tag: state-solid, scope: medium, region: dielectric }
+    - { tag: medium-dielectric, scope: medium, region: dielectric }
+    - { tag: temp-gradient-required, scope: medium, region: dielectric }
+  energy: { input: thermal, output: electrical }
+  relation:
+    formula: "P_i = γ_ij ∇_j T"
+    input: quantity:temperature-gradient
+    output: quantity:polarisation
+    coefficient_unit: "C/(m K)"
+    coefficient_name: thermopolarization coefficient γ
+    conventions: "phenomenological tensor form; in Onishi et al.'s linear-response notation γ corresponds to −L̃₁₂/T for the relevant component; Kholkin 1982 report B₁₁ ≈ 3 × 10⁻¹² C/(cm·K) (≈ 3 × 10⁻¹⁰ C/(m·K)) for PMN at 310 K"
+  evidence: [source:marvan-1969-thermopolarization, source:tagantsev-1987-thermal-polarization, source:trepakov-1989-proper-thermopolarization, source:onishi-2025-thermopolarization, source:kholkin-1982-thermopolarization-current]
+  status: reported
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 28 (the second reader's spelling; reported until the separation from the flexoelectric contribution is read in a primary text)" }
+- id: claim:thermopolarization-produces-charge
+  subject: phenomenon:thermopolarization-effect
+  predicate: produces
+  object: carrier:surface-charge
+  conditions:
+    - "the induced bulk polarization terminates at a surface or electrode as bound / screening charge; modulating the gradient produces a displacement / polarization current"
+  energy: { input: electrical, output: electrical }
+  evidence: [source:kholkin-1982-thermopolarization-current, source:trepakov-1989-proper-thermopolarization, source:rafikov-1994-dynamic-thermopolarization]
+  status: reported
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 28 (Kholkin 1982 read in full: the current in the external circuit follows d(ΔT)/dt and reverses with ∇T)" }
+- id: claim:thermopolarization-member
+  subject: phenomenon:thermopolarization-effect
+  predicate: member_of
+  object: coupling:thermopolarization
+  evidence: [source:tagantsev-1987-thermal-polarization]
+  status: established
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 28 (the second reader's family)" }

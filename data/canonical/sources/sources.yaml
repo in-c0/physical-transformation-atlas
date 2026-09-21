@@ -1428,3 +1428,60 @@
   venue: "Energy 334, 137745"
   doi: 10.1016/j.energy.2025.137745
   notes: "Abstract read on the publisher's page. A thermoacoustic heat engine (self-sustained oscillation at 15 Hz, up to 31.3 W acoustic under 300 W heat input) integrated with a mercury–Kapton sliding-mode triboelectric nanogenerator: 18.8 V open-circuit and 3.2 μA short-circuit for one layer, 0.1 W m⁻² and 10.5 mA m⁻² with 32 stacked layers; a lumped acoustic-electric time-domain model validated on the experiment (onset temperature within 82.9 %). No solid moving parts — a gas–liquid boundary, physically distinct from the piston-coupled device."
+# Loop-3 pass 28: the thermopolarization effect — its prediction, first measurements, definitions and modern theory.
+- id: source:marvan-1969-thermopolarization
+  type: paper
+  title: "The electric polarization induced by temperature gradient and associated thermoelectric effects"
+  authors: [M. Marvan]
+  year: 1969
+  venue: "Czechoslovak Journal of Physics B 19, 1240–1245"
+  doi: 10.1007/bf01690309
+  notes: "Metadata verified on Crossref. The first phenomenological prediction of a polarization induced by a temperature gradient in a dielectric, credited by Tagantsev's 1987 review."
+- id: source:kholkin-1982-thermopolarization-current
+  type: paper
+  title: "Thermopolarization currents in dielectrics"
+  authors: [A. L. Kholkin, V. A. Trepakov, G. A. Smolenskii]
+  year: 1982
+  venue: "JETP Letters 35 (3), 124–127 (Pis'ma Zh. Eksp. Teor. Fiz. 35, 103–106)"
+  url: http://www.jetpletters.ru/ps/1313/article_19837.shtml
+  notes: "Read in full from the JETP Letters archive (four pages). Pure, undoped PbMg₁/₃Nb₂/₃O₃ single crystals — centrosymmetric and paraelectric above 273 K, resistivity ~10¹⁴ Ω·cm — cut as 3 × 3 × 8 mm parallelepipeds with Degus-paste electrodes on the long faces; one end at room temperature, the other heated, in vacuum ≈ 10⁻³ Torr. The external-circuit current density follows the rate of change of the end-to-end temperature difference (ΔT up to ≈ 55 K over 8 mm), reverses when the sign of ∇T is reversed (unlike the pyroelectric current of the sample's random unipolarity, which does not), and its maximum is linear in d(ΔT)/dt (Fig. 2), the slope giving a thermopolarization coefficient B₁₁ ≈ 3 × 10⁻¹² C/(cm·K), a polarization of order 10⁻¹⁰ C/cm² at T = 310 K and ∇T = 30 K/cm; Gurevich's estimate B₁₁ ≈ 10⁻¹³ C/(cm·K) is of the same order. The authors attribute the current to the direct thermopolarization effect of Gurevich's theory; a thermal-expansion strain-gradient (flexoelectric) contribution is not considered, so the letter does not by itself separate the two mechanisms."
+- id: source:tagantsev-1987-thermal-polarization
+  type: review
+  title: "Pyroelectric, piezoelectric, flexoelectric, and thermal polarization effects in ionic crystals"
+  authors: [A. K. Tagantsev]
+  year: 1987
+  venue: "Soviet Physics Uspekhi 30, 588–603"
+  doi: 10.1070/PU1987v030n07ABEH002926
+  notes: "Metadata verified on Crossref. The review that treats the polarization response to a temperature gradient (the thermal polarization effect) as a response distinct from flexoelectricity (the response to a strain gradient), crediting Marvan's 1969 formulation; the definition the atlas's thermopolarization phenomenon rests on. Distinct from Tagantsev 1986 (Phys. Rev. B 34, 5883), the atlas's flexoelectric chase seed."
+- id: source:trepakov-1989-proper-thermopolarization
+  type: paper
+  title: "Recent developments of the thermopolarization effect investigation"
+  authors: [V. A. Trepakov, K. M. Nurieva, A. K. Tagantsev]
+  year: 1989
+  venue: "Ferroelectrics 94, 377–381"
+  doi: 10.1080/00150198908014283
+  notes: "Abstract read on OpenAlex. The thermopolarization effect measured in centrosymmetric SrTiO₃ and KTaO₃ and in piezoelectric KH₂PO₄ single crystals 'in spite of the tertiary pyroeffect competition', with criteria separating a 'proper' (non-flexoelectric) thermopolarization from the flexoelectric contribution and experimental evidence for the proper effect. Full text not yet read."
+- id: source:rafikov-1994-dynamic-thermopolarization
+  type: paper
+  title: "Frequency and temperature dependence of the thermopolarization response in dynamic investigations"
+  authors: [E. Rafikov, A. Savinov, L. Jastrabík, V. A. Trepakov]
+  year: 1994
+  venue: "physica status solidi (a) 144, 471–477"
+  doi: 10.1002/pssa.2211440228
+  notes: "Abstract read on OpenAlex. The dynamic thermopolarization response of paraelectric PbNi₁/₃Nb₂/₃O₃ and PbMg₁/₃Nb₂/₃O₃ measured in low- and high-frequency regimes: ∝ ω^½ and inversely proportional to thickness at low frequency, ∝ ω^−½ and thickness-independent at high frequency, the low-frequency temperature dependence following the bulk susceptibility — consistent with the thermopolarization theory."
+- id: source:onishi-2025-thermopolarization
+  type: paper
+  title: "Theory of Thermopolarization Effect"
+  authors: [Y. Onishi, H. Isobe, A. Shitade, N. Nagaosa]
+  year: 2025
+  venue: "Nano Letters 25, 2763–2768"
+  doi: 10.1021/acs.nanolett.4c05870
+  notes: "Abstract read on OpenAlex. The polarization response of an insulator to a temperature gradient described through the free-energy response to an electric-field gradient (the Q tensor): a unified description of polarization responses to electric fields and temperature gradients, a generalized Mott relation, an analogy with the anomalous Hall and Nernst effects; observable as a Seebeck-like signal when the sample is shorter than the screening length. Modern linear-response theory of the direct effect."
+- id: source:nasu-2022-antisymmetric-thermopolarization
+  type: paper
+  title: "Antisymmetric thermopolarization by electric toroidicity"
+  authors: [J. Nasu, S. Hayami]
+  year: 2022
+  venue: "Physical Review B 105, 245125"
+  doi: 10.1103/PhysRevB.105.245125
+  notes: "Metadata verified on Crossref. A modern theory in which the thermopolarization tensor acquires an antisymmetric part from electric toroidicity — the thermopolarization tensor as an active independent concept."

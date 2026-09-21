@@ -125,3 +125,13 @@
   condition_tags: [state-solid, radioisotope-required]
   summary: Ionising decay radiation excites a scintillator or phosphor, which emits visible or ultraviolet photons; those photons can drive a photovoltaic cell in a two-stage nuclear battery.
   review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 7 audit (ChatGPT review, applied and source-verified by the lane)" }
+# Loop-3 pass 28: the thermopolarization effect, surfaced by the composite-name form's first run.
+- id: phenomenon:thermopolarization-effect
+  type: phenomenon
+  name: Thermopolarization effect
+  aliases: [thermopolarization, thermal polarization effect, proper thermopolarization, temperature-gradient-induced polarization]
+  domain: condensed-matter
+  year_first_reported: 1969
+  condition_tags: [state-solid, medium-dielectric, temp-gradient-required]
+  summary: "Electric polarization induced by a spatial temperature gradient in a dielectric. 'Proper thermopolarization' denotes the direct ∇T → P contribution after separating pyroelectric and thermomechanical / flexoelectric contributions; thermally induced flexoelectric polarization can produce the same observable through a different causal pathway. Thermopolarization names the measured ∇T-induced polarization, not a unique microscopic mechanism: Iwakiri et al. 2026 attribute their measured component to thermomechanical flexoelectricity because its magnitude scales with thermal expansion and a strain-gradient FEM reproduces the observations, while the historical 'proper' effect is the direct residual response distinguished from that tertiary / flexoelectric contribution."
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 28 (Marvan 1969 predicted, Kholkin 1982 measured (read in full), Tagantsev 1987 defined, Onishi 2025 theorised; the second reader's spelling)" }

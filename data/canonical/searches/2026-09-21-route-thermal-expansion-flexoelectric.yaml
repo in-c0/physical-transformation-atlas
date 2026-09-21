@@ -383,23 +383,23 @@
       found_by:
         - search:2026-09-21-p-a093d7ecc5/oa-cn
       access: abstract
-      decision: insufficient-information
-      reason: "Trepakov, Nurieva & Tagantsev 1989 (Ferroelectrics): the thermopolarization effect measured in centrosymmetric SrTiO₃ and KTaO₃ and in piezoelectric KH₂PO₄ single crystals 'in spite of the tertiary pyroeffect competition', with criteria separating a 'proper' (non-flexoelectric) thermopolarization from the flexoelectric contribution — a polarization current under a temperature gradient observed decades before Iwakiri 2026, no load. Whether the measured signal is the route's mechanism (thermal expansion → strain gradient → flexoelectric) or a distinct direct coupling the atlas does not yet record is the question put to the second reader in pass 28."
+      decision: wrong-coupling
+      reason: "Trepakov, Nurieva & Tagantsev 1989 (Ferroelectrics 94, 377–381): the thermopolarization effect measured in centrosymmetric SrTiO₃ and KTaO₃ and in piezoelectric KH₂PO₄ single crystals 'in spite of the tertiary pyroeffect competition', with criteria separating a 'proper' (non-flexoelectric) thermopolarization from the flexoelectric contribution — it explicitly distinguishes its response from the thermal-expansion → flexoelectric chain this route spells, so it is evidence for the atlas's direct thermopolarization effect (recorded in pass 28), not for this route."
     - title: Thermopolarization currents in dielectrics
       year: 1982
       found_by:
         - search:2026-09-21-p-a093d7ecc5/oa-cn
-      access: metadata-only
-      decision: insufficient-information
-      reason: "Kholkin, Trepakov & Smolenskii 1982 (OpenAlex W3013145716, no DOI or abstract): by title the first measurement of thermopolarization currents in dielectrics; the same mechanism question as Trepakov 1989."
+      access: full-text
+      decision: wrong-coupling
+      reason: "Kholkin, Trepakov & Smolenskii 1982 (JETP Letters 35, 124–127; read in full from the archive): thermopolarization currents in centrosymmetric PMN under an end-to-end temperature difference, linear in d(ΔT)/dt and reversing with ∇T, B₁₁ ≈ 3 × 10⁻¹² C/(cm·K) — attributed to Gurevich's direct thermopolarization effect, with no thermal-expansion strain-gradient mechanism considered; evidence for the direct effect (status reported until its separation from the flexoelectric contribution is read), not for this route."
     - title: Frequency and temperature dependence of the thermopolarization response in dynamic investigations
       year: 1994
       doi: 10.1002/pssa.2211440228
       found_by:
         - search:2026-09-21-p-a093d7ecc5/oa-cn
       access: abstract
-      decision: insufficient-information
-      reason: "Rafikov, Savinov, Jastrabík & Trepakov 1994 (phys. stat. sol. (a) 144): the dynamic thermopolarization response of paraelectric PbNi₁/₃Nb₂/₃O₃ and PbMg₁/₃Nb₂/₃O₃ measured in low- and high-frequency regimes (∝ ω^½ and ω^−½), the low-frequency response inversely proportional to thickness — an experimental polarization response to an oscillating temperature gradient, no load; the mechanism question as above."
+      decision: wrong-coupling
+      reason: "Rafikov, Savinov, Jastrabík & Trepakov 1994 (phys. stat. sol. (a) 144): the dynamic thermopolarization response of paraelectric PbNi₁/₃Nb₂/₃O₃ and PbMg₁/₃Nb₂/₃O₃ measured in low- and high-frequency regimes (∝ ω^½ and ω^−½), the low-frequency response inversely proportional to thickness — the predicted behaviour of the direct thermopolarization effect, without establishing the thermal-expansion → strain-gradient → flexoelectric chain; evidence for the direct effect, not for this route."
     - title: Theory of Thermopolarization Effect
       year: 2025
       doi: 10.1021/acs.nanolett.4c05870
@@ -432,6 +432,14 @@
       access: metadata-only
       decision: wrong-coupling
       reason: "Physical Review Research, 14 September 2026 (Crossref lists no authors or abstract): the companion to Iwakiri 2026 on piezoelectric quartz, where by the second reader's reading (pass 24) the thermal stress feeds piezoelectric rather than flexoelectric polarization — a different coupling, to be read when accessible."
+    - title: Antisymmetric thermopolarization by electric toroidicity
+      year: 2022
+      doi: 10.1103/PhysRevB.105.245125
+      found_by:
+        - search:2026-09-21-p-a093d7ecc5/oa-cn
+      access: metadata-only
+      decision: theory-only
+      reason: "Nasu & Hayami 2022 (Phys. Rev. B 105, 245125): the thermopolarization tensor's antisymmetric part from electric toroidicity — theory of the direct effect, not this route."
     - title: Size-dependent analysis of thermoelastic damping in thermoflexoelectric nanobeam resonators
       year: 2026
       doi: 10.1007/s00707-026-04729-y
@@ -453,7 +461,7 @@
     - Han et al. 2026 is paywalled; its thermal-mode driver and any load measurement are unverified pending an owner read
     - "the thermoflexoelectric rerun (pass 27, 21/09 10:17 am Sydney): the same 158 works, none new — a term that names the composition without the thermal-expansion vocabulary (Wei 2024 writes 'inhomogeneous strains') is unreachable by a driver-AND-mechanism or mechanism-pair form; the reviewer's ruling that day added the composite-name form to route-search-v1"
     - "the composite-name form (OpenAlex, 21/09 10:40 am Sydney): 45 works, 44 new — screened at title level, nine abstracts read; the thermopolarization measurements of the 1980s–1990s (Kholkin, Trepakov, Tagantsev, Rafikov) are recorded insufficient-information until the second reader rules whether their 'proper' thermopolarization is a distinct coupling the atlas lacks or the route's own flexoelectric mechanism; Semantic Scholar and Google Scholar still owe this form"
-  conclusion: "The exact composition has been observed but not converted: Iwakiri, Miyata & Mori 2026 impose a temperature gradient whose thermal expansion produces a strain gradient whose flexoelectric polarization is detected (voltage and displacement current) in eight centrosymmetric insulators, scaling with the expansion coefficient — every mechanism in order, no electrical work delivered. Nothing in the OpenAlex runs or the two chases puts a load on such a device; the thermal-flexoelectric literature otherwise concerns the converse effect, bending-imposed gradients, uniform-temperature conduction effects and flexo-induced pyroelectricity. Inconclusive as a route search until the Scholar and Semantic Scholar runs exist; the open question is now narrow: has anyone extracted work. After the second reader's review (pass 24) the composition is recorded as the observed pathway pathway:thermal-expansion-flexoelectric-response — status observed, observed_through the flexoelectric charge step, the final conversion to work unsupported — and the route reads observed · output not delivered while its class stays candidate. The reviewer's nearest additional hit, Han et al. 2026 (a heat-driven flexoelectric nanogenerator whose differential thermal deformation supplies the strain gradient; current response only in the accessible record), stays insufficient-information pending its full text. The composite-name form (pass 27) then surfaced what the decomposed forms could not: thermopolarization currents measured in dielectrics from 1982 (Kholkin, Trepakov & Smolenskii), in SrTiO₃, KTaO₃ and KH₂PO₄ by 1989 (Trepakov, Nurieva & Tagantsev, who separated a 'proper' non-flexoelectric thermopolarization from the flexoelectric 'tertiary pyroeffect'), and dynamically in relaxor paraelectrics by 1994 — polarization observed under a temperature gradient decades before the 2026 preprint, still with no load; whether the atlas needs a direct thermopolarization phenomenon beside the thermal-expansion → flexoelectric route is now the open scientific question."
+  conclusion: "The exact composition has been observed but not converted: Iwakiri, Miyata & Mori 2026 impose a temperature gradient whose thermal expansion produces a strain gradient whose flexoelectric polarization is detected (voltage and displacement current) in eight centrosymmetric insulators, scaling with the expansion coefficient — every mechanism in order, no electrical work delivered. Nothing in the OpenAlex runs or the two chases puts a load on such a device; the thermal-flexoelectric literature otherwise concerns the converse effect, bending-imposed gradients, uniform-temperature conduction effects and flexo-induced pyroelectricity. Inconclusive as a route search until the Scholar and Semantic Scholar runs exist; the open question is now narrow: has anyone extracted work. After the second reader's review (pass 24) the composition is recorded as the observed pathway pathway:thermal-expansion-flexoelectric-response — status observed, observed_through the flexoelectric charge step, the final conversion to work unsupported — and the route reads observed · output not delivered while its class stays candidate. The reviewer's nearest additional hit, Han et al. 2026 (a heat-driven flexoelectric nanogenerator whose differential thermal deformation supplies the strain gradient; current response only in the accessible record), stays insufficient-information pending its full text. The composite-name form (pass 27) then surfaced what the decomposed forms could not: thermopolarization currents measured in dielectrics from 1982 (Kholkin, Trepakov & Smolenskii), in SrTiO₃, KTaO₃ and KH₂PO₄ by 1989 (Trepakov, Nurieva & Tagantsev, who separated a 'proper' non-flexoelectric thermopolarization from the flexoelectric 'tertiary pyroeffect'), and dynamically in relaxor paraelectrics by 1994 — polarization observed under a temperature gradient decades before the 2026 preprint, still with no load; the second reader's ruling (pass 28) made the direct effect its own phenomenon and coupling family, so those measurements are evidence for it and wrong-coupling here; Iwakiri's α-scaling supports attributing their dominant measured component to the flexoelectric chain without excluding a direct residual."
   source_run_ids:
     - search:2026-09-20-p-a093d7ecc5
     - search:2026-09-21-p-a093d7ecc5

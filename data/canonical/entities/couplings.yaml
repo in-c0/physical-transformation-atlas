@@ -235,3 +235,11 @@
   aliases: [scintillation, radioluminescence, indirect nuclear battery]
   domain: nuclear-physics
   summary: Decay radiation converted to photons by a scintillator, for optical or photovoltaic use.
+# Loop-3 pass 28: the direct temperature-gradient → polarization coupling, distinct from pyroelectricity and from thermally generated flexoelectricity.
+- id: coupling:thermopolarization
+  type: coupling
+  name: Thermopolarization
+  aliases: [thermal polarization, temperature-gradient-induced polarization]
+  domain: condensed-matter
+  summary: "Direct polarization response of an insulating dielectric to a spatial temperature gradient. Distinct from pyroelectricity, which responds to temperature change, and from thermally generated flexoelectricity, in which thermal expansion first creates a strain gradient."
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 28 (the second reader's family for the direct effect)" }
