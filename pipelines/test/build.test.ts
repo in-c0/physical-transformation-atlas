@@ -239,6 +239,13 @@ test("the legacy performance audit's regression controls (loop-3 pass 35)", () =
   assert.equal(rankine.performance?.efficiency_record, undefined);
   const nord = (rankine.performance?.measurements ?? []).find((m) => m.value_numeric === 0.47);
   assert.ok(nord && nord.scope === "plant" && /lower-heating-value/.test(nord.basis ?? ""), "the Nordjylland datum carries its LHV basis");
+  // Pass 39: no stored record anywhere; the rectenna's 90.5 % is a device datum from the primary; the limit rows carry no projection or material property as a bound.
+  assert.equal(graph.pathways.filter((p) => "efficiency_record" in (p.performance ?? {})).length, 0, "efficiency_record is gone from every pathway");
+  const rect = pw("rectenna-microwave").performance!.measurements.find((m) => m.value_numeric === 0.905);
+  assert.ok(rect && rect.scope === "device" && /2450 MHz/.test(rect.basis ?? ""), "the rectenna element datum carries its frequency and basis");
+  assert.doesNotMatch(pw("thermophotovoltaic").performance?.theoretical_limit ?? "", /projected/);
+  assert.doesNotMatch(pw("solar-water-heater").performance?.theoretical_limit ?? "", /0\.9/);
+  assert.match(pw("photosynthesis").performance?.theoretical_limit ?? "", /two-photosystem/);
   // The combined cycle's efficiency exists only as a structured system measurement.
   assert.equal(graph.pathways.filter((p) => JSON.stringify(p).includes("0.4693")).length, 0);
   assert.ok(graph.systems.some((s) => (s.performance?.measurements ?? []).some((m) => m.value_numeric === 0.4693)));

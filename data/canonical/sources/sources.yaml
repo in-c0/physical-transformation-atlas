@@ -453,6 +453,8 @@
   authors: [R. E. Blankenship, et al.]
   year: 2011
   venue: Science 332, 805–809
+  url: https://escholarship.org/uc/item/9cf6c2dq
+  notes: "Read in full (open eScholarship copy, loop-3 pass 39). 'A theoretical limit of ~12% for the efficiency of photosynthetic glucose production from water (based on free energy) can be calculated by considering the chlorophyll band-edge absorption and the two-photosystem structure of oxygenic photosynthesis'; taking into account the known losses in light harvesting, overpotentials and respiration, the maximum is reduced to 4.6 % (C3) and 6.0 % (C4) plants (their ref. 7, Zhu, Long & Ort); short-term (rapid-growth phase) efficiencies measured during the growing season reach 3.5 % (C3) and 4.3 % (C4), perhaps 5–7 % for microalgae in bubbled bioreactors; most crops fall far below these on an annual basis. A perspective summarising others' measurements: the 3.5 / 4.3 % are reported, not this paper's own data."
   doi: 10.1126/science.1200165
 - id: source:mitchell-1961
   type: paper
@@ -1637,3 +1639,12 @@
   venue: "nrc.gov"
   url: https://www.nrc.gov/reactors/power/pwrs
   notes: "Read in full (21/09/2026). 'Pressurized water in the primary coolant loop carries the heat to the steam generator. Inside the steam generator, heat from the primary coolant loop vaporizes the water in a secondary loop, producing steam', which the steamline directs to the main turbine. The two-circuit topology: fission heats a pressurised liquid, and a heat exchanger — not the core — makes the turbine's steam."
+# Loop-3 pass 39: the open primary behind the rectenna record.
+- id: source:brown-1977-nasa-cr-135194
+  type: report
+  title: "Electronic and mechanical improvement of the receiving terminal of a free-space microwave power transmission system"
+  authors: [W. C. Brown]
+  year: 1977
+  venue: "NASA CR-135194 (Raytheon Company, contract NAS3-19722), NASA Technical Reports Server 19770024669"
+  url: https://ntrs.nasa.gov/citations/19770024669
+  notes: "Read in full (open NTRS PDF, loop-3 pass 39). The rectenna element improved under the study (higher-impedance microwave circuit, higher DC load resistance, improved diodes) reached 'an efficiency of 90.5 ± 0.5 % at the 8 watt input level and 79.5 ± 0.5 % at the 50 milliwatt level', and 45 % at 1 mW, at 2450 MHz; the certified overall DC-to-DC transmission efficiency of March 1975 at Raytheon was 54 %; the Goldstone demonstration converted over 82 % of the microwave power impinging on a 264 ft² rectenna into over 30 kW of DC over 1.6 km. The 90.6 % the later reviews quote is not in this report — its own element figure is 90.5 ± 0.5 %."

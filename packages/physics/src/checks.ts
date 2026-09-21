@@ -266,8 +266,6 @@ export function checkThermodynamicBound(ctx: PhysicsContext, claims: Claim[], pa
     if (m.value_numeric !== undefined && m.metric)
       data.push({ value: m.value_numeric, metric: m.metric, basis: m.basis, parameters: m.parameters, label: `${m.quantity} ${m.value}`, model: m.scope === "model" });
   }
-  if (pathway?.performance?.efficiency_record !== undefined)
-    data.push({ value: pathway.performance.efficiency_record, metric: "conversion-efficiency", label: `record efficiency ${(pathway.performance.efficiency_record * 100).toFixed(1)}%`, model: false });
 
   const evaluated: string[] = [];
   const failures: string[] = [];
@@ -533,7 +531,6 @@ export function checkPracticalMagnitude(pathway?: Pathway): CheckResult {
       return { id: "practical-magnitude", label, result: "fail", detail: `${m.quantity} ${m.value} is outside [0, 1] for a ${m.metric}` };
   }
   const parts: string[] = [];
-  if (p.efficiency_record !== undefined) parts.push(`record ${(p.efficiency_record * 100).toFixed(1)}%`);
   if (structured.length)
     return {
       id: "practical-magnitude",

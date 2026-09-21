@@ -635,8 +635,7 @@ const PathwayBase = z.object({
   knowledge_level: z.enum(KNOWLEDGE_LEVELS),
   performance: z
     .object({
-      // efficiency_typical was removed in loop-3 pass 35: a typical needs an explicit population rule over curated measurements, never a stored number.
-      efficiency_record: z.number().min(0).max(1).optional(),
+      // efficiency_typical was removed in loop-3 pass 35 and efficiency_record in pass 39: a record is a structured physical measurement, never a stored number; the display derives it.
       theoretical_limit: z.string().optional(),
       // power_density was removed in loop-3 pass 37: a power density lives only as a structured measurement with its denominator and basis.
       notes: z.string().optional(),

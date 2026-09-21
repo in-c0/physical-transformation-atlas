@@ -285,12 +285,6 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
             </ol>
           )}
           <dl className={styles.facts} style={{ marginTop: measurements.length ? 12 : 8 }}>
-            {named.performance.efficiency_record !== undefined && (
-              <>
-                <dt>record efficiency (summary)</dt>
-                <dd>{(named.performance.efficiency_record * 100).toFixed(1)}%</dd>
-              </>
-            )}
             {bestDensity.map((m) => (
               <div key={densityKey(m)} style={{ display: "contents" }}>
                 <dt>best recorded power density (derived)</dt>

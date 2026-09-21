@@ -67,7 +67,7 @@
   knowledge_level: K8
   performance:
     # pass 35: efficiency_typical 0.5 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
-    theoretical_limit: "absorptance of the surface minus its re-emission; selective surfaces reach ~0.9"
+    theoretical_limit: "absorptance of the surface minus its re-emission"  # pass 39: the '~0.9' clause removed — a selective-surface absorptance, not a pathway bound
   environment: [illumination-required]
   summary: A dark absorber under glass heats water in tubes.
 

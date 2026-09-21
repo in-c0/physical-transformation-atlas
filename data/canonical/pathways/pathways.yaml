@@ -183,7 +183,8 @@
   status: demonstrated
   knowledge_level: K7
   performance:
-    theoretical_limit: "Carnot between emitter and cell; > 50% projected with better photon recycling"
+    theoretical_limit: "Carnot between emitter and cell"
+    notes: "published models predict thermophotovoltaic efficiencies above 50 % with better photon recycling (LaPotin et al. 2022 cite them) — a projection, not a thermodynamic bound, so it lives here, not in the limit field"
     measurements:
       # pass 37: the legacy power_density migrated to LaPotin et al. 2022's own figure (abstract read)
       - quantity: electrical power density
@@ -481,7 +482,7 @@
   knowledge_level: K8
   performance:
     # pass 35: efficiency_typical 0.45 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
-    efficiency_record: 0.52
+    # pass 39: efficiency_record 0.52 removed — a rotor power coefficient, the wrong quantity for a pathway that ends in electrical work; a named rotor's measured C_p belongs as metric power-coefficient on rotor evidence
     theoretical_limit: "Betz: 59.3% of the kinetic power through the rotor disc"
   environment: [flow-required]
   summary: Blade lift turns the rotor; the rotor turns the generator.
@@ -495,7 +496,7 @@
   knowledge_level: K8
   performance:
     # pass 35: efficiency_typical 0.90 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
-    efficiency_record: 0.95
+    # pass 39: efficiency_record 0.95 removed — a hydraulic turbine efficiency (Francis model tests reach ≈ 95 %), not the water-to-wire efficiency of a pathway that includes the generator; a named plant's water-to-wire figure with its boundary returns as a measurement
     theoretical_limit: "no thermodynamic ceiling below 100%; losses are hydraulic and electrical"
   environment: [state-liquid]
   summary: Water falls through the penstock, spins the turbine, turns the generator.
@@ -575,7 +576,7 @@
   status: demonstrated
   knowledge_level: K5
   performance:
-    theoretical_limit: "≈ 30% solar-to-hydrogen for a tandem absorber"
+    theoretical_limit: "a detailed-balance solar-to-hydrogen limit exists for each tandem gap pair — Cheng et al. 2018 place their device at 0.85 of the limit for its gap combination — but no universal figure is recorded until the bound's own model is curated (the ≈ 30 % the atlas carried until pass 39 cited none)"
     measurements:
       # pass 35: the legacy record 0.19 was cited to the 1972 discovery; it is Cheng et al. 2018's device
       - quantity: solar-to-hydrogen efficiency
@@ -598,9 +599,9 @@
   evidence: [source:rappaport-1954, source:prelas-2014]
   status: commercial
   knowledge_level: K8
-  performance:
+  # pass 39: performance emptied — its last summary field was removed; the values stay in the audit records
     # pass 35: efficiency_typical 0.02 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
-    efficiency_record: 0.06
+    # pass 39: efficiency_record 0.06 removed — no isotope-powered device with a defined conversion efficiency behind it (the open ~6 % diamond Schottky result is an electron-beam proxy, not a decay → β-particle battery)
     # pass 37: power_density "µW/cm² for tritium and Ni-63 sources; decades of life" removed — a summary power density stays only as a structured measurement with its denominator and basis (the reviewer's ruling); the value stays in the audit record
   environment: [state-solid, radioisotope-required]
   summary: Beta particles make carrier pairs in a junction for as long as the isotope lasts.
@@ -639,11 +640,23 @@
   status: prototype
   knowledge_level: K7
   performance:
-    efficiency_record: 0.906
+    # pass 39: efficiency_record 0.906 migrated — the primary report's own element figure is 90.5 ± 0.5 % (below)
     theoretical_limit: "no thermodynamic ceiling below 100% for coherent radiation"
-    notes: "90.6% RF-to-DC for a single 2.45 GHz rectenna element at 8 W microwave input (Brown 1977, reported in Brown 1984); large-array capture-plus-rectification demonstrations were about 82–84% at the rectenna boundary. Do not compare either with end-to-end DC-to-DC beaming efficiency."
+    notes: "Do not compare a single element's RF-to-DC efficiency with a large array's capture-plus-rectification efficiency (over 82 % at Goldstone) or with end-to-end DC-to-DC beaming efficiency (54 % certified in March 1975)."
+    measurements:
+      - quantity: rectenna element RF-to-DC conversion efficiency
+        value: "90.5 ± 0.5 %"
+        value_numeric: 0.905
+        unit: "1"
+        metric: conversion-efficiency
+        basis: "DC power delivered to the load over microwave power input to a single rectenna element, at 8 W input, 2450 MHz"
+        scope: device
+        conditions: "the improved rectenna element of the NASA-Lewis receiving-terminal study (higher-impedance microwave circuit, higher DC load resistance, improved diodes); 79.5 ± 0.5 % at 50 mW and 45 % at 1 mW input"
+        sources: [source:brown-1977-nasa-cr-135194]
+        year: 1977
+        note: "the atlas had carried 0.906, the figure Brown's later reviews quote; the contractor report read in full gives 90.5 ± 0.5 % at the 8 W element level"
   environment: [medium-conductor]
-  summary: "Brown's 1977 2.45 GHz rectenna element reached 90.6% RF-to-DC conversion; large-array demonstrations were approximately 82–84% at the rectenna boundary."
+  summary: "Brown's 1977 2.45 GHz rectenna element reached 90.5 ± 0.5 % RF-to-DC conversion at 8 W input; the Goldstone array converted over 82 % of the impinging microwave power at the rectenna boundary."
 
 - id: pathway:hydrovoltaic-generator
   name: Hydrovoltaic generator
@@ -690,7 +703,7 @@
   knowledge_level: K8
   performance:
     # pass 35: efficiency_typical 0.5 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
-    efficiency_record: 0.65
+    # pass 39: efficiency_record 0.65 removed — no named hydrogen fuel-cell device at 65 % with an LHV / HHV and gross / net basis; direct-hydrogen PEM systems are listed near 60 % and 65 % is a target or a molten-carbonate-plus-turbine hybrid, a different system
     theoretical_limit: "ΔG/ΔH ≈ 83% for H₂/O₂ at 25 °C"
   environment: [medium-membrane]
   summary: Hydrogen is oxidised at the anode, oxygen reduced at the cathode; electrons go round the load.
@@ -757,8 +770,8 @@
   knowledge_level: K8
   performance:
     # pass 35: efficiency_typical 0.01 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
-    efficiency_record: 0.045
-    theoretical_limit: "≈ 12% solar-to-biomass (two photosystems, 8 photons per CO₂)"
+    # pass 39: efficiency_record 0.045 removed — Blankenship et al. 2011 (read in full) report short-term growing-season efficiencies of 3.5 % (C3) and 4.3 % (C4) and physiology-limited maxima of 4.6 % and 6.0 %, none of them 4.5 %; a measured record returns from its own primary (Zhu, Long & Ort) once read
+    theoretical_limit: "≈ 12 % theoretical free-energy efficiency for oxygenic photosynthetic glucose production from water under the two-photosystem / chlorophyll band-edge assumptions (Blankenship et al. 2011); known losses in light harvesting, overpotentials and respiration reduce the maximum to 4.6 % (C3) and 6.0 % (C4) — a physiology-limited maximum, not the ideal bound"
   environment: [env-aqueous, illumination-required]
   summary: Light-driven charge separation stores solar energy in sugars; the basis of every fossil fuel.
 
