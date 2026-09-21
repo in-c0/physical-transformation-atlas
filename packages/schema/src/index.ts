@@ -86,34 +86,39 @@ export const KNOWLEDGE_LEVELS = ["K0", "K1", "K2", "K3", "K4", "K5", "K6", "K7",
  * The regime-token registry (loop-3 pass 36; the tokens themselves since pass 30). A token names an
  * operating condition a conversion step needs from its causal source — never a property of the step's own
  * subject. The loader rejects a token that is not registered, so a new regime is frozen here with its
- * definition before any claim, disequilibrium or pathway can use it. `provider_needs_explanation` marks a
+ * definition before any claim, disequilibrium or pathway can use it (the definitions are the second reader's,
+ * pass 36: a cycling token is the existence of cycling, never the availability of a measured frequency —
+ * cycle_frequency_Hz may derive one, but its absence never negates demonstrated cycling). `provider_needs_explanation` marks a
  * token a reviewed pathway may supply only when the route has a preceding step that supplies it or the
  * pathway records an auxiliary requirement explaining how its implementation establishes it — the
  * compressor of a gas turbine is driven by the turbine's own shaft work, a feedback branch no linear
  * route carries.
  */
 export const REGIME_TOKENS = {
-  "thermal:spatial-temperature-gradient": { definition: "a temperature difference maintained across the active element in space", provider_needs_explanation: false },
-  "thermal:temporal-temperature-change": { definition: "a temperature that changes in time at the active element (dT/dt ≠ 0)", provider_needs_explanation: false },
+  "thermal:spatial-temperature-gradient": { definition: "a nonzero temperature difference between spatial locations of the active region (∇T ≠ 0)", provider_needs_explanation: false },
+  "thermal:temporal-temperature-change": { definition: "the temperature at the active region changes with time (dT/dt ≠ 0)", provider_needs_explanation: false },
   "thermal:gradient-above-thermoacoustic-critical": {
-    definition: "a stack or regenerator temperature gradient above Swift's critical gradient, at which self-sustained oscillation begins",
+    definition: "the local temperature gradient across the thermoacoustic stack or regenerator exceeds the critical gradient for self-sustained oscillation under the recorded operating conditions",
     provider_needs_explanation: false,
   },
   "thermal:transition-temperature-straddled": {
-    definition: "the active material's transition temperature (Curie, martensitic, glass …) lies between the hot and cold temperatures it is cycled through",
+    definition: "the active material's relevant phase or ordering transition temperature lies between the hot and cold temperatures traversed by the operating cycle",
     provider_needs_explanation: false,
   },
-  "thermal:cyclic-hot-cold-exposure": { definition: "the active element is alternately exposed to a hot and a cold reservoir at a stated cycle frequency", provider_needs_explanation: false },
-  "field:electric-field-change": { definition: "an applied electric field that changes between two values in time", provider_needs_explanation: false },
-  "field:electric-field-cycling": { definition: "an applied electric field cycled repeatedly at a stated frequency", provider_needs_explanation: false },
-  "field:magnetic-field-change": { definition: "an applied magnetic field that changes between two values in time", provider_needs_explanation: false },
-  "field:magnetic-field-cycling": { definition: "an applied magnetic field cycled repeatedly at a stated frequency", provider_needs_explanation: false },
+  "thermal:cyclic-hot-cold-exposure": { definition: "the active element is repeatedly alternated between hot-side and cold-side thermal environments", provider_needs_explanation: false },
+  "field:electric-field-change": { definition: "the electric field experienced by the active material changes in time between distinct field states", provider_needs_explanation: false },
+  "field:electric-field-cycling": { definition: "the electric field experienced by the active material is repeatedly cycled through distinct field states", provider_needs_explanation: false },
+  "field:magnetic-field-change": { definition: "the magnetic field experienced by the active material changes in time between distinct field states", provider_needs_explanation: false },
+  "field:magnetic-field-cycling": { definition: "the magnetic field experienced by the active material is repeatedly cycled through distinct field states", provider_needs_explanation: false },
   "field:nonuniform-magnetic-field": { definition: "a magnetic field with a spatial gradient across the active medium", provider_needs_explanation: false },
-  "mechanical:stress-change": { definition: "an applied stress or strain that changes between two values in time", provider_needs_explanation: false },
+  "mechanical:stress-change": {
+    definition: "the stress state of the active material changes in time, whether the loading is imposed under stress or strain control",
+    provider_needs_explanation: false,
+  },
   "mechanical:stress-crosses-transformation-threshold": { definition: "the applied stress crosses the material's stress-induced transformation threshold", provider_needs_explanation: false },
-  "mechanical:stress-cycling": { definition: "an applied stress cycled repeatedly at a stated frequency", provider_needs_explanation: false },
+  "mechanical:stress-cycling": { definition: "the active material's stress state is repeatedly loaded and unloaded through a mechanical cycle", provider_needs_explanation: false },
   "light:incident-photon-flux": { definition: "a photon flux incident on the active element", provider_needs_explanation: false },
-  "light:above-bandgap-photon-flux": { definition: "a photon flux with energy above the absorber's band gap", provider_needs_explanation: false },
+  "light:above-bandgap-photon-flux": { definition: "an incident photon flux containing absorbable photons with hν > E_g of the active absorber", provider_needs_explanation: false },
   "thermodynamic:expansion-pressure-drop": {
     definition: "an upstream pressure state and downstream lower-pressure state sufficient for the working fluid to perform expansion work",
     provider_needs_explanation: true,

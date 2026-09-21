@@ -149,21 +149,21 @@ Used in: `interfaces[].status`, `paths[].interfaces_recorded[].status`
 
 Used in: `claims[].regime_requires / regime_provides / regime_external`, `entities[].regime_provides / regime_excludes`, `pathways[].regime_provides / regime_model_provides`, `pathways[].auxiliary_requirements[].establishes`
 
-- `thermal:spatial-temperature-gradient` — a temperature difference maintained across the active element in space
-- `thermal:temporal-temperature-change` — a temperature that changes in time at the active element (dT/dt ≠ 0)
-- `thermal:gradient-above-thermoacoustic-critical` — a stack or regenerator temperature gradient above Swift's critical gradient, at which self-sustained oscillation begins
-- `thermal:transition-temperature-straddled` — the active material's transition temperature (Curie, martensitic, glass …) lies between the hot and cold temperatures it is cycled through
-- `thermal:cyclic-hot-cold-exposure` — the active element is alternately exposed to a hot and a cold reservoir at a stated cycle frequency
-- `field:electric-field-change` — an applied electric field that changes between two values in time
-- `field:electric-field-cycling` — an applied electric field cycled repeatedly at a stated frequency
-- `field:magnetic-field-change` — an applied magnetic field that changes between two values in time
-- `field:magnetic-field-cycling` — an applied magnetic field cycled repeatedly at a stated frequency
+- `thermal:spatial-temperature-gradient` — a nonzero temperature difference between spatial locations of the active region (∇T ≠ 0)
+- `thermal:temporal-temperature-change` — the temperature at the active region changes with time (dT/dt ≠ 0)
+- `thermal:gradient-above-thermoacoustic-critical` — the local temperature gradient across the thermoacoustic stack or regenerator exceeds the critical gradient for self-sustained oscillation under the recorded operating conditions
+- `thermal:transition-temperature-straddled` — the active material's relevant phase or ordering transition temperature lies between the hot and cold temperatures traversed by the operating cycle
+- `thermal:cyclic-hot-cold-exposure` — the active element is repeatedly alternated between hot-side and cold-side thermal environments
+- `field:electric-field-change` — the electric field experienced by the active material changes in time between distinct field states
+- `field:electric-field-cycling` — the electric field experienced by the active material is repeatedly cycled through distinct field states
+- `field:magnetic-field-change` — the magnetic field experienced by the active material changes in time between distinct field states
+- `field:magnetic-field-cycling` — the magnetic field experienced by the active material is repeatedly cycled through distinct field states
 - `field:nonuniform-magnetic-field` — a magnetic field with a spatial gradient across the active medium
-- `mechanical:stress-change` — an applied stress or strain that changes between two values in time
+- `mechanical:stress-change` — the stress state of the active material changes in time, whether the loading is imposed under stress or strain control
 - `mechanical:stress-crosses-transformation-threshold` — the applied stress crosses the material's stress-induced transformation threshold
-- `mechanical:stress-cycling` — an applied stress cycled repeatedly at a stated frequency
+- `mechanical:stress-cycling` — the active material's stress state is repeatedly loaded and unloaded through a mechanical cycle
 - `light:incident-photon-flux` — a photon flux incident on the active element
-- `light:above-bandgap-photon-flux` — a photon flux with energy above the absorber's band gap
+- `light:above-bandgap-photon-flux` — an incident photon flux containing absorbable photons with hν > E_g of the active absorber
 - `thermodynamic:expansion-pressure-drop` — an upstream pressure state and downstream lower-pressure state sufficient for the working fluid to perform expansion work — a pathway may supply it only with a preceding providing step or an auxiliary requirement explaining how its implementation establishes it
 
 ## `pathway.auxiliary_requirement.kind`

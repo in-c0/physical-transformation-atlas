@@ -46,3 +46,38 @@ inventing a serial step.
 
 Result: revision 34c911ddd873 — 340 entities · 507 claims · 218 sources · 89 pathways · 1 system ·
 751 routes · 16 registered regime tokens · 75/75 · live.
+
+## Reviewed (sent 3:40 pm; ChatGPT High, ~8 min, with web search; PIVOT — 34 findings) and applied (3:48–3:55 pm)
+
+1. The closure accepted (finding 1).
+2. The registry's definitions rewritten in the reviewer's words (findings 2–16): twelve of sixteen
+   changed — no "maintained" on the spatial gradient (a transient gradient qualifies), no "at a
+   stated cycle frequency" on any cycling token (cycling is the existence of cycling, never the
+   availability of a measured frequency; `cycle_frequency_Hz` may derive one, its absence never
+   negates demonstrated cycling — finding 17), "experienced by the active material" instead of
+   "applied" on the field tokens, the thermoacoustic threshold defined as a physical state rather
+   than bound to Swift's formulation, the transition token without the interchangeable examples,
+   stress-change covering strain-controlled loading, and the above-bandgap token as "an incident
+   photon flux containing absorbable photons with hν > E_g" so a broadband spectrum qualifies. The
+   expansion pressure drop stays exactly as frozen. No `*-frequency-recorded` tokens.
+3. The Rankine plant's feedwater pump (findings 18–24): a recirculating-work auxiliary on
+   `pathway:rankine-steam-plant` with `establishes: []` — `claim:expansion-drives` keeps its
+   cycle-level temperature-gradient abstraction and never requires the pressure drop (finding 21) —
+   on the Al-Mosyab source read in full (three main boiler feedwater pumps, three condensate pumps,
+   a deaerator, the feed pump in the unit's exergy ledger). Not on the steam engine (a generic
+   spelling demonstrated by the Rankine transducer — a pathway-specificity item for a later
+   architecture audit, finding 25) and not on the nuclear plant, which owes the pressure-drop
+   provider and stays unresolved until its named architecture is source-reviewed.
+4. Pass 37 set (findings 26–34): the 25 `power_density` fields with the pass-35 machinery — every
+   mixed "measured; projected" string split; a physical value with a defined denominator and basis
+   → a physical measurement, a source-defined projection with an explicit denominator → a model
+   measurement, a projection without a reproducible basis → removed and kept in the audit note; a
+   power in W with no normalisation is `wrong-quantity`, migrated to its actual quantity (a power
+   metric added if needed), never called W/m²; dispositions measured-and-projected-mixed ·
+   wrong-quantity · unsupported-generic · ambiguous-normalisation · migrate-to-measurement ·
+   verified-same-architecture; then `power_density` leaves the writable schema like
+   `efficiency_typical`, with any "best recorded power density" derived from structured physical
+   measurements of matching units and bases; seven regression controls.
+
+Result: revision c7ed65f08cbd — 340 entities · 507 claims · 218 sources · 89 pathways · 1 system ·
+751 routes · 75/75 · axe clean · exports valid · live.

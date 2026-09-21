@@ -209,6 +209,17 @@
   evidence: [source:bejan-2016, source:shaheed-2023-al-mosyab, source:nicol-2015-ieaccc-double-reheat]
   status: commercial
   knowledge_level: K8
+  auxiliary_requirements:
+    # pass 36: the feedwater pump is an internal cycle load off the route; it establishes no regime token — claim:expansion-drives is the cycle-level temperature-gradient abstraction and does not require the expansion pressure drop
+    - kind: recirculating-work
+      energy_form: mechanical
+      purpose: feedwater pump
+      establishes: []
+      conditions:
+        - "condensed working fluid is pumped from condenser pressure to boiler pressure before heat addition; pump work is an internal cycle load and whole-cycle net efficiency includes it"
+        - "Al-Mosyab Unit 3 (Shaheed, Mohammed & Radhi 2023, read in full): three main boiler feedwater pumps and three condensate pumps with a deaerator return the condensate to the 152 bar main-steam pressure; the boiler feed pump appears in the unit's exergy ledger (Table 4)"
+      evidence: [source:shaheed-2023-al-mosyab]
+      note: "recorded on the reviewer's pass-36 ruling; not on pathway:steam-engine (a generic spelling demonstrated by the Rankine transducer — a pathway-specificity item for a later architecture audit) and not on pathway:nuclear-steam-plant (which owes the pressure-drop provider and awaits a source review of its named architecture)"
   performance:
     # pass 35: efficiency_typical 0.38 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     # pass 35: efficiency_record 0.47 migrated to the Nordjylland 3 datum below (net, LHV, power-only, not annual); the display derives it
