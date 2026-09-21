@@ -246,6 +246,18 @@ test("the legacy performance audit's regression controls (loop-3 pass 35)", () =
   assert.doesNotMatch(pw("thermophotovoltaic").performance?.theoretical_limit ?? "", /projected/);
   assert.doesNotMatch(pw("solar-water-heater").performance?.theoretical_limit ?? "", /0\.9/);
   assert.match(pw("photosynthesis").performance?.theoretical_limit ?? "", /two-photosystem/);
+  // pass 39 closing: bounds only in the limit field; every model-scope datum says what kind it is; a measured datum is never model scope
+  for (const p of graph.pathways) assert.doesNotMatch(p.performance?.theoretical_limit ?? "", /Curzon|reach a few per cent|η\/η_Carnot|benchmark/, `${p.id}: a benchmark inside the limit field`);
+  const allData = graph.pathways.flatMap((p) => (p.performance?.measurements ?? []).map((m) => ({ p: p.id, ...m })));
+  for (const m of allData) {
+    if (m.scope === "model") assert.ok(["derived", "design-point", "simulated", "projected"].includes(m.datum_kind ?? ""), `${m.p}: model datum "${m.quantity}" carries its kind`);
+    else assert.ok(!m.datum_kind || m.datum_kind === "measured" || m.datum_kind === "derived", `${m.p}: physical datum "${m.quantity}" is measured or derived`);
+  }
+  assert.throws(
+    () =>
+      Measurement.parse({ quantity: "x", value: "0.1", value_numeric: 0.1, unit: "1", metric: "conversion-efficiency", scope: "device", conditions: "", sources: ["source:s"], datum_kind: "guessed" }),
+    /datum_kind/,
+  );
   // The combined cycle's efficiency exists only as a structured system measurement.
   assert.equal(graph.pathways.filter((p) => JSON.stringify(p).includes("0.4693")).length, 0);
   assert.ok(graph.systems.some((s) => (s.performance?.measurements ?? []).some((m) => m.value_numeric === 0.4693)));

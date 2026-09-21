@@ -326,6 +326,22 @@ export function loadCanon(root: string): Canon {
   };
   for (const p of pathways) checkDensity(p.id, p.performance?.measurements ?? []);
   for (const s of systems) checkDensity(s.id, s.performance?.measurements ?? []);
+  // Pass 39: a model-scope datum must say what kind of model datum it is; a measured datum is never model scope;
+  // a Carnot-relative efficiency names the bound it is relative to.
+  const MODEL_KINDS = new Set(["derived", "design-point", "simulated", "projected"]);
+  const checkKinds = (owner: string, ms: { quantity: string; scope: string; datum_kind?: string; metric?: string; reference_constraint?: string }[]) => {
+    for (const m of ms) {
+      if (m.scope === "model" && (!m.datum_kind || !MODEL_KINDS.has(m.datum_kind)))
+        problems.push(`${owner}: "${m.quantity}" is model scope and must carry datum_kind derived | design-point | simulated | projected`);
+      if (m.scope !== "model" && (m.datum_kind === "design-point" || m.datum_kind === "simulated" || m.datum_kind === "projected"))
+        problems.push(`${owner}: "${m.quantity}" is ${m.datum_kind} and must be scope model`);
+      if (m.metric === "carnot-relative-efficiency" && m.reference_constraint !== "constraint:carnot-limit")
+        problems.push(`${owner}: "${m.quantity}" is a carnot-relative-efficiency and must name reference_constraint constraint:carnot-limit`);
+      if (m.reference_constraint && !entityIds.has(m.reference_constraint)) problems.push(`${owner}: unknown reference_constraint ${m.reference_constraint}`);
+    }
+  };
+  for (const p of pathways) checkKinds(p.id, p.performance?.measurements ?? []);
+  for (const s of systems) checkKinds(s.id, s.performance?.measurements ?? []);
   // Pass 36: a pathway may supply a token whose registry entry says a provider needs explaining only when a
   // preceding step of its route supplies that token or an auxiliary requirement establishes it — otherwise a
   // pathway-level provider is unexplained self-certification (the gas turbine's pressure ratio comes from a

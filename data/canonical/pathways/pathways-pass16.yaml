@@ -233,6 +233,7 @@
       - quantity: predicted source cooling (finite-element model)
         value: "≈ 0.2 K in ≈ 50 s"
         scope: model
+        datum_kind: simulated
         conditions: "ten cantilevers with off-axis 0.5BZT–0.5BCT patches, 2 mm imposed tip motion, 324 K, 1.5 Hz; 0.02 K per element; ≈ 2 K predicted from 358 K"
         sources: [source:kumar-2019-vibration-refrigeration]
         year: 2019
@@ -425,6 +426,7 @@
         value_numeric: 0.00125
         unit: V
         scope: model
+        datum_kind: simulated
         conditions: "simulated closed 60 × 60 × 15,000 μm channel on a PZT substrate, the thickest membrane; 0.5 mV predicted for a 300 nm membrane"
         sources: [source:odukoya-naterer-2013-thermocapillary-mhe]
         year: 2013
@@ -436,6 +438,7 @@
         metric: conversion-efficiency
         basis: "analytical model with the electromechanical coupling factor and frictional irreversibilities, over the range of displacement considered"
         scope: model
+        datum_kind: simulated
         conditions: "the same simulated geometry"
         sources: [source:odukoya-naterer-2013-thermocapillary-mhe]
         year: 2013

@@ -94,7 +94,7 @@
   knowledge_level: K6
   performance:
     # pass 35: efficiency_typical 0.01 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
-    theoretical_limit: "Carnot for the temperature swing; Olsen cycles reach a few per cent of Carnot"
+    theoretical_limit: "Carnot between the thermal reservoirs defining the cycle."  # pass 39: the Olsen-cycle clause removed — reported performance relative to Carnot, not part of the bound; returns as a carnot-relative-efficiency datum once a named experiment is read
     # pass 37: power_density "µW–mW/cm² under thermal cycling at ~1 Hz" removed — a summary power density stays only as a structured measurement with its denominator and basis (the reviewer's ruling); the value stays in the audit record
   environment: [state-solid, transient-only]
   summary: A polar film cycled in temperature releases surface charge into a load.
@@ -108,7 +108,7 @@
   knowledge_level: K6
   performance:
     # pass 35: efficiency_typical 0.005 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
-    theoretical_limit: "Carnot; relative efficiency (η/η_Carnot) of a few per cent reported"
+    theoretical_limit: "Carnot between the hot and cold thermal reservoirs."  # pass 39: 'a few per cent of Carnot' from a review is not a datum — returns as a carnot-relative-efficiency measurement with reference_constraint once an exact value is read
     # pass 37: power_density "≈ 1–10 W/m² of electrode" removed — a summary power density stays only as a structured measurement with its denominator and basis (the reviewer's ruling); the value stays in the audit record
   environment: [env-aqueous, temp-gradient-required]
   summary: Two identical electrodes at different temperatures in one redox electrolyte.
@@ -142,6 +142,7 @@
         basis: "the same cycle with 50 % of the rejected heat assumed recuperated into the heating step"
         parameters: { T_h_K: 333.15, T_c_K: 283.15 }
         scope: model
+        datum_kind: derived
         conditions: "the same device and temperatures; the recuperation is an assumption, not a measured heat exchanger"
         sources: [source:lee-2014-trec]
         year: 2014
@@ -236,7 +237,7 @@
   performance:
     # pass 35: efficiency_typical 0.38 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     # pass 35: efficiency_record 0.47 migrated to the Nordjylland 3 datum below (net, LHV, power-only, not annual); the display derives it
-    theoretical_limit: "Carnot between the reservoirs a source defines; Curzon–Ahlborn is a benchmark at maximum power, never a bound"
+    theoretical_limit: "Carnot between the hot and cold reservoirs defined for the cycle."  # pass 39: the Curzon–Ahlborn clause removed — a benchmark at maximum power, typed as constraint:curzon-ahlborn-limit, never a bound
     measurements:
       - quantity: net plant electrical efficiency
         value: "47%"
@@ -269,6 +270,7 @@
         basis: "first-law efficiency of the cycle from the authors' Engineering Equation Solver model of the Unit 3 readings (Table 4, 'cycle' row); the heat input is the heat added to the working fluid (boiler thermal efficiency 94 % in the same table), not the fuel's NCV"
         parameters: { T_turbine_inlet_K: 812.15, T_cooling_water_inlet_K: 297.15 }
         scope: model
+        datum_kind: derived
         conditions: "derived from the actual 225 MW operating readings above; the same model gives second-law efficiency 34.91 % and exergy destruction 412.68 MW"
         sources: [source:shaheed-2023-al-mosyab]
         year: 2023
@@ -333,6 +335,7 @@
         basis: "as reported: the engineering-calibration check value of the 50 kW design (Table 2); the table's turbine output 50.3 kW and evaporator heat absorption 1608.56 kW do not reproduce it by simple ratio, so the definition is the authors'"
         parameters: { T_h_K: 301.15, T_c_K: 277.15 }
         scope: model
+        datum_kind: design-point
         conditions: "design point of a land-based 50 kW R134a organic-Rankine OTEC platform: 28 °C warm-seawater source, 4 °C cold-seawater source; Table 1 state points ≈ 24.6 °C / 645.8 kPa evaporation and ≈ 8 °C / 387.6 kPa condensation; check values warm seawater 191.49 kg/s, cold seawater 183.93 kg/s, working fluid 7.648 kg/s, turbine output 50.3 kW"
         sources: [source:lu-2024-otec-platform]
         year: 2024

@@ -42,3 +42,35 @@ retired from the writable schema like `efficiency_typical` and `power_density` b
 Result: revision 16c27619e704 — 341 entities · 508 claims · 221 sources · 90 pathways · 1 system ·
 751 routes · 84 demonstrated · 0 stored efficiency_typical / efficiency_record / power_density ·
 77/77 · axe clean · exports valid · live.
+
+## Reviewed (sent 5:29 pm; ChatGPT High, ~8 min, with web search; PIVOT — 41 findings) and applied (5:37–5:44 pm)
+
+1. The sweep accepted (finding 1).
+2. Bounds only (findings 2–7, 12): the Rankine limit is "Carnot between the hot and cold reservoirs
+   defined for the cycle." — Curzon–Ahlborn lives in `constraint:curzon-ahlborn-limit` (benchmark)
+   and nowhere in prose; the pyroelectric and thermogalvanic clauses ("Olsen cycles reach a few
+   per cent of Carnot", "η/η_Carnot of a few per cent reported") removed as reported performance,
+   not bounds; the thermoacoustic field already clean. The eventual retirement of
+   `theoretical_limit` in favour of the typed constraint graph goes on the backlog.
+3. Relative efficiency typed (findings 8–11): metric `carnot-relative-efficiency` with
+   `Measurement.reference_constraint`, required as `constraint:carnot-limit` (loader-checked); no
+   value migrated — "a few per cent of Carnot" from a review is not a datum.
+4. The epistemic discriminator (findings 13–19): no `projections[]`; `Measurement.datum_kind`
+   (measured | derived | design-point | simulated | projected; vocabulary `measurement.datum_kind`);
+   a model-scope datum must carry one of the last four and a measured datum is never model scope
+   (loader-checked, tested); the six model-scope data kinded — Shaheed's 39.3 % derived, Lu's 2.63 %
+   design-point, Kumar's FEA and the thermocapillary micro-engine's simulated, the TREC 5.7 %
+   derived; numeric projections never live only in `notes`, which stays interpretation.
+5. Pass 40 set (findings 20–41): the PWR as a system, after these hygiene changes — a new
+   `phenomenon:advective-heat-transport` with `claim:temperature-drives-advective-heat-transport`
+   (no Fourier relation) and `claim:advective-heat-transport-produces-heat-flow`, because the
+   primary loop's bulk enthalpy transport is not conduction; `pathway:pwr-primary-heat-delivery`
+   (commercial, K8) with a reactor-coolant-pump auxiliary; `output:useful-heat` widened; handoff kind
+   `transferred-heat`; `SystemHandoff.through` naming `transducer:pwr-steam-generator`;
+   `system-pathway:pressurized-water-reactor-steam-plant` (commercial; primary-heat-loop /
+   secondary-steam-cycle members; only the secondary's electricity exported); the loader invariant
+   that a member's terminal output may be omitted only when a handoff of the same energy form
+   consumes it; the route count expected to change and to be enumerated, never suppressed.
+
+Result: revision 97188d6a02f8 — 341 entities · 508 claims · 221 sources · 90 pathways · 1 system ·
+751 routes · 77/77 · axe clean · exports valid · live.

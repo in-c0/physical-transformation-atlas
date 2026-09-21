@@ -28,6 +28,7 @@ import {
   AUXILIARY_KINDS,
   NORMALIZATION_KINDS,
   NORMALIZATION_BASES,
+  DATUM_KINDS,
   SYSTEM_HANDOFF_KINDS,
   SYSTEM_HANDOFF_STATUSES,
   SYSTEM_OUTPUT_AGGREGATIONS,
@@ -228,6 +229,18 @@ export const VOCABULARY: VocabularyEnum[] = [
       "recirculating-work": "work the implementation takes from its own output stream to establish a condition its route needs (a gas turbine's compressor driven from the turbine shaft)",
       "parasitic-load": "a load the implementation carries that does not establish a route condition (fans, controls, pumps that only move fluid)",
       "external-input": "an input supplied from outside the implementation (grid power to a start-up motor, a purge gas)",
+    }),
+  },
+  {
+    name: "measurement.datum_kind",
+    used_in: ["pathways[].performance.measurements[].datum_kind", "systems[].performance.measurements[].datum_kind"],
+    terms: define(DATUM_KINDS, {
+      measured: "instrumentally observed on a physical device, module, system, plant, laboratory or field setup — absent on a physical-scope datum means measured",
+      derived:
+        "calculated from physical measurements (an energy balance of plant readings, a cycle efficiency with an assumed recuperation); keeps the physical scope of the system it derives from, or scope model when fundamentally model-derived",
+      "design-point": "an engineering design or calibration target (scope model)",
+      simulated: "a numerical or model output (scope model)",
+      projected: "forecast performance under stated hypothetical improvements (scope model); recorded only when the source defines value, architecture, assumptions and basis",
     }),
   },
   {

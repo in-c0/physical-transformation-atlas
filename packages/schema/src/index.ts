@@ -186,6 +186,8 @@ export const BOUND_METRICS = [
   "power-density",
   /** An absolute power (W) — a measured output with no normalisation; never called a density (pass 37). */
   "power",
+  /** Actual or calculated conversion efficiency divided by the Carnot efficiency evaluated between the same stated hot and cold temperatures (pass 39); requires reference_constraint. */
+  "carnot-relative-efficiency",
   "current-density",
   "work-per-volume",
   "work",
@@ -547,6 +549,9 @@ export const Normalization = z.object({
 });
 export type Normalization = z.infer<typeof Normalization>;
 
+export const DATUM_KINDS = ["measured", "derived", "design-point", "simulated", "projected"] as const;
+export type DatumKind = (typeof DATUM_KINDS)[number];
+
 export const Measurement = z.object({
   quantity: z.string(), // e.g. "module efficiency", "power density", "open-circuit voltage"
   value: z.string(), // keep as written in the source, e.g. "12%", "1.2 W/cm²", "≈ 6 µV/K"
@@ -557,6 +562,16 @@ export const Measurement = z.object({
   basis: z.string().optional(),
   /** Pass 37: what a density is normalised to; required for a density metric, null or absent for an absolute power (loader-checked). */
   normalization: Normalization.nullable().optional(),
+  /** Pass 39: the bound a relative quantity is relative to — required for carnot-relative-efficiency (constraint:carnot-limit). */
+  reference_constraint: EntityId.optional(),
+  /**
+   * Pass 39: the epistemic kind of the datum. measured = instrumentally observed (physical scopes only);
+   * derived = calculated from physical measurements (their scope, or model when fundamentally model-derived);
+   * design-point = an engineering design or calibration target; simulated = a numerical or model output;
+   * projected = forecast performance under stated hypothetical improvements. The last three stay at scope model.
+   * Absent on a physical-scope datum means measured; a model-scope datum must say which it is (loader-checked).
+   */
+  datum_kind: z.enum(DATUM_KINDS).optional(),
   parameters: MeasurementParameters.optional(),
   scope: z.enum(["material", "device", "module", "system", "plant", "laboratory", "field", "model"]),
   conditions: z.string(), // regime: temperatures, load, irradiance, geometry
