@@ -35,6 +35,7 @@ tags:
   - { id: humidity-required, description: requires a humidity or moisture difference, label: humidity difference required, default_scope: environment }
   - { id: transient-only, description: produces output only while the driving quantity changes, label: transient only, default_scope: medium }
   - { id: charged-surface-required, description: requires a charged solid boundary (an electric double layer at a wall or channel surface) in contact with the moving liquid, label: charged surface required, default_scope: boundary }
+  - { id: env-radiative-sky-access, description: "requires line-of-sight radiative coupling to a colder sky or environment through the relevant atmospheric transmission window; clouds and atmospheric absorption can weaken or close that channel", label: radiative access to cold sky, default_scope: environment }
 exclusive_groups:
   - { id: material-state, members: [state-solid, state-liquid, state-gas, state-plasma], scope: medium, rule: "at most one state tag may describe the same active-medium region; multiphase devices represent phases as different regions joined by an interface" }
   - { id: temperature-regime, members: [temp-cryogenic, temp-room, temp-high], scope: medium, rule: "at most one may apply to the same medium region at the same time" }

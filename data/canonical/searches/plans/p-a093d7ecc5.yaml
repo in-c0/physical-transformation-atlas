@@ -16,7 +16,23 @@ phenomenon_terms:
   phenomenon:thermal-expansion: [thermal expansion, thermal strain, thermoelastic strain, thermal expansion gradient]
   phenomenon:flexoelectric-effect: [flexoelectric effect, flexoelectricity, flexoelectric, strain-gradient polarization, thermopolarization, thermoflexoelectric effect, thermo-flexoelectric effect, thermoflexoelectricity]
 output_terms: [electrical work, electricity, electrical output, DC power]
+# Composition terms (route-search-v1 composite-name form, pass 27): the field's names for the whole composition.
+composition_terms:
+  - { term: thermoflexoelectric effect, evidence: [source:wei-2024-thermoflexoelectric-pn-junction] }
+  - { term: thermo-flexoelectric effect, evidence: [source:wei-2024-thermoflexoelectric-pn-junction] }
+  - { term: thermoflexoelectricity, evidence: [source:wei-2024-thermoflexoelectric-pn-junction] }
+  - { term: thermopolarization, evidence: [source:iwakiri-2026-thermopolarization], broad: true }
 runs:
+  - id: search:2026-09-21-p-a093d7ecc5/oa-cn
+    engine: openalex
+    form: route-composite-name
+    key: composite-name
+    query: '("thermoflexoelectric effect" OR "thermo-flexoelectric effect" OR thermoflexoelectricity OR thermopolarization)'
+  - id: search:2026-09-21-p-a093d7ecc5/s2-cn
+    engine: semantic-scholar
+    form: route-composite-name
+    key: composite-name
+    query: thermoflexoelectric effect thermo-flexoelectric effect thermoflexoelectricity thermopolarization
   - id: search:2026-09-21-p-a093d7ecc5/oa-dm1
     engine: openalex
     form: route-driver-mechanism

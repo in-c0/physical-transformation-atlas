@@ -250,6 +250,7 @@ Used in: `searches[].runs[].query_form`, `search_runs[].runs[].query_form`
 - `route-mechanism-pair` — route-search-v1, key mechanism-pair:i-(i+1): two consecutive conversion phenomena's terms (one run per consecutive pair)
 - `route-whole-chain` — route-search-v1, key whole-chain: driver AND every conversion phenomenon AND the output
 - `route-demonstration-precision` — route-search-v1, key demonstration-precision: the whole chain AND experiment/experimental/measured/device/prototype
+- `route-composite-name` — route-search-v1, key composite-name (pass 27): the OR of the plan's frozen composition_terms — the field's own names for the composition, each supported by a recorded source — with no driver, mechanism or output term required; mandatory on every engine once any term is frozen, screened at driver-mechanism depth; supplements, never replaces, the decomposed forms
 
 ## `search.hit_decision`
 

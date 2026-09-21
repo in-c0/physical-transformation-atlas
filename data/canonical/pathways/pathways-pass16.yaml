@@ -511,3 +511,33 @@
   environment: [state-gas, temp-gradient-required]
   summary: A thermoacoustic engine's sound field strains a piezoelectric nanofibre membrane, whose charge runs a load — the piezoelectric sibling of the linear-alternator generator, recorded from the authors' engine-driven run. The authors call the membrane "acoustoelectric"; the atlas keeps that name for Weinreich carrier drag, a different coupling. The earlier demonstration is Smoker et al. 2012, a standing-wave resonator exciting a piezoelectric diaphragm, validated on a prototype without published output figures.
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 25 (known device recorded from the abstract; the second reader ruled it wrong-coupling for the acoustoelectric route)" }
+# Loop-3 pass 27: the third thermoacoustic electrical converter after the alternator and the piezoelectric membrane.
+- id: pathway:thermoacoustic-triboelectric-harvester
+  name: Thermoacoustic triboelectric harvester
+  steps: [claim:thermoacoustic-drives, claim:thermoacoustic-produces-sound, claim:acoustic-wave-drives-triboelectric, claim:tribo-produces-charge, claim:surface-charge-converts-electricity]
+  demonstrated_with: [transducer:thermoacoustic-triboelectric-harvester]
+  evidence: [source:li-2026-thermoacoustic-teng]
+  status: demonstrated
+  knowledge_level: K6
+  performance:
+    measurements:
+      - quantity: electrical power (peak)
+        value: "0.49 mW"
+        value_numeric: 0.00049
+        unit: W
+        scope: laboratory
+        conditions: "piston-assisted thermoacoustic engine driving a honeycomb freestanding contact-separation triboelectric nanogenerator at an 80 MΩ load; stable oscillation at heating temperatures around 150 °C"
+        sources: [source:li-2026-thermoacoustic-teng]
+        year: 2026
+      - quantity: operating temperature
+        value: "≈ 150 °C heating"
+        value_numeric: 423
+        unit: K
+        scope: laboratory
+        conditions: "the heating temperature at which the engine's self-sustained oscillation is stable"
+        sources: [source:li-2026-thermoacoustic-teng]
+        year: 2026
+        note: "storage observed separately, not recorded as power: four stacked units charged 1 μF to 17.05 V in 10 s and, with power management, ran a wireless temperature sensor"
+  environment: [state-gas, temp-gradient-required]
+  summary: A thermoacoustic engine produces pressure oscillations that actuate a piston-coupled contact–separation triboelectric generator; the electrical output powers storage and a wireless sensor.
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 27 (the second reader's spelling; the piston is apparatus at the gas–solid boundary, recorded as an interface)" }

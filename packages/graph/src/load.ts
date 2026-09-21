@@ -179,6 +179,8 @@ export function loadCanon(root: string): Canon {
           const k = mechanisms.length;
           const required = ["driver-mechanism:1", ...Array.from({ length: Math.max(0, k - 1) }, (_, i) => `mechanism-pair:${i + 1}-${i + 2}`), "whole-chain", "demonstration-precision"];
           if (s.protocol_version !== "route-search-v1") problems.push(`${s.id}: a route negative requires protocol_version route-search-v1`);
+          // Pass 27: once a composition term is frozen, the composite-name form is mandatory on every engine too.
+          if (s.composition_terms.length > 0) required.push("composite-name");
           for (const engine of MANDATORY_ENGINES) {
             const keys = new Set(s.runs.filter((r) => r.engine === engine).map((r) => r.query_key));
             const missing = required.filter((key) => !keys.has(key));
@@ -270,6 +272,7 @@ export function loadCanon(root: string): Canon {
     for (const t of p.environment) if (!tagIds.has(t)) problems.push(`${p.id}: unknown condition tag ${t}`);
   }
   for (const s of [...searches, ...searchRuns]) {
+    for (const t of s.composition_terms) for (const src of t.evidence) if (!sourceIds.has(src)) problems.push(`${s.id}: composition term "${t.term}" cites unknown source ${src}`);
     if (s.target.kind === "cell") {
       if (!entityIds.has(s.target.row)) problems.push(`${s.id}: unknown row ${s.target.row}`);
       if (!entityIds.has(s.target.col)) problems.push(`${s.id}: unknown col ${s.target.col}`);

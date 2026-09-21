@@ -151,6 +151,8 @@
   subject: disequilibrium:temperature-gradient
   predicate: drives
   object: phenomenon:heat-conduction
+  condition_requirements:
+    - { tag: temp-gradient-required, scope: medium, region: conducting-medium }
   energy: { input: thermal, output: thermal }
   relation:
     formula: "q = −κ · ∇T"
@@ -284,6 +286,19 @@
   evidence: [source:zheng-2022-thermoacoustic-pan, source:smoker-2012-thermoacoustic-piezoelectric]
   status: demonstrated
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 25 (the consumer the thermoacoustic piezoelectric harvester needs; Zheng 2022 abstract read)" }
+- id: claim:acoustic-wave-drives-triboelectric
+  subject: carrier:acoustic-wave
+  predicate: drives
+  object: phenomenon:triboelectric-effect
+  conditions:
+    - "the acoustic pressure oscillation is mechanically coupled through a movable piston, diaphragm, rolling element or liquid interface so that the triboelectric surfaces undergo repeated contact–separation or sliding motion"
+  condition_requirements:
+    - { tag: state-solid, scope: medium, region: triboelectric-element }
+    - { tag: medium-dielectric, scope: medium, region: triboelectric-element }
+  energy: { input: acoustic, output: electrical, dissipation: thermal }
+  evidence: [source:li-2026-thermoacoustic-teng]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 27 (the piston is non-converting coupling apparatus inside the acoustic → triboelectric condition; Li 2026 abstract read)" }
 - id: claim:acoustic-drives-linear-alternator
   subject: carrier:acoustic-wave
   predicate: drives
@@ -883,6 +898,8 @@
   predicate: drives
   object: phenomenon:thermal-emission
   conditions: [an emitter hotter than the surface it faces]
+  condition_requirements:
+    - { tag: temp-gradient-required, scope: medium, region: emitter }
   energy: { input: thermal, output: radiative }
   evidence: [source:bejan-2016, source:landsberg-tonge-1980]
   status: established
@@ -915,6 +932,8 @@
   conditions:
     - an emitter with high emissivity in the 8–13 µm window and high solar reflectance
     - a clear sky; humidity and cloud close the window
+  condition_requirements:
+    - { tag: env-radiative-sky-access, scope: environment, region: sky-path }
   energy: { input: radiative, output: thermal }
   evidence: [source:raman-2014, source:zhai-2017-radiative, source:kou-2017-radiative]
   status: replicated

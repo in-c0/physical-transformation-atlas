@@ -207,6 +207,7 @@ if (onlyPath) {
     driver_terms: string[];
     phenomenon_terms: Record<string, string[]>;
     claims?: string[];
+    composition_terms?: { term: string; evidence: string[]; broad?: boolean }[];
     runs: { id: string; engine: "openalex" | "semantic-scholar"; form: SearchRun["query_form"]; key?: string; sort?: "relevance" | "newest"; per_page?: number; query: string }[];
     notes?: string;
   };
@@ -256,6 +257,7 @@ if (onlyPath) {
     driver_terms: plan.driver_terms,
     family_terms: [],
     phenomenon_terms: plan.phenomenon_terms,
+    composition_terms: plan.composition_terms ?? [],
     runs,
     works: [...works.values()],
     screening_status: "not-reviewed",

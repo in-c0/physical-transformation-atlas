@@ -686,3 +686,18 @@
   evidence: [source:zheng-2022-thermoacoustic-pan]
   status: demonstrated
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 25 (abstract read)" }
+# Loop-3 pass 27: the thermoacoustic triboelectric harvester.
+- id: claim:thermoacoustic-implemented-tribo-harvester
+  subject: phenomenon:thermoacoustic-effect
+  predicate: implemented_by
+  object: transducer:thermoacoustic-triboelectric-harvester
+  evidence: [source:li-2026-thermoacoustic-teng]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 27 (abstract read)" }
+- id: claim:tribo-implemented-thermoacoustic-harvester
+  subject: phenomenon:triboelectric-effect
+  predicate: implemented_by
+  object: transducer:thermoacoustic-triboelectric-harvester
+  evidence: [source:li-2026-thermoacoustic-teng]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 27 (abstract read)" }

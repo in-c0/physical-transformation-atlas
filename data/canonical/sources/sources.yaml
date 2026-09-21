@@ -1411,3 +1411,20 @@
   venue: "Journal of Applied Physics 111, 104901"
   doi: 10.1063/1.4712630
   notes: "Abstract read (Crossref). A one-dimensional thermoacoustic-piezoelectric resonator: a steep temperature gradient along an optimally placed porous stack drives self-sustained acoustic waves whose pressure fluctuations excite a piezoelectric diaphragm at the far end, converting acoustic to electrical energy with no moving parts; predicted with DeltaEC and validated on a small prototype (infrared temperature field, PIV flow field, microphone array, conversion efficiency). No output figures in the abstract."
+# Loop-3 pass 27: the thermoacoustic triboelectric harvester and its liquid-metal sibling, found by the acoustoelectric route's OpenAlex run.
+- id: source:li-2026-thermoacoustic-teng
+  type: paper
+  title: "High-temperature energy harvesting via thermoacoustic-triboelectric hybridization: Design, modelling, and application demonstration"
+  authors: [Y. Li, Y. Wang, H. Tang, L. Dong, B. Ning, G. Chen, G. Hu]
+  year: 2026
+  venue: "Nano Energy 155, 112082"
+  doi: 10.1016/j.nanoen.2026.112082
+  notes: "Abstract read on the publisher's page. A piston-assisted thermoacoustic engine integrated with a honeycomb-structured freestanding contact-separation triboelectric nanogenerator: a nonlinear CFD model of the onset; stable self-sustained oscillations at heating temperatures around 150 °C; peak power 0.49 mW at 80 MΩ; four stacked units charge 1 μF to 17.05 V in 10 s; with power management the harvested energy runs a wireless temperature sensor."
+- id: source:ahmed-2025-thermoacoustic-liquid-metal-teng
+  type: paper
+  title: "Time-domain modeling and experimental validation of an integrated thermoacoustic-liquid metal triboelectric nanogenerator"
+  authors: [F. Ahmed, G. Yu, A. Zou, E. Luo]
+  year: 2025
+  venue: "Energy 334, 137745"
+  doi: 10.1016/j.energy.2025.137745
+  notes: "Abstract read on the publisher's page. A thermoacoustic heat engine (self-sustained oscillation at 15 Hz, up to 31.3 W acoustic under 300 W heat input) integrated with a mercury–Kapton sliding-mode triboelectric nanogenerator: 18.8 V open-circuit and 3.2 μA short-circuit for one layer, 0.1 W m⁻² and 10.5 mA m⁻² with 32 stacked layers; a lumped acoustic-electric time-domain model validated on the experiment (onset temperature within 82.9 %). No solid moving parts — a gas–liquid boundary, physically distinct from the piston-coupled device."

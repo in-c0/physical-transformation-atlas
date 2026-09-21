@@ -2,20 +2,34 @@
 # adjacent claims (the handoff it carries) or within one claim (a boundary internal to a conversion step). A
 # demonstrated record resolves the region transition it names; a theoretical or proposed one is shown on the
 # route and leaves the boundary check unresolved. Kinds and statuses are enumerated in the schema.
-- id: interface:thermoacoustic-pan-membrane
+- id: interface:thermoacoustic-piezoelectric-gas-solid
   location: { between_claims: { from_claim: claim:thermoacoustic-produces-sound, to_claim: claim:acoustic-wave-drives-piezoelectric } }
   kind: gas-solid-acoustic-boundary
   from_region: resonator-gas
-  to_region: piezoelectric-membrane
+  to_region: piezoelectric-element
   carrier: carrier:acoustic-wave
   handoff_token: null
   relation: null
   conditions:
-    - the PAN membrane is directly exposed to the thermoacoustic pressure field; no active acoustic-to-acoustic transducer lies between the resonator gas and the membrane
-  evidence: [source:zheng-2022-thermoacoustic-pan]
+    - the resonator pressure field directly loads a solid piezoelectric membrane or diaphragm; no active intermediate acoustic transducer is required
+  evidence: [source:zheng-2022-thermoacoustic-pan, source:smoker-2012-thermoacoustic-piezoelectric]
   status: demonstrated
-  notes: "Zheng et al. directly drove the thermally stabilised PAN membrane with a mini thermoacoustic engine and obtained 102 V / 10 μA peak output; the paper does not report an incident-to-transmitted acoustic intensity coefficient for this boundary."
-  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 26 (the second reader's first interface record; abstract read)" }
+  notes: "Two geometries of one physical handoff: Zheng et al. 2022 drove a thermally stabilised PAN membrane in a mini engine's sound field (102 V / 10 μA peak); Smoker et al. 2012 placed a piezoelectric diaphragm at the opposite end of a standing-wave resonator and compared the integrated device with theory. Neither reports an incident-to-transmitted acoustic intensity coefficient. Renamed in pass 27 from interface:thermoacoustic-pan-membrane once the evidence covered both."
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 27 (renamed and widened to Smoker 2012 on the second reader's ruling; pass 26 wrote the PAN record)" }
+- id: interface:thermoacoustic-triboelectric-piston
+  location: { between_claims: { from_claim: claim:thermoacoustic-produces-sound, to_claim: claim:acoustic-wave-drives-triboelectric } }
+  kind: gas-solid-acoustic-boundary
+  from_region: resonator-gas
+  to_region: triboelectric-actuator
+  carrier: carrier:acoustic-wave
+  handoff_token: null
+  relation: null
+  conditions:
+    - thermoacoustic pressure oscillations mechanically drive the piston / contact-separation assembly without an intervening electrical transducer
+  evidence: [source:li-2026-thermoacoustic-teng]
+  status: demonstrated
+  notes: "The piston is apparatus at this boundary and adds no conversion phenomenon to the route. Ahmed et al. 2025 (a mercury–Kapton sliding TENG on a thermoacoustic engine, 18.8 V / 3.2 μA per layer) shows the family does not require a solid piston, but its gas–liquid–solid boundary is physically different and is not folded into this record."
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 27 (the second reader's fourth interface record; abstract read)" }
 - id: interface:mhd-plasma-electrodes
   location: { within_claim: claim:mhd-produces }
   kind: electrode-contact

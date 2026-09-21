@@ -222,7 +222,11 @@ test("scoped conditions and interface records (loop-3 pass 26): a demonstrated i
   const pan = paths.find((p) => p.pathway === "pathway:thermoacoustic-piezoelectric-harvester")!;
   assert.equal(boundary(pan).result, "pass");
   assert.equal(pan.implied_interface_count, 0);
-  assert.deepEqual(pan.interfaces_recorded.map((r) => [r.interface, r.status]), [["interface:thermoacoustic-pan-membrane", "demonstrated"]]);
+  assert.deepEqual(pan.interfaces_recorded.map((r) => [r.interface, r.status]), [["interface:thermoacoustic-piezoelectric-gas-solid", "demonstrated"]]);
+  // pass 27: the triboelectric sibling carries its own demonstrated piston boundary, and every demonstrated pathway is now boundary-pass
+  const tribo = paths.find((p) => p.pathway === "pathway:thermoacoustic-triboelectric-harvester")!;
+  assert.equal(boundary(tribo).result, "pass");
+  assert.deepEqual(tribo.interfaces_recorded.map((r) => r.interface), ["interface:thermoacoustic-triboelectric-piston"]);
   // (b) combustion MHD: the phase-neutral charge carrier manufactures no gas→solid conflict; the electrode boundary is recorded within the step
   const mhd = paths.find((p) => p.pathway === "pathway:mhd-generator")!;
   assert.equal(boundary(mhd).result, "pass");
@@ -244,7 +248,7 @@ test("scoped conditions and interface records (loop-3 pass 26): a demonstrated i
   assert.equal(generic.interfaces_recorded.length, 0);
   // every demonstrated pathway is either boundary-pass or honestly unknown (no scoped requirements); never an anonymous implied interface
   for (const p of paths.filter((q) => q.search_status === "demonstrated")) {
-    assert.ok(["pass", "unknown"].includes(boundary(p).result), `${p.pathway}: ${boundary(p).detail}`);
+    assert.equal(boundary(p).result, "pass", `${p.pathway}: ${boundary(p).detail}`);
     assert.equal(p.implied_interface_count, 0, `${p.pathway} shows an unrecorded interface`);
   }
 });

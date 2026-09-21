@@ -119,6 +119,20 @@ these conditions fulfils the same mandatory `query_key` as the expanded form. Th
 (about 32 words on 21/09/2026) is recorded in the run's note, not here: the invariant is concept
 preservation, not a Scholar threshold.
 
+Composite-name form. Some literatures name a multi-step composition with a single established
+term while omitting one or more constituent mechanism names from titles and abstracts. A route plan
+may therefore freeze `composition_terms`, each supported by at least one recorded source showing
+that the term denotes a process or device spanning at least two concepts in the target composition.
+When `composition_terms` is non-empty, every discovery engine must run `route-composite-name`, key
+`composite-name`, as the OR of those frozen terms without requiring D, M_i or O to appear separately.
+This form supplements and never replaces the decomposed route forms. Screen it at the same depth as
+`route-driver-mechanism`. A composition term discovered during screening may be added with its
+source and a recorded plan revision; after that addition the composite-name form becomes mandatory
+before a protocol-complete negative may be issued. A composition term is route vocabulary, not an
+alias of any constituent entity, and a phrase synthesised by concatenating mechanism names does not
+qualify; a term marked `broad` (one the literature also uses for other compositions) is run all the
+same and screened for the target route.
+
 Scholar throttling and continuation. A mandatory Google Scholar query may be screened over
 multiple sittings when CAPTCHA, throttling or session limits interrupt pagination. Each
 continuation stores the same `query_key` and literal query, a `segment` number, the result

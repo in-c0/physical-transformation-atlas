@@ -557,7 +557,18 @@ export const QUERY_FORMS = [
   "route-mechanism-pair",
   "route-whole-chain",
   "route-demonstration-precision",
+  /** route-search-v1 (loop-3 pass 27): the field's own names for the composition, OR-ed, with no constituent vocabulary required. */
+  "route-composite-name",
 ] as const;
+
+/**
+ * A composition term (pass 27): an established literature name for a multi-step composition, frozen on a
+ * route plan or record only when a recorded source uses it for a process or device spanning at least two of
+ * the target route's concepts. Route vocabulary, never an alias of a constituent entity; when any is frozen,
+ * the composite-name form becomes mandatory on every engine before a protocol-complete negative.
+ */
+export const CompositionTerm = z.object({ term: z.string().min(1), evidence: z.array(SourceId).min(1), broad: z.boolean().optional() });
+export type CompositionTerm = z.infer<typeof CompositionTerm>;
 /**
  * route-only: a real experiment, but the driver reaches the family through a separately resolvable
  * intermediate conversion — evidence for a route, not for a direct cell relation. The four route
@@ -642,6 +653,8 @@ export const SearchRecord = z.object({
   started_at: isoDateTime,
   completed_at: isoDateTime,
   objective: z.enum(["direct-relation", "exact-composition", "claim-verification"]),
+  /** Frozen composition terms (route-search-v1 composite-name form, pass 27); empty when the field has no such name. */
+  composition_terms: z.array(CompositionTerm).default([]),
   inclusion_criteria: z.array(z.string()).min(1),
   exclusion_criteria: z.array(z.string()).min(1),
   runs: z.array(SearchRun).min(1),
@@ -689,6 +702,7 @@ export const AutomatedSearchRun = z.object({
   driver_terms: z.array(z.string()),
   family_terms: z.array(z.string()),
   phenomenon_terms: z.record(z.string(), z.array(z.string())).default({}),
+  composition_terms: z.array(CompositionTerm).default([]),
   runs: z.array(SearchRun).min(1),
   works: z
     .array(
