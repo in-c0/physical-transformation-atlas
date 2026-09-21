@@ -24,6 +24,16 @@ import type { AutomatedSearchRun, Entity, SearchRun } from "@pta/schema";
 
 const root = resolve(import.meta.dirname, "..", "..");
 const outFile = join(root, "data", "generated", "search-runs.json");
+// Keys the owner keeps in <root>/.env (git-ignored): OPENALEX_API_KEY, OPENALEX_MAILTO, S2_API_KEY. Read here so
+// no invocation flag is needed; a value already in the environment wins. Nothing from it is ever written out.
+{
+  const envFile = join(root, ".env");
+  if (existsSync(envFile))
+    for (const line of readFileSync(envFile, "utf8").split(/\r?\n/)) {
+      const m = line.match(/^\s*([A-Z0-9_]+)\s*=\s*"?([^"#]*?)"?\s*(#.*)?$/);
+      if (m && !(m[1] in process.env)) process.env[m[1]] = m[2];
+    }
+}
 const all = process.argv.includes("--all");
 const limitArg = process.argv.indexOf("--limit");
 const limit = limitArg >= 0 ? Number(process.argv[limitArg + 1]) : Infinity;
@@ -41,7 +51,9 @@ const planFile = planArg >= 0 ? process.argv[planArg + 1] : undefined;
 const PER_PAGE = 100;
 
 const prev: AutomatedSearchRun[] = existsSync(outFile) ? JSON.parse(readFileSync(outFile, "utf8")) : [];
-const keyOf = (r: AutomatedSearchRun) => (r.target.kind === "cell" ? `${r.target.row}|${r.target.col}` : r.target.kind === "path" ? `path|${r.target.path}` : `claim|${r.target.claim}`);
+// Route bundles are keyed by their id (which carries the run date), so a rerun on a later day — after new aliases,
+// as in loop-3 pass 27 — is added beside the frozen list a reviewed record already cites, never over it.
+const keyOf = (r: AutomatedSearchRun) => (r.target.kind === "cell" ? `${r.target.row}|${r.target.col}` : r.target.kind === "path" ? `path|${r.target.path}|${r.id}` : `claim|${r.target.claim}`);
 const byKey = new Map(prev.map((r) => [keyOf(r), r]));
 
 /** Names and aliases usable as search terms: multi-word phrases quoted, symbols and one-letter aliases dropped. */
@@ -89,8 +101,12 @@ async function openalex(query: string, runId: string, opts: { sort?: "relevance"
   // OpenAlex serves its "polite pool" (faster, rarely throttled) to requests that carry a contact
   // address. Set OPENALEX_MAILTO to opt in; the address never lands in the dataset.
   if (process.env.OPENALEX_MAILTO) url.searchParams.set("mailto", process.env.OPENALEX_MAILTO);
+  // A free OpenAlex API key (loop-3 pass 27) has its own daily budget and is not paused when the anonymous
+  // search pool is; set OPENALEX_API_KEY to use one. It travels as a header and never lands in the dataset.
+  const headers: Record<string, string> = { "User-Agent": "physical-transformation-atlas/0.2 (literature index pipeline)" };
+  if (process.env.OPENALEX_API_KEY) headers.Authorization = `Bearer ${process.env.OPENALEX_API_KEY}`;
   const executed_at = new Date().toISOString();
-  const r = await fetch(url, { headers: { "User-Agent": "physical-transformation-atlas/0.2 (literature index pipeline)" }, signal: AbortSignal.timeout(20000) });
+  const r = await fetch(url, { headers, signal: AbortSignal.timeout(20000) });
   if (!r.ok) return { error: `HTTP ${r.status}`, status: r.status };
   const j = (await r.json()) as {
     meta: { count: number };
