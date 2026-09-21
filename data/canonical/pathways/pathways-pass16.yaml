@@ -85,7 +85,7 @@
   status: prototype
   knowledge_level: K6
   performance:
-    theoretical_limit: "Carnot between the hot and cold sections; the paper places the device near 20 % of the Carnot efficiency for its temperature drop"
+    # pass 42: theoretical_limit retired (already-typed, removed) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
     measurements:
       - quantity: extracted electrical power per kelvin
         value: "up to 10.4 μW/K"
@@ -181,7 +181,8 @@
   status: proposed
   knowledge_level: K3
   performance:
-    theoretical_limit: "Carnot between the hot and cold ends of the free surface; Pini, Baier and Dietzel compare the maximal thermal efficiency with it and find thermocapillary drive limited by the heat capacity of aqueous solvents"
+    # pass 42: theoretical_limit retired (already-typed, removed) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
+    notes: "Pini, Baier and Dietzel (2015) compare the maximal thermal efficiency of the thermocapillary drive with the Carnot value and find it limited by the heat capacity of aqueous solvents — the source's own analysis, not a bound of the atlas."
   environment: [state-liquid, env-aqueous, temp-gradient-required, charged-surface-required]
   summary: A temperature gradient along a free electrolyte surface drives a thermocapillary shear flow past a charged wall, whose streaming potential is the electrical output. Analysed theoretically and numerically; no physical demonstration is recorded, so the route stays a candidate.
   review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 16 (frontier candidates audited as physics; abstract read)" }
@@ -192,8 +193,8 @@
   status: proposed
   knowledge_level: K3
   performance:
-    theoretical_limit: "the same analysis finds concentration-driven (destillocapillary) flows more promising than thermocapillary ones"
-    notes: "Zhang et al. 2026 physically demonstrated a graphene-oxide evaporator in which a programmed chemical/surface-tension gradient sustained Marangoni microcirculation alongside capillary flow while the device delivered 25 μA short-circuit current, 0.7 V open-circuit voltage and powered an LED. Route review: driver-only-modifies because capillary and Marangoni transport are simultaneous co-drivers and the electrical contribution of the Marangoni branch was not isolated. Its figures belong to the combined device and are not recorded here."
+    # pass 42: theoretical_limit retired (not-a-bound, noted) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
+    notes: "Pini, Baier and Dietzel (2015) find concentration-driven (destillocapillary) flows more promising than thermocapillary ones — a finding of the source, not a bound. Zhang et al. 2026 physically demonstrated a graphene-oxide evaporator in which a programmed chemical/surface-tension gradient sustained Marangoni microcirculation alongside capillary flow while the device delivered 25 μA short-circuit current, 0.7 V open-circuit voltage and powered an LED. Route review: driver-only-modifies because capillary and Marangoni transport are simultaneous co-drivers and the electrical contribution of the Marangoni branch was not isolated. Its figures belong to the combined device and are not recorded here."
   environment: [state-liquid, env-aqueous, charged-surface-required]
   summary: A surfactant-concentration difference along a free electrolyte surface drives a solutocapillary shear flow past a charged wall, whose streaming potential is the electrical output. Theoretical and numerical only; the route stays a candidate — the nearest physical device (Zhang 2026) runs the Marangoni flow as a co-driver beside capillary transport.
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 22 (Zhang 2026 abstract read; the co-driver device recorded as a note under the parallel-driver rule)" }

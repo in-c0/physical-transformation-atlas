@@ -519,6 +519,8 @@ export const MEASUREMENT_PARAMETERS = {
   V: "applied or generated voltage, V",
   d: "a characteristic length the bound's formula names, m",
   delta_G_J: "Gibbs free-energy change of the reaction, J",
+  delta_G_kJ_per_mol: "Gibbs free-energy change of the cell reaction, kJ/mol (pass 42: an input of the ΔG/ΔH bound)",
+  delta_H_kJ_per_mol: "enthalpy change of the cell reaction on the datum's heating-value basis, kJ/mol (pass 42)",
   k_squared: "electromechanical coupling factor squared, dimensionless",
 } as const;
 export type MeasurementParameter = keyof typeof MEASUREMENT_PARAMETERS;
@@ -625,6 +627,21 @@ export const AuxiliaryRequirement = z.object({
 });
 export type AuxiliaryRequirement = z.infer<typeof AuxiliaryRequirement>;
 
+/**
+ * A pathway-specific bound (loop-3 pass 42): a typed constraint that holds for this exact reviewed architecture and
+ * would overgeneralise if attached to any constituent phenomenon. An escape hatch, never a second place to restate a
+ * generic bound: the loader refuses a constraint already reachable through the route's bounded_by claims, and only an
+ * upper-bound or formula-bound constraint may be named. The entity keeps the formula, metric, applicability and basis;
+ * the entry says only why it applies here, with evidence.
+ */
+export const PathwayBound = z.object({
+  constraint: EntityId,
+  evidence: z.array(SourceId).min(1),
+  conditions: z.array(z.string()).default([]),
+  note: z.string().nullable().default(null),
+});
+export type PathwayBound = z.infer<typeof PathwayBound>;
+
 const PathwayBase = z.object({
   id: PathwayId,
   name: z.string(),
@@ -655,16 +672,20 @@ const PathwayBase = z.object({
    * and no preceding step supplies it.
    */
   auxiliary_requirements: z.array(AuxiliaryRequirement).default([]),
+  /** Pass 42: bounds valid only for this exact architecture (see PathwayBound); generic bounds live on phenomena as bounded_by claims. */
+  bounds: z.array(PathwayBound).default([]),
   knowledge_level: z.enum(KNOWLEDGE_LEVELS),
   performance: z
     .object({
-      // efficiency_typical was removed in loop-3 pass 35 and efficiency_record in pass 39: a record is a structured physical measurement, never a stored number; the display derives it.
-      theoretical_limit: z.string().optional(),
-      // power_density was removed in loop-3 pass 37: a power density lives only as a structured measurement with its denominator and basis.
+      // The four legacy summary surfaces are gone and the object is strict, so none can return: efficiency_typical (loop-3 pass 35),
+      // power_density (pass 37), efficiency_record (pass 39) and theoretical_limit (pass 42 — a limit lives in the typed constraint
+      // graph: a bounded_by claim on a phenomenon or a Pathway.bounds entry, never prose). A record is a structured measurement;
+      // the display derives every summary.
       notes: z.string().optional(),
       /** Auditable data: one record per number, with what was measured, under what regime, and where. */
       measurements: z.array(Measurement).default([]),
     })
+    .strict()
     .optional(),
   environment: z.array(Slug).default([]),
   summary: z.string(),

@@ -1673,3 +1673,20 @@
   venue: "NASA Technical Memorandum 79135 (E-9983); prepared for the 18th Symposium on the Engineering Aspects of Magnetohydrodynamics, Butte, Montana, June 18–20, 1979"
   url: https://ntrs.nasa.gov/citations/19790014726
   notes: "Read (open NTRS PDF, loop-3 pass 41 close). Cesium-seeded H₂–O₂ combustion MHD generator in a neon-cooled cryomagnet (fields above 5 T; peak used 5 T): the combustion chamber and nozzle are water-cooled copper, 'the nozzle is designed for Mach 2 at the 4.96 cm diameter exit', stagnation pressures 5–20 atm, feeding 'a diverging circular cross section duct having an inlet Mach number of 2' of 42 copper electrodes in a Hall configuration; power output proportional to the square of the B-field; 8.74 kW (run 407) rising to 11.7 kW (run 413) when the front power takeoff moved downstream. The channel velocity is the combustor's own gas-dynamic expansion — no separate pump or compressor supplies it."
+# Loop-3 pass 42: the typed bounds that replaced prose.
+- id: source:fuel-cell-handbook-2004
+  type: book
+  title: "Fuel Cell Handbook (Seventh Edition)"
+  authors: [EG&G Technical Services, Inc.]
+  year: 2004
+  venue: "U.S. Department of Energy, Office of Fossil Energy, National Energy Technology Laboratory, under contract DE-AM26-99FT40575, November 2004"
+  url: https://www.netl.doe.gov/sites/default/files/netl-file/FCHandbook7.pdf
+  notes: "Read (open NETL PDF, loop-3 pass 42), section 2.1–2.2. 'The ideal efficiency of a fuel cell, operating reversibly, is then η_ideal = ΔG/ΔH' (2-14); for H₂ + ½O₂ → H₂O(l) 'at standard conditions of 25 °C (298 K) and 1 atmosphere, the thermal energy (ΔH) in the hydrogen/oxygen reaction is 285.8 kJ/mole, and the free energy available for useful work is 237.1 kJ/mole. Thus, the thermal efficiency of an ideal fuel cell operating reversibly on pure hydrogen and oxygen at standard conditions is: η_ideal = 237.1/285.8 = 0.83' (2-17); 'for direct electrochemical oxidation of carbon ΔG is larger than ΔH, and consequently the ideal efficiency is slightly greater than 100 % when using this definition'. The ideal cell voltage at 1 atm, 25 °C is 1.229 V."
+- id: source:zhu-long-ort-2010
+  type: review
+  title: "Improving photosynthetic efficiency for greater yield"
+  authors: [X.-G. Zhu, S. P. Long, D. R. Ort]
+  year: 2010
+  venue: "Annual Review of Plant Biology 61, 235–261"
+  doi: 10.1146/annurev-arplant-042809-112206
+  notes: "DOI verified on Crossref and the abstract read (loop-3 pass 42); cited as reference 7 of Blankenship et al. 2011 (read in full) for the physiology-limited maxima of 4.6 % (C3) and 6.0 % (C4) after known losses in light harvesting, overpotentials and respiration — the review's own pages are not yet read."

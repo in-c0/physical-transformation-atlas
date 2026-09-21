@@ -238,6 +238,8 @@ Used in: `pathways[].performance.measurements[].parameters`
 - `V` — applied or generated voltage, V
 - `d` — a characteristic length the bound's formula names, m
 - `delta_G_J` — Gibbs free-energy change of the reaction, J
+- `delta_G_kJ_per_mol` — Gibbs free-energy change of the cell reaction, kJ/mol (pass 42: an input of the ΔG/ΔH bound)
+- `delta_H_kJ_per_mol` — enthalpy change of the cell reaction on the datum's heating-value basis, kJ/mol (pass 42)
 - `k_squared` — electromechanical coupling factor squared, dimensionless
 
 ## `path.magnitude_screen.status`

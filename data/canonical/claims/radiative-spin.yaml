@@ -575,3 +575,26 @@
   object: coupling:photovoltaic
   evidence: [source:spanier-2016]
   status: hypothesised
+# Loop-3 pass 42: the solar-to-fuel and photosynthesis bounds that lived only in theoretical_limit prose.
+- id: claim:pec-bounded-landsberg
+  subject: phenomenon:photoelectrochemical-effect
+  predicate: bounded_by
+  object: constraint:landsberg-limit
+  conditions: ["the universal ceiling on converting thermal (solar) radiation into a chemical fuel; the gap-pair-specific detailed-balance solar-to-hydrogen limit is lower and awaits its own curated model"]
+  evidence: [source:landsberg-tonge-1980, source:gratzel-2001]
+  status: established
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 42 (theoretical_limit retired into the typed constraint graph)" }
+- id: claim:photosynthesis-bounded-glucose-limit
+  subject: phenomenon:photosynthesis
+  predicate: bounded_by
+  object: constraint:photosynthesis-glucose-free-energy-limit
+  evidence: [source:blankenship-2011, source:zhu-long-ort-2010]
+  status: established
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 42 (Blankenship et al. 2011 read in full; Zhu, Long & Ort 2010 verified on Crossref)" }
+- id: claim:photosynthesis-benchmarked-physiological-maximum
+  subject: phenomenon:photosynthesis
+  predicate: governed_by
+  object: constraint:photosynthesis-physiological-maximum
+  evidence: [source:blankenship-2011, source:zhu-long-ort-2010]
+  status: established
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 42 (a benchmark, attached with governed_by like Curzon–Ahlborn: listed on a route, never decisive)" }

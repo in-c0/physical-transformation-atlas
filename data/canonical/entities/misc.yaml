@@ -707,3 +707,51 @@
   knowledge_level: K8
   summary: "A heat exchanger whose tubes separate pressurised primary reactor coolant from secondary water while transferring heat that boils the secondary water into turbine steam; the primary coolant never crosses into the secondary circuit."
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 40 (the second reader's finding 32; the NRC's PWR description read in full)" }
+# Loop-3 pass 42: the bounds that lived only in theoretical_limit prose, typed.
+- id: constraint:planck-visible-band-fraction
+  type: constraint
+  name: Visible-band fraction of thermal emission
+  bound: "η_vis ≤ ∫₃₈₀ⁿᵐ⁷⁸⁰ⁿᵐ B_λ(λ, T) dλ / σT⁴ — the share of a thermal emitter's radiated power that Planck's distribution places in the visible band at the emitter temperature"
+  constraint_kind: formula-bound
+  metric: conversion-efficiency
+  formula_inputs: [T_emitter_K]
+  applies_to_phenomena: [phenomenon:thermal-emission]
+  applies_to_outputs: [output:light]
+  summary: An incandescent source cannot put more of its radiated power into visible light than the Planck spectrum at its temperature contains there; the ceiling rises with temperature towards the ≈ 6600 K blackbody optimum and is a few per cent at filament temperatures. The band integral has no closed form, so the check records the bound as not evaluable until a band-fraction table or series is curated; a datum compared with it must state the emitter temperature.
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 42 (theoretical_limit retired into the typed constraint graph; Bejan 2016's thermal-radiation treatment cited for Planck's distribution)" }
+- id: constraint:gibbs-enthalpy-ratio-bound
+  type: constraint
+  name: Reversible electrochemical efficiency (ΔG/ΔH)
+  bound: "η ≤ ΔG/ΔH of the cell reaction; 237.1/285.8 = 0.83 for H₂ + ½O₂ → H₂O(l) at 25 °C, 1 atm (higher-heating-value basis)"
+  constraint_kind: formula-bound
+  metric: conversion-efficiency
+  formula: "delta_G_kJ_per_mol / delta_H_kJ_per_mol"
+  formula_inputs: [delta_G_kJ_per_mol, delta_H_kJ_per_mol]
+  reference_value: 0.83
+  reference_regime: "H₂ + ½O₂ → H₂O(l), 25 °C, 1 atm: ΔG 237.1 kJ/mol, ΔH 285.8 kJ/mol"
+  applies_to_outputs: [output:electricity]
+  summary: "An electrochemical converter operating reversibly delivers the Gibbs free-energy change of its reaction as electrical work, so its efficiency on the reaction enthalpy cannot exceed ΔG/ΔH — 83 % for hydrogen and oxygen at standard conditions with liquid water as the product. A ratio of the reaction's own thermochemistry, not of temperatures: for the direct oxidation of carbon ΔG exceeds ΔH and the ratio passes 100 %. Evaluated only against an efficiency datum that records both ΔG and ΔH of its reaction on the same basis."
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 42 (DOE Fuel Cell Handbook, 7th ed., equations 2-14 to 2-17 read)" }
+- id: constraint:photosynthesis-glucose-free-energy-limit
+  type: constraint
+  name: Photosynthetic glucose-production limit
+  bound: "η ≤ ≈ 12 % of incident solar energy stored as glucose free energy, for oxygenic photosynthesis from CO₂ and water under the chlorophyll band-edge and two-photosystem assumptions"
+  constraint_kind: upper-bound
+  metric: conversion-efficiency
+  max_efficiency: 0.12
+  requires_basis: "oxygenic photosynthesis, glucose from CO₂ and water, free-energy basis, full solar spectrum"
+  applies_to_sources: [disequilibrium:radiation-flux]
+  applies_to_phenomena: [phenomenon:photosynthesis]
+  summary: Blankenship et al. 2011 calculate a theoretical limit of about 12 % for the free-energy efficiency of photosynthetic glucose production from CO₂ and water by considering the chlorophyll band-edge absorption and the two-photosystem structure of oxygenic photosynthesis, whose two photosystems compete for the same regions of the solar spectrum. Compared only with a datum that states the same basis.
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 42 (Blankenship et al. 2011 read in full in pass 39; typed here)" }
+- id: constraint:photosynthesis-physiological-maximum
+  type: constraint
+  name: Physiology-limited photosynthetic maximum
+  bound: "≈ 4.6 % (C3) and 6.0 % (C4) of incident solar energy after the known losses in light harvesting, overpotentials and respiration"
+  constraint_kind: benchmark
+  metric: conversion-efficiency
+  reference_value: 0.06
+  reference_regime: "C4 plants; 4.6 % for C3 plants (Zhu, Long & Ort 2010, as cited by Blankenship et al. 2011)"
+  applies_to_phenomena: [phenomenon:photosynthesis]
+  summary: The maximum a plant can reach once the known physiological losses are subtracted from the ≈ 12 % free-energy limit — a benchmark for crops, never a ceiling on the phenomenon, so it is listed on a route and never decides it.
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 42 (typed from Blankenship et al. 2011's attribution to Zhu, Long & Ort 2010)" }

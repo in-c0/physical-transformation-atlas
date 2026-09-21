@@ -240,6 +240,12 @@ export function checkThermodynamicBound(ctx: PhysicsContext, claims: Claim[], pa
       for (const b of ctx.boundedBy(id)) bounds.set(b.constraint.id, b.constraint);
     }
   }
+  // Pass 42: the exact reviewed pathway's own architecture-specific bounds join the same pool and go through the same
+  // applicability / metric / basis machinery; the loader has already refused duplicates of reachable bounds.
+  for (const pb of pathway?.bounds ?? []) {
+    const e = ctx.entity(pb.constraint);
+    if (e && e.type === "constraint") bounds.set(e.id, e);
+  }
   const source = claims[0]?.subject;
   const sink = claims[claims.length - 1]?.object;
   const phenomena = new Set(claims.flatMap((c) => [c.subject, c.object]).filter((n) => ctx.entity(n)?.type === "phenomenon"));
@@ -530,15 +536,14 @@ export function checkPracticalMagnitude(pathway?: Pathway): CheckResult {
     if ((m.metric === "conversion-efficiency" || m.metric === "power-coefficient") && (m.value_numeric! < 0 || m.value_numeric! > 1))
       return { id: "practical-magnitude", label, result: "fail", detail: `${m.quantity} ${m.value} is outside [0, 1] for a ${m.metric}` };
   }
-  const parts: string[] = [];
+  // Pass 42: no summary figure survives on any pathway (the four legacy keys are gone), so coverage is structured data or nothing.
   if (structured.length)
     return {
       id: "practical-magnitude",
       label,
       result: "pass",
-      detail: `${structured.length} structured measurement${structured.length === 1 ? "" : "s"} with value, unit, regime and source${parts.length ? `; summary: ${parts.join(", ")}` : ""}`,
+      detail: `${structured.length} structured measurement${structured.length === 1 ? "" : "s"} with value, unit, regime and source`,
     };
-  if (parts.length) return { id: "practical-magnitude", label, result: "unresolved", detail: `summary figures only (${parts.join(", ")}); no structured datum with value, unit, regime and source` };
   return { id: "practical-magnitude", label, result: "unresolved", detail: p.notes ?? "performance recorded without numbers" };
 }
 

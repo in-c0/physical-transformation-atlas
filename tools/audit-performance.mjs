@@ -51,10 +51,13 @@ for (const p of graph.pathways) {
   const perf = p.performance ?? {};
   for (const f of FIELDS) if (perf[f] !== undefined && !byKey.has(key(p.id, f))) problems.push(`${p.id} ${f} (${JSON.stringify(perf[f])}) has no disposition`);
 }
+// Pass 42 retired theoretical_limit into the typed constraint graph: a pass-35 row kept at the time is consistent when the
+// pass-42 dispositions file records the same pathway's retirement.
+const retired42 = new Set(parse(readFileSync(join(root, "design", "reviews", "loop-3", "pass-42-dispositions.yaml"), "utf8")).dispositions.map((d) => d.pathway));
 for (const d of disp.dispositions) {
   const perf = pathwayById.get(d.pathway)?.performance ?? {};
   const present = perf[d.field] !== undefined;
-  if (KEPT.has(d.action) && !present) problems.push(`${d.pathway} ${d.field}: disposed as ${d.action} but the field is gone`);
+  if (KEPT.has(d.action) && !present && !(d.field === "theoretical_limit" && retired42.has(d.pathway))) problems.push(`${d.pathway} ${d.field}: disposed as ${d.action} but the field is gone`);
   if (d.action === "removed" && present) problems.push(`${d.pathway} ${d.field}: disposed as removed but the field is still there`);
   if (d.action === "migrated" && present) problems.push(`${d.pathway} ${d.field}: disposed as migrated but the legacy field is still there`);
   if (d.action === "split" && present) problems.push(`${d.pathway} ${d.field}: disposed as split but the mixed legacy field is still there`);

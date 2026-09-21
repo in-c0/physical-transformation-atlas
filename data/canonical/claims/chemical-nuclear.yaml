@@ -555,3 +555,27 @@
   evidence: [source:nrc-boiling-water-reactors]
   status: demonstrated  # one primary (the regulator's description of the commercial fleet); established needs a second group or a review
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 38 (the NRC's BWR description read in full)" }
+# Loop-3 pass 42: three electrochemical bounds that lived only in theoretical_limit prose.
+- id: claim:concentration-cell-bounded-nernst
+  subject: phenomenon:concentration-cell-effect
+  predicate: bounded_by
+  object: constraint:nernst-potential-bound
+  conditions: ["E = (RT/zF)·ln(a₁/a₂) per cell — 59 mV per decade of activity ratio at 25 °C — sets the reversible work per unit charge"]
+  evidence: [source:bard-faulkner-2001]
+  status: established
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 42 (theoretical_limit retired into the typed constraint graph)" }
+- id: claim:capmix-bounded-mixing
+  subject: phenomenon:capacitive-mixing
+  predicate: bounded_by
+  object: constraint:mixing-free-energy-bound
+  evidence: [source:brogioli-2009, source:logan-elimelech-2012]
+  status: established
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 42 (theoretical_limit retired into the typed constraint graph)" }
+- id: claim:fuel-cell-bounded-gibbs-enthalpy
+  subject: phenomenon:fuel-cell-reaction
+  predicate: bounded_by
+  object: constraint:gibbs-enthalpy-ratio-bound
+  conditions: ["efficiency on the reaction enthalpy (higher-heating-value basis for hydrogen with liquid water as product)"]
+  evidence: [source:fuel-cell-handbook-2004, source:bard-faulkner-2001]
+  status: established
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 42 (DOE Fuel Cell Handbook, 7th ed., read)" }

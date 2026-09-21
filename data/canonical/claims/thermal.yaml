@@ -1153,3 +1153,12 @@
   evidence: [source:bejan-2016, source:nrc-pressurized-water-reactors]
   status: established
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 40 (the second reader's spelling)" }
+# Loop-3 pass 42: the incandescent lamp's visible-band ceiling, typed.
+- id: claim:thermal-emission-bounded-visible-fraction
+  subject: phenomenon:thermal-emission
+  predicate: bounded_by
+  object: constraint:planck-visible-band-fraction
+  conditions: [visible light delivered by a thermal emitter at temperature T; the bound is the Planck band fraction at that T]
+  evidence: [source:bejan-2016]
+  status: established
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 42 (theoretical_limit retired into the typed constraint graph)" }

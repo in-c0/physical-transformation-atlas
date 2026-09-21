@@ -11,7 +11,7 @@
   performance:
     # pass 35: efficiency_typical 0.05 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     # pass 35: efficiency_record 0.12 removed — exactly the structured Zhang 2017 datum below (the positive control); the display derives it
-    theoretical_limit: "η = η_Carnot · (√(1+ZT) − 1)/(√(1+ZT) + T_c/T_h), the ideal-module relation for a constant-property leg pair, evaluated from a datum's own ZT and temperatures"
+    # pass 42: theoretical_limit retired (already-typed, removed) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
     # pass 37: power_density "≈ 1 W/cm² of module at ΔT = 200 K" removed — a summary power density stays only as a structured measurement with its denominator and basis (the reviewer's ruling); the value stays in the audit record
     measurements:
       - quantity: module conversion efficiency
@@ -64,10 +64,10 @@
   evidence: [source:hatsopoulos-gyftopoulos-1973]
   status: prototype
   knowledge_level: K7
-  performance:
+  # performance: (no structured record yet — pass 42 emptied the last prose field; the lines below are the audit trail)
     # pass 35: efficiency_typical 0.08 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     # pass 35: efficiency_record 0.15 removed — no device, temperatures or load basis behind it; returns as a measurement when a named converter datum exists
-    theoretical_limit: "Carnot; practically limited by space charge and radiative loss from the cathode"
+    # pass 42: theoretical_limit retired (already-typed, removed) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
   environment: [env-vacuum, temp-high]
   summary: A cathode above 1500 K emits electrons collected across a caesium-vapour gap; flown in space reactors.
 
@@ -79,9 +79,9 @@
   evidence: [source:swift-1988]
   status: prototype
   knowledge_level: K7
-  performance:
+  # performance: (no structured record yet — pass 42 emptied the last prose field; the lines below are the audit trail)
     # pass 35: efficiency_typical 0.15 and efficiency_record 0.32 removed — the record was an engine's thermal-to-acoustic figure on an engine-plus-alternator pathway, the typical rested on a 1988 review of standing-wave engines; the thermal-to-electric figure of Backhaus, Tward & Petach 2004 is the datum to record once read
-    theoretical_limit: "Carnot between the hot and ambient heat exchangers a source defines"
+    # pass 42: theoretical_limit retired (already-typed, removed) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
   environment: [state-gas, temp-gradient-required]
   summary: Heat makes a gas column oscillate; the oscillation drives a piston in a coil.
 
@@ -92,9 +92,9 @@
   evidence: [source:bowen-2014-pyro]
   status: demonstrated
   knowledge_level: K6
-  performance:
+  # performance: (no structured record yet — pass 42 emptied the last prose field; the lines below are the audit trail)
     # pass 35: efficiency_typical 0.01 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
-    theoretical_limit: "Carnot between the thermal reservoirs defining the cycle."  # pass 39: the Olsen-cycle clause removed — reported performance relative to Carnot, not part of the bound; returns as a carnot-relative-efficiency datum once a named experiment is read
+    # pass 42: theoretical_limit retired (already-typed, removed) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
     # pass 37: power_density "µW–mW/cm² under thermal cycling at ~1 Hz" removed — a summary power density stays only as a structured measurement with its denominator and basis (the reviewer's ruling); the value stays in the audit record
   environment: [state-solid, transient-only]
   summary: A polar film cycled in temperature releases surface charge into a load.
@@ -106,9 +106,9 @@
   evidence: [source:quickenden-mua-1995, source:dupont-2017]
   status: demonstrated
   knowledge_level: K6
-  performance:
+  # performance: (no structured record yet — pass 42 emptied the last prose field; the lines below are the audit trail)
     # pass 35: efficiency_typical 0.005 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
-    theoretical_limit: "Carnot between the hot and cold thermal reservoirs."  # pass 39: 'a few per cent of Carnot' from a review is not a datum — returns as a carnot-relative-efficiency measurement with reference_constraint once an exact value is read
+    # pass 42: theoretical_limit retired (already-typed, removed) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
     # pass 37: power_density "≈ 1–10 W/m² of electrode" removed — a summary power density stays only as a structured measurement with its denominator and basis (the reviewer's ruling); the value stays in the audit record
   environment: [env-aqueous, temp-gradient-required]
   summary: Two identical electrodes at different temperatures in one redox electrolyte.
@@ -120,7 +120,7 @@
   status: demonstrated
   knowledge_level: K5
   performance:
-    theoretical_limit: "Carnot between the charge and discharge temperatures"
+    # pass 42: theoretical_limit retired (already-typed, removed) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
     measurements:
       # pass 35: the legacy record 0.057 migrated — it silently assumed 50 % heat recuperation (Lee et al. 2014, read on the open Nature page)
       - quantity: heat-to-electricity cycle efficiency (no heat recuperation)
@@ -160,7 +160,7 @@
   knowledge_level: K6
   performance:
     # pass 35: efficiency_typical 0.001 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
-    theoretical_limit: "Carnot for the small ΔT around the Curie point; material limits are far below it"
+    # pass 42: theoretical_limit retired (already-typed, removed) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
     measurements:
       - quantity: electrical output power
         value: "0.8 mW"
@@ -184,7 +184,7 @@
   status: demonstrated
   knowledge_level: K7
   performance:
-    theoretical_limit: "Carnot between emitter and cell"
+    # pass 42: theoretical_limit retired (already-typed, removed) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
     notes: "published models predict thermophotovoltaic efficiencies above 50 % with better photon recycling (LaPotin et al. 2022 cite them) — a projection, not a thermodynamic bound, so it lives here, not in the limit field"
     measurements:
       # pass 37: the legacy power_density migrated to LaPotin et al. 2022's own figure (abstract read)
@@ -237,7 +237,7 @@
   performance:
     # pass 35: efficiency_typical 0.38 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     # pass 35: efficiency_record 0.47 migrated to the Nordjylland 3 datum below (net, LHV, power-only, not annual); the display derives it
-    theoretical_limit: "Carnot between the hot and cold reservoirs defined for the cycle."  # pass 39: the Curzon–Ahlborn clause removed — a benchmark at maximum power, typed as constraint:curzon-ahlborn-limit, never a bound
+    # pass 42: theoretical_limit retired (already-typed, removed) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
     measurements:
       - quantity: net plant electrical efficiency
         value: "47%"
@@ -299,7 +299,7 @@
   performance:
     # pass 35: efficiency_typical 0.40 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     # pass 34: efficiency_record 0.64 removed — it was the combined cycle's figure, which lives on system-pathway:natural-gas-combined-cycle
-    theoretical_limit: "Carnot between a hot and a cold reservoir a source defines — none recorded: the turbine inlet temperature is an operating state, not a reservoir (pass 31)"
+    # pass 42: theoretical_limit retired (already-typed, removed) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
     notes: "model relation, not a bound of the real pathway: the ideal air-standard Brayton cycle's thermal efficiency is 1 − r_p^((1−γ)/γ) at pressure ratio r_p, with net work the turbine work minus the compressor work; a real cycle's net efficiency depends on both and on the turbine inlet temperature the materials allow"
     measurements:
       # Loop-3 pass 33: Al Mhanna, Al Hadidi & Al Maskari 2024 read in full — the plant's gas-turbine figures only (findings 18–20).
@@ -324,7 +324,7 @@
   knowledge_level: K7
   performance:
     # pass 35: efficiency_typical 0.03 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
-    theoretical_limit: "Carnot between the warm surface water and the deep cold water a source defines"
+    # pass 42: theoretical_limit retired (already-typed, removed) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
     measurements:
       # Loop-3 pass 33: Lu et al. 2024 read in full — the design point and the experiment kept apart (the reviewer's finding 12).
       - quantity: system thermal efficiency (design point)
@@ -372,7 +372,7 @@
   knowledge_level: K4
   performance:
     # pass 37: power_density "25 mW/m² measured; ≈ 0.5 W/m² projected" removed — the measured half returns below from the primary read in full; the 0.5 W/m² is the authors' pathway to improvement and stays in the audit
-    theoretical_limit: "Carnot across a few kelvin; radiative cooling power ≲ 100 W/m²"
+    # pass 42: theoretical_limit retired (already-typed, removed) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
     measurements:
       - quantity: electrical power density
         value: "25 mW/m²"
@@ -396,9 +396,9 @@
   evidence: [source:anton-sodano-2007, source:erturk-inman-2011, source:roundy-2003]
   status: commercial
   knowledge_level: K8
-  performance:
+  # performance: (no structured record yet — pass 42 emptied the last prose field; the lines below are the audit trail)
     # pass 35: efficiency_typical 0.1 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
-    theoretical_limit: "k² of the stored strain energy per cycle (k² ≈ 0.1–0.5 for PZT)"
+    # pass 42: theoretical_limit retired (already-typed, removed) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
     # pass 37: power_density "10–100 µW/cm³ at ambient vibration levels" removed — a summary power density stays only as a structured measurement with its denominator and basis (the reviewer's ruling); the value stays in the audit record
   environment: [state-solid]
   summary: A tuned cantilever bends a piezoelectric layer; charge flows each half cycle.
@@ -410,9 +410,9 @@
   evidence: [source:fan-tian-wang-2012]
   status: demonstrated
   knowledge_level: K6
-  performance:
+  # performance: (no structured record yet — pass 42 emptied the last prose field; the lines below are the audit trail)
     # pass 37: power_density "up to ≈ 500 W/m² instantaneous in contact–separation mode; average far lower" removed — a summary power density stays only as a structured measurement with its denominator and basis (the reviewer's ruling); the value stays in the audit record
-    theoretical_limit: "set by surface charge density and dielectric breakdown"
+    # pass 42: theoretical_limit retired (not-a-bound, removed) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
   environment: [state-solid, medium-dielectric]
   summary: Two polymer films contact and separate; induced charge cycles through the load.
 
@@ -483,10 +483,10 @@
   evidence: [source:betz-1920, source:dixon-hall-2014]
   status: commercial
   knowledge_level: K8
-  performance:
+  # performance: (no structured record yet — pass 42 emptied the last prose field; the lines below are the audit trail)
     # pass 35: efficiency_typical 0.45 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     # pass 39: efficiency_record 0.52 removed — a rotor power coefficient, the wrong quantity for a pathway that ends in electrical work; a named rotor's measured C_p belongs as metric power-coefficient on rotor evidence
-    theoretical_limit: "Betz: 59.3% of the kinetic power through the rotor disc"
+    # pass 42: theoretical_limit retired (already-typed, removed) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
   environment: [flow-required]
   summary: Blade lift turns the rotor; the rotor turns the generator.
 
@@ -500,7 +500,8 @@
   performance:
     # pass 35: efficiency_typical 0.90 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     # pass 39: efficiency_record 0.95 removed — a hydraulic turbine efficiency (Francis model tests reach ≈ 95 %), not the water-to-wire efficiency of a pathway that includes the generator; a named plant's water-to-wire figure with its boundary returns as a measurement
-    theoretical_limit: "no thermodynamic ceiling below 100%; losses are hydraulic and electrical"
+    # pass 42: theoretical_limit retired (not-a-bound, noted) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
+    notes: "No thermodynamic ceiling below unity applies to a head → shaft → electrical conversion, so no bound is recorded; the losses are hydraulic and electrical."
   environment: [state-liquid]
   summary: Water falls through the penstock, spins the turbine, turns the generator.
 
@@ -511,9 +512,9 @@
   evidence: [source:post-2007, source:logan-elimelech-2012]
   status: prototype
   knowledge_level: K7
-  performance:
+  # performance: (no structured record yet — pass 42 emptied the last prose field; the lines below are the audit trail)
     # pass 35: efficiency_typical 0.3 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
-    theoretical_limit: "free energy of mixing, ≈ 0.8 kWh per m³ of river water"
+    # pass 42: theoretical_limit retired (already-typed, removed) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
     # pass 37: power_density "≈ 1–2 W/m² of membrane" removed — a summary power density stays only as a structured measurement with its denominator and basis (the reviewer's ruling); the value stays in the audit record
   environment: [env-aqueous, medium-membrane]
   summary: Ion-selective membranes turn the mixing of river and sea water into a stack voltage.
@@ -525,9 +526,9 @@
   evidence: [source:loeb-1975, source:logan-elimelech-2012]
   status: prototype
   knowledge_level: K7
-  performance:
+  # performance: (no structured record yet — pass 42 emptied the last prose field; the lines below are the audit trail)
     # pass 37: power_density "≈ 1–5 W/m² of membrane; 5 W/m² is the usual economic threshold" removed — a summary power density stays only as a structured measurement with its denominator and basis (the reviewer's ruling); the value stays in the audit record
-    theoretical_limit: "free energy of mixing, ≈ 0.8 kWh per m³ of river water"
+    # pass 42: theoretical_limit retired (already-typed, removed) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
   environment: [env-aqueous, medium-membrane]
   summary: Fresh water permeates into pressurised seawater; the extra volume drives a turbine.
 
@@ -541,7 +542,7 @@
   knowledge_level: K8
   performance:
     # pass 35: efficiency_typical 0.22 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
-    theoretical_limit: "Shockley–Queisser 33.7% for one junction; Landsberg 93.3% overall"
+    # pass 42: theoretical_limit retired (already-typed, removed) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
     # pass 37: power_density "≈ 200 W/m² at 1000 W/m² irradiance" removed — a summary power density stays only as a structured measurement with its denominator and basis (the reviewer's ruling); the value stays in the audit record
     measurements:
       # pass 35: the legacy record 0.27 was the single-junction silicon cell record rounded up (26.8 ± 0.4 %, LONGi HJT, Table 1 of Version 63); a module pathway records the module table
@@ -565,9 +566,9 @@
   evidence: [source:bejan-2016]
   status: commercial
   knowledge_level: K8
-  performance:
+  # performance: (no structured record yet — pass 42 emptied the last prose field; the lines below are the audit trail)
     # pass 35: efficiency_typical 0.16 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
-    theoretical_limit: "Landsberg 93.3% for the solar conversion; Carnot between the receiver's reservoir and the sink a source defines"
+    # pass 42: theoretical_limit retired (already-typed, removed) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
   environment: [illumination-required, temp-gradient-required]
   summary: Mirrors heat a receiver; the receiver drives a steam cycle.
 
@@ -579,7 +580,7 @@
   status: demonstrated
   knowledge_level: K5
   performance:
-    theoretical_limit: "a detailed-balance solar-to-hydrogen limit exists for each tandem gap pair — Cheng et al. 2018 place their device at 0.85 of the limit for its gap combination — but no universal figure is recorded until the bound's own model is curated (the ≈ 30 % the atlas carried until pass 39 cited none)"
+    # pass 42: theoretical_limit retired (generic-bound-missing, typed) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
     measurements:
       # pass 35: the legacy record 0.19 was cited to the 1972 discovery; it is Cheng et al. 2018's device
       - quantity: solar-to-hydrogen efficiency
@@ -629,9 +630,9 @@
   evidence: [source:uchida-2008, source:uchida-2010-insulator, source:bauer-2012]
   status: demonstrated
   knowledge_level: K4
-  performance:
+  # performance: (no structured record yet — pass 42 emptied the last prose field; the lines below are the audit trail)
     # pass 37: power_density "nW–µW/cm² in laboratory films; far below thermoelectrics" removed — a summary power density stays only as a structured measurement with its denominator and basis (the reviewer's ruling); the value stays in the audit record
-    theoretical_limit: "Carnot; practical limit set by spin-mixing conductance and spin Hall angle"
+    # pass 42: theoretical_limit retired (already-typed, removed) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
   environment: [state-solid, temp-gradient-required]
   summary: Heat drives magnons in YIG; the Pt strip converts the pumped spin current to a voltage.
 
@@ -644,8 +645,8 @@
   knowledge_level: K7
   performance:
     # pass 39: efficiency_record 0.906 migrated — the primary report's own element figure is 90.5 ± 0.5 % (below)
-    theoretical_limit: "no thermodynamic ceiling below 100% for coherent radiation"
-    notes: "Do not compare a single element's RF-to-DC efficiency with a large array's capture-plus-rectification efficiency (over 82 % at Goldstone) or with end-to-end DC-to-DC beaming efficiency (54 % certified in March 1975)."
+    # pass 42: theoretical_limit retired (not-a-bound, noted) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
+    notes: "No thermodynamic ceiling below unity applies to rectifying a coherent microwave beam (the Landsberg limit belongs to thermal radiation), so no bound is recorded. Do not compare a single element's RF-to-DC efficiency with a large array's capture-plus-rectification efficiency (over 82 % at Goldstone) or with end-to-end DC-to-DC beaming efficiency (54 % certified in March 1975)."
     measurements:
       - quantity: rectenna element RF-to-DC conversion efficiency
         value: "90.5 ± 0.5 %"
@@ -704,10 +705,10 @@
   evidence: [source:grove-1839, source:bard-faulkner-2001]
   status: commercial
   knowledge_level: K8
-  performance:
+  # performance: (no structured record yet — pass 42 emptied the last prose field; the lines below are the audit trail)
     # pass 35: efficiency_typical 0.5 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     # pass 39: efficiency_record 0.65 removed — no named hydrogen fuel-cell device at 65 % with an LHV / HHV and gross / net basis; direct-hydrogen PEM systems are listed near 60 % and 65 % is a target or a molten-carbonate-plus-turbine hybrid, a different system
-    theoretical_limit: "ΔG/ΔH ≈ 83% for H₂/O₂ at 25 °C"
+    # pass 42: theoretical_limit retired (generic-bound-missing, typed) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
   environment: [medium-membrane]
   summary: Hydrogen is oxidised at the anode, oxygen reduced at the cathode; electrons go round the load.
 
@@ -718,9 +719,9 @@
   evidence: [source:bard-faulkner-2001]
   status: commercial
   knowledge_level: K8
-  performance:
+  # performance: (no structured record yet — pass 42 emptied the last prose field; the lines below are the audit trail)
     # pass 35: efficiency_typical 0.9 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
-    theoretical_limit: "−ΔG of the cell reaction"
+    # pass 42: theoretical_limit retired (already-typed, removed) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
   environment: [env-aqueous]
   summary: Stored reaction free energy delivered as current.
 
@@ -735,9 +736,9 @@
   # combustor nozzle (NASA TM-79135: a nozzle designed for Mach 2 feeding a duct with inlet Mach 2), an implementation-internal
   # gas-dynamic provider that is neither a preceding route step nor an external auxiliary; until the schema can record that
   # explanation truthfully the route reads regime UNRESOLVED on the flow token rather than carrying an invented auxiliary.
-  performance:
+  # performance: (no structured record yet — pass 42 emptied the last prose field; the lines below are the audit trail)
     # pass 35: efficiency_typical 0.2 removed — one 1961 paper is not a population source; the topping-cycle projection belongs to the system layer
-    theoretical_limit: "Carnot between the reservoirs a source defines — the plasma temperature is an operating state, not a reservoir"
+    # pass 42: theoretical_limit retired (already-typed, removed) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
   environment: [state-plasma, temp-high, field-magnetic-required]
   summary: Seeded combustion plasma crosses a magnet; electrodes collect the transverse current. The plasma's channel velocity comes from the combustor's own nozzle expansion (NASA Lewis ran cesium-seeded H₂–O₂ combustion products at Mach 2 into a diverging duct in a 5 T cryomagnet), not from a separate input — a provider the atlas cannot yet record, so the route stays unresolved on bulk fluid motion.
 
@@ -748,9 +749,9 @@
   evidence: [source:cole-1983-amtec]
   status: prototype
   knowledge_level: K6
-  performance:
+  # performance: (no structured record yet — pass 42 emptied the last prose field; the lines below are the audit trail)
     # pass 35: efficiency_typical 0.15 and efficiency_record 0.2 removed — Cole 1983's "20 to 40 percent" is a projection for a mature design, not a measurement
-    theoretical_limit: "Carnot between the evaporator and condenser temperatures"
+    # pass 42: theoretical_limit retired (already-typed, removed) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
   environment: [temp-high, state-liquid]
   summary: Sodium ions cross a solid electrolyte; electrons take the external circuit.
 
@@ -762,9 +763,9 @@
   evidence: [source:bejan-2016, source:nrc-pressurized-water-reactors, source:nrc-boiling-water-reactors]
   status: commercial
   knowledge_level: K8
-  performance:
+  # performance: (no structured record yet — pass 42 emptied the last prose field; the lines below are the audit trail)
     # pass 35: efficiency_typical 0.33 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
-    theoretical_limit: "Carnot between the reservoirs a source defines — the steam temperature is an operating state, not a reservoir"
+    # pass 42: theoretical_limit retired (already-typed, removed) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
   environment: [temp-high]
   summary: Fission heat establishes a thermal disequilibrium that a steam Rankine cycle converts to shaft work and electricity. The generic pathway abstracts the whole heat-engine cycle; whether the reactor coolant boils in the vessel (a BWR) or a steam generator makes the secondary steam (a PWR) is a topology the system layer will carry, never this linear route.
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 38 (re-spelled on the second reader's finding; the NRC's BWR and PWR descriptions read; no feed-pump auxiliary until the named implementation is source-reviewed)" }
@@ -775,10 +776,10 @@
   evidence: [source:blankenship-2011]
   status: commercial
   knowledge_level: K8
-  performance:
+  # performance: (no structured record yet — pass 42 emptied the last prose field; the lines below are the audit trail)
     # pass 35: efficiency_typical 0.01 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     # pass 39: efficiency_record 0.045 removed — Blankenship et al. 2011 (read in full) report short-term growing-season efficiencies of 3.5 % (C3) and 4.3 % (C4) and physiology-limited maxima of 4.6 % and 6.0 %, none of them 4.5 %; a measured record returns from its own primary (Zhu, Long & Ort) once read
-    theoretical_limit: "≈ 12 % theoretical free-energy efficiency for oxygenic photosynthetic glucose production from water under the two-photosystem / chlorophyll band-edge assumptions (Blankenship et al. 2011); known losses in light harvesting, overpotentials and respiration reduce the maximum to 4.6 % (C3) and 6.0 % (C4) — a physiology-limited maximum, not the ideal bound"
+    # pass 42: theoretical_limit retired (generic-bound-missing, typed) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
   environment: [env-aqueous, illumination-required]
   summary: Light-driven charge separation stores solar energy in sugars; the basis of every fossil fuel.
 

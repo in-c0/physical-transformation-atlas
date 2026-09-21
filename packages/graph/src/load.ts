@@ -361,6 +361,28 @@ export function loadCanon(root: string): Canon {
         );
     }
   }
+  // Pass 42: a pathway bound names an existing hard constraint (upper-bound | formula-bound) with evidence, and never one the
+  // route already reaches through a bounded_by claim on one of its nodes — the escape hatch is for architecture-specific physics.
+  const boundedByOf = new Map<string, string[]>();
+  for (const c of claims) if (c.predicate === "bounded_by") boundedByOf.set(c.subject, [...(boundedByOf.get(c.subject) ?? []), c.object]);
+  for (const p of pathways) {
+    if (!p.bounds.length) continue;
+    const reachable = new Set<string>();
+    for (const id of p.steps) {
+      const c = claimByIdForRegimes.get(id);
+      if (!c) continue;
+      for (const n of [c.subject, c.object]) for (const b of boundedByOf.get(n) ?? []) reachable.add(b);
+    }
+    for (const b of p.bounds) {
+      const e = entityById.get(b.constraint);
+      if (!e || e.type !== "constraint") { problems.push(`${p.id}: bounds names ${b.constraint}, which is not a constraint entity`); continue; }
+      if (e.constraint_kind !== "upper-bound" && e.constraint_kind !== "formula-bound")
+        problems.push(`${p.id}: bounds names ${b.constraint} (${e.constraint_kind ?? "no kind"}); only an upper-bound or formula-bound constraint is a pathway bound — a benchmark, constitutive relation or resource bound belongs on its phenomenon`);
+      if (reachable.has(b.constraint))
+        problems.push(`${p.id}: bounds names ${b.constraint}, which the route already reaches through a bounded_by claim on one of its nodes — a pathway bound is an escape hatch for architecture-specific physics, not a second place to restate a generic bound`);
+      for (const s of b.evidence) if (!sourceIds.has(s)) problems.push(`${p.id}: bounds evidence names unknown source ${s}`);
+    }
+  }
   const interfaceIds = new Set<string>();
   for (const f of interfaces) {
     if (interfaceIds.has(f.id)) problems.push(`duplicate interface id ${f.id}`);

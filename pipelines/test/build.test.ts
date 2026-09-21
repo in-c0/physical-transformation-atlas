@@ -5,6 +5,7 @@ import { cpSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:f
 import { tmpdir } from "node:os";
 import { spawnSync } from "node:child_process";
 import { loadCanon, buildGraph, ValidationError } from "@pta/graph";
+import { evaluateFormula } from "@pta/physics";
 import { Claim, Measurement, SystemPathway, isDemonstratedPathway } from "@pta/schema";
 
 const root = resolve(import.meta.dirname, "..", "..");
@@ -223,8 +224,8 @@ test("the system layer (loop-3 pass 34): a system joins whole pathways by handof
 test("the legacy performance audit's regression controls (loop-3 pass 35)", () => {
   const pw = (id: string) => graph.pathways.find((p) => p.id === `pathway:${id}`)!;
   assert.equal(pw("combustion-gas-turbine").performance?.efficiency_record, undefined, "the gas turbine carries no combined-cycle record");
-  assert.equal(pw("combustion-heater").performance?.theoretical_limit, undefined, "the combustion heater has no HHV 'limit'");
-  assert.doesNotMatch(pw("otec-plant").performance?.theoretical_limit ?? "", /300 K|280 K|6\.7/, "OTEC has no hard-coded representative Carnot number");
+  assert.equal((pw("combustion-heater").performance as Record<string, unknown> | undefined)?.theoretical_limit, undefined, "the combustion heater has no HHV 'limit'");
+  assert.equal((pw("otec-plant").performance as Record<string, unknown> | undefined)?.theoretical_limit, undefined, "OTEC carries no prose limit (pass 42)");
   // The TEG record is discoverable from its structured datum after the legacy duplicate is gone.
   const teg = pw("thermoelectric-generator");
   assert.equal(teg.performance?.efficiency_record, undefined);
@@ -243,11 +244,10 @@ test("the legacy performance audit's regression controls (loop-3 pass 35)", () =
   assert.equal(graph.pathways.filter((p) => "efficiency_record" in (p.performance ?? {})).length, 0, "efficiency_record is gone from every pathway");
   const rect = pw("rectenna-microwave").performance!.measurements.find((m) => m.value_numeric === 0.905);
   assert.ok(rect && rect.scope === "device" && /2450 MHz/.test(rect.basis ?? ""), "the rectenna element datum carries its frequency and basis");
-  assert.doesNotMatch(pw("thermophotovoltaic").performance?.theoretical_limit ?? "", /projected/);
-  assert.doesNotMatch(pw("solar-water-heater").performance?.theoretical_limit ?? "", /0\.9/);
-  assert.match(pw("photosynthesis").performance?.theoretical_limit ?? "", /two-photosystem/);
-  // pass 39 closing: bounds only in the limit field; every model-scope datum says what kind it is; a measured datum is never model scope
-  for (const p of graph.pathways) assert.doesNotMatch(p.performance?.theoretical_limit ?? "", /Curzon|reach a few per cent|η\/η_Carnot|benchmark/, `${p.id}: a benchmark inside the limit field`);
+  // pass 42: the limit field is gone from every pathway — the photosynthesis limit is a typed constraint on its phenomenon
+  assert.equal(graph.pathways.filter((p) => "theoretical_limit" in (p.performance ?? {})).length, 0, "theoretical_limit is gone from every pathway");
+  assert.ok(canon.claims.some((c) => c.id === "claim:photosynthesis-bounded-glucose-limit" && c.object === "constraint:photosynthesis-glucose-free-energy-limit"));
+  // pass 39 closing: every model-scope datum says what kind it is; a measured datum is never model scope
   const allData = graph.pathways.flatMap((p) => (p.performance?.measurements ?? []).map((m) => ({ p: p.id, ...m })));
   for (const m of allData) {
     if (m.scope === "model") assert.ok(["derived", "design-point", "simulated", "projected"].includes(m.datum_kind ?? ""), `${m.p}: model datum "${m.quantity}" carries its kind`);
@@ -408,6 +408,83 @@ test("the pressurised-water reactor as a system (loop-3 pass 40): advective tran
     0,
     "none of them is a fresh candidate composition — each is dominated by, prepares, or is derived from a heat-delivery spelling the atlas already records",
   );
+});
+
+test("theoretical_limit retired into the typed constraint graph (loop-3 pass 42): no prose limit anywhere, the key unwritable, every former row disposed, typed bounds reachable, pathway bounds an escape hatch", () => {
+  const pw = (slug: string) => graph.pathways.find((p) => p.id === `pathway:${slug}`)!;
+  const bound = (p: (typeof graph.paths)[number]) => p.checks.find((k) => k.id === "thermodynamic-bound")!;
+  const routeOf = (slug: string) => graph.paths.find((p) => p.pathway === `pathway:${slug}`)!;
+  // the raw canonical files carry no theoretical_limit key (comments excepted) and the strict schema refuses one
+  for (const f of canon.files.filter((x) => x.path.startsWith("data/canonical/pathways/")))
+    assert.ok(!/^\s*theoretical_limit:/m.test(f.text), `${f.path}: a theoretical_limit key survives`);
+  const tmp = mkdtempSync(join(tmpdir(), "pta-limit-"));
+  cpSync(join(root, "data", "canonical"), join(tmp, "data", "canonical"), { recursive: true });
+  cpSync(join(root, "data", "generated"), join(tmp, "data", "generated"), { recursive: true });
+  const file = join(tmp, "data", "canonical", "pathways", "pathways.yaml");
+  const text = readFileSync(file, "utf8");
+  const at = text.indexOf("  performance:", text.indexOf("- id: pathway:thermoelectric-generator"));
+  assert.ok(at > 0);
+  writeFileSync(file, text.slice(0, at) + '  performance:\n    theoretical_limit: "Carnot"\n' + text.slice(at + "  performance:\n".length));
+  assert.throws(() => loadCanon(tmp), /theoretical_limit/);
+  // every former prose row has exactly one disposition and the audit gate holds (bound results unchanged where nothing was typed)
+  const gate = spawnSync(process.execPath, [join(root, "tools", "audit-limits.mjs"), "--check"], { encoding: "utf8" });
+  assert.equal(gate.status, 0, gate.stderr || gate.stdout);
+  // the six typed rows: the constraint is now reachable on the pathway's route and the check names it
+  const typed: [string, string][] = [
+    ["incandescent-lamp", "Visible-band fraction of thermal emission"],
+    ["fuel-cell", "Reversible electrochemical efficiency"],
+    ["photosynthesis", "Photosynthetic glucose-production limit"],
+    ["photoelectrochemical-water-splitting", "Landsberg limit"],
+    ["capacitive-mixing-cell", "Free energy of mixing"],
+    ["concentration-cell", "Nernst / Gibbs free-energy bound"],
+  ];
+  for (const [slug, name] of typed) assert.match(bound(routeOf(slug)).detail, new RegExp(name.replace(/[()/]/g, "\\$&")), `${slug}: ${bound(routeOf(slug)).detail}`);
+  assert.equal(bound(routeOf("incandescent-lamp")).result, "unresolved", "a hard bound recorded but not evaluable until the band fraction is curated");
+  assert.equal(bound(routeOf("photosynthesis")).result, "unresolved", "no datum on the glucose basis yet");
+  const bench = canon.claims.find((c) => c.id === "claim:photosynthesis-benchmarked-physiological-maximum")!;
+  assert.equal(bench.predicate, "governed_by", "a benchmark is attached like Curzon–Ahlborn: listed on the route page, never a bound");
+  assert.equal(canon.entities.find((e) => e.id === bench.object)!.constraint_kind, "benchmark");
+  // the ΔG/ΔH bound evaluates from a datum's own thermochemistry: 0.83 for hydrogen, above 1 for carbon — a formula, never a fixed number
+  const gibbs = canon.entities.find((e) => e.id === "constraint:gibbs-enthalpy-ratio-bound")!;
+  assert.equal(gibbs.constraint_kind, "formula-bound");
+  assert.equal(Math.round(evaluateFormula(gibbs.formula!, { delta_G_kJ_per_mol: 237.1, delta_H_kJ_per_mol: 285.8 })! * 1000) / 1000, 0.83);
+  assert.ok(evaluateFormula(gibbs.formula!, { delta_G_kJ_per_mol: 395.4, delta_H_kJ_per_mol: 393.5 })! > 1, "carbon's ΔG exceeds its ΔH");
+  // Pathway.bounds: an architecture-specific constraint referenced only from the exact pathway is evaluated on that route and
+  // never leaks to a sibling route sharing the phenomenon (the reviewer's finding 38)
+  const tmp2 = mkdtempSync(join(tmpdir(), "pta-pbound-"));
+  cpSync(join(root, "data", "canonical"), join(tmp2, "data", "canonical"), { recursive: true });
+  cpSync(join(root, "data", "generated"), join(tmp2, "data", "generated"), { recursive: true });
+  const ents = join(tmp2, "data", "canonical", "entities", "misc.yaml");
+  writeFileSync(ents, readFileSync(ents, "utf8") + `
+- id: constraint:test-module-architecture-bound
+  type: constraint
+  name: Test module architecture bound
+  bound: "η ≤ 20 % for this exact module architecture (synthetic)"
+  constraint_kind: upper-bound
+  metric: conversion-efficiency
+  max_efficiency: 0.2
+  summary: A synthetic bound for the regression only.
+`);
+  const pf = join(tmp2, "data", "canonical", "pathways", "pathways.yaml");
+  const pt = readFileSync(pf, "utf8");
+  const pvAt = pt.indexOf("  knowledge_level:", pt.indexOf("- id: pathway:photovoltaic-module"));
+  writeFileSync(pf, pt.slice(0, pvAt) + "  bounds:\n    - { constraint: constraint:test-module-architecture-bound, evidence: [source:green-2024-tables], conditions: [synthetic] }\n" + pt.slice(pvAt));
+  const g2 = buildGraph(loadCanon(tmp2), { builtAt: "2026-01-01T00:00:00.000Z" });
+  const pv2 = g2.paths.find((p) => p.pathway === "pathway:photovoltaic-module")!;
+  assert.equal(bound(pv2).result, "fail", bound(pv2).detail);
+  assert.match(bound(pv2).detail, /exceeds Test module architecture bound/);
+  const siblings = g2.paths.filter((p) => p.id !== pv2.id && p.nodes.includes("phenomenon:photovoltaic-effect"));
+  assert.ok(siblings.length > 0);
+  for (const s of siblings) assert.doesNotMatch(bound(s).detail, /Test module architecture bound/, `${s.id} inherited a pathway-specific bound`);
+  // the escape hatch refuses a generic restatement and a non-hard kind
+  const pt2 = readFileSync(pf, "utf8");
+  const rkAt = pt2.indexOf("  knowledge_level:", pt2.indexOf("- id: pathway:rankine-steam-plant"));
+  writeFileSync(pf, pt2.slice(0, rkAt) + "  bounds:\n    - { constraint: constraint:carnot-limit, evidence: [source:bejan-2016] }\n" + pt2.slice(rkAt));
+  assert.throws(() => loadCanon(tmp2), /already reaches through a bounded_by claim/);
+  writeFileSync(pf, pt2.slice(0, rkAt) + "  bounds:\n    - { constraint: constraint:curzon-ahlborn-limit, evidence: [source:bejan-2016] }\n" + pt2.slice(rkAt));
+  assert.throws(() => loadCanon(tmp2), /only an upper-bound or formula-bound constraint is a pathway bound/);
+  rmSync(tmp, { recursive: true, force: true });
+  rmSync(tmp2, { recursive: true, force: true });
 });
 
 test("the forced-advection closure (loop-3 pass 41): advection requires bulk fluid motion, which only a recorded pump auxiliary or an upstream flow step supplies", () => {

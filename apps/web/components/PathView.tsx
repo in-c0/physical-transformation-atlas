@@ -34,6 +34,29 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
   const overlapPath = overlapPathway ? index.graph.paths.find((p) => p.pathway === overlapPathway.id) : undefined;
   const measurements = named?.performance?.measurements ?? [];
   const systems = named ? index.systemsOfPathway(named.id) : [];
+  // Pass 42: the typed bounds reachable on this route — bounded_by claims on its nodes plus the exact pathway's own bounds —
+  // with the same applicability test the thermodynamic-bound check uses.
+  const HARD = new Set(["upper-bound", "formula-bound"]);
+  const routePhenomena = new Set(path.nodes.filter((n) => index.entity.get(n)?.type === "phenomenon"));
+  const appliesHere = (e: NonNullable<ReturnType<typeof index.entity.get>>) =>
+    (e.applies_to_sources.length === 0 || e.applies_to_sources.includes(path.source)) &&
+    (e.applies_to_outputs.length === 0 || e.applies_to_outputs.includes(path.sink)) &&
+    (e.applies_to_phenomena.length === 0 || e.applies_to_phenomena.some((p) => routePhenomena.has(p)));
+  const typedBounds: { entity: NonNullable<ReturnType<typeof index.entity.get>>; via: "claim" | "pathway"; hard: boolean; applies: boolean; pathwayBound?: NonNullable<typeof named>["bounds"][number] }[] = [];
+  for (const n of path.nodes)
+    for (const c of index.claimsFrom(n)) {
+      if (c.predicate !== "bounded_by" && c.predicate !== "governed_by") continue;
+      const e = index.entity.get(c.object);
+      if (!e || e.type !== "constraint" || typedBounds.some((b) => b.entity.id === e.id)) continue;
+      const hard = !!e.constraint_kind && HARD.has(e.constraint_kind);
+      typedBounds.push({ entity: e, via: "claim", hard, applies: hard && appliesHere(e) });
+    }
+  for (const pb of named?.bounds ?? []) {
+    const e = index.entity.get(pb.constraint);
+    if (!e || typedBounds.some((b) => b.entity.id === e.id)) continue;
+    const hard = !!e.constraint_kind && HARD.has(e.constraint_kind);
+    typedBounds.push({ entity: e, via: "pathway", hard, applies: hard && appliesHere(e), pathwayBound: pb });
+  }
   // Pass 35: the best recorded efficiency is derived from the structured physical measurements (never a model datum),
   // so a pathway needs no legacy efficiency_record for the page to say what has been measured.
   const PHYSICAL = new Set(["laboratory", "device", "module", "system", "plant", "field"]);
@@ -310,14 +333,37 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
               </>
             )}
           </dl>
-          {named.performance.theoretical_limit && (
-            <>
-              <h2 className="label" style={{ marginTop: 14 }}>
-                Theoretical relation
-              </h2>
-              <p className={`${styles.limit} t-data`}>{named.performance.theoretical_limit}</p>
-            </>
-          )}
+        </section>
+      )}
+
+      {typedBounds.length > 0 && (
+        <section className={styles.section} id="bounds">
+          <h2 className="label">Typed bounds on this route</h2>
+          <p className="t-micro secondary" style={{ marginBottom: 8 }}>
+            Every limit the atlas holds for this route, as constraint records: reached through bounded_by claims on the route&apos;s own entities
+            {named?.bounds.length ? " or recorded for this exact architecture" : ""}. Hard bounds (an upper bound or a formula) decide the thermodynamic-bound check above; benchmarks, constitutive
+            relations and resource limits are listed and never decisive. No prose limit exists anywhere (pass 42).
+          </p>
+          <ul className={styles.conditions}>
+            {typedBounds.map((b) => (
+              <li key={b.entity.id}>
+                <Link href={hrefFor(b.entity.id)}>{b.entity.name}</Link>
+                <span className="t-data secondary">
+                  {" "}
+                  · {b.entity.constraint_kind ?? "unclassified"}
+                  {b.hard ? (b.applies ? " · hard, applies to this route" : " · hard, filtered out by its applicability") : " · listed, never decisive"}
+                  {b.via === "pathway" ? " · recorded for this exact architecture" : ""}
+                </span>
+                {b.entity.bound && <div className={`${styles.limit} t-data`}>{b.entity.bound}</div>}
+                {b.via === "pathway" && b.pathwayBound && (
+                  <div className="t-micro secondary">
+                    {b.pathwayBound.conditions.join("; ")}
+                    {b.pathwayBound.note ? ` — ${b.pathwayBound.note}` : ""} · refs {b.pathwayBound.evidence.map(refNo).filter((n) => n > 0).map((n) => `[${n}]`).join(" ")}
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
         </section>
       )}
 
