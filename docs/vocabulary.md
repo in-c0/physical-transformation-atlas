@@ -111,6 +111,28 @@ Used in: `interfaces[].status`, `paths[].interfaces_recorded[].status`
 - `theoretical` — the boundary is modelled (a transmission relation or an argument from physics) but not realised for this pair of steps; the boundary check stays unresolved
 - `proposed` — the boundary is named in a proposal or design only; the boundary check stays unresolved
 
+## `measurement.parameter`
+
+Used in: `pathways[].performance.measurements[].parameters`
+
+- `T_h_K` — hot-side (heat-source) temperature, K
+- `T_c_K` — cold-side (heat-sink) temperature, K
+- `T_initial_K` — temperature before a transient or a single caloric event, K
+- `T_final_K` — temperature after a transient or a single caloric event, K
+- `dT_dt_K_s` — rate of temperature change during a transient, K/s
+- `T_transition_K` — the material's transition temperature (Curie, martensitic, glass …), K
+- `temperature_gradient_K_m` — spatial temperature gradient across the active element, K/m
+- `gradient_length_m` — the length over which the gradient is imposed, m
+- `cycle_frequency_Hz` — the frequency of a cyclic operation (field, stress, hot–cold exposure), Hz
+- `T_emitter_K` — thermionic or thermal emitter temperature, K
+- `T_collector_K` — thermionic collector temperature, K
+- `T_s_K` — the radiating-source temperature a radiative bound uses (the Sun ≈ 5800 K), K
+- `ZT` — thermoelectric figure of merit, dimensionless
+- `V` — applied or generated voltage, V
+- `d` — a characteristic length the bound's formula names, m
+- `delta_G_J` — Gibbs free-energy change of the reaction, J
+- `k_squared` — electromechanical coupling factor squared, dimensionless
+
 ## `path.magnitude_screen.status`
 
 Used in: `paths[].magnitude_screen.status`

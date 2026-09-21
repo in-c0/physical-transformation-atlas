@@ -136,7 +136,14 @@ operating regime this exact pathway's evidence establishes, seen only by its own
 as written in the source, the scope, the regime, the sources and the year, and optionally its
 structured form: `value_numeric`, `unit`, `metric` (which bounded quantity it is), `basis` (what the
 number is defined on) and `parameters` (the inputs a formula bound needs, such as `T_h_K` and
-`T_c_K`) — only a structured datum is ever compared with a bound), `environment`, `summary`,
+`T_c_K`; since pass 31 the keys are drawn from the registry served as vocabulary
+`measurement.parameter` — T_h_K, T_c_K, T_initial_K, T_final_K, dT_dt_K_s, T_transition_K,
+temperature_gradient_K_m, gradient_length_m, cycle_frequency_Hz, T_emitter_K, T_collector_K and the
+bound inputs — and an unknown key fails validation; a pathway's own parameters also supply regime
+tokens to its exact route: T_h ≠ T_c a spatial gradient, dT/dt ≠ 0 or T_initial ≠ T_final a temporal
+change, a transition temperature between the two straddled, a cycle frequency with both sides cyclic
+exposure; never to a sibling route, and never Swift's threshold) — only a structured datum is ever
+compared with a bound), `environment`, `summary`,
 `review`. A pathway with `status: proposed` or `status: observed` is attached to its route but never
 makes it demonstrated and is ignored when other routes are classified as derived.
 

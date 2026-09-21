@@ -14,6 +14,7 @@ import {
   KNOWLEDGE_LEVELS,
   KNOWLEDGE_LEVEL_LABEL,
   CONDITION_SCOPES,
+  MEASUREMENT_PARAMETERS,
   INTERFACE_KINDS,
   INTERFACE_STATUSES,
   MATRIX_CELL_STATUSES,
@@ -155,6 +156,11 @@ export const VOCABULARY: VocabularyEnum[] = [
       theoretical: "the boundary is modelled (a transmission relation or an argument from physics) but not realised for this pair of steps; the boundary check stays unresolved",
       proposed: "the boundary is named in a proposal or design only; the boundary check stays unresolved",
     }),
+  },
+  {
+    name: "measurement.parameter",
+    used_in: ["pathways[].performance.measurements[].parameters"],
+    terms: Object.entries(MEASUREMENT_PARAMETERS).map(([id, definition]) => ({ id, definition })),
   },
   {
     name: "path.magnitude_screen.status",

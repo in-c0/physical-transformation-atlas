@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { resolve } from "node:path";
 import { loadCanon, buildGraph, ValidationError } from "@pta/graph";
-import { Claim, isDemonstratedPathway } from "@pta/schema";
+import { Claim, Measurement, isDemonstratedPathway } from "@pta/schema";
 
 const root = resolve(import.meta.dirname, "..", "..");
 const canon = loadCanon(root);
@@ -157,4 +157,25 @@ test("evidence-model rule: replicated needs two groups; established needs two gr
     if (c.status === "established" && groups.size < 2 && !reviewOrBook) problems.push(`${c.id}: established on one primary source`);
   }
   assert.deepEqual(problems, []);
+});
+
+test("measurement parameters come from the registry (loop-3 pass 31): a stray key is rejected, the registered ones parse", () => {
+  const base = { quantity: "conversion efficiency", value: "0.3", value_numeric: 0.3, scope: "laboratory", conditions: "x", sources: ["source:swift-1988"] };
+  assert.ok(Measurement.safeParse({ ...base, parameters: { T_h_K: 850, T_c_K: 300 } }).success);
+  const bad = Measurement.safeParse({ ...base, parameters: { T_hot: 850 } });
+  assert.equal(bad.success, false);
+  assert.ok(JSON.stringify(bad.success ? {} : bad.error.issues).includes("unknown measurement parameter"));
+});
+
+test("a pathway's structured temperatures supply regimes to its exact route only (loop-3 pass 31)", () => {
+  const teg = graph.paths.find((p) => p.pathway === "pathway:thermoelectric-generator")!;
+  const regime = teg.checks.find((c) => c.id === "driver-regime-sufficiency")!;
+  assert.equal(regime.result, "pass");
+  // the TEG's 850/300 K fixture would supply the spatial gradient even without the source's own token; a sibling route through the same claim gets nothing from it
+  assert.match(regime.detail, /thermal:spatial-temperature-gradient/);
+  // the derivation reaches only the exact pathway: a synthetic pathway with T_h ≠ T_c supplies the gradient to a source that does not
+  const canon2 = { ...canon, pathways: canon.pathways.map((pw) => (pw.id === "pathway:thermogalvanic-cell" ? { ...pw, performance: { measurements: [{ quantity: "conversion efficiency", value: "0.01", value_numeric: 0.01, scope: "laboratory" as const, conditions: "x", sources: pw.evidence, parameters: { T_h_K: 320, T_c_K: 300 } }] } } : pw)) };
+  const g2 = buildGraph(canon2, { builtAt: "2026-01-01T00:00:00.000Z" });
+  const tgc = g2.paths.find((p) => p.pathway === "pathway:thermogalvanic-cell")!;
+  assert.equal(tgc.checks.find((c) => c.id === "driver-regime-sufficiency")!.result, "pass");
 });

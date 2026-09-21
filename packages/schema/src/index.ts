@@ -435,6 +435,35 @@ export type Claim = z.infer<typeof Claim>;
 // Pathways (named, reviewed compositions)
 // ---------------------------------------------------------------------------
 
+/**
+ * The structured-measurement parameter registry (loop-3 pass 31): the only keys `Measurement.parameters`
+ * may carry, so "T_hot", "hot_temp" and their cousins cannot proliferate. Units are in the names.
+ * Thermal operating parameters come from the source that reports them, never from a technology class.
+ */
+export const MEASUREMENT_PARAMETERS = {
+  T_h_K: "hot-side (heat-source) temperature, K",
+  T_c_K: "cold-side (heat-sink) temperature, K",
+  T_initial_K: "temperature before a transient or a single caloric event, K",
+  T_final_K: "temperature after a transient or a single caloric event, K",
+  dT_dt_K_s: "rate of temperature change during a transient, K/s",
+  T_transition_K: "the material's transition temperature (Curie, martensitic, glass …), K",
+  temperature_gradient_K_m: "spatial temperature gradient across the active element, K/m",
+  gradient_length_m: "the length over which the gradient is imposed, m",
+  cycle_frequency_Hz: "the frequency of a cyclic operation (field, stress, hot–cold exposure), Hz",
+  T_emitter_K: "thermionic or thermal emitter temperature, K",
+  T_collector_K: "thermionic collector temperature, K",
+  T_s_K: "the radiating-source temperature a radiative bound uses (the Sun ≈ 5800 K), K",
+  ZT: "thermoelectric figure of merit, dimensionless",
+  V: "applied or generated voltage, V",
+  d: "a characteristic length the bound's formula names, m",
+  delta_G_J: "Gibbs free-energy change of the reaction, J",
+  k_squared: "electromechanical coupling factor squared, dimensionless",
+} as const;
+export type MeasurementParameter = keyof typeof MEASUREMENT_PARAMETERS;
+const MeasurementParameters = z.record(z.string(), z.number()).superRefine((p, ctx) => {
+  for (const k of Object.keys(p)) if (!(k in MEASUREMENT_PARAMETERS)) ctx.addIssue({ code: z.ZodIssueCode.custom, path: [k], message: `unknown measurement parameter "${k}"; the registry (MEASUREMENT_PARAMETERS) lists the allowed names, units in the name` });
+});
+
 export const Measurement = z.object({
   quantity: z.string(), // e.g. "module efficiency", "power density", "open-circuit voltage"
   value: z.string(), // keep as written in the source, e.g. "12%", "1.2 W/cm²", "≈ 6 µV/K"
@@ -443,7 +472,7 @@ export const Measurement = z.object({
   unit: z.string().optional(),
   metric: z.enum(BOUND_METRICS).optional(),
   basis: z.string().optional(),
-  parameters: z.record(z.string(), z.number()).optional(),
+  parameters: MeasurementParameters.optional(),
   scope: z.enum(["material", "device", "module", "system", "plant", "laboratory", "field", "model"]),
   conditions: z.string(), // regime: temperatures, load, irradiance, geometry
   sources: z.array(SourceId).min(1),

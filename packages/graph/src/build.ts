@@ -204,7 +204,11 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
     const id = pathId(ids);
     const nodes = [claims[0].subject, ...claims.map((c) => c.object)];
     const pathway = pathwayBySeq.get(ids.join(">"));
-    const checks = runAllChecks(ctx, claims, pathway);
+    // Pass 31: a reviewed pathway's own structured temperatures supply regimes to its exact route (never to a
+    // sibling): T_h ≠ T_c → a spatial gradient; dT/dt ≠ 0 or T_initial ≠ T_final → a temporal change; a
+    // transition temperature between T_h and T_c → straddled; a cycle frequency with both sides → cyclic
+    // exposure. Swift's threshold is never inferred from temperatures alone.
+    const checks = runAllChecks(ctx, claims, pathway ? { ...pathway, regime_provides: [...pathway.regime_provides, ...derivedRegimes(pathway)] } : undefined);
     const weakest = claims.reduce<EvidenceStatus>((acc, c) => (EVIDENCE_RANK[c.status] < EVIDENCE_RANK[acc] ? c.status : acc), "established");
     const established = claims.filter((c) => c.status === "established" || c.status === "replicated").length;
     const failed = checks.some((k) => k.result === "fail");
@@ -382,6 +386,20 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
       constituent_floor,
       known_pathway_overlap,
     };
+  }
+
+  /** Regime tokens a pathway's structured measurements establish (pass 31); see the call site for the rules. */
+  function derivedRegimes(p: Pathway): string[] {
+    const out = new Set<string>();
+    for (const m of p.performance?.measurements ?? []) {
+      const q = m.parameters ?? {};
+      const hot = q.T_h_K, cold = q.T_c_K;
+      if (hot !== undefined && cold !== undefined && hot !== cold) out.add("thermal:spatial-temperature-gradient");
+      if ((q.dT_dt_K_s !== undefined && q.dT_dt_K_s !== 0) || (q.T_initial_K !== undefined && q.T_final_K !== undefined && q.T_initial_K !== q.T_final_K)) out.add("thermal:temporal-temperature-change");
+      if (hot !== undefined && cold !== undefined && q.T_transition_K !== undefined && Math.min(hot, cold) < q.T_transition_K && q.T_transition_K < Math.max(hot, cold)) out.add("thermal:transition-temperature-straddled");
+      if (q.cycle_frequency_Hz !== undefined && q.cycle_frequency_Hz > 0 && hot !== undefined && cold !== undefined) out.add("thermal:cyclic-hot-cold-exposure");
+    }
+    return [...out];
   }
 
   /** Best overlap between a route's claim sequence and the recorded pathways. */
