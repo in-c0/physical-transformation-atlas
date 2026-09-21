@@ -299,5 +299,9 @@ test("driver / regime sufficiency on real routes (loop-3 pass 30): the reviewer'
   assert.equal(regime(ae).result, "unresolved");
   // no route fails, and no demonstrated pathway is left unresolved
   for (const p of paths) assert.notEqual(regime(p).result, "fail", p.id);
-  for (const p of paths.filter((q) => q.search_status === "demonstrated")) assert.notEqual(regime(p).result, "unresolved", `${p.pathway}: ${regime(p).detail}`);
+  // Pass 36: the nuclear steam plant is left unresolved on purpose — the hot-gas → expansion step now requires the expansion pressure drop,
+  // and that pathway's steam-generation / pressure architecture has not been source-reviewed; commercial status never substitutes.
+  const deliberatelyUnresolved = new Set(["pathway:nuclear-steam-plant"]);
+  for (const p of paths.filter((q) => q.search_status === "demonstrated" && !deliberatelyUnresolved.has(q.pathway ?? ""))) assert.notEqual(regime(p).result, "unresolved", `${p.pathway}: ${regime(p).detail}`);
+  assert.equal(regime(byPathway("pathway:nuclear-steam-plant")).result, "unresolved");
 });

@@ -127,6 +127,26 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
               </>
             )}
           </dd>
+          {named && named.auxiliary_requirements.length > 0 && (
+            <>
+              <dt>auxiliaries off the route</dt>
+              <dd>
+                <ul className={styles.conditions}>
+                  {named.auxiliary_requirements.map((a, i) => (
+                    <li key={i}>
+                      {a.kind.replace(/-/g, " ")} · {a.energy_form} · {a.purpose}
+                      {a.establishes.length > 0 ? ` — establishes ${a.establishes.join(", ")}` : ""}
+                      {a.conditions.length > 0 ? `: ${a.conditions.join("; ")}` : ""}
+                      {a.note ? ` (${a.note})` : ""}
+                    </li>
+                  ))}
+                </ul>
+                <span className="t-micro secondary">
+                  Loads the named implementation needs that no linear route carries (pass 36); a whole-cycle or net efficiency includes them, the enumerated route is the useful-output causal spine.
+                </span>
+              </dd>
+            </>
+          )}
           <dt>route-level evidence</dt>
           <dd>
             {compositionSources.length} source{compositionSources.length === 1 ? "" : "s"} for the complete composition · {constituentSources.length} cited by the constituent steps

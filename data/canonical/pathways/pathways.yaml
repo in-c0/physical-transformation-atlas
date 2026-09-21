@@ -259,10 +259,22 @@
   evidence: [source:bejan-2016, source:dixon-hall-2014, source:al-mhanna-2024-isccs]
   status: commercial
   knowledge_level: K8
+  regime_provides: [thermodynamic:expansion-pressure-drop]  # pass 36: the compressor its own shaft drives establishes the pressure ratio (Al Mhanna 2024: 9.4 bar compressor discharge, 1 bar turbine discharge); explained by the auxiliary requirement below, never by combustion
+  auxiliary_requirements:
+    - kind: recirculating-work
+      energy_form: mechanical
+      purpose: compressor
+      establishes: [thermodynamic:expansion-pressure-drop]
+      conditions:
+        - "turbine shaft work drives the compressor that establishes the expansion pressure ratio; cycle net work is turbine work minus compressor work"
+        - "the local plant of Al Mhanna 2024: air 505.36 kg/s compressed from 0.9981 bar to 9.4 bar (isentropic efficiency 0.883) before the combustor, turbine discharge 1 bar"
+      evidence: [source:dixon-hall-2014, source:al-mhanna-2024-isccs]
+      note: "a feedback branch (turbine motion → compressor → pressurised inlet → combustor → turbine), not a serial step, so it is metadata here and never a route claim; whole-cycle and net efficiencies include this back-work while the enumerated route is the useful-output causal spine"
   performance:
     # pass 35: efficiency_typical 0.40 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     # pass 34: efficiency_record 0.64 removed — it was the combined cycle's figure, which lives on system-pathway:natural-gas-combined-cycle
-    theoretical_limit: "Carnot between a hot and a cold reservoir a source defines — none recorded: the turbine inlet temperature is an operating state, not a reservoir (pass 31); the ideal Brayton cycle's own limit is 1 − r_p^((1−γ)/γ) at pressure ratio r_p"
+    theoretical_limit: "Carnot between a hot and a cold reservoir a source defines — none recorded: the turbine inlet temperature is an operating state, not a reservoir (pass 31)"
+    notes: "model relation, not a bound of the real pathway: the ideal air-standard Brayton cycle's thermal efficiency is 1 − r_p^((1−γ)/γ) at pressure ratio r_p, with net work the turbine work minus the compressor work; a real cycle's net efficiency depends on both and on the turbine inlet temperature the materials allow"
     measurements:
       # Loop-3 pass 33: Al Mhanna, Al Hadidi & Al Maskari 2024 read in full — the plant's gas-turbine figures only (findings 18–20).
       - quantity: gas-turbine work output

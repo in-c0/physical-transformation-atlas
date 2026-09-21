@@ -23,6 +23,7 @@ import {
   AutomatedSearchRun,
   Source,
   SystemPathway,
+  REGIME_TOKENS,
   UnitDef,
   type Claim as ClaimT,
   type ConditionConflict as ConflictT,
@@ -307,6 +308,25 @@ export function loadCanon(root: string): Canon {
         );
       if (!c.regime_requires.includes(t)) problems.push(`${c.id}: regime_external ${t} is not among its regime_requires`);
     }
+  // Pass 36: a pathway may supply a token whose registry entry says a provider needs explaining only when a
+  // preceding step of its route supplies that token or an auxiliary requirement establishes it — otherwise a
+  // pathway-level provider is unexplained self-certification (the gas turbine's pressure ratio comes from a
+  // compressor its own shaft drives, a feedback branch no linear route carries).
+  const claimByIdForRegimes = claimById;
+  for (const p of pathways) {
+    for (const t of p.regime_provides) {
+      if (!(REGIME_TOKENS as Record<string, { provider_needs_explanation: boolean }>)[t]?.provider_needs_explanation) continue;
+      const steps = p.steps.map((id) => claimByIdForRegimes.get(id)).filter((c): c is ClaimT => !!c);
+      const requiringIndex = steps.findIndex((c) => c.regime_requires.includes(t));
+      if (requiringIndex === -1) continue;
+      const precedingProvider = steps.slice(0, requiringIndex).some((c) => c.regime_provides.includes(t));
+      const auxiliary = p.auxiliary_requirements.some((a) => a.establishes.includes(t));
+      if (!precedingProvider && !auxiliary)
+        problems.push(
+          `${p.id}: supplies ${t} but no preceding step of its route provides it and no auxiliary_requirements entry establishes it — record how the implementation establishes the regime (its compressor, pump …) or drop the provider`,
+        );
+    }
+  }
   const interfaceIds = new Set<string>();
   for (const f of interfaces) {
     if (interfaceIds.has(f.id)) problems.push(`duplicate interface id ${f.id}`);

@@ -99,11 +99,12 @@
   summary: Propagating electromagnetic field at radio or microwave frequency.
 - id: carrier:hot-gas
   type: carrier
-  name: Hot pressurised gas
-  aliases: [combustion products, steam, working fluid]
+  name: Hot gas
+  aliases: [combustion products, hot working gas, steam, working fluid, hot pressurised gas]
   energy_form: thermal
   condition_tags: [state-gas, temp-high]
-  summary: A working fluid at high temperature and pressure, the intermediate of every combustion or nuclear heat engine.
+  summary: "A gas or vapour carrying thermal energy at elevated temperature, the intermediate of every combustion or nuclear heat engine. Pressure or an available expansion ratio is not implied by this carrier and must be established separately when a downstream conversion requires it: combustion heats the gas, a compressor or a boiler's feed pump pressurises it, and thermal emission or an MHD channel can consume hot gas without an expansion ratio."
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 36 (renamed from 'Hot pressurised gas': claim:combustion-produces-hot-gas establishes heating, not compression — the second reader's finding)" }
 - id: carrier:beta-particles
   type: carrier
   name: Beta particles

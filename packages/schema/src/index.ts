@@ -81,6 +81,47 @@ export const SEARCH_STATUSES = [
 export type SearchStatus = (typeof SEARCH_STATUSES)[number];
 
 export const KNOWLEDGE_LEVELS = ["K0", "K1", "K2", "K3", "K4", "K5", "K6", "K7", "K8"] as const;
+
+/**
+ * The regime-token registry (loop-3 pass 36; the tokens themselves since pass 30). A token names an
+ * operating condition a conversion step needs from its causal source — never a property of the step's own
+ * subject. The loader rejects a token that is not registered, so a new regime is frozen here with its
+ * definition before any claim, disequilibrium or pathway can use it. `provider_needs_explanation` marks a
+ * token a reviewed pathway may supply only when the route has a preceding step that supplies it or the
+ * pathway records an auxiliary requirement explaining how its implementation establishes it — the
+ * compressor of a gas turbine is driven by the turbine's own shaft work, a feedback branch no linear
+ * route carries.
+ */
+export const REGIME_TOKENS = {
+  "thermal:spatial-temperature-gradient": { definition: "a temperature difference maintained across the active element in space", provider_needs_explanation: false },
+  "thermal:temporal-temperature-change": { definition: "a temperature that changes in time at the active element (dT/dt ≠ 0)", provider_needs_explanation: false },
+  "thermal:gradient-above-thermoacoustic-critical": {
+    definition: "a stack or regenerator temperature gradient above Swift's critical gradient, at which self-sustained oscillation begins",
+    provider_needs_explanation: false,
+  },
+  "thermal:transition-temperature-straddled": {
+    definition: "the active material's transition temperature (Curie, martensitic, glass …) lies between the hot and cold temperatures it is cycled through",
+    provider_needs_explanation: false,
+  },
+  "thermal:cyclic-hot-cold-exposure": { definition: "the active element is alternately exposed to a hot and a cold reservoir at a stated cycle frequency", provider_needs_explanation: false },
+  "field:electric-field-change": { definition: "an applied electric field that changes between two values in time", provider_needs_explanation: false },
+  "field:electric-field-cycling": { definition: "an applied electric field cycled repeatedly at a stated frequency", provider_needs_explanation: false },
+  "field:magnetic-field-change": { definition: "an applied magnetic field that changes between two values in time", provider_needs_explanation: false },
+  "field:magnetic-field-cycling": { definition: "an applied magnetic field cycled repeatedly at a stated frequency", provider_needs_explanation: false },
+  "field:nonuniform-magnetic-field": { definition: "a magnetic field with a spatial gradient across the active medium", provider_needs_explanation: false },
+  "mechanical:stress-change": { definition: "an applied stress or strain that changes between two values in time", provider_needs_explanation: false },
+  "mechanical:stress-crosses-transformation-threshold": { definition: "the applied stress crosses the material's stress-induced transformation threshold", provider_needs_explanation: false },
+  "mechanical:stress-cycling": { definition: "an applied stress cycled repeatedly at a stated frequency", provider_needs_explanation: false },
+  "light:incident-photon-flux": { definition: "a photon flux incident on the active element", provider_needs_explanation: false },
+  "light:above-bandgap-photon-flux": { definition: "a photon flux with energy above the absorber's band gap", provider_needs_explanation: false },
+  "thermodynamic:expansion-pressure-drop": {
+    definition: "an upstream pressure state and downstream lower-pressure state sufficient for the working fluid to perform expansion work",
+    provider_needs_explanation: true,
+  },
+} as const;
+export type RegimeToken = keyof typeof REGIME_TOKENS;
+export const RegimeTokenId = z.string().refine((t) => t in REGIME_TOKENS, { message: "unknown regime token; the registry (REGIME_TOKENS) freezes every token with its definition" });
+
 export type KnowledgeLevel = (typeof KNOWLEDGE_LEVELS)[number];
 export const KNOWLEDGE_LEVEL_LABEL: Record<KnowledgeLevel, string> = {
   K0: "known physical quantity",
@@ -312,8 +353,8 @@ export const Entity = z.object({
    * supplies "thermal:spatial-temperature-gradient", not "thermal:temporal-temperature-change". A token
    * in regime_excludes is one the source cannot supply, so a step requiring it fails rather than waits.
    */
-  regime_provides: z.array(z.string()).default([]),
-  regime_excludes: z.array(z.string()).default([]),
+  regime_provides: z.array(RegimeTokenId).default([]),
+  regime_excludes: z.array(RegimeTokenId).default([]),
   /** For transducers: readiness of the real device. */
   knowledge_level: z.enum(KNOWLEDGE_LEVELS).optional(),
   year_first_reported: z.number().int().optional(),
@@ -419,9 +460,9 @@ export const Claim = z.object({
    * regime_provides (or that of the disequilibrium it produces), the exact pathway's regime_provides,
    * and the step's regime_external count. Any process step may carry regime_requires; none does by default.
    */
-  regime_requires: z.array(z.string()).default([]),
-  regime_provides: z.array(z.string()).default([]),
-  regime_external: z.array(z.string()).default([]),
+  regime_requires: z.array(RegimeTokenId).default([]),
+  regime_provides: z.array(RegimeTokenId).default([]),
+  regime_external: z.array(RegimeTokenId).default([]),
   evidence: z.array(SourceId).default([]),
   status: z.enum(EVIDENCE_STATUSES),
   /** Where the physics sits on the K-scale, if the claim is a phenomenon-level claim. */
@@ -500,6 +541,29 @@ export type PathwayStatus = (typeof PATHWAY_STATUSES)[number];
 export const DEMONSTRATED_PATHWAY_STATUSES = ["demonstrated", "prototype", "commercial"] as const;
 export const isDemonstratedPathway = (p: { status: PathwayStatus }): boolean => (DEMONSTRATED_PATHWAY_STATUSES as readonly string[]).includes(p.status);
 
+/**
+ * An auxiliary requirement (pass 36): something a named implementation needs that lies off its linear
+ * source → sink route — the compressor a gas turbine drives from its own shaft work, a parasitic pump,
+ * an external control input. Metadata on the pathway, never a route step: a recirculating load is a
+ * feedback branch, not a serial phenomenon, and inventing an upstream claim for it would repair the
+ * compiler while worsening the physics. A whole-cycle or net efficiency includes such loads; the
+ * enumerated route is the useful-output causal spine.
+ */
+export const AUXILIARY_KINDS = ["recirculating-work", "parasitic-load", "external-input"] as const;
+export type AuxiliaryKind = (typeof AUXILIARY_KINDS)[number];
+export const AuxiliaryRequirement = z.object({
+  kind: z.enum(AUXILIARY_KINDS),
+  energy_form: z.enum(ENERGY_FORMS),
+  /** What the load is for (compressor, feed pump, control electronics …). */
+  purpose: z.string().min(1),
+  /** The regime tokens this auxiliary establishes for the route, if any. */
+  establishes: z.array(RegimeTokenId).default([]),
+  conditions: z.array(z.string()).default([]),
+  evidence: z.array(SourceId).min(1),
+  note: z.string().nullable().default(null),
+});
+export type AuxiliaryRequirement = z.infer<typeof AuxiliaryRequirement>;
+
 const PathwayBase = z.object({
   id: PathwayId,
   name: z.string(),
@@ -520,9 +584,16 @@ const PathwayBase = z.object({
    * magnetocaloric refrigerator field:magnetic-field-cycling. Only the exact route of the pathway
    * sees them; a candidate composition sharing the claim inherits nothing.
    */
-  regime_provides: z.array(z.string()).default([]),
+  regime_provides: z.array(RegimeTokenId).default([]),
   /** Regime tokens a model (scope model) asserts for this pathway — recorded, never a provider for the core check. */
-  regime_model_provides: z.array(z.string()).default([]),
+  regime_model_provides: z.array(RegimeTokenId).default([]),
+  /**
+   * Pass 36: loads and inputs the named implementation needs off its linear route (a compressor driven
+   * by the turbine's own shaft, a feed pump). Metadata that never enters enumeration; the loader requires
+   * one when the pathway supplies a regime token whose registry entry says a provider needs explaining
+   * and no preceding step supplies it.
+   */
+  auxiliary_requirements: z.array(AuxiliaryRequirement).default([]),
   knowledge_level: z.enum(KNOWLEDGE_LEVELS),
   performance: z
     .object({

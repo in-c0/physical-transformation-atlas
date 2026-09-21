@@ -145,6 +145,35 @@ Used in: `interfaces[].status`, `paths[].interfaces_recorded[].status`
 - `theoretical` — the boundary is modelled (a transmission relation or an argument from physics) but not realised for this pair of steps; the boundary check stays unresolved
 - `proposed` — the boundary is named in a proposal or design only; the boundary check stays unresolved
 
+## `regime.token`
+
+Used in: `claims[].regime_requires / regime_provides / regime_external`, `entities[].regime_provides / regime_excludes`, `pathways[].regime_provides / regime_model_provides`, `pathways[].auxiliary_requirements[].establishes`
+
+- `thermal:spatial-temperature-gradient` — a temperature difference maintained across the active element in space
+- `thermal:temporal-temperature-change` — a temperature that changes in time at the active element (dT/dt ≠ 0)
+- `thermal:gradient-above-thermoacoustic-critical` — a stack or regenerator temperature gradient above Swift's critical gradient, at which self-sustained oscillation begins
+- `thermal:transition-temperature-straddled` — the active material's transition temperature (Curie, martensitic, glass …) lies between the hot and cold temperatures it is cycled through
+- `thermal:cyclic-hot-cold-exposure` — the active element is alternately exposed to a hot and a cold reservoir at a stated cycle frequency
+- `field:electric-field-change` — an applied electric field that changes between two values in time
+- `field:electric-field-cycling` — an applied electric field cycled repeatedly at a stated frequency
+- `field:magnetic-field-change` — an applied magnetic field that changes between two values in time
+- `field:magnetic-field-cycling` — an applied magnetic field cycled repeatedly at a stated frequency
+- `field:nonuniform-magnetic-field` — a magnetic field with a spatial gradient across the active medium
+- `mechanical:stress-change` — an applied stress or strain that changes between two values in time
+- `mechanical:stress-crosses-transformation-threshold` — the applied stress crosses the material's stress-induced transformation threshold
+- `mechanical:stress-cycling` — an applied stress cycled repeatedly at a stated frequency
+- `light:incident-photon-flux` — a photon flux incident on the active element
+- `light:above-bandgap-photon-flux` — a photon flux with energy above the absorber's band gap
+- `thermodynamic:expansion-pressure-drop` — an upstream pressure state and downstream lower-pressure state sufficient for the working fluid to perform expansion work — a pathway may supply it only with a preceding providing step or an auxiliary requirement explaining how its implementation establishes it
+
+## `pathway.auxiliary_requirement.kind`
+
+Used in: `pathways[].auxiliary_requirements[].kind`
+
+- `recirculating-work` — work the implementation takes from its own output stream to establish a condition its route needs (a gas turbine's compressor driven from the turbine shaft)
+- `parasitic-load` — a load the implementation carries that does not establish a route condition (fans, controls, pumps that only move fluid)
+- `external-input` — an input supplied from outside the implementation (grid power to a start-up motor, a purge gas)
+
 ## `measurement.parameter`
 
 Used in: `pathways[].performance.measurements[].parameters`

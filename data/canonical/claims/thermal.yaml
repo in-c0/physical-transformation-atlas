@@ -791,8 +791,9 @@
   subject: carrier:hot-gas
   predicate: drives
   object: phenomenon:working-fluid-expansion
-  conditions: [the hot pressurised gas expands through a turbine or against a piston]
+  conditions: [the hot gas expands through a turbine or against a piston from an upstream pressure to a lower downstream pressure]
   condition_tags: [state-gas, temp-high]
+  regime_requires: [thermodynamic:expansion-pressure-drop]  # pass 36: the carrier no longer implies pressure; the pressure ratio is established by the implementation (a compressor, a boiler feed pump) and recorded on the reviewed pathway
   energy: { input: thermal, output: mechanical, dissipation: thermal }
   evidence: [source:bejan-2016, source:dixon-hall-2014]
   status: established

@@ -24,6 +24,8 @@ import {
   SEARCH_ENGINES,
   SEARCH_STATUSES,
   STRUCTURAL_KINDS,
+  REGIME_TOKENS,
+  AUXILIARY_KINDS,
   SYSTEM_HANDOFF_KINDS,
   SYSTEM_HANDOFF_STATUSES,
   SYSTEM_OUTPUT_AGGREGATIONS,
@@ -200,6 +202,30 @@ export const VOCABULARY: VocabularyEnum[] = [
       demonstrated: "the boundary has been realised in a physical experiment or device cited in evidence; it resolves the region transition it names",
       theoretical: "the boundary is modelled (a transmission relation or an argument from physics) but not realised for this pair of steps; the boundary check stays unresolved",
       proposed: "the boundary is named in a proposal or design only; the boundary check stays unresolved",
+    }),
+  },
+  {
+    name: "regime.token",
+    used_in: [
+      "claims[].regime_requires / regime_provides / regime_external",
+      "entities[].regime_provides / regime_excludes",
+      "pathways[].regime_provides / regime_model_provides",
+      "pathways[].auxiliary_requirements[].establishes",
+    ],
+    terms: Object.entries(REGIME_TOKENS).map(([id, t]) => ({
+      id,
+      definition:
+        t.definition +
+        (t.provider_needs_explanation ? " — a pathway may supply it only with a preceding providing step or an auxiliary requirement explaining how its implementation establishes it" : ""),
+    })),
+  },
+  {
+    name: "pathway.auxiliary_requirement.kind",
+    used_in: ["pathways[].auxiliary_requirements[].kind"],
+    terms: define(AUXILIARY_KINDS, {
+      "recirculating-work": "work the implementation takes from its own output stream to establish a condition its route needs (a gas turbine's compressor driven from the turbine shaft)",
+      "parasitic-load": "a load the implementation carries that does not establish a route condition (fans, controls, pumps that only move fluid)",
+      "external-input": "an input supplied from outside the implementation (grid power to a start-up motor, a purge gas)",
     }),
   },
   {

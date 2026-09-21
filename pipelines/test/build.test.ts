@@ -244,6 +244,45 @@ test("the legacy performance audit's regression controls (loop-3 pass 35)", () =
   assert.ok(graph.systems.some((s) => (s.performance?.measurements ?? []).some((m) => m.value_numeric === 0.4693)));
 });
 
+test("the gas-turbine / expansion-carrier closure (loop-3 pass 36): the pressure regime is required by the expansion step, supplied only through an explained auxiliary, and never by the carrier or by combustion", () => {
+  const route = (id: string) => graph.paths.find((p) => p.pathway === id)!;
+  const regime = (p: (typeof graph.paths)[number]) => p.checks.find((k) => k.id === "driver-regime-sufficiency")!;
+  // generic combustion → hot gas → expansion without a reviewed provider is unresolved on the token
+  const generic = graph.paths.filter((p) => !p.pathway && p.claims.includes("claim:combustion-produces-hot-gas") && p.claims.includes("claim:hot-gas-drives-expansion"));
+  assert.ok(generic.length > 0);
+  for (const p of generic) {
+    assert.equal(regime(p).result, "unresolved", p.id);
+    assert.match(regime(p).detail, /thermodynamic:expansion-pressure-drop/);
+  }
+  // the reviewed gas turbine with its compressor auxiliary passes; the nuclear plant stays unresolved on purpose
+  assert.equal(regime(route("pathway:combustion-gas-turbine")).result, "pass");
+  assert.equal(regime(route("pathway:nuclear-steam-plant")).result, "unresolved");
+  // hot gas → thermal emission does not acquire the pressure requirement; the carrier no longer claims pressure
+  const emission = canon.claims.find((c) => c.id === "claim:hot-gas-drives-thermal-emission")!;
+  assert.deepEqual(emission.regime_requires, []);
+  const hotGas = canon.entities.find((e) => e.id === "carrier:hot-gas")!;
+  assert.equal(hotGas.name, "Hot gas");
+  assert.doesNotMatch(hotGas.summary, /at high temperature and pressure/);
+  assert.deepEqual(hotGas.regime_provides, []);
+  assert.deepEqual(canon.claims.find((c) => c.id === "claim:combustion-produces-hot-gas")!.regime_provides, []);
+  // the auxiliary never enters enumeration: the gas-turbine route is exactly its seven steps and no route names a compressor
+  assert.equal(route("pathway:combustion-gas-turbine").claims.length, 7);
+  assert.equal(graph.paths.filter((p) => p.claims.some((c) => /compressor|auxiliary/.test(c))).length, 0);
+  // an unregistered token is refused by the schema
+  assert.throws(() => Claim.parse({ ...emission, regime_requires: ["thermal:made-up-regime"] }), /unknown regime token/);
+  // removing the auxiliary while leaving the pathway provider fails validation
+  const tmp = mkdtempSync(join(tmpdir(), "pta-aux-"));
+  cpSync(join(root, "data", "canonical"), join(tmp, "data", "canonical"), { recursive: true });
+  const file = join(tmp, "data", "canonical", "pathways", "pathways.yaml");
+  const text = readFileSync(file, "utf8");
+  const start = text.indexOf("  auxiliary_requirements:\n    - kind: recirculating-work");
+  const end = text.indexOf("  performance:", start);
+  assert.ok(start > 0 && end > start, "the gas-turbine auxiliary block is where the test expects it");
+  writeFileSync(file, text.slice(0, start) + text.slice(end));
+  assert.throws(() => loadCanon(tmp), /supplies thermodynamic:expansion-pressure-drop but no preceding step of its route provides it and no auxiliary_requirements entry establishes it/);
+  rmSync(tmp, { recursive: true, force: true });
+});
+
 test("the system layer's loader gate (loop-3 pass 34): a handoff must name the disequilibrium its receiving member's route starts from; the schema refuses unknown members", () => {
   assert.throws(() => SystemPathway.parse({ ...canon.systems[0], handoffs: [{ ...canon.systems[0].handoffs[0], to_member: "nowhere" }] }), /unknown member nowhere/);
   // Measurements only: a legacy summary field on a system is refused (pass 34, the reviewer's invariant).
@@ -256,7 +295,8 @@ test("the system layer's loader gate (loop-3 pass 34): a handoff must name the d
   // The Rankine member reads regime pass since its drives claim records the requirement its source provides; the gas-turbine member stays unknown on purpose.
   const cc = graph.systems.find((s) => s.id === "system-pathway:natural-gas-combined-cycle")!;
   assert.equal(cc.members.find((m) => m.id === "bottoming")!.route_checks["driver-regime-sufficiency"], "pass");
-  assert.equal(cc.members.find((m) => m.id === "topping")!.route_checks["driver-regime-sufficiency"], "unknown");
+  // pass 36: the gas-turbine member passes too, through its explained compressor auxiliary (it read unknown in pass 34)
+  assert.equal(cc.members.find((m) => m.id === "topping")!.route_checks["driver-regime-sufficiency"], "pass");
   // The loader gate: a copy of the canonical data with the handoff pointed at the wrong disequilibrium fails to load.
   const tmp = mkdtempSync(join(tmpdir(), "pta-systems-"));
   cpSync(join(root, "data", "canonical"), join(tmp, "data", "canonical"), { recursive: true });
