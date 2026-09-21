@@ -69,10 +69,10 @@ export const CHECK_DEFINITIONS: CheckDefinition[] = [
     definition:
       "Which hard limits (bounded_by claims whose constraint is an upper-bound or a formula-bound applying to the route's source, output and phenomena) can be evaluated against a comparable recorded datum, and does every such datum respect them? Benchmarks, constitutive relations and resource limits are listed, never decisive.",
     pass_when:
-      "at least one hard bound is fully evaluated (a numeric ceiling with the required basis, or a formula evaluated from the datum's recorded parameters) and every comparable datum is within it",
-    fail_when: "a comparable datum exceeds a fully evaluated hard bound",
+      "at least one hard bound is fully evaluated against a physical-scope datum (laboratory, device, module, system, plant, field, or a summary efficiency — a numeric ceiling with the required basis, or a formula evaluated from the datum's recorded parameters) and every comparable physical datum is within it",
+    fail_when: "a comparable physical-scope datum exceeds a fully evaluated hard bound",
     unresolved_when:
-      "a hard bound applies but cannot be evaluated: no datum of its metric, a datum without the required basis, or missing formula inputs (for Carnot, the hot and cold temperatures of that datum)",
+      "a hard bound applies but no physical datum can be evaluated: no datum of its metric, a datum without the required basis, missing formula inputs (for Carnot, the hot and cold temperatures of that datum), or only model-scope data — a model datum is evaluated and reported as model-consistent or model-inconsistent but never decides the physical route, exactly as it supplies no regime",
     unknown_when: "no hard bound is recorded for the route (a thermal source implies Carnot, but only a bounded_by claim records it)",
     reads: [
       "bounded_by claims",

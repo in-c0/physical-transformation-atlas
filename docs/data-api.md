@@ -145,7 +145,8 @@ an unknown key fails validation; a pathway's own non-model parameters also suppl
 its exact route (a `model` datum supplies none, a `material` datum only a transition): T_h ≠ T_c a spatial gradient, dT/dt ≠ 0 or T_initial ≠ T_final a temporal
 change, a transition temperature between the two straddled, a cycle frequency with both sides cyclic
 exposure; never to a sibling route, and never Swift's threshold) — only a structured datum is ever
-compared with a bound), `environment`, `summary`,
+compared with a bound, and a `model` datum is evaluated but never decides the route: the check reports it as
+model-consistent or model-inconsistent and stays unresolved until a physical-scope datum can be evaluated (pass 33)), `environment`, `summary`,
 `review`, `regime_model_provides[]` (regime tokens a model asserts — recorded, never a provider for the
 core check). A pathway with `status: proposed` or `status: observed` is attached to its route but never
 makes it demonstrated and is ignored when other routes are classified as derived.

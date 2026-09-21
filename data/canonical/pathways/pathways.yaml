@@ -200,7 +200,7 @@
         conditions: "derived from the actual 225 MW operating readings above; the same model gives second-law efficiency 34.91 % and exergy destruction 412.68 MW"
         sources: [source:shaheed-2023-al-mosyab]
         year: 2023
-        note: "computed, not metered; the paper is inconsistent — Table 4 gives 39.3 %, the text 39.91 %, and Figure 2's condenser-pressure sweep 39.39 % at 0.06 bar falling to 37.97 % at 0.24 bar (the unit runs at 0.1 bar); the table's value is recorded as the reviewer quoted it. Not a record figure: efficiency_record 0.47 stands"
+        note: "Source-internal discrepancy: Table 4 reports cycle thermal efficiency 39.3%; surrounding prose reports 39.91%. The atlas records the tabulated value because Table 4 is the paper's declared energy/exergy result table; no reconciliation is supplied by the authors (Figure 2's condenser-pressure sweep gives 39.39 % at 0.06 bar falling to 37.97 % at 0.24 bar; the unit runs at 0.1 bar). Computed, not metered. Not a record figure: efficiency_record 0.47 stands"
   environment: [temp-gradient-required]
   summary: Heat raises steam; the turbine turns the generator. Most of the world's thermal electricity.
 

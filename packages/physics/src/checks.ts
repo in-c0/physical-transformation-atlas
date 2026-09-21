@@ -243,20 +243,24 @@ export function checkThermodynamicBound(ctx: PhysicsContext, claims: Claim[], pa
     return { id: "thermodynamic-bound", label, result: "unknown", detail: `no hard bound recorded for this route${hint}${otherText}` };
   }
   // Comparable data: structured measurements with the bound's metric; summary efficiencies count as
-  // conversion-efficiency data without a basis or parameters.
-  type Datum = { value: number; metric: string; basis?: string; parameters?: Record<string, number>; label: string };
+  // conversion-efficiency data without a basis or parameters. Pass 33: a model-scope datum is evaluated
+  // against the bound and its result kept, but it never decides the physical route — exactly as a model
+  // datum supplies no regime (pass 31). A model above the bound is an inconsistent model, not a forbidden route.
+  type Datum = { value: number; metric: string; basis?: string; parameters?: Record<string, number>; label: string; model: boolean };
   const data: Datum[] = [];
   for (const m of pathway?.performance?.measurements ?? []) {
-    if (m.value_numeric !== undefined && m.metric) data.push({ value: m.value_numeric, metric: m.metric, basis: m.basis, parameters: m.parameters, label: `${m.quantity} ${m.value}` });
+    if (m.value_numeric !== undefined && m.metric) data.push({ value: m.value_numeric, metric: m.metric, basis: m.basis, parameters: m.parameters, label: `${m.quantity} ${m.value}`, model: m.scope === "model" });
   }
   if (pathway?.performance?.efficiency_record !== undefined)
-    data.push({ value: pathway.performance.efficiency_record, metric: "conversion-efficiency", label: `record efficiency ${(pathway.performance.efficiency_record * 100).toFixed(1)}%` });
+    data.push({ value: pathway.performance.efficiency_record, metric: "conversion-efficiency", label: `record efficiency ${(pathway.performance.efficiency_record * 100).toFixed(1)}%`, model: false });
   if (pathway?.performance?.efficiency_typical !== undefined)
-    data.push({ value: pathway.performance.efficiency_typical, metric: "conversion-efficiency", label: `typical efficiency ${(pathway.performance.efficiency_typical * 100).toFixed(1)}%` });
+    data.push({ value: pathway.performance.efficiency_typical, metric: "conversion-efficiency", label: `typical efficiency ${(pathway.performance.efficiency_typical * 100).toFixed(1)}%`, model: false });
 
   const evaluated: string[] = [];
   const failures: string[] = [];
   const pending: string[] = [];
+  const modelConsistent: string[] = [];
+  const modelInconsistent: string[] = [];
   for (const b of hard) {
     const comparable = data.filter((d) => d.metric === b.metric);
     if (comparable.length === 0) {
@@ -284,15 +288,28 @@ export function checkThermodynamicBound(ctx: PhysicsContext, claims: Claim[], pa
         pending.push(`${b.name}: the bound could not be evaluated`);
         continue;
       }
-      decided = true;
       const pct = (x: number) => (b.metric === "conversion-efficiency" || b.metric === "power-coefficient" ? `${(x * 100).toFixed(1)}%` : String(x));
+      const at = d.parameters && b.formula_inputs.length ? ` at ${b.formula_inputs.map((k) => `${k} ${d.parameters![k]}`).join(" / ")}` : "";
+      if (d.model) {
+        // Evaluated and kept, never decisive for the physical route.
+        if (d.value > ceiling) modelInconsistent.push(`${d.label} exceeds ${b.name} (${pct(ceiling)})${at}`);
+        else modelConsistent.push(`${d.label} ≤ ${b.name} (${pct(ceiling)})${at}`);
+        continue;
+      }
+      decided = true;
       if (d.value > ceiling) failures.push(`${d.label} exceeds ${b.name} (${pct(ceiling)})`);
       else evaluated.push(`${d.label} ≤ ${b.name} (${pct(ceiling)})`);
     }
     if (!decided && comparable.length) continue;
   }
-  if (failures.length) return { id: "thermodynamic-bound", label, result: "fail", detail: failures.join("; ") + otherText };
-  if (evaluated.length) return { id: "thermodynamic-bound", label, result: "pass", detail: `${evaluated.join("; ")}${pending.length ? `; unresolved: ${pending.join("; ")}` : ""}${otherText}` };
+  const modelText = [
+    ...(modelConsistent.length ? [`model-consistent · ${modelConsistent.join("; ")}`] : []),
+    ...(modelInconsistent.length ? [`model-inconsistent · ${modelInconsistent.join("; ")} (a model prediction above the bound marks the model inconsistent; it does not forbid the route)`] : []),
+  ];
+  if (failures.length) return { id: "thermodynamic-bound", label, result: "fail", detail: [failures.join("; "), ...modelText].join("; ") + otherText };
+  if (evaluated.length) return { id: "thermodynamic-bound", label, result: "pass", detail: `${[evaluated.join("; "), ...modelText].join("; ")}${pending.length ? `; unresolved: ${pending.join("; ")}` : ""}${otherText}` };
+  if (modelText.length)
+    return { id: "thermodynamic-bound", label, result: "unresolved", detail: `${modelText.join("; ")}; no comparable physical datum can be evaluated against ${hard.map((b) => b.name).join(", ")}${pending.length ? `: ${pending.join("; ")}` : ""}${otherText}` };
   return { id: "thermodynamic-bound", label, result: "unresolved", detail: `hard bound recorded (${hard.map((b) => b.name).join(", ")}) but not evaluable: ${pending.join("; ")}${otherText}` };
 }
 

@@ -174,7 +174,7 @@ const claims: Claim[] = [
     energy: { input: "mechanical", output: "mechanical" },
   } as Claim,
 ];
-const pathwayWith = (eff: number, params?: Record<string, number>): Pathway =>
+const pathwayWith = (eff: number, params?: Record<string, number>, scope: "device" | "model" = "device"): Pathway =>
   ({
     id: "pathway:x",
     name: "x",
@@ -187,10 +187,22 @@ const pathwayWith = (eff: number, params?: Record<string, number>): Pathway =>
     summary: "",
     performance: {
       measurements: [
-        { quantity: "efficiency", value: `${eff}`, value_numeric: eff, unit: "1", metric: "conversion-efficiency", parameters: params, scope: "device", conditions: "", sources: ["source:s"] },
+        { quantity: "efficiency", value: `${eff}`, value_numeric: eff, unit: "1", metric: "conversion-efficiency", parameters: params, scope, conditions: "", sources: ["source:s"] },
       ],
     },
   }) as unknown as Pathway;
+
+test("pass 33: a model-scope datum is evaluated against the bound but never decides the physical route", () => {
+  assert.equal(checkThermodynamicBound(ctx([carnot]), claims, pathwayWith(0.03, { T_h_K: 300, T_c_K: 280 })).result, "pass");
+  const model = checkThermodynamicBound(ctx([carnot]), claims, pathwayWith(0.03, { T_h_K: 300, T_c_K: 280 }, "model"));
+  assert.equal(model.result, "unresolved");
+  assert.match(model.detail, /model-consistent · efficiency 0.03 ≤ Carnot limit \(6.7%\) at T_h_K 300 \/ T_c_K 280/);
+  assert.match(model.detail, /no comparable physical datum/);
+  const above = checkThermodynamicBound(ctx([carnot]), claims, pathwayWith(0.5, { T_h_K: 300, T_c_K: 280 }, "model"));
+  assert.equal(above.result, "unresolved");
+  assert.match(above.detail, /model-inconsistent · efficiency 0.5 exceeds Carnot limit \(6.7%\)/);
+  assert.match(above.detail, /does not forbid the route/);
+});
 
 test("negative control: an efficiency above the Carnot ceiling evaluated from its own temperatures fails; without temperatures it is unresolved; a benchmark alone is unknown", () => {
   assert.equal(checkThermodynamicBound(ctx([carnot]), claims, pathwayWith(0.7, { T_h_K: 500, T_c_K: 300 })).result, "fail");
