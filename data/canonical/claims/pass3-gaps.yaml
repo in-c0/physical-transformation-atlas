@@ -745,3 +745,11 @@
   evidence: [source:tagantsev-1987-thermal-polarization]
   status: established
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 28 (the second reader's family)" }
+# Loop-3 pass 31: the regenerative elastocaloric heat pump.
+- id: claim:elastocaloric-implemented-heat-pump
+  subject: phenomenon:elastocaloric-effect
+  predicate: implemented_by
+  object: transducer:regenerative-elastocaloric-heat-pump
+  evidence: [source:tusek-2016]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 31 (abstract read)" }

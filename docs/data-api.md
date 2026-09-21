@@ -138,13 +138,16 @@ structured form: `value_numeric`, `unit`, `metric` (which bounded quantity it is
 number is defined on) and `parameters` (the inputs a formula bound needs, such as `T_h_K` and
 `T_c_K`; since pass 31 the keys are drawn from the registry served as vocabulary
 `measurement.parameter` — T_h_K, T_c_K, T_initial_K, T_final_K, dT_dt_K_s, T_transition_K,
-temperature_gradient_K_m, gradient_length_m, cycle_frequency_Hz, T_emitter_K, T_collector_K and the
-bound inputs — and an unknown key fails validation; a pathway's own parameters also supply regime
-tokens to its exact route: T_h ≠ T_c a spatial gradient, dT/dt ≠ 0 or T_initial ≠ T_final a temporal
+temperature_gradient_K_m, gradient_length_m, cycle_frequency_Hz, T_emitter_K, T_collector_K, the
+operating-state names T_turbine_inlet_K, T_turbine_exhaust_K, T_cooling_water_inlet_K and T_condenser_K
+(never the Carnot reservoirs; only T_h_K / T_c_K feed the reservoir bound) and the bound inputs — and
+an unknown key fails validation; a pathway's own non-model parameters also supply regime tokens to
+its exact route (a `model` datum supplies none, a `material` datum only a transition): T_h ≠ T_c a spatial gradient, dT/dt ≠ 0 or T_initial ≠ T_final a temporal
 change, a transition temperature between the two straddled, a cycle frequency with both sides cyclic
 exposure; never to a sibling route, and never Swift's threshold) — only a structured datum is ever
 compared with a bound), `environment`, `summary`,
-`review`. A pathway with `status: proposed` or `status: observed` is attached to its route but never
+`review`, `regime_model_provides[]` (regime tokens a model asserts — recorded, never a provider for the
+core check). A pathway with `status: proposed` or `status: observed` is attached to its route but never
 makes it demonstrated and is ignored when other routes are classified as derived.
 
 **CompiledPath** (generated) — `id` is `p-` plus ten hex characters of a SHA-1 over the ordered

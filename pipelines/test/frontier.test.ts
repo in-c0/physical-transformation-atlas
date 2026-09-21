@@ -264,10 +264,11 @@ test("driver / regime sufficiency on real routes (loop-3 pass 30): the reviewer'
   // a single caloric event produces a temperature change, not a gradient: no direct caloric → Seebeck route remains
   assert.ok(!paths.some((p) => p.claims.includes("claim:magnetocaloric-produces") && p.claims.includes("claim:seebeck-drives")), "caloric → gradient → Seebeck routes eliminated");
   assert.ok(paths.some((p) => p.claims.includes("claim:magnetocaloric-produces") && p.claims.includes("claim:pyro-drives")), "a caloric event can feed pyroelectricity at the regime level");
-  // electrocaloric from a static potential difference: unresolved on the field change
+  // electrocaloric (pass 31): re-spelled onto the changing electric field, the single effect passes from its source; no static-bias spelling remains
   const ec = paths.find((p) => p.claims[0] === "claim:electrocaloric-drives")!;
-  assert.equal(regime(ec).result, "unresolved");
-  assert.match(regime(ec).detail, /field:electric-field-change/);
+  assert.equal(ec.nodes[0], "disequilibrium:electric-field-change");
+  assert.equal(regime(ec).result, "pass");
+  assert.ok(!paths.some((p) => p.nodes[0] === "disequilibrium:electric-potential-difference" && p.claims[0] === "claim:electrocaloric-drives"));
   // magnetocaloric: the single effect passes from the changing field; the refrigerator passes through its own regime_provides; a generic cooling route without cycling is unresolved
   assert.equal(regime(byPathway("pathway:magnetocaloric-refrigeration")).result, "pass");
   const mcGeneric = paths.find((p) => p.claims.includes("claim:magnetocaloric-converts-cooling") && !p.pathway);
@@ -290,6 +291,10 @@ test("driver / regime sufficiency on real routes (loop-3 pass 30): the reviewer'
   assert.equal(regime(byPathway("pathway:thermophotovoltaic")).result, "pass");
   // the thermoacoustic threshold cannot self-certify: the generator passes through its pathway, the acoustoelectric candidate stays unresolved
   assert.equal(regime(byPathway("pathway:thermoacoustic-generator")).result, "pass");
+  // pass 31: the Tušek heat pump carries the mechanical regimes on its own pathway; the mechanical-stress source supplies none
+  assert.equal(regime(byPathway("pathway:regenerative-elastocaloric-heat-pump")).result, "pass");
+  const stressGeneric = paths.find((p) => p.claims[0] === "claim:elastocaloric-drives" && !p.pathway);
+  if (stressGeneric) assert.equal(regime(stressGeneric).result, "unresolved");
   const ae = paths.find((p) => p.claims.includes("claim:thermoacoustic-produces-travelling-sound") && p.claims.includes("claim:acoustic-wave-drives-acoustoelectric") && p.nodes[0] === "disequilibrium:temperature-gradient")!;
   assert.equal(regime(ae).result, "unresolved");
   // no route fails, and no demonstrated pathway is left unresolved

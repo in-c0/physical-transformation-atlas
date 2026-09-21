@@ -392,8 +392,15 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
   function derivedRegimes(p: Pathway): string[] {
     const out = new Set<string>();
     for (const m of p.performance?.measurements ?? []) {
+      // A model can show an assumed operating point is self-consistent; it cannot make a physical route's core check pass.
+      if (m.scope === "model") continue;
       const q = m.parameters ?? {};
       const hot = q.T_h_K, cold = q.T_c_K;
+      // A material-scope datum may establish a material-local transition, never a whole device cycle.
+      if (m.scope === "material") {
+        if (hot !== undefined && cold !== undefined && q.T_transition_K !== undefined && Math.min(hot, cold) < q.T_transition_K && q.T_transition_K < Math.max(hot, cold)) out.add("thermal:transition-temperature-straddled");
+        continue;
+      }
       if (hot !== undefined && cold !== undefined && hot !== cold) out.add("thermal:spatial-temperature-gradient");
       if ((q.dT_dt_K_s !== undefined && q.dT_dt_K_s !== 0) || (q.T_initial_K !== undefined && q.T_final_K !== undefined && q.T_initial_K !== q.T_final_K)) out.add("thermal:temporal-temperature-change");
       if (hot !== undefined && cold !== undefined && q.T_transition_K !== undefined && Math.min(hot, cold) < q.T_transition_K && q.T_transition_K < Math.max(hot, cold)) out.add("thermal:transition-temperature-straddled");

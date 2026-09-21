@@ -126,6 +126,10 @@ Used in: `pathways[].performance.measurements[].parameters`
 - `cycle_frequency_Hz` — the frequency of a cyclic operation (field, stress, hot–cold exposure), Hz
 - `T_emitter_K` — thermionic or thermal emitter temperature, K
 - `T_collector_K` — thermionic collector temperature, K
+- `T_turbine_inlet_K` — turbine inlet (working-fluid) temperature — an operating state, never the Carnot hot reservoir, K
+- `T_turbine_exhaust_K` — turbine exhaust temperature — an operating state, never the cold reservoir, K
+- `T_cooling_water_inlet_K` — cooling-water inlet temperature at the condenser or sink — an operating state, K
+- `T_condenser_K` — condensing temperature when the source derives it, K
 - `T_s_K` — the radiating-source temperature a radiative bound uses (the Sun ≈ 5800 K), K
 - `ZT` — thermoelectric figure of merit, dimensionless
 - `V` — applied or generated voltage, V

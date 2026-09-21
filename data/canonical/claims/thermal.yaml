@@ -705,7 +705,7 @@
   evidence: [source:pecharsky-gschneidner-1997, source:gschneidner-2005]
   status: established
 - id: claim:electrocaloric-drives
-  subject: disequilibrium:electric-potential-difference
+  subject: disequilibrium:electric-field-change
   predicate: drives
   object: phenomenon:electrocaloric-effect
   regime_requires: [field:electric-field-change]
@@ -1108,3 +1108,13 @@
   evidence: [source:callen-1948, source:bejan-2016]
   status: established
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 19 (the seven checks audited as physics; typed limits)" }
+# Loop-3 pass 31: the elastocaloric effect as a heat pump (Tušek et al. 2016), the heating side of the same device family.
+- id: claim:elastocaloric-converts-heating
+  subject: phenomenon:elastocaloric-effect
+  predicate: converts_into
+  object: output:useful-heat
+  regime_requires: [mechanical:stress-cycling]
+  energy: { input: thermal, output: thermal, dissipation: thermal }
+  evidence: [source:tusek-2016]
+  status: demonstrated
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 31 (the regenerative heat pump's heating output; abstract read)" }

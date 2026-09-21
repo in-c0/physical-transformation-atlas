@@ -287,3 +287,18 @@
   regime_provides: [thermal:temporal-temperature-change]
   summary: "A material's temperature changes with time. Unlike a spatial temperature gradient, this directly drives pyroelectric current through the time dependence of spontaneous polarization."
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 30 (the second reader's spelling; the pyroelectric harvester and the single caloric events re-spelled onto it)" }
+# Loop-3 pass 31: the driver the electrocaloric effect actually needs — a field that changes, not a static bias.
+- id: disequilibrium:electric-field-change
+  type: disequilibrium
+  availability: engineered-common
+  energy_form: electrical
+  name: Changing electric field
+  symbol: ΔE
+  aliases: [electric field change, changing electric field, electric-field switching, field application and removal]
+  domain: electromagnetism
+  quantity: quantity:electric-field
+  exergy: positive
+  condition_tags: [field-electric-required, transient-only]
+  regime_provides: [field:electric-field-change]
+  summary: "An applied electric field changes between two values in time. The change can reversibly alter the entropy and temperature of an electrocaloric material; a static bias alone is not the caloric driving event."
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 31 (the second reader's spelling, the analogue of the changing-magnetic-flux row; Mischenko 2006)" }

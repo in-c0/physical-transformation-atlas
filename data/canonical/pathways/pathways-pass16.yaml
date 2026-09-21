@@ -546,3 +546,40 @@
   environment: [state-gas, temp-gradient-required]
   summary: A thermoacoustic engine produces pressure oscillations that actuate a piston-coupled contact–separation triboelectric generator; the electrical output powers storage and a wireless sensor.
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 27 (the second reader's spelling; the piston is apparatus at the gas–solid boundary, recorded as an interface)" }
+# Loop-3 pass 31: the regenerative elastocaloric heat pump, the pathway that carries Tušek 2016's operating regime.
+- id: pathway:regenerative-elastocaloric-heat-pump
+  regime_provides: [mechanical:stress-change, mechanical:stress-crosses-transformation-threshold, mechanical:stress-cycling]  # pass 31: an active regenerator cycles its plates through the superelastic transformation by construction
+  name: Regenerative elastocaloric heat pump
+  steps: [claim:elastocaloric-drives, claim:elastocaloric-converts-heating]
+  demonstrated_with: [transducer:regenerative-elastocaloric-heat-pump]
+  evidence: [source:tusek-2016]
+  status: demonstrated
+  knowledge_level: K7
+  performance:
+    measurements:
+      - quantity: water-side temperature span
+        value: "15.3 K"
+        value_numeric: 15.3
+        unit: K
+        scope: device
+        conditions: "regenerative elastocaloric heat pump with NiTi plates cycled through the superelastic transformation; water-side span between the hot and cold outlets"
+        sources: [source:tusek-2016]
+        year: 2016
+      - quantity: specific heating power
+        value: "up to 800 W kg⁻¹"
+        value_numeric: 800
+        unit: W/kg
+        scope: device
+        conditions: "the same device, per kilogram of elastocaloric material"
+        sources: [source:tusek-2016]
+        year: 2016
+      - quantity: coefficient of performance (heating)
+        value: "up to 7"
+        value_numeric: 7
+        scope: device
+        conditions: "maximum COP reported for the same device"
+        sources: [source:tusek-2016]
+        year: 2016
+  environment: [state-solid]
+  summary: An active regenerator of superelastic NiTi plates, cycled through their stress-induced transformation, pumps heat across a 15.3 K water-side span with specific heating power up to 800 W per kilogram and COP up to 7 — the heat-pumping face of the elastocaloric effect, beside the bending-actuated cooler.
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 31 (the second reader asked for Tušek 2016's regime on a pathway of its own; abstract read)" }

@@ -675,3 +675,11 @@
   knowledge_level: K6
   summary: "A piston-assisted thermoacoustic engine actuates a contact-separation triboelectric nanogenerator (Li et al. 2026: 0.49 mW peak at 80 MΩ with heating around 150 °C; a wireless sensor powered)."
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 27 (abstract read; the second reader's spelling)" }
+# Loop-3 pass 31: the regenerative elastocaloric heat pump (Tušek et al. 2016).
+- id: transducer:regenerative-elastocaloric-heat-pump
+  type: transducer
+  name: Regenerative elastocaloric heat pump
+  aliases: [active elastocaloric regenerator, elastocaloric heat pump]
+  knowledge_level: K7
+  summary: "Superelastic NiTi plates cycled through their transformation in an active regenerator pump heat up a water-side temperature span of 15.3 K with specific heating power up to 800 W kg⁻¹ and COP up to 7 (Tušek et al. 2016)."
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 31 (abstract read on the publisher's page)" }

@@ -137,6 +137,17 @@
   performance:
     efficiency_typical: 0.001
     theoretical_limit: "Carnot for the small ΔT around the Curie point; material limits are far below it"
+    measurements:
+      - quantity: electrical output power
+        value: "0.8 mW"
+        value_numeric: 0.0008
+        unit: W
+        scope: device
+        conditions: "Waske et al. 2019 supplementary information: the genus-3 (pretzel) magnetic circuit with La-Fe-Co-Si (CALORIVAC C) plates of transition temperature 300 K, the fluid circuits switched by ΔT = 30 K at the experimentally optimal cycle frequency of 0.8 Hz (cycle time 1.25 s), fluid flux 0.4 l/min; falls to 0.01 mW when the genus is reduced to 1"
+        parameters: { T_transition_K: 300, cycle_frequency_Hz: 0.8 }
+        sources: [source:waske-2019]
+        year: 2019
+        note: "read from the open supplementary PDF (fluid temperatures measured with four Pt1000 sensors at the plate-stack inlet); the main text's peak figures and their exact temperature pair are behind the paywall, and the 285 K / 315 K endpoints appear there only as the simulation's B–H curves, so T_h_K / T_c_K are not recorded"
   environment: [state-solid, temp-gradient-required]
   summary: A gadolinium element switching between hot and cold changes the flux through a coil.
 
