@@ -46,3 +46,36 @@ power called by its name, the key retired from the writable schema.
 
 Result: revision b6d5f114a056 — 340 entities · 507 claims · 218 sources · 89 pathways · 1 system ·
 751 routes · 76/76 · axe clean · exports valid · live.
+
+## Reviewed (sent 4:26 pm; ChatGPT High, ~8 min, with web search; PIVOT — 35 findings) and applied (4:34–4:45 pm)
+
+1. The sweep accepted (finding 1); the reverse-electrowetting datum kept (findings 2–3, 8–9):
+   per liquid–substrate overlap area is a legitimate active-interface basis — recorded as such,
+   never relabelled as device footprint; the 10³ W/m² stays out.
+2. The schema correction (findings 4–7): same units never imply comparable densities.
+   `Measurement.normalization: { kind: area | volume | mass | length | count, basis }` with the basis
+   drawn from a frozen registry (liquid-substrate-overlap-area, radiative-cooler-area,
+   active-device-area, device-footprint-area, module-area, electrode-area, membrane-area,
+   active-material-volume, device-volume, active-material-mass, device-mass, and `unstated` for a
+   source that gives the dimension but not the referent), served as vocabulary
+   `measurement.normalization.kind` / `.basis`; the loader requires it on every density metric and
+   forbids it on an absolute `power`; all ten density data carry one; the route page's derived
+   "best recorded power density" groups by metric + unit + kind + basis and names the basis.
+3. Raman, Li & Fan 2019 (findings 10–15): not filed to the owner — the primary was read in full on
+   the Cell Press page in her Chrome (the article's PII is S2542-4351(19)30412-X; the DOI page
+   renders an empty shell): J_sc 44 mA, V_oc 79 mV, nearly 0.8 mW at the maximum power point from a
+   Marlow TG12-4 module, normalised to the 200 mm radiative-cooler area → 25 mW/m², clear-night
+   rooftop at Stanford in late December 2017; recorded as a device datum per radiative-cooler area;
+   the 0.5 W/m² stays out as the authors' pathway to improvement. Ruling recorded: a secondary source
+   corroborates, never promotes a device datum while the primary is unread.
+4. Pass 38 set (findings 16–34): the steam / nuclear heat-engine architecture audit —
+   `claim:fission-produces-hot-gas` narrowed to directly heated / same-circuit configurations (PWR
+   removed from it); `pathway:nuclear-steam-plant` re-spelled binding-drives-fission →
+   fission-produces-gradient → expansion-drives → … so it passes the regime check through the
+   spatial gradient and stops being the pressure-drop exception; PWR / BWR loops later via the
+   system layer; no nuclear feed-pump auxiliary; `pathway:steam-engine` renamed "Steam Rankine
+   cycle (shaft work)" to match its Rankine transducer; seven regressions, the route count explained
+   if it moves. Pass 39: the owner-free ambiguous-source sweep, retained assertions first.
+
+Result: revision d9394a49eb6e — 340 entities · 507 claims · 218 sources · 89 pathways · 1 system ·
+751 routes · 76/76 · axe clean · exports valid · live.

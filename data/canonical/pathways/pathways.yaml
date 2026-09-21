@@ -191,6 +191,7 @@
         value_numeric: 2.39
         unit: W/cm²
         metric: power-density
+        normalization: { kind: area, basis: active-device-area }
         basis: "electrical output per unit cell area at the maximum-efficiency operating point"
         parameters: { T_emitter_K: 2673.15 }
         scope: device
@@ -366,8 +367,21 @@
   status: demonstrated
   knowledge_level: K4
   performance:
-    # pass 37: power_density "25 mW/m² measured; ≈ 0.5 W/m² projected" removed — a summary power density stays only as a structured measurement with its denominator and basis (the reviewer's ruling); the value stays in the audit record
+    # pass 37: power_density "25 mW/m² measured; ≈ 0.5 W/m² projected" removed — the measured half returns below from the primary read in full; the 0.5 W/m² is the authors' pathway to improvement and stays in the audit
     theoretical_limit: "Carnot across a few kelvin; radiative cooling power ≲ 100 W/m²"
+    measurements:
+      - quantity: electrical power density
+        value: "25 mW/m²"
+        value_numeric: 0.025
+        unit: W/m²
+        metric: power-density
+        normalization: { kind: area, basis: radiative-cooler-area }
+        basis: "maximum-power-point thermoelectric electrical output (nearly 0.8 mW; J_sc 44 mA, V_oc 79 mV) normalised to the area of the 200 mm radiative-cooler disk"
+        scope: device
+        conditions: "clear-night rooftop experiment at Stanford, CA, late December 2017, dew point −1 to −3 °C, device 1 m above roof level; a 200 mm aluminium disk painted black (ε ≈ 0.95) as the sky-facing emitter on the cold side of a Marlow TG12-4 module (ZT = 0.71) inside a polystyrene enclosure with a 12.5 µm polyethylene wind cover; the hot side coupled to a finned 200 mm aluminium disk in ambient air"
+        sources: [source:raman-2019-night]
+        year: 2019
+        note: "read on the Cell Press page in the owner's Chrome (the article carries the PII S2542-4351(19)30412-X); the paper's 'pathways to improving performance … to 0.5 W/m²' is a projection with stated component improvements and is not recorded as a physical datum"
   environment: [temp-gradient-required]
   summary: A sky-facing emitter cools the cold side of a thermoelectric module below ambient at night.
 
@@ -658,6 +672,7 @@
         value_numeric: 50.1
         unit: W/m²
         metric: power-density
+        normalization: { kind: area, basis: active-device-area }
         basis: "instantaneous peak output power per unit device area at the optimal load; a per-impact peak, not a time-averaged density"
         scope: device
         conditions: "PTFE film on an ITO substrate with an aluminium electrode; impinging water droplets bridge the components into a closed loop; load resistance 332.0 kΩ (in a sweep from 1 kΩ to 100 MΩ the output current fell from 250.0 µA to 2.0 µA)"

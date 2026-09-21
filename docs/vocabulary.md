@@ -174,6 +174,33 @@ Used in: `pathways[].auxiliary_requirements[].kind`
 - `parasitic-load` — a load the implementation carries that does not establish a route condition (fans, controls, pumps that only move fluid)
 - `external-input` — an input supplied from outside the implementation (grid power to a start-up motor, a purge gas)
 
+## `measurement.normalization.kind`
+
+Used in: `pathways[].performance.measurements[].normalization.kind`, `systems[].performance.measurements[].normalization.kind`
+
+- `area` — the datum is a quantity per unit area
+- `volume` — per unit volume
+- `mass` — per unit mass
+- `length` — per unit length
+- `count` — per unit count (per cell, per droplet …)
+
+## `measurement.normalization.basis`
+
+Used in: `pathways[].performance.measurements[].normalization.basis`, `systems[].performance.measurements[].normalization.basis`
+
+- `liquid-substrate-overlap-area` — the liquid–solid interface area over which a droplet-based conversion occurs (reverse electrowetting)
+- `radiative-cooler-area` — the sky-facing area of the radiative cooler or emitter
+- `active-device-area` — the active area of the converting device or cell (a photovoltaic or thermophotovoltaic cell, a droplet generator's electrode, a nuclear battery's cell)
+- `device-footprint-area` — the packaged device's or module's footprint, including inactive area
+- `module-area` — the designated or aperture area of a module as an efficiency table defines it
+- `electrode-area` — the geometric area of an electrode
+- `membrane-area` — the active area of a membrane
+- `active-material-volume` — the volume of the active material alone
+- `device-volume` — the volume of the whole device (component or practical volume as the source defines it)
+- `active-material-mass` — the mass of the active material alone
+- `device-mass` — the mass of the whole device
+- `unstated` — the source states the dimension of the denominator but not what area, volume or mass it refers to — a read is owed before the datum is compared with any other
+
 ## `measurement.parameter`
 
 Used in: `pathways[].performance.measurements[].parameters`

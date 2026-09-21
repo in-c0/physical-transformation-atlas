@@ -49,6 +49,7 @@
         value_numeric: 40.1
         unit: W/m²
         metric: power-density
+        normalization: { kind: area, basis: radiative-cooler-area }
         basis: "net cooling power per unit area of the photonic cooler when its surface is at ambient air temperature (zero temperature reduction), measured on a rooftop"
         scope: device
         conditions: "seven-layer HfO₂/SiO₂ photonic solar reflector and thermal emitter reflecting 97 % of sunlight and emitting in the 8–13 µm atmospheric window; direct sunlight exceeding 850 W/m²; at zero cooling load the cooler settled 4.9 °C below ambient air temperature"
@@ -146,12 +147,13 @@
   performance:
     measurements:
       # pass 37: the mixed legacy field split — the measured level recorded, the projection kept only in the audit (Krupenkin & Taylor 2011 read on the open page)
-      - quantity: generated electrical power per liquid–substrate overlap area
+      - quantity: instantaneous electrical power density
         value: "≈ 10² W/m²"
         value_numeric: 100
         unit: W/m²
         metric: power-density
-        basis: "average generated power in a resistive load normalised to the liquid–substrate overlap area of the droplet array"
+        normalization: { kind: area, basis: liquid-substrate-overlap-area }
+        basis: "instantaneous resistive-load electrical power divided by the instantaneous / maximum liquid–substrate overlap area as the experiment defines it — an active-interface density, not a device-footprint one"
         scope: device
         conditions: "arrays of droplets oscillated against nanometre-thick multilayer dielectric films at tens of hertz; three configurations (28 mm² and 8 mm² liquid–substrate overlap per droplet) gave the same level"
         sources: [source:krupenkin-taylor-2011]
@@ -356,6 +358,7 @@
         value_numeric: 3.53
         unit: W/m²
         metric: power-density
+        normalization: { kind: area, basis: membrane-area }
         basis: "pressure × permeate flux per membrane area; the turbine stage proposed, not run"
         scope: laboratory
         conditions: "60 °C hot side, 20 °C cold side, hydraulic pressures up to 13 bar; the pressurised flow was measured, the turbine stage is proposed"

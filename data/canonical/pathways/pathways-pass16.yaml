@@ -140,6 +140,7 @@
         value_numeric: 1.43
         unit: mW/cm³
         metric: power-density
+        normalization: { kind: volume, basis: device-volume }
         basis: "peak power per unit volume of the harvester (the authors' volumetric normalisation), at the maximum peak power"
         scope: device
         conditions: "same excursion and load"
@@ -293,6 +294,7 @@
         value_numeric: 1.12
         unit: W/m²
         metric: power-density
+        normalization: { kind: area, basis: unstated }
         basis: "as reported in the abstract; the area basis is not stated there"
         scope: laboratory
         conditions: "thermal-osmosis PTFE membrane (1.0 μm pores) plus an electrokinetic microchannel module; ΔT = 50 °C; real seawater feed"
@@ -336,6 +338,7 @@
         value_numeric: 3440
         unit: W/m²
         metric: power-density
+        normalization: { kind: area, basis: active-device-area }
         basis: "electric power per emitter/cell area"
         scope: laboratory
         conditions: "the same run; 13.7 W thermal input"
@@ -369,6 +372,7 @@
         value_numeric: 0.0000335
         unit: W/m²
         metric: power-density
+        normalization: { kind: area, basis: active-device-area }
         basis: "electrical power per cell area at 30 mCi ⁶³Ni"
         scope: laboratory
         conditions: "volumetric configuration"

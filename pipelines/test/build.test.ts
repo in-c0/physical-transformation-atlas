@@ -252,6 +252,28 @@ test("the power_density sweep (loop-3 pass 37): no mixed or naked summary surviv
     assert.ok(m.basis, `${m.p}: a power-density datum states its basis`);
   }
   for (const m of all.filter((m) => m.metric === "power")) assert.doesNotMatch(m.unit ?? "", /\//, `${m.p}: a power is not a density`);
+  // pass 37 closing: every density datum names what it is normalised to; an absolute power names nothing; two W/m² with different bases coexist
+  for (const m of all.filter((m) => m.metric === "power-density")) assert.ok(m.normalization && m.normalization.kind && m.normalization.basis, `${m.p}: a density carries its normalization`);
+  for (const m of all.filter((m) => m.metric === "power")) assert.ok(!m.normalization, `${m.p}: a power carries no normalization`);
+  const bases = new Set(all.filter((m) => m.metric === "power-density" && m.unit === "W/m²").map((m) => m.normalization!.basis));
+  assert.ok(bases.has("liquid-substrate-overlap-area") && bases.has("radiative-cooler-area") && bases.has("active-device-area"), "W/m² data with three different bases are recorded and distinguished");
+  assert.throws(
+    () =>
+      Measurement.parse({
+        quantity: "x",
+        value: "1 W/m²",
+        value_numeric: 1,
+        unit: "W/m²",
+        metric: "power-density",
+        normalization: { kind: "area", basis: "made-up-area" },
+        scope: "device",
+        conditions: "",
+        sources: ["source:s"],
+      }),
+    /unknown normalization basis/,
+  );
+  const nt = graph.pathways.find((p) => p.id === "pathway:radiative-cooling-teg")!.performance!.measurements.find((m) => m.value_numeric === 0.025);
+  assert.ok(nt && nt.normalization?.basis === "radiative-cooler-area" && nt.scope === "device", "Raman 2019's 25 mW/m² is recorded per radiative-cooler area");
   // no model-scope projection can be the derived "best recorded" — the only power-density data are physical
   assert.equal(all.filter((m) => m.metric === "power-density" && m.scope === "model").length, 0);
   // the migrated data are there with their bases

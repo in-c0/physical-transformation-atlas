@@ -518,6 +518,35 @@ const MeasurementParameters = z.record(z.string(), z.number()).superRefine((p, c
       ctx.addIssue({ code: z.ZodIssueCode.custom, path: [k], message: `unknown measurement parameter "${k}"; the registry (MEASUREMENT_PARAMETERS) lists the allowed names, units in the name` });
 });
 
+/**
+ * Normalisation of a density datum (loop-3 pass 37): the same unit never implies a comparable density —
+ * 100 W/m² per liquid–substrate overlap area, 25 mW/m² per radiative-cooler area and a module's W/m² per
+ * module area all reduce to W/m² and must never compete for one "best". The basis vocabulary is frozen here
+ * and grows as new bases occur; `unstated` records a source that gives the dimension but not what it refers to.
+ */
+export const NORMALIZATION_KINDS = ["area", "volume", "mass", "length", "count"] as const;
+export type NormalizationKind = (typeof NORMALIZATION_KINDS)[number];
+export const NORMALIZATION_BASES = {
+  "liquid-substrate-overlap-area": "the liquid–solid interface area over which a droplet-based conversion occurs (reverse electrowetting)",
+  "radiative-cooler-area": "the sky-facing area of the radiative cooler or emitter",
+  "active-device-area": "the active area of the converting device or cell (a photovoltaic or thermophotovoltaic cell, a droplet generator's electrode, a nuclear battery's cell)",
+  "device-footprint-area": "the packaged device's or module's footprint, including inactive area",
+  "module-area": "the designated or aperture area of a module as an efficiency table defines it",
+  "electrode-area": "the geometric area of an electrode",
+  "membrane-area": "the active area of a membrane",
+  "active-material-volume": "the volume of the active material alone",
+  "device-volume": "the volume of the whole device (component or practical volume as the source defines it)",
+  "active-material-mass": "the mass of the active material alone",
+  "device-mass": "the mass of the whole device",
+  unstated: "the source states the dimension of the denominator but not what area, volume or mass it refers to — a read is owed before the datum is compared with any other",
+} as const;
+export type NormalizationBasis = keyof typeof NORMALIZATION_BASES;
+export const Normalization = z.object({
+  kind: z.enum(NORMALIZATION_KINDS),
+  basis: z.string().refine((b) => b in NORMALIZATION_BASES, { message: "unknown normalization basis; the registry (NORMALIZATION_BASES) freezes every basis" }),
+});
+export type Normalization = z.infer<typeof Normalization>;
+
 export const Measurement = z.object({
   quantity: z.string(), // e.g. "module efficiency", "power density", "open-circuit voltage"
   value: z.string(), // keep as written in the source, e.g. "12%", "1.2 W/cm²", "≈ 6 µV/K"
@@ -526,6 +555,8 @@ export const Measurement = z.object({
   unit: z.string().optional(),
   metric: z.enum(BOUND_METRICS).optional(),
   basis: z.string().optional(),
+  /** Pass 37: what a density is normalised to; required for a density metric, null or absent for an absolute power (loader-checked). */
+  normalization: Normalization.nullable().optional(),
   parameters: MeasurementParameters.optional(),
   scope: z.enum(["material", "device", "module", "system", "plant", "laboratory", "field", "model"]),
   conditions: z.string(), // regime: temperatures, load, irradiance, geometry

@@ -312,7 +312,7 @@ export function loadCanon(root: string): Canon {
   // `power` metric. Every measurement with a density metric must state its normalisation in the unit and its basis.
   const DENSITY_METRICS = new Set(["power-density", "mechanical-power-density", "current-density", "work-per-volume"]);
   const perUnit = (u: string | undefined) => !!u && (/\//.test(u) || /⁻|\^-|per /.test(u));
-  const checkDensity = (owner: string, ms: { metric?: string; unit?: string; basis?: string; quantity: string }[]) => {
+  const checkDensity = (owner: string, ms: { metric?: string; unit?: string; basis?: string; quantity: string; normalization?: { kind: string; basis: string } | null }[]) => {
     for (const m of ms) {
       if (!m.metric || !DENSITY_METRICS.has(m.metric)) continue;
       if (!perUnit(m.unit))
@@ -320,7 +320,9 @@ export function loadCanon(root: string): Canon {
           `${owner}: "${m.quantity}" carries the ${m.metric} metric but its unit "${m.unit ?? ""}" states no normalisation (per area, volume, mass …) — a bare power is the power metric, not a density`,
         );
       if (!m.basis) problems.push(`${owner}: "${m.quantity}" carries the ${m.metric} metric without a basis stating what the number is normalised to`);
+      if (!m.normalization) problems.push(`${owner}: "${m.quantity}" carries the ${m.metric} metric without a normalization { kind, basis } — same units never imply comparable densities`);
     }
+    for (const m of ms) if (m.metric === "power" && m.normalization) problems.push(`${owner}: "${m.quantity}" is an absolute power and must not carry a normalization`);
   };
   for (const p of pathways) checkDensity(p.id, p.performance?.measurements ?? []);
   for (const s of systems) checkDensity(s.id, s.performance?.measurements ?? []);

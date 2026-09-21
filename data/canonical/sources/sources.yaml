@@ -190,6 +190,7 @@
   year: 2019
   venue: Joule 3, 2679–2686
   doi: 10.1016/j.joule.2019.08.009
+  notes: "Read in full on the Cell Press page (loop-3 pass 37). A thermoelectric generator whose cold side is a 200 mm black-painted aluminium disk radiating to the night sky and whose hot side is a finned disk in ambient air (Marlow TG12-4 module, ZT = 0.71; polystyrene enclosure, polyethylene wind cover); rooftop, Stanford, late December 2017, clear sky, dew point −1 to −3 °C. Voltage sweeps with a Keithley 2635B: J_sc 44 mA, V_oc 79 mV, nearly 0.8 mW at the maximum power point — 25 mW/m² normalised to the radiative-cooler area, enough to light an LED; the authors highlight pathways from the demonstrated 25 mW/m² to about 0.5 W/m² with improved components."
 - id: source:curzon-ahlborn-1975
   type: paper
   title: "Efficiency of a Carnot engine at maximum power output"

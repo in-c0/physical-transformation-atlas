@@ -39,10 +39,12 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
   const PHYSICAL = new Set(["laboratory", "device", "module", "system", "plant", "field"]);
   const best = measurements.filter((m) => m.metric === "conversion-efficiency" && m.value_numeric !== undefined && PHYSICAL.has(m.scope)).sort((a, b) => b.value_numeric! - a.value_numeric!)[0];
   // Pass 37: the best recorded power density, per unit (densities in different units are not comparable), physical scopes only.
+  // Two W/m² data with different normalisation bases never compete for one "best" (pass 37).
+  const densityKey = (m: (typeof measurements)[number]) => `${m.metric}|${m.unit}|${m.normalization?.kind ?? "?"}|${m.normalization?.basis ?? "?"}`;
   const bestDensity = [
     ...measurements
       .filter((m) => m.metric === "power-density" && m.value_numeric !== undefined && m.unit && PHYSICAL.has(m.scope))
-      .reduce((acc, m) => (acc.has(m.unit!) && acc.get(m.unit!)!.value_numeric! >= m.value_numeric! ? acc : acc.set(m.unit!, m)), new Map<string, (typeof measurements)[number]>())
+      .reduce((acc, m) => (acc.has(densityKey(m)) && acc.get(densityKey(m))!.value_numeric! >= m.value_numeric! ? acc : acc.set(densityKey(m), m)), new Map<string, (typeof measurements)[number]>())
       .values(),
   ];
 
@@ -290,10 +292,10 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
               </>
             )}
             {bestDensity.map((m) => (
-              <div key={m.unit} style={{ display: "contents" }}>
+              <div key={densityKey(m)} style={{ display: "contents" }}>
                 <dt>best recorded power density (derived)</dt>
                 <dd>
-                  {m.value} — {m.quantity}, {m.scope}
+                  {m.value} per {m.normalization?.basis?.replace(/-/g, " ") ?? "unstated basis"} — {m.quantity}, {m.scope}
                   {m.year ? `, ${m.year}` : ""}; {m.basis}
                 </dd>
               </div>

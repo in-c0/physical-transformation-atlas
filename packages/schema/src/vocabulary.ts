@@ -26,6 +26,8 @@ import {
   STRUCTURAL_KINDS,
   REGIME_TOKENS,
   AUXILIARY_KINDS,
+  NORMALIZATION_KINDS,
+  NORMALIZATION_BASES,
   SYSTEM_HANDOFF_KINDS,
   SYSTEM_HANDOFF_STATUSES,
   SYSTEM_OUTPUT_AGGREGATIONS,
@@ -227,6 +229,22 @@ export const VOCABULARY: VocabularyEnum[] = [
       "parasitic-load": "a load the implementation carries that does not establish a route condition (fans, controls, pumps that only move fluid)",
       "external-input": "an input supplied from outside the implementation (grid power to a start-up motor, a purge gas)",
     }),
+  },
+  {
+    name: "measurement.normalization.kind",
+    used_in: ["pathways[].performance.measurements[].normalization.kind", "systems[].performance.measurements[].normalization.kind"],
+    terms: define(NORMALIZATION_KINDS, {
+      area: "the datum is a quantity per unit area",
+      volume: "per unit volume",
+      mass: "per unit mass",
+      length: "per unit length",
+      count: "per unit count (per cell, per droplet …)",
+    }),
+  },
+  {
+    name: "measurement.normalization.basis",
+    used_in: ["pathways[].performance.measurements[].normalization.basis", "systems[].performance.measurements[].normalization.basis"],
+    terms: Object.entries(NORMALIZATION_BASES).map(([id, definition]) => ({ id, definition })),
   },
   {
     name: "measurement.parameter",
