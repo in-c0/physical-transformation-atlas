@@ -196,6 +196,20 @@ export const BOUND_METRICS = [
   "power",
   /** Actual or calculated conversion efficiency divided by the Carnot efficiency evaluated between the same stated hot and cold temperatures (pass 39); requires reference_constraint. */
   "carnot-relative-efficiency",
+  /**
+   * The efficiency of ONE stage of a device relative to the energy delivered to that stage — a betavoltaic
+   * semiconductor's η_d against the beta power leaving the source, a hydro turbine's hydraulic efficiency against
+   * the water power at its inlet (pass 44). Never a route's conversion efficiency: the derived "best recorded
+   * efficiency" ignores it, and the basis must name the stage and its denominator.
+   */
+  "device-stage-efficiency",
+  /**
+   * The efficiency of ONE stage of a device relative to the energy delivered to that stage — a betavoltaic
+   * semiconductor's η_d against the beta power leaving the source, a hydro turbine's hydraulic efficiency against
+   * the water power at its inlet (pass 44). Never a route's conversion efficiency: the derived "best recorded
+   * efficiency" ignores it, and the basis must name the stage and its denominator.
+   */
+  "device-stage-efficiency",
   "current-density",
   "work-per-volume",
   "work",

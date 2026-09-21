@@ -31,10 +31,11 @@ test("regression pathways: a name is never a pass, a benchmark never a fail", ()
   const rankine = byPathway("pathway:rankine-steam-plant")!;
   assert.equal(bound(rankine).result, "unresolved");
   assert.doesNotMatch(bound(rankine).detail, /exceeds/);
-  // Wind turbine 0.52 is a system efficiency, not a rotor power coefficient: Betz stays unresolved.
+  // Wind turbine: the 0.52 system efficiency of old could never meet Betz; since pass 44 the Storm rotor's C_p ≈ 0.45 is recorded
+  // on the Betz basis and is the only datum the constraint evaluates — it passes, and no conversion efficiency is compared with it.
   const wind = byPathway("pathway:wind-turbine")!;
-  assert.equal(bound(wind).result, "unresolved");
-  assert.match(bound(wind).detail, /power-coefficient/);
+  assert.equal(bound(wind).result, "pass");
+  assert.match(bound(wind).detail, /0\.45 ≤ Betz limit \(59\.3%\)/);
   // Photovoltaic 0.27 states no Shockley–Queisser basis: unresolved, not pass.
   const pv = byPathway("pathway:photovoltaic-module")!;
   assert.equal(bound(pv).result, "unresolved");

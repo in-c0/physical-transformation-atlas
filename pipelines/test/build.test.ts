@@ -488,6 +488,76 @@ test("theoretical_limit retired into the typed constraint graph (loop-3 pass 42)
   rmSync(tmp2, { recursive: true, force: true });
 });
 
+test("source restoration (loop-3 pass 44): six primaries as typed measurements with their denominators; operating points never combined; a stage efficiency never the route's", () => {
+  const pw = (slug: string) => graph.pathways.find((p) => p.id === `pathway:${slug}`)!;
+  const data = (slug: string) => pw(slug).performance?.measurements ?? [];
+  const bound = (p: (typeof graph.paths)[number]) => p.checks.find((k) => k.id === "thermodynamic-bound")!;
+  const routeOf = (slug: string) => graph.paths.find((p) => p.pathway === `pathway:${slug}`)!;
+  // thermoacoustic: Wu 2014's 19.8 % and Bi 2017's 18.4 % are distinct records with their own sources and temperatures
+  const ta = data("thermoacoustic-generator");
+  const wu = ta.find((m) => m.value_numeric === 0.198)!;
+  const bi = ta.find((m) => m.value_numeric === 0.184)!;
+  assert.ok(wu && bi && wu.sources[0] !== bi.sources[0]);
+  assert.deepEqual(wu.parameters, { T_h_K: 923.15, T_c_K: 288.15 });
+  assert.deepEqual(bi.parameters, { T_h_K: 923.15, T_c_K: 298.15 });
+  assert.match(bi.conditions, /3\.46 kW/);
+  assert.doesNotMatch(bi.conditions, /4\.69/, "the maximum-power point is never paired with the maximum efficiency");
+  const biPower = ta.find((m) => m.metric === "power" && m.value_numeric === 4690)!;
+  assert.match(biPower.conditions, /15\.6 %/);
+  assert.ok(!ta.some((m) => m.metric === "conversion-efficiency" && m.value_numeric === 0.156), "15.6 % is the efficiency AT the power point, not a record of its own");
+  assert.equal(bound(routeOf("thermoacoustic-generator")).result, "pass", bound(routeOf("thermoacoustic-generator")).detail);
+  assert.match(bound(routeOf("thermoacoustic-generator")).detail, /19\.8% ≤ Carnot limit \(68\.8%\)/);
+  // wind: the Storm's 0.45 is a power coefficient on the Betz basis and there is no electrical-efficiency datum
+  const wind = data("wind-turbine");
+  const storm = wind.find((m) => m.value_numeric === 0.45)!;
+  assert.equal(storm.metric, "power-coefficient");
+  assert.equal(storm.datum_kind, "derived");
+  assert.equal(storm.scope, "field");
+  assert.ok(!wind.some((m) => m.metric === "conversion-efficiency"));
+  assert.equal(bound(routeOf("wind-turbine")).result, "pass", bound(routeOf("wind-turbine")).detail);
+  assert.match(bound(routeOf("wind-turbine")).detail, /0\.45 ≤ Betz limit/);
+  // hydro: 60 % is water-to-wire at plant scope; 73 % is the turbine stage's own metric and never the route's efficiency
+  const hydro = data("hydroelectric-plant");
+  const w2w = hydro.find((m) => m.value_numeric === 0.6)!;
+  const hyd = hydro.find((m) => m.value_numeric === 0.73)!;
+  assert.equal(w2w.metric, "conversion-efficiency");
+  assert.equal(w2w.scope, "plant");
+  assert.match(w2w.basis!, /water-to-wire/);
+  assert.equal(hyd.metric, "device-stage-efficiency");
+  assert.match(hyd.basis!, /turbine stage/);
+  // betavoltaic: the whole-route ECEs state the isotope's decay power as denominator; Zhang's 7.31 % can never satisfy the route metric
+  const beta = data("betavoltaic-battery");
+  const kim = beta.find((m) => m.value_numeric === 0.1079)!;
+  const zhangTotal = beta.find((m) => m.value_numeric === 0.0256)!;
+  const zhangDevice = beta.find((m) => m.value_numeric === 0.0731)!;
+  assert.equal(kim.metric, "conversion-efficiency");
+  assert.match(kim.basis!, /total decay power/);
+  assert.match(kim.basis!, /49\.4 keV/);
+  assert.equal(zhangTotal.metric, "conversion-efficiency");
+  assert.match(zhangTotal.basis!, /isotope source power/);
+  assert.equal(zhangDevice.metric, "device-stage-efficiency");
+  for (const m of beta.filter((x) => x.metric === "conversion-efficiency")) assert.match(m.basis!, /decay power|isotope source power/, `${m.quantity}: an isotope-energy denominator`);
+  // the derived best efficiency on each page ignores stage efficiencies: hydro's best is 60 %, betavoltaic's 10.79 %
+  const PHYSICAL = new Set(["laboratory", "device", "module", "system", "plant", "field"]);
+  const best = (slug: string) => data(slug).filter((m) => m.metric === "conversion-efficiency" && m.value_numeric !== undefined && PHYSICAL.has(m.scope)).sort((a, b) => b.value_numeric! - a.value_numeric!)[0]?.value_numeric;
+  assert.equal(best("hydroelectric-plant"), 0.6);
+  assert.equal(best("betavoltaic-battery"), 0.1079);
+  assert.equal(best("thermoacoustic-generator"), 0.198);
+  // a device-stage efficiency must name its stage and denominator (loader), and no restored datum recreates a retired summary key
+  const tmp = mkdtempSync(join(tmpdir(), "pta-stage-"));
+  cpSync(join(root, "data", "canonical"), join(tmp, "data", "canonical"), { recursive: true });
+  cpSync(join(root, "data", "generated"), join(tmp, "data", "generated"), { recursive: true });
+  const pf = join(tmp, "data", "canonical", "pathways", "pathways.yaml");
+  const pt = readFileSync(pf, "utf8");
+  const bad = pt.replace('basis: "the turbine stage alone: mechanical power delivered by the hydroEngine relative to the hydraulic power at its inlet, as the report states it (no formula given) — a subsystem figure, not the pathway\'s water-to-wire efficiency"', 'basis: "73 %"');
+  assert.notEqual(bad, pt);
+  writeFileSync(pf, bad);
+  assert.throws(() => loadCanon(tmp), /device-stage-efficiency but its basis does not name the stage/);
+  rmSync(tmp, { recursive: true, force: true });
+  for (const slug of ["thermoacoustic-generator", "wind-turbine", "hydroelectric-plant", "betavoltaic-battery"])
+    for (const key of ["efficiency_typical", "efficiency_record", "power_density", "theoretical_limit"]) assert.ok(!(key in (pw(slug).performance ?? {})), `${slug}: ${key} must stay retired`);
+});
+
 test("stage omission (loop-3 pass 43 close): a route that omits a required stage of a demonstrated pathway is derived, never on one matching end, never without an unresolved token the omitted stage supplies, and a demonstration still wins", () => {
   const compact = graph.paths.find((p) => p.id === "p-d7374879fd")!;
   assert.deepEqual(compact.claims, ["claim:combustion-drives", "claim:combustion-produces-hot-gas", "claim:hot-gas-drives-mhd", "claim:mhd-produces", "claim:charge-carriers-convert-electricity"]);

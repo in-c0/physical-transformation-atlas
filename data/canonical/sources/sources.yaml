@@ -1699,3 +1699,52 @@
   venue: "NASA Glenn Research Center, Beginner's Guide to Aeronautics; page dated 2021-08-06, modified 2024-09-12"
   url: https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/nozzle-design/
   notes: "Read (loop-3 pass 43). 'A nozzle is a relatively simple device, just a specially shaped tube through which hot gases flow … In a CD nozzle, the hot exhaust leaves the combustion chamber and converges down to the minimum area, or throat, of the nozzle. The throat size is chosen to choke the flow and set the mass flow rate through the system. The flow in the throat is sonic … Downstream of the throat, the geometry diverges, and the flow is isentropically expanded to a supersonic Mach number that depends on the area ratio of the exit to the throat. Expansion of a supersonic flow causes the static pressure and temperature to decrease from the throat to the exit'; the derivation (1 − M²) dV/V = −dA/A from mass and momentum conservation with the isentropic relation."
+# Loop-3 pass 44: source restoration — the primaries behind the restored measurements.
+- id: source:wu-2014-1kw-thermoacoustic-generator
+  type: paper
+  title: "Investigation on a 1 kW traveling-wave thermoacoustic electrical generator"
+  authors: [Zhanghua Wu, Limin Zhang, Wei Dai, Ercang Luo]
+  year: 2014
+  venue: "Applied Energy 124, 140–147"
+  doi: 10.1016/j.apenergy.2014.02.063
+  notes: "Publisher abstract read in the owner's Chrome (Elsevier; the full text is paywalled), loop-3 pass 44: a 1 kW travelling-wave thermoacoustic electrical generator with a linear alternator; after the working frequency was lowered from 74 Hz to 64 Hz by charging 4.5 % mole fraction argon, 'a maximum electric power of 1043 W with a thermal-to-electrical efficiency of 17.7% and a maximum thermal-to-electrical efficiency of 19.8% with an electric power of 970 W were obtained'; 'a mean pressure of 4.0 MPa, a heating temperature of 650 °C and a cooling temperature of 15 °C'; the preliminary run gave 638 W at 16.6 %."
+- id: source:bi-2017-5kw-thermoacoustic-generator
+  type: paper
+  title: "Development of a 5 kW traveling-wave thermoacoustic electric generator"
+  authors: [Tianjiao Bi, Zhanghua Wu, Limin Zhang, Guoyao Yu, Ercang Luo, Wei Dai]
+  year: 2017
+  venue: "Applied Energy 185, 1355–1361 (online December 2015)"
+  doi: 10.1016/j.apenergy.2015.12.034
+  notes: "Publisher abstract read in the owner's Chrome (Elsevier; the full text is paywalled), loop-3 pass 44: a three-stage travelling-wave thermoacoustic electric generator, units connected end-to-end by slim resonance tubes with a linear alternator as a bypass at the end of each; 'the maximum electric power of 4.69 kW with thermal-to-electric efficiency of 15.6% and the maximum thermal-to-electric efficiency of 18.4% with electric power of 3.46 kW were achieved with 6 MPa pressurized helium, 650 °C and 25 °C heating and cooling temperatures'."
+- id: source:migliore-2005-nrel-cp-500-38157
+  type: report
+  title: "Balancing Performance, Noise, Cost, and Aesthetics in the Southwest Windpower 'Storm' Wind Turbine: Preprint"
+  authors: [P. Migliore, J. Green, D. Calley, J. Lonjaret]
+  year: 2005
+  venue: "NREL/CP-500-38157, August 2005; prepared for WindPower 2005, Denver"
+  url: https://www.nrel.gov/docs/fy05osti/38157.pdf
+  notes: "Read in full (loop-3 pass 44; nrel.gov did not resolve from this machine, so the Internet Archive's copy of the same URL, captured 24/02/2025, was read). Power coefficient 'defined as the ratio of power converted by the turbine to that available in the wind'. Pre-prototype field tests of the Storm — a three-blade, downwind, variable-speed, stall-regulated turbine rated at 1.8 kW: 'Using field-test data of measured electrical power and dynamometer tests of alternator efficiency, the team deduced a peak rotor Cp ≈ 0.45. A combination of good blade aerodynamics and rotor speed control produced a broad, flat Cp curve with Cp ≈ 0.43 over a 4 m/s wind speed range'; Figure 13 'The pre-prototype rotor achieved a rotor power coefficient of approximately 0.45'; the summary calls the results preliminary, with definitive NWTC tests under way."
+- id: source:schneider-2017-monroe-hydro-doe
+  type: report
+  title: "Development of a project on North Unit Irrigation District's Main Canal at the Monroe Drop, using a novel low-head hydropower technology called the SLH100"
+  authors: [Abraham Schneider, Gia Schneider, Katherine McKinstry, Meghan Harwood]
+  year: 2017
+  venue: "Natel Energy final report to the U.S. Department of Energy, award DE-EE0005420 (FOA DE-FOA-0000486, Advanced Hydropower Development); OSTI 1346739"
+  doi: 10.2172/1346739
+  notes: "Read in full (loop-3 pass 44; osti.gov timed out from this machine, so the Internet Archive's copy of the OSTI PDF, captured 04/02/2025, was read). One SLH100 hydroEngine (linearly moving foils rather than a rotor) commissioned September 2015 at an existing drop on the NUID main canal, Madras, Oregon: 'The nameplate capacity of the SLH100 at the Monroe Hydro Project is 250 kW. The gross head ranges between 4.1 meters and 5.1 meters. The machine can pass a maximum flow of 331 cfs. The SLH100 hydroEngine has run at maximum power of 267 kW with water-to-wire plant efficiency of 60% (73% hydraulic efficiency), meeting design expectations.' The report gives no formula for either efficiency and does not state the grid-side boundary; expected annual generation 873 MWh, 40 % annual capacity factor (80 % over the irrigation season)."
+- id: source:zhang-2025-sic-betavoltaic
+  type: paper
+  title: "Optimal Selection and Experimental Verification of Wide-Bandgap Semiconductor for Betavoltaic Battery"
+  authors: [Jiachen Zhang, Kunlun Lv, Yuan Yin, Yuqian Gao, Ye Tian, Yuncheng Han, Jun Tang]
+  year: 2025
+  venue: "Nanomaterials 15(9), 635 (open access)"
+  doi: 10.3390/nano15090635
+  notes: "Read in full from the MDPI article XML (loop-3 pass 44). Equation 1: the total efficiency η = P_max / P_in = I_sc·V_oc·FF / (A·E_ave·q), P_in the power of the isotope source (A its activity, E_ave the average particle energy); 'the total energy conversion efficiency (η) … can be divided into isotope source efficiency (η_s) and semiconductor device efficiency (η_d)'; η_s 'about 35% when the thickness of 63Ni is 500 nm with single-side emission'. 4H-SiC PIN devices measured under a ⁶³Ni source of 1 × 3 cm² active area and 15 mCi total activity: Table 3 — I_sc 2.91 nA, V_oc 1.41 V, FF 0.81, η_d 7.31 % (14.88 % under an electron beam); Table 4 — this work (SiC): V_oc 1.22–1.41 V, FF 0.81–0.89, η 2.34–2.56 %. The 7.31 % is the device stage only; the whole-battery figure is the 2.34–2.56 %."
+- id: source:kim-2026-c14-perovskite-betavoltaic
+  type: paper
+  title: "Carbon-14 Perovskite Betavoltaics Reach Record 10.79% Efficiency"
+  authors: [Hong Soo Kim, Ryan Rhee, Junho Lee, Muhammad Bilal Naseem, Jung Hwan Lee, Jong Hyeok Park, Su-Il In]
+  year: 2026
+  venue: "Carbon Energy 8(5), e70149 (open access; first published 18 December 2025)"
+  doi: 10.1002/cey2.70149
+  notes: "Main text and Supporting Information read in the owner's Chrome (loop-3 pass 44; the SI .docx was parsed in the page). 'The MACl-FAPbI3 device integrated with a 14C source (4.5 μCi) exhibits a Jsc of 10.60 nA cm−2, a Voc of 76.92 mV, a FF of 17.41, and an ECE of 10.79%'. SI Equation 1: η = P_max / P_source = J_sc × V_oc × FF / (E_avg × e × A), A = 0.0045 mCi per 1.0 cm² of active area, E_avg = 49.4 keV per decay for ¹⁴C, 1 Ci = 3.7 × 10¹⁰ decays/s; the worked values 0.142 nW / 1.316 nW ≅ 10.79 % — the denominator is the source's total decay power from its nominal activity, with no self-absorption correction. Stack FTO/SnO₂/MACl-FAPbI₃/Spiro-MeOTAD/¹⁴CNP/CQD/FTO; I–V by sourcemeter over −0.1 to +0.8 V; over 15 h continuous operation."

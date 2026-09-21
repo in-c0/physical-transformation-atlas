@@ -83,7 +83,11 @@ for (const d of disp.dispositions) {
   } else {
     if (d.constraint || d.claim) problems.push(`${d.pathway}: a ${d.action} row names a constraint or claim`);
     if (d.action === "noted" && !(p.performance?.notes ?? "").trim()) problems.push(`${d.pathway}: disposed as noted but performance.notes is empty`);
-    if (before !== after) problems.push(`${d.pathway}: thermodynamic-bound result moved ${before} → ${after} although nothing was typed for it — a limit lived only in prose (finding 37)`);
+    // A restored physical datum (pass 44 onwards) may legitimately decide a bound that was recorded but not evaluable at the audit;
+    // a move with no datum behind it would mean a limit had lived only in prose (finding 37).
+    const hasDatum = (p.performance?.measurements ?? []).some((m) => m.value_numeric !== undefined && m.scope !== "model");
+    if (before !== after && !(hasDatum && (after === "pass" || after === "fail")))
+      problems.push(`${d.pathway}: thermodynamic-bound result moved ${before} → ${after} although nothing was typed for it — a limit lived only in prose (finding 37)`);
   }
   rows.push({ d, p, route, before, after, pool, now, proposed, claim });
 }
@@ -131,7 +135,7 @@ for (const r of rows)
   );
 lines.push("");
 lines.push(
-  "Columns: *typed constraint already reachable at audit* lists the constraints a bounded_by claim on one of the route's entities reached before this pass (for a typed row, excluding the claim the pass added); *proposed constraint* is what the pass typed and through which claim or bounds[] entry; *bound result before → after* is the route's thermodynamic-bound result at revision ca0172056e74 and now — the gate requires it unchanged wherever nothing was typed.",
+  "Columns: *typed constraint already reachable at audit* lists the constraints a bounded_by claim on one of the route's entities reached before this pass (for a typed row, excluding the claim the pass added); *proposed constraint* is what the pass typed and through which claim or bounds[] entry; *bound result before → after* is the route's thermodynamic-bound result at revision ca0172056e74 and now — the gate requires it unchanged wherever nothing was typed, except where a physical datum recorded later decides a bound that was already typed (pass 44: the Storm rotor C_p against Betz, the thermoacoustic generators against Carnot).",
 );
 const out = lines.join("\n") + "\n";
 if (!check) {

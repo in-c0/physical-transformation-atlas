@@ -79,7 +79,56 @@
   evidence: [source:swift-1988]
   status: prototype
   knowledge_level: K7
-  # performance: (no structured record yet — pass 42 emptied the last prose field; the lines below are the audit trail)
+  performance:
+    # pass 44: restored as structured measurements from two open publisher abstracts (Wu 2014; Bi 2017) — the maximum-efficiency and
+    # maximum-power operating points are separate data, never combined; Backhaus, Tward & Petach 2004 stays a full-text item
+    measurements:
+      - quantity: thermal-to-electrical conversion efficiency at the maximum-efficiency point
+        value: "19.8%"
+        value_numeric: 0.198
+        unit: "1"
+        metric: conversion-efficiency
+        basis: "electric power over heat input to the engine, as the abstract states it; the paper's heat-input measurement is not on record (abstract only)"
+        parameters: { T_h_K: 923.15, T_c_K: 288.15 }
+        scope: laboratory
+        datum_kind: measured
+        conditions: "1 kW-class travelling-wave thermoacoustic electrical generator with a linear alternator; 4.0 MPa mean pressure; 64 Hz after 4.5 % mole fraction argon; electric output 970 W at this point; heating 650 °C, cooling 15 °C"
+        sources: [source:wu-2014-1kw-thermoacoustic-generator]
+        year: 2014
+      - quantity: maximum electric power
+        value: "1043 W"
+        value_numeric: 1043
+        unit: W
+        metric: power
+        basis: "electric output at the maximum-power operating point"
+        scope: laboratory
+        datum_kind: measured
+        conditions: "the same generator; 17.7 % thermal-to-electrical efficiency at this point, not the maximum efficiency"
+        sources: [source:wu-2014-1kw-thermoacoustic-generator]
+        year: 2014
+      - quantity: thermal-to-electric conversion efficiency at the maximum-efficiency point
+        value: "18.4%"
+        value_numeric: 0.184
+        unit: "1"
+        metric: conversion-efficiency
+        basis: "electric power over heat input to the engine, as the abstract states it; the paper's heat-input measurement is not on record (abstract only)"
+        parameters: { T_h_K: 923.15, T_c_K: 298.15 }
+        scope: laboratory
+        datum_kind: measured
+        conditions: "three-stage travelling-wave thermoacoustic electric generator, units joined end-to-end by slim resonance tubes with a linear alternator as a bypass at the end of each; 6 MPa pressurised helium; electric output 3.46 kW at this point; heating 650 °C, cooling 25 °C"
+        sources: [source:bi-2017-5kw-thermoacoustic-generator]
+        year: 2017
+      - quantity: maximum electric power
+        value: "4.69 kW"
+        value_numeric: 4690
+        unit: W
+        metric: power
+        basis: "electric output at the maximum-power operating point"
+        scope: laboratory
+        datum_kind: measured
+        conditions: "the same three-stage generator; 15.6 % thermal-to-electric efficiency at this point, not the maximum efficiency"
+        sources: [source:bi-2017-5kw-thermoacoustic-generator]
+        year: 2017
     # pass 35: efficiency_typical 0.15 and efficiency_record 0.32 removed — the record was an engine's thermal-to-acoustic figure on an engine-plus-alternator pathway, the typical rested on a 1988 review of standing-wave engines; the thermal-to-electric figure of Backhaus, Tward & Petach 2004 is the datum to record once read
     # pass 42: theoretical_limit retired (already-typed, removed) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
   environment: [state-gas, temp-gradient-required]
@@ -483,7 +532,21 @@
   evidence: [source:betz-1920, source:dixon-hall-2014]
   status: commercial
   knowledge_level: K8
-  # performance: (no structured record yet — pass 42 emptied the last prose field; the lines below are the audit trail)
+  performance:
+    # pass 44: a named rotor's power coefficient restored from NREL/CP-500-38157 (read in full) — a rotor quantity on the Betz basis, never the pathway's electrical efficiency
+    measurements:
+      - quantity: peak rotor power coefficient
+        value: "≈ 0.45"
+        value_numeric: 0.45
+        unit: "1"
+        metric: power-coefficient
+        basis: "rotor power coefficient on the free-stream kinetic power through the swept area"
+        scope: field
+        datum_kind: derived
+        conditions: "Southwest Windpower Storm pre-prototype, a three-blade downwind variable-speed stall-regulated turbine rated 1.8 kW; deduced from field-test measured electrical power and dynamometer-measured alternator efficiency; a broad, flat curve near C_p ≈ 0.43 over a 4 m/s wind-speed range; preliminary, with definitive NWTC tests under way at the time"
+        sources: [source:migliore-2005-nrel-cp-500-38157]
+        year: 2005
+        note: "the atlas had carried 0.52 as an efficiency_record until pass 39 — the wrong quantity for a pathway that ends in electrical work; this is the rotor's coefficient, comparable with the Betz limit and nothing else"
     # pass 35: efficiency_typical 0.45 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     # pass 39: efficiency_record 0.52 removed — a rotor power coefficient, the wrong quantity for a pathway that ends in electrical work; a named rotor's measured C_p belongs as metric power-coefficient on rotor evidence
     # pass 42: theoretical_limit retired (already-typed, removed) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
@@ -501,7 +564,31 @@
     # pass 35: efficiency_typical 0.90 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     # pass 39: efficiency_record 0.95 removed — a hydraulic turbine efficiency (Francis model tests reach ≈ 95 %), not the water-to-wire efficiency of a pathway that includes the generator; a named plant's water-to-wire figure with its boundary returns as a measurement
     # pass 42: theoretical_limit retired (not-a-bound, noted) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
+    # pass 44: water-to-wire restored from the DOE final report on Monroe Hydro (read in full); the hydraulic efficiency is the turbine stage's datum, never the pathway's
     notes: "No thermodynamic ceiling below unity applies to a head → shaft → electrical conversion, so no bound is recorded; the losses are hydraulic and electrical."
+    measurements:
+      - quantity: water-to-wire plant efficiency
+        value: "60%"
+        value_numeric: 0.6
+        unit: "1"
+        metric: conversion-efficiency
+        basis: "electrical output over the hydraulic power of the flow through the plant's gross head (water-to-wire), as the report states it; the report gives no formula and does not state the grid-side electrical boundary"
+        scope: plant
+        datum_kind: derived
+        conditions: "Natel SLH100 hydroEngine (linearly moving foils rather than a rotor) at the Monroe Drop on the North Unit Irrigation District main canal, Madras, Oregon; 250 kW nameplate; gross head 4.1–5.1 m; maximum flow 331 cfs; maximum observed plant power 267 kW; commissioned September 2015"
+        sources: [source:schneider-2017-monroe-hydro-doe]
+        year: 2017
+      - quantity: hydraulic efficiency of the hydroEngine
+        value: "73%"
+        value_numeric: 0.73
+        unit: "1"
+        metric: device-stage-efficiency
+        basis: "the turbine stage alone: mechanical power delivered by the hydroEngine relative to the hydraulic power at its inlet, as the report states it (no formula given) — a subsystem figure, not the pathway's water-to-wire efficiency"
+        scope: plant
+        datum_kind: derived
+        conditions: "the same installation at its 267 kW maximum"
+        sources: [source:schneider-2017-monroe-hydro-doe]
+        year: 2017
   environment: [state-liquid]
   summary: Water falls through the penstock, spins the turbine, turns the generator.
 
@@ -603,7 +690,43 @@
   evidence: [source:rappaport-1954, source:prelas-2014]
   status: commercial
   knowledge_level: K8
-  # pass 39: performance emptied — its last summary field was removed; the values stay in the audit records
+  performance:
+    # pass 44: restored from two open primaries read in full — every efficiency states its denominator; the SiC device's 7.31 % is a
+    # stage figure (η_d) and can never satisfy the route's conversion-efficiency metric
+    measurements:
+      - quantity: energy conversion efficiency of a ¹⁴C perovskite betavoltaic cell
+        value: "10.79%"
+        value_numeric: 0.1079
+        unit: "1"
+        metric: conversion-efficiency
+        basis: "battery output power over the isotope source's total decay power: J_sc × V_oc × FF / (E_avg × e × A) with A = 4.5 µCi per 1.0 cm² of active area and E_avg = 49.4 keV per decay (SI Equation 1: 0.142 nW / 1.316 nW); the nominal activity, no self-absorption correction"
+        scope: device
+        datum_kind: derived
+        conditions: "FTO/SnO₂/MACl-FAPbI₃/Spiro-MeOTAD/¹⁴C-nanoparticle/CQD/FTO cell; J_sc 10.60 nA cm⁻², V_oc 76.92 mV, FF 17.41 %; I–V by sourcemeter over −0.1 to +0.8 V; over 15 h of continuous operation"
+        sources: [source:kim-2026-c14-perovskite-betavoltaic]
+        year: 2026
+      - quantity: total energy conversion efficiency of a 4H-SiC betavoltaic under a ⁶³Ni source
+        value: "2.34–2.56%"
+        value_numeric: 0.0256
+        unit: "1"
+        metric: conversion-efficiency
+        basis: "battery output power over the isotope source power A·E_ave·q (Equation 1); η = η_s × η_d, the source efficiency η_s ≈ 35 % for 500 nm ⁶³Ni with single-side emission; the range spans the measured devices (Table 4), value_numeric the upper end"
+        scope: device
+        datum_kind: derived
+        conditions: "4H-SiC PIN devices under a ⁶³Ni source of 1 × 3 cm² active area and 15 mCi total activity; V_oc 1.22–1.41 V, FF 0.81–0.89"
+        sources: [source:zhang-2025-sic-betavoltaic]
+        year: 2025
+      - quantity: semiconductor device efficiency η_d of the best 4H-SiC device under ⁶³Ni
+        value: "7.31%"
+        value_numeric: 0.0731
+        unit: "1"
+        metric: device-stage-efficiency
+        basis: "the semiconductor stage alone: output power relative to the beta power leaving the source (η_d = η / η_s), excluding the source's self-absorption — never the battery's efficiency against the isotope's decay power"
+        scope: device
+        datum_kind: measured
+        conditions: "I_sc 2.91 nA, V_oc 1.41 V, FF 0.81 under the 15 mCi ⁶³Ni source (Table 3); 14.88 % for the same device under an electron beam"
+        sources: [source:zhang-2025-sic-betavoltaic]
+        year: 2025
     # pass 35: efficiency_typical 0.02 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     # pass 39: efficiency_record 0.06 removed — no isotope-powered device with a defined conversion efficiency behind it (the open ~6 % diamond Schottky result is an electron-beam proxy, not a decay → β-particle battery)
     # pass 37: power_density "µW/cm² for tritium and Ni-63 sources; decades of life" removed — a summary power density stays only as a structured measurement with its denominator and basis (the reviewer's ruling); the value stays in the audit record

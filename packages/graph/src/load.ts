@@ -308,6 +308,16 @@ export function loadCanon(root: string): Canon {
         );
       if (!c.regime_requires.includes(t)) problems.push(`${c.id}: regime_external ${t} is not among its regime_requires`);
     }
+  // Pass 44: a device-stage efficiency must say which stage and against what — a bare number would be read as the route's efficiency.
+  for (const p of pathways)
+    for (const m of p.performance?.measurements ?? [])
+      if (m.metric === "device-stage-efficiency" && !(m.basis && /stage|relative to|over|against/.test(m.basis)))
+        problems.push(`${p.id}: measurement "${m.quantity}" has metric device-stage-efficiency but its basis does not name the stage and its denominator`);
+  // Pass 44: a device-stage efficiency must say which stage and against what — a bare number would be read as the route's efficiency.
+  for (const p of pathways)
+    for (const m of p.performance?.measurements ?? [])
+      if (m.metric === "device-stage-efficiency" && !(m.basis && /stage|relative to|over|against/.test(m.basis)))
+        problems.push(`${p.id}: measurement "${m.quantity}" has metric device-stage-efficiency but its basis does not name the stage and its denominator`);
   // Pass 37: a density metric needs a per-unit — a bare power (W, mW, µW) can never satisfy power-density; it is the
   // `power` metric. Every measurement with a density metric must state its normalisation in the unit and its basis.
   const DENSITY_METRICS = new Set(["power-density", "mechanical-power-density", "current-density", "work-per-volume"]);
