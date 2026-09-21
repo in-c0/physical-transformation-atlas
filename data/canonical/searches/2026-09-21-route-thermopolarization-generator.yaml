@@ -1,0 +1,212 @@
+# Loop-3 pass 32: the reviewed ROUTE search for temperature gradient → thermopolarization effect → separated surface charge →
+# electrical work (p-b820ec885f), the direct effect's own route (its claims stand at status reported, the observation of a
+# gradient-reversing current in PMN read in full in Kholkin 1982). The question is no longer whether the polarization
+# exists but whether anyone has extracted electrical work from it. OpenAlex's six forms — five decomposed plus the
+# composite-name form on the field's own word — ran on 21/09; Semantic Scholar and Google Scholar are outstanding.
+- id: search:2026-09-21-p-b820ec885f-partial
+  target:
+    kind: path
+    path: p-b820ec885f
+    claims:
+      - claim:temperature-drives-thermopolarization
+      - claim:thermopolarization-produces-charge
+      - claim:surface-charge-converts-electricity
+  protocol_version: route-search-v1
+  started_at: 2026-09-21T12:52:00+10:00
+  completed_at: 2026-09-21T12:56:00+10:00
+  objective: exact-composition
+  composition_terms:
+    - { term: thermopolarization, evidence: [source:kholkin-1982-thermopolarization-current, source:tagantsev-1987-thermal-polarization, source:trepakov-1989-proper-thermopolarization, source:onishi-2025-thermopolarization] }
+  inclusion_criteria:
+    - a physical experiment in which a dielectric's direct thermopolarization under an imposed temperature gradient delivers electrical work to a load — a resistor, a capacitor charged, a device powered — or reports output power (route-search-v1 §3, output Electrical work)
+  exclusion_criteria:
+    - theory and simulation of the thermopolarization tensor or of thermally polarised liquids (theory-only / simulation-only)
+    - measurements of the polarization or its current with no load (sink-variant — the observation the claims already rest on)
+    - the converse effect (a temperature difference from a field change), thermal-expansion → flexoelectric chains (the route p-a093d7ecc5), pyroelectric and thermoelectric responses (wrong-coupling)
+  runs:
+    - id: search:2026-09-21-p-b820ec885f/oa-dm1
+      engine: openalex
+      query_form: route-driver-mechanism
+      query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermopolarization effect" OR thermopolarization OR "thermal polarization effect" OR "proper thermopolarization" OR "temperature-gradient-induced polarization")
+      executed_at: 2026-09-21T02:53:12.754Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermopolarization+effect%22+OR+thermopolarization+OR+%22thermal+polarization+effect%22+OR+%22proper+thermopolarization%22+OR+%22temperature-gradient-induced+polarization%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermopolarization effect" OR thermopolarization OR "thermal polarization effect" OR "proper thermopolarization" OR "temperature-gradient-induced polarization")
+        type: article|review|book-chapter
+      result_count_reported: 17
+      records_retrieved: 17
+      records_screened: 17
+      records_read: 3
+      query_key: driver-mechanism:1
+    - id: search:2026-09-21-p-b820ec885f/oa-dm1-newest
+      engine: openalex
+      query_form: route-driver-mechanism
+      query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermopolarization effect" OR thermopolarization OR "thermal polarization effect" OR "proper thermopolarization" OR "temperature-gradient-induced polarization")
+      executed_at: 2026-09-21T02:53:18.101Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermopolarization+effect%22+OR+thermopolarization+OR+%22thermal+polarization+effect%22+OR+%22proper+thermopolarization%22+OR+%22temperature-gradient-induced+polarization%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=50&sort=publication_date%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: publication_date:desc
+      filters:
+        title_and_abstract.search: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermopolarization effect" OR thermopolarization OR "thermal polarization effect" OR "proper thermopolarization" OR "temperature-gradient-induced polarization")
+        type: article|review|book-chapter
+      result_count_reported: 17
+      records_retrieved: 17
+      records_screened: 17
+      records_read: 0
+      query_key: driver-mechanism:1
+    - id: search:2026-09-21-p-b820ec885f/oa-wc
+      engine: openalex
+      query_form: route-whole-chain
+      query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermopolarization effect" OR thermopolarization OR "thermal polarization effect" OR "proper thermopolarization" OR "temperature-gradient-induced polarization") AND ("Electrical work" OR electricity OR "electrical output" OR "output power" OR "power density" OR "load resistance" OR "resistive load" OR harvesting OR "energy harvesting" OR generator)
+      executed_at: 2026-09-21T02:53:22.556Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermopolarization+effect%22+OR+thermopolarization+OR+%22thermal+polarization+effect%22+OR+%22proper+thermopolarization%22+OR+%22temperature-gradient-induced+polarization%22%29+AND+%28%22Electrical+work%22+OR+electricity+OR+%22electrical+output%22+OR+%22output+power%22+OR+%22power+density%22+OR+%22load+resistance%22+OR+%22resistive+load%22+OR+harvesting+OR+%22energy+harvesting%22+OR+generator%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermopolarization effect" OR thermopolarization OR "thermal polarization effect" OR "proper thermopolarization" OR "temperature-gradient-induced polarization") AND ("Electrical work" OR electricity OR "electrical output" OR "output power" OR "power density" OR "load resistance" OR "resistive load" OR harvesting OR "energy harvesting" OR generator)
+        type: article|review|book-chapter
+      result_count_reported: 0
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      query_key: whole-chain
+    - id: search:2026-09-21-p-b820ec885f/oa-dp
+      engine: openalex
+      query_form: route-demonstration-precision
+      query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermopolarization effect" OR thermopolarization OR "thermal polarization effect" OR "proper thermopolarization" OR "temperature-gradient-induced polarization") AND ("Electrical work" OR electricity OR "electrical output" OR "output power" OR "power density" OR "load resistance" OR "resistive load" OR harvesting OR "energy harvesting" OR generator) AND (experiment OR experimental OR measured OR device OR prototype)
+      executed_at: 2026-09-21T02:53:27.751Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermopolarization+effect%22+OR+thermopolarization+OR+%22thermal+polarization+effect%22+OR+%22proper+thermopolarization%22+OR+%22temperature-gradient-induced+polarization%22%29+AND+%28%22Electrical+work%22+OR+electricity+OR+%22electrical+output%22+OR+%22output+power%22+OR+%22power+density%22+OR+%22load+resistance%22+OR+%22resistive+load%22+OR+harvesting+OR+%22energy+harvesting%22+OR+generator%29+AND+%28experiment+OR+experimental+OR+measured+OR+device+OR+prototype%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermopolarization effect" OR thermopolarization OR "thermal polarization effect" OR "proper thermopolarization" OR "temperature-gradient-induced polarization") AND ("Electrical work" OR electricity OR "electrical output" OR "output power" OR "power density" OR "load resistance" OR "resistive load" OR harvesting OR "energy harvesting" OR generator) AND (experiment OR experimental OR measured OR device OR prototype)
+        type: article|review|book-chapter
+      result_count_reported: 0
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      query_key: demonstration-precision
+    - id: search:2026-09-21-p-b820ec885f/oa-dp-r
+      engine: openalex
+      query_form: route-demonstration-precision
+      query: thermopolarization AND ("output power" OR "power density" OR "load resistance" OR "resistive load" OR harvesting OR generator) AND (experiment OR experimental OR measured OR device)
+      executed_at: 2026-09-21T02:53:32.297Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3Athermopolarization+AND+%28%22output+power%22+OR+%22power+density%22+OR+%22load+resistance%22+OR+%22resistive+load%22+OR+harvesting+OR+generator%29+AND+%28experiment+OR+experimental+OR+measured+OR+device%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: thermopolarization AND ("output power" OR "power density" OR "load resistance" OR "resistive load" OR harvesting OR generator) AND (experiment OR experimental OR measured OR device)
+        type: article|review|book-chapter
+      result_count_reported: 2
+      records_retrieved: 2
+      records_screened: 2
+      records_read: 2
+      query_key: demonstration-precision
+    - id: search:2026-09-21-p-b820ec885f/oa-cn
+      engine: openalex
+      query_form: route-composite-name
+      query: (thermopolarization)
+      executed_at: 2026-09-21T02:53:37.323Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28thermopolarization%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: (thermopolarization)
+        type: article|review|book-chapter
+      result_count_reported: 43
+      records_retrieved: 43
+      records_screened: 43
+      records_read: 0
+      query_key: composite-name
+  screening:
+    records_retrieved: 48
+    unique_records: 48
+    title_abstract_screened: 48
+    full_text_read: 0
+  hits:
+    - title: "Analysis of Vibration Energy Harvesting Performance of Thermo-Electro-Elastic Microscale Devices Based on Generalized Thermoelasticity"
+      year: 2024
+      doi: "10.3390/act13120533"
+      found_by:
+        - search:2026-09-21-p-b820ec885f/oa-dp-r
+      access: abstract
+      decision: simulation-only
+      reason: "He et al. 2024 (Actuators 13, 533): a generalized-thermoelastic model of a piezoelectric microbeam vibration harvester that includes a thermopolarization term — the reviewer's precision query's only relevant hit, a model of a vibration-driven piezoelectric device, not a thermopolarization generator."
+    - title: "Effects of thermally induced birefringence in high-output-power electro-optically Q-switched Nd:YAG lasers and their compensation"
+      year: 1993
+      doi: "10.1364/ao.32.000278"
+      found_by:
+        - search:2026-09-21-p-b820ec885f/oa-dp-r
+      access: metadata-only
+      decision: wrong-coupling
+      reason: "Applied Optics 1993: a laser paper matched on 'output power' and 'thermally induced'; not the composition."
+    - title: "Laser Intensity Modulation Method and Thermal Gradient Induced Polarization"
+      year: 1997
+      doi: "10.1002/1521-396x(199709)163:1<263::aid-pssa263>3.0.co;2-t"
+      found_by:
+        - search:2026-09-21-p-b820ec885f/oa-dm1
+      access: metadata-only
+      decision: insufficient-information
+      reason: "Marvan & Fähnrich 1997 (phys. stat. sol. (a) 163, 263–270; no abstract on record): by title, thermal-gradient-induced polarization in the laser-intensity-modulation method — possibly an experimental observation of the effect in polymer films, possibly its treatment as an artefact; the one paper on this list to read, and by the effect's first theorist."
+    - title: "The rich phase behavior of the thermopolarization of water: from a reversal in the polarization, to enhancement near criticality conditions"
+      year: 2016
+      doi: "10.1039/c6cp03082c"
+      found_by:
+        - search:2026-09-21-p-b820ec885f/oa-dm1
+      access: abstract
+      decision: simulation-only
+      reason: "Iriarte-Carretero et al. 2016 (PCCP 18, 19894): non-equilibrium molecular dynamics of water polarised by a thermal gradient, strongly dependent on the thermodynamic state with an enhancement near the critical point — a sibling in polar liquids (with the 2013 water, 2020 acetonitrile, 2024 supercooled-water and 2025 ethanol simulations on the same list), all simulation, no experiment, no load."
+    - title: "Thermo-electro-elastic analysis of piezoelectric hollow cylinder with thermopolarization effect"
+      year: 2024
+      doi: "10.1080/01495739.2023.2293046"
+      found_by:
+        - search:2026-09-21-p-b820ec885f/oa-dm1
+      access: metadata-only
+      decision: theory-only
+      reason: "Journal of Thermal Stresses 2024 (with the 2024 flexoelectric hollow-cylinder analysis on the same list): continuum analyses that include the thermopolarization coefficient, by title — theory."
+    - title: "Reverse thermopolarization effects in dielectrics"
+      year: 1995
+      doi: "10.1080/07315179508204274"
+      found_by:
+        - search:2026-09-21-p-b820ec885f/oa-dm1
+      access: abstract
+      decision: wrong-coupling
+      reason: "Trepakov et al. 1995: the converse effect (a ≈ 10⁻⁴ K temperature difference across a PMN capacitor charged at 10⁶ V/m), recorded under p-a093d7ecc5 as well."
+    - title: "Theory of Thermopolarization Effect"
+      year: 2025
+      doi: "10.1021/acs.nanolett.4c05870"
+      found_by:
+        - search:2026-09-21-p-b820ec885f/oa-dm1
+      access: abstract
+      decision: theory-only
+      reason: "Onishi, Isobe, Shitade & Nagaosa 2025 (Nano Letters 25, 2763): the modern linear-response theory of the direct effect; no experiment."
+    - title: "Antisymmetric thermopolarization by electric toroidicity"
+      year: 2022
+      doi: "10.1103/physrevb.105.245125"
+      found_by:
+        - search:2026-09-21-p-b820ec885f/oa-dm1
+      access: metadata-only
+      decision: theory-only
+      reason: "Nasu & Hayami 2022 (Phys. Rev. B 105, 245125): theory of the tensor's antisymmetric part."
+  result: inconclusive
+  completeness: partial
+  reviewed_by: Ava Kim's loop-3 lane (Claude Opus 5); titles screened, five abstracts read on Crossref and OpenAlex
+  reviewed_on: 2026-09-21
+  limitations:
+    - "OpenAlex only (21/09, 12:53 pm Sydney): driver-mechanism 17 works (all screened, the thermopolarization theory and the thermally polarised-liquid simulations); whole-chain 0; demonstration-precision 0; the reviewer's precision query 2 (both false positives); the composite-name form 43 works, every one already in the flexoelectric route's composite-name bundle (screened there in pass 27 and here again at title level); Semantic Scholar answers 429 keyless (owner exception e953) and Google Scholar a captcha — both mandatory for a negative, neither run"
+    - the constituent observations (Kholkin 1982, read in full; Trepakov 1989 and Rafikov 1994 at abstract level) are sink-variant by construction — a polarization current with no load — and are not repeated as hits here; the claims stay reported until Trepakov 1989 is read (owner exception e9d8)
+    - Marvan & Fähnrich 1997 is unread and is the one title on the list that may report an experiment
+  conclusion: "No demonstration found: nothing OpenAlex returns puts a load on a thermopolarised dielectric or reports output power from the direct effect. The literature that names the composition is the 1982–1994 measurement lineage (currents, no load), its theory (Marvan 1969, Tagantsev 1987 and 1991, Nasu 2022, Onishi 2025), its converse (1995), and a separate simulation literature on the thermal polarization of polar liquids (Bresme and co-workers, 2013–2025) that the atlas does not yet spell. Inconclusive as a route search until the Scholar and Semantic Scholar runs exist and Marvan & Fähnrich 1997 is read."
+  source_run_ids:
+    - search:2026-09-21-p-b820ec885f
+  follow_up:
+    canonical_claim_review: not-applicable
+    canonical_pathway_review: not-applicable

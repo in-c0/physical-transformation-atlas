@@ -14630,2031 +14630,6 @@
     "claim:thermal-emission-converts-light"
    ]
   },
-  "dataset_hash": "7fa8f31facb6",
-  "driver_terms": [
-   "nuclear binding-energy difference",
-   "radioactive decay",
-   "fissile configuration",
-   "nuclear fuel",
-   "fissile fuel"
-  ],
-  "family_terms": [],
-  "phenomenon_terms": {
-   "phenomenon:nuclear-fission": [
-    "nuclear fission",
-    "fission reactor",
-    "nuclear reactor",
-    "reactor core",
-    "fissioning plasma"
-   ],
-   "phenomenon:thermal-emission": [
-    "thermal emission",
-    "blackbody radiation",
-    "incandescence",
-    "Planck radiation"
-   ]
-  },
-  "composition_terms": [],
-  "runs": [
-   {
-    "id": "search:2026-09-21-p-8200d7ab7e/oa-dm1",
-    "engine": "openalex",
-    "query_form": "route-driver-mechanism",
-    "query": "(\"Nuclear binding-energy difference\" OR \"radioactive decay\" OR \"fissile configuration\" OR \"nuclear fuel\" OR \"fissile fuel\") AND (\"Nuclear fission\" OR \"fission reactor\" OR \"nuclear reactor\" OR \"reactor core\" OR \"fissioning plasma\")",
-    "executed_at": "2026-09-21T01:18:09.989Z",
-    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Nuclear+binding-energy+difference%22+OR+%22radioactive+decay%22+OR+%22fissile+configuration%22+OR+%22nuclear+fuel%22+OR+%22fissile+fuel%22%29+AND+%28%22Nuclear+fission%22+OR+%22fission+reactor%22+OR+%22nuclear+reactor%22+OR+%22reactor+core%22+OR+%22fissioning+plasma%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
-    "engine_version": null,
-    "index_snapshot": null,
-    "sort": "relevance_score:desc",
-    "filters": {
-     "title_and_abstract.search": "(\"Nuclear binding-energy difference\" OR \"radioactive decay\" OR \"fissile configuration\" OR \"nuclear fuel\" OR \"fissile fuel\") AND (\"Nuclear fission\" OR \"fission reactor\" OR \"nuclear reactor\" OR \"reactor core\" OR \"fissioning plasma\")",
-     "type": "article|review|book-chapter"
-    },
-    "result_count_reported": 2909,
-    "records_retrieved": 100,
-    "records_screened": 0,
-    "records_read": 0,
-    "query_key": "driver-mechanism:1"
-   },
-   {
-    "id": "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest",
-    "engine": "openalex",
-    "query_form": "route-driver-mechanism",
-    "query": "(\"Nuclear binding-energy difference\" OR \"radioactive decay\" OR \"fissile configuration\" OR \"nuclear fuel\" OR \"fissile fuel\") AND (\"Nuclear fission\" OR \"fission reactor\" OR \"nuclear reactor\" OR \"reactor core\" OR \"fissioning plasma\")",
-    "executed_at": "2026-09-21T01:18:14.983Z",
-    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Nuclear+binding-energy+difference%22+OR+%22radioactive+decay%22+OR+%22fissile+configuration%22+OR+%22nuclear+fuel%22+OR+%22fissile+fuel%22%29+AND+%28%22Nuclear+fission%22+OR+%22fission+reactor%22+OR+%22nuclear+reactor%22+OR+%22reactor+core%22+OR+%22fissioning+plasma%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=50&sort=publication_date%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
-    "engine_version": null,
-    "index_snapshot": null,
-    "sort": "publication_date:desc",
-    "filters": {
-     "title_and_abstract.search": "(\"Nuclear binding-energy difference\" OR \"radioactive decay\" OR \"fissile configuration\" OR \"nuclear fuel\" OR \"fissile fuel\") AND (\"Nuclear fission\" OR \"fission reactor\" OR \"nuclear reactor\" OR \"reactor core\" OR \"fissioning plasma\")",
-     "type": "article|review|book-chapter"
-    },
-    "result_count_reported": 2909,
-    "records_retrieved": 50,
-    "records_screened": 0,
-    "records_read": 0,
-    "query_key": "driver-mechanism:1"
-   },
-   {
-    "id": "search:2026-09-21-p-8200d7ab7e/oa-mp12",
-    "engine": "openalex",
-    "query_form": "route-mechanism-pair",
-    "query": "(\"Nuclear fission\" OR \"fission reactor\" OR \"nuclear reactor\" OR \"reactor core\" OR \"fissioning plasma\") AND (\"Thermal emission\" OR \"blackbody radiation\" OR incandescence OR \"Planck radiation\")",
-    "executed_at": "2026-09-21T01:18:19.781Z",
-    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Nuclear+fission%22+OR+%22fission+reactor%22+OR+%22nuclear+reactor%22+OR+%22reactor+core%22+OR+%22fissioning+plasma%22%29+AND+%28%22Thermal+emission%22+OR+%22blackbody+radiation%22+OR+incandescence+OR+%22Planck+radiation%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
-    "engine_version": null,
-    "index_snapshot": null,
-    "sort": "relevance_score:desc",
-    "filters": {
-     "title_and_abstract.search": "(\"Nuclear fission\" OR \"fission reactor\" OR \"nuclear reactor\" OR \"reactor core\" OR \"fissioning plasma\") AND (\"Thermal emission\" OR \"blackbody radiation\" OR incandescence OR \"Planck radiation\")",
-     "type": "article|review|book-chapter"
-    },
-    "result_count_reported": 15,
-    "records_retrieved": 15,
-    "records_screened": 0,
-    "records_read": 0,
-    "query_key": "mechanism-pair:1-2"
-   },
-   {
-    "id": "search:2026-09-21-p-8200d7ab7e/oa-wc",
-    "engine": "openalex",
-    "query_form": "route-whole-chain",
-    "query": "(\"Nuclear binding-energy difference\" OR \"radioactive decay\" OR \"fissile configuration\" OR \"nuclear fuel\" OR \"fissile fuel\") AND (\"Nuclear fission\" OR \"fission reactor\" OR \"nuclear reactor\" OR \"reactor core\" OR \"fissioning plasma\") AND (\"Thermal emission\" OR \"blackbody radiation\" OR incandescence OR \"Planck radiation\") AND (light OR illumination OR \"radiant output\" OR luminous)",
-    "executed_at": "2026-09-21T01:18:24.868Z",
-    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Nuclear+binding-energy+difference%22+OR+%22radioactive+decay%22+OR+%22fissile+configuration%22+OR+%22nuclear+fuel%22+OR+%22fissile+fuel%22%29+AND+%28%22Nuclear+fission%22+OR+%22fission+reactor%22+OR+%22nuclear+reactor%22+OR+%22reactor+core%22+OR+%22fissioning+plasma%22%29+AND+%28%22Thermal+emission%22+OR+%22blackbody+radiation%22+OR+incandescence+OR+%22Planck+radiation%22%29+AND+%28light+OR+illumination+OR+%22radiant+output%22+OR+luminous%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
-    "engine_version": null,
-    "index_snapshot": null,
-    "sort": "relevance_score:desc",
-    "filters": {
-     "title_and_abstract.search": "(\"Nuclear binding-energy difference\" OR \"radioactive decay\" OR \"fissile configuration\" OR \"nuclear fuel\" OR \"fissile fuel\") AND (\"Nuclear fission\" OR \"fission reactor\" OR \"nuclear reactor\" OR \"reactor core\" OR \"fissioning plasma\") AND (\"Thermal emission\" OR \"blackbody radiation\" OR incandescence OR \"Planck radiation\") AND (light OR illumination OR \"radiant output\" OR luminous)",
-     "type": "article|review|book-chapter"
-    },
-    "result_count_reported": 0,
-    "records_retrieved": 0,
-    "records_screened": 0,
-    "records_read": 0,
-    "query_key": "whole-chain"
-   },
-   {
-    "id": "search:2026-09-21-p-8200d7ab7e/oa-dp",
-    "engine": "openalex",
-    "query_form": "route-demonstration-precision",
-    "query": "(\"Nuclear binding-energy difference\" OR \"radioactive decay\" OR \"fissile configuration\" OR \"nuclear fuel\" OR \"fissile fuel\") AND (\"Nuclear fission\" OR \"fission reactor\" OR \"nuclear reactor\" OR \"reactor core\" OR \"fissioning plasma\") AND (\"Thermal emission\" OR \"blackbody radiation\" OR incandescence OR \"Planck radiation\") AND (light OR illumination OR \"radiant output\" OR luminous) AND (experiment OR experimental OR measured OR device OR prototype)",
-    "executed_at": "2026-09-21T01:18:29.331Z",
-    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Nuclear+binding-energy+difference%22+OR+%22radioactive+decay%22+OR+%22fissile+configuration%22+OR+%22nuclear+fuel%22+OR+%22fissile+fuel%22%29+AND+%28%22Nuclear+fission%22+OR+%22fission+reactor%22+OR+%22nuclear+reactor%22+OR+%22reactor+core%22+OR+%22fissioning+plasma%22%29+AND+%28%22Thermal+emission%22+OR+%22blackbody+radiation%22+OR+incandescence+OR+%22Planck+radiation%22%29+AND+%28light+OR+illumination+OR+%22radiant+output%22+OR+luminous%29+AND+%28experiment+OR+experimental+OR+measured+OR+device+OR+prototype%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
-    "engine_version": null,
-    "index_snapshot": null,
-    "sort": "relevance_score:desc",
-    "filters": {
-     "title_and_abstract.search": "(\"Nuclear binding-energy difference\" OR \"radioactive decay\" OR \"fissile configuration\" OR \"nuclear fuel\" OR \"fissile fuel\") AND (\"Nuclear fission\" OR \"fission reactor\" OR \"nuclear reactor\" OR \"reactor core\" OR \"fissioning plasma\") AND (\"Thermal emission\" OR \"blackbody radiation\" OR incandescence OR \"Planck radiation\") AND (light OR illumination OR \"radiant output\" OR luminous) AND (experiment OR experimental OR measured OR device OR prototype)",
-     "type": "article|review|book-chapter"
-    },
-    "result_count_reported": 0,
-    "records_retrieved": 0,
-    "records_screened": 0,
-    "records_read": 0,
-    "query_key": "demonstration-precision"
-   }
-  ],
-  "works": [
-   {
-    "openalex_id": "W2171611687",
-    "doi": "10.1016/j.engfailanal.2011.06.010",
-    "title": "Selection of fuel cladding material for nuclear fission reactors",
-    "year": 2011,
-    "type": "article",
-    "cited_by_count": 352,
-    "open_access_url": "http://www.sciencedirect.com/science/article/pii/S1350630711001531",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2010871116",
-    "doi": "10.1126/science.1211285",
-    "title": "Nuclear Fuel in a Reactor Accident",
-    "year": 2012,
-    "type": "article",
-    "cited_by_count": 544,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2889951280",
-    "doi": "10.1016/j.rser.2018.08.019",
-    "title": "Viability of thorium-based nuclear fuel cycle for the next generation nuclear reactor: Issues and prospects",
-    "year": 2018,
-    "type": "article",
-    "cited_by_count": 205,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2087303625",
-    "doi": "10.1016/s1369-7021(10)70221-2",
-    "title": "The high burn-up structure in nuclear fuel",
-    "year": 2010,
-    "type": "article",
-    "cited_by_count": 326,
-    "open_access_url": "https://doi.org/10.1016/s1369-7021(10)70221-2",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2263439983",
-    "doi": "10.1016/j.rser.2016.01.116",
-    "title": "Modeling and control of nuclear reactor cores for electricity generation: A review of advanced technologies",
-    "year": 2016,
-    "type": "article",
-    "cited_by_count": 98,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2291475132",
-    "doi": "10.1016/j.jcp.2016.02.012",
-    "title": "An assessment of coupling algorithms for nuclear reactor core physics simulations",
-    "year": 2016,
-    "type": "article",
-    "cited_by_count": 57,
-    "open_access_url": "https://doi.org/10.1016/j.jcp.2016.02.012",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W1981476758",
-    "doi": "10.1080/00337578208222984",
-    "title": "Radiation damage in crystalline insulators, oxides and ceramic nuclear fuels",
-    "year": 1982,
-    "type": "article",
-    "cited_by_count": 224,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2117497888",
-    "title": "Reactor: an expert system for diagnosis and treatment of nuclear reactor accidents",
-    "year": 1982,
-    "type": "article",
-    "cited_by_count": 142,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2026769253",
-    "doi": "10.1016/j.enpol.2013.04.062",
-    "title": "Abundant thorium as an alternative nuclear fuel",
-    "year": 2013,
-    "type": "article",
-    "cited_by_count": 98,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2105011060",
-    "doi": "10.13182/nt95-a35149",
-    "title": "Nuclear Fuel Management Optimization Using Genetic Algorithms",
-    "year": 1995,
-    "type": "article",
-    "cited_by_count": 103,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W1996976239",
-    "doi": "10.1016/s0022-3115(96)00345-5",
-    "title": "Uraninite and UO2 in spent nuclear fuel: a comparison",
-    "year": 1996,
-    "type": "article",
-    "cited_by_count": 94,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W1967798675",
-    "doi": "10.1016/0306-4549(76)90025-6",
-    "title": "Fissile fuel breeding potential with paired fusion-fission reactors",
-    "year": 1976,
-    "type": "article",
-    "cited_by_count": 14,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W3131339441",
-    "doi": "10.1016/j.jallcom.2021.159235",
-    "title": "Corrosion of FeCrAl alloys used as fuel cladding in nuclear reactors",
-    "year": 2021,
-    "type": "article",
-    "cited_by_count": 101,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2607149722",
-    "doi": "10.1016/j.anucene.2017.03.005",
-    "title": "Mechanistic materials modeling for nuclear fuel performance",
-    "year": 2017,
-    "type": "article",
-    "cited_by_count": 81,
-    "open_access_url": "https://doi.org/10.1016/j.anucene.2017.03.005",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2047697951",
-    "doi": "10.1007/s10967-005-0627-7",
-    "title": "Analysis of high burnup spent nuclear fuel by ICP-MS",
-    "year": 2005,
-    "type": "article",
-    "cited_by_count": 75,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W3140168595",
-    "doi": "10.13182/nt95-2",
-    "title": "Nuclear Fuel Management Optimization Using Genetic Algorithms",
-    "year": 1995,
-    "type": "article",
-    "cited_by_count": 54,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2056293724",
-    "doi": "10.1016/j.jnucmat.2014.11.117",
-    "title": "Fabrication and measurement of hoop strength of SiC triplex tube for nuclear fuel cladding applications",
-    "year": 2014,
-    "type": "article",
-    "cited_by_count": 95,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2062197875",
-    "doi": "10.1007/bf02745341",
-    "title": "Nuclear fuels and development of nuclear fuel elements",
-    "year": 1989,
-    "type": "article",
-    "cited_by_count": 26,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W1978121664",
-    "doi": "10.1016/j.jenvrad.2011.11.018",
-    "title": "Atmospheric radionuclides from the Fukushima Dai-ichi nuclear reactor accident observed in Vietnam",
-    "year": 2011,
-    "type": "article",
-    "cited_by_count": 79,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W1997289916",
-    "doi": "10.1016/j.jnucmat.2009.03.035",
-    "title": "Three dimensional coupled simulation of thermomechanics, heat, and oxygen diffusion in nuclear fuel rods",
-    "year": 2009,
-    "type": "article",
-    "cited_by_count": 82,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W3123991168",
-    "doi": "10.1016/j.matre.2021.01.002",
-    "title": "Current state and prospect on the development of advanced nuclear fuel system materials: A review",
-    "year": 2021,
-    "type": "article",
-    "cited_by_count": 75,
-    "open_access_url": "https://www.sciencedirect.com/science/article/pii/S2666935821000021/pdf",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2220805808",
-    "title": "A CLASSIFICATION OF UNIQUELY DIFFERENT TYPES OF NUCLEAR FISSION GAS BEHAVIOR",
-    "year": 2005,
-    "type": "article",
-    "cited_by_count": 45,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2121804106",
-    "doi": "10.1016/s0022-3115(99)00264-0",
-    "title": "Near-field behavior of 99Tc during the oxidative alteration of spent nuclear fuel",
-    "year": 2000,
-    "type": "article",
-    "cited_by_count": 74,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2032830593",
-    "doi": "10.1016/j.wear.2014.02.016",
-    "title": "A multi-stage wear model for grid-to-rod fretting of nuclear fuel rods",
-    "year": 2014,
-    "type": "article",
-    "cited_by_count": 76,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W3037340022",
-    "doi": "10.1016/b978-0-12-818483-7.00001-9",
-    "title": "Fundamentals of nuclear reactors",
-    "year": 2020,
-    "type": "book-chapter",
-    "cited_by_count": 26,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2280754402",
-    "doi": "10.1134/s1063778815100117",
-    "title": "Hybrid fusion–fission reactor with a thorium blanket: Its potential in the fuel cycle of nuclear reactors",
-    "year": 2015,
-    "type": "article",
-    "cited_by_count": 13,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2048179215",
-    "doi": "10.1051/epn:2007007",
-    "title": "Revisiting the thorium-uranium nuclear fuel cycle",
-    "year": 2007,
-    "type": "article",
-    "cited_by_count": 46,
-    "open_access_url": "https://www.europhysicsnews.org/articles/epn/pdf/2007/02/epn07204.pdf",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W1998834223",
-    "doi": "10.1016/j.nucengdes.2011.12.010",
-    "title": "Thermal hydraulic performance assessment of dual-cooled annular nuclear fuel for OPR-1000",
-    "year": 2012,
-    "type": "article",
-    "cited_by_count": 75,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2034916157",
-    "doi": "10.1016/j.nima.2003.07.059",
-    "title": "Non-destructive analysis of nuclear fuel by means of thermal and cold neutrons",
-    "year": 2003,
-    "type": "article",
-    "cited_by_count": 62,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W4309475453",
-    "doi": "10.1016/j.pnucene.2022.104493",
-    "title": "Prospects for additive manufacturing of nuclear fuel forms",
-    "year": 2022,
-    "type": "article",
-    "cited_by_count": 45,
-    "open_access_url": "https://doi.org/10.1016/j.pnucene.2022.104493",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W4412940939",
-    "doi": "10.3390/en18154080",
-    "title": "Advanced Nuclear Reactors—Challenges Related to the Reprocessing of Spent Nuclear Fuel",
-    "year": 2025,
-    "type": "article",
-    "cited_by_count": 13,
-    "open_access_url": "https://www.mdpi.com/1996-1073/18/15/4080/pdf?version=1754040602",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2051133384",
-    "doi": "10.1016/0029-5493(71)90076-8",
-    "title": "Plutonium and plutonium alloys as nuclear fuel materials",
-    "year": 1971,
-    "type": "article",
-    "cited_by_count": 43,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2337367180",
-    "doi": "10.13182/nt81-a32759",
-    "title": "Quenching and Rewetting of Nuclear Fuel Rods",
-    "year": 1981,
-    "type": "article",
-    "cited_by_count": 36,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2811015521",
-    "doi": "10.1016/j.wear.2018.06.011",
-    "title": "Investigating grid-to-rod fretting wear of nuclear fuel claddings using a unique autoclave fretting rig",
-    "year": 2018,
-    "type": "article",
-    "cited_by_count": 64,
-    "open_access_url": "https://doi.org/10.1016/j.wear.2018.06.011",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W1985318351",
-    "doi": "10.1180/minmag.2011.075.4.2359",
-    "title": "Actinides and radiation effects: impact on the back-end of the nuclear fuel cycle",
-    "year": 2011,
-    "type": "article",
-    "cited_by_count": 52,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2213177185",
-    "doi": "10.13182/nt80-a17693",
-    "title": "Hybrids for Direct Enrichment and Self-Protected Fissile Fuel Production",
-    "year": 1980,
-    "type": "article",
-    "cited_by_count": 20,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2023742746",
-    "doi": "10.1016/j.gca.2004.07.013",
-    "title": "Uraninite recrystallization and Pb loss in the Oklo and Bangombé natural fission reactors, Gabon",
-    "year": 2005,
-    "type": "article",
-    "cited_by_count": 39,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W4293773740",
-    "doi": "10.1016/j.nucengdes.2022.111950",
-    "title": "A review on optimization methods for nuclear reactor fuel reloading analysis",
-    "year": 2022,
-    "type": "article",
-    "cited_by_count": 40,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2077231532",
-    "doi": "10.1016/s0306-4549(02)00092-0",
-    "title": "Nuclear fuel loading pattern optimisation using a neural network",
-    "year": 2002,
-    "type": "article",
-    "cited_by_count": 46,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W3107287099",
-    "doi": "10.3390/microorganisms8121857",
-    "title": "Direct Meta-Analyses Reveal Unexpected Microbial Life in the Highly Radioactive Water of an Operating Nuclear Reactor Core",
-    "year": 2020,
-    "type": "article",
-    "cited_by_count": 17,
-    "open_access_url": "https://www.mdpi.com/2076-2607/8/12/1857/pdf?version=1606377219",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2014944719",
-    "doi": "10.1016/j.anucene.2008.09.004",
-    "title": "Calculation of the power peaking factor in a nuclear reactor using support vector regression models",
-    "year": 2008,
-    "type": "article",
-    "cited_by_count": 46,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W1985524242",
-    "doi": "10.1016/j.pnucene.2007.11.041",
-    "title": "Micro-structured nuclear fuel and novel nuclear reactor concepts for advanced power production",
-    "year": 2007,
-    "type": "article",
-    "cited_by_count": 13,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2902975086",
-    "doi": "10.1016/j.anucene.2018.11.050",
-    "title": "Micro heat pipe nuclear reactor concepts: Analysis of fuel cycle performance and environmental impacts",
-    "year": 2018,
-    "type": "article",
-    "cited_by_count": 62,
-    "open_access_url": "https://doi.org/10.1016/j.anucene.2018.11.050",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W1988573786",
-    "doi": "10.1016/j.wear.2013.01.067",
-    "title": "Fretting wear behavior of a nuclear fuel rod under a simulated primary coolant condition",
-    "year": 2013,
-    "type": "article",
-    "cited_by_count": 60,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2086548010",
-    "doi": "10.1016/j.jnucmat.2012.05.001",
-    "title": "TiN-based coatings on fuel cladding tubes for advanced nuclear reactors",
-    "year": 2012,
-    "type": "article",
-    "cited_by_count": 44,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W136036148",
-    "doi": "10.13182/nt07-a3809",
-    "title": "Proliferation Resistance Assessment Methodology for Nuclear Fuel Cycles",
-    "year": 2007,
-    "type": "article",
-    "cited_by_count": 39,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2044098005",
-    "doi": "10.1016/0301-4215(75)90050-6",
-    "title": "Strategies for a transition from fossil to nuclear fuels",
-    "year": 1975,
-    "type": "article",
-    "cited_by_count": 32,
-    "open_access_url": "http://pure.iiasa.ac.at/id/eprint/87/1/RR-74-07.pdf",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2059090549",
-    "doi": "10.1016/j.jenvrad.2011.11.007",
-    "title": "Analysis of data from sensitive U.S. monitoring stations for the Fukushima Dai-ichi nuclear reactor accident",
-    "year": 2011,
-    "type": "article",
-    "cited_by_count": 61,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2057852286",
-    "doi": "10.1557/proc-465-1209",
-    "title": "Uraninite: a 2 Ga Spent Nuclear Fuel from the Natural Fission Reactor at Bangombé in Gabon, West Africa",
-    "year": 1996,
-    "type": "article",
-    "cited_by_count": 13,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2745632721",
-    "doi": "10.1016/j.nucet.2017.07.002",
-    "title": "Genetic algorithms for nuclear reactor fuel load and reload optimization problems",
-    "year": 2017,
-    "type": "article",
-    "cited_by_count": 34,
-    "open_access_url": "https://www.sciencedirect.com/science/article/pii/S2452303817300602/pdf",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2040813126",
-    "doi": "10.1016/j.applthermaleng.2014.04.005",
-    "title": "Thermal analysis of the melting process in a nuclear fuel rod",
-    "year": 2014,
-    "type": "article",
-    "cited_by_count": 37,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W3129536400",
-    "doi": "10.1021/acs.inorgchem.0c03390",
-    "title": "Progress in Uranium Chemistry: Driving Advances in Front-End Nuclear Fuel Cycle Forensics",
-    "year": 2021,
-    "type": "article",
-    "cited_by_count": 55,
-    "open_access_url": "https://www.osti.gov/servlets/purl/1780574",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W1997720302",
-    "doi": "10.1016/j.jnucmat.2015.03.001",
-    "title": "Nanostructure of metallic particles in light water reactor used nuclear fuel",
-    "year": 2015,
-    "type": "article",
-    "cited_by_count": 45,
-    "open_access_url": "https://doi.org/10.1016/j.jnucmat.2015.03.001",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2147904323",
-    "doi": "10.1098/rspa.1975.0067",
-    "title": "The morphology of interlinked porosity in nuclear fuels",
-    "year": 1975,
-    "type": "article",
-    "cited_by_count": 29,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W3187223244",
-    "doi": "10.1016/j.nucengdes.2021.111364",
-    "title": "High-energy surface processing of zirconium alloys for fuel claddings of water-cooled nuclear reactors",
-    "year": 2021,
-    "type": "article",
-    "cited_by_count": 53,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2971806216",
-    "doi": "10.1038/s41598-019-48619-x",
-    "title": "Closing the Nuclear Fuel Cycle with a Simplified Minor Actinide Lanthanide Separation Process (ALSEP) and Additive Manufacturing",
-    "year": 2019,
-    "type": "article",
-    "cited_by_count": 63,
-    "open_access_url": "https://www.nature.com/articles/s41598-019-48619-x.pdf",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2133673521",
-    "doi": "10.1016/j.enconman.2009.12.044",
-    "title": "Criticality and burn up evolutions of the Fixed Bed Nuclear Reactor with alternative fuels",
-    "year": 2010,
-    "type": "article",
-    "cited_by_count": 45,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W3118851130",
-    "doi": "10.1002/er.6371",
-    "title": "Advance in and prospect of moderator materials for space nuclear reactors",
-    "year": 2021,
-    "type": "article",
-    "cited_by_count": 31,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2749259779",
-    "doi": "10.1002/er.3854",
-    "title": "The breed and burn nuclear reactor: A chronological, conceptual, and technological review",
-    "year": 2017,
-    "type": "article",
-    "cited_by_count": 28,
-    "open_access_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/er.3854",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2081725420",
-    "doi": "10.1016/0029-5493(85)90303-6",
-    "title": "Vibrations of nuclear fuel assemblies: A simplified model",
-    "year": 1985,
-    "type": "article",
-    "cited_by_count": 22,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W1984395367",
-    "doi": "10.1016/j.nucengdes.2013.06.007",
-    "title": "Large-eddy simulations of turbulent flow for grid-to-rod fretting in nuclear reactors",
-    "year": 2013,
-    "type": "article",
-    "cited_by_count": 41,
-    "open_access_url": "https://arxiv.org/pdf/1307.4660",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W1985951509",
-    "doi": "10.1016/j.jmatprotec.2014.05.009",
-    "title": "Nanosized polycrystalline diamond cladding for surface protection of zirconium nuclear fuel tubes",
-    "year": 2014,
-    "type": "article",
-    "cited_by_count": 40,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W1979889772",
-    "doi": "10.1016/j.crte.2010.09.003",
-    "title": "Safe management of actinides in the nuclear fuel cycle: Role of mineralogy",
-    "year": 2010,
-    "type": "article",
-    "cited_by_count": 33,
-    "open_access_url": "https://www.sciencedirect.com/science/article/pii/S1631071310002117/pdf",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2522875312",
-    "doi": "10.1088/1748-0221/11/09/p09008",
-    "title": "Muon trackers for imaging a nuclear reactor",
-    "year": 2016,
-    "type": "article",
-    "cited_by_count": 22,
-    "open_access_url": "https://iopscience.iop.org/article/10.1088/1748-0221/11/09/P09008/pdf",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W1988137771",
-    "doi": "10.1016/j.measurement.2013.07.003",
-    "title": "Benchmarking of deformation and vibration measurement techniques for nuclear fuel pins",
-    "year": 2013,
-    "type": "article",
-    "cited_by_count": 26,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2027672605",
-    "doi": "10.1016/j.ijhydene.2015.01.093",
-    "title": "Life cycle assessment of hydrogen production from a high temperature electrolysis process coupled to a high temperature gas nuclear reactor",
-    "year": 2015,
-    "type": "article",
-    "cited_by_count": 65,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2070473887",
-    "doi": "10.1007/bf03354517",
-    "title": "Type 304 Stainless Steel With 0.5% Boron for Storage of Spent Nuclear Fuel",
-    "year": 1980,
-    "type": "article",
-    "cited_by_count": 42,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W1964680803",
-    "doi": "10.4236/epe.2014.65009",
-    "title": "Comparison of Small Modular Reactor and Large Nuclear Reactor Fuel Cost",
-    "year": 2014,
-    "type": "article",
-    "cited_by_count": 35,
-    "open_access_url": "https://content.scirp.org/pdf/epe_2014050616474305.pdf",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2041092968",
-    "doi": "10.1016/s0168-9002(00)00506-4",
-    "title": "Ultra-thin 242mAm fuel elements in nuclear reactors",
-    "year": 2000,
-    "type": "article",
-    "cited_by_count": 26,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2513834537",
-    "doi": "10.1016/j.pnucene.2016.08.004",
-    "title": "Could spent nuclear fuel be considered as a non-conventional mine of critical raw materials?",
-    "year": 2016,
-    "type": "article",
-    "cited_by_count": 46,
-    "open_access_url": "https://www.sciencedirect.com/science/article/pii/S014919701630172X/pdf",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W1996759718",
-    "doi": "10.1016/j.jfluchem.2008.07.006",
-    "title": "New reprocessing system for spent nuclear reactor fuel using fluoride volatility method",
-    "year": 2008,
-    "type": "article",
-    "cited_by_count": 39,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2056253001",
-    "doi": "10.1016/j.nucengdes.2014.11.040",
-    "title": "Operational modal analysis of flow-induced vibration of nuclear fuel rods in a turbulent axial flow",
-    "year": 2015,
-    "type": "article",
-    "cited_by_count": 35,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2762771307",
-    "doi": "10.1016/j.ress.2017.09.029",
-    "title": "Kriging-based inverse uncertainty quantification of nuclear fuel performance code BISON fission gas release model using time series measurement data",
-    "year": 2017,
-    "type": "article",
-    "cited_by_count": 79,
-    "open_access_url": "https://doi.org/10.1016/j.ress.2017.09.029",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2034957968",
-    "doi": "10.1524/ract.2006.94.9-11.749",
-    "title": "The fate of the epsilon phase (Mo-Ru-Pd-Tc-Rh) in the UO 2 of the Oklo natural fission reactors",
-    "year": 2006,
-    "type": "article",
-    "cited_by_count": 37,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W3019627638",
-    "doi": "10.1093/ptep/ptaa027",
-    "title": "Investigation of the Unit-1 nuclear reactor of Fukushima Daiichi by cosmic muon radiography",
-    "year": 2020,
-    "type": "article",
-    "cited_by_count": 32,
-    "open_access_url": "https://academic.oup.com/ptep/article-pdf/2020/4/043C02/33129810/ptaa027.pdf",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2325463557",
-    "doi": "10.1007/s10512-016-0074-2",
-    "title": "Advances in Structural Materials for Fast-Reactor Cores",
-    "year": 2016,
-    "type": "article",
-    "cited_by_count": 24,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W1995415894",
-    "doi": "10.1016/j.anucene.2013.01.048",
-    "title": "Heat conduction in nuclear fuel by the Kirchhoff transformation",
-    "year": 2013,
-    "type": "article",
-    "cited_by_count": 24,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W188233734",
-    "doi": "10.13182/nt82-a32880",
-    "title": "The Role of Plutonium-238 in Nuclear Fuel Cycles",
-    "year": 1982,
-    "type": "article",
-    "cited_by_count": 25,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W1992429407",
-    "doi": "10.1007/s00158-002-0210-6",
-    "title": "Optimization of nuclear fuel reloading by the homogenization method",
-    "year": 2002,
-    "type": "article",
-    "cited_by_count": 19,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2075598059",
-    "doi": "10.1021/ed086p316",
-    "title": "Uranium to Electricity: The Chemistry of the Nuclear Fuel Cycle",
-    "year": 2009,
-    "type": "article",
-    "cited_by_count": 23,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2024332751",
-    "doi": "10.1007/s11837-008-0004-4",
-    "title": "The development of metallic nuclear fuels for transmutation applications: Materials challenges",
-    "year": 2008,
-    "type": "article",
-    "cited_by_count": 28,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2316277010",
-    "doi": "10.2113/gselements.8.3.213",
-    "title": "Interactions between Nuclear Fuel and Water at the Fukushima Daiichi Reactors",
-    "year": 2012,
-    "type": "article",
-    "cited_by_count": 27,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2254707654",
-    "doi": "10.1016/j.ijhydene.2016.01.102",
-    "title": "Reactor core and actinide production evaluation based on different loading material of recyled spent nuclear fuel of LWR in FBR",
-    "year": 2016,
-    "type": "article",
-    "cited_by_count": 13,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2969936273",
-    "doi": "10.1007/978-3-319-30651-3",
-    "title": "Energy from Nuclear Fission An Introduction",
-    "year": 2016,
-    "type": "article",
-    "cited_by_count": 12,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W1484285833",
-    "doi": "10.1088/1674-1137/36/1/001",
-    "title": "A study of antineutrino spectra from spent nuclear fuel at Daya Bay",
-    "year": 2012,
-    "type": "article",
-    "cited_by_count": 25,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2116580797",
-    "doi": "10.1016/j.anucene.2009.06.003",
-    "title": "Criticality investigations for the fixed bed nuclear reactor using thorium fuel mixed with plutonium or minor actinides",
-    "year": 2009,
-    "type": "article",
-    "cited_by_count": 40,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2041615471",
-    "doi": "10.1016/j.jnucmat.2012.01.016",
-    "title": "Thermodynamics of the Zr–H binary system related to nuclear fuel sheathing and pressure tube hydriding",
-    "year": 2012,
-    "type": "article",
-    "cited_by_count": 37,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2302709311",
-    "doi": "10.1016/j.net.2016.02.019",
-    "title": "Design of an Organic Simplified Nuclear Reactor",
-    "year": 2016,
-    "type": "article",
-    "cited_by_count": 17,
-    "open_access_url": "https://www.sciencedirect.com/science/article/pii/S1738573316300031/pdf",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2026174217",
-    "doi": "10.1111/1574-6968.12562",
-    "title": "Isolation and identification of cobalt- and caesium-resistant bacteria from a nuclear fuel storage pond",
-    "year": 2014,
-    "type": "article",
-    "cited_by_count": 34,
-    "open_access_url": "https://academic.oup.com/femsle/article-pdf/359/1/81/19130131/359-1-81.pdf",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W1913848701",
-    "doi": "10.1103/physrevlett.116.122503",
-    "title": "Neutron Capture and the Antineutrino Yield from Nuclear Reactors",
-    "year": 2016,
-    "type": "article",
-    "cited_by_count": 21,
-    "open_access_url": "https://arxiv.org/pdf/1510.08948",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2088161230",
-    "doi": "10.1088/0029-5515/18/7/002",
-    "title": "Symbiotic system of a fusion and a fission reactor with very simple fuel reprocessing",
-    "year": 1978,
-    "type": "article",
-    "cited_by_count": 18,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2320142621",
-    "doi": "10.3390/s16040571",
-    "title": "Vibration Monitoring Using Fiber Optic Sensors in a Lead-Bismuth Eutectic Cooled Nuclear Fuel Assembly",
-    "year": 2016,
-    "type": "article",
-    "cited_by_count": 34,
-    "open_access_url": "https://www.mdpi.com/1424-8220/16/4/571/pdf?version=1461231134",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W154583735",
-    "doi": "10.13182/nse73-a23256",
-    "title": "Evaluation of Lumped Parameter Heat Transfer Techniques for Nuclear Reactor Applications",
-    "year": 1973,
-    "type": "article",
-    "cited_by_count": 25,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2975420874",
-    "doi": "10.3897/nucet.5.38117",
-    "title": "The technological challenge for current generation nuclear reactors",
-    "year": 2019,
-    "type": "article",
-    "cited_by_count": 18,
-    "open_access_url": "https://nucet.pensoft.net/article/38117/download/pdf/",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2565853856",
-    "doi": "10.1016/j.powtec.2017.01.008",
-    "title": "Spouted bed design considerations for coated nuclear fuel particles",
-    "year": 2017,
-    "type": "article",
-    "cited_by_count": 26,
-    "open_access_url": "https://www.osti.gov/servlets/purl/1367510",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W4321438372",
-    "doi": "10.1016/j.matdes.2023.111784",
-    "title": "In situ high-temperature 3D imaging of the damage evolution in a SiC nuclear fuel cladding material",
-    "year": 2023,
-    "type": "article",
-    "cited_by_count": 36,
-    "open_access_url": "https://doi.org/10.1016/j.matdes.2023.111784",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W2278379208",
-    "doi": "10.1080/00223131.2015.1120245",
-    "title": "Interaction of ruthenium tetroxide with surfaces of nuclear reactor containment building",
-    "year": 2016,
-    "type": "article",
-    "cited_by_count": 22,
-    "open_access_url": "https://www.tandfonline.com/doi/pdf/10.1080/00223131.2015.1120245?download=true",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W4281252434",
-    "doi": "10.1016/j.molliq.2022.119426",
-    "title": "Structure-property relationships in actinide containing molten salts – A review: Understanding and modelling the chemistry of nuclear fuel salts",
-    "year": 2022,
-    "type": "article",
-    "cited_by_count": 28,
-    "open_access_url": "https://www.sciencedirect.com/science/article/pii/S0167732222009643/pdf",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W4210968790",
-    "doi": "10.1007/978-94-007-0211-0_34",
-    "title": "Nuclear Fuels",
-    "year": 2010,
-    "type": "book-chapter",
-    "cited_by_count": 10,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W1996366986",
-    "doi": "10.1088/0029-5515/47/3/008",
-    "title": "Tokamak D–T fusion neutron source requirements for closing the nuclear fuel cycle",
-    "year": 2007,
-    "type": "article",
-    "cited_by_count": 28,
-    "open_access_url": "https://iopscience.iop.org/article/10.1088/0029-5515/47/3/008/pdf",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
-    ]
-   },
-   {
-    "openalex_id": "W7213519125",
-    "doi": "10.1177/21680256261484008",
-    "title": "The Dawn of Lunar Reactors and the Quest for a New Space Nuclear Law",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7213315888",
-    "doi": "10.1007/s10967-026-11113-6",
-    "title": "Development of Pu/Np separation on TEVA resin for rapid purification of key radionuclides from uranium fission samples",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "open_access_url": "https://link.springer.com/content/pdf/10.1007/s10967-026-11113-6.pdf",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7212652317",
-    "doi": "10.66233/innp-027-30261",
-    "title": "Coating development for fuel claddings in advanced nuclear reactors",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "open_access_url": "https://www.innovationnewsnetwork.com/wp-content/uploads/2026/06/PURD01-30261-pro.pdf",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7213064986",
-    "doi": "10.1016/j.anucene.2026.112841",
-    "title": "Bayesian Optimization-Based Machine Learning Inversion of 237NpTransmutation Depletion in ADS",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "open_access_url": "https://doi.org/10.1016/j.anucene.2026.112841",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7204871098",
-    "doi": "10.3390/su18178919",
-    "title": "Sustainability of Nuclear Energy—A Critical Review of Closed Fuel Cycle Options",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "open_access_url": "https://doi.org/10.3390/su18178919",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7204625363",
-    "doi": "10.5281/zenodo.22159441",
-    "title": "Time-Accelerated Geology for Radioactive Waste Immobilization: A Nature-Inspired, Gate-Driven 3-7-12 Systems Framework for Wasteform Research, Validation and Translation",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "open_access_url": "https://doi.org/10.5281/zenodo.22159441",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7204633740",
-    "doi": "10.5281/zenodo.22159442",
-    "title": "Time-Accelerated Geology for Radioactive Waste Immobilization: A Nature-Inspired, Gate-Driven 3-7-12 Systems Framework for Wasteform Research, Validation and Translation",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "open_access_url": "https://doi.org/10.5281/zenodo.22159442",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7204248250",
-    "doi": "10.5281/zenodo.22114021",
-    "title": "A Comparative Analysis of Advanced Nuclear Fuel and structural Design in Advanced Fission Reactor",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "open_access_url": "https://doi.org/10.5281/zenodo.22114021",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7204257321",
-    "doi": "10.5281/zenodo.22114022",
-    "title": "A Comparative Analysis of Advanced Nuclear Fuel and structural Design in Advanced Fission Reactor",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "open_access_url": "https://doi.org/10.5281/zenodo.22114022",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7204480374",
-    "doi": "10.47191/ijcsrr/v9-i8-46",
-    "title": "A Comparative Analysis of Advanced Nuclear Fuel and structural Design in Advanced Fission Reactor",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "open_access_url": "https://doi.org/10.47191/ijcsrr/v9-i8-46",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7204518721",
-    "doi": "10.46813/2026-164-174",
-    "title": "PRELIMINARY THERMAL AND NEUTRON-PHYSICAL CALCULATIONS OF THE WWER-1000 REACTOR USING THREE-STRUCTURE ISOTROPIC NUCLEAR FUEL",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "open_access_url": "https://doi.org/10.46813/2026-164-174",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7172420575",
-    "doi": "10.1016/j.actamat.2026.122608",
-    "title": "Interatomic potential investigation of the structural and thermodynamic properties of mixed plutonium–americium oxides",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "open_access_url": "https://doi.org/10.1016/j.actamat.2026.122608",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7204753159",
-    "doi": "10.11868/j.issn.1001-4381.2025.000413",
-    "title": "Characteristics of nuclear-grade Ni-Cr-P brazing paste and microstructure and mechanical properties of its brazed joint of stainless steel",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7213643226",
-    "doi": "10.7538/yzk.2025.youxian.0718",
-    "title": "Appearance Defect Detection Method for Nuclear Fuel Rod Based on Hierarchical Adaptive Feature Interaction",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7171956472",
-    "doi": "10.5281/zenodo.21722739",
-    "title": "Nuclear Fuel Materials: How Radiation Transforms UO₂ Fuel During Reactor Operation",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "open_access_url": "https://doi.org/10.5281/zenodo.21722739",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7171957455",
-    "doi": "10.5604/01.3001.0055.7414",
-    "title": "The development of nuclear technology globally: from the discovery of radioactivity to contemporary and future reactor concepts",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7172004492",
-    "doi": "10.5281/zenodo.21722740",
-    "title": "Nuclear Fuel Materials: How Radiation Transforms UO₂ Fuel During Reactor Operation",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "open_access_url": "https://doi.org/10.5281/zenodo.21722740",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7171312119",
-    "doi": "10.5281/zenodo.21584137",
-    "title": "Why do advanced reactor developers choose such different reactor designs?",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "open_access_url": "https://doi.org/10.5281/zenodo.21584137",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7171315765",
-    "doi": "10.5281/zenodo.21584136",
-    "title": "Why do advanced reactor developers choose such different reactor designs?",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "open_access_url": "https://doi.org/10.5281/zenodo.21584136",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7170068831",
-    "doi": "10.1515/kern-2026-0025",
-    "title": "Refractive index fitting method and measurement device for particle image velocimetry applications in nuclear fuel bundle experiments",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "open_access_url": "https://doi.org/10.1515/kern-2026-0025",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7169826757",
-    "doi": "10.1177/13835416261470934",
-    "title": "A microfabricated ECT probe featuring internal distance standards for micro-level oxide film thickness measurement",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7169880859",
-    "doi": "10.1016/j.jeurceramsoc.2026.118708",
-    "title": "Mo-interlayer-mediated, constrained expansion-induced stress-driven pressureless joining of SiC ceramics: A pathway toward Gen-IV nuclear fuel cladding",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7168264703",
-    "doi": "10.5281/zenodo.21352718",
-    "title": "OUXSPACE 100MW Integrate Marine Fusion Nuclear Reactor",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "open_access_url": "https://doi.org/10.5281/zenodo.21352718",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7168267087",
-    "doi": "10.5281/zenodo.21352719",
-    "title": "OUXSPACE 100MW Integrate Marine Fusion Nuclear Reactor",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "open_access_url": "https://doi.org/10.5281/zenodo.21352719",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7167802388",
-    "doi": "10.1016/j.nucengdes.2026.115080",
-    "title": "Contributions of Mexican research to the development and application of artificial intelligence techniques in in-Core nuclear fuel management",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7167783677",
-    "doi": "10.1002/adfm.76976",
-    "title": "A Novel Biomass Photothermal Adsorbent for Simultaneous High‐Purity Thorium Recovery and Clean Water Production From Acidic Wastewater",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7167830469",
-    "doi": "10.1080/00295450.2026.2676380",
-    "title": "A Test Bed for Method Development and Validation for Reactor Fuel Loading Optimization",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7166847478",
-    "doi": "10.1016/j.anucene.2026.112607",
-    "title": "Thermal Performance Assessment of Fins with Various Geometries for Heat Removal from a Fuel Rod",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7171408318",
-    "doi": "10.1093/mam/ozag053.015",
-    "title": "Mapping the Heterogeneous Charge Transport During Oxidation of Metals Containing Nanoscale Metal Inclusions with 4D-STEM and APT",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7171444966",
-    "doi": "10.1093/mam/ozag053.638",
-    "title": "Observation of Microstructure and Phase Transformations in Neutron-Irradiated U-10Zr Fuel by In Situ Heated TEM",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7171663617",
-    "doi": "10.3724/j.0253-3219.2026.hjs.49.250436",
-    "title": "Thermal-hydraulic characteristic analysis of porous prismatic CERMET fuel assembly",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "open_access_url": "https://doi.org/10.3724/j.0253-3219.2026.hjs.49.250436",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7213648238",
-    "doi": "10.7538/yzk.2025.youxian.0621",
-    "title": "Numerical Simulation Study on Boiling Heat Transfer Characteristics of Annular Fuel",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7166092818",
-    "doi": "10.5281/zenodo.20936061",
-    "title": "Nuclear Materials Under Extreme Environments",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "open_access_url": "https://doi.org/10.5281/zenodo.20936061",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7166152302",
-    "doi": "10.5281/zenodo.20936060",
-    "title": "Nuclear Materials Under Extreme Environments",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "open_access_url": "https://doi.org/10.5281/zenodo.20936060",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7165798237",
-    "doi": "10.1016/j.jhazmat.2026.142805",
-    "title": "Tuning of gaseous and aqueous iodine sequestration in triazine-linked covalent organic frameworks via ligand engineering",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7165670397",
-    "doi": "10.1038/s41598-026-56593-4",
-    "title": "DFT study of irradiation damage-defect correlations with mechanical properties in uranium nitride",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 1,
-    "open_access_url": "https://www.nature.com/articles/s41598-026-56593-4_reference.pdf",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7164893876",
-    "doi": "10.1016/j.anucene.2026.112558",
-    "title": "Concept design, simulation and image reconstruction of gamma-ray emission computed tomography (GECT) for non-destructive inspection of nuclear fuel assemblies",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7164863609",
-    "doi": "10.1016/j.anucene.2026.112478",
-    "title": "Thermal analysis of radiative-convective heat transfer in fuel rods during coolant channel blockage accidents",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7164163802",
-    "doi": "10.1016/j.anucene.2026.112554",
-    "title": "Flamingo search algorithm for the multi-objective fuel arrangement optimization of reactor core",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7164521828",
-    "doi": "10.2478/bhee-2026-0027",
-    "title": "Modern Light Water Nuclear Reactors of Generation III+ and Small Modular Reactors: Challenges and Solutions in the Field of Nuclear Fuel and Management",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "open_access_url": "https://reference-global.com/download/article/10.2478/bhee-2026-0027.pdf",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7163015648",
-    "doi": "10.1103/dr26-j19g",
-    "title": "First Measurement of Neutrino Emissions from Spent Nuclear Fuel by the Double Chooz Experiment",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 1,
-    "open_access_url": "https://doi.org/10.1103/dr26-j19g",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7167344031",
-    "doi": "10.3724/j.0253-3219.2026.hjs.49.250358",
-    "title": "Non-destructive testing technique of helium pressure in fuel rods based on the heat transfer method",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "open_access_url": "https://www.sciengine.com/doi/pdf/B967D4133D1E453EA6F52EC8F3914115",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7162766645",
-    "doi": "10.5281/zenodo.20451230",
-    "title": "Stevenson-Flux Information Theory (SFIT) v2: Resonant Informational Flux Framework – Extension to Nuclear Science with Wave Function as Informational Carrier, Resonant Binding Energy, and Tuned Nuclear Processes",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "open_access_url": "https://doi.org/10.5281/zenodo.20451230",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7162873560",
-    "doi": "10.5281/zenodo.20459889",
-    "title": "Stevenson-Flux Information Theory (SFIT) v2: Resonant Informational Flux Framework – Extension to Nuclear Science with Wave Function as Informational Carrier, Resonant Binding Energy, and Tuned Nuclear Processes",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "open_access_url": "https://doi.org/10.5281/zenodo.20459889",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7162949307",
-    "doi": "10.5281/zenodo.20475620",
-    "title": "Stevenson-Flux Information Theory (SFIT) v2: Resonant Informational Flux Framework – Extension to Nuclear Science with Wave Function as Informational Carrier, Resonant Binding Energy, and Tuned Nuclear Processes",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "open_access_url": "https://doi.org/10.5281/zenodo.20475620",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7162628647",
-    "doi": "10.5281/zenodo.20430576",
-    "title": "Stevenson-Flux Information Theory (SFIT) v2: Resonant Informational Flux Framework – Extension to Nuclear Science with Wave Function as Informational Carrier, Resonant Binding Energy, and Tuned Nuclear Processes",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "open_access_url": "https://doi.org/10.5281/zenodo.20430576",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7162675937",
-    "doi": "10.5281/zenodo.20430771",
-    "title": "Stevenson-Flux Information Theory (SFIT) v2: Resonant Informational Flux Framework – Extension to Nuclear Science with Wave Function as Informational Carrier, Resonant Binding Energy, and Tuned Nuclear Processes",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "open_access_url": "https://doi.org/10.5281/zenodo.20430771",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7162547624",
-    "doi": "10.1016/j.energy.2026.141475",
-    "title": "Key determinants of nuclear fission competitiveness and implications of its potential restart for the Italian power system",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "open_access_url": "https://doi.org/10.1016/j.energy.2026.141475",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7162416838",
-    "doi": "10.5281/zenodo.20402421",
-    "title": "Stevenson-Flux Information Theory (SFIT) v2: Resonant Informational Flux Framework – Extension to Nuclear Science with Wave Function as Informational Carrier, Resonant Binding Energy, and Tuned Nuclear Processes",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "open_access_url": "https://doi.org/10.5281/zenodo.20402421",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W7162204739",
-    "doi": "10.1038/s43246-026-01201-1",
-    "title": "Oxidation of zirconium alloys for nuclear fuel cladding",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 2,
-    "open_access_url": "https://www.nature.com/articles/s43246-026-01201-1.pdf",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
-    ]
-   },
-   {
-    "openalex_id": "W2316123571",
-    "doi": "10.3365/kjmm.2011.49.7.557",
-    "title": "Effects of Surface Roughness on the Thermal Emissivity of IG-11 Graphite for Nuclear Reactor",
-    "year": 2011,
-    "type": "article",
-    "cited_by_count": 5,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-mp12"
-    ]
-   },
-   {
-    "openalex_id": "W2065939966",
-    "doi": "10.1016/j.proci.2012.05.018",
-    "title": "TDL absorption sensors for gas temperature and concentrations in a high-pressure entrained-flow coal gasifier",
-    "year": 2012,
-    "type": "article",
-    "cited_by_count": 96,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-mp12"
-    ]
-   },
-   {
-    "openalex_id": "W3127272917",
-    "doi": "10.1016/j.ijheatmasstransfer.2021.120989",
-    "title": "Measurement of High-temperature Thermophysical Properties of Bulk and Coatings Using Modulated Photothermal Radiometry",
-    "year": 2021,
-    "type": "article",
-    "cited_by_count": 33,
-    "open_access_url": "https://doi.org/10.1016/j.ijheatmasstransfer.2021.120989",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-mp12"
-    ]
-   },
-   {
-    "openalex_id": "W1254259511",
-    "doi": "10.13182/nt89-a27690",
-    "title": "Thermal Interactions during the Three Mile Island Unit 2 2-B Coolant Pump Transient",
-    "year": 1989,
-    "type": "article",
-    "cited_by_count": 5,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-mp12"
-    ]
-   },
-   {
-    "openalex_id": "W2050104676",
-    "doi": "10.3740/mrsk.2008.18.12.645",
-    "title": "Correlation Between the Porosity and the Thermal Emissivity as a Function of Oxidation Degrees on Nuclear Graphite IG-11",
-    "year": 2008,
-    "type": "article",
-    "cited_by_count": 0,
-    "open_access_url": "http://koreascience.or.kr:80/article/JAKO200801249838408.pdf",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-mp12"
-    ]
-   },
-   {
-    "openalex_id": "W2027673138",
-    "doi": "10.1016/0013-7944(89)90118-5",
-    "title": "Fracture-resistant ultralloys for space-power systems: Nuclear-thermionic-conversion implications of W,27Re",
-    "year": 1989,
-    "type": "article",
-    "cited_by_count": 5,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-mp12"
-    ]
-   },
-   {
-    "openalex_id": "W619307358",
-    "title": "New Projects and Lines of Research in Nuclear Physics : proceedings of the International Symposium, Messina, Italy 24-26 October 2002, in honour of Yuri Oganessian for his laurea honoris causa conferred by the University of Messina, to celebrate Giorgio Giardina's 60th birthday",
-    "year": 2003,
-    "type": "article",
-    "cited_by_count": 1,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-mp12"
-    ]
-   },
-   {
-    "openalex_id": "W1486874029",
-    "title": "Turbulent natural convection in an enclosure formed by an array of vertical cylinders",
-    "year": 1992,
-    "type": "article",
-    "cited_by_count": 1,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-mp12"
-    ]
-   },
-   {
-    "openalex_id": "W4405391020",
-    "doi": "10.1016/j.ijhydene.2024.11.467",
-    "title": "Energy storage system at NPP based on cryogenic hydrogen tank and a thermal storage functioning on phase change materials",
-    "year": 2024,
-    "type": "article",
-    "cited_by_count": 1,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-mp12"
-    ]
-   },
-   {
-    "openalex_id": "W3019330964",
-    "doi": "10.1093/oso/9780198851547.003.0004",
-    "title": "The Atom: discovery",
-    "year": 2020,
-    "type": "book-chapter",
-    "cited_by_count": 0,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-mp12"
-    ]
-   },
-   {
-    "openalex_id": "W7164337832",
-    "doi": "10.24425/mms.2026.158370",
-    "title": "Interference due to thermal radiation in loss measurements during fire tests of optical fiber cables",
-    "year": 2026,
-    "type": "article",
-    "cited_by_count": 0,
-    "open_access_url": "https://wydawnictwo.pan.pl/index.php/mms/article/download/1043/852",
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-mp12"
-    ]
-   },
-   {
-    "openalex_id": "W4254086751",
-    "doi": "10.1007/978-3-540-71933-5_1",
-    "title": "Historical and Experimental Foundations",
-    "year": 2007,
-    "type": "book-chapter",
-    "cited_by_count": 0,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-mp12"
-    ]
-   },
-   {
-    "openalex_id": "W1780210351",
-    "doi": "10.1007/978-3-662-02703-5_1",
-    "title": "Historical and Experimental Foundations",
-    "year": 1992,
-    "type": "book-chapter",
-    "cited_by_count": 0,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-mp12"
-    ]
-   },
-   {
-    "openalex_id": "W4246264874",
-    "doi": "10.1007/978-3-662-03170-4_1",
-    "title": "Historical and Experimental Foundations",
-    "year": 1995,
-    "type": "book-chapter",
-    "cited_by_count": 0,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-mp12"
-    ]
-   },
-   {
-    "openalex_id": "W83260404",
-    "title": "Thermal interactions during the TMI-2 2-B coolant pump transient",
-    "year": 1988,
-    "type": "article",
-    "cited_by_count": 0,
-    "found_by": [
-     "search:2026-09-21-p-8200d7ab7e/oa-mp12"
-    ]
-   }
-  ],
-  "screening_status": "not-reviewed",
-  "result": "inconclusive",
-  "notes": "Automated route-search-v1 index queries from data/canonical/searches/plans/p-8200d7ab7e.yaml; the result list is frozen for a reviewer and nothing here has been read for a qualifying demonstration. Planned runs NOT run in this bundle (engine unavailable): search:2026-09-21-p-8200d7ab7e/s2-dm1 (semantic-scholar); search:2026-09-21-p-8200d7ab7e/s2-mp12 (semantic-scholar); search:2026-09-21-p-8200d7ab7e/s2-wc (semantic-scholar); search:2026-09-21-p-8200d7ab7e/s2-dp (semantic-scholar)."
- },
- {
-  "id": "search:2026-09-21-p-8200d7ab7e",
-  "target": {
-   "kind": "path",
-   "path": "p-8200d7ab7e",
-   "claims": [
-    "claim:binding-drives-fission",
-    "claim:fission-produces-hot-gas",
-    "claim:hot-gas-drives-thermal-emission",
-    "claim:thermal-emission-converts-light"
-   ]
-  },
   "dataset_hash": "32a2aa78f3d3",
   "driver_terms": [
    "nuclear binding-energy difference",
@@ -22257,6 +20232,746 @@
   "screening_status": "not-reviewed",
   "result": "inconclusive",
   "notes": "Automated route-search-v1 index queries from data/canonical/searches/plans/p-a093d7ecc5.yaml; the result list is frozen for a reviewer and nothing here has been read for a qualifying demonstration. Planned runs NOT run in this bundle (engine unavailable): search:2026-09-21-p-a093d7ecc5/s2-cn (semantic-scholar); search:2026-09-21-p-a093d7ecc5/s2-dm1 (semantic-scholar); search:2026-09-21-p-a093d7ecc5/s2-mp12 (semantic-scholar); search:2026-09-21-p-a093d7ecc5/s2-wc (semantic-scholar); search:2026-09-21-p-a093d7ecc5/s2-dp (semantic-scholar)."
+ },
+ {
+  "id": "search:2026-09-21-p-b820ec885f",
+  "target": {
+   "kind": "path",
+   "path": "p-b820ec885f",
+   "claims": [
+    "claim:temperature-drives-thermopolarization",
+    "claim:thermopolarization-produces-charge",
+    "claim:surface-charge-converts-electricity"
+   ]
+  },
+  "dataset_hash": "963f3d136870",
+  "driver_terms": [
+   "temperature gradient",
+   "temperature difference",
+   "thermal gradient",
+   "ΔT",
+   "waste heat"
+  ],
+  "family_terms": [],
+  "phenomenon_terms": {
+   "phenomenon:thermopolarization-effect": [
+    "thermopolarization effect",
+    "thermopolarization",
+    "thermal polarization effect",
+    "proper thermopolarization",
+    "temperature-gradient-induced polarization"
+   ]
+  },
+  "composition_terms": [
+   {
+    "term": "thermopolarization",
+    "evidence": [
+     "source:kholkin-1982-thermopolarization-current",
+     "source:tagantsev-1987-thermal-polarization",
+     "source:trepakov-1989-proper-thermopolarization",
+     "source:onishi-2025-thermopolarization"
+    ]
+   }
+  ],
+  "runs": [
+   {
+    "id": "search:2026-09-21-p-b820ec885f/oa-dm1",
+    "engine": "openalex",
+    "query_form": "route-driver-mechanism",
+    "query": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermopolarization effect\" OR thermopolarization OR \"thermal polarization effect\" OR \"proper thermopolarization\" OR \"temperature-gradient-induced polarization\")",
+    "executed_at": "2026-09-21T02:53:12.754Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermopolarization+effect%22+OR+thermopolarization+OR+%22thermal+polarization+effect%22+OR+%22proper+thermopolarization%22+OR+%22temperature-gradient-induced+polarization%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermopolarization effect\" OR thermopolarization OR \"thermal polarization effect\" OR \"proper thermopolarization\" OR \"temperature-gradient-induced polarization\")",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 17,
+    "records_retrieved": 17,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "driver-mechanism:1"
+   },
+   {
+    "id": "search:2026-09-21-p-b820ec885f/oa-dm1-newest",
+    "engine": "openalex",
+    "query_form": "route-driver-mechanism",
+    "query": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermopolarization effect\" OR thermopolarization OR \"thermal polarization effect\" OR \"proper thermopolarization\" OR \"temperature-gradient-induced polarization\")",
+    "executed_at": "2026-09-21T02:53:18.101Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermopolarization+effect%22+OR+thermopolarization+OR+%22thermal+polarization+effect%22+OR+%22proper+thermopolarization%22+OR+%22temperature-gradient-induced+polarization%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=50&sort=publication_date%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "publication_date:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermopolarization effect\" OR thermopolarization OR \"thermal polarization effect\" OR \"proper thermopolarization\" OR \"temperature-gradient-induced polarization\")",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 17,
+    "records_retrieved": 17,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "driver-mechanism:1"
+   },
+   {
+    "id": "search:2026-09-21-p-b820ec885f/oa-wc",
+    "engine": "openalex",
+    "query_form": "route-whole-chain",
+    "query": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermopolarization effect\" OR thermopolarization OR \"thermal polarization effect\" OR \"proper thermopolarization\" OR \"temperature-gradient-induced polarization\") AND (\"Electrical work\" OR electricity OR \"electrical output\" OR \"output power\" OR \"power density\" OR \"load resistance\" OR \"resistive load\" OR harvesting OR \"energy harvesting\" OR generator)",
+    "executed_at": "2026-09-21T02:53:22.556Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermopolarization+effect%22+OR+thermopolarization+OR+%22thermal+polarization+effect%22+OR+%22proper+thermopolarization%22+OR+%22temperature-gradient-induced+polarization%22%29+AND+%28%22Electrical+work%22+OR+electricity+OR+%22electrical+output%22+OR+%22output+power%22+OR+%22power+density%22+OR+%22load+resistance%22+OR+%22resistive+load%22+OR+harvesting+OR+%22energy+harvesting%22+OR+generator%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermopolarization effect\" OR thermopolarization OR \"thermal polarization effect\" OR \"proper thermopolarization\" OR \"temperature-gradient-induced polarization\") AND (\"Electrical work\" OR electricity OR \"electrical output\" OR \"output power\" OR \"power density\" OR \"load resistance\" OR \"resistive load\" OR harvesting OR \"energy harvesting\" OR generator)",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 0,
+    "records_retrieved": 0,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "whole-chain"
+   },
+   {
+    "id": "search:2026-09-21-p-b820ec885f/oa-dp",
+    "engine": "openalex",
+    "query_form": "route-demonstration-precision",
+    "query": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermopolarization effect\" OR thermopolarization OR \"thermal polarization effect\" OR \"proper thermopolarization\" OR \"temperature-gradient-induced polarization\") AND (\"Electrical work\" OR electricity OR \"electrical output\" OR \"output power\" OR \"power density\" OR \"load resistance\" OR \"resistive load\" OR harvesting OR \"energy harvesting\" OR generator) AND (experiment OR experimental OR measured OR device OR prototype)",
+    "executed_at": "2026-09-21T02:53:27.751Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermopolarization+effect%22+OR+thermopolarization+OR+%22thermal+polarization+effect%22+OR+%22proper+thermopolarization%22+OR+%22temperature-gradient-induced+polarization%22%29+AND+%28%22Electrical+work%22+OR+electricity+OR+%22electrical+output%22+OR+%22output+power%22+OR+%22power+density%22+OR+%22load+resistance%22+OR+%22resistive+load%22+OR+harvesting+OR+%22energy+harvesting%22+OR+generator%29+AND+%28experiment+OR+experimental+OR+measured+OR+device+OR+prototype%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermopolarization effect\" OR thermopolarization OR \"thermal polarization effect\" OR \"proper thermopolarization\" OR \"temperature-gradient-induced polarization\") AND (\"Electrical work\" OR electricity OR \"electrical output\" OR \"output power\" OR \"power density\" OR \"load resistance\" OR \"resistive load\" OR harvesting OR \"energy harvesting\" OR generator) AND (experiment OR experimental OR measured OR device OR prototype)",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 0,
+    "records_retrieved": 0,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "demonstration-precision"
+   },
+   {
+    "id": "search:2026-09-21-p-b820ec885f/oa-dp-r",
+    "engine": "openalex",
+    "query_form": "route-demonstration-precision",
+    "query": "thermopolarization AND (\"output power\" OR \"power density\" OR \"load resistance\" OR \"resistive load\" OR harvesting OR generator) AND (experiment OR experimental OR measured OR device)",
+    "executed_at": "2026-09-21T02:53:32.297Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3Athermopolarization+AND+%28%22output+power%22+OR+%22power+density%22+OR+%22load+resistance%22+OR+%22resistive+load%22+OR+harvesting+OR+generator%29+AND+%28experiment+OR+experimental+OR+measured+OR+device%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "thermopolarization AND (\"output power\" OR \"power density\" OR \"load resistance\" OR \"resistive load\" OR harvesting OR generator) AND (experiment OR experimental OR measured OR device)",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 2,
+    "records_retrieved": 2,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "demonstration-precision"
+   },
+   {
+    "id": "search:2026-09-21-p-b820ec885f/oa-cn",
+    "engine": "openalex",
+    "query_form": "route-composite-name",
+    "query": "(thermopolarization)",
+    "executed_at": "2026-09-21T02:53:37.323Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28thermopolarization%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(thermopolarization)",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 43,
+    "records_retrieved": 43,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "composite-name"
+   }
+  ],
+  "works": [
+   {
+    "openalex_id": "W4226026174",
+    "doi": "10.1103/physrevb.105.245125",
+    "title": "Antisymmetric thermopolarization by electric toroidicity",
+    "year": 2022,
+    "type": "article",
+    "cited_by_count": 31,
+    "open_access_url": "https://arxiv.org/pdf/2112.06387",
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-dm1",
+     "search:2026-09-21-p-b820ec885f/oa-dm1-newest",
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W4390724460",
+    "doi": "10.1080/01495739.2023.2293046",
+    "title": "Thermo-electro-elastic analysis of piezoelectric hollow cylinder with thermopolarization effect",
+    "year": 2024,
+    "type": "article",
+    "cited_by_count": 6,
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-dm1",
+     "search:2026-09-21-p-b820ec885f/oa-dm1-newest",
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2041003915",
+    "doi": "10.1080/01411599108213201",
+    "title": "Electric polarization in crystals and its response to thermal and elastic perturbations",
+    "year": 1991,
+    "type": "article",
+    "cited_by_count": 289,
+    "open_access_url": "http://infoscience.epfl.ch/record/88786",
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-dm1",
+     "search:2026-09-21-p-b820ec885f/oa-dm1-newest",
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W4407296934",
+    "doi": "10.1021/acs.nanolett.4c05870",
+    "title": "Theory of Thermopolarization Effect",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-dm1",
+     "search:2026-09-21-p-b820ec885f/oa-dm1-newest",
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2472271340",
+    "doi": "10.1039/c6cp03082c",
+    "title": "The rich phase behavior of the thermopolarization of water: from a reversal in the polarization, to enhancement near criticality conditions",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 27,
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-dm1",
+     "search:2026-09-21-p-b820ec885f/oa-dm1-newest",
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W4407288328",
+    "doi": "10.1134/s0025654424605068",
+    "title": "Analysis of Flexoelectric Hollow Cylinder with Thermopolarization Effect",
+    "year": 2024,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-dm1",
+     "search:2026-09-21-p-b820ec885f/oa-dm1-newest",
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2094103190",
+    "doi": "10.1080/07315179508204274",
+    "title": "Reverse thermopolarization effects in dielectrics",
+    "year": 1995,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-dm1",
+     "search:2026-09-21-p-b820ec885f/oa-dm1-newest",
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2314833084",
+    "doi": "10.1021/jp408485d",
+    "title": "Enhancement of the Thermal Polarization of Water via Heat Flux and Dipole Moment Dynamic Correlations",
+    "year": 2013,
+    "type": "article",
+    "cited_by_count": 20,
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-dm1",
+     "search:2026-09-21-p-b820ec885f/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W3107754732",
+    "doi": "10.1063/5.0025148",
+    "title": "Polarization of acetonitrile under thermal fields via non-equilibrium molecular dynamics simulations",
+    "year": 2020,
+    "type": "article",
+    "cited_by_count": 14,
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-dm1",
+     "search:2026-09-21-p-b820ec885f/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4402583167",
+    "doi": "10.1021/acs.jpclett.4c02131",
+    "title": "Thermal Transport and Thermal Polarization of Water in the Supercooled Regime",
+    "year": 2024,
+    "type": "article",
+    "cited_by_count": 8,
+    "open_access_url": "https://doi.org/10.1021/acs.jpclett.4c02131",
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-dm1",
+     "search:2026-09-21-p-b820ec885f/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W2079483835",
+    "doi": "10.1002/1521-396x(199709)163:1<263::aid-pssa263>3.0.co;2-t",
+    "title": "Laser Intensity Modulation Method and Thermal Gradient Induced Polarization",
+    "year": 1997,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-dm1",
+     "search:2026-09-21-p-b820ec885f/oa-dm1-newest",
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W4292103706",
+    "doi": "10.1103/physrevapplied.18.024045",
+    "title": "Temperature-Assisted Piezoresponse Force Microscopy: Probing Local Temperature-Induced Phase Transitions in Ferroics",
+    "year": 2022,
+    "type": "article",
+    "cited_by_count": 4,
+    "open_access_url": "https://www.osti.gov/servlets/purl/1885356",
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-dm1",
+     "search:2026-09-21-p-b820ec885f/oa-dm1-newest",
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2047731738",
+    "doi": "10.1007/bf01049877",
+    "title": "Nonisothermal rarefied gas flow through a narrow slit",
+    "year": 1990,
+    "type": "article",
+    "cited_by_count": 4,
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-dm1",
+     "search:2026-09-21-p-b820ec885f/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W3134501222",
+    "doi": "10.1007/s13204-021-01714-w",
+    "title": "The effect of local mass displacement on coupled fields in dielectrics",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 4,
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-dm1",
+     "search:2026-09-21-p-b820ec885f/oa-dm1-newest",
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2294154586",
+    "doi": "10.1007/s10958-015-2657-1",
+    "title": "Effect of Heating on the Subsurface Inhomogeneity of the Electric and Mechanical Fields in Dielectrics",
+    "year": 2015,
+    "type": "article",
+    "cited_by_count": 2,
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-dm1",
+     "search:2026-09-21-p-b820ec885f/oa-dm1-newest",
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W4412110448",
+    "doi": "10.1063/5.0279464",
+    "title": "Polarization of ethanol under thermal fields",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-dm1",
+     "search:2026-09-21-p-b820ec885f/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W2006836800",
+    "doi": "10.1209/0295-5075/89/18005",
+    "title": "Contribution of the thermoelectric effect to the morphological stability/instability of dielectric films",
+    "year": 2010,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://iopscience.iop.org/article/10.1209/0295-5075/89/18005/pdf",
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-dm1",
+     "search:2026-09-21-p-b820ec885f/oa-dm1-newest",
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2157123191",
+    "doi": "10.1364/ao.32.000278",
+    "title": "Effects of thermally induced birefringence in high-output-power electro-optically Q-switched Nd:YAG lasers and their compensation",
+    "year": 1993,
+    "type": "article",
+    "cited_by_count": 35,
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-dp-r",
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W4405721847",
+    "doi": "10.3390/act13120533",
+    "title": "Analysis of Vibration Energy Harvesting Performance of Thermo-Electro-Elastic Microscale Devices Based on Generalized Thermoelasticity",
+    "year": 2024,
+    "type": "article",
+    "cited_by_count": 3,
+    "open_access_url": "https://www.mdpi.com/2076-0825/13/12/533/pdf?version=1734963879",
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-dp-r",
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2043582589",
+    "doi": "10.1080/00150198908014283",
+    "title": "Recent developments of the thermopolarization effect investigation",
+    "year": 1989,
+    "type": "article",
+    "cited_by_count": 9,
+    "open_access_url": "http://infoscience.epfl.ch/record/88770",
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W630097096",
+    "title": "Pyroelectricity, Piezoelectricity, Flexoelectricity and Thermopolarization Effects in Ionic-Crystals",
+    "year": 1987,
+    "type": "article",
+    "cited_by_count": 14,
+    "open_access_url": "http://infoscience.epfl.ch/record/88750",
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W3013145716",
+    "title": "Thermopolarization currents in dielectrics",
+    "year": 1982,
+    "type": "article",
+    "cited_by_count": 6,
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2127932779",
+    "doi": "10.1002/pssa.2211440228",
+    "title": "Frequency and temperature dependence of the thermopolarization response in dynamic investigations",
+    "year": 1994,
+    "type": "article",
+    "cited_by_count": 8,
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2063449688",
+    "doi": "10.1070/pu1982v025n08abeh004597",
+    "title": "Dielectric relaxation and the thermopolarization effect in crystals",
+    "year": 1982,
+    "type": "article",
+    "cited_by_count": 5,
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W197427638",
+    "title": "Theory for the thermopolarization effect in dielectrics having a center of inversion",
+    "year": 1982,
+    "type": "article",
+    "cited_by_count": 7,
+    "open_access_url": "http://infoscience.epfl.ch/record/88703",
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W1984769526",
+    "doi": "10.3103/s1062873813080182",
+    "title": "Thermopolarization effect in the cavity structures of heterogeneous systems",
+    "year": 2013,
+    "type": "article",
+    "cited_by_count": 3,
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2896064565",
+    "doi": "10.1134/s1063783418100189",
+    "title": "Thermopolarization Effect in Linear Polyethylene Oxide upon Crystallization from Melt",
+    "year": 2018,
+    "type": "article",
+    "cited_by_count": 5,
+    "open_access_url": "https://doi.org/10.1134/s1063783418100189",
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W1633653113",
+    "title": "Thermopolarization effect in an incommensurate phase of a crystal",
+    "year": 1991,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W369640786",
+    "title": "A Possible Observation of Thermopolarization Effect in Piezoelectrics",
+    "year": 1987,
+    "type": "article",
+    "cited_by_count": 1,
+    "open_access_url": "http://infoscience.epfl.ch/record/88746",
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2887037037",
+    "title": "PHENOMENOLOGICAL THEORY OF THERMOPOLARIZED EFFECT IN FERROELECTRICS NEAR TK",
+    "year": 1985,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W4307564326",
+    "doi": "10.1080/00150193.2022.2102830",
+    "title": "Theoretical investigations on thermopolarization properties and prediction of giant electrocaloric effect of ferroelectric SnTiO3",
+    "year": 2022,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W3110489197",
+    "title": "Dynamic method for the investigation of the thermopolarization effect",
+    "year": 1986,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W7212898585",
+    "doi": "10.1103/2n32-34z8",
+    "title": "On-chip detection of anisotropic thermopolarization in quartz",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.1103/2n32-34z8",
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W4234807642",
+    "doi": "10.3367/ufnr.0137.198208h.0747",
+    "title": "Dielectric relaxation and the thermopolarization effect in crystals",
+    "year": 1982,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://ufn.ru/ufn82/ufn82_8/Russian/r828h.pdf",
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2884168333",
+    "doi": "10.4028/www.scientific.net/kem.773.15",
+    "title": "Thermopolarization Phenomena in the Temperature Range of Glass Transition of Amorphous Polydiethylsiloxane",
+    "year": 2018,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W7213345057",
+    "doi": "10.35164/0554-2901-2026-04-45-47",
+    "title": "Anisotropy of the thermopolarization characteristics of natural polymers under scanning in a non-uniform temperature fi eld",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://www.plastics-news.ru/jour/article/download/1271/1006",
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2079338665",
+    "doi": "10.1021/ma061949u",
+    "title": "Side-Chain Liquid Crystalline Poly(meth)acrylates with Bent-Core Mesogens",
+    "year": 2007,
+    "type": "article",
+    "cited_by_count": 36,
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W4415422700",
+    "doi": "10.1063/5.0253432",
+    "title": "Non-steady-state photo-EMF in relaxor ferroelectrics: On the way to non-steady-state photo-thermo- and photo-thermopolarization-EMF",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://pubs.aip.org/aip/jap/article-pdf/doi/10.1063/5.0253432/20770142/163103_1_5.0253432.pdf",
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2031671640",
+    "doi": "10.1007/s11182-006-0034-8",
+    "title": "Dimensional effects in nanosized layers under establishing polarization in hydrogen-bonded crystals",
+    "year": 2005,
+    "type": "article",
+    "cited_by_count": 4,
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W1973614318",
+    "doi": "10.1149/1.2411303",
+    "title": "Effect of Ionic Additives on the Heterocharge in Carnauba Wax Thermoelectrets",
+    "year": 1968,
+    "type": "article",
+    "cited_by_count": 6,
+    "open_access_url": "https://iopscience.iop.org/article/10.1149/1.2411303/pdf",
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2046231333",
+    "doi": "10.1007/bf02873645",
+    "title": "Polysubstituted triphenylenes with active groups. Molecular parameters, synthesis, structure, and mesomorphism",
+    "year": 1998,
+    "type": "article",
+    "cited_by_count": 8,
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2918712656",
+    "doi": "10.1007/s10958-019-04223-y",
+    "title": "Equations of the Local Gradient Electromagnetothermomechanics of Polarizable Nonferromagnetic Bodies with Regard for Electric Quadrupole Moments",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2774297185",
+    "doi": "10.18524/1815-7459.2010.3.114469",
+    "title": "PHYSICAL MECHANISMS OF POLARIZATION EFFECTS IN CRYSTALS UNDER THERMODYNAMICALLY NONEQUILIBRIUM CONDITIONS",
+    "year": 2010,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "http://semst.onu.edu.ua/article/download/114469/113187",
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W3125721587",
+    "doi": "10.34220/2311-8873-2021-4-4-16-22",
+    "title": "PROSPECTS OF DIGITAL SENSORS USING FOR MONITORING THE WOODY PLANTS STATE",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://vntv.editorum.ru/en/storage/download/63775",
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W4306645260",
+    "doi": "10.31489/2022no3/29-33",
+    "title": "CONFORMATIONAL APPROACH TO DETERMINING THE POLARIZATION OF POLYETHYLENE OXIDE DURING MELT-CRYSTAL TRANSITIONS IN A NON-UNIFORM TEMPERATURE FIELD",
+    "year": 2022,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.31489/2022no3/29-33",
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2337690129",
+    "doi": "10.1007/978-94-011-3676-1_72",
+    "title": "Macrostructure Formation of Pitch Disperse System",
+    "year": 1991,
+    "type": "book-chapter",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W4416721066",
+    "doi": "10.15407/ujpe70.11.794",
+    "title": "Electrically Induced and Controllable Pyroelectricity",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W7115071587",
+    "doi": "10.25560/126355",
+    "title": "Modelling non-isothermal transport phenomena in mixtures, colloids and polar fluids",
+    "year": 2022,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://hdl.handle.net/10044/1/126355",
+    "found_by": [
+     "search:2026-09-21-p-b820ec885f/oa-cn"
+    ]
+   }
+  ],
+  "screening_status": "not-reviewed",
+  "result": "inconclusive",
+  "notes": "Automated route-search-v1 index queries from data/canonical/searches/plans/p-b820ec885f.yaml; the result list is frozen for a reviewer and nothing here has been read for a qualifying demonstration. Planned runs NOT run in this bundle (engine unavailable): search:2026-09-21-p-b820ec885f/s2-dm1 (semantic-scholar); search:2026-09-21-p-b820ec885f/s2-wc (semantic-scholar); search:2026-09-21-p-b820ec885f/s2-dp (semantic-scholar); search:2026-09-21-p-b820ec885f/s2-cn (semantic-scholar)."
  },
  {
   "id": "search:2026-09-21-p-ccef4f212b",

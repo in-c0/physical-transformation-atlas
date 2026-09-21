@@ -1,0 +1,70 @@
+# route-search-v1 query plan — p-b820ec885f
+# Temperature gradient → Thermopolarization effect → Separated surface charge → Electrical work
+# D = Temperature gradient; M_1 = Thermopolarization effect; O = Electrical work (k = 1: one conversion phenomenon, so no
+# mechanism-pair form). Written in loop-3 pass 32, the second reader's choice: the direct ∇T → polarization effect has a
+# physical current observation (Kholkin 1982, read in full) and claim-level evidence at status reported; the question this
+# search asks is whether anyone has ever extracted electrical work from it. The composition term is the field's own word,
+# frozen with four sources; the output bundle carries the power, load and harvesting vocabulary the reviewer asked for.
+# Not reused: the flexoelectric route's 45-work composite-name bundle, generated under different inclusion criteria.
+protocol_version: route-search-v1
+route: p-b820ec885f
+claims: [claim:temperature-drives-thermopolarization, claim:thermopolarization-produces-charge, claim:surface-charge-converts-electricity]
+driver_terms: [temperature gradient, temperature difference, thermal gradient, ΔT, waste heat]
+phenomenon_terms:
+  phenomenon:thermopolarization-effect: [thermopolarization effect, thermopolarization, thermal polarization effect, proper thermopolarization, temperature-gradient-induced polarization]
+output_terms: [electrical work, electricity, electrical output, output power, power density, load resistance, resistive load, harvesting, energy harvesting, generator]
+composition_terms:
+  - { term: thermopolarization, evidence: [source:kholkin-1982-thermopolarization-current, source:tagantsev-1987-thermal-polarization, source:trepakov-1989-proper-thermopolarization, source:onishi-2025-thermopolarization] }
+runs:
+  - id: search:2026-09-21-p-b820ec885f/oa-dm1
+    engine: openalex
+    form: route-driver-mechanism
+    key: driver-mechanism:1
+    query: '("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermopolarization effect" OR thermopolarization OR "thermal polarization effect" OR "proper thermopolarization" OR "temperature-gradient-induced polarization")'
+  - id: search:2026-09-21-p-b820ec885f/oa-dm1-newest
+    engine: openalex
+    form: route-driver-mechanism
+    key: driver-mechanism:1
+    sort: newest
+    per_page: 50
+    query: '("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermopolarization effect" OR thermopolarization OR "thermal polarization effect" OR "proper thermopolarization" OR "temperature-gradient-induced polarization")'
+  - id: search:2026-09-21-p-b820ec885f/oa-wc
+    engine: openalex
+    form: route-whole-chain
+    key: whole-chain
+    query: '("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermopolarization effect" OR thermopolarization OR "thermal polarization effect" OR "proper thermopolarization" OR "temperature-gradient-induced polarization") AND ("Electrical work" OR electricity OR "electrical output" OR "output power" OR "power density" OR "load resistance" OR "resistive load" OR harvesting OR "energy harvesting" OR generator)'
+  - id: search:2026-09-21-p-b820ec885f/oa-dp
+    engine: openalex
+    form: route-demonstration-precision
+    key: demonstration-precision
+    query: '("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermopolarization effect" OR thermopolarization OR "thermal polarization effect" OR "proper thermopolarization" OR "temperature-gradient-induced polarization") AND ("Electrical work" OR electricity OR "electrical output" OR "output power" OR "power density" OR "load resistance" OR "resistive load" OR harvesting OR "energy harvesting" OR generator) AND (experiment OR experimental OR measured OR device OR prototype)'
+  - id: search:2026-09-21-p-b820ec885f/oa-dp-r
+    engine: openalex
+    form: route-demonstration-precision
+    key: demonstration-precision
+    query: 'thermopolarization AND ("output power" OR "power density" OR "load resistance" OR "resistive load" OR harvesting OR generator) AND (experiment OR experimental OR measured OR device)'
+  - id: search:2026-09-21-p-b820ec885f/oa-cn
+    engine: openalex
+    form: route-composite-name
+    key: composite-name
+    query: '(thermopolarization)'
+  - id: search:2026-09-21-p-b820ec885f/s2-dm1
+    engine: semantic-scholar
+    form: route-driver-mechanism
+    key: driver-mechanism:1
+    query: Temperature gradient temperature difference thermal gradient waste heat Thermopolarization effect thermopolarization thermal polarization effect proper thermopolarization temperature-gradient-induced polarization
+  - id: search:2026-09-21-p-b820ec885f/s2-wc
+    engine: semantic-scholar
+    form: route-whole-chain
+    key: whole-chain
+    query: Temperature gradient temperature difference thermal gradient waste heat Thermopolarization effect thermopolarization thermal polarization effect proper thermopolarization temperature-gradient-induced polarization Electrical work electricity electrical output output power power density load resistance resistive load harvesting energy harvesting generator
+  - id: search:2026-09-21-p-b820ec885f/s2-dp
+    engine: semantic-scholar
+    form: route-demonstration-precision
+    key: demonstration-precision
+    query: Temperature gradient temperature difference thermal gradient waste heat Thermopolarization effect thermopolarization thermal polarization effect proper thermopolarization temperature-gradient-induced polarization Electrical work electricity electrical output output power power density load resistance resistive load harvesting energy harvesting generator experiment experimental measured device prototype
+  - id: search:2026-09-21-p-b820ec885f/s2-cn
+    engine: semantic-scholar
+    form: route-composite-name
+    key: composite-name
+    query: thermopolarization
