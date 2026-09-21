@@ -472,10 +472,13 @@
   subject: phenomenon:nuclear-fission
   predicate: produces
   object: carrier:hot-gas
-  conditions: ["fission-fragment and neutron kinetic energy is thermalised in the fuel and coolant; in a BWR this raises steam directly, in a PWR heat passes to a secondary steam circuit"]
+  conditions:
+    - "fission heating produces a vapour or gas working fluid in a DIRECTLY heated, same-circuit configuration: the reactor coolant itself boils in the vessel and its steam goes to the turbine (a boiling-water reactor), or the fissioning or fission-heated gas is the working medium (a gas-core or fissioning-plasma reactor)"
+    - "not a pressurised-water reactor: there fission heats a pressurised liquid whose heat crosses a steam generator into a separate secondary circuit — the heat exchanger, not the core, makes the turbine's steam, and that topology belongs to the system layer, never hidden inside this claim (pass 38)"
   energy: { input: kinetic, output: thermal, dissipation: radiative }
-  evidence: [source:bejan-2016]
+  evidence: [source:bejan-2016, source:nrc-boiling-water-reactors]
   status: established
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 38 (narrowed to direct-boiling / fissioning-gas configurations on the second reader's finding; the NRC's BWR description read)" }
 - id: claim:fission-governed-strong
   subject: phenomenon:nuclear-fission
   predicate: governed_by

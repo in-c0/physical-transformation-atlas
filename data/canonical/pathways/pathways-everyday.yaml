@@ -231,7 +231,8 @@
   review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 7 audit (ChatGPT review, applied and source-verified by the lane)" }
 
 - id: pathway:steam-engine
-  name: Steam engine (shaft work)
+  name: Steam Rankine cycle (shaft work)
+  # pass 38: renamed from "Steam engine (shaft work)" — its evidence establishes a Rankine steam-turbine cycle, not the generic historical reciprocating class; a reciprocating engine gets its own pathway and transducer if the atlas ever sources one
   steps: [claim:expansion-drives, claim:expansion-produces-motion, claim:motion-converts-mechanical-work]
   demonstrated_with: [transducer:rankine-cycle-plant]
   evidence: [source:bejan-2016]
@@ -241,8 +242,8 @@
     # pass 35: efficiency_typical 0.1 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     theoretical_limit: "Carnot between boiler and condenser"
   environment: [temp-gradient-required]
-  summary: Heat raises steam; the piston or turbine delivers shaft work.
-  review: { canonical: true, last_reviewed: "2026-09-20", reviewer: "loop-3 pass 7 audit (ChatGPT review, applied and source-verified by the lane)" }
+  summary: Heat raises steam in a Rankine cycle; the turbine delivers shaft work — the mechanical-work endpoint of the same architecture whose electrical pathway adds the generator.
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 38 (renamed to the architecture its transducer establishes, on the second reader's finding); pass 7 audit" }
 
 - id: pathway:windmill
   name: Windmill (mechanical)

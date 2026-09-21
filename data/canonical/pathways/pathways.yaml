@@ -736,16 +736,18 @@
 
 - id: pathway:nuclear-steam-plant
   name: Nuclear fission steam plant
-  steps: [claim:binding-drives-fission, claim:fission-produces-hot-gas, claim:hot-gas-drives-expansion, claim:expansion-produces-motion, claim:motion-drives-generator, claim:generator-produces-carriers, claim:charge-carriers-convert-electricity]
+  # pass 38: re-spelled through the thermal disequilibrium — fission → hot gas → turbine expansion was not architecture-neutral (a PWR's core never makes the turbine's steam); the generic plant is nuclear heat establishing a temperature gradient that a heat-engine cycle converts
+  steps: [claim:binding-drives-fission, claim:fission-produces-gradient, claim:expansion-drives, claim:expansion-produces-motion, claim:motion-drives-generator, claim:generator-produces-carriers, claim:charge-carriers-convert-electricity]
   demonstrated_with: [transducer:nuclear-reactor-plant]
-  evidence: [source:bejan-2016]
+  evidence: [source:bejan-2016, source:nrc-pressurized-water-reactors, source:nrc-boiling-water-reactors]
   status: commercial
   knowledge_level: K8
   performance:
     # pass 35: efficiency_typical 0.33 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     theoretical_limit: "Carnot between the reservoirs a source defines — the steam temperature is an operating state, not a reservoir"
   environment: [temp-high]
-  summary: Fission heat raises steam for a conventional turbine.
+  summary: Fission heat establishes a thermal disequilibrium that a steam Rankine cycle converts to shaft work and electricity. The generic pathway abstracts the whole heat-engine cycle; whether the reactor coolant boils in the vessel (a BWR) or a steam generator makes the secondary steam (a PWR) is a topology the system layer will carry, never this linear route.
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 38 (re-spelled on the second reader's finding; the NRC's BWR and PWR descriptions read; no feed-pump auxiliary until the named implementation is source-reviewed)" }
 
 - id: pathway:photosynthesis
   name: Photosynthesis

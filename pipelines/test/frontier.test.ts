@@ -71,7 +71,14 @@ test("the sibling thermal-osmosis → streaming route carries the demonstrated M
   assert.ok(md, "MD-EPG pathway compiled");
   assert.equal(md!.frontier_class, "demonstrated");
   assert.equal(md!.search_status, "demonstrated");
-  assert.deepEqual(md!.nodes, ["disequilibrium:temperature-gradient", "phenomenon:thermo-osmosis", "carrier:fluid-flow", "phenomenon:streaming-potential", "carrier:ionic-current", "output:electricity"]);
+  assert.deepEqual(md!.nodes, [
+    "disequilibrium:temperature-gradient",
+    "phenomenon:thermo-osmosis",
+    "carrier:fluid-flow",
+    "phenomenon:streaming-potential",
+    "carrier:ionic-current",
+    "output:electricity",
+  ]);
 });
 
 test("a route whose consuming step requires a carrier property nothing upstream provides is incomplete-handoff, not a candidate (radiation pressure → induction)", () => {
@@ -146,7 +153,11 @@ test("resonance-expanded spellings are representation-equivalent to the direct v
 });
 
 test("a shared head makes a route derived only when the first divergence stays in the same coupling family (loop-3 pass 22): head-divergent routes stay candidates", () => {
-  const phen = (p: CompiledPath) => p.nodes.filter((n) => n.startsWith("phenomenon:")).map((n) => n.split(":")[1]).join(">");
+  const phen = (p: CompiledPath) =>
+    p.nodes
+      .filter((n) => n.startsWith("phenomenon:"))
+      .map((n) => n.split(":")[1])
+      .join(">");
   const find = (sig: string, source: string) => paths.find((p) => p.nodes[0] === source && phen(p) === sig && p.structural_kind === "composition");
   // family changes at the first divergence: candidates
   for (const [sig, source] of [
@@ -189,7 +200,11 @@ test("an observed pathway (loop-3 pass 24) leads its route with the observation 
 });
 
 test("a consuming step's carrier requirement is met only by the regime that provides it (loop-3 pass 25): the travelling-wave thermoacoustic spelling is the bounded acoustoelectric candidate, the generic-sound spelling is incomplete-handoff", () => {
-  const phen = (p: CompiledPath) => p.nodes.filter((n) => n.startsWith("phenomenon:")).map((n) => n.split(":")[1]).join(">");
+  const phen = (p: CompiledPath) =>
+    p.nodes
+      .filter((n) => n.startsWith("phenomenon:"))
+      .map((n) => n.split(":")[1])
+      .join(">");
   const spellings = paths.filter((p) => p.nodes[0] === "disequilibrium:temperature-gradient" && phen(p) === "thermoacoustic-effect>acoustoelectric-effect" && p.sink === "output:electricity");
   assert.equal(spellings.length, 2, "two spellings of thermoacoustic → acoustoelectric");
   const travelling = spellings.find((p) => p.claims.includes("claim:thermoacoustic-produces-travelling-sound"));
@@ -212,7 +227,7 @@ test("magnitude screen: relation-complete means every relation-capable step (dri
   for (const p of paths) {
     if (p.magnitude_screen.status === "missing") assert.ok(p.magnitude_screen.bottleneck_claim, `${p.id} missing without a bottleneck`);
     if (p.magnitude_screen.status === "relation-complete") assert.equal(p.magnitude_data_coverage.quantified, p.magnitude_data_coverage.of, `${p.id} relation-complete but coverage incomplete`);
-    assert.notEqual((p.magnitude_screen.status as string), "bounded", `${p.id} still says bounded`);
+    assert.notEqual(p.magnitude_screen.status as string, "bounded", `${p.id} still says bounded`);
   }
 });
 
@@ -222,26 +237,40 @@ test("scoped conditions and interface records (loop-3 pass 26): a demonstrated i
   const pan = paths.find((p) => p.pathway === "pathway:thermoacoustic-piezoelectric-harvester")!;
   assert.equal(boundary(pan).result, "pass");
   assert.equal(pan.implied_interface_count, 0);
-  assert.deepEqual(pan.interfaces_recorded.map((r) => [r.interface, r.status]), [["interface:thermoacoustic-piezoelectric-gas-solid", "demonstrated"]]);
+  assert.deepEqual(
+    pan.interfaces_recorded.map((r) => [r.interface, r.status]),
+    [["interface:thermoacoustic-piezoelectric-gas-solid", "demonstrated"]],
+  );
   // pass 27: the triboelectric sibling carries its own demonstrated piston boundary, and every demonstrated pathway is now boundary-pass
   const tribo = paths.find((p) => p.pathway === "pathway:thermoacoustic-triboelectric-harvester")!;
   assert.equal(boundary(tribo).result, "pass");
-  assert.deepEqual(tribo.interfaces_recorded.map((r) => r.interface), ["interface:thermoacoustic-triboelectric-piston"]);
+  assert.deepEqual(
+    tribo.interfaces_recorded.map((r) => r.interface),
+    ["interface:thermoacoustic-triboelectric-piston"],
+  );
   // (b) combustion MHD: the phase-neutral charge carrier manufactures no gas→solid conflict; the electrode boundary is recorded within the step
   const mhd = paths.find((p) => p.pathway === "pathway:mhd-generator")!;
   assert.equal(boundary(mhd).result, "pass");
   assert.equal(mhd.implied_interface_count, 0);
   assert.ok(mhd.interfaces_recorded.some((r) => r.interface === "interface:mhd-plasma-electrodes" && r.location === "within claim:mhd-produces"));
   // (c) the acoustoelectric candidate: a theoretical record → UNRESOLVED, not implied, one recorded with a relation
-  const cand = paths.find((p) => p.claims.includes("claim:thermoacoustic-produces-travelling-sound") && p.claims.includes("claim:acoustic-wave-drives-acoustoelectric") && p.nodes[0] === "disequilibrium:temperature-gradient")!;
+  const cand = paths.find(
+    (p) =>
+      p.claims.includes("claim:thermoacoustic-produces-travelling-sound") && p.claims.includes("claim:acoustic-wave-drives-acoustoelectric") && p.nodes[0] === "disequilibrium:temperature-gradient",
+  )!;
   assert.equal(boundary(cand).result, "unresolved");
   assert.match(boundary(cand).detail, /^theoretical interface recorded/);
   assert.equal(cand.implied_interface_count, 0);
-  assert.deepEqual(cand.interfaces_recorded.map((r) => r.status), ["theoretical"]);
+  assert.deepEqual(
+    cand.interfaces_recorded.map((r) => r.status),
+    ["theoretical"],
+  );
   assert.deepEqual(cand.interface_model_coverage, { with_relation: 1, of: 1 });
   assert.equal(cand.magnitude_screen.status, "relation-complete", "the interface relation stays outside the magnitude screen");
   // (27) a genuinely absent interface: the generic-sound spelling changes the active medium from gas to solid with no record
-  const generic = paths.find((p) => p.claims.includes("claim:thermoacoustic-produces-sound") && p.claims.includes("claim:acoustic-wave-drives-acoustoelectric") && p.nodes[0] === "disequilibrium:temperature-gradient")!;
+  const generic = paths.find(
+    (p) => p.claims.includes("claim:thermoacoustic-produces-sound") && p.claims.includes("claim:acoustic-wave-drives-acoustoelectric") && p.nodes[0] === "disequilibrium:temperature-gradient",
+  )!;
   assert.equal(boundary(generic).result, "unresolved");
   assert.match(boundary(generic).detail, /^interface unrecorded/);
   assert.equal(generic.implied_interface_count, 1);
@@ -263,7 +292,10 @@ test("driver / regime sufficiency on real routes (loop-3 pass 30): the reviewer'
   assert.ok(!paths.some((p) => p.nodes[0] === "disequilibrium:temperature-gradient" && p.claims[0] === "claim:pyro-drives"), "no pyroelectric route starts at a static gradient");
   // a single caloric event produces a temperature change, not a gradient: no direct caloric → Seebeck route remains
   assert.ok(!paths.some((p) => p.claims.includes("claim:magnetocaloric-produces") && p.claims.includes("claim:seebeck-drives")), "caloric → gradient → Seebeck routes eliminated");
-  assert.ok(paths.some((p) => p.claims.includes("claim:magnetocaloric-produces") && p.claims.includes("claim:pyro-drives")), "a caloric event can feed pyroelectricity at the regime level");
+  assert.ok(
+    paths.some((p) => p.claims.includes("claim:magnetocaloric-produces") && p.claims.includes("claim:pyro-drives")),
+    "a caloric event can feed pyroelectricity at the regime level",
+  );
   // electrocaloric (pass 31): re-spelled onto the changing electric field, the single effect passes from its source; no static-bias spelling remains
   const ec = paths.find((p) => p.claims[0] === "claim:electrocaloric-drives")!;
   assert.equal(ec.nodes[0], "disequilibrium:electric-field-change");
@@ -295,13 +327,18 @@ test("driver / regime sufficiency on real routes (loop-3 pass 30): the reviewer'
   assert.equal(regime(byPathway("pathway:regenerative-elastocaloric-heat-pump")).result, "pass");
   const stressGeneric = paths.find((p) => p.claims[0] === "claim:elastocaloric-drives" && !p.pathway);
   if (stressGeneric) assert.equal(regime(stressGeneric).result, "unresolved");
-  const ae = paths.find((p) => p.claims.includes("claim:thermoacoustic-produces-travelling-sound") && p.claims.includes("claim:acoustic-wave-drives-acoustoelectric") && p.nodes[0] === "disequilibrium:temperature-gradient")!;
+  const ae = paths.find(
+    (p) =>
+      p.claims.includes("claim:thermoacoustic-produces-travelling-sound") && p.claims.includes("claim:acoustic-wave-drives-acoustoelectric") && p.nodes[0] === "disequilibrium:temperature-gradient",
+  )!;
   assert.equal(regime(ae).result, "unresolved");
   // no route fails, and no demonstrated pathway is left unresolved
   for (const p of paths) assert.notEqual(regime(p).result, "fail", p.id);
   // Pass 36: the nuclear steam plant is left unresolved on purpose — the hot-gas → expansion step now requires the expansion pressure drop,
   // and that pathway's steam-generation / pressure architecture has not been source-reviewed; commercial status never substitutes.
-  const deliberatelyUnresolved = new Set(["pathway:nuclear-steam-plant"]);
-  for (const p of paths.filter((q) => q.search_status === "demonstrated" && !deliberatelyUnresolved.has(q.pathway ?? ""))) assert.notEqual(regime(p).result, "unresolved", `${p.pathway}: ${regime(p).detail}`);
-  assert.equal(regime(byPathway("pathway:nuclear-steam-plant")).result, "unresolved");
+  // Pass 38 re-spelled the nuclear plant through the temperature gradient, so the pass-36 exception is gone: no demonstrated route is unresolved.
+  const deliberatelyUnresolved = new Set<string>();
+  for (const p of paths.filter((q) => q.search_status === "demonstrated" && !deliberatelyUnresolved.has(q.pathway ?? "")))
+    assert.notEqual(regime(p).result, "unresolved", `${p.pathway}: ${regime(p).detail}`);
+  assert.equal(regime(byPathway("pathway:nuclear-steam-plant")).result, "pass");
 });

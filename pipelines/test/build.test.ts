@@ -294,6 +294,28 @@ test("the power_density sweep (loop-3 pass 37): no mixed or naked summary surviv
   );
 });
 
+test("the steam / nuclear architecture audit (loop-3 pass 38): the direct-carrier claim never covers a PWR, the generic nuclear plant runs through the gradient, the steam engine is named for its Rankine evidence", () => {
+  const fhg = canon.claims.find((c) => c.id === "claim:fission-produces-hot-gas")!;
+  assert.ok(
+    fhg.conditions.some((c) => /boiling-water reactor/.test(c)) && !fhg.conditions.some((c) => /in a PWR heat passes/.test(c)),
+    "the claim names direct boiling and no longer folds the PWR in",
+  );
+  assert.match(fhg.conditions.join(" "), /not a pressurised-water reactor/);
+  const nuc = canon.pathways.find((p) => p.id === "pathway:nuclear-steam-plant")!;
+  assert.deepEqual(nuc.steps.slice(0, 3), ["claim:binding-drives-fission", "claim:fission-produces-gradient", "claim:expansion-drives"]);
+  assert.equal(nuc.auxiliary_requirements.length, 0, "no nuclear feed-pump auxiliary until the named implementation is reviewed");
+  const nucRoute = graph.paths.find((p) => p.pathway === "pathway:nuclear-steam-plant")!;
+  assert.equal(nucRoute.checks.find((k) => k.id === "driver-regime-sufficiency")!.result, "pass");
+  // fission → hot gas remains enumerable for the direct-boiling / fissioning-gas routes the MHD and light-bulb searches target
+  assert.ok(graph.paths.some((p) => p.claims.includes("claim:fission-produces-hot-gas") && p.claims.includes("claim:hot-gas-drives-mhd")));
+  assert.ok(graph.paths.some((p) => p.claims.includes("claim:fission-produces-hot-gas") && p.claims.includes("claim:hot-gas-drives-thermal-emission")));
+  assert.ok(
+    graph.searches.some((s) => s.target.kind === "path" && s.target.path === "p-ccef4f212b") && graph.searches.some((s) => s.target.kind === "path" && s.target.path === "p-8200d7ab7e"),
+    "the two fission search records still target their routes",
+  );
+  assert.equal(canon.pathways.find((p) => p.id === "pathway:steam-engine")!.name, "Steam Rankine cycle (shaft work)");
+});
+
 test("the gas-turbine / expansion-carrier closure (loop-3 pass 36): the pressure regime is required by the expansion step, supplied only through an explained auxiliary, and never by the carrier or by combustion", () => {
   const route = (id: string) => graph.paths.find((p) => p.pathway === id)!;
   const regime = (p: (typeof graph.paths)[number]) => p.checks.find((k) => k.id === "driver-regime-sufficiency")!;
@@ -304,9 +326,9 @@ test("the gas-turbine / expansion-carrier closure (loop-3 pass 36): the pressure
     assert.equal(regime(p).result, "unresolved", p.id);
     assert.match(regime(p).detail, /thermodynamic:expansion-pressure-drop/);
   }
-  // the reviewed gas turbine with its compressor auxiliary passes; the nuclear plant stays unresolved on purpose
+  // the reviewed gas turbine with its compressor auxiliary passes; the nuclear plant (pass 38) passes through the gradient, not the pressure drop
   assert.equal(regime(route("pathway:combustion-gas-turbine")).result, "pass");
-  assert.equal(regime(route("pathway:nuclear-steam-plant")).result, "unresolved");
+  assert.equal(regime(route("pathway:nuclear-steam-plant")).result, "pass");
   // hot gas → thermal emission does not acquire the pressure requirement; the carrier no longer claims pressure
   const emission = canon.claims.find((c) => c.id === "claim:hot-gas-drives-thermal-emission")!;
   assert.deepEqual(emission.regime_requires, []);
