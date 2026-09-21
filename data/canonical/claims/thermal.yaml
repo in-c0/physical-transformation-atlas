@@ -244,7 +244,6 @@
     - a resonant gas column
   condition_tags: [state-gas, temp-gradient-required]
   regime_requires: [thermal:spatial-temperature-gradient, thermal:gradient-above-thermoacoustic-critical]
-  regime_external: [thermal:gradient-above-thermoacoustic-critical]
   energy: { input: thermal, output: acoustic, dissipation: thermal }
   relation:
     formula: "|∇T_crit| = β T_m ω |p₁| / (ρ_m c_p |u₁|); prime-mover onset requires |∇T| > |∇T_crit|"
@@ -345,7 +344,7 @@
 
 # --- Pyroelectric --------------------------------------------------------------
 - id: claim:pyro-drives
-  subject: disequilibrium:temperature-gradient
+  subject: disequilibrium:temperature-change
   predicate: drives
   object: phenomenon:pyroelectric-effect
   conditions:
@@ -364,7 +363,7 @@
   evidence: [source:lang-2005, source:whatmore-1986, source:bowen-2014-pyro]
   status: established
   knowledge_level: K6
-  notes: "Indexed under the temperature-gradient row for atlas routing (a fluctuating gradient is the practical source). This is an atlas indexing compromise, not a statement that ∇T is the physical driver."
+  notes: "Re-spelled in loop-3 pass 30 from the temperature-gradient row, where it had sat as an indexing compromise, onto the temporal temperature change that is its physical driver."
 - id: claim:pyro-produces-charge
   subject: phenomenon:pyroelectric-effect
   predicate: produces
@@ -416,6 +415,7 @@
   subject: disequilibrium:temperature-gradient
   predicate: drives
   object: phenomenon:thermogalvanic-effect
+  regime_requires: [thermal:spatial-temperature-gradient]
   conditions:
     - two identical electrodes in one redox electrolyte held at different temperatures
     - a redox couple with large reaction entropy (ferri/ferrocyanide gives ≈ −1.4 mV/K)
@@ -602,6 +602,7 @@
   subject: disequilibrium:temperature-gradient
   predicate: drives
   object: phenomenon:thermomagnetic-transition
+  regime_requires: [thermal:spatial-temperature-gradient, thermal:transition-temperature-straddled, thermal:cyclic-hot-cold-exposure]
   conditions:
     - a soft ferromagnet with its Curie temperature between the hot and cold reservoir temperatures (Gd ≈ 293 K)
     - the element must be cycled between the reservoirs, so a heat-switch or motion is needed
@@ -661,6 +662,7 @@
   subject: disequilibrium:magnetic-field-change
   predicate: drives
   object: phenomenon:magnetocaloric-effect
+  regime_requires: [field:magnetic-field-change]
   conditions: [adiabatic magnetisation or demagnetisation of a material near its ordering temperature]
   condition_tags: [state-solid, medium-ferromagnet, field-magnetic-required]
   energy: { input: magnetic, output: thermal }
@@ -670,11 +672,13 @@
 - id: claim:magnetocaloric-produces
   subject: phenomenon:magnetocaloric-effect
   predicate: produces
-  object: disequilibrium:temperature-gradient
+  object: disequilibrium:temperature-change
+  regime_provides: [thermal:temporal-temperature-change]
   energy: { input: thermal, output: thermal }
   evidence: [source:pecharsky-gschneidner-1997, source:gschneidner-2005]
   status: established
 - id: claim:magnetocaloric-converts-cooling
+  regime_requires: [field:magnetic-field-cycling]
   subject: phenomenon:magnetocaloric-effect
   predicate: converts_into
   object: output:cooling
@@ -704,6 +708,7 @@
   subject: disequilibrium:electric-potential-difference
   predicate: drives
   object: phenomenon:electrocaloric-effect
+  regime_requires: [field:electric-field-change]
   conditions: [a large field applied to a thin polar dielectric near its transition]
   condition_tags: [state-solid, medium-ferroelectric, field-electric-required]
   energy: { input: electrical, output: thermal }
@@ -713,7 +718,8 @@
 - id: claim:electrocaloric-produces
   subject: phenomenon:electrocaloric-effect
   predicate: produces
-  object: disequilibrium:temperature-gradient
+  object: disequilibrium:temperature-change
+  regime_provides: [thermal:temporal-temperature-change]
   energy: { input: thermal, output: thermal }
   evidence: [source:mischenko-2006, source:moya-2014]
   status: replicated
@@ -727,6 +733,7 @@
   subject: disequilibrium:mechanical-stress
   predicate: drives
   object: phenomenon:elastocaloric-effect
+  regime_requires: [mechanical:stress-change, mechanical:stress-crosses-transformation-threshold]
   conditions: [stress large enough to drive the martensitic transformation of a shape-memory alloy]
   condition_tags: [state-solid]
   energy: { input: mechanical, output: thermal }
@@ -736,7 +743,8 @@
 - id: claim:elastocaloric-produces
   subject: phenomenon:elastocaloric-effect
   predicate: produces
-  object: disequilibrium:temperature-gradient
+  object: disequilibrium:temperature-change
+  regime_provides: [thermal:temporal-temperature-change]
   energy: { input: thermal, output: thermal }
   evidence: [source:tusek-2016, source:moya-2014]
   status: replicated
@@ -744,6 +752,7 @@
   subject: phenomenon:elastocaloric-effect
   predicate: converts_into
   object: output:cooling
+  regime_requires: [mechanical:stress-cycling]
   energy: { input: thermal, output: thermal, dissipation: thermal }
   evidence: [source:tusek-2016]
   status: demonstrated

@@ -253,16 +253,46 @@ test("scoped conditions and interface records (loop-3 pass 26): a demonstrated i
   }
 });
 
-test("driver / regime sufficiency on real routes (loop-3 pass 30): the pyroelectric spelling from a static gradient is unresolved, the thermoelectric generator passes, the thermoacoustic generator passes through its stated critical-gradient condition", () => {
-  const regime = (pw: string) => paths.find((p) => p.pathway === pw)!.checks.find((c) => c.id === "driver-regime-sufficiency")!;
-  assert.equal(regime("pathway:pyroelectric-harvester").result, "unresolved");
-  assert.match(regime("pathway:pyroelectric-harvester").detail, /thermal:temporal-temperature-change/);
-  assert.equal(regime("pathway:thermoelectric-generator").result, "pass");
-  assert.equal(regime("pathway:thermoacoustic-generator").result, "pass");
-  // no route fails: no disequilibrium excludes a regime yet, and nothing is inferred from prose
-  for (const p of paths) assert.notEqual(p.checks.find((c) => c.id === "driver-regime-sufficiency")!.result, "fail", p.id);
-  // a route through combustion → temperature gradient → Seebeck passes because the produced disequilibrium supplies the gradient
-  const viaCombustion = paths.find((p) => p.claims.join(">").startsWith("claim:combustion-drives>claim:combustion-produces-gradient>claim:seebeck-drives"));
-  assert.ok(viaCombustion, "combustion → gradient → Seebeck compiled");
-  assert.equal(viaCombustion!.checks.find((c) => c.id === "driver-regime-sufficiency")!.result, "pass");
+test("driver / regime sufficiency on real routes (loop-3 pass 30): the reviewer's regressions", () => {
+  const regime = (p: CompiledPath) => p.checks.find((c) => c.id === "driver-regime-sufficiency")!;
+  const byPathway = (pw: string) => paths.find((p) => p.pathway === pw)!;
+  // pyroelectric harvester re-spelled from temporal temperature change → PASS; the static-gradient edge is gone
+  const pyro = byPathway("pathway:pyroelectric-harvester");
+  assert.equal(pyro.nodes[0], "disequilibrium:temperature-change");
+  assert.equal(regime(pyro).result, "pass");
+  assert.ok(!paths.some((p) => p.nodes[0] === "disequilibrium:temperature-gradient" && p.claims[0] === "claim:pyro-drives"), "no pyroelectric route starts at a static gradient");
+  // a single caloric event produces a temperature change, not a gradient: no direct caloric → Seebeck route remains
+  assert.ok(!paths.some((p) => p.claims.includes("claim:magnetocaloric-produces") && p.claims.includes("claim:seebeck-drives")), "caloric → gradient → Seebeck routes eliminated");
+  assert.ok(paths.some((p) => p.claims.includes("claim:magnetocaloric-produces") && p.claims.includes("claim:pyro-drives")), "a caloric event can feed pyroelectricity at the regime level");
+  // electrocaloric from a static potential difference: unresolved on the field change
+  const ec = paths.find((p) => p.claims[0] === "claim:electrocaloric-drives")!;
+  assert.equal(regime(ec).result, "unresolved");
+  assert.match(regime(ec).detail, /field:electric-field-change/);
+  // magnetocaloric: the single effect passes from the changing field; the refrigerator passes through its own regime_provides; a generic cooling route without cycling is unresolved
+  assert.equal(regime(byPathway("pathway:magnetocaloric-refrigeration")).result, "pass");
+  const mcGeneric = paths.find((p) => p.claims.includes("claim:magnetocaloric-converts-cooling") && !p.pathway);
+  if (mcGeneric) assert.equal(regime(mcGeneric).result, "unresolved");
+  // vibration → elastic → elastocaloric: stress change supplied, the transformation threshold missing
+  const vib = byPathway("pathway:vibration-elastocaloric-cooler");
+  assert.equal(regime(vib).result, "unresolved");
+  assert.match(regime(vib).detail, /stress-crosses-transformation-threshold/);
+  assert.doesNotMatch(regime(vib).detail, /requires mechanical:stress-change;/);
+  // thermogalvanic passes; thermomagnetic convection passes only with the external non-uniform field; the thermomagnetic generator passes through its pathway
+  assert.equal(regime(byPathway("pathway:thermogalvanic-cell")).result, "pass");
+  assert.equal(regime(byPathway("pathway:thermomagnetic-hydrodynamic-harvester")).result, "pass");
+  assert.equal(regime(byPathway("pathway:thermomagnetic-generator")).result, "pass");
+  const tmGeneric = paths.find((p) => p.claims[0] === "claim:thermomagnetic-drives" && !p.pathway);
+  if (tmGeneric) assert.equal(regime(tmGeneric).result, "unresolved");
+  // generic photovoltaic spellings are unresolved on the spectrum; the module and the thermophotovoltaic pathway pass through their own evidence
+  const pvGeneric = paths.find((p) => p.claims.includes("claim:pv-drives") && !p.pathway);
+  if (pvGeneric) assert.equal(regime(pvGeneric).result, "unresolved");
+  assert.equal(regime(byPathway("pathway:photovoltaic-module")).result, "pass");
+  assert.equal(regime(byPathway("pathway:thermophotovoltaic")).result, "pass");
+  // the thermoacoustic threshold cannot self-certify: the generator passes through its pathway, the acoustoelectric candidate stays unresolved
+  assert.equal(regime(byPathway("pathway:thermoacoustic-generator")).result, "pass");
+  const ae = paths.find((p) => p.claims.includes("claim:thermoacoustic-produces-travelling-sound") && p.claims.includes("claim:acoustic-wave-drives-acoustoelectric") && p.nodes[0] === "disequilibrium:temperature-gradient")!;
+  assert.equal(regime(ae).result, "unresolved");
+  // no route fails, and no demonstrated pathway is left unresolved
+  for (const p of paths) assert.notEqual(regime(p).result, "fail", p.id);
+  for (const p of paths.filter((q) => q.search_status === "demonstrated")) assert.notEqual(regime(p).result, "unresolved", `${p.pathway}: ${regime(p).detail}`);
 });

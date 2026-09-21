@@ -83,6 +83,7 @@
   domain: electromagnetism
   quantity: quantity:magnetic-flux
   exergy: positive
+  regime_provides: [field:magnetic-field-change]
   condition_tags: [transient-only]
   summary: A magnetic flux that changes through a circuit, from motion or from a time-varying field. Only the change drives anything.
 - id: disequilibrium:mechanical-stress
@@ -127,6 +128,7 @@
   name: Incident radiation flux
   symbol: G
   aliases: [sunlight, solar irradiance, illumination, incident photons]
+  regime_provides: [light:incident-photon-flux]
   domain: optics-photonics
   quantity: quantity:irradiance
   exergy: positive
@@ -247,6 +249,8 @@
   quantity: quantity:temperature
   exergy: none
   summary: A body at the same temperature as its surroundings holds a great deal of energy and no exergy. Included so that the atlas can say so explicitly.
+  # Pass 30: a uniform bath supplies no spatial gradient — a step that needs one fails here rather than waits.
+  regime_excludes: [thermal:spatial-temperature-gradient]
 - id: disequilibrium:quantum-vacuum-fluctuations
   type: disequilibrium
   availability: ambient-common
@@ -269,3 +273,17 @@
   energy_form: acoustic
   exergy: positive
   summary: An externally available sound or ultrasound field — an oscillating pressure and particle velocity in a medium. Its intensity can be intercepted by a diaphragm, a piezoelectric element or the carriers in a solid.
+# Loop-3 pass 30: the driver pyroelectricity actually needs, distinct from a spatial temperature gradient.
+- id: disequilibrium:temperature-change
+  type: disequilibrium
+  availability: ambient-conditional
+  energy_form: thermal
+  name: Temporal temperature change
+  symbol: dT/dt
+  aliases: [temperature change, thermal transient, heating or cooling transient]
+  domain: thermodynamics
+  quantity: quantity:temperature-rate
+  exergy: conditional
+  regime_provides: [thermal:temporal-temperature-change]
+  summary: "A material's temperature changes with time. Unlike a spatial temperature gradient, this directly drives pyroelectric current through the time dependence of spontaneous polarization."
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 30 (the second reader's spelling; the pyroelectric harvester and the single caloric events re-spelled onto it)" }

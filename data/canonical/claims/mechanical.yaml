@@ -938,6 +938,7 @@
   subject: phenomenon:elastic-deformation
   predicate: produces
   object: disequilibrium:mechanical-stress
+  regime_provides: [mechanical:stress-change]
   conditions: [the deformed member carries a cyclic stress or strain state that can drive a stress-driven conversion (flexoelectric, elastocaloric, piezoelectric)]
   energy: { input: mechanical, output: mechanical }
   evidence: [source:nye-1985, source:erturk-inman-2011]

@@ -232,6 +232,7 @@
   summary: Ambient vibration stresses off-axis ferroelectric patches on a cantilever elastocalorically and periodic contacts carry the heat away — proposed and modelled by finite elements, never built. The genuine open question behind this route is whether ambient vibration supplies enough stress, timing and heat transfer for sustained cooling.
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 20 (the last two candidate compositions audited as physics; abstract read)" }
 - id: pathway:bending-actuated-elastocaloric-cooler
+  regime_provides: [mechanical:stress-change, mechanical:stress-crosses-transformation-threshold, mechanical:stress-cycling]  # pass 30: cyclic bending through the superelastic transformation is the device's operation
   name: Bending-actuated NiTi elastocaloric air cooler
   steps: [claim:elastocaloric-drives, claim:elastocaloric-converts-cooling]
   demonstrated_with: [transducer:bending-elastocaloric-air-cooler]
@@ -303,6 +304,7 @@
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 21 (TOEC route search; abstracts read; Huang 2021's figures not recorded until its text is read)" }
 # Loop-3 pass 22: known devices the shared-head rule had classed as derived variants of other pathways.
 - id: pathway:combustion-microthermophotovoltaic-generator
+  regime_provides: [light:above-bandgap-photon-flux]  # pass 30: the selective emitter is matched to the cell (Chan 2013)
   name: Combustion-driven micro-thermophotovoltaic generator
   steps: [claim:combustion-drives, claim:combustion-produces-hot-gas, claim:hot-gas-drives-thermal-emission, claim:thermal-emission-produces-photons, claim:photons-drive-pv, claim:pv-produces-pairs, claim:pairs-convert-electricity]
   demonstrated_with: [transducer:micro-thermophotovoltaic-generator]
@@ -335,6 +337,7 @@
   summary: Fuel burns in a microcombustor, the hot gas heats a selective emitter, and the emitter's thermal radiation is converted by low-bandgap photovoltaic cells — the combustion-fed cousin of the thermophotovoltaic pathway, recorded as its own composition because its driver is chemical, not a temperature gradient supplied from outside.
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 22 (Scholar runs, the parallel-driver rule and the head rule; abstract read)" }
 - id: pathway:radioluminescent-nuclear-battery
+  regime_provides: [light:above-bandgap-photon-flux]  # pass 30: the phosphor's emission is matched to the photovoltaic cell (Russo 2017)
   name: Radioluminescent (beta-photovoltaic) nuclear battery
   steps: [claim:binding-drives-decay, claim:decay-produces-particles, claim:beta-drives-radioluminescence, claim:radioluminescence-produces-photons, claim:photons-drive-pv, claim:pv-produces-pairs, claim:pairs-convert-electricity]
   demonstrated_with: [transducer:radioluminescent-nuclear-battery]
@@ -475,6 +478,7 @@
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 24 (the second reader's status (a) — observed, observed_through the flexoelectric charge step; the final step remains unsupported by the evidence)" }
 # Loop-3 pass 25: a known device found while searching the acoustoelectric route — thermoacoustic sound harvested piezoelectrically.
 - id: pathway:thermoacoustic-piezoelectric-harvester
+  regime_provides: [thermal:gradient-above-thermoacoustic-critical]  # pass 30: the engine self-oscillated in Zheng 2022 and Smoker 2012
   name: Thermoacoustic piezoelectric harvester
   steps: [claim:thermoacoustic-drives, claim:thermoacoustic-produces-sound, claim:acoustic-wave-drives-piezoelectric, claim:piezo-produces-charge, claim:surface-charge-converts-electricity]
   demonstrated_with: [transducer:thermoacoustic-piezoelectric-harvester]
@@ -513,6 +517,7 @@
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 25 (known device recorded from the abstract; the second reader ruled it wrong-coupling for the acoustoelectric route)" }
 # Loop-3 pass 27: the third thermoacoustic electrical converter after the alternator and the piezoelectric membrane.
 - id: pathway:thermoacoustic-triboelectric-harvester
+  regime_provides: [thermal:gradient-above-thermoacoustic-critical]  # pass 30: stable self-sustained oscillation at ≈ 150 °C heating in Li 2026
   name: Thermoacoustic triboelectric harvester
   steps: [claim:thermoacoustic-drives, claim:thermoacoustic-produces-sound, claim:acoustic-wave-drives-triboelectric, claim:tribo-produces-charge, claim:surface-charge-converts-electricity]
   demonstrated_with: [transducer:thermoacoustic-triboelectric-harvester]

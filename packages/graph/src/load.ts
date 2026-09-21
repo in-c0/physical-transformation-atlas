@@ -285,6 +285,18 @@ export function loadCanon(root: string): Canon {
   }
   for (const g of exclusiveGroups) for (const m of g.members) if (!tagIds.has(m)) problems.push(`exclusive group ${g.id}: unknown tag ${m}`);
   for (const c of claims) for (const r of c.condition_requirements) if (!tagIds.has(r.tag)) problems.push(`${c.id}: unknown condition tag ${r.tag} in condition_requirements`);
+  // Pass 30: a regime_external token must be an independent exogenous degree of freedom — never the kind of
+  // regime the step's own subject carries (a thermal token on a thermally driven step cannot self-certify).
+  const regimeKind: Record<string, string[]> = { thermal: ["thermal"], field: ["electrical", "magnetic"], mechanical: ["mechanical"], light: ["radiative"] };
+  const entityById = new Map(entities.map((e) => [e.id, e]));
+  for (const c of claims)
+    for (const t of c.regime_external) {
+      const ns = t.split(":")[0];
+      const subject = entityById.get(c.subject);
+      const form = subject?.energy_form;
+      if (form && (regimeKind[ns] ?? []).includes(form)) problems.push(`${c.id}: regime_external ${t} is a property of the step's own ${form} subject and cannot be self-certified; a reviewed pathway's regime_provides is the place for an established operating regime`);
+      if (!c.regime_requires.includes(t)) problems.push(`${c.id}: regime_external ${t} is not among its regime_requires`);
+    }
   const interfaceIds = new Set<string>();
   for (const f of interfaces) {
     if (interfaceIds.has(f.id)) problems.push(`duplicate interface id ${f.id}`);

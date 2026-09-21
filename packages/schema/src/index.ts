@@ -410,10 +410,14 @@ export const Claim = z.object({
    * its causal source that a syntactically valid edge does not guarantee — pyroelectricity needs a
    * temperature that changes in time, which a static gradient does not supply. regime_requires lists
    * such tokens ("thermal:temporal-temperature-change"); regime_provides lists tokens a step's output
-   * supplies to later steps; regime_external lists tokens the step's own stated conditions supply from
-   * outside the route (a stack held above Swift's critical gradient). Providers are never inferred from
-   * aliases or prose: only the route source's regime_provides, a preceding step's regime_provides (or
-   * that of the disequilibrium it produces), and the step's own regime_external count.
+   * supplies to later steps; regime_external lists tokens an independent exogenous degree of freedom
+   * supplies from outside the route — a non-uniform magnetic field imposed on a temperature-driven
+   * ferrofluid — and never a threshold or temporal property of the step's own subject, which cannot
+   * self-certify (a stack above Swift's critical gradient is a property of the driving gradient; only
+   * the exact reviewed pathway that ran may supply it, through Pathway.regime_provides). Providers are
+   * never inferred from aliases or prose: only the route source's regime_provides, a preceding step's
+   * regime_provides (or that of the disequilibrium it produces), the exact pathway's regime_provides,
+   * and the step's regime_external count. Any process step may carry regime_requires; none does by default.
    */
   regime_requires: z.array(z.string()).default([]),
   regime_provides: z.array(z.string()).default([]),
@@ -475,6 +479,13 @@ const PathwayBase = z.object({
    * Must be one of the steps and not the final one (a final step established would be a demonstration).
    */
   observed_through: ClaimId.optional(),
+  /**
+   * Regime tokens this exact reviewed pathway's evidence establishes (pass 30): a self-oscillating
+   * thermoacoustic engine supplies thermal:gradient-above-thermoacoustic-critical, a cycling
+   * magnetocaloric refrigerator field:magnetic-field-cycling. Only the exact route of the pathway
+   * sees them; a candidate composition sharing the claim inherits nothing.
+   */
+  regime_provides: z.array(z.string()).default([]),
   knowledge_level: z.enum(KNOWLEDGE_LEVELS),
   performance: z
     .object({

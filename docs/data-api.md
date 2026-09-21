@@ -98,10 +98,17 @@ time-averaged momentum along a propagation direction, which a pure standing wave
 the compiler checks them across each carrier), an optional
 `relation_requirement` (`required` / `not-applicable` / `unknown`; drives and couples_to steps default
 to unknown, produces and converts_into to not-applicable), `regime_requires[]` / `regime_provides[]` /
-`regime_external[]` (pass 30: regime tokens such as `thermal:temporal-temperature-change` a drives or
-couples_to step needs from its causal source, supplies to later steps, or has supplied by its own stated
-condition; disequilibria carry `regime_provides[]` and `regime_excludes[]`; the eighth check,
-`driver-regime-sufficiency`, compares them and never infers a provider from prose), `evidence` (source ids), `status`
+`regime_external[]` (pass 30: regime tokens such as `thermal:temporal-temperature-change` a step needs
+from its causal source, supplies to later steps, or has supplied by an independent external condition
+— never a property of its own subject; disequilibria carry `regime_provides[]` and `regime_excludes[]`,
+pathways `regime_provides[]` for the operating regime their evidence establishes on their exact route;
+the eighth check, `driver-regime-sufficiency`, compares them and never infers a provider from prose.
+Tokens in use: `thermal:spatial-temperature-gradient`, `thermal:temporal-temperature-change`,
+`thermal:gradient-above-thermoacoustic-critical`, `thermal:transition-temperature-straddled`,
+`thermal:cyclic-hot-cold-exposure`, `field:electric-field-change`, `field:electric-field-cycling`,
+`field:magnetic-field-change`, `field:magnetic-field-cycling`, `field:nonuniform-magnetic-field`,
+`mechanical:stress-change`, `mechanical:stress-crosses-transformation-threshold`,
+`mechanical:stress-cycling`, `light:incident-photon-flux`, `light:above-bandgap-photon-flux`), `evidence` (source ids), `status`
 (vocabulary `claim.status`), optional `knowledge_level`, `review` and `notes`. The four process predicates (`drives`, `produces`,
 `couples_to`, `converts_into`) carry energy between nodes and are the only ones routes are built
 from; the rest are descriptive (vocabulary `claim.predicate`).
@@ -122,7 +129,8 @@ names; theoretical and proposed records are shown and leave the boundary check u
 **Pathway** — a named, reviewed composition: ordered `steps` (claim ids), `demonstrated_with`
 (transducer ids), `evidence`, `status` (`demonstrated`, `prototype`, `commercial`, `proposed`,
 `observed` — vocabulary `pathway.status`), `observed_through` (required iff `status: observed`: the
-last step the evidence physically established, never the final one),
+last step the evidence physically established, never the final one), `regime_provides[]` (pass 30: the
+operating regime this exact pathway's evidence establishes, seen only by its own route),
 `knowledge_level`, `performance` (`efficiency_typical`, `efficiency_record`, `theoretical_limit`,
 `power_density`, `notes`, and `measurements[]` — one record per number with the quantity, the value
 as written in the source, the scope, the regime, the sources and the year, and optionally its

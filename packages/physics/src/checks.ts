@@ -449,19 +449,20 @@ export function checkBoundaryCompatibility(ctx: PhysicsContext, claims: Claim[])
  * or prose. PASS = every requirement met; FAIL = the route source excludes a requirement; UNRESOLVED
  * = a requirement nothing recorded provides; UNKNOWN = no step records a requirement.
  */
-export function checkDriverRegimeSufficiency(ctx: PhysicsContext, claims: Claim[]): CheckResult {
+export function checkDriverRegimeSufficiency(ctx: PhysicsContext, claims: Claim[], pathway?: Pathway): CheckResult {
   const id = "driver-regime-sufficiency";
   const label = "driver / regime sufficiency";
   const source = ctx.entity(claims[0]?.subject);
-  const requiring = claims.filter((c) => (c.predicate === "drives" || c.predicate === "couples_to") && c.regime_requires.length > 0);
-  if (requiring.length === 0) return { id, label, result: "unknown", detail: "no conversion step records a machine-readable regime requirement" };
+  // Any process step may record a requirement (a cooling conversion may require a cycle); none does by default.
+  const requiring = claims.filter((c) => c.regime_requires.length > 0);
+  if (requiring.length === 0) return { id, label, result: "unknown", detail: "no step records a machine-readable regime requirement" };
   const excluded = new Set(source?.regime_excludes ?? []);
   const failures: string[] = [];
   const unresolved: string[] = [];
   const met: string[] = [];
   for (const c of requiring) {
     const i = claims.indexOf(c);
-    const providers = new Set<string>(source?.regime_provides ?? []);
+    const providers = new Set<string>([...(source?.regime_provides ?? []), ...(pathway?.regime_provides ?? [])]);
     for (let k = 0; k < i; k++) {
       for (const t of claims[k].regime_provides) providers.add(t);
       const produced = ctx.entity(claims[k].object);
@@ -476,7 +477,7 @@ export function checkDriverRegimeSufficiency(ctx: PhysicsContext, claims: Claim[
   }
   if (failures.length) return { id, label, result: "fail", detail: failures.join("; ") };
   if (unresolved.length) return { id, label, result: "unresolved", detail: unresolved.join("; ") };
-  return { id, label, result: "pass", detail: `every regime requirement is supplied by the source, a preceding step or the step's stated condition: ${met.join("; ")}` };
+  return { id, label, result: "pass", detail: `every regime requirement is supplied by the source, a preceding step, the reviewed pathway or an independent external condition: ${met.join("; ")}` };
 }
 
 export function checkPracticalMagnitude(pathway?: Pathway): CheckResult {
@@ -512,7 +513,7 @@ export function runAllChecks(ctx: PhysicsContext, claims: Claim[], pathway?: Pat
     checkThermodynamicBound(ctx, claims, pathway),
     checkDimensional(ctx, claims),
     checkBoundaryCompatibility(ctx, claims),
-    checkDriverRegimeSufficiency(ctx, claims),
+    checkDriverRegimeSufficiency(ctx, claims, pathway),
     checkPracticalMagnitude(pathway),
   ];
 }

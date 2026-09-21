@@ -72,6 +72,7 @@
   summary: A cathode above 1500 K emits electrons collected across a caesium-vapour gap; flown in space reactors.
 
 - id: pathway:thermoacoustic-generator
+  regime_provides: [thermal:gradient-above-thermoacoustic-critical]  # pass 30: self-sustained oscillation is the evidence that the stack ran above Swift's critical gradient
   name: Thermoacoustic engine with linear alternator
   steps: [claim:thermoacoustic-drives, claim:thermoacoustic-produces-sound, claim:acoustic-drives-linear-alternator, claim:linear-alternator-produces, claim:charge-carriers-convert-electricity]
   demonstrated_with: [transducer:thermoacoustic-engine]
@@ -126,6 +127,7 @@
   summary: Charge cold, discharge warm; 5.7% efficiency between 10 and 60 °C with heat recuperation.
 
 - id: pathway:thermomagnetic-generator
+  regime_provides: [thermal:transition-temperature-straddled, thermal:cyclic-hot-cold-exposure]  # pass 30: the plates alternate between hot and cold across the transition (Waske et al.)
   name: Thermomagnetic generator
   steps: [claim:thermomagnetic-drives, claim:thermomagnetic-produces-flux, claim:magnetic-flux-drives-induction, claim:induction-produces-carriers, claim:charge-carriers-convert-electricity]
   demonstrated_with: [transducer:thermomagnetic-generator]
@@ -139,6 +141,7 @@
   summary: A gadolinium element switching between hot and cold changes the flux through a coil.
 
 - id: pathway:thermophotovoltaic
+  regime_provides: [light:above-bandgap-photon-flux]  # pass 30: the emitter and the cell's band gap are matched by design
   name: Thermophotovoltaic conversion
   steps: [claim:thermal-emission-drives, claim:thermal-emission-produces-photons, claim:photons-drive-pv, claim:pv-produces-pairs, claim:pairs-convert-electricity]
   demonstrated_with: [transducer:thermophotovoltaic-cell]
@@ -336,6 +339,7 @@
   summary: Fresh water permeates into pressurised seawater; the extra volume drives a turbine.
 
 - id: pathway:photovoltaic-module
+  regime_provides: [light:above-bandgap-photon-flux]  # pass 30: the AM1.5 solar spectrum carries most of its photons above a silicon-class band gap
   name: Photovoltaic module
   steps: [claim:pv-drives, claim:pv-produces-pairs, claim:pairs-convert-electricity]
   demonstrated_with: [transducer:photovoltaic-cell]
@@ -535,6 +539,7 @@
   summary: Light-driven charge separation stores solar energy in sugars; the basis of every fossil fuel.
 
 - id: pathway:magnetocaloric-refrigeration
+  regime_provides: [field:magnetic-field-cycling]  # pass 30: a refrigerator cycles the field by construction
   name: Magnetocaloric refrigeration
   steps: [claim:magnetocaloric-drives, claim:magnetocaloric-converts-cooling]
   demonstrated_with: [transducer:magnetocaloric-refrigerator]

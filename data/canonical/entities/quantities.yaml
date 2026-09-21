@@ -291,3 +291,12 @@
   dimension: { M: 1, L: -2, T: -1 }
   summary: Density times sound speed of a medium; the mismatch between two media sets how much acoustic intensity crosses their boundary.
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 26 (the interface relation's named inputs)" }
+# Loop-3 pass 30: the rate a pyroelectric current follows.
+- id: quantity:temperature-rate
+  type: quantity
+  name: Temperature rate
+  symbol: dT/dt
+  unit: K/s
+  dimension: { Th: 1, T: -1 }
+  summary: The rate at which a material's temperature changes with time; the driver of pyroelectric current.
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 30 (the second reader's spelling)" }

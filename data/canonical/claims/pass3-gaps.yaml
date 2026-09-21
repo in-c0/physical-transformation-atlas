@@ -363,6 +363,8 @@
   subject: disequilibrium:temperature-gradient
   predicate: drives
   object: phenomenon:thermomagnetic-ferrofluid-convection
+  regime_requires: [thermal:spatial-temperature-gradient, field:nonuniform-magnetic-field]
+  regime_external: [field:nonuniform-magnetic-field]
   conditions: ["a ferrofluid whose magnetisation decreases with temperature, in a non-uniform magnetic field aligned with the temperature gradient"]
   condition_tags: [state-liquid, field-magnetic-required, temp-gradient-required]
   energy: { input: thermal, output: kinetic, dissipation: thermal }

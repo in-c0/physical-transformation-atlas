@@ -5,6 +5,7 @@
   subject: disequilibrium:radiation-flux
   predicate: drives
   object: phenomenon:photovoltaic-effect
+  regime_requires: [light:above-bandgap-photon-flux]
   conditions:
     - photon energy above the band gap of the absorber
     - a p–n junction or other asymmetry to separate the carriers before they recombine
@@ -70,6 +71,7 @@
   subject: carrier:photons
   predicate: drives
   object: phenomenon:photovoltaic-effect
+  regime_requires: [light:above-bandgap-photon-flux]
   conditions: ["photons from any source, including a thermal emitter, absorbed above the gap"]
   condition_tags: [state-solid, medium-semiconductor]
   energy: { input: radiative, output: electronic-excitation, dissipation: thermal }
