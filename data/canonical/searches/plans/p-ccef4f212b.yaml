@@ -1,0 +1,63 @@
+# route-search-v1 query plan — p-ccef4f212b
+# Nuclear binding-energy difference → Nuclear fission → Hot pressurised gas → Magnetohydrodynamic generation → Charge carriers → Electrical work
+# D = Nuclear binding-energy difference; M_1 = Nuclear fission; M_2 = Magnetohydrodynamic generation; O = Electrical work (k = 2).
+# Written in loop-3 pass 29 from the recorded names and aliases, after adding nuclear fuel / fissile fuel to the disequilibrium,
+# fission reactor / nuclear reactor / reactor core / fissioning plasma to nuclear fission, and MHD generator / magnetohydrodynamic
+# generator / MHD power generation to MHD generation. The reviewer's P8 candidate: a fission-heated gas driven through an MHD channel. Google Scholar runs are performed by hand and recorded in
+# the reviewed record, not here.
+protocol_version: route-search-v1
+route: p-ccef4f212b
+claims: [claim:binding-drives-fission, claim:fission-produces-hot-gas, claim:hot-gas-drives-mhd, claim:mhd-produces, claim:charge-carriers-convert-electricity]
+driver_terms: [nuclear binding-energy difference, radioactive decay, fissile configuration, nuclear fuel, fissile fuel]
+phenomenon_terms:
+  phenomenon:nuclear-fission: [nuclear fission, fission reactor, nuclear reactor, reactor core, fissioning plasma]
+  phenomenon:magnetohydrodynamic-effect: [magnetohydrodynamic generation, MHD effect, Faraday MHD generator, MHD generator, magnetohydrodynamic generator, MHD power generation]
+output_terms: [electrical work, electricity, electrical output, DC power]
+runs:
+  - id: search:2026-09-21-p-ccef4f212b/oa-dm1
+    engine: openalex
+    form: route-driver-mechanism
+    key: driver-mechanism:1
+    query: '("Nuclear binding-energy difference" OR "radioactive decay" OR "fissile configuration" OR "nuclear fuel" OR "fissile fuel") AND ("Nuclear fission" OR "fission reactor" OR "nuclear reactor" OR "reactor core" OR "fissioning plasma")'
+  - id: search:2026-09-21-p-ccef4f212b/oa-dm1-newest
+    engine: openalex
+    form: route-driver-mechanism
+    key: driver-mechanism:1
+    sort: newest
+    per_page: 50
+    query: '("Nuclear binding-energy difference" OR "radioactive decay" OR "fissile configuration" OR "nuclear fuel" OR "fissile fuel") AND ("Nuclear fission" OR "fission reactor" OR "nuclear reactor" OR "reactor core" OR "fissioning plasma")'
+  - id: search:2026-09-21-p-ccef4f212b/oa-mp12
+    engine: openalex
+    form: route-mechanism-pair
+    key: mechanism-pair:1-2
+    query: '("Nuclear fission" OR "fission reactor" OR "nuclear reactor" OR "reactor core" OR "fissioning plasma") AND ("Magnetohydrodynamic generation" OR "MHD effect" OR "Faraday MHD generator" OR "MHD generator" OR "magnetohydrodynamic generator" OR "MHD power generation")'
+  - id: search:2026-09-21-p-ccef4f212b/oa-wc
+    engine: openalex
+    form: route-whole-chain
+    key: whole-chain
+    query: '("Nuclear binding-energy difference" OR "radioactive decay" OR "fissile configuration" OR "nuclear fuel" OR "fissile fuel") AND ("Nuclear fission" OR "fission reactor" OR "nuclear reactor" OR "reactor core" OR "fissioning plasma") AND ("Magnetohydrodynamic generation" OR "MHD effect" OR "Faraday MHD generator" OR "MHD generator" OR "magnetohydrodynamic generator" OR "MHD power generation") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power")'
+  - id: search:2026-09-21-p-ccef4f212b/oa-dp
+    engine: openalex
+    form: route-demonstration-precision
+    key: demonstration-precision
+    query: '("Nuclear binding-energy difference" OR "radioactive decay" OR "fissile configuration" OR "nuclear fuel" OR "fissile fuel") AND ("Nuclear fission" OR "fission reactor" OR "nuclear reactor" OR "reactor core" OR "fissioning plasma") AND ("Magnetohydrodynamic generation" OR "MHD effect" OR "Faraday MHD generator" OR "MHD generator" OR "magnetohydrodynamic generator" OR "MHD power generation") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power") AND (experiment OR experimental OR measured OR device OR prototype)'
+  - id: search:2026-09-21-p-ccef4f212b/s2-dm1
+    engine: semantic-scholar
+    form: route-driver-mechanism
+    key: driver-mechanism:1
+    query: Nuclear binding-energy difference radioactive decay fissile configuration nuclear fuel fissile fuel Nuclear fission fission reactor nuclear reactor reactor core fissioning plasma
+  - id: search:2026-09-21-p-ccef4f212b/s2-mp12
+    engine: semantic-scholar
+    form: route-mechanism-pair
+    key: mechanism-pair:1-2
+    query: Nuclear fission fission reactor nuclear reactor reactor core fissioning plasma Magnetohydrodynamic generation MHD effect Faraday MHD generator MHD generator magnetohydrodynamic generator MHD power generation
+  - id: search:2026-09-21-p-ccef4f212b/s2-wc
+    engine: semantic-scholar
+    form: route-whole-chain
+    key: whole-chain
+    query: Nuclear binding-energy difference radioactive decay fissile configuration nuclear fuel fissile fuel Nuclear fission fission reactor nuclear reactor reactor core fissioning plasma Magnetohydrodynamic generation MHD effect Faraday MHD generator MHD generator magnetohydrodynamic generator MHD power generation Electrical work electricity electrical output DC power
+  - id: search:2026-09-21-p-ccef4f212b/s2-dp
+    engine: semantic-scholar
+    form: route-demonstration-precision
+    key: demonstration-precision
+    query: Nuclear binding-energy difference radioactive decay fissile configuration nuclear fuel fissile fuel Nuclear fission fission reactor nuclear reactor reactor core fissioning plasma Magnetohydrodynamic generation MHD effect Faraday MHD generator MHD generator magnetohydrodynamic generator MHD power generation Electrical work electricity electrical output DC power experiment experimental measured device prototype

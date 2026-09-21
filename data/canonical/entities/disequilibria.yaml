@@ -99,7 +99,7 @@
   energy_form: mechanical
   name: Mechanical vibration
   symbol: a(t)
-  aliases: [oscillation, ambient vibration, kinetic motion]
+  aliases: [oscillation, ambient vibration, kinetic motion, vibration-driven, base excitation]
   domain: classical-mechanics
   quantity: quantity:displacement
   exergy: positive
@@ -226,7 +226,7 @@
   energy_form: nuclear
   name: Nuclear binding-energy difference
   symbol: ΔE_bind
-  aliases: [radioactive decay, fissile configuration, fusion fuel]
+  aliases: [radioactive decay, fissile configuration, fusion fuel, nuclear fuel, fissile fuel]
   domain: nuclear-physics
   quantity: quantity:energy
   exergy: positive

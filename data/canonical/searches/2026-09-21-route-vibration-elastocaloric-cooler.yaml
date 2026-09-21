@@ -1,0 +1,210 @@
+# Loop-3 pass 29: the reviewed ROUTE search for mechanical vibration → elastic deformation → mechanical stress →
+# elastocaloric effect → cooling (p-4d6800fa81), the second reader's P7 candidate: has ambient or base vibration, rather
+# than a designed actuator, ever driven an elastocaloric refrigerator? The route carries the proposed pathway
+# vibration-elastocaloric-cooler (Kumar et al. 2019, a finite-element proposal). OpenAlex's six forms ran on 21/09;
+# Semantic Scholar and Google Scholar are outstanding.
+- id: search:2026-09-21-p-4d6800fa81-partial
+  target:
+    kind: path
+    path: p-4d6800fa81
+    claims:
+      - claim:vibration-drives-elastic
+      - claim:elastic-produces-stress
+      - claim:elastocaloric-drives
+      - claim:elastocaloric-converts-cooling
+  protocol_version: route-search-v1
+  started_at: 2026-09-21T11:13:00+10:00
+  completed_at: 2026-09-21T11:25:00+10:00
+  objective: exact-composition
+  inclusion_criteria:
+    - a physical experiment or device in which ambient or base vibration (not a designed actuator, test machine or motor) elastically strains an elastocaloric element and a measured temperature drop or heat pumped is delivered (route-search-v1 §3, output Cooling)
+  exclusion_criteria:
+    - theory, simulation or proposals (recorded as such, never as demonstrations) — the Kumar 2019 finite-element cooler among them
+    - elastocaloric materials or devices loaded by a test machine, actuator, motor or hand (constituent-only or wrong-driver)
+    - vibration harvesters with piezoelectric, electrocaloric or thermoelectric conversion (wrong-coupling)
+  runs:
+    - id: search:2026-09-21-p-4d6800fa81/oa-dm1
+      engine: openalex
+      query_form: route-driver-mechanism
+      query: ("Mechanical vibration" OR oscillation OR "ambient vibration" OR "kinetic motion" OR "vibration-driven" OR "base excitation") AND ("Elastic deformation" OR "Hooke's law response" OR "strain energy storage")
+      executed_at: 2026-09-21T01:14:47.777Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Mechanical+vibration%22+OR+oscillation+OR+%22ambient+vibration%22+OR+%22kinetic+motion%22+OR+%22vibration-driven%22+OR+%22base+excitation%22%29+AND+%28%22Elastic+deformation%22+OR+%22Hooke%27s+law+response%22+OR+%22strain+energy+storage%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Mechanical vibration" OR oscillation OR "ambient vibration" OR "kinetic motion" OR "vibration-driven" OR "base excitation") AND ("Elastic deformation" OR "Hooke's law response" OR "strain energy storage")
+        type: article|review|book-chapter
+      result_count_reported: 364
+      records_retrieved: 100
+      records_screened: 100
+      records_read: 0
+      query_key: driver-mechanism:1
+    - id: search:2026-09-21-p-4d6800fa81/oa-dm1-newest
+      engine: openalex
+      query_form: route-driver-mechanism
+      query: ("Mechanical vibration" OR oscillation OR "ambient vibration" OR "kinetic motion" OR "vibration-driven" OR "base excitation") AND ("Elastic deformation" OR "Hooke's law response" OR "strain energy storage")
+      executed_at: 2026-09-21T01:14:52.669Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Mechanical+vibration%22+OR+oscillation+OR+%22ambient+vibration%22+OR+%22kinetic+motion%22+OR+%22vibration-driven%22+OR+%22base+excitation%22%29+AND+%28%22Elastic+deformation%22+OR+%22Hooke%27s+law+response%22+OR+%22strain+energy+storage%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=50&sort=publication_date%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: publication_date:desc
+      filters:
+        title_and_abstract.search: ("Mechanical vibration" OR oscillation OR "ambient vibration" OR "kinetic motion" OR "vibration-driven" OR "base excitation") AND ("Elastic deformation" OR "Hooke's law response" OR "strain energy storage")
+        type: article|review|book-chapter
+      result_count_reported: 364
+      records_retrieved: 50
+      records_screened: 50
+      records_read: 0
+      query_key: driver-mechanism:1
+    - id: search:2026-09-21-p-4d6800fa81/oa-mp12
+      engine: openalex
+      query_form: route-mechanism-pair
+      query: ("Elastic deformation" OR "Hooke's law response" OR "strain energy storage") AND ("Elastocaloric effect" OR "mechanocaloric effect" OR "stress-induced caloric effect" OR "elastocaloric cooling" OR elastocaloric OR mechanocaloric)
+      executed_at: 2026-09-21T01:14:57.368Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Elastic+deformation%22+OR+%22Hooke%27s+law+response%22+OR+%22strain+energy+storage%22%29+AND+%28%22Elastocaloric+effect%22+OR+%22mechanocaloric+effect%22+OR+%22stress-induced+caloric+effect%22+OR+%22elastocaloric+cooling%22+OR+elastocaloric+OR+mechanocaloric%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Elastic deformation" OR "Hooke's law response" OR "strain energy storage") AND ("Elastocaloric effect" OR "mechanocaloric effect" OR "stress-induced caloric effect" OR "elastocaloric cooling" OR elastocaloric OR mechanocaloric)
+        type: article|review|book-chapter
+      result_count_reported: 6
+      records_retrieved: 6
+      records_screened: 6
+      records_read: 0
+      query_key: mechanism-pair:1-2
+    - id: search:2026-09-21-p-4d6800fa81/oa-wc
+      engine: openalex
+      query_form: route-whole-chain
+      query: ("Mechanical vibration" OR oscillation OR "ambient vibration" OR "kinetic motion" OR "vibration-driven" OR "base excitation") AND ("Elastic deformation" OR "Hooke's law response" OR "strain energy storage") AND ("Elastocaloric effect" OR "mechanocaloric effect" OR "stress-induced caloric effect" OR "elastocaloric cooling" OR elastocaloric OR mechanocaloric) AND (cooling OR refrigeration OR "heat pumping" OR "temperature lift")
+      executed_at: 2026-09-21T01:15:01.752Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Mechanical+vibration%22+OR+oscillation+OR+%22ambient+vibration%22+OR+%22kinetic+motion%22+OR+%22vibration-driven%22+OR+%22base+excitation%22%29+AND+%28%22Elastic+deformation%22+OR+%22Hooke%27s+law+response%22+OR+%22strain+energy+storage%22%29+AND+%28%22Elastocaloric+effect%22+OR+%22mechanocaloric+effect%22+OR+%22stress-induced+caloric+effect%22+OR+%22elastocaloric+cooling%22+OR+elastocaloric+OR+mechanocaloric%29+AND+%28cooling+OR+refrigeration+OR+%22heat+pumping%22+OR+%22temperature+lift%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Mechanical vibration" OR oscillation OR "ambient vibration" OR "kinetic motion" OR "vibration-driven" OR "base excitation") AND ("Elastic deformation" OR "Hooke's law response" OR "strain energy storage") AND ("Elastocaloric effect" OR "mechanocaloric effect" OR "stress-induced caloric effect" OR "elastocaloric cooling" OR elastocaloric OR mechanocaloric) AND (cooling OR refrigeration OR "heat pumping" OR "temperature lift")
+        type: article|review|book-chapter
+      result_count_reported: 0
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      query_key: whole-chain
+    - id: search:2026-09-21-p-4d6800fa81/oa-dp
+      engine: openalex
+      query_form: route-demonstration-precision
+      query: ("Mechanical vibration" OR oscillation OR "ambient vibration" OR "kinetic motion" OR "vibration-driven" OR "base excitation") AND ("Elastic deformation" OR "Hooke's law response" OR "strain energy storage") AND ("Elastocaloric effect" OR "mechanocaloric effect" OR "stress-induced caloric effect" OR "elastocaloric cooling" OR elastocaloric OR mechanocaloric) AND (cooling OR refrigeration OR "heat pumping" OR "temperature lift") AND (experiment OR experimental OR measured OR device OR prototype)
+      executed_at: 2026-09-21T01:15:06.960Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Mechanical+vibration%22+OR+oscillation+OR+%22ambient+vibration%22+OR+%22kinetic+motion%22+OR+%22vibration-driven%22+OR+%22base+excitation%22%29+AND+%28%22Elastic+deformation%22+OR+%22Hooke%27s+law+response%22+OR+%22strain+energy+storage%22%29+AND+%28%22Elastocaloric+effect%22+OR+%22mechanocaloric+effect%22+OR+%22stress-induced+caloric+effect%22+OR+%22elastocaloric+cooling%22+OR+elastocaloric+OR+mechanocaloric%29+AND+%28cooling+OR+refrigeration+OR+%22heat+pumping%22+OR+%22temperature+lift%22%29+AND+%28experiment+OR+experimental+OR+measured+OR+device+OR+prototype%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Mechanical vibration" OR oscillation OR "ambient vibration" OR "kinetic motion" OR "vibration-driven" OR "base excitation") AND ("Elastic deformation" OR "Hooke's law response" OR "strain energy storage") AND ("Elastocaloric effect" OR "mechanocaloric effect" OR "stress-induced caloric effect" OR "elastocaloric cooling" OR elastocaloric OR mechanocaloric) AND (cooling OR refrigeration OR "heat pumping" OR "temperature lift") AND (experiment OR experimental OR measured OR device OR prototype)
+        type: article|review|book-chapter
+      result_count_reported: 0
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      query_key: demonstration-precision
+    - id: search:2026-09-21-p-4d6800fa81/oa-dp-r
+      engine: openalex
+      query_form: route-demonstration-precision
+      query: ("mechanical vibration" OR "ambient vibration" OR "vibration-driven" OR "base excitation") AND (elastocaloric OR mechanocaloric OR "stress-induced caloric effect") AND (cooling OR refrigeration) AND (experiment OR experimental OR measured OR prototype OR device)
+      executed_at: 2026-09-21T01:15:11.507Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22mechanical+vibration%22+OR+%22ambient+vibration%22+OR+%22vibration-driven%22+OR+%22base+excitation%22%29+AND+%28elastocaloric+OR+mechanocaloric+OR+%22stress-induced+caloric+effect%22%29+AND+%28cooling+OR+refrigeration%29+AND+%28experiment+OR+experimental+OR+measured+OR+prototype+OR+device%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("mechanical vibration" OR "ambient vibration" OR "vibration-driven" OR "base excitation") AND (elastocaloric OR mechanocaloric OR "stress-induced caloric effect") AND (cooling OR refrigeration) AND (experiment OR experimental OR measured OR prototype OR device)
+        type: article|review|book-chapter
+      result_count_reported: 2
+      records_retrieved: 2
+      records_screened: 2
+      records_read: 1
+      query_key: demonstration-precision
+  screening:
+    records_retrieved: 153
+    unique_records: 153
+    title_abstract_screened: 153
+    full_text_read: 0
+  hits:
+    - title: Vibration induced refrigeration using ferroelectric materials
+      year: 2019
+      doi: 10.1038/s41598-019-40159-8
+      found_by:
+        - search:2026-09-21-p-4d6800fa81/oa-dp-r
+      access: abstract
+      decision: proposal-only
+      reason: "Kumar, Chauhan, Patel, Novak, Kumar & Vaish 2019 (Scientific Reports 9, 3922): the reviewer's precision query returns the atlas's own proposed pathway — a cantilever cooling device with off-axis 0.5BZT–0.5BCT patches strained elastocalorically by ambient vibration, 0.2 K in 50 s for ten elements at 1.5 Hz by finite-element analysis; a proposal with a model, no built device (recorded on pathway:vibration-elastocaloric-cooler, K3)."
+    - title: A cryogenic uniaxial strain cell for strain-dependent measurements
+      year: 2025
+      doi: 10.1063/5.0291096
+      found_by:
+        - search:2026-09-21-p-4d6800fa81/oa-dp-r
+      access: metadata-only
+      decision: wrong-driver
+      reason: "Review of Scientific Instruments 2025: a piezo-actuated uniaxial strain cell for cryogenic measurements, by title — a designed actuator for strain-dependent physics, not vibration and not cooling."
+    - title: "Reversible elastocaloric effect at ultra-low temperatures in nanocrystalline shape memory alloys"
+      year: 2018
+      doi: 10.1016/j.actamat.2018.11.035
+      found_by:
+        - search:2026-09-21-p-4d6800fa81/oa-mp12
+      access: metadata-only
+      decision: constituent-only
+      reason: "Acta Materialia 2018: the elastocaloric effect of nanocrystalline shape-memory alloys under test-machine loading, by title — the second mechanism alone."
+    - title: "Giant elastic response and ultra-stable elastocaloric effect in tweed textured Fe-Pd single crystals"
+      year: 2021
+      doi: 10.1016/j.actamat.2021.117486
+      found_by:
+        - search:2026-09-21-p-4d6800fa81/oa-mp12
+      access: metadata-only
+      decision: constituent-only
+      reason: "Acta Materialia 2021: Fe–Pd single crystals' elastic response and elastocaloric effect under imposed strain, by title — the second mechanism alone."
+    - title: "Cyclic degeneration of elastocaloric effect for NiTi shape memory alloy: Experimental observation and constitutive model"
+      year: 2022
+      doi: 10.1016/j.ijsolstr.2022.111638
+      found_by:
+        - search:2026-09-21-p-4d6800fa81/oa-mp12
+      access: metadata-only
+      decision: constituent-only
+      reason: "Int. J. Solids Struct. 2022: NiTi's elastocaloric effect under cyclic test-machine loading, by title — the second mechanism alone."
+    - title: "Temperature-dependent mechanical properties and elastocaloric effects of multiphase nanocrystalline NiTi alloys"
+      year: 2022
+      doi: 10.1016/j.jallcom.2022.168547
+      found_by:
+        - search:2026-09-21-p-4d6800fa81/oa-mp12
+      access: metadata-only
+      decision: constituent-only
+      reason: "J. Alloys Compd. 2022: NiTi mechanical properties and elastocaloric effects under imposed loading, by title — the second mechanism alone."
+    - title: "Role of thermal expansion anisotropy on the elastocaloric effect of shape memory alloys with slim-hysteresis superelasticity"
+      year: 2023
+      doi: 10.1103/physrevmaterials.7.013606
+      found_by:
+        - search:2026-09-21-p-4d6800fa81/oa-mp12
+      access: metadata-only
+      decision: constituent-only
+      reason: "Phys. Rev. Materials 2023: how thermal-expansion anisotropy shapes the elastocaloric effect of slim-hysteresis alloys, by title — the second mechanism alone."
+    - title: "Elastocaloric Effect Associated with Different Types of Martensitic Transformations: Typical First-Order and Weak First-Order Ones"
+      year: 2017
+      doi: 10.1002/pssb.201700246
+      found_by:
+        - search:2026-09-21-p-4d6800fa81/oa-mp12
+      access: metadata-only
+      decision: constituent-only
+      reason: "phys. stat. sol. (b) 2017: elastocaloric effects of first-order and weak first-order martensitic transformations, by title — the second mechanism alone."
+  result: inconclusive
+  completeness: partial
+  reviewed_by: Ava Kim's loop-3 lane (Claude Opus 5); titles screened, the precision hit matched to the atlas's recorded proposal
+  reviewed_on: 2026-09-21
+  limitations:
+    - "OpenAlex only (21/09, 11:15 am Sydney): driver-mechanism 364 works reported, the first 100 by relevance and the first 50 newest screened at title level (protocol depth), the rest unscreened — generic elastic-deformation mechanics with no elastocaloric element; mechanism-pair 6 (elastocaloric materials under test-machine loading); whole-chain 0; demonstration-precision 0; the reviewer's precision query 2, one of them the recorded Kumar 2019 proposal; Semantic Scholar answers 429 keyless (owner exception e953) and Google Scholar a captcha — both mandatory for a negative, neither run"
+    - no composition term is frozen; if the literature names a "vibration-driven elastocaloric cooler" as a device the composite-name form becomes mandatory once the term is added with its source
+  conclusion: "No demonstration known and none found: the only work that joins ambient vibration to elastocaloric cooling is the Kumar 2019 finite-element proposal the atlas already records as a proposed pathway; every elastocaloric experiment the forms return is loaded by a test machine or a designed actuator. Inconclusive as a route search until the Scholar and Semantic Scholar runs exist."
+  source_run_ids:
+    - search:2026-09-21-p-4d6800fa81
+  follow_up:
+    canonical_claim_review: not-applicable
+    canonical_pathway_review: not-applicable

@@ -1,0 +1,62 @@
+# route-search-v1 query plan — p-8200d7ab7e
+# Nuclear binding-energy difference → Nuclear fission → Hot pressurised gas → Thermal emission → Light
+# D = Nuclear binding-energy difference; M_1 = Nuclear fission; M_2 = Thermal emission; O = Light (k = 2).
+# Written in loop-3 pass 29 from the recorded names and aliases, after adding nuclear fuel / fissile fuel to the disequilibrium,
+# fission reactor / nuclear reactor / reactor core / fissioning plasma to nuclear fission. The reviewer's P9 candidate: a fissioning gas or plasma radiating light directly (the gas-core 'nuclear light bulb' concept). Google Scholar runs are performed by hand and recorded in
+# the reviewed record, not here.
+protocol_version: route-search-v1
+route: p-8200d7ab7e
+claims: [claim:binding-drives-fission, claim:fission-produces-hot-gas, claim:hot-gas-drives-thermal-emission, claim:thermal-emission-converts-light]
+driver_terms: [nuclear binding-energy difference, radioactive decay, fissile configuration, nuclear fuel, fissile fuel]
+phenomenon_terms:
+  phenomenon:nuclear-fission: [nuclear fission, fission reactor, nuclear reactor, reactor core, fissioning plasma]
+  phenomenon:thermal-emission: [thermal emission, blackbody radiation, incandescence, Planck radiation]
+output_terms: [light, illumination, radiant output, luminous]
+runs:
+  - id: search:2026-09-21-p-8200d7ab7e/oa-dm1
+    engine: openalex
+    form: route-driver-mechanism
+    key: driver-mechanism:1
+    query: '("Nuclear binding-energy difference" OR "radioactive decay" OR "fissile configuration" OR "nuclear fuel" OR "fissile fuel") AND ("Nuclear fission" OR "fission reactor" OR "nuclear reactor" OR "reactor core" OR "fissioning plasma")'
+  - id: search:2026-09-21-p-8200d7ab7e/oa-dm1-newest
+    engine: openalex
+    form: route-driver-mechanism
+    key: driver-mechanism:1
+    sort: newest
+    per_page: 50
+    query: '("Nuclear binding-energy difference" OR "radioactive decay" OR "fissile configuration" OR "nuclear fuel" OR "fissile fuel") AND ("Nuclear fission" OR "fission reactor" OR "nuclear reactor" OR "reactor core" OR "fissioning plasma")'
+  - id: search:2026-09-21-p-8200d7ab7e/oa-mp12
+    engine: openalex
+    form: route-mechanism-pair
+    key: mechanism-pair:1-2
+    query: '("Nuclear fission" OR "fission reactor" OR "nuclear reactor" OR "reactor core" OR "fissioning plasma") AND ("Thermal emission" OR "blackbody radiation" OR incandescence OR "Planck radiation")'
+  - id: search:2026-09-21-p-8200d7ab7e/oa-wc
+    engine: openalex
+    form: route-whole-chain
+    key: whole-chain
+    query: '("Nuclear binding-energy difference" OR "radioactive decay" OR "fissile configuration" OR "nuclear fuel" OR "fissile fuel") AND ("Nuclear fission" OR "fission reactor" OR "nuclear reactor" OR "reactor core" OR "fissioning plasma") AND ("Thermal emission" OR "blackbody radiation" OR incandescence OR "Planck radiation") AND (light OR illumination OR "radiant output" OR luminous)'
+  - id: search:2026-09-21-p-8200d7ab7e/oa-dp
+    engine: openalex
+    form: route-demonstration-precision
+    key: demonstration-precision
+    query: '("Nuclear binding-energy difference" OR "radioactive decay" OR "fissile configuration" OR "nuclear fuel" OR "fissile fuel") AND ("Nuclear fission" OR "fission reactor" OR "nuclear reactor" OR "reactor core" OR "fissioning plasma") AND ("Thermal emission" OR "blackbody radiation" OR incandescence OR "Planck radiation") AND (light OR illumination OR "radiant output" OR luminous) AND (experiment OR experimental OR measured OR device OR prototype)'
+  - id: search:2026-09-21-p-8200d7ab7e/s2-dm1
+    engine: semantic-scholar
+    form: route-driver-mechanism
+    key: driver-mechanism:1
+    query: Nuclear binding-energy difference radioactive decay fissile configuration nuclear fuel fissile fuel Nuclear fission fission reactor nuclear reactor reactor core fissioning plasma
+  - id: search:2026-09-21-p-8200d7ab7e/s2-mp12
+    engine: semantic-scholar
+    form: route-mechanism-pair
+    key: mechanism-pair:1-2
+    query: Nuclear fission fission reactor nuclear reactor reactor core fissioning plasma Thermal emission blackbody radiation incandescence Planck radiation
+  - id: search:2026-09-21-p-8200d7ab7e/s2-wc
+    engine: semantic-scholar
+    form: route-whole-chain
+    key: whole-chain
+    query: Nuclear binding-energy difference radioactive decay fissile configuration nuclear fuel fissile fuel Nuclear fission fission reactor nuclear reactor reactor core fissioning plasma Thermal emission blackbody radiation incandescence Planck radiation light illumination radiant output luminous
+  - id: search:2026-09-21-p-8200d7ab7e/s2-dp
+    engine: semantic-scholar
+    form: route-demonstration-precision
+    key: demonstration-precision
+    query: Nuclear binding-energy difference radioactive decay fissile configuration nuclear fuel fissile fuel Nuclear fission fission reactor nuclear reactor reactor core fissioning plasma Thermal emission blackbody radiation incandescence Planck radiation light illumination radiant output luminous experiment experimental measured device prototype

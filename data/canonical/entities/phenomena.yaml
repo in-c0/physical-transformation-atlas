@@ -366,7 +366,7 @@
 - id: phenomenon:magnetohydrodynamic-effect
   type: phenomenon
   name: Magnetohydrodynamic generation
-  aliases: [MHD effect, Faraday MHD generator]
+  aliases: [MHD effect, Faraday MHD generator, MHD generator, magnetohydrodynamic generator, MHD power generation]
   domain: plasma-physics
   year_first_reported: 1832
   condition_tags: [flow-required, field-magnetic-required]
@@ -576,6 +576,7 @@
 - id: phenomenon:nuclear-fission
   type: phenomenon
   name: Nuclear fission
+  aliases: [fission reactor, nuclear reactor, reactor core, fissioning plasma]
   domain: nuclear-physics
   year_first_reported: 1938
   condition_tags: [temp-high]

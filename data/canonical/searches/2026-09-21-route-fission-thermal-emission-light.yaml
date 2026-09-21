@@ -1,0 +1,129 @@
+# Loop-3 pass 29: the reviewed ROUTE search for nuclear binding-energy difference → nuclear fission → hot pressurised gas →
+# thermal emission → light (p-8200d7ab7e), the second reader's P9 candidate: has a fissioning gas or plasma ever been made to
+# radiate light as its product (the gas-core 'nuclear light bulb')? OpenAlex's five forms ran on 21/09; the mechanism-pair
+# list is reactor-material emissivity and instrumentation, not the composition; Semantic Scholar and Google Scholar are
+# outstanding and the field's own names for the concept are not yet frozen as composition terms.
+- id: search:2026-09-21-p-8200d7ab7e-partial
+  target:
+    kind: path
+    path: p-8200d7ab7e
+    claims:
+      - claim:binding-drives-fission
+      - claim:fission-produces-hot-gas
+      - claim:hot-gas-drives-thermal-emission
+      - claim:thermal-emission-converts-light
+  protocol_version: route-search-v1
+  started_at: 2026-09-21T11:17:00+10:00
+  completed_at: 2026-09-21T11:30:00+10:00
+  objective: exact-composition
+  inclusion_criteria:
+    - a physical experiment in which a fissioning gas or plasma, heated by its own fission, emits measured thermal radiation delivered as light (route-search-v1 §3, output Light)
+  exclusion_criteria:
+    - conceptual designs and system studies of gas-core reactors and nuclear light bulbs (proposal-only)
+    - radiant-heat tests with arc or RF plasmas standing in for the fissioning gas (source-variant)
+    - reactor-material emissivity, thermometry and instrumentation papers matched on 'thermal emission' (not hits)
+  runs:
+    - id: search:2026-09-21-p-8200d7ab7e/oa-dm1
+      engine: openalex
+      query_form: route-driver-mechanism
+      query: ("Nuclear binding-energy difference" OR "radioactive decay" OR "fissile configuration" OR "nuclear fuel" OR "fissile fuel") AND ("Nuclear fission" OR "fission reactor" OR "nuclear reactor" OR "reactor core" OR "fissioning plasma")
+      executed_at: 2026-09-21T01:18:09.989Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Nuclear+binding-energy+difference%22+OR+%22radioactive+decay%22+OR+%22fissile+configuration%22+OR+%22nuclear+fuel%22+OR+%22fissile+fuel%22%29+AND+%28%22Nuclear+fission%22+OR+%22fission+reactor%22+OR+%22nuclear+reactor%22+OR+%22reactor+core%22+OR+%22fissioning+plasma%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Nuclear binding-energy difference" OR "radioactive decay" OR "fissile configuration" OR "nuclear fuel" OR "fissile fuel") AND ("Nuclear fission" OR "fission reactor" OR "nuclear reactor" OR "reactor core" OR "fissioning plasma")
+        type: article|review|book-chapter
+      result_count_reported: 2909
+      records_retrieved: 100
+      records_screened: 100
+      records_read: 0
+      query_key: driver-mechanism:1
+    - id: search:2026-09-21-p-8200d7ab7e/oa-dm1-newest
+      engine: openalex
+      query_form: route-driver-mechanism
+      query: ("Nuclear binding-energy difference" OR "radioactive decay" OR "fissile configuration" OR "nuclear fuel" OR "fissile fuel") AND ("Nuclear fission" OR "fission reactor" OR "nuclear reactor" OR "reactor core" OR "fissioning plasma")
+      executed_at: 2026-09-21T01:18:14.983Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Nuclear+binding-energy+difference%22+OR+%22radioactive+decay%22+OR+%22fissile+configuration%22+OR+%22nuclear+fuel%22+OR+%22fissile+fuel%22%29+AND+%28%22Nuclear+fission%22+OR+%22fission+reactor%22+OR+%22nuclear+reactor%22+OR+%22reactor+core%22+OR+%22fissioning+plasma%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=50&sort=publication_date%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: publication_date:desc
+      filters:
+        title_and_abstract.search: ("Nuclear binding-energy difference" OR "radioactive decay" OR "fissile configuration" OR "nuclear fuel" OR "fissile fuel") AND ("Nuclear fission" OR "fission reactor" OR "nuclear reactor" OR "reactor core" OR "fissioning plasma")
+        type: article|review|book-chapter
+      result_count_reported: 2909
+      records_retrieved: 50
+      records_screened: 50
+      records_read: 0
+      query_key: driver-mechanism:1
+    - id: search:2026-09-21-p-8200d7ab7e/oa-mp12
+      engine: openalex
+      query_form: route-mechanism-pair
+      query: ("Nuclear fission" OR "fission reactor" OR "nuclear reactor" OR "reactor core" OR "fissioning plasma") AND ("Thermal emission" OR "blackbody radiation" OR incandescence OR "Planck radiation")
+      executed_at: 2026-09-21T01:18:19.781Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Nuclear+fission%22+OR+%22fission+reactor%22+OR+%22nuclear+reactor%22+OR+%22reactor+core%22+OR+%22fissioning+plasma%22%29+AND+%28%22Thermal+emission%22+OR+%22blackbody+radiation%22+OR+incandescence+OR+%22Planck+radiation%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Nuclear fission" OR "fission reactor" OR "nuclear reactor" OR "reactor core" OR "fissioning plasma") AND ("Thermal emission" OR "blackbody radiation" OR incandescence OR "Planck radiation")
+        type: article|review|book-chapter
+      result_count_reported: 15
+      records_retrieved: 15
+      records_screened: 15
+      records_read: 0
+      query_key: mechanism-pair:1-2
+    - id: search:2026-09-21-p-8200d7ab7e/oa-wc
+      engine: openalex
+      query_form: route-whole-chain
+      query: ("Nuclear binding-energy difference" OR "radioactive decay" OR "fissile configuration" OR "nuclear fuel" OR "fissile fuel") AND ("Nuclear fission" OR "fission reactor" OR "nuclear reactor" OR "reactor core" OR "fissioning plasma") AND ("Thermal emission" OR "blackbody radiation" OR incandescence OR "Planck radiation") AND (light OR illumination OR "radiant output" OR luminous)
+      executed_at: 2026-09-21T01:18:24.868Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Nuclear+binding-energy+difference%22+OR+%22radioactive+decay%22+OR+%22fissile+configuration%22+OR+%22nuclear+fuel%22+OR+%22fissile+fuel%22%29+AND+%28%22Nuclear+fission%22+OR+%22fission+reactor%22+OR+%22nuclear+reactor%22+OR+%22reactor+core%22+OR+%22fissioning+plasma%22%29+AND+%28%22Thermal+emission%22+OR+%22blackbody+radiation%22+OR+incandescence+OR+%22Planck+radiation%22%29+AND+%28light+OR+illumination+OR+%22radiant+output%22+OR+luminous%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Nuclear binding-energy difference" OR "radioactive decay" OR "fissile configuration" OR "nuclear fuel" OR "fissile fuel") AND ("Nuclear fission" OR "fission reactor" OR "nuclear reactor" OR "reactor core" OR "fissioning plasma") AND ("Thermal emission" OR "blackbody radiation" OR incandescence OR "Planck radiation") AND (light OR illumination OR "radiant output" OR luminous)
+        type: article|review|book-chapter
+      result_count_reported: 0
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      query_key: whole-chain
+    - id: search:2026-09-21-p-8200d7ab7e/oa-dp
+      engine: openalex
+      query_form: route-demonstration-precision
+      query: ("Nuclear binding-energy difference" OR "radioactive decay" OR "fissile configuration" OR "nuclear fuel" OR "fissile fuel") AND ("Nuclear fission" OR "fission reactor" OR "nuclear reactor" OR "reactor core" OR "fissioning plasma") AND ("Thermal emission" OR "blackbody radiation" OR incandescence OR "Planck radiation") AND (light OR illumination OR "radiant output" OR luminous) AND (experiment OR experimental OR measured OR device OR prototype)
+      executed_at: 2026-09-21T01:18:29.331Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Nuclear+binding-energy+difference%22+OR+%22radioactive+decay%22+OR+%22fissile+configuration%22+OR+%22nuclear+fuel%22+OR+%22fissile+fuel%22%29+AND+%28%22Nuclear+fission%22+OR+%22fission+reactor%22+OR+%22nuclear+reactor%22+OR+%22reactor+core%22+OR+%22fissioning+plasma%22%29+AND+%28%22Thermal+emission%22+OR+%22blackbody+radiation%22+OR+incandescence+OR+%22Planck+radiation%22%29+AND+%28light+OR+illumination+OR+%22radiant+output%22+OR+luminous%29+AND+%28experiment+OR+experimental+OR+measured+OR+device+OR+prototype%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Nuclear binding-energy difference" OR "radioactive decay" OR "fissile configuration" OR "nuclear fuel" OR "fissile fuel") AND ("Nuclear fission" OR "fission reactor" OR "nuclear reactor" OR "reactor core" OR "fissioning plasma") AND ("Thermal emission" OR "blackbody radiation" OR incandescence OR "Planck radiation") AND (light OR illumination OR "radiant output" OR luminous) AND (experiment OR experimental OR measured OR device OR prototype)
+        type: article|review|book-chapter
+      result_count_reported: 0
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      query_key: demonstration-precision
+  screening:
+    records_retrieved: 165
+    unique_records: 165
+    title_abstract_screened: 165
+    full_text_read: 0
+  hits: []
+  result: inconclusive
+  completeness: partial
+  reviewed_by: Ava Kim's loop-3 lane (Claude Opus 5); titles screened; the second reader's confirmation pending (pass 30)
+  reviewed_on: 2026-09-21
+  limitations:
+    - "OpenAlex only (21/09, 11:18 am Sydney): driver-mechanism 2,909 works reported, the first 100 by relevance and the first 50 newest screened at title level, the rest unscreened; mechanism-pair 15 — graphite emissivity, gasifier thermometry, TMI-2 thermal interactions and textbook chapters, none a fissioning gas radiating light; whole-chain 0; demonstration-precision 0; Semantic Scholar answers 429 keyless (owner exception e953) and Google Scholar a captcha — both mandatory for a negative, neither run"
+    - the recorded aliases cannot reach the concept's own literature (the 'nuclear light bulb' and gas-core reactor radiant-heat programmes); those names become composition terms once a recorded source uses them — the second reader is asked for one
+  conclusion: "Nothing found and, with these terms, nothing reachable: the composition's literature names itself 'nuclear light bulb' and 'gas-core reactor', neither of which is in the recorded term bundles, so this record establishes only that the decomposed forms do not reach it. Inconclusive; the composite-name form is the next step once a source for the term is recorded."
+  source_run_ids:
+    - search:2026-09-21-p-8200d7ab7e
+  follow_up:
+    canonical_claim_review: not-applicable
+    canonical_pathway_review: not-applicable

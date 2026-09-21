@@ -1,0 +1,206 @@
+# Loop-3 pass 29: the reviewed ROUTE search for nuclear binding-energy difference → nuclear fission → hot pressurised gas →
+# magnetohydrodynamic generation → electrical work (p-ccef4f212b), the second reader's P8 candidate: has a fission-heated gas ever
+# driven an MHD generator that delivered power? OpenAlex's five forms ran on 21/09; the lane read ten abstracts; Semantic
+# Scholar and Google Scholar are outstanding and the decisions await the second reader's confirmation (pass 30).
+- id: search:2026-09-21-p-ccef4f212b-partial
+  target:
+    kind: path
+    path: p-ccef4f212b
+    claims:
+      - claim:binding-drives-fission
+      - claim:fission-produces-hot-gas
+      - claim:hot-gas-drives-mhd
+      - claim:mhd-produces
+      - claim:charge-carriers-convert-electricity
+  protocol_version: route-search-v1
+  started_at: 2026-09-21T11:16:00+10:00
+  completed_at: 2026-09-21T11:30:00+10:00
+  objective: exact-composition
+  inclusion_criteria:
+    - a physical experiment or device in which fission heat (a reactor or a fissioning gas) produces a hot conducting gas or plasma that flows through a magnetohydrodynamic channel and delivers electrical work to a load (route-search-v1 §3, output Electrical work)
+  exclusion_criteria:
+    - conceptual designs, system studies and numerical models of nuclear-MHD plants (proposal-only / simulation-only)
+    - measurements of fission-fragment or neutron ionization of a gas with no MHD channel (constituent-only)
+    - MHD generators heated by combustion, shock tubes or arcs (source-variant), and the boundary-layer / nanofluid 'MHD' literature matched on the phrase 'MHD effect' (not hits)
+  runs:
+    - id: search:2026-09-21-p-ccef4f212b/oa-dm1
+      engine: openalex
+      query_form: route-driver-mechanism
+      query: ("Nuclear binding-energy difference" OR "radioactive decay" OR "fissile configuration" OR "nuclear fuel" OR "fissile fuel") AND ("Nuclear fission" OR "fission reactor" OR "nuclear reactor" OR "reactor core" OR "fissioning plasma")
+      executed_at: 2026-09-21T01:17:43.943Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Nuclear+binding-energy+difference%22+OR+%22radioactive+decay%22+OR+%22fissile+configuration%22+OR+%22nuclear+fuel%22+OR+%22fissile+fuel%22%29+AND+%28%22Nuclear+fission%22+OR+%22fission+reactor%22+OR+%22nuclear+reactor%22+OR+%22reactor+core%22+OR+%22fissioning+plasma%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Nuclear binding-energy difference" OR "radioactive decay" OR "fissile configuration" OR "nuclear fuel" OR "fissile fuel") AND ("Nuclear fission" OR "fission reactor" OR "nuclear reactor" OR "reactor core" OR "fissioning plasma")
+        type: article|review|book-chapter
+      result_count_reported: 2909
+      records_retrieved: 100
+      records_screened: 100
+      records_read: 1
+      query_key: driver-mechanism:1
+    - id: search:2026-09-21-p-ccef4f212b/oa-dm1-newest
+      engine: openalex
+      query_form: route-driver-mechanism
+      query: ("Nuclear binding-energy difference" OR "radioactive decay" OR "fissile configuration" OR "nuclear fuel" OR "fissile fuel") AND ("Nuclear fission" OR "fission reactor" OR "nuclear reactor" OR "reactor core" OR "fissioning plasma")
+      executed_at: 2026-09-21T01:17:48.823Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Nuclear+binding-energy+difference%22+OR+%22radioactive+decay%22+OR+%22fissile+configuration%22+OR+%22nuclear+fuel%22+OR+%22fissile+fuel%22%29+AND+%28%22Nuclear+fission%22+OR+%22fission+reactor%22+OR+%22nuclear+reactor%22+OR+%22reactor+core%22+OR+%22fissioning+plasma%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=50&sort=publication_date%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: publication_date:desc
+      filters:
+        title_and_abstract.search: ("Nuclear binding-energy difference" OR "radioactive decay" OR "fissile configuration" OR "nuclear fuel" OR "fissile fuel") AND ("Nuclear fission" OR "fission reactor" OR "nuclear reactor" OR "reactor core" OR "fissioning plasma")
+        type: article|review|book-chapter
+      result_count_reported: 2909
+      records_retrieved: 50
+      records_screened: 50
+      records_read: 0
+      query_key: driver-mechanism:1
+    - id: search:2026-09-21-p-ccef4f212b/oa-mp12
+      engine: openalex
+      query_form: route-mechanism-pair
+      query: ("Nuclear fission" OR "fission reactor" OR "nuclear reactor" OR "reactor core" OR "fissioning plasma") AND ("Magnetohydrodynamic generation" OR "MHD effect" OR "Faraday MHD generator" OR "MHD generator" OR "magnetohydrodynamic generator" OR "MHD power generation")
+      executed_at: 2026-09-21T01:17:54.118Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Nuclear+fission%22+OR+%22fission+reactor%22+OR+%22nuclear+reactor%22+OR+%22reactor+core%22+OR+%22fissioning+plasma%22%29+AND+%28%22Magnetohydrodynamic+generation%22+OR+%22MHD+effect%22+OR+%22Faraday+MHD+generator%22+OR+%22MHD+generator%22+OR+%22magnetohydrodynamic+generator%22+OR+%22MHD+power+generation%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Nuclear fission" OR "fission reactor" OR "nuclear reactor" OR "reactor core" OR "fissioning plasma") AND ("Magnetohydrodynamic generation" OR "MHD effect" OR "Faraday MHD generator" OR "MHD generator" OR "magnetohydrodynamic generator" OR "MHD power generation")
+        type: article|review|book-chapter
+      result_count_reported: 65
+      records_retrieved: 65
+      records_screened: 65
+      records_read: 8
+      query_key: mechanism-pair:1-2
+    - id: search:2026-09-21-p-ccef4f212b/oa-wc
+      engine: openalex
+      query_form: route-whole-chain
+      query: ("Nuclear binding-energy difference" OR "radioactive decay" OR "fissile configuration" OR "nuclear fuel" OR "fissile fuel") AND ("Nuclear fission" OR "fission reactor" OR "nuclear reactor" OR "reactor core" OR "fissioning plasma") AND ("Magnetohydrodynamic generation" OR "MHD effect" OR "Faraday MHD generator" OR "MHD generator" OR "magnetohydrodynamic generator" OR "MHD power generation") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power")
+      executed_at: 2026-09-21T01:17:59.392Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Nuclear+binding-energy+difference%22+OR+%22radioactive+decay%22+OR+%22fissile+configuration%22+OR+%22nuclear+fuel%22+OR+%22fissile+fuel%22%29+AND+%28%22Nuclear+fission%22+OR+%22fission+reactor%22+OR+%22nuclear+reactor%22+OR+%22reactor+core%22+OR+%22fissioning+plasma%22%29+AND+%28%22Magnetohydrodynamic+generation%22+OR+%22MHD+effect%22+OR+%22Faraday+MHD+generator%22+OR+%22MHD+generator%22+OR+%22magnetohydrodynamic+generator%22+OR+%22MHD+power+generation%22%29+AND+%28%22Electrical+work%22+OR+electricity+OR+%22electrical+output%22+OR+%22DC+power%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Nuclear binding-energy difference" OR "radioactive decay" OR "fissile configuration" OR "nuclear fuel" OR "fissile fuel") AND ("Nuclear fission" OR "fission reactor" OR "nuclear reactor" OR "reactor core" OR "fissioning plasma") AND ("Magnetohydrodynamic generation" OR "MHD effect" OR "Faraday MHD generator" OR "MHD generator" OR "magnetohydrodynamic generator" OR "MHD power generation") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power")
+        type: article|review|book-chapter
+      result_count_reported: 1
+      records_retrieved: 1
+      records_screened: 1
+      records_read: 1
+      query_key: whole-chain
+    - id: search:2026-09-21-p-ccef4f212b/oa-dp
+      engine: openalex
+      query_form: route-demonstration-precision
+      query: ("Nuclear binding-energy difference" OR "radioactive decay" OR "fissile configuration" OR "nuclear fuel" OR "fissile fuel") AND ("Nuclear fission" OR "fission reactor" OR "nuclear reactor" OR "reactor core" OR "fissioning plasma") AND ("Magnetohydrodynamic generation" OR "MHD effect" OR "Faraday MHD generator" OR "MHD generator" OR "magnetohydrodynamic generator" OR "MHD power generation") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power") AND (experiment OR experimental OR measured OR device OR prototype)
+      executed_at: 2026-09-21T01:18:04.536Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Nuclear+binding-energy+difference%22+OR+%22radioactive+decay%22+OR+%22fissile+configuration%22+OR+%22nuclear+fuel%22+OR+%22fissile+fuel%22%29+AND+%28%22Nuclear+fission%22+OR+%22fission+reactor%22+OR+%22nuclear+reactor%22+OR+%22reactor+core%22+OR+%22fissioning+plasma%22%29+AND+%28%22Magnetohydrodynamic+generation%22+OR+%22MHD+effect%22+OR+%22Faraday+MHD+generator%22+OR+%22MHD+generator%22+OR+%22magnetohydrodynamic+generator%22+OR+%22MHD+power+generation%22%29+AND+%28%22Electrical+work%22+OR+electricity+OR+%22electrical+output%22+OR+%22DC+power%22%29+AND+%28experiment+OR+experimental+OR+measured+OR+device+OR+prototype%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Nuclear binding-energy difference" OR "radioactive decay" OR "fissile configuration" OR "nuclear fuel" OR "fissile fuel") AND ("Nuclear fission" OR "fission reactor" OR "nuclear reactor" OR "reactor core" OR "fissioning plasma") AND ("Magnetohydrodynamic generation" OR "MHD effect" OR "Faraday MHD generator" OR "MHD generator" OR "magnetohydrodynamic generator" OR "MHD power generation") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power") AND (experiment OR experimental OR measured OR device OR prototype)
+        type: article|review|book-chapter
+      result_count_reported: 0
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      query_key: demonstration-precision
+  screening:
+    records_retrieved: 214
+    unique_records: 214
+    title_abstract_screened: 214
+    full_text_read: 0
+  hits:
+    - title: "Ultra-thin 242mAm fuel elements in nuclear reactors"
+      year: 2000
+      doi: 10.1016/s0168-9002(00)00506-4
+      found_by:
+        - search:2026-09-21-p-ccef4f212b/oa-wc
+      access: metadata-only
+      decision: insufficient-information
+      reason: "Ronen & Shwageraus 2000 (Nucl. Instrum. Methods A): the whole-chain form's only hit — ultra-thin americium-242m fuel elements whose fission fragments escape the fuel, a basis for fission-fragment-heated gas concepts; no abstract on record, the MHD connection unverified."
+    - title: "Ultrahigh temperature vapor-core reactor - Magnetohydrodynamic system for space nuclear electric power"
+      year: 1993
+      doi: 10.2514/3.11490
+      found_by:
+        - search:2026-09-21-p-ccef4f212b/oa-mp12
+      access: abstract
+      decision: proposal-only
+      reason: "Maya, Anghaie, Diaz & Dugan 1993 (J. Propulsion and Power): the conceptual design of a UF₄-fuelled gas-core cavity reactor at 4000 K and 40 atm whose KF-mixed exhaust drives a disk MHD channel below 2300 K, fission-fragment ionization raising the conductivity, 20 % overall efficiency, ~1 kg/kWe at 200 MWe — a design, no device."
+    - title: "Flow of a fissioning gas in an outflow disk magnetohydrodynamic generator"
+      year: 1995
+      doi: 10.2514/3.23837
+      found_by:
+        - search:2026-09-21-p-ccef4f212b/oa-mp12
+      access: abstract
+      decision: simulation-only
+      reason: "Welch, Dugan & Lear 1995 (J. Propulsion and Power): two-dimensional thin-layer Navier–Stokes + MHD + fission-source modelling of a weakly ionized fissioning gas in an outflow disk generator — numerical, no experiment."
+    - title: "Electrical Conductivity of UF4-K/KF Gas Partially Ionized by Fission Fragments"
+      year: 1992
+      doi: 10.13182/nse92-a23881
+      found_by:
+        - search:2026-09-21-p-ccef4f212b/oa-mp12
+      access: abstract
+      decision: simulation-only
+      reason: "Watanabe, Appelbaum & Maya 1992 (Nucl. Sci. Eng.): a chemical-reaction and electron-energy-balance model of the conductivity of a UF₄–K/KF mixture ionized by fission fragments at 2500 K and 1 atm — the constituent step modelled, no measurement, no channel."
+    - title: "STUDY OF NUCLEAR SEEDED MHD PLASMAS."
+      year: 1966
+      found_by:
+        - search:2026-09-21-p-ccef4f212b/oa-mp12
+      access: abstract
+      decision: constituent-only
+      reason: "Ellis & Sprague 1966 (DTIC report): analytic and numerical ionization-column models plus measurements of the buildup, equilibrium and decay of a neutron-induced helium (He-3/CO₂) plasma, with an engineering survey of reactor–MHD parameters — the fission → ionized gas step measured, no MHD generator run."
+    - title: "Multi-MW Closed Cycle MHD Nuclear Space Power Via Nonequilibrium He/Xe Working Plasma"
+      year: 2011
+      found_by:
+        - search:2026-09-21-p-ccef4f212b/oa-mp12
+      access: abstract
+      decision: proposal-only
+      reason: "Litchford & Harada 2011 (NASA report): a systems analysis of a 1800 K fission reactor closed-cycle coupled to an MHD generator with a nonequilibrium He/Xe frozen inert plasma — 55.2 % plant efficiency projected, 2–3 kg/kWe; a study with a three-phase R&D plan, no device."
+    - title: "Nuclear Space Power Systems Using Magnetohydrodynamic Vortices"
+      year: 1962
+      doi: 10.2514/8.6126
+      found_by:
+        - search:2026-09-21-p-ccef4f212b/oa-mp12
+      access: abstract
+      decision: proposal-only
+      reason: "Lewellen & Grabowsky 1962 (ARS Journal): a vortex MHD generator proposed for a nuclear-reactor Rankine space power system, compared with linear channels and turboalternators — a proposal."
+    - title: "DIRECT CONVERSION OF NUCLEAR FISSION ENERGY INTO ELECTRICAL ENERGY"
+      year: 1962
+      found_by:
+        - search:2026-09-21-p-ccef4f212b/oa-mp12
+      access: abstract
+      decision: review-only
+      reason: "Beckurts & Schretzmann 1962 (OSTI): a survey of direct conversion — thermoelements, thermionic converters and MHD generators in which fission energy heats a gas expanded in a magnetic field — the state of the art in 1962, no experiment of the composition."
+    - title: "MHD POWER GENERATION WITH A NUCLEAR REACTOR AS THE HEAT SOURCE."
+      year: 1970
+      found_by:
+        - search:2026-09-21-p-ccef4f212b/oa-mp12
+      access: metadata-only
+      decision: insufficient-information
+      reason: "Hattori, Noguchi & Tanaka 1970 (OSTI, no abstract): by title a study of reactor-heated MHD generation; whether anything ran is unverified."
+    - title: "Open-cycle multi-megawatt MHD space nuclear power facility"
+      year: 2008
+      doi: 10.1007/s10512-008-9082-1
+      found_by:
+        - search:2026-09-21-p-ccef4f212b/oa-mp12
+      access: metadata-only
+      decision: insufficient-information
+      reason: "Pavshuk & Panchenko 2008 (Atomic Energy): by title a Russian open-cycle nuclear-MHD space power facility; no abstract on record — a design study or a test stand, to be read."
+  result: inconclusive
+  completeness: partial
+  reviewed_by: Ava Kim's loop-3 lane (Claude Opus 5); titles screened and ten abstracts read on OpenAlex; the second reader's confirmation pending (pass 30)
+  reviewed_on: 2026-09-21
+  limitations:
+    - "OpenAlex only (21/09, 11:17 am Sydney): driver-mechanism 2,909 works reported (the reactor literature), the first 100 by relevance and the first 50 newest screened at title level, the rest unscreened; mechanism-pair 65 (the nuclear-MHD concept literature of 1962–2011 among boundary-layer and nanofluid papers matched on 'MHD effect'); whole-chain 1; demonstration-precision 0; Semantic Scholar answers 429 keyless (owner exception e953) and Google Scholar a captcha — both mandatory for a negative, neither run"
+    - no composition term is frozen; the field's names for the composition (nuclear MHD, gas-core reactor MHD, fission-fragment-ionized MHD) may qualify once a recorded source uses them — the second reader is asked
+    - two hits without abstracts (Hattori 1970; Pavshuk & Panchenko 2008) are insufficient-information until read
+  conclusion: "No demonstration found: the fission → MHD literature OpenAlex returns is conceptual — gas-core and vapor-core reactor designs feeding disk or vortex MHD channels (1962–1993), closed-cycle nonequilibrium-plasma system studies (2011), numerical fissioning-gas flows (1995) and conductivity models (1992) — with one measured constituent (a neutron-induced helium plasma, 1966) and no report of a fission-heated gas delivering MHD power to a load; two Japanese and Russian reports remain to be read. Inconclusive as a route search until the Scholar and Semantic Scholar runs exist."
+  source_run_ids:
+    - search:2026-09-21-p-ccef4f212b
+  follow_up:
+    canonical_claim_review: not-applicable
+    canonical_pathway_review: not-applicable

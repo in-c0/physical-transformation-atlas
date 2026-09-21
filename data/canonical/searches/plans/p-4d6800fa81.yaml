@@ -1,0 +1,69 @@
+# route-search-v1 query plan — p-4d6800fa81
+# Mechanical vibration → Elastic deformation → Mechanical stress or strain → Elastocaloric effect → Cooling
+# D = Mechanical vibration; M_1 = Elastic deformation; M_2 = Elastocaloric effect; O = Cooling (k = 2).
+# Written in loop-3 pass 29 (the reviewer's P7 candidate: has ambient or base vibration, rather than a designed actuator,
+# ever driven an elastocaloric refrigerator?) from the recorded names and aliases, after adding vibration-driven and
+# base excitation to the vibration disequilibrium. The reviewer's first query is the driver-mechanism form; its
+# high-information precision query is the extra run oa-dp-r. The route carries the proposed pathway
+# vibration-elastocaloric-cooler (Kumar 2019, a finite-element proposal). No composition term is frozen.
+protocol_version: route-search-v1
+route: p-4d6800fa81
+claims: [claim:vibration-drives-elastic, claim:elastic-produces-stress, claim:elastocaloric-drives, claim:elastocaloric-converts-cooling]
+driver_terms: [mechanical vibration, oscillation, ambient vibration, kinetic motion, vibration-driven, base excitation]
+phenomenon_terms:
+  phenomenon:elastic-deformation: [elastic deformation, Hooke's law response, strain energy storage]
+  phenomenon:elastocaloric-effect: [elastocaloric effect, mechanocaloric effect, stress-induced caloric effect, elastocaloric cooling, elastocaloric, mechanocaloric]
+output_terms: [cooling, refrigeration, heat pumping, temperature lift]
+runs:
+  - id: search:2026-09-21-p-4d6800fa81/oa-dm1
+    engine: openalex
+    form: route-driver-mechanism
+    key: driver-mechanism:1
+    query: '("Mechanical vibration" OR oscillation OR "ambient vibration" OR "kinetic motion" OR "vibration-driven" OR "base excitation") AND ("Elastic deformation" OR "Hooke''s law response" OR "strain energy storage")'
+  - id: search:2026-09-21-p-4d6800fa81/oa-dm1-newest
+    engine: openalex
+    form: route-driver-mechanism
+    key: driver-mechanism:1
+    sort: newest
+    per_page: 50
+    query: '("Mechanical vibration" OR oscillation OR "ambient vibration" OR "kinetic motion" OR "vibration-driven" OR "base excitation") AND ("Elastic deformation" OR "Hooke''s law response" OR "strain energy storage")'
+  - id: search:2026-09-21-p-4d6800fa81/oa-mp12
+    engine: openalex
+    form: route-mechanism-pair
+    key: mechanism-pair:1-2
+    query: '("Elastic deformation" OR "Hooke''s law response" OR "strain energy storage") AND ("Elastocaloric effect" OR "mechanocaloric effect" OR "stress-induced caloric effect" OR "elastocaloric cooling" OR elastocaloric OR mechanocaloric)'
+  - id: search:2026-09-21-p-4d6800fa81/oa-wc
+    engine: openalex
+    form: route-whole-chain
+    key: whole-chain
+    query: '("Mechanical vibration" OR oscillation OR "ambient vibration" OR "kinetic motion" OR "vibration-driven" OR "base excitation") AND ("Elastic deformation" OR "Hooke''s law response" OR "strain energy storage") AND ("Elastocaloric effect" OR "mechanocaloric effect" OR "stress-induced caloric effect" OR "elastocaloric cooling" OR elastocaloric OR mechanocaloric) AND (cooling OR refrigeration OR "heat pumping" OR "temperature lift")'
+  - id: search:2026-09-21-p-4d6800fa81/oa-dp
+    engine: openalex
+    form: route-demonstration-precision
+    key: demonstration-precision
+    query: '("Mechanical vibration" OR oscillation OR "ambient vibration" OR "kinetic motion" OR "vibration-driven" OR "base excitation") AND ("Elastic deformation" OR "Hooke''s law response" OR "strain energy storage") AND ("Elastocaloric effect" OR "mechanocaloric effect" OR "stress-induced caloric effect" OR "elastocaloric cooling" OR elastocaloric OR mechanocaloric) AND (cooling OR refrigeration OR "heat pumping" OR "temperature lift") AND (experiment OR experimental OR measured OR device OR prototype)'
+  - id: search:2026-09-21-p-4d6800fa81/oa-dp-r
+    engine: openalex
+    form: route-demonstration-precision
+    key: demonstration-precision
+    query: '("mechanical vibration" OR "ambient vibration" OR "vibration-driven" OR "base excitation") AND (elastocaloric OR mechanocaloric OR "stress-induced caloric effect") AND (cooling OR refrigeration) AND (experiment OR experimental OR measured OR prototype OR device)'
+  - id: search:2026-09-21-p-4d6800fa81/s2-dm1
+    engine: semantic-scholar
+    form: route-driver-mechanism
+    key: driver-mechanism:1
+    query: Mechanical vibration oscillation ambient vibration kinetic motion vibration-driven base excitation Elastic deformation Hooke's law response strain energy storage
+  - id: search:2026-09-21-p-4d6800fa81/s2-mp12
+    engine: semantic-scholar
+    form: route-mechanism-pair
+    key: mechanism-pair:1-2
+    query: Elastic deformation Hooke's law response strain energy storage Elastocaloric effect mechanocaloric effect stress-induced caloric effect elastocaloric cooling elastocaloric mechanocaloric
+  - id: search:2026-09-21-p-4d6800fa81/s2-wc
+    engine: semantic-scholar
+    form: route-whole-chain
+    key: whole-chain
+    query: Mechanical vibration oscillation ambient vibration kinetic motion vibration-driven base excitation Elastic deformation Hooke's law response strain energy storage Elastocaloric effect mechanocaloric effect stress-induced caloric effect elastocaloric cooling elastocaloric mechanocaloric cooling refrigeration heat pumping temperature lift
+  - id: search:2026-09-21-p-4d6800fa81/s2-dp
+    engine: semantic-scholar
+    form: route-demonstration-precision
+    key: demonstration-precision
+    query: Mechanical vibration oscillation ambient vibration kinetic motion vibration-driven base excitation Elastic deformation Hooke's law response strain energy storage Elastocaloric effect mechanocaloric effect stress-induced caloric effect elastocaloric cooling elastocaloric mechanocaloric cooling refrigeration heat pumping temperature lift experiment experimental measured device prototype
