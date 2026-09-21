@@ -52,3 +52,25 @@ completeness; obligations recomputed rather than trusted.
 
 Result: revision 7719df505447 — 353 entities · 524 claims · 235 sources · 93 pathways (92 + 1 variant) · 2 systems ·
 771 routes · 86 demonstrated · 92/92 · axe clean · exports valid · seven audit gates consistent · live.
+
+## Reviewed (sent 11:45 pm; ChatGPT High, ~7 min; PASS — 29 findings)
+
+1. Accepted (findings 1–5): the atlas can now mechanically explain why each search is partial; the
+   completed empty S2 run is categorically different from the 42 blocked attempts; a captcha page's count
+   never becomes a result count; a new compact literal is a new attempt, not a continuation; the
+   recomputed depth shortfalls are what the pass was for; the pass-49 audit stays a standing regression
+   with "a partial with no outstanding obligation is itself an inconsistency".
+2. Pass 50 ruled (findings 6–29): BOTH surfaces — the immutable generated closure snapshot and a live
+   /api/residuals.json — from exactly one residual inventory built by the audit, rendered into the report
+   and served unchanged (a discrepancy fails the suite); an API addition outside v0.5.0, not a version
+   bump; deterministic residual ids and a small kind vocabulary derived from actual findings; closure
+   conditions actionable, never pretend-Boolean; operational details (keys, owner exceptions, captcha
+   UI) reduced to the scientific limitation they create, exception ids in the report only; a small
+   /methods section (statuses describe recorded evidence, not nature; uncertainty first-class; the live
+   list enumerates outstanding obligations); every invariant regenerated, cross-audit checks, a targeted
+   public-wording lint; each of the ten frontier candidates a residual of its own, plus p-b820ec885f;
+   reported claims derived from evidence status; source-read exceptions only where they constrain a
+   current statement; Planck deferred unless a current record depends on it; the report ends with
+   CURRENT RESIDUALS and DEFERRED WORK; nothing cleared to improve the numbers.
+
+## Closed (12:05 am; nothing to change — the rulings are pass 50's specification)

@@ -19,6 +19,11 @@ export function atlas(): AtlasIndex {
   return cached;
 }
 
+/** Pass 50: the residual collection tools/audit-closure.mjs writes beside the graph (served as /api/residuals.json). */
+export function residuals(): { meta: { atlas_revision: string; residual_count: number; counts_by_kind: Record<string, number> }; residuals: unknown[] } {
+  return JSON.parse(readFileSync(join(process.cwd(), "generated", "residuals.json"), "utf8"));
+}
+
 /** The matrix payload the home page and /matrix embed: axes, cells, and the names the probe needs. */
 export function matrixPayload() {
   const a = atlas();

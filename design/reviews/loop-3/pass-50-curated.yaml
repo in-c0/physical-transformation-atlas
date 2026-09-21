@@ -1,0 +1,40 @@
+# Loop-3 pass 50: the hand-written parts of the closure audit (the reviewer's pass-49 findings 10–14, 21–24, 27). Everything a
+# machine can derive — the incomplete searches and their obligations, the reported and theory-only claims, the unread hits, the
+# observed pathway — is derived by tools/audit-closure.mjs, never listed here. This file holds only: the measurement residuals that
+# need human words (each with a `verify` predicate the tool checks against the current record, so a resolved item fails the gate
+# rather than lingering), closure notes for derived residuals whose path to closure is known, the maintainer map from unread
+# hits to owner exceptions (report only, never served), and the deferred-work inventory (report only — future work that is not
+# needed to interpret a current record).
+measurement:
+  - pathway: pathway:otec-plant
+    quantity: actual system thermal efficiency
+    kind: measurement-boundary-unresolved
+    statement: "Lu et al. 2024's actual thermal efficiency of 2.46 % is recorded as the platform's reported system figure without knowing whether its numerator is the grid-connected electrical power (47.4 kW) or the net cycle work of the paper's Equation 9."
+    why: "The conclusion reports both figures side by side without saying which power the efficiency uses; the design point (2.63 %) demonstrably uses net cycle work, so the actual figure may be a route figure or an organic-Rankine-stage figure."
+    closure_condition: "Establish from the primary source (or its authors) whether the 2.46 % uses grid-connected electrical output or Equation-9 net cycle work, then restage or keep the datum with that basis."
+    verify: { basis_contains: "unresolved" }
+  - pathway: pathway:shape-memory-heat-engine
+    quantity: thermal-to-electrical efficiency
+    kind: measurement-definition-unresolved
+    statement: "The NiTi shape-memory heat engine's 1.5 % thermal-to-electrical efficiency (10.5 % of Carnot at the reported point) is an unstructured datum: the paper's definition of the heat input and its temperatures have not been read, so the figure carries no metric, no numeric value and no boundary."
+    why: "Pass 7 recorded the figure from the paper's summary; passes 39 and 45 typed every other efficiency datum but could not classify this one without the heat-input definition."
+    closure_condition: "Read the primary's heat-input definition and operating temperatures; then record the datum as conversion-efficiency (or device-stage-efficiency) with its basis, and type its Carnot-relative clause."
+    verify: { unstructured: true }
+claim_closure_notes:
+  claim:temperature-drives-thermopolarization: "A full read of Trepakov, Nurieva & Tagantsev 1989 (Ferroelectrics 94, 377–381; paywalled) deciding whether a load was driven would move the claim from reported toward demonstrated."
+  claim:thermopolarization-produces-charge: "The same read as claim:temperature-drives-thermopolarization."
+  claim:pec-benchmarked-realistic-high-performance: "A qualifying review or book, or an independent analysis, that states Fountaine 2016's Real1 maxima (15.1 % single junction at 2.05 eV; 28.3 % dual at 1.59 / 0.92 eV) — Rozzi 2020 does not."
+  claim:pec-benchmarked-realistic-earth-abundant: "A qualifying review or book, or an independent analysis, that states Fountaine 2016's Real2 maxima (5.4 % at 2.53 eV; 16.2 % at 1.93 / 1.38 eV) — Rozzi 2020 does not."
+# Maintainer map (closure report only): unread hits and the owner exceptions that hold their full texts.
+hit_exceptions:
+  "10.1016/j.desal.2024.117485": "2026-09-20-physical-transformation-atlas-literature-search-ebed"
+  "10.1002/adfm.75910": "2026-09-21-physical-transformation-atlas-literature-search-ea1c"
+deferred_work:
+  - "Planck visible-band fraction (constraint:planck-visible-band-fraction): a formula bound recorded on 31 routes and never evaluable — no datum on any of them states an emitter temperature with a visible-light output metric; the spectral-fraction computation is written only when such a datum arrives (the reviewer's ruling, passes 44–49)."
+  - "Backhaus & Swift 2000 (J. Acoust. Soc. Am. 107, 3148; paywalled — maintainers: exception dc26): the temperatures of the thermoacoustic-Stirling engine's 710 W / 30 % operating point would add a datum with T_h and T_c to the thermoacoustic route; nothing recorded depends on it today."
+  - "Forty demonstrated pathways carry no route conversion-efficiency datum, so their thermodynamic-bound check reads unresolved (a hard bound recorded, nothing to compare); each needs a primary read on the route's boundaries, under the pass-45 rule."
+  - "Semantic Scholar with a key and Google Scholar without a bot check would let the ten default-frontier records complete route-search-v1 (the key is an owner decision — maintainers: exception e953; an OpenAlex key, exception 6a0d, is convenience only: the OpenAlex forms are complete)."
+  - "A route-search-v2 with a deliberate replacement-engine rule and a migration policy, if a mandatory engine stays unavailable (the reviewer's pass-48 ruling: never a dated exception inside v1)."
+  - "A pathway index page nesting variants beneath their parents (the reviewer's pass-46 finding 8; the variant pages exist since pass 47)."
+  - "The composite-name form for routes whose literature may name the composition (thermocapillary generator; vibration-driven elastocaloric cooler): runnable only once a source-backed term is found — never a concatenation."
+  - "Restoring the `was` values removed with the legacy performance keys from open primaries as typed measurements, where a primary can be read (pass-35 backlog)."

@@ -1,0 +1,772 @@
+{
+  "meta": {
+    "dataset": "physical-transformation-atlas",
+    "endpoint": "residuals",
+    "kind": "projection",
+    "note": "Every open uncertainty in a current atlas record — derived from the compiled atlas and its audits by tools/audit-closure.mjs; a live view that may shrink, grow or change after later work, outside the v0.5.0 export contract; the immutable closure snapshot is design/reviews/loop-3/pass-50-closure.md.",
+    "atlas_revision": "2c5212e271e9",
+    "generated_at": "2026-09-21T14:03:07.926Z",
+    "residual_count": 37,
+    "counts_by_kind": {
+      "evidence-not-observed": 6,
+      "evidence-single-source": 6,
+      "measurement-boundary-unresolved": 1,
+      "measurement-definition-unresolved": 1,
+      "pathway-observed-not-delivered": 1,
+      "search-incomplete": 13,
+      "source-read-pending": 9
+    },
+    "counts": {
+      "entities": 353,
+      "phenomena": 100,
+      "disequilibria": 25,
+      "couplings": 40,
+      "transducers": 67,
+      "claims": 524,
+      "sources": 235,
+      "pathways_named": 93,
+      "systems_named": 2,
+      "paths_examined": 771,
+      "paths_demonstrated": 86,
+      "paths_no_demonstration_found": 0,
+      "paths_not_searched": 674,
+      "matrix_cells": 1000,
+      "matrix_cells_empty": 932,
+      "matrix_cells_unsearched": 804,
+      "coverage_mean": 0.23094688221709006,
+      "editorial_scope_fill": 0.23094688221709006,
+      "matrix_cells_without_search_record": 995,
+      "matrix_cells_with_direct_relation": 68,
+      "matrix_cells_status_not_searched": 804,
+      "routes_enumerated": 771,
+      "routes_with_recorded_composition_demonstration": 86,
+      "matrix_cells_without_direct_relation": 932,
+      "searches_reviewed": 13,
+      "searches_index_only": 16,
+      "claims_by_status": {
+        "established": 384,
+        "demonstrated": 111,
+        "replicated": 17,
+        "reported": 6,
+        "theoretically-predicted": 5,
+        "hypothesised": 1
+      },
+      "claims_by_predicate": {
+        "drives": 128,
+        "produces": 110,
+        "member_of": 93,
+        "implemented_by": 85,
+        "bounded_by": 45,
+        "converts_into": 19,
+        "observed_in": 19,
+        "governed_by": 17,
+        "couples_to": 4,
+        "requires": 3,
+        "dissipates_to": 1
+      },
+      "paths_by_search_status": {
+        "not-searched": 674,
+        "demonstrated": 86,
+        "search-incomplete": 11
+      },
+      "paths_by_frontier_class": {
+        "derived": 309,
+        "candidate": 185,
+        "same-form": 99,
+        "demonstrated": 86,
+        "weak": 47,
+        "incomplete-handoff": 45
+      },
+      "paths_by_structural_kind": {
+        "source-preparation": 336,
+        "energy-backtracking": 170,
+        "composition": 87,
+        "atomic": 70,
+        "representation-equivalent": 54,
+        "representation-dominated": 52,
+        "known-device-likely": 2
+      },
+      "matrix_cells_by_status": {
+        "not-searched": 804,
+        "forbidden": 78,
+        "established": 61,
+        "candidate": 49,
+        "demonstrated": 6,
+        "search-incomplete": 1,
+        "theoretical": 1
+      },
+      "entities_by_type": {
+        "phenomenon": 100,
+        "transducer": 67,
+        "quantity": 42,
+        "coupling": 40,
+        "disequilibrium": 25,
+        "carrier": 24,
+        "constraint": 23,
+        "material": 15,
+        "output": 6,
+        "system": 6,
+        "interaction": 5
+      }
+    },
+    "kinds": {
+      "search-incomplete": "a reviewed literature search whose protocol obligations are not all met: the atlas may not say that no demonstration was found",
+      "source-read-pending": "a search hit that could not be decided for want of its text",
+      "evidence-single-source": "a claim one paper reports, with no independent confirmation recorded",
+      "evidence-not-observed": "a claim predicted by theory or proposed, not yet observed",
+      "pathway-observed-not-delivered": "a composition traversed in one experiment whose output was not delivered to a load",
+      "measurement-boundary-unresolved": "a recorded figure whose numerator's boundary the source does not state",
+      "measurement-definition-unresolved": "a recorded figure whose defining quantities have not been read from the source"
+    },
+    "snapshot": "https://github.com/in-c0/physical-transformation-atlas/blob/main/design/reviews/loop-3/pass-50-closure.md"
+  },
+  "residuals": [
+    {
+      "id": "residual:evidence-not-observed:elastocaloric-implemented-vibration-cooler",
+      "kind": "evidence-not-observed",
+      "record_type": "claim",
+      "record_id": "claim:elastocaloric-implemented-vibration-cooler",
+      "statement": "Elastocaloric effect —implemented by→ Vibration-driven elastocaloric cooler (proposed) is theoretically-predicted: predicted by theory, not yet observed.",
+      "why_unresolved": "Evidence: source:kumar-2019-vibration-refrigeration.",
+      "what_exists": "Status theoretically-predicted; routes through this claim inherit it as their weakest constituent.",
+      "closure_condition": "An experiment observing the effect, reviewed and cited on the claim.",
+      "related_ids": [
+        "source:kumar-2019-vibration-refrigeration"
+      ],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/claim/elastocaloric-implemented-vibration-cooler",
+      "on_default_frontier": false
+    },
+    {
+      "id": "residual:evidence-not-observed:marangoni-produces-pressure",
+      "kind": "evidence-not-observed",
+      "record_type": "claim",
+      "record_id": "claim:marangoni-produces-pressure",
+      "statement": "Marangoni effect —produces→ Pressure gradient is theoretically-predicted: predicted by theory, not yet observed.",
+      "why_unresolved": "Evidence: source:glockner-naterer-2006-thermocapillary-pumping, source:odukoya-naterer-2013-thermocapillary-mhe.",
+      "what_exists": "Status theoretically-predicted; routes through this claim inherit it as their weakest constituent.",
+      "closure_condition": "An experiment observing the effect, reviewed and cited on the claim.",
+      "related_ids": [
+        "source:glockner-naterer-2006-thermocapillary-pumping",
+        "source:odukoya-naterer-2013-thermocapillary-mhe"
+      ],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/claim/marangoni-produces-pressure",
+      "on_default_frontier": false
+    },
+    {
+      "id": "residual:evidence-not-observed:photostriction-member",
+      "kind": "evidence-not-observed",
+      "record_type": "claim",
+      "record_id": "claim:photostriction-member",
+      "statement": "Photostriction —member of→ Photovoltaic is hypothesised: proposed without a supporting calculation.",
+      "why_unresolved": "Evidence: source:spanier-2016.",
+      "what_exists": "Status hypothesised; routes through this claim inherit it as their weakest constituent.",
+      "closure_condition": "An experiment observing the effect, reviewed and cited on the claim.",
+      "related_ids": [
+        "source:spanier-2016"
+      ],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/claim/photostriction-member",
+      "on_default_frontier": false
+    },
+    {
+      "id": "residual:evidence-not-observed:temperature-drives-liquid-thermopolarization",
+      "kind": "evidence-not-observed",
+      "record_type": "claim",
+      "record_id": "claim:temperature-drives-liquid-thermopolarization",
+      "statement": "Temperature gradient —drives→ Thermopolarization effect is theoretically-predicted: predicted by theory, not yet observed.",
+      "why_unresolved": "Evidence: source:bresme-2008-water-polarization, source:armstrong-bresme-2015-thermal-polarization-inversion, source:gittus-2020-acetonitrile-thermal-polarization.",
+      "what_exists": "Status theoretically-predicted; routes through this claim inherit it as their weakest constituent.",
+      "closure_condition": "An experiment observing the effect, reviewed and cited on the claim.",
+      "related_ids": [
+        "source:bresme-2008-water-polarization",
+        "source:armstrong-bresme-2015-thermal-polarization-inversion",
+        "source:gittus-2020-acetonitrile-thermal-polarization"
+      ],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/claim/temperature-drives-liquid-thermopolarization",
+      "on_default_frontier": false
+    },
+    {
+      "id": "residual:evidence-not-observed:thermoradiative-drives",
+      "kind": "evidence-not-observed",
+      "record_type": "claim",
+      "record_id": "claim:thermoradiative-drives",
+      "statement": "Radiative imbalance with the sky —drives→ Thermoradiative effect is theoretically-predicted: predicted by theory, not yet observed.",
+      "why_unresolved": "Evidence: source:strandberg-2015.",
+      "what_exists": "Status theoretically-predicted, maturity K3; routes through this claim inherit it as their weakest constituent.",
+      "closure_condition": "An experiment observing the effect, reviewed and cited on the claim.",
+      "related_ids": [
+        "source:strandberg-2015"
+      ],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/claim/thermoradiative-drives",
+      "on_default_frontier": false
+    },
+    {
+      "id": "residual:evidence-not-observed:thermoradiative-produces",
+      "kind": "evidence-not-observed",
+      "record_type": "claim",
+      "record_id": "claim:thermoradiative-produces",
+      "statement": "Thermoradiative effect —produces→ Charge carriers is theoretically-predicted: predicted by theory, not yet observed.",
+      "why_unresolved": "Evidence: source:strandberg-2015.",
+      "what_exists": "Status theoretically-predicted; routes through this claim inherit it as their weakest constituent.",
+      "closure_condition": "An experiment observing the effect, reviewed and cited on the claim.",
+      "related_ids": [
+        "source:strandberg-2015"
+      ],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/claim/thermoradiative-produces",
+      "on_default_frontier": false
+    },
+    {
+      "id": "residual:evidence-single-source:pec-benchmarked-realistic-earth-abundant",
+      "kind": "evidence-single-source",
+      "record_type": "claim",
+      "record_id": "claim:pec-benchmarked-realistic-earth-abundant",
+      "statement": "Photoelectrochemical effect —governed by→ PEC water-splitting realistic limiting efficiency, Earth-abundant materials (Fountaine Real2) is reported: a single paper reports it and no independent confirmation is recorded.",
+      "why_unresolved": "Evidence: source:fountaine-2016-pec-limits — one group, no review or book.",
+      "what_exists": "Status reported; routes through this claim inherit it as their weakest constituent.",
+      "closure_condition": "A qualifying review or book, or an independent analysis, that states Fountaine 2016's Real2 maxima (5.4 % at 2.53 eV; 16.2 % at 1.93 / 1.38 eV) — Rozzi 2020 does not.",
+      "related_ids": [
+        "source:fountaine-2016-pec-limits"
+      ],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/claim/pec-benchmarked-realistic-earth-abundant",
+      "on_default_frontier": false
+    },
+    {
+      "id": "residual:evidence-single-source:pec-benchmarked-realistic-high-performance",
+      "kind": "evidence-single-source",
+      "record_type": "claim",
+      "record_id": "claim:pec-benchmarked-realistic-high-performance",
+      "statement": "Photoelectrochemical effect —governed by→ PEC water-splitting realistic limiting efficiency, high-performance materials (Fountaine Real1) is reported: a single paper reports it and no independent confirmation is recorded.",
+      "why_unresolved": "Evidence: source:fountaine-2016-pec-limits — one group, no review or book.",
+      "what_exists": "Status reported; routes through this claim inherit it as their weakest constituent.",
+      "closure_condition": "A qualifying review or book, or an independent analysis, that states Fountaine 2016's Real1 maxima (15.1 % single junction at 2.05 eV; 28.3 % dual at 1.59 / 0.92 eV) — Rozzi 2020 does not.",
+      "related_ids": [
+        "source:fountaine-2016-pec-limits"
+      ],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/claim/pec-benchmarked-realistic-high-performance",
+      "on_default_frontier": false
+    },
+    {
+      "id": "residual:evidence-single-source:photostriction-drives",
+      "kind": "evidence-single-source",
+      "record_type": "claim",
+      "record_id": "claim:photostriction-drives",
+      "statement": "Incident radiation flux —drives→ Photostriction is reported: a single paper reports it and no independent confirmation is recorded.",
+      "why_unresolved": "Evidence: source:spanier-2016 — one group, no review or book.",
+      "what_exists": "Status reported, maturity K3; routes through this claim inherit it as their weakest constituent.",
+      "closure_condition": "Add a qualifying independent source, or a review or book, under the atlas's evidence rule — or change the claim if contrary evidence is found.",
+      "related_ids": [
+        "source:spanier-2016"
+      ],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/claim/photostriction-drives",
+      "on_default_frontier": false
+    },
+    {
+      "id": "residual:evidence-single-source:photostriction-produces",
+      "kind": "evidence-single-source",
+      "record_type": "claim",
+      "record_id": "claim:photostriction-produces",
+      "statement": "Photostriction —produces→ Elastic stress is reported: a single paper reports it and no independent confirmation is recorded.",
+      "why_unresolved": "Evidence: source:spanier-2016 — one group, no review or book.",
+      "what_exists": "Status reported; routes through this claim inherit it as their weakest constituent.",
+      "closure_condition": "Add a qualifying independent source, or a review or book, under the atlas's evidence rule — or change the claim if contrary evidence is found.",
+      "related_ids": [
+        "source:spanier-2016"
+      ],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/claim/photostriction-produces",
+      "on_default_frontier": false
+    },
+    {
+      "id": "residual:evidence-single-source:temperature-drives-thermopolarization",
+      "kind": "evidence-single-source",
+      "record_type": "claim",
+      "record_id": "claim:temperature-drives-thermopolarization",
+      "statement": "Temperature gradient —drives→ Thermopolarization effect is reported: a single paper reports it and no independent confirmation is recorded.",
+      "why_unresolved": "Evidence: source:marvan-1969-thermopolarization, source:tagantsev-1987-thermal-polarization, source:trepakov-1989-proper-thermopolarization, source:onishi-2025-thermopolarization, source:kholkin-1982-thermopolarization-current — one group, no review or book.",
+      "what_exists": "Status reported; routes through this claim inherit it as their weakest constituent.",
+      "closure_condition": "A full read of Trepakov, Nurieva & Tagantsev 1989 (Ferroelectrics 94, 377–381; paywalled) deciding whether a load was driven would move the claim from reported toward demonstrated.",
+      "related_ids": [
+        "source:marvan-1969-thermopolarization",
+        "source:tagantsev-1987-thermal-polarization",
+        "source:trepakov-1989-proper-thermopolarization",
+        "source:onishi-2025-thermopolarization",
+        "source:kholkin-1982-thermopolarization-current"
+      ],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/claim/temperature-drives-thermopolarization",
+      "on_default_frontier": false
+    },
+    {
+      "id": "residual:evidence-single-source:thermopolarization-produces-charge",
+      "kind": "evidence-single-source",
+      "record_type": "claim",
+      "record_id": "claim:thermopolarization-produces-charge",
+      "statement": "Thermopolarization effect —produces→ Separated surface charge is reported: a single paper reports it and no independent confirmation is recorded.",
+      "why_unresolved": "Evidence: source:kholkin-1982-thermopolarization-current, source:trepakov-1989-proper-thermopolarization, source:rafikov-1994-dynamic-thermopolarization — one group, no review or book.",
+      "what_exists": "Status reported; routes through this claim inherit it as their weakest constituent.",
+      "closure_condition": "The same read as claim:temperature-drives-thermopolarization.",
+      "related_ids": [
+        "source:kholkin-1982-thermopolarization-current",
+        "source:trepakov-1989-proper-thermopolarization",
+        "source:rafikov-1994-dynamic-thermopolarization"
+      ],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/claim/thermopolarization-produces-charge",
+      "on_default_frontier": false
+    },
+    {
+      "id": "residual:measurement-boundary-unresolved:otec-plant:actual-system-thermal-efficiency",
+      "kind": "measurement-boundary-unresolved",
+      "record_type": "measurement",
+      "record_id": "pathway:otec-plant · actual system thermal efficiency",
+      "statement": "Lu et al. 2024's actual thermal efficiency of 2.46 % is recorded as the platform's reported system figure without knowing whether its numerator is the grid-connected electrical power (47.4 kW) or the net cycle work of the paper's Equation 9.",
+      "why_unresolved": "The conclusion reports both figures side by side without saying which power the efficiency uses; the design point (2.63 %) demonstrably uses net cycle work, so the actual figure may be a route figure or an organic-Rankine-stage figure.",
+      "what_exists": "Recorded as \"2.46%\" (laboratory, 2024); sources source:lu-2024-otec-platform; basis: as reported: the authors' actual thermal efficiency in the stable-operation phase (Figure 12). The paper defines thermal efficiency as net cycle work over evaporator heat (Equation 9) and reports 2.46 % beside the 47.4 kW maximum grid-connected power without saying which numerator the actual figure uses — a route figure if the grid-connected power, an organic-Rankine-stage figure if the net cycle work; the boundary is unresolved (pass 45).",
+      "closure_condition": "Establish from the primary source (or its authors) whether the 2.46 % uses grid-connected electrical output or Equation-9 net cycle work, then restage or keep the datum with that basis.",
+      "related_ids": [
+        "source:lu-2024-otec-platform"
+      ],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/path/e238ea3af4#performance",
+      "on_default_frontier": false
+    },
+    {
+      "id": "residual:measurement-definition-unresolved:shape-memory-heat-engine:thermal-to-electrical-efficiency",
+      "kind": "measurement-definition-unresolved",
+      "record_type": "measurement",
+      "record_id": "pathway:shape-memory-heat-engine · thermal-to-electrical efficiency",
+      "statement": "The NiTi shape-memory heat engine's 1.5 % thermal-to-electrical efficiency (10.5 % of Carnot at the reported point) is an unstructured datum: the paper's definition of the heat input and its temperatures have not been read, so the figure carries no metric, no numeric value and no boundary.",
+      "why_unresolved": "Pass 7 recorded the figure from the paper's summary; passes 39 and 45 typed every other efficiency datum but could not classify this one without the heat-input definition.",
+      "what_exists": "Recorded as \"1.5% (10.5% of Carnot at the reported maximum-efficiency operating point)\" (laboratory, 2019); sources source:sma-heat-engine-2019; no basis.",
+      "closure_condition": "Read the primary's heat-input definition and operating temperatures; then record the datum as conversion-efficiency (or device-stage-efficiency) with its basis, and type its Carnot-relative clause.",
+      "related_ids": [
+        "source:sma-heat-engine-2019"
+      ],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/path/16d5bebae9#performance",
+      "on_default_frontier": false
+    },
+    {
+      "id": "residual:pathway-observed-not-delivered:thermal-expansion-flexoelectric-response",
+      "kind": "pathway-observed-not-delivered",
+      "record_type": "pathway",
+      "record_id": "pathway:thermal-expansion-flexoelectric-response",
+      "statement": "Thermal-expansion flexoelectric thermopolarization is observed, not demonstrated: one experiment traversed the composition through claim:flexo-produces-charge, and the route's output was not delivered to a load.",
+      "why_unresolved": "No output power, efficiency or harvested energy is reported; the finite-element temperature modulation (≈ 0.5 K at the 1 kHz heater drive) is model scope and is not recorded as a measurement.",
+      "what_exists": "Evidence source:iwakiri-2026-thermopolarization; status observed; the route stays a candidate.",
+      "closure_condition": "A measurement delivering the route's output from the same composition, reviewed; then the pathway becomes demonstrated.",
+      "related_ids": [
+        "source:iwakiri-2026-thermopolarization"
+      ],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/path/a093d7ecc5",
+      "on_default_frontier": false
+    },
+    {
+      "id": "residual:search-incomplete:2026-09-20-d-01-c-23",
+      "kind": "search-incomplete",
+      "record_type": "search",
+      "record_id": "search:2026-09-20-d-01-c-23",
+      "statement": "The reviewed cell search for Temperature gradient × Electrokinetic is inconclusive (partial): the atlas does not know whether a demonstration exists, and may not say that none was found.",
+      "why_unresolved": "Outstanding protocol obligations: engine openalex; engine google-scholar; form driver-phenomenon.",
+      "what_exists": "2 completed run(s) on manual, semantic-scholar; 6 unique works screened, 2 read in full; 5 decided hit(s); reviewed 2026-09-20.",
+      "closure_condition": "Complete the named obligations, then review the record into demonstration-found or no-demonstration-found.",
+      "related_ids": [
+        "10.1039/D0NA00429D",
+        "10.1017/jfm.2016.844",
+        "10.1103/PhysRevE.88.053020",
+        "10.1088/1361-6528/ab8fe4",
+        "10.1103/PhysRevLett.116.188303"
+      ],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/matrix",
+      "on_default_frontier": false
+    },
+    {
+      "id": "residual:search-incomplete:2026-09-20-d-04-c-01-partial",
+      "kind": "search-incomplete",
+      "record_type": "search",
+      "record_id": "search:2026-09-20-d-04-c-01-partial",
+      "statement": "The reviewed cell search for Salinity gradient × Thermoelectric is inconclusive (partial): the atlas does not know whether a demonstration exists, and may not say that none was found.",
+      "why_unresolved": "Outstanding protocol obligations: engine semantic-scholar; engine google-scholar.",
+      "what_exists": "4 completed run(s) on openalex, manual; 55 unique works screened, 0 read in full; 8 decided hit(s); reviewed 2026-09-20.",
+      "closure_condition": "Complete the named obligations, then review the record into demonstration-found or no-demonstration-found.",
+      "related_ids": [
+        "10.1016/j.solener.2010.11.012",
+        "10.1016/j.proeng.2012.10.111",
+        "10.1016/j.enconman.2017.01.031",
+        "10.1016/j.device.2023.100188",
+        "10.1021/acsnano.5c13339",
+        "10.1039/C5NR07563G",
+        "10.1021/acs.est.6b03448",
+        "10.1021/acs.chemrev.3c00168"
+      ],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/matrix",
+      "on_default_frontier": false
+    },
+    {
+      "id": "residual:search-incomplete:2026-09-20-p-1043a15e01-partial",
+      "kind": "search-incomplete",
+      "record_type": "search",
+      "record_id": "search:2026-09-20-p-1043a15e01-partial",
+      "statement": "The reviewed exact-composition search for Temperature gradient → Thermomagnetic convection → Fluid flow → Streaming potential → Ionic current → Electrical work is inconclusive (partial): the atlas does not know whether a demonstration exists, and may not say that none was found.",
+      "why_unresolved": "Outstanding route-search-v1 obligations: semantic-scholar driver-mechanism:1 (attempted, blocked); semantic-scholar mechanism-pair:1-2 (attempted, blocked); semantic-scholar whole-chain (attempted, blocked); semantic-scholar demonstration-precision (attempted, blocked); google-scholar driver-mechanism:1 screened 10 of 100. 5 attempt(s) obtained no result list (a throttle or a bot check before the first position) and count toward nothing.",
+      "what_exists": "11 completed run(s) on openalex, google-scholar; 47 unique works screened, 0 read in full; 7 decided hit(s); reviewed 2026-09-21.",
+      "closure_condition": "Complete the named obligations (every mandatory engine × key to the protocol depth, the conditional composite-name form where a term is frozen, two citation chases), then review the record into demonstration-found or no-demonstration-found.",
+      "related_ids": [
+        "10.1016/j.jmmm.2011.06.016",
+        "10.1016/j.jmmm.2013.02.012",
+        "10.1007/978-81-322-2743-4_151"
+      ],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/path/1043a15e01",
+      "on_default_frontier": true
+    },
+    {
+      "id": "residual:search-incomplete:2026-09-20-p-41cb505083-partial",
+      "kind": "search-incomplete",
+      "record_type": "search",
+      "record_id": "search:2026-09-20-p-41cb505083-partial",
+      "statement": "The reviewed exact-composition search for Surface energy difference → Marangoni effect → Fluid flow → Streaming potential → Ionic current → Electrical work is inconclusive (partial): the atlas does not know whether a demonstration exists, and may not say that none was found.",
+      "why_unresolved": "Outstanding route-search-v1 obligations: semantic-scholar driver-mechanism:1 (attempted, blocked); semantic-scholar mechanism-pair:1-2 (attempted, blocked); semantic-scholar whole-chain (attempted, blocked); semantic-scholar demonstration-precision (attempted, blocked); google-scholar whole-chain screened 59 of 68; google-scholar demonstration-precision screened 44 of 53. 5 attempt(s) obtained no result list (a throttle or a bot check before the first position) and count toward nothing.",
+      "what_exists": "11 completed run(s) on openalex, google-scholar; 156 unique works screened, 2 read in full; 11 decided hit(s); reviewed 2026-09-21.",
+      "closure_condition": "Complete the named obligations (every mandatory engine × key to the protocol depth, the conditional composite-name form where a term is frozen, two citation chases), then review the record into demonstration-found or no-demonstration-found.",
+      "related_ids": [
+        "10.1007/s10404-015-1597-x",
+        "10.1021/la1044656",
+        "10.1016/0021-9797(81)90011-4",
+        "10.1038/s41467-026-69481-2",
+        "10.1007/s00396-025-05494-5",
+        "10.1002/adfm.78354",
+        "10.1038/s41467-022-28998-y",
+        "10.1016/j.jcis.2009.11.065",
+        "10.1002/dro2.70007"
+      ],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/path/41cb505083",
+      "on_default_frontier": true
+    },
+    {
+      "id": "residual:search-incomplete:2026-09-20-p-423a19acdd-partial",
+      "kind": "search-incomplete",
+      "record_type": "search",
+      "record_id": "search:2026-09-20-p-423a19acdd-partial",
+      "statement": "The reviewed exact-composition search for Temperature gradient → Marangoni effect → Fluid flow → Streaming potential → Ionic current → Electrical work is inconclusive (partial): the atlas does not know whether a demonstration exists, and may not say that none was found.",
+      "why_unresolved": "Outstanding route-search-v1 obligations: semantic-scholar driver-mechanism:1 (attempted, blocked); semantic-scholar mechanism-pair:1-2 (attempted, blocked); semantic-scholar whole-chain (attempted, blocked); semantic-scholar demonstration-precision (attempted, blocked); google-scholar whole-chain screened 95 of 100; google-scholar demonstration-precision screened 69 of 79. 5 attempt(s) obtained no result list (a throttle or a bot check before the first position) and count toward nothing.",
+      "what_exists": "11 completed run(s) on openalex, google-scholar; 161 unique works screened, 4 read in full; 14 decided hit(s); reviewed 2026-09-21.",
+      "closure_condition": "Complete the named obligations (every mandatory engine × key to the protocol depth, the conditional composite-name form where a term is frozen, two citation chases), then review the record into demonstration-found or no-demonstration-found.",
+      "related_ids": [
+        "10.1007/s10404-015-1597-x",
+        "10.1021/la1044656",
+        "10.1016/j.electacta.2018.11.187",
+        "10.1017/s0022112090001884",
+        "10.1016/j.elstat.2026.104289",
+        "10.1016/j.cej.2025.172116",
+        "10.1016/j.compositesb.2025.113111",
+        "10.1016/j.jece.2026.123594",
+        "10.1002/aenm.202400529",
+        "10.1039/d6ta01227b",
+        "10.1002/adfm.78354",
+        "10.1002/er.1282"
+      ],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/path/423a19acdd",
+      "on_default_frontier": true
+    },
+    {
+      "id": "residual:search-incomplete:2026-09-21-p-231472e45e-partial",
+      "kind": "search-incomplete",
+      "record_type": "search",
+      "record_id": "search:2026-09-21-p-231472e45e-partial",
+      "statement": "The reviewed exact-composition search for Temperature gradient → Thermoacoustic effect → Acoustic wave → Acoustoelectric effect → Charge carriers → Electrical work is inconclusive (partial): the atlas does not know whether a demonstration exists, and may not say that none was found.",
+      "why_unresolved": "Outstanding route-search-v1 obligations: semantic-scholar driver-mechanism:1 (attempted, blocked); semantic-scholar mechanism-pair:1-2 (attempted, blocked); semantic-scholar whole-chain (attempted, blocked); google-scholar driver-mechanism:1 (attempted, blocked); google-scholar mechanism-pair:1-2; google-scholar whole-chain; google-scholar demonstration-precision; citation chases 0 of 2. 4 attempt(s) obtained no result list (a throttle or a bot check before the first position) and count toward nothing.",
+      "what_exists": "8 completed run(s) on manual, openalex, semantic-scholar; 156 unique works screened, 0 read in full; 11 decided hit(s); reviewed 2026-09-21.",
+      "closure_condition": "Complete the named obligations (every mandatory engine × key to the protocol depth, the conditional composite-name form where a term is frozen, two citation chases), then review the record into demonstration-found or no-demonstration-found.",
+      "related_ids": [
+        "10.1016/j.nanoen.2022.106995",
+        "10.1103/PhysRev.114.33",
+        "10.1038/s41467-026-74813-3",
+        "10.1121/1.429343",
+        "10.1103/PhysRevLett.81.3128",
+        "10.1088/1674-1056/ac7453",
+        "10.1063/1.4712630",
+        "10.3390/nano16140848",
+        "10.1016/j.applthermaleng.2019.01.025",
+        "10.1016/j.nanoen.2026.112082",
+        "10.1016/j.apenergy.2015.12.034"
+      ],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/path/231472e45e",
+      "on_default_frontier": true
+    },
+    {
+      "id": "residual:search-incomplete:2026-09-21-p-4d6800fa81-partial",
+      "kind": "search-incomplete",
+      "record_type": "search",
+      "record_id": "search:2026-09-21-p-4d6800fa81-partial",
+      "statement": "The reviewed exact-composition search for Mechanical vibration → Elastic deformation → Mechanical stress or strain → Elastocaloric effect → Cooling is inconclusive (partial): the atlas does not know whether a demonstration exists, and may not say that none was found.",
+      "why_unresolved": "Outstanding route-search-v1 obligations: semantic-scholar driver-mechanism:1 (attempted, blocked); semantic-scholar mechanism-pair:1-2 (attempted, blocked); semantic-scholar whole-chain (attempted, blocked); semantic-scholar demonstration-precision (attempted, blocked); google-scholar driver-mechanism:1 (attempted, blocked); google-scholar mechanism-pair:1-2; google-scholar whole-chain; google-scholar demonstration-precision; citation chases 0 of 2. 5 attempt(s) obtained no result list (a throttle or a bot check before the first position) and count toward nothing.",
+      "what_exists": "6 completed run(s) on openalex; 153 unique works screened, 0 read in full; 8 decided hit(s); reviewed 2026-09-21.",
+      "closure_condition": "Complete the named obligations (every mandatory engine × key to the protocol depth, the conditional composite-name form where a term is frozen, two citation chases), then review the record into demonstration-found or no-demonstration-found.",
+      "related_ids": [
+        "10.1038/s41598-019-40159-8",
+        "10.1063/5.0291096",
+        "10.1016/j.actamat.2018.11.035",
+        "10.1016/j.actamat.2021.117486",
+        "10.1016/j.ijsolstr.2022.111638",
+        "10.1016/j.jallcom.2022.168547",
+        "10.1103/physrevmaterials.7.013606",
+        "10.1002/pssb.201700246"
+      ],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/path/4d6800fa81",
+      "on_default_frontier": true
+    },
+    {
+      "id": "residual:search-incomplete:2026-09-21-p-62809bc294-partial",
+      "kind": "search-incomplete",
+      "record_type": "search",
+      "record_id": "search:2026-09-21-p-62809bc294-partial",
+      "statement": "The reviewed exact-composition search for Temperature gradient → Marangoni effect → Mechanical motion → Rotating-machine generator action → Charge carriers → Electrical work is inconclusive (partial): the atlas does not know whether a demonstration exists, and may not say that none was found.",
+      "why_unresolved": "Outstanding route-search-v1 obligations: semantic-scholar driver-mechanism:1 (attempted, blocked); semantic-scholar mechanism-pair:1-2 (attempted, blocked); semantic-scholar whole-chain (attempted, blocked); semantic-scholar demonstration-precision (attempted, blocked); google-scholar driver-mechanism:1 (attempted, blocked); google-scholar mechanism-pair:1-2; google-scholar whole-chain; google-scholar demonstration-precision; citation chases 0 of 2. 5 attempt(s) obtained no result list (a throttle or a bot check before the first position) and count toward nothing.",
+      "what_exists": "6 completed run(s) on openalex; 150 unique works screened, 0 read in full; 5 decided hit(s); reviewed 2026-09-21.",
+      "closure_condition": "Complete the named obligations (every mandatory engine × key to the protocol depth, the conditional composite-name form where a term is frozen, two citation chases), then review the record into demonstration-found or no-demonstration-found.",
+      "related_ids": [
+        "10.1016/0021-8502(94)90201-1",
+        "10.1021/acs.langmuir.6c02095",
+        "10.26599/nr.2026.94908831",
+        "10.1002/adfm.75319",
+        "10.1115/1.4023394"
+      ],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/path/62809bc294",
+      "on_default_frontier": true
+    },
+    {
+      "id": "residual:search-incomplete:2026-09-21-p-8200d7ab7e-partial",
+      "kind": "search-incomplete",
+      "record_type": "search",
+      "record_id": "search:2026-09-21-p-8200d7ab7e-partial",
+      "statement": "The reviewed exact-composition search for Nuclear binding-energy difference → Nuclear fission → Hot gas → Thermal emission → Light is inconclusive (partial): the atlas does not know whether a demonstration exists, and may not say that none was found.",
+      "why_unresolved": "Outstanding route-search-v1 obligations: semantic-scholar driver-mechanism:1 (attempted, blocked); semantic-scholar mechanism-pair:1-2 (attempted, blocked); semantic-scholar whole-chain (attempted, blocked); semantic-scholar demonstration-precision (attempted, blocked); semantic-scholar composite-name (attempted, blocked); google-scholar driver-mechanism:1 (attempted, blocked); google-scholar mechanism-pair:1-2; google-scholar whole-chain; google-scholar demonstration-precision; google-scholar composite-name; citation chases 0 of 2. 6 attempt(s) obtained no result list (a throttle or a bot check before the first position) and count toward nothing.",
+      "what_exists": "6 completed run(s) on openalex; 265 unique works screened, 0 read in full; 9 decided hit(s); reviewed 2026-09-21.",
+      "closure_condition": "Complete the named obligations (every mandatory engine × key to the protocol depth, the conditional composite-name form where a term is frozen, two citation chases), then review the record into demonstration-found or no-demonstration-found.",
+      "related_ids": [],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/path/8200d7ab7e",
+      "on_default_frontier": true
+    },
+    {
+      "id": "residual:search-incomplete:2026-09-21-p-8fba925ce8-partial",
+      "kind": "search-incomplete",
+      "record_type": "search",
+      "record_id": "search:2026-09-21-p-8fba925ce8-partial",
+      "statement": "The reviewed exact-composition search for Temperature gradient → Thermo-osmosis → Fluid flow → Aerodynamic and hydrodynamic lift → Mechanical motion → Mechanical work is inconclusive (partial): the atlas does not know whether a demonstration exists, and may not say that none was found.",
+      "why_unresolved": "Outstanding route-search-v1 obligations: semantic-scholar driver-mechanism:1 (attempted, blocked); semantic-scholar mechanism-pair:1-2 (attempted, blocked); semantic-scholar whole-chain (attempted, blocked); semantic-scholar demonstration-precision (attempted, blocked); google-scholar driver-mechanism:1 (attempted, blocked); google-scholar mechanism-pair:1-2; google-scholar whole-chain; google-scholar demonstration-precision. 5 attempt(s) obtained no result list (a throttle or a bot check before the first position) and count toward nothing.",
+      "what_exists": "9 completed run(s) on openalex; 139 unique works screened, 1 read in full; 21 decided hit(s); reviewed 2026-09-21.",
+      "closure_condition": "Complete the named obligations (every mandatory engine × key to the protocol depth, the conditional composite-name form where a term is frozen, two citation chases), then review the record into demonstration-found or no-demonstration-found.",
+      "related_ids": [
+        "10.1016/j.enconman.2024.118636",
+        "10.1016/j.desal.2024.117485",
+        "10.1038/nenergy.2016.90",
+        "10.1080/19443994.2014.946724",
+        "10.1021/acsami.1c03395",
+        "10.1007/s11431-021-1926-6",
+        "10.1016/j.memsci.2019.117765",
+        "10.1021/acs.iecr.7b03642",
+        "10.1021/acs.est.7b02213",
+        "10.1016/j.ceja.2023.100558",
+        "10.1016/j.applthermaleng.2023.120039",
+        "10.1016/j.desal.2022.115799"
+      ],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/path/8fba925ce8",
+      "on_default_frontier": true
+    },
+    {
+      "id": "residual:search-incomplete:2026-09-21-p-a093d7ecc5-partial",
+      "kind": "search-incomplete",
+      "record_type": "search",
+      "record_id": "search:2026-09-21-p-a093d7ecc5-partial",
+      "statement": "The reviewed exact-composition search for Temperature gradient → Thermal expansion → Mechanical stress or strain → Flexoelectric effect → Separated surface charge → Electrical work is inconclusive (partial): the atlas does not know whether a demonstration exists, and may not say that none was found.",
+      "why_unresolved": "Outstanding route-search-v1 obligations: semantic-scholar driver-mechanism:1 (attempted, blocked); semantic-scholar mechanism-pair:1-2 (attempted, blocked); semantic-scholar whole-chain (attempted, blocked); semantic-scholar demonstration-precision (attempted, blocked); semantic-scholar composite-name (attempted, blocked); google-scholar driver-mechanism:1 (attempted, blocked); google-scholar mechanism-pair:1-2; google-scholar whole-chain; google-scholar demonstration-precision; google-scholar composite-name. 6 attempt(s) obtained no result list (a throttle or a bot check before the first position) and count toward nothing.",
+      "what_exists": "14 completed run(s) on openalex, manual; 205 unique works screened, 1 read in full; 22 decided hit(s); reviewed 2026-09-21.",
+      "closure_condition": "Complete the named obligations (every mandatory engine × key to the protocol depth, the conditional composite-name form where a term is frozen, two citation chases), then review the record into demonstration-found or no-demonstration-found.",
+      "related_ids": [
+        "10.1002/adfm.201910371",
+        "10.1063/1.4949358",
+        "10.1103/physrevmaterials.2.034401",
+        "10.1021/acsaelm.8b00107",
+        "10.1007/s43207-023-00326-0",
+        "10.34133/research.1048",
+        "10.1103/dxp2-cf75",
+        "10.1111/jace.12580",
+        "10.1070/pu1987v030n07abeh002926",
+        "10.1002/adfm.75910",
+        "10.1063/5.0218259",
+        "10.1016/j.ijsolstr.2018.12.003"
+      ],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/path/a093d7ecc5",
+      "on_default_frontier": true
+    },
+    {
+      "id": "residual:search-incomplete:2026-09-21-p-b820ec885f-partial",
+      "kind": "search-incomplete",
+      "record_type": "search",
+      "record_id": "search:2026-09-21-p-b820ec885f-partial",
+      "statement": "The reviewed exact-composition search for Temperature gradient → Thermopolarization effect → Separated surface charge → Electrical work is inconclusive (partial): the atlas does not know whether a demonstration exists, and may not say that none was found.",
+      "why_unresolved": "Outstanding route-search-v1 obligations: semantic-scholar driver-mechanism:1; semantic-scholar whole-chain; semantic-scholar demonstration-precision; semantic-scholar composite-name; google-scholar driver-mechanism:1; google-scholar whole-chain; google-scholar demonstration-precision; google-scholar composite-name; citation chases 0 of 2.",
+      "what_exists": "6 completed run(s) on openalex; 48 unique works screened, 0 read in full; 8 decided hit(s); reviewed 2026-09-21.",
+      "closure_condition": "Complete the named obligations (every mandatory engine × key to the protocol depth, the conditional composite-name form where a term is frozen, two citation chases), then review the record into demonstration-found or no-demonstration-found.",
+      "related_ids": [
+        "10.3390/act13120533",
+        "10.1364/ao.32.000278",
+        "10.1002/1521-396x(199709)163:1<263::aid-pssa263>3.0.co;2-t",
+        "10.1039/c6cp03082c",
+        "10.1080/01495739.2023.2293046",
+        "10.1080/07315179508204274",
+        "10.1021/acs.nanolett.4c05870",
+        "10.1103/physrevb.105.245125"
+      ],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/path/b820ec885f",
+      "on_default_frontier": false
+    },
+    {
+      "id": "residual:search-incomplete:2026-09-21-p-ccef4f212b-partial",
+      "kind": "search-incomplete",
+      "record_type": "search",
+      "record_id": "search:2026-09-21-p-ccef4f212b-partial",
+      "statement": "The reviewed exact-composition search for Nuclear binding-energy difference → Nuclear fission → Hot gas → Magnetohydrodynamic generation → Charge carriers → Electrical work is inconclusive (partial): the atlas does not know whether a demonstration exists, and may not say that none was found.",
+      "why_unresolved": "Outstanding route-search-v1 obligations: semantic-scholar driver-mechanism:1 (attempted, blocked); semantic-scholar mechanism-pair:1-2 (attempted, blocked); semantic-scholar whole-chain (attempted, blocked); semantic-scholar demonstration-precision (attempted, blocked); semantic-scholar composite-name (attempted, blocked); google-scholar driver-mechanism:1 (attempted, blocked); google-scholar mechanism-pair:1-2; google-scholar whole-chain; google-scholar demonstration-precision; google-scholar composite-name; citation chases 0 of 2. 6 attempt(s) obtained no result list (a throttle or a bot check before the first position) and count toward nothing.",
+      "what_exists": "6 completed run(s) on openalex; 247 unique works screened, 0 read in full; 16 decided hit(s); reviewed 2026-09-21.",
+      "closure_condition": "Complete the named obligations (every mandatory engine × key to the protocol depth, the conditional composite-name form where a term is frozen, two citation chases), then review the record into demonstration-found or no-demonstration-found.",
+      "related_ids": [
+        "10.1016/s0168-9002(00)00506-4",
+        "10.2514/3.11490",
+        "10.2514/3.23837",
+        "10.13182/nse92-a23881",
+        "10.2514/8.6126",
+        "10.1007/s10512-008-9082-1",
+        "10.13182/nt04-a3480",
+        "10.2514/3.61680",
+        "10.3327/jaesj.10.390",
+        "10.1088/0029-5515/10/4/012"
+      ],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/path/ccef4f212b",
+      "on_default_frontier": true
+    },
+    {
+      "id": "residual:source-read-pending:2026-09-20-p-1043a15e01-partial:10-1007-978-81-322-2743-4-151",
+      "kind": "source-read-pending",
+      "record_type": "search-hit",
+      "record_id": "search:2026-09-20-p-1043a15e01-partial · 10.1007/978-81-322-2743-4_151",
+      "statement": "\"Flow in Thermomagnetic Energy Conversion Loops\" (2016) could not be decided for the search search:2026-09-20-p-1043a15e01-partial: the text available was insufficient to say whether it demonstrates the composition.",
+      "why_unresolved": "Book chapter on flow in thermomagnetic energy-conversion loops; no abstract accessible; nothing indicates an electrokinetic step.",
+      "what_exists": "Decision insufficient-information; access: metadata-only; doi:10.1007/978-81-322-2743-4_151.",
+      "closure_condition": "Read the full text and decide the hit (qualifies / a stated exclusion), then reconsider the record's result.",
+      "related_ids": [
+        "10.1007/978-81-322-2743-4_151"
+      ],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/path/1043a15e01",
+      "on_default_frontier": true
+    },
+    {
+      "id": "residual:source-read-pending:2026-09-20-p-1043a15e01-partial:10-1016-j-jmmm-2013-02-012",
+      "kind": "source-read-pending",
+      "record_type": "search-hit",
+      "record_id": "search:2026-09-20-p-1043a15e01-partial · 10.1016/j.jmmm.2013.02.012",
+      "statement": "\"Synthesis and characterization of Mn0.5Zn0.5Fe2O4 and Fe3O4 nanoparticle ferrofluids for thermo-electric conversion\" (2013) could not be decided for the search search:2026-09-20-p-1043a15e01-partial: the text available was insufficient to say whether it demonstrates the composition.",
+      "why_unresolved": "Title names ferrofluids for thermo-electric conversion; nothing indicates a streaming (electrokinetic) step rather than electromagnetic induction; no abstract accessible. To be read when the text is available.",
+      "what_exists": "Decision insufficient-information; access: metadata-only; doi:10.1016/j.jmmm.2013.02.012.",
+      "closure_condition": "Read the full text and decide the hit (qualifies / a stated exclusion), then reconsider the record's result.",
+      "related_ids": [
+        "10.1016/j.jmmm.2013.02.012"
+      ],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/path/1043a15e01",
+      "on_default_frontier": true
+    },
+    {
+      "id": "residual:source-read-pending:2026-09-20-p-41cb505083-partial:in-situ-studies-of-the-effect-of-co2-on-the-initial-nacl-ind",
+      "kind": "source-read-pending",
+      "record_type": "search-hit",
+      "record_id": "search:2026-09-20-p-41cb505083-partial · In Situ Studies of the Effect of CO2 on the Initial NaCl-Induced Atmospheric Corrosion of Copper",
+      "statement": "\"In Situ Studies of the Effect of CO2 on the Initial NaCl-Induced Atmospheric Corrosion of Copper\" (2005) could not be decided for the search search:2026-09-20-p-41cb505083-partial: the text available was insufficient to say whether it demonstrates the composition.",
+      "why_unresolved": "A corrosion study whose text suggests that a surface-tension gradient in the electrolyte droplet induces Marangoni convection that could give rise to a streaming potential difference; no energy conversion is measured and the passage is known only from Scholar's snippet. Not read.",
+      "what_exists": "Decision insufficient-information; access: metadata-only.",
+      "closure_condition": "Read the full text and decide the hit (qualifies / a stated exclusion), then reconsider the record's result.",
+      "related_ids": [],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/path/41cb505083",
+      "on_default_frontier": true
+    },
+    {
+      "id": "residual:source-read-pending:2026-09-21-p-8200d7ab7e-partial:analytical-design-and-performance-studies-of-nuclear-furnace",
+      "kind": "source-read-pending",
+      "record_type": "search-hit",
+      "record_id": "search:2026-09-21-p-8200d7ab7e-partial · Analytical design and performance studies of nuclear furnace tests of small nuclear light bulb models",
+      "statement": "\"Analytical design and performance studies of nuclear furnace tests of small nuclear light bulb models\" (1972) could not be decided for the search search:2026-09-21-p-8200d7ab7e-partial: the text available was insufficient to say whether it demonstrates the composition.",
+      "why_unresolved": "United Aircraft 1972: designs for in-reactor (Nuclear Furnace) tests of small light-bulb models — whether any in-reactor test was carried out before the programme ended is the one question that decides this route, unread.",
+      "what_exists": "Decision insufficient-information; access: metadata-only.",
+      "closure_condition": "Read the full text and decide the hit (qualifies / a stated exclusion), then reconsider the record's result.",
+      "related_ids": [],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/path/8200d7ab7e",
+      "on_default_frontier": true
+    },
+    {
+      "id": "residual:source-read-pending:2026-09-21-p-8fba925ce8-partial:10-1016-j-desal-2024-117485",
+      "kind": "source-read-pending",
+      "record_type": "search-hit",
+      "record_id": "search:2026-09-21-p-8fba925ce8-partial · 10.1016/j.desal.2024.117485",
+      "statement": "\"Thermal-driven osmosis utilizing hollow fiber membranes: Sustainable dye water treatment and electricity extraction\" (2024) could not be decided for the search search:2026-09-21-p-8fba925ce8-partial: the text available was insufficient to say whether it demonstrates the composition.",
+      "why_unresolved": "Abstract reports a hollow-fibre thermo-osmotic system in which accumulated condensate pressure drives a water turbine and states electricity generation was achieved, but the 16.75 W m⁻³ result is stated for ideal conditions and the paper also uses a theoretical optimisation model; the inaccessible full text prevents determining whether the turbine's electrical output was physically measured. Library full-text review required.",
+      "what_exists": "Decision insufficient-information; access: abstract; doi:10.1016/j.desal.2024.117485.",
+      "closure_condition": "Read the full text and decide the hit (qualifies / a stated exclusion), then reconsider the record's result.",
+      "related_ids": [
+        "10.1016/j.desal.2024.117485"
+      ],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/path/8fba925ce8",
+      "on_default_frontier": true
+    },
+    {
+      "id": "residual:source-read-pending:2026-09-21-p-a093d7ecc5-partial:10-1002-adfm-75910",
+      "kind": "source-read-pending",
+      "record_type": "search-hit",
+      "record_id": "search:2026-09-21-p-a093d7ecc5-partial · 10.1002/adfm.75910",
+      "statement": "\"Dual-Mode Flexoelectric Nanogenerators Activated by Light and Heat for Broad-Spectral Photodetection and Thermal Response\" (2026) could not be decided for the search search:2026-09-21-p-a093d7ecc5-partial: the text available was insufficient to say whether it demonstrates the composition.",
+      "why_unresolved": "Experimental heat-driven flexoelectric nanogenerator (Han et al. 2026, Adv. Funct. Mater.): under temperature variation the heterojunction components deform differentially, the interfacial strain gradient drives flexoelectric polarization and a measured current (effective pyroelectric coefficient up to 7518 μC m⁻² K⁻¹). If the full text confirms the driver and still reports no load: sink-variant; if it reports load power attributable to thermal-mode flexoelectric generation, it may supersede Iwakiri 2026 as the qualifying hit.",
+      "what_exists": "Decision insufficient-information; access: abstract; doi:10.1002/adfm.75910.",
+      "closure_condition": "Read the full text and decide the hit (qualifies / a stated exclusion), then reconsider the record's result.",
+      "related_ids": [
+        "10.1002/adfm.75910"
+      ],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/path/a093d7ecc5",
+      "on_default_frontier": true
+    },
+    {
+      "id": "residual:source-read-pending:2026-09-21-p-a093d7ecc5-partial:10-1007-s43207-023-00326-0",
+      "kind": "source-read-pending",
+      "record_type": "search-hit",
+      "record_id": "search:2026-09-21-p-a093d7ecc5-partial · 10.1007/s43207-023-00326-0",
+      "statement": "\"Enhancement of thermal-electrical like response by flexoelectric effect in sodium bismuth titanate bilayer ceramics with compositional inhomogeneity\" (2023) could not be decided for the search search:2026-09-21-p-a093d7ecc5-partial: the text available was insufficient to say whether it demonstrates the composition.",
+      "why_unresolved": "A bilayer NBT ceramic whose compositional gradient and differing thermal expansion leave a sintering strain gradient; a 'thermal-electrical like response' larger than the single layer's is attributed to a flexoelectric-like built-in potential coupled with conductivity. Whether an imposed temperature gradient drives a thermal-expansion strain gradient in operation, and what output is measured, cannot be settled from the abstract (Springer page).",
+      "what_exists": "Decision insufficient-information; access: abstract; doi:10.1007/s43207-023-00326-0.",
+      "closure_condition": "Read the full text and decide the hit (qualifies / a stated exclusion), then reconsider the record's result.",
+      "related_ids": [
+        "10.1007/s43207-023-00326-0"
+      ],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/path/a093d7ecc5",
+      "on_default_frontier": true
+    },
+    {
+      "id": "residual:source-read-pending:2026-09-21-p-ccef4f212b-partial:10-1016-s0168-9002-00-00506-4",
+      "kind": "source-read-pending",
+      "record_type": "search-hit",
+      "record_id": "search:2026-09-21-p-ccef4f212b-partial · 10.1016/s0168-9002(00)00506-4",
+      "statement": "\"Ultra-thin 242mAm fuel elements in nuclear reactors\" (2000) could not be decided for the search search:2026-09-21-p-ccef4f212b-partial: the text available was insufficient to say whether it demonstrates the composition.",
+      "why_unresolved": "Ronen & Shwageraus 2000 (Nucl. Instrum. Methods A): the whole-chain form's only hit — ultra-thin americium-242m fuel elements whose fission fragments escape the fuel, a basis for fission-fragment-heated gas concepts; no abstract on record, the MHD connection unverified.",
+      "what_exists": "Decision insufficient-information; access: metadata-only; doi:10.1016/s0168-9002(00)00506-4.",
+      "closure_condition": "Read the full text and decide the hit (qualifies / a stated exclusion), then reconsider the record's result.",
+      "related_ids": [
+        "10.1016/s0168-9002(00)00506-4"
+      ],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/path/ccef4f212b",
+      "on_default_frontier": true
+    },
+    {
+      "id": "residual:source-read-pending:2026-09-21-p-ccef4f212b-partial:mhd-power-generation-with-a-nuclear-reactor-as-the-heat-sour",
+      "kind": "source-read-pending",
+      "record_type": "search-hit",
+      "record_id": "search:2026-09-21-p-ccef4f212b-partial · MHD POWER GENERATION WITH A NUCLEAR REACTOR AS THE HEAT SOURCE.",
+      "statement": "\"MHD POWER GENERATION WITH A NUCLEAR REACTOR AS THE HEAT SOURCE.\" (1970) could not be decided for the search search:2026-09-21-p-ccef4f212b-partial: the text available was insufficient to say whether it demonstrates the composition.",
+      "why_unresolved": "Hattori, Noguchi & Tanaka 1970 (OSTI, no abstract): by title a study of reactor-heated MHD generation; whether anything ran is unverified.",
+      "what_exists": "Decision insufficient-information; access: metadata-only.",
+      "closure_condition": "Read the full text and decide the hit (qualifies / a stated exclusion), then reconsider the record's result.",
+      "related_ids": [],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/path/ccef4f212b",
+      "on_default_frontier": true
+    }
+  ]
+}

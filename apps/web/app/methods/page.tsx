@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { atlas } from "@/lib/data";
+import { atlas, residuals } from "@/lib/data";
 import { ENDPOINTS, REPO, SCHEMA_VERSION } from "@/lib/api";
 import { claimHref, hrefFor, sourceHref } from "@/lib/format";
 import { KNOWLEDGE_LEVEL_LABEL, KNOWLEDGE_LEVELS, PREDICATES, PROCESS_PREDICATES } from "@pta/schema";
@@ -556,6 +556,30 @@ evidence: ${exPathway.evidence.join(", ")}`}</pre>
           <p>
             Generated routes are public as compositions of recorded relations, and that is all they are. There is no review queue, no proposal pipeline and no publication policy in this release; the
             schema reserves a few queue statuses that the compiler never assigns.
+          </p>
+        </div>
+      </section>
+
+      <section className={styles.section} id="residuals">
+        <h2 className="t-section">11b. Scientific status and unresolved items</h2>
+        <div className="prose">
+          <p>
+            Three facts govern how to read any status on this site. First, a status describes recorded evidence, never nature: a candidate composition is a route the atlas has not seen demonstrated,
+            not one that cannot be built; an inconclusive search is a search whose protocol obligations are not all met, not a finding that nothing exists. Second, uncertainty stays first-class:
+            the atlas does not convert an incomplete search into a negative, a stage figure into a route figure, or a range into a best, to close a count. Third, what the atlas does not know is
+            enumerated, not hidden — every open uncertainty in a current record (an incomplete search with the engine and query it still owes; a hit that could not be decided for want of its
+            text; a claim one paper reports; a figure whose boundary or definition the source does not state) is a <em>residual</em>, with the record it hangs on and what would close it.
+          </p>
+          <p>
+            The live list is <Link href="/api/residuals.json">api/residuals.json</Link> — {residuals().meta.residual_count} residuals at revision r{residuals().meta.atlas_revision}
+            {" ("}
+            {Object.entries(residuals().meta.counts_by_kind)
+              .map(([k, n]) => `${k} ${n}`)
+              .join(" · ")}
+            {"). "}
+            It is a projection of the compiled atlas and its audits, regenerated with every revision, and may shrink, grow or change as work continues; it sits beside the exports and outside the
+            v{SCHEMA_VERSION} contract. The immutable snapshot of the same collection at the close of the third review loop, with every invariant regenerated and a separate inventory of deferred
+            work, is <a href={`${DOCS}/design/reviews/loop-3/pass-50-closure.md`}>design/reviews/loop-3/pass-50-closure.md</a>; that file never updates.
           </p>
         </div>
       </section>

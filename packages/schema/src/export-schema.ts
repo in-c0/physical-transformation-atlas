@@ -127,7 +127,8 @@ export const SystemRecord = withUrl(CompiledSystemPathway);
 export const PathRecord = withUrl(CompiledPath);
 export const MatrixCellRecord = withUrl(MatrixCell);
 
-export const StatsExport = z.object({ meta: ExportMeta, data: z.object({ endpoints: z.array(z.string()) }) });
+/** Pass 50 (additive within v0.5.0): `projections` lists endpoints served beside the exports but outside this contract (/api/residuals.json). */
+export const StatsExport = z.object({ meta: ExportMeta, data: z.object({ endpoints: z.array(z.string()), projections: z.array(z.string()).default([]) }) });
 export const GraphCoreExport = z.object({
   meta: ExportMeta,
   data: z.object({

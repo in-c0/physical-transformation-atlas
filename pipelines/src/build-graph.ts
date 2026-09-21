@@ -2,7 +2,7 @@
  * Compile data/canonical → data/generated/graph.json (+ a copy the web app can
  * import). Fails loudly on validation problems.
  */
-import { mkdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 import { resolve, join } from "node:path";
 import { loadCanon, buildGraph, ValidationError } from "@pta/graph";
@@ -35,6 +35,10 @@ try {
     writeFileSync(join(dir, "graph.json"), coreJson);
     writeFileSync(join(dir, "paths.json"), pathsJson);
   }
+  // Pass 50: the residual collection is written by tools/audit-closure.mjs (the build script runs it after this step); a copy
+  // already on disk is carried to the web app so a dev build never lacks it, and the closure gate catches a stale one.
+  const residuals = join(outDir, "residuals.json");
+  if (existsSync(residuals)) writeFileSync(join(root, "apps", "web", "generated", "residuals.json"), readFileSync(residuals, "utf8"));
   const c = graph.meta.counts;
   console.log(
     `graph ${graph.meta.data_hash}: ${c.phenomena} phenomena · ${c.claims} claims · ${c.routes_enumerated} routes enumerated (${c.routes_with_recorded_composition_demonstration} with a recorded demonstration) · ${c.matrix_cells} cells (${c.matrix_cells_without_direct_relation} without a direct relation, ${c.matrix_cells_without_search_record} without a search record) · scope fill ${(c.editorial_scope_fill * 100).toFixed(1)}% · core ${(coreJson.length / 1024).toFixed(0)} KB + paths ${(pathsJson.length / 1024).toFixed(0)} KB`,

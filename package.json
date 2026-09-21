@@ -13,7 +13,7 @@
     "validate": "pnpm --filter @pta/pipelines validate",
     "test": "pnpm -r --if-present test",
     "dev": "pnpm build:graph && pnpm --filter @pta/web dev",
-    "build": "pnpm build:graph && pnpm --filter @pta/web build",
+    "build": "pnpm build:graph && node tools/audit-closure.mjs --no-site && pnpm --filter @pta/web build",
     "deploy": "pnpm build && pnpm --filter @pta/worker deploy",
     "docs:vocabulary": "pnpm --filter @pta/pipelines docs-vocabulary",
     "changelog": "pnpm --filter @pta/pipelines changelog"

@@ -494,6 +494,44 @@ test("theoretical_limit retired into the typed constraint graph (loop-3 pass 42)
   rmSync(tmp2, { recursive: true, force: true });
 });
 
+test("the closure audit (loop-3 pass 50): every invariant regenerated, one residual collection shared by the report and /api/residuals.json, orphans and omissions refused", () => {
+  const gate = spawnSync(process.execPath, [join(root, "tools", "audit-closure.mjs"), "--check", "--no-site"], { encoding: "utf8" });
+  assert.equal(gate.status, 0, gate.stderr || gate.stdout);
+  const collection = JSON.parse(readFileSync(join(root, "data", "generated", "residuals.json"), "utf8")) as { meta: { atlas_revision: string; residual_count: number; counts_by_kind: Record<string, number> }; residuals: { id: string; kind: string; record_type: string; record_id: string; closure_condition: string; public_url: string | null; on_default_frontier: boolean }[] };
+  assert.equal(collection.meta.atlas_revision, graph.meta.data_hash);
+  assert.equal(collection.meta.residual_count, collection.residuals.length);
+  // one inventory: the report is rendered from the same collection, and the web app's copy is byte-identical
+  const report = readFileSync(join(root, "design", "reviews", "loop-3", "pass-50-closure.md"), "utf8");
+  for (const r of collection.residuals) assert.ok(report.includes(r.id.replace("residual:", "")), `${r.id} is in the report`);
+  assert.equal(readFileSync(join(root, "apps", "web", "generated", "residuals.json"), "utf8"), readFileSync(join(root, "data", "generated", "residuals.json"), "utf8"));
+  // every mechanically detectable open item is a residual, individually: the ten frontier searches, every reported / theory-only claim, every unread hit
+  const frontier = graph.paths.filter((p) => p.frontier_class === "candidate" && p.structural_kind === "composition");
+  for (const p of frontier) assert.ok(collection.residuals.some((r) => r.kind === "search-incomplete" && r.on_default_frontier && r.public_url === `https://physical-transformation-atlas.wldud5192.workers.dev/path/${p.id.slice(2)}`), `${p.id} has its own search residual`);
+  assert.equal(collection.residuals.filter((r) => r.kind === "search-incomplete").length, graph.searches.filter((s) => s.result === "inconclusive").length);
+  for (const c of canon.claims) if (["reported", "theoretically-predicted", "hypothesised"].includes(c.status)) assert.ok(collection.residuals.some((r) => r.record_id === c.id), `${c.id} has a residual`);
+  assert.equal(collection.residuals.filter((r) => r.kind === "source-read-pending").length, graph.searches.flatMap((s) => s.hits.filter((h) => h.decision === "insufficient-information")).length);
+  // the two measurement residuals are the pass-45 unresolved rows, verified against the current records
+  assert.ok(collection.residuals.some((r) => r.kind === "measurement-boundary-unresolved" && r.record_id === "pathway:otec-plant · actual system thermal efficiency"));
+  assert.ok(collection.residuals.some((r) => r.kind === "measurement-definition-unresolved" && r.record_id === "pathway:shape-memory-heat-engine · thermal-to-electrical efficiency"));
+  for (const r of collection.residuals) assert.ok(r.closure_condition.length > 20, `${r.id}: a closure condition`);
+  // public residuals name the scientific limitation, never the owner machinery
+  for (const r of collection.residuals) assert.doesNotMatch(JSON.stringify(r), /exception|API key|owner/i, `${r.id} carries no operational wording`);
+  assert.match(report, /Maintainer notes \(never served\)/);
+  // negative controls: an orphan curated item is refused; a collection missing a residual is refused
+  const tmp = mkdtempSync(join(tmpdir(), "pta-closure-"));
+  const curated = readFileSync(join(root, "design", "reviews", "loop-3", "pass-50-curated.yaml"), "utf8");
+  writeFileSync(join(tmp, "curated.yaml"), curated.replace("quantity: actual system thermal efficiency", "quantity: a quantity nobody recorded"));
+  const orphan = spawnSync(process.execPath, [join(root, "tools", "audit-closure.mjs"), "--check", "--no-site", "--curated", join(tmp, "curated.yaml")], { encoding: "utf8" });
+  assert.notEqual(orphan.status, 0);
+  assert.match(orphan.stderr, /no such measurement — an orphan/);
+  const trimmed = { ...collection, residuals: collection.residuals.filter((r) => r.kind !== "measurement-boundary-unresolved") };
+  writeFileSync(join(tmp, "residuals.json"), JSON.stringify(trimmed));
+  const omitted = spawnSync(process.execPath, [join(root, "tools", "audit-closure.mjs"), "--check", "--no-site", "--collection", join(tmp, "residuals.json")], { encoding: "utf8" });
+  assert.notEqual(omitted.status, 0);
+  assert.match(omitted.stderr, /missing: residual:measurement-boundary-unresolved:otec-plant/);
+  rmSync(tmp, { recursive: true, force: true });
+});
+
 test("the frontier search-state audit (loop-3 pass 49): every default-frontier candidate's obligations recomputed from its target; blocked attempts recorded as attempts, never coverage; all ten honestly partial with the outstanding engine and key named", () => {
   const gate = spawnSync(process.execPath, [join(root, "tools", "audit-frontier-searches.mjs"), "--check"], { encoding: "utf8" });
   assert.equal(gate.status, 0, gate.stderr || gate.stdout);

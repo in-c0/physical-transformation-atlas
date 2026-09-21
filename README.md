@@ -27,7 +27,7 @@ apps/web             Next.js static site: /, /atlas, /matrix, /path/[id], /syste
 worker/              Cloudflare Worker serving the static export
 design/              brief, design system, review transcripts, current screenshots
 docs/                ontology, evidence model, status model (derivation and precedence), candidate generation, worked example, generated vocabulary
-tools/               static server, headless verification (screenshots, keyboard model, axe-core) and the gated audits (performance, limits, stage-versus-route, stage-omission, electrical form, frontier search state)
+tools/               static server, headless verification (screenshots, keyboard model, axe-core) and the gated audits (performance, limits, stage-versus-route, stage-omission, electrical form, frontier search state, closure)
 ```
 
 Dataset contract: [docs/data-api.md](docs/data-api.md) · machine schema: `/api/schema/v0.5.0.json` (v0.4.0, v0.3.0 and v0.2.0 frozen; migration: [docs/migration-v0.4-to-v0.5.md](docs/migration-v0.4-to-v0.5.md)) · revision history: [docs/dataset-changelog.md](docs/dataset-changelog.md) · reuse terms: [docs/licensing.md](docs/licensing.md) (none declared yet) · how to cite: [CITATION.cff](CITATION.cff).
@@ -69,7 +69,7 @@ The atlas separates how well a relation's physics is known from whether anyone h
 
 ## Status
 
-Version 0.1, first release. The representation has been tested on thermal, mechanical, electromagnetic, chemical and radiative conversions. Nuclear, plasma, quantum-transport and biophysical domains are deliberately thin. See `/coverage` on the site for the numbers and `/methods` for the model.
+Export format v0.5.0 after three review loops (the third, fifty passes with a second reader, closed on 22/09/2026 — its snapshot is `design/reviews/loop-3/pass-50-closure.md`). The representation has been tested on thermal, mechanical, electromagnetic, chemical, radiative and nuclear conversions; plasma, quantum-transport and biophysical domains are deliberately thin. See `/coverage` on the site for the numbers, `/methods` for the model, and `/api/residuals.json` for every open uncertainty in a current record — the atlas states what it does not know rather than closing counts.
 
 ## Origin
 
