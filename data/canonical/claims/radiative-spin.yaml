@@ -600,24 +600,25 @@
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 42 (a benchmark, attached with governed_by like Curzon–Ahlborn: listed on a route, never decisive)" }
 # Loop-3 pass 46: the water-splitting limits of Fountaine, Lewerenz & Atwater on the photoelectrochemical effect — two ideal upper bounds
 # scoped to water splitting by their basis, two realistic-case benchmarks (governed_by, like Curzon–Ahlborn: listed, never decisive).
-# Pass 46 close: Fountaine alone is the evidence for these four generic records — Cheng 2018 supports only its own architecture,
-# measurements and pair-specific comparison (the reviewer's provenance guard). One primary source is status reported by the atlas's
-# evidence model (established needs two independent groups or a review); the bound check reads the constraint, not the status.
+# Pass 46 close: Cheng 2018 supports only its own architecture, measurements and pair-specific comparison (the reviewer's provenance
+# guard), so it is evidence for none of these four generic records. Pass 47 close: Rozzi et al. 2020 (an open review, read) restates
+# the two ideal limits, which are therefore established; the two realistic-case benchmarks rest on Fountaine alone and stay reported
+# (the evidence model: established needs two independent groups or a review; the bound check reads the constraint, not the status).
 - id: claim:pec-bounded-single-junction-ideal
   subject: phenomenon:photoelectrochemical-effect
   predicate: bounded_by
   object: constraint:pec-water-splitting-single-junction-ideal-limit
   conditions: ["photoelectrochemical water splitting with a single absorber; a datum states the basis 'PEC water splitting, single-junction absorber, AM1.5G'"]
-  evidence: [source:fountaine-2016-pec-limits]
-  status: reported
+  evidence: [source:fountaine-2016-pec-limits, source:rozzi-2020-green-synthetic-fuels]
+  status: established
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 46" }
 - id: claim:pec-bounded-dual-junction-ideal
   subject: phenomenon:photoelectrochemical-effect
   predicate: bounded_by
   object: constraint:pec-water-splitting-dual-junction-ideal-limit
   conditions: ["photoelectrochemical water splitting with two absorbers in series; a datum states the basis 'PEC water splitting, dual-junction absorber, AM1.5G'"]
-  evidence: [source:fountaine-2016-pec-limits]
-  status: reported
+  evidence: [source:fountaine-2016-pec-limits, source:rozzi-2020-green-synthetic-fuels]
+  status: established
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 46" }
 - id: claim:pec-benchmarked-realistic-high-performance
   subject: phenomenon:photoelectrochemical-effect

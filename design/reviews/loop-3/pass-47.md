@@ -56,3 +56,39 @@ decomposed mechanically; and finding 8: a variant pathway's own address.
 Result: revision 7d644689086f — 353 entities · 524 claims · 234 sources · 93 pathways (92 + 1 variant) ·
 2 systems · 771 routes · 86 demonstrated · 87/87 · axe clean (the variant page and the PEC route added
 to the probe) · exports valid · five audit gates consistent · live.
+
+## Reviewed (sent 10:46 pm; ChatGPT High, ~7 min, with web search; PASS — 18 findings)
+
+1. The audit does what the diagnostic was for (finding 1): the decisive result is the separation into
+   unresolved-provider, replaced-provider and not-represented, not the raw count; the MHD control, the hydro
+   hit and the antenna hit land in the three classes; no classifier change.
+2. The antenna question (findings 2–6, 8): option (a) — a receiving antenna legitimately terminates a
+   radiation → electrical-work route; rectification establishes a narrower output form, never "electricity"
+   itself; no current:direct requirement (it would make AC generators and RF loads wrong); no
+   direct-/alternating-current carriers either — typed structure only where a downstream requirement
+   consumes it. One correction: remove "DC power" from output:electricity's aliases if the alias machinery
+   is semantic (it is — aliases build search plans).
+3. The compiler's same-first-and-last condition stays (findings 7–9): an omitted first or last phenomenon
+   is a different terminal claim, not an internal omission; a future endpoint case that leaves a
+   requirement unresolved is flagged as an endpoint / boundary audit case, never folded into
+   stage-omission; one case is not enough for a terminal-stage-truncation relation.
+4. No pass-47 subset deserves public annotation (finding 10).
+5. The Fountaine evidence question (findings 11–12): Rozzi, Minuto, Lanzini & Leone 2020, Energies 13, 420
+   (open review) states the 30.6 % / 40.0 % ideal limits — after reading, it supports established status for
+   the two ideal-limit claims; it does not state the Real1 / Real2 maxima, which stay reported on Fountaine.
+6. The order for 48–50 (findings 13–18): pass 48 = the electrical output-form / terminal-boundary audit,
+   atlas-wide, with the controls listed and no automatic current-form taxonomy; pass 49 = the reviewed
+   literature-search protocol over the ten default-frontier composition candidates (each an actual
+   SearchRecord; no demonstration inferred from constituents); pass 50 = the whole-atlas scientific
+   closure audit naming every remaining unresolved item; Planck stays deferred.
+
+## Closed (10:55–11:20 pm; findings 4 and 11–12 applied in pass 48, live at r02f726b52b7e)
+
+- Rozzi et al. 2020 read on the MDPI full-text page in her Chrome, Section 3.2.2: "The theoretical
+  maximum efficiency of a single junction cell with a bandgap of 1.59 eV is 30.6% and increases to 40.0%
+  for a dual junction device with bandgaps of 0.52 and 1.40 eV. The triple junction maximum efficiency is
+  28.3%, remarkably lower than dual junction efficiency [389]" — reference 389 is Fountaine 2016; the
+  DOI verified on Crossref. Recorded as a review source; the two ideal-limit claims cite it and read
+  established; the two benchmark claims stay reported on Fountaine alone (the source note says the review
+  never states them). "DC power" left output:electricity's aliases; its summary now says the waveform is
+  not part of the output unless a record narrows it. Regressions in the pass-47 and pass-48 tests.

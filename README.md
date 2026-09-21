@@ -27,7 +27,7 @@ apps/web             Next.js static site: /, /atlas, /matrix, /path/[id], /syste
 worker/              Cloudflare Worker serving the static export
 design/              brief, design system, review transcripts, current screenshots
 docs/                ontology, evidence model, status model (derivation and precedence), candidate generation, worked example, generated vocabulary
-tools/               static server, headless verification (screenshots, keyboard model, axe-core) and the gated audits (performance, limits, stage-versus-route, stage-omission)
+tools/               static server, headless verification (screenshots, keyboard model, axe-core) and the gated audits (performance, limits, stage-versus-route, stage-omission, electrical form)
 ```
 
 Dataset contract: [docs/data-api.md](docs/data-api.md) · machine schema: `/api/schema/v0.5.0.json` (v0.4.0, v0.3.0 and v0.2.0 frozen; migration: [docs/migration-v0.4-to-v0.5.md](docs/migration-v0.4-to-v0.5.md)) · revision history: [docs/dataset-changelog.md](docs/dataset-changelog.md) · reuse terms: [docs/licensing.md](docs/licensing.md) (none declared yet) · how to cite: [CITATION.cff](CITATION.cff).

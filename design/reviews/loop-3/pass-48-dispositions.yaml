@@ -1,0 +1,375 @@
+# Loop-3 pass 48: the electrical output-form / terminal-boundary audit (the reviewer's pass-47 findings 13–14). Two tables, joined to
+# the compiled graph by tools/audit-electrical-form.mjs and gated in the suite. Nothing here is served or typed: a form is recorded
+# where an atlas record STATES it (a claim's conditions or a datum's conditions / basis — quoted in `stated`), and `unspecified` where
+# none does; the auditor's physics reading sits in its own column and never becomes a form. No token, carrier or schema field is
+# added for a waveform (findings 3, 5, 14): typed structure only where a downstream claim consumes it, and the audit shows none does.
+#
+# producers: one row per claim that delivers an electrical carrier (the phenomenon → carrier step of every electricity-ending route).
+#   form: dc | ac | rf-oscillatory | pulsed | unspecified  — only from an atlas record, quoted in `stated`
+#   reading: the auditor's physics reading of the waveform the effect delivers (descriptive; never a form)
+producers:
+  - claim: claim:galvanic-produces-ions
+    form: unspecified
+    reading: dc (a redox cell drives a unidirectional current at its open-circuit potential)
+  - claim: claim:fuel-cell-produces-ions
+    form: unspecified
+    reading: dc
+  - claim: claim:concentration-cell-produces
+    form: unspecified
+    reading: dc
+  - claim: claim:red-produces-ions
+    form: unspecified
+    reading: dc (ionic current through stacked membranes, collected at the electrodes as a direct current)
+  - claim: claim:capmix-produces
+    form: unspecified
+    reading: cyclic (charge and discharge alternate with the salinity switch; net energy per cycle)
+  - claim: claim:amtec-produces-ions
+    form: unspecified
+    reading: dc
+  - claim: claim:betavoltaic-produces-pairs
+    form: dc
+    stated: "datum on pathway:betavoltaic-battery — 'J_sc 10.60 nA cm⁻², V_oc 76.92 mV, FF 17.41 %; I–V by sourcemeter' (Kim 2026) and 'I_sc 2.91 nA, V_oc 1.41 V, FF 0.81' (Zhang 2025): an I–V characteristic with an open-circuit voltage and a short-circuit current is a direct-current source"
+    reading: dc
+  - claim: claim:piezo-produces-charge
+    form: unspecified
+    reading: ac or pulsed (charge follows the strain rate; a vibrating cantilever gives an alternating output, an impact a pulse)
+  - claim: claim:flexo-produces-charge
+    form: unspecified
+    reading: ac (follows the strain-gradient rate under vibration)
+  - claim: claim:tribo-produces-charge
+    form: unspecified
+    reading: pulsed (contact–separation cycles give alternating pulses)
+  - claim: claim:droplet-produces-charge
+    form: pulsed
+    stated: "datum on pathway:droplet-electricity-generator — 'instantaneous peak output power per unit device area at the optimal load; a per-impact peak, not a time-averaged density'"
+    reading: pulsed (one pulse per droplet impact)
+  - claim: claim:electrostatic-produces
+    form: unspecified
+    reading: ac (a variable capacitor at a bias charges and discharges each vibration cycle)
+  - claim: claim:rew-produces
+    form: ac
+    stated: "datum on pathway:reverse-electrowetting-harvester — 'arrays of droplets oscillated against nanometre-thick multilayer dielectric films at tens of hertz'; instantaneous resistive-load electrical power"
+    reading: ac (at the droplet oscillation frequency)
+  - claim: claim:induction-produces-carriers
+    form: unspecified
+    reading: ac (a coil sees an alternating flux from a passing magnet or a vibrating armature; bursts for an oscillatory engine)
+  - claim: claim:magnetoelectric-produces
+    form: unspecified
+    reading: ac (the induced polarisation follows the applied alternating field)
+  - claim: claim:streaming-produces-ions
+    form: unspecified
+    reading: dc (a steady pressure-driven or thermo-osmotic flow gives a steady streaming current)
+  - claim: claim:hydrovoltaic-produces-ions
+    form: unspecified
+    reading: dc (steady evaporation-driven flow)
+  - claim: claim:mhd-produces
+    form: unspecified
+    reading: dc (a Faraday generator with a steady flow and a steady field delivers a direct current between its electrodes)
+  - claim: claim:photon-drag-produces
+    form: unspecified
+    reading: follows the illumination (dc under continuous illumination, pulsed under pulsed light)
+  - claim: claim:ionic-te-produces
+    form: unspecified
+    reading: transient (a thermodiffusion-charged capacitor delivers energy on discharge; steady-state current is small)
+  - claim: claim:acoustoelectric-produces
+    form: unspecified
+    reading: dc (a travelling acoustic wave drags carriers in one direction)
+  - claim: claim:dember-produces-charge
+    form: unspecified
+    reading: transient (a photo-induced diffusion voltage, terahertz emission in the pulsed case)
+  - claim: claim:ehd-produces
+    form: unspecified
+    reading: dc (injected monopolar charge carried by the flow against the field)
+  - claim: claim:alphavoltaic-produces-pairs
+    form: unspecified
+    reading: dc
+  - claim: claim:thermopolarization-produces-charge
+    form: unspecified
+    reading: transient (bound charge; a current only while the polarisation or the gradient changes)
+  - claim: claim:pv-produces-pairs
+    form: dc
+    stated: "datum on pathway:photovoltaic-module — 'V_oc 83.04 V, I_sc 6.384 A, fill factor 82.9 %' (Green 2024): the confirmed I–V characteristic of a module is a direct-current characteristic; the thermophotovoltaic and radioluminescent data likewise report cell I–V output"
+    reading: dc
+  - claim: claim:bpv-produces
+    form: unspecified
+    reading: dc (a steady photocurrent under continuous illumination)
+  - claim: claim:photoelectric-produces
+    form: unspecified
+    reading: dc (emitted electrons collected at the anode)
+  - claim: claim:pete-produces
+    form: unspecified
+    reading: dc
+  - claim: claim:antenna-produces
+    form: rf-oscillatory
+    stated: "claim conditions — 'an oscillating current at the wave frequency'"
+    reading: rf-oscillatory (the antenna current alternates at the radiation frequency)
+  - claim: claim:rectification-produces
+    form: dc
+    stated: "claim conditions — 'direct current out of the diode'; datum on pathway:rectenna-microwave — 'DC power delivered to the load over microwave power input'"
+    reading: dc
+  - claim: claim:ishe-produces
+    form: unspecified
+    reading: dc (a steady spin current gives a steady charge current; alternating under microwave spin pumping)
+  - claim: claim:hall-produces
+    form: unspecified
+    reading: follows the driving current (dc for a dc current in a steady field)
+  - claim: claim:seebeck-produces-carriers
+    form: unspecified
+    stated: "claim conditions say only 'carriers diffuse from the hot end and accumulate at the cold end'; the radiative-cooling TEG datum reports 'J_sc 44 mA, V_oc 79 mV' (a direct-current I–V) — recorded on that pathway's datum row, not as the claim's form"
+    reading: dc (a steady gradient gives a steady thermoelectric voltage)
+  - claim: claim:phonon-drag-produces
+    form: unspecified
+    reading: dc
+  - claim: claim:thermionic-produces-carriers
+    form: unspecified
+    stated: "claim conditions — 'emitted electrons collected at the anode at a potential difference set by the work-function difference' (a potential difference, no waveform stated)"
+    reading: dc
+  - claim: claim:linear-alternator-produces
+    form: unspecified
+    reading: ac (a linear alternator's coil sees an alternating flux at the acoustic frequency — 64 Hz in Wu 2014's conditions)
+  - claim: claim:pyro-produces-charge
+    form: unspecified
+    reading: ac (the pyroelectric current follows dT/dt and reverses with it)
+  - claim: claim:thermogalvanic-produces-ions
+    form: unspecified
+    reading: dc
+  - claim: claim:trec-produces-ions
+    form: unspecified
+    stated: "datum on pathway:thermally-regenerative-electrochemical-cycle — 'electrical energy per cycle over heat absorbed, cycled between 10 °C and 60 °C' (energy per cycle, no waveform stated)"
+    reading: dc within each half-cycle; cyclic overall
+  - claim: claim:nernst-produces
+    form: unspecified
+    reading: dc
+  - claim: claim:anomalous-nernst-produces
+    form: unspecified
+    reading: dc
+  - claim: claim:generator-produces-carriers
+    form: unspecified
+    reading: ac (alternating in the armature winding; a dynamo commutates it to dc — the atlas records neither)
+  - claim: claim:thermoradiative-produces
+    form: unspecified
+    reading: dc
+
+# boundaries: one row per electrical datum on a pathway or system ending at electricity — where its numerator sits relative to the
+# conditioning and delivery stages, as the record's basis / conditions state it. boundary: terminals (the converter's own output
+# terminals, dc or ac as the reading says) | after-power-electronics | grid (after the grid interface) | net-plant (net electrical
+# output at the plant boundary) | per-event-peak (an instantaneous or per-event figure) | unstated. `stated` quotes the record.
+boundaries:
+  - pathway: pathway:reverse-electrowetting-harvester
+    quantity: instantaneous electrical power density
+    boundary: per-event-peak
+    stated: "instantaneous resistive-load electrical power divided by the instantaneous / maximum liquid–substrate overlap area"
+  - pathway: pathway:shape-memory-heat-engine
+    quantity: thermal-to-electrical efficiency
+    boundary: unstated
+    stated: "the paper's heat-input and electrical-output definitions are not on record (pass 45: unresolved)"
+  - pathway: pathway:marangoni-rotor-generator
+    quantity: load voltage
+    boundary: terminals
+    stated: "1.6 mV maximum across 35 Ω — the coil's own terminals into a resistor"
+  - pathway: pathway:thermo-driven-nanofluidic-converter
+    quantity: streaming current
+    boundary: terminals
+    stated: "14 nA at ΔT = 47.5 °C — the membrane's electrodes"
+  - pathway: pathway:thermomagnetic-hydrodynamic-harvester
+    quantity: extracted electrical power per kelvin
+    boundary: terminals
+    stated: "extracted electrical power per kelvin, permanent magnets and a coil on the loop — the coil's output"
+  - pathway: pathway:pneumatic-pressure-piezo-harvester
+    quantity: peak power
+    boundary: per-event-peak
+    stated: "peak electrical power into the optimal 1500 kΩ load during a pressure excursion"
+  - pathway: pathway:pneumatic-pressure-piezo-harvester
+    quantity: power density
+    boundary: per-event-peak
+    stated: "peak power per unit volume of the harvester"
+  - pathway: pathway:wave-impact-piezo-harvester
+    quantity: open-circuit voltage per pipe
+    boundary: terminals
+    stated: "open-circuit voltage per pipe — the disc stack's own terminals, no load"
+  - pathway: pathway:wave-impact-piezo-harvester
+    quantity: power per wave event
+    boundary: per-event-peak
+    stated: "reported per wave event, not as a time average"
+  - pathway: pathway:flexoelectric-vibration-harvester
+    quantity: output voltage
+    boundary: terminals
+    stated: "≈ 0.19 V average — the flexoelectric layer's electrodes"
+  - pathway: pathway:thermal-osmosis-electrokinetic-generator
+    quantity: electrical output power density
+    boundary: terminals
+    stated: "as reported in the abstract; the area basis is not stated there — the electrokinetic module's electrodes"
+  - pathway: pathway:combustion-microthermophotovoltaic-generator
+    quantity: heat-to-electricity efficiency
+    boundary: after-power-electronics
+    stated: "electrical output of the generator (after its maximum-power-point converter) over the 13.7 W input thermal power"
+  - pathway: pathway:combustion-microthermophotovoltaic-generator
+    quantity: electrical power density
+    boundary: after-power-electronics
+    stated: "electric power per emitter/cell area — the same run, the generator's output after its maximum-power-point converter"
+  - pathway: pathway:radioluminescent-nuclear-battery
+    quantity: total power conversion efficiency
+    boundary: terminals
+    stated: "electrical output over the β⁻ source power — the InGaP cell's output"
+  - pathway: pathway:radioluminescent-nuclear-battery
+    quantity: electrical power density
+    boundary: terminals
+    stated: "electrical power per cell area"
+  - pathway: pathway:evaporation-driven-generator
+    quantity: electrical power (burst peak)
+    boundary: per-event-peak
+    stated: "burst peak into a 100 kΩ load"
+  - pathway: pathway:evaporation-driven-generator
+    quantity: electrical power (time average)
+    boundary: terminals
+    stated: "time average into the same 100 kΩ load; waiting periods between bursts bring the average down"
+  - pathway: pathway:thermocapillary-piezoelectric-micro-heat-engine
+    quantity: predicted output voltage
+    boundary: terminals
+    stated: "model: the PZT substrate's predicted voltage"
+  - pathway: pathway:thermocapillary-piezoelectric-micro-heat-engine
+    quantity: predicted system efficiency
+    boundary: unstated
+    stated: "analytical model with the electromechanical coupling factor and frictional irreversibilities"
+  - pathway: pathway:waterwheel-electric-generator
+    quantity: electrical load powered
+    boundary: terminals
+    stated: "1.54 kW of appliances on a 3 kW generator; voltage and current measured at full load"
+  - pathway: pathway:waterwheel-electric-generator
+    quantity: overall efficiency of the waterwheel-generator system
+    boundary: terminals
+    stated: "generator electrical output P_out = v_g·i_g over P_in (Equation 12)"
+  - pathway: pathway:thermoacoustic-piezoelectric-harvester
+    quantity: open-circuit voltage (peak)
+    boundary: per-event-peak
+    stated: "peak open-circuit voltage of the membrane in the sound field"
+  - pathway: pathway:thermoacoustic-piezoelectric-harvester
+    quantity: short-circuit current (peak)
+    boundary: per-event-peak
+    stated: "peak short-circuit current"
+  - pathway: pathway:thermoacoustic-piezoelectric-harvester
+    quantity: areal power density
+    boundary: terminals
+    stated: "under loudspeaker sound at 118 dB and 230 Hz — the membrane's electrodes"
+  - pathway: pathway:thermoacoustic-triboelectric-harvester
+    quantity: electrical power (peak)
+    boundary: per-event-peak
+    stated: "peak electrical power of the contact-separation nanogenerator"
+  - pathway: pathway:thermoelectric-generator
+    quantity: module conversion efficiency
+    boundary: terminals
+    stated: "module: electrical output over heat flow measured at the cold side, matched load"
+  - pathway: pathway:thermoacoustic-generator
+    quantity: thermal-to-electrical conversion efficiency at the maximum-efficiency point
+    boundary: terminals
+    stated: "electric power over heat input to the engine, as the abstract states it — the linear alternator's electric output"
+  - pathway: pathway:thermoacoustic-generator
+    quantity: maximum electric power
+    value: "1043 W"
+    boundary: terminals
+    stated: "electric output at the maximum-power operating point"
+  - pathway: pathway:thermoacoustic-generator
+    quantity: thermal-to-electric conversion efficiency at the maximum-efficiency point
+    boundary: terminals
+    stated: "electric power over heat input to the engine, as the abstract states it"
+  - pathway: pathway:thermoacoustic-generator
+    quantity: maximum electric power
+    value: "4.69 kW"
+    boundary: terminals
+    stated: "electric output at the maximum-power operating point"
+  - pathway: pathway:thermally-regenerative-electrochemical-cycle
+    quantity: heat-to-electricity cycle efficiency (no heat recuperation)
+    boundary: terminals
+    stated: "electrical energy per cycle over heat absorbed — the cell's terminals"
+  - pathway: pathway:thermally-regenerative-electrochemical-cycle
+    quantity: heat-to-electricity cycle efficiency (50 % heat recuperation assumed)
+    boundary: terminals
+    stated: "the same cycle with 50 % of the rejected heat assumed recuperated (model)"
+  - pathway: pathway:thermomagnetic-generator
+    quantity: electrical output power
+    boundary: terminals
+    stated: "0.8 mW — the pickup coil's output (Waske 2019 supplementary information)"
+  - pathway: pathway:thermophotovoltaic
+    quantity: electrical power density
+    boundary: terminals
+    stated: "electrical output per unit cell area at the maximum-efficiency operating point"
+  - pathway: pathway:thermophotovoltaic
+    quantity: thermophotovoltaic cell efficiency
+    boundary: terminals
+    stated: "electrical output over the net radiative heat absorbed by the cell — the cell's terminals"
+  - pathway: pathway:rankine-steam-plant
+    quantity: net plant electrical efficiency
+    boundary: net-plant
+    stated: "operating net electrical efficiency (electrical output to the 400 kV grid over fuel energy); fuel lower-heating-value basis; power-only"
+  - pathway: pathway:rankine-steam-plant
+    quantity: unit electrical load at the recorded operating state
+    boundary: net-plant
+    stated: "Unit 3 at 225 MW load — the unit's electrical load as the plant records it"
+  - pathway: pathway:rankine-steam-plant
+    quantity: cycle thermal efficiency (energy balance of the readings)
+    boundary: unstated
+    stated: "first-law efficiency of the cycle from the authors' model (model) — a cycle figure, no electrical boundary"
+  - pathway: pathway:combustion-gas-turbine
+    quantity: gas-turbine work output
+    boundary: unstated
+    stated: "127 MW from Table 3 'local plant data' — whether generator terminals or net is not stated"
+  - pathway: pathway:otec-plant
+    quantity: system thermal efficiency (design point)
+    boundary: unstated
+    stated: "net cycle work W_T − W_P over the evaporator heat — a cycle figure before the generator (model)"
+  - pathway: pathway:otec-plant
+    quantity: actual system thermal efficiency
+    boundary: unstated
+    stated: "the paper reports the figure beside the grid-connected power without saying whether the numerator is grid power or net cycle work (pass 45: unresolved)"
+  - pathway: pathway:otec-plant
+    quantity: maximum grid-connected electrical power
+    boundary: grid
+    stated: "maximum grid-connected electrical power — after the platform's grid interface"
+  - pathway: pathway:radiative-cooling-teg
+    quantity: electrical power density
+    boundary: terminals
+    stated: "maximum-power-point thermoelectric electrical output (nearly 0.8 mW; J_sc 44 mA, V_oc 79 mV)"
+  - pathway: pathway:electromagnetic-vibration-harvester
+    quantity: electrical power into a resistive load
+    boundary: terminals
+    stated: "power delivered into a 4 kΩ resistive load at the generator's resonance"
+  - pathway: pathway:wind-turbine
+    quantity: peak rotor power coefficient
+    boundary: unstated
+    stated: "rotor power coefficient on the free-stream kinetic power — a rotor figure before the generator"
+  - pathway: pathway:hydroelectric-plant
+    quantity: water-to-wire plant efficiency
+    boundary: net-plant
+    stated: "electrical output over the hydraulic power of the flow through the plant's gross head (water-to-wire)"
+  - pathway: pathway:hydroelectric-plant
+    quantity: hydraulic efficiency of the hydroEngine
+    boundary: unstated
+    stated: "the turbine stage alone — mechanical, before the generator"
+  - pathway: pathway:photovoltaic-module
+    quantity: confirmed module efficiency (crystalline silicon)
+    boundary: terminals
+    stated: "designated-area module efficiency under the global AM1.5 spectrum at 25 °C — the module's dc terminals (V_oc, I_sc, fill factor)"
+  - pathway: pathway:betavoltaic-battery
+    quantity: energy conversion efficiency of a ¹⁴C perovskite betavoltaic cell
+    boundary: terminals
+    stated: "battery output power over the isotope source's total decay power: J_sc × V_oc × FF"
+  - pathway: pathway:betavoltaic-battery
+    quantity: total energy conversion efficiency of the 4H-SiC betavoltaics under a ⁶³Ni source
+    boundary: terminals
+    stated: "battery output power over the isotope source power A·E_ave·q"
+  - pathway: pathway:betavoltaic-battery
+    quantity: semiconductor device efficiency η_d of the best 4H-SiC device under ⁶³Ni
+    boundary: terminals
+    stated: "the semiconductor stage alone: output power relative to the beta power leaving the source"
+  - pathway: pathway:rectenna-microwave
+    quantity: rectenna element RF-to-DC conversion efficiency
+    boundary: after-power-electronics
+    stated: "DC power delivered to the load over microwave power input to a single rectenna element — after the rectifying diode"
+  - pathway: pathway:droplet-electricity-generator
+    quantity: peak output power density (instantaneous)
+    boundary: per-event-peak
+    stated: "instantaneous peak output power per unit device area at the optimal load; a per-impact peak"
+  - system: system-pathway:natural-gas-combined-cycle
+    quantity: combined-cycle thermal efficiency
+    boundary: net-plant
+    stated: "net gas-turbine plus steam-turbine power divided by natural-gas LHV input"

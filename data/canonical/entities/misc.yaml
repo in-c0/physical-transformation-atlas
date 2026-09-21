@@ -4,9 +4,11 @@
 - id: output:electricity
   type: output
   name: Electrical work
-  aliases: [electricity, electrical output, DC power]
+  # Pass 48: "DC power" left the aliases — aliases feed search plans, so they are semantic, and DC is one form of electrical output, not
+  # a synonym for it. The output is electrical work at a maintained potential difference irrespective of waveform unless a record narrows it.
+  aliases: [electricity, electrical output, electrical power]
   energy_form: electrical
-  summary: Charge driven through an external load at a potential difference. The most transportable and convertible form of work.
+  summary: Charge driven through an external load at a maintained potential difference, whatever the waveform — direct, alternating or oscillating at a radio frequency — unless a record narrows it. The most transportable and convertible form of work.
 - id: output:mechanical-work
   type: output
   name: Mechanical work

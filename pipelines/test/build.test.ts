@@ -494,6 +494,37 @@ test("theoretical_limit retired into the typed constraint graph (loop-3 pass 42)
   rmSync(tmp2, { recursive: true, force: true });
 });
 
+test("the electrical output-form / terminal-boundary audit (loop-3 pass 48): a gated report — no claim requires a waveform, the antenna route is complete as electrical work, the rectenna narrows to DC after rectification, generators and PV need no current form, and every electrical datum keeps its boundary", () => {
+  const gate = spawnSync(process.execPath, [join(root, "tools", "audit-electrical-form.mjs"), "--check"], { encoding: "utf8" });
+  assert.equal(gate.status, 0, gate.stderr || gate.stdout);
+  const report = readFileSync(join(root, "design", "reviews", "loop-3", "pass-48-electrical-form-audit.md"), "utf8");
+  assert.match(report, /\*\*no claim requires an electrical form or waveform\*\*/);
+  // no requirement namespace names a current form, and none is proposed: the vocabulary has no such token
+  for (const c of canon.claims) for (const t of [...c.regime_requires, ...(c.handoff?.requires_all ?? []), ...(c.handoff?.requires_any ?? [])]) assert.doesNotMatch(t, /^(current|waveform|electric|electrical):/, `${c.id} requires ${t}`);
+  // the antenna route: an oscillating current at the wave frequency delivered to a load is electrical work; no rectifier is required
+  const antenna = graph.paths.find((p) => p.claims.join(">") === "claim:radiation-drives-antenna>claim:antenna-produces>claim:charge-carriers-convert-electricity")!;
+  assert.ok(antenna);
+  assert.equal(antenna.frontier_class, "candidate");
+  assert.match(report, /claim:antenna-produces \| Antenna reception \| charge-carriers \| rf-oscillatory \| claim conditions — 'an oscillating current at the wave frequency'/);
+  // the rectenna: rectification is the one conditioning stage on record; its datum is DC after the diode
+  assert.match(report, /rectenna-microwave \| prototype \| Rectification \| claim:rectification-produces \| claim:charge-carriers-convert-electricity \| claim:antenna-couples-rectification → Rectification \| dc \| no/);
+  assert.match(report, /rectenna-microwave \| rectenna element RF-to-DC conversion efficiency \| [^|]*\| device \| after-power-electronics/);
+  // electrical work is one output whatever the waveform: the alias that said otherwise is gone, the summary says so
+  const electricity = canon.entities.find((e) => e.id === "output:electricity")!;
+  assert.ok(!electricity.aliases.some((a) => /dc/i.test(a)), "no DC alias on generic electricity");
+  assert.match(electricity.summary, /whatever the waveform/);
+  // grid-connected and net-plant data keep their boundary in the report, beside the record's own words
+  assert.match(report, /otec-plant \| maximum grid-connected electrical power \| 47\.4 kW \| laboratory \| grid/);
+  assert.match(report, /rankine-steam-plant \| net plant electrical efficiency \| 47% \| plant \| net-plant \| operating net electrical efficiency \(electrical output to the 400 kV grid/);
+  assert.match(report, /combustion-microthermophotovoltaic-generator \| heat-to-electricity efficiency \| 2\.5 % \| laboratory \| after-power-electronics \| electrical output of the generator \(after its maximum-power-point converter\)/);
+  // PV and the rotating generators: demonstrated, no conditioning stage, no form requirement
+  for (const id of ["pathway:photovoltaic-module", "pathway:hydroelectric-plant", "pathway:wind-turbine", "pathway:rankine-steam-plant"]) {
+    const route = graph.paths.find((p) => p.pathway === id)!;
+    assert.equal(route.frontier_class, "demonstrated", id);
+  }
+  assert.match(report, /photovoltaic-module \| commercial \| Photovoltaic effect \| claim:pv-produces-pairs \| claim:pairs-convert-electricity \| none \| dc \| no/);
+});
+
 test("the generalised stage-omission audit (loop-3 pass 47): a generated, gated report — the three controls hold, the compiler's stage-omission routes are found with their tokens, and nothing on the default frontier is a shorter spelling of a recorded pathway", () => {
   const gate = spawnSync(process.execPath, [join(root, "tools", "audit-stage-omission.mjs"), "--check"], { encoding: "utf8" });
   assert.equal(gate.status, 0, gate.stderr || gate.stdout);
@@ -513,10 +544,20 @@ test("the generalised stage-omission audit (loop-3 pass 47): a generated, gated 
   assert.match(report, /## 1\. The default frontier \(class candidate, kind composition\)\n\n10 routes in scope · 0 hit\(s\)/);
   for (const id of ["p-dfe0c609d9", "p-f64f7f0a7b"]) assert.equal(graph.paths.find((p) => p.id === id)!.frontier_class, "candidate", `${id} stays a candidate`);
   assert.equal(graph.paths.filter((p) => p.known_pathway_overlap?.relation === "stage-omission").length, 1);
-  // pass 46 close (the reviewer's provenance guard): Fountaine alone evidences the four generic PEC constraint claims; Cheng stays on
-  // its own architecture; the pair-specific limit keeps the two assumption bundles distinct
-  for (const id of ["claim:pec-bounded-single-junction-ideal", "claim:pec-bounded-dual-junction-ideal", "claim:pec-benchmarked-realistic-high-performance", "claim:pec-benchmarked-realistic-earth-abundant"])
-    assert.deepEqual(canon.claims.find((c) => c.id === id)!.evidence, ["source:fountaine-2016-pec-limits"], id), assert.equal(canon.claims.find((c) => c.id === id)!.status, "reported", `${id}: one primary source is reported, never established`);
+  // pass 46 close (the reviewer's provenance guard): Cheng evidences none of the four generic PEC constraint claims; the pair-specific
+  // limit keeps the two assumption bundles distinct. Pass 47 close: Rozzi et al. 2020 (an open review, read) restates the two ideal
+  // limits, which are established on Fountaine + the review; the two realistic-case benchmarks rest on Fountaine alone and stay
+  // reported — a review that does not state a number is never evidence for it.
+  for (const id of ["claim:pec-bounded-single-junction-ideal", "claim:pec-bounded-dual-junction-ideal"]) {
+    assert.deepEqual(canon.claims.find((c) => c.id === id)!.evidence, ["source:fountaine-2016-pec-limits", "source:rozzi-2020-green-synthetic-fuels"], id);
+    assert.equal(canon.claims.find((c) => c.id === id)!.status, "established", id);
+  }
+  for (const id of ["claim:pec-benchmarked-realistic-high-performance", "claim:pec-benchmarked-realistic-earth-abundant"]) {
+    assert.deepEqual(canon.claims.find((c) => c.id === id)!.evidence, ["source:fountaine-2016-pec-limits"], id);
+    assert.equal(canon.claims.find((c) => c.id === id)!.status, "reported", `${id}: one primary source is reported, never established`);
+  }
+  assert.equal(canon.sources.find((s) => s.id === "source:rozzi-2020-green-synthetic-fuels")!.type, "review");
+  assert.match(canon.sources.find((s) => s.id === "source:rozzi-2020-green-synthetic-fuels")!.notes ?? "", /does not state Fountaine's realistic-case/);
   const pair = canon.entities.find((e) => e.id === "constraint:pec-tandem-gainp-gainas-1p78-1p26ev-limit")!;
   assert.match(pair.summary, /two assumption bundles that are not the same model/);
   assert.match(pair.summary, /20\.5 %/);
