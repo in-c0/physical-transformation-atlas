@@ -478,7 +478,7 @@
   name: Thermoacoustic piezoelectric harvester
   steps: [claim:thermoacoustic-drives, claim:thermoacoustic-produces-sound, claim:acoustic-wave-drives-piezoelectric, claim:piezo-produces-charge, claim:surface-charge-converts-electricity]
   demonstrated_with: [transducer:thermoacoustic-piezoelectric-harvester]
-  evidence: [source:zheng-2022-thermoacoustic-pan]
+  evidence: [source:zheng-2022-thermoacoustic-pan, source:smoker-2012-thermoacoustic-piezoelectric]
   status: demonstrated
   knowledge_level: K6
   performance:
@@ -509,5 +509,5 @@
         year: 2022
         note: "abstract figures; the engine-driven output is the pathway's demonstration"
   environment: [state-gas, temp-gradient-required]
-  summary: A thermoacoustic engine's sound field strains a piezoelectric nanofibre membrane, whose charge runs a load — the piezoelectric sibling of the linear-alternator generator, recorded from the authors' engine-driven run. The authors call the membrane "acoustoelectric"; the atlas keeps that name for Weinreich carrier drag, a different coupling.
+  summary: A thermoacoustic engine's sound field strains a piezoelectric nanofibre membrane, whose charge runs a load — the piezoelectric sibling of the linear-alternator generator, recorded from the authors' engine-driven run. The authors call the membrane "acoustoelectric"; the atlas keeps that name for Weinreich carrier drag, a different coupling. The earlier demonstration is Smoker et al. 2012, a standing-wave resonator exciting a piezoelectric diaphragm, validated on a prototype without published output figures.
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 25 (known device recorded from the abstract; the second reader ruled it wrong-coupling for the acoustoelectric route)" }

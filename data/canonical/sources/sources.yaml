@@ -1402,3 +1402,12 @@
   venue: "Nature Communications 17, 8932"
   doi: 10.1038/s41467-026-74813-3
   notes: "Open access, abstract and results read. Interdigitated transducers on (111)-cut PMN–PT launch a surface acoustic wave through monolayer graphene: the acoustoelectric current reaches 90.39 μA and the open-circuit voltage 341.72 mV at 20 dBm RF input with a 50 V gate (17 μA and 225 mV ungated), an acoustoelectric responsivity of 7.66 μA/(W·MHz). The travelling solid-state wave is launched electrically, not by heat."
+# Loop-3 pass 27: the earlier demonstration of the thermoacoustic piezoelectric harvester, found by the acoustoelectric route's OpenAlex run.
+- id: source:smoker-2012-thermoacoustic-piezoelectric
+  type: paper
+  title: "Energy harvesting from a standing wave thermoacoustic-piezoelectric resonator"
+  authors: [J. Smoker, M. Nouh, O. Aldraihem, A. Baz]
+  year: 2012
+  venue: "Journal of Applied Physics 111, 104901"
+  doi: 10.1063/1.4712630
+  notes: "Abstract read (Crossref). A one-dimensional thermoacoustic-piezoelectric resonator: a steep temperature gradient along an optimally placed porous stack drives self-sustained acoustic waves whose pressure fluctuations excite a piezoelectric diaphragm at the far end, converting acoustic to electrical energy with no moving parts; predicted with DeltaEC and validated on a small prototype (infrared temperature field, PIV flow field, microphone array, conversion efficiency). No output figures in the abstract."

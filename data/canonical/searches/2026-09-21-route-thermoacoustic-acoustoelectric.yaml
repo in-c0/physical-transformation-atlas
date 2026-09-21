@@ -2,7 +2,8 @@
 # acoustoelectric effect → electrical work (p-231472e45e), opened as physics before any engine could run: OpenAlex's shared
 # anonymous daily budget was exhausted, Semantic Scholar keyless and Google Scholar captcha-blocked on 21/09. The second
 # reader's web search found no experiment in which a thermoacoustic engine drove classical Weinreich carrier drag; its five
-# nearest works are recorded with the lane's verification. The protocol runs follow when the engines reopen (pass 26).
+# nearest works are recorded with the lane's verification. OpenAlex's six forms ran in pass 27 (21/09, 10:07 am Sydney)
+# once the anonymous pool reopened; Semantic Scholar and Google Scholar remain outstanding.
 - id: search:2026-09-21-p-231472e45e-partial
   target:
     kind: path
@@ -38,10 +39,112 @@
       records_screened: 5
       records_read: 5
       note: "a web-search negative, not route-search-v1 evidence; the five works the reviewer named were each verified by the lane on Crossref and read at abstract level (Zheng 2022 on the publisher's page, Atashbar 2026 open access)"
+    - id: search:2026-09-21-p-231472e45e/oa-dm1
+      engine: openalex
+      query_form: route-driver-mechanism
+      query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat" OR "heat input") AND (thermoacoustic OR "thermoacoustic effect" OR "thermoacoustic engine" OR "thermoacoustic prime mover" OR "thermoacoustic heat engine" OR "Rijke tube" OR "Sondhauss tube")
+      executed_at: 2026-09-21T00:07:44.281Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22+OR+%22heat+input%22%29+AND+%28thermoacoustic+OR+%22thermoacoustic+effect%22+OR+%22thermoacoustic+engine%22+OR+%22thermoacoustic+prime+mover%22+OR+%22thermoacoustic+heat+engine%22+OR+%22Rijke+tube%22+OR+%22Sondhauss+tube%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat" OR "heat input") AND (thermoacoustic OR "thermoacoustic effect" OR "thermoacoustic engine" OR "thermoacoustic prime mover" OR "thermoacoustic heat engine" OR "Rijke tube" OR "Sondhauss tube")
+        type: article|review|book-chapter
+      result_count_reported: 751
+      records_retrieved: 100
+      records_screened: 100
+      records_read: 3
+      query_key: driver-mechanism:1
+    - id: search:2026-09-21-p-231472e45e/oa-dm1-newest
+      engine: openalex
+      query_form: route-driver-mechanism
+      query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat" OR "heat input") AND (thermoacoustic OR "thermoacoustic effect" OR "thermoacoustic engine" OR "thermoacoustic prime mover" OR "thermoacoustic heat engine" OR "Rijke tube" OR "Sondhauss tube")
+      executed_at: 2026-09-21T00:07:48.462Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22+OR+%22heat+input%22%29+AND+%28thermoacoustic+OR+%22thermoacoustic+effect%22+OR+%22thermoacoustic+engine%22+OR+%22thermoacoustic+prime+mover%22+OR+%22thermoacoustic+heat+engine%22+OR+%22Rijke+tube%22+OR+%22Sondhauss+tube%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=50&sort=publication_date%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: publication_date:desc
+      filters:
+        title_and_abstract.search: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat" OR "heat input") AND (thermoacoustic OR "thermoacoustic effect" OR "thermoacoustic engine" OR "thermoacoustic prime mover" OR "thermoacoustic heat engine" OR "Rijke tube" OR "Sondhauss tube")
+        type: article|review|book-chapter
+      result_count_reported: 751
+      records_retrieved: 50
+      records_screened: 50
+      records_read: 2
+      query_key: driver-mechanism:1
+    - id: search:2026-09-21-p-231472e45e/oa-mp12
+      engine: openalex
+      query_form: route-mechanism-pair
+      query: (thermoacoustic OR "thermoacoustic effect" OR "thermoacoustic engine" OR "thermoacoustic prime mover" OR "thermoacoustic heat engine" OR "Rijke tube" OR "Sondhauss tube") AND ("Acoustoelectric effect" OR "acoustoelectric current" OR "acousto-electric effect" OR "acoustoelectric voltage" OR "acoustoelectric drag" OR "Weinreich relation")
+      executed_at: 2026-09-21T00:10:52.826Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28thermoacoustic+OR+%22thermoacoustic+effect%22+OR+%22thermoacoustic+engine%22+OR+%22thermoacoustic+prime+mover%22+OR+%22thermoacoustic+heat+engine%22+OR+%22Rijke+tube%22+OR+%22Sondhauss+tube%22%29+AND+%28%22Acoustoelectric+effect%22+OR+%22acoustoelectric+current%22+OR+%22acousto-electric+effect%22+OR+%22acoustoelectric+voltage%22+OR+%22acoustoelectric+drag%22+OR+%22Weinreich+relation%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: (thermoacoustic OR "thermoacoustic effect" OR "thermoacoustic engine" OR "thermoacoustic prime mover" OR "thermoacoustic heat engine" OR "Rijke tube" OR "Sondhauss tube") AND ("Acoustoelectric effect" OR "acoustoelectric current" OR "acousto-electric effect" OR "acoustoelectric voltage" OR "acoustoelectric drag" OR "Weinreich relation")
+        type: article|review|book-chapter
+      result_count_reported: 1
+      records_retrieved: 1
+      records_screened: 1
+      records_read: 1
+      query_key: mechanism-pair:1-2
+    - id: search:2026-09-21-p-231472e45e/oa-wc
+      engine: openalex
+      query_form: route-whole-chain
+      query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat" OR "heat input") AND (thermoacoustic OR "thermoacoustic effect" OR "thermoacoustic engine" OR "thermoacoustic prime mover" OR "thermoacoustic heat engine" OR "Rijke tube" OR "Sondhauss tube") AND ("Acoustoelectric effect" OR "acoustoelectric current" OR "acousto-electric effect" OR "acoustoelectric voltage" OR "acoustoelectric drag" OR "Weinreich relation") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power" OR "direct current")
+      executed_at: 2026-09-21T00:16:57.769Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22+OR+%22heat+input%22%29+AND+%28thermoacoustic+OR+%22thermoacoustic+effect%22+OR+%22thermoacoustic+engine%22+OR+%22thermoacoustic+prime+mover%22+OR+%22thermoacoustic+heat+engine%22+OR+%22Rijke+tube%22+OR+%22Sondhauss+tube%22%29+AND+%28%22Acoustoelectric+effect%22+OR+%22acoustoelectric+current%22+OR+%22acousto-electric+effect%22+OR+%22acoustoelectric+voltage%22+OR+%22acoustoelectric+drag%22+OR+%22Weinreich+relation%22%29+AND+%28%22Electrical+work%22+OR+electricity+OR+%22electrical+output%22+OR+%22DC+power%22+OR+%22direct+current%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat" OR "heat input") AND (thermoacoustic OR "thermoacoustic effect" OR "thermoacoustic engine" OR "thermoacoustic prime mover" OR "thermoacoustic heat engine" OR "Rijke tube" OR "Sondhauss tube") AND ("Acoustoelectric effect" OR "acoustoelectric current" OR "acousto-electric effect" OR "acoustoelectric voltage" OR "acoustoelectric drag" OR "Weinreich relation") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power" OR "direct current")
+        type: article|review|book-chapter
+      result_count_reported: 0
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      query_key: whole-chain
+    - id: search:2026-09-21-p-231472e45e/oa-dp
+      engine: openalex
+      query_form: route-demonstration-precision
+      query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat" OR "heat input") AND (thermoacoustic OR "thermoacoustic effect" OR "thermoacoustic engine" OR "thermoacoustic prime mover" OR "thermoacoustic heat engine" OR "Rijke tube" OR "Sondhauss tube") AND ("Acoustoelectric effect" OR "acoustoelectric current" OR "acousto-electric effect" OR "acoustoelectric voltage" OR "acoustoelectric drag" OR "Weinreich relation") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power" OR "direct current") AND (experiment OR experimental OR measured OR device OR prototype)
+      executed_at: 2026-09-21T00:17:02.022Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22+OR+%22heat+input%22%29+AND+%28thermoacoustic+OR+%22thermoacoustic+effect%22+OR+%22thermoacoustic+engine%22+OR+%22thermoacoustic+prime+mover%22+OR+%22thermoacoustic+heat+engine%22+OR+%22Rijke+tube%22+OR+%22Sondhauss+tube%22%29+AND+%28%22Acoustoelectric+effect%22+OR+%22acoustoelectric+current%22+OR+%22acousto-electric+effect%22+OR+%22acoustoelectric+voltage%22+OR+%22acoustoelectric+drag%22+OR+%22Weinreich+relation%22%29+AND+%28%22Electrical+work%22+OR+electricity+OR+%22electrical+output%22+OR+%22DC+power%22+OR+%22direct+current%22%29+AND+%28experiment+OR+experimental+OR+measured+OR+device+OR+prototype%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat" OR "heat input") AND (thermoacoustic OR "thermoacoustic effect" OR "thermoacoustic engine" OR "thermoacoustic prime mover" OR "thermoacoustic heat engine" OR "Rijke tube" OR "Sondhauss tube") AND ("Acoustoelectric effect" OR "acoustoelectric current" OR "acousto-electric effect" OR "acoustoelectric voltage" OR "acoustoelectric drag" OR "Weinreich relation") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power" OR "direct current") AND (experiment OR experimental OR measured OR device OR prototype)
+        type: article|review|book-chapter
+      result_count_reported: 0
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      query_key: demonstration-precision
+    - id: search:2026-09-21-p-231472e45e/oa-dp-r
+      engine: openalex
+      query_form: route-demonstration-precision
+      query: thermoacoustic AND ("acoustoelectric current" OR "acousto-electric effect") AND (semiconductor OR graphene) AND experiment
+      executed_at: 2026-09-21T00:17:06.230Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3Athermoacoustic+AND+%28%22acoustoelectric+current%22+OR+%22acousto-electric+effect%22%29+AND+%28semiconductor+OR+graphene%29+AND+experiment%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: thermoacoustic AND ("acoustoelectric current" OR "acousto-electric effect") AND (semiconductor OR graphene) AND experiment
+        type: article|review|book-chapter
+      result_count_reported: 0
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      query_key: demonstration-precision
   screening:
-    records_retrieved: 5
-    unique_records: 5
-    title_abstract_screened: 5
+    records_retrieved: 156
+    unique_records: 156
+    title_abstract_screened: 156
     full_text_read: 0
   hits:
     - title: Thermoacoustic energy harvesting using thermally-stabilized polyacrylonitrile nanofibers
@@ -84,17 +187,68 @@
       access: metadata-only
       decision: constituent-only
       reason: "Yazaki, Iwata, Maekawa & Tominaga 1998: the first travelling-wave thermoacoustic engine (a looped tube) — the same role as Backhaus & Swift 2000, earlier."
+    - title: Wideband frequency-dependent dielectric properties of rat tissues exposed to low-intensity focused ultrasound in the microwave frequency range
+      year: 2023
+      doi: 10.1088/1674-1056/ac7453
+      found_by:
+        - search:2026-09-21-p-231472e45e/oa-mp12
+      access: abstract
+      decision: wrong-coupling
+      reason: "The mechanism-pair query's only hit (Chinese Physics B 32, 034305): the biomedical acoustoelectric effect — focused ultrasound modulating the conductivity and permittivity of rat tissues — with no thermoacoustic driver and no carrier drag; the query matched 'thermoacoustic imaging' and 'acoustoelectric' in one abstract."
+    - title: Energy harvesting from a standing wave thermoacoustic-piezoelectric resonator
+      year: 2012
+      doi: 10.1063/1.4712630
+      found_by:
+        - search:2026-09-21-p-231472e45e/oa-dm1
+      access: abstract
+      decision: wrong-coupling
+      reason: "Smoker, Nouh, Aldraihem & Baz 2012 (J. Appl. Phys. 111, 104901): a standing-wave thermoacoustic resonator whose pressure oscillation excites a piezoelectric diaphragm at the far end, validated on a small prototype with infrared, PIV and microphone measurements — the thermoacoustic source is the route's, the conversion is piezoelectric. The earlier demonstration of the atlas's thermoacoustic piezoelectric harvester; recorded there as evidence."
+    - title: Performance Enhancement of an Acoustic Energy Harvester with a Flexible Polyvinylidene Fluoride-Based Piezoelectric Nanogenerator via the Thermoacoustic Effect
+      year: 2026
+      doi: 10.3390/nano16140848
+      found_by:
+        - search:2026-09-21-p-231472e45e/oa-dm1-newest
+      access: abstract
+      decision: wrong-coupling
+      reason: "Liu & Chen 2026 (Nanomaterials 16, 848): a loudspeaker-driven acoustic harvester with a PVDF piezoelectric nanogenerator whose oscillation a thermoacoustic stack amplifies (pressure amplification up to 3.73 at a 101.5 °C stack temperature difference) — piezoelectric conversion, and the thermoacoustic effect here modifies an externally driven wave rather than sourcing it."
+    - title: Modelling and analysis of a thermoacoustic-piezoelectric energy harvester
+      year: 2019
+      doi: 10.1016/j.applthermaleng.2019.01.025
+      found_by:
+        - search:2026-09-21-p-231472e45e/oa-dm1
+      access: metadata-only
+      decision: wrong-coupling
+      reason: "Chen, Tang & Mace 2019 (Applied Thermal Engineering 150, 532–544): a model of the thermoacoustic-piezoelectric harvester; the piezoelectric family, by title."
+    - title: "High-temperature energy harvesting via thermoacoustic-triboelectric hybridization: Design, modelling, and application demonstration"
+      year: 2026
+      doi: 10.1016/j.nanoen.2026.112082
+      found_by:
+        - search:2026-09-21-p-231472e45e/oa-dm1-newest
+      access: abstract
+      decision: wrong-coupling
+      reason: "Li et al. 2026 (Nano Energy 155, 112082; abstract read on the publisher's page): a piston-assisted thermoacoustic engine drives a honeycomb-structured freestanding contact-separation triboelectric nanogenerator — stable oscillations at heating temperatures around 150 °C, a peak power of 0.49 mW at 80 MΩ, four stacked units charging 1 μF to 17.05 V in 10 s, a wireless temperature sensor powered. A third conversion family after the alternator and the piezoelectric membrane, not carrier drag; a sibling composition the atlas does not yet spell (with the 2025 liquid-metal triboelectric paper, Energy 137745, in the same list), put to the second reader."
+    - title: Development of a 5 kW traveling-wave thermoacoustic electric generator
+      year: 2017
+      doi: 10.1016/j.apenergy.2015.12.034
+      found_by:
+        - search:2026-09-21-p-231472e45e/oa-dm1
+      access: metadata-only
+      decision: constituent-only
+      reason: "Bi et al. 2017 (Applied Energy 185, 1355–1361): a 5 kW travelling-wave thermoacoustic engine with a linear alternator — the driver, the first mechanism and the travelling carrier at engineering scale, the atlas's recorded thermoacoustic generator; no acoustoelectric element."
   result: inconclusive
   completeness: partial
   reviewed_by: Ava Kim's loop-3 lane (Claude Opus 5); abstracts and Crossref metadata read by the lane; ChatGPT (GPT-5 Thinking) as second reader and web searcher in pass 25
   reviewed_on: 2026-09-21
   limitations:
-    - no protocol engine has run for this route yet — OpenAlex's shared anonymous daily budget was exhausted (HTTP 429, resets at midnight UTC), Semantic Scholar answered 429 keyless (owner exception e953) and Google Scholar answered every query with a captcha; the plan p-231472e45e.yaml is written and the OpenAlex and Scholar forms are pass 26's first job
-    - the only run is the second reader's web search, which does not count as an engine under route-search-v1
+    - "OpenAlex ran on 21/09 at 10:07 am Sydney once the shared anonymous pool reopened (six forms; 751 works reported for the driver-mechanism form, the first 100 by relevance and the first 50 newest screened at title level, the rest unscreened; the mechanism-pair, whole-chain, precision and the reviewer's own precision query returned 1, 0, 0 and 0); Semantic Scholar still answers 429 keyless (owner exception e953) and Google Scholar still answers every query with a captcha — both mandatory for a negative, neither run"
+    - the driver-mechanism list is thermoacoustic-engine engineering (regenerators, looped tubes, alternators, piezoelectric and triboelectric converters); no title names carrier drag, a semiconductor or graphene
     - "Weinreich, Sanders & White 1959 and the two travelling-wave engine papers were verified at metadata level only; their roles are constituent, so nothing about the composition rests on their full texts"
-  conclusion: "No demonstration known: the second reader's web search found no experiment in which a thermoacoustic engine, Rijke tube or Sondhauss tube drove classical Weinreich carrier drag, and each of its five nearest works fails the composition for a stated reason — the thermoacoustic-to-electric device that exists (Zheng 2022) is piezoelectric, and the acoustoelectric currents that exist (Weinreich 1959, Atashbar 2026) come from electrically launched waves. The physics review changed the route's spelling: Weinreich drag needs a travelling wave, so the candidate is now the travelling-wave spelling (handoff token acoustic:travelling-wave) and the generic-sound spelling is incomplete-handoff. Both conversion steps now carry a constitutive relation (Swift's critical gradient; the Weinreich relation), so the route is the atlas's first bounded candidate; the second reader's order-of-magnitude estimate — of order 10⁻³ of a 700 W engine's acoustic power crossing a bare helium–germanium interface, nanoamp-to-microamp acoustoelectric currents, femtowatt-to-sub-picowatt matched-load power — lives in the pass log, not here. Inconclusive as a route search until the engine runs exist."
+  conclusion: "No demonstration known: the second reader's web search found no experiment in which a thermoacoustic engine, Rijke tube or Sondhauss tube drove classical Weinreich carrier drag, and each of its five nearest works fails the composition for a stated reason — the thermoacoustic-to-electric device that exists (Zheng 2022) is piezoelectric, and the acoustoelectric currents that exist (Weinreich 1959, Atashbar 2026) come from electrically launched waves. The physics review changed the route's spelling: Weinreich drag needs a travelling wave, so the candidate is now the travelling-wave spelling (handoff token acoustic:travelling-wave) and the generic-sound spelling is incomplete-handoff. Both conversion steps now carry a constitutive relation (Swift's critical gradient; the Weinreich relation), so the route is the atlas's first bounded candidate; the second reader's order-of-magnitude estimate — of order 10⁻³ of a 700 W engine's acoustic power crossing a bare helium–germanium interface, nanoamp-to-microamp acoustoelectric currents, femtowatt-to-sub-picowatt matched-load power — lives in the pass log, not here. Inconclusive as a route search until the engine runs exist. OpenAlex (pass 27) adds nothing that qualifies: the mechanism-pair form's single hit is the biomedical acoustoelectric effect, the whole-chain and precision forms return nothing, and the driver-mechanism list is thermoacoustic-engine engineering whose electrical converters are alternators, piezoelectric membranes (Smoker 2012 the earliest) or triboelectric generators — never Weinreich drag. Scholar and Semantic Scholar remain outstanding."
+  source_run_ids:
+    - search:2026-09-21-p-231472e45e
   follow_up:
     canonical_claim_review: completed
     canonical_pathway_review: completed
     candidate_source_ids:
       - source:zheng-2022-thermoacoustic-pan
+      - source:smoker-2012-thermoacoustic-piezoelectric

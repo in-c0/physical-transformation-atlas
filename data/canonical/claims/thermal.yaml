@@ -281,7 +281,7 @@
     - "sound pressure strains a compliant piezoelectric membrane or plate; standing and travelling waves both serve, the response following the pressure oscillation"
   condition_tags: [state-solid]
   energy: { input: acoustic, output: electrical, dissipation: thermal }
-  evidence: [source:zheng-2022-thermoacoustic-pan]
+  evidence: [source:zheng-2022-thermoacoustic-pan, source:smoker-2012-thermoacoustic-piezoelectric]
   status: demonstrated
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 25 (the consumer the thermoacoustic piezoelectric harvester needs; Zheng 2022 abstract read)" }
 - id: claim:acoustic-drives-linear-alternator

@@ -154,6 +154,96 @@
       records_screened: 3
       records_read: 3
       note: "the three works the reviewer named, each verified by the lane on Crossref and OpenAlex and read at abstract level (Han 2026 and Yurkov 2019 on the publishers' pages); none was in the frozen OpenAlex bundle, which predates the thermoflexoelectric aliases"
+    - id: search:2026-09-21-p-a093d7ecc5/oa-dm1-rerun
+      engine: openalex
+      query_form: route-driver-mechanism
+      query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermal expansion" OR "thermal strain" OR "thermoelastic strain" OR "thermal expansion gradient")
+      executed_at: 2026-09-21T00:17:28.241Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermal+expansion%22+OR+%22thermal+strain%22+OR+%22thermoelastic+strain%22+OR+%22thermal+expansion+gradient%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermal expansion" OR "thermal strain" OR "thermoelastic strain" OR "thermal expansion gradient")
+        type: article|review|book-chapter
+      result_count_reported: 2185
+      records_retrieved: 100
+      records_screened: 100
+      records_read: 0
+      query_key: driver-mechanism:1
+      note: pass 27 rerun with the thermoflexoelectric aliases (Wei 2024) in the flexoelectric bundle; every work returned was already in the pass-24 bundle — the field's own name appears in abstracts that lack the thermal-expansion terms, so the M1 AND M2 form cannot reach Wei 2024 by that name
+    - id: search:2026-09-21-p-a093d7ecc5/oa-dm1-newest-rerun
+      engine: openalex
+      query_form: route-driver-mechanism
+      query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermal expansion" OR "thermal strain" OR "thermoelastic strain" OR "thermal expansion gradient")
+      executed_at: 2026-09-21T00:17:34.633Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermal+expansion%22+OR+%22thermal+strain%22+OR+%22thermoelastic+strain%22+OR+%22thermal+expansion+gradient%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=50&sort=publication_date%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: publication_date:desc
+      filters:
+        title_and_abstract.search: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermal expansion" OR "thermal strain" OR "thermoelastic strain" OR "thermal expansion gradient")
+        type: article|review|book-chapter
+      result_count_reported: 2185
+      records_retrieved: 50
+      records_screened: 50
+      records_read: 0
+      query_key: driver-mechanism:1
+      note: pass 27 rerun with the thermoflexoelectric aliases (Wei 2024) in the flexoelectric bundle; every work returned was already in the pass-24 bundle — the field's own name appears in abstracts that lack the thermal-expansion terms, so the M1 AND M2 form cannot reach Wei 2024 by that name
+    - id: search:2026-09-21-p-a093d7ecc5/oa-mp12-rerun
+      engine: openalex
+      query_form: route-mechanism-pair
+      query: ("Thermal expansion" OR "thermal strain" OR "thermoelastic strain" OR "thermal expansion gradient") AND ("Flexoelectric effect" OR flexoelectricity OR flexoelectric OR "strain-gradient polarization" OR thermopolarization OR "thermoflexoelectric effect" OR "thermo-flexoelectric effect" OR thermoflexoelectricity)
+      executed_at: 2026-09-21T00:17:39.638Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Thermal+expansion%22+OR+%22thermal+strain%22+OR+%22thermoelastic+strain%22+OR+%22thermal+expansion+gradient%22%29+AND+%28%22Flexoelectric+effect%22+OR+flexoelectricity+OR+flexoelectric+OR+%22strain-gradient+polarization%22+OR+thermopolarization+OR+%22thermoflexoelectric+effect%22+OR+%22thermo-flexoelectric+effect%22+OR+thermoflexoelectricity%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Thermal expansion" OR "thermal strain" OR "thermoelastic strain" OR "thermal expansion gradient") AND ("Flexoelectric effect" OR flexoelectricity OR flexoelectric OR "strain-gradient polarization" OR thermopolarization OR "thermoflexoelectric effect" OR "thermo-flexoelectric effect" OR thermoflexoelectricity)
+        type: article|review|book-chapter
+      result_count_reported: 8
+      records_retrieved: 8
+      records_screened: 8
+      records_read: 0
+      query_key: mechanism-pair:1-2
+      note: pass 27 rerun with the thermoflexoelectric aliases (Wei 2024) in the flexoelectric bundle; every work returned was already in the pass-24 bundle — the field's own name appears in abstracts that lack the thermal-expansion terms, so the M1 AND M2 form cannot reach Wei 2024 by that name
+    - id: search:2026-09-21-p-a093d7ecc5/oa-wc-rerun
+      engine: openalex
+      query_form: route-whole-chain
+      query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermal expansion" OR "thermal strain" OR "thermoelastic strain" OR "thermal expansion gradient") AND ("Flexoelectric effect" OR flexoelectricity OR flexoelectric OR "strain-gradient polarization" OR thermopolarization OR "thermoflexoelectric effect" OR "thermo-flexoelectric effect" OR thermoflexoelectricity) AND ("Electrical work" OR electricity OR "electrical output" OR "DC power")
+      executed_at: 2026-09-21T00:17:44.997Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermal+expansion%22+OR+%22thermal+strain%22+OR+%22thermoelastic+strain%22+OR+%22thermal+expansion+gradient%22%29+AND+%28%22Flexoelectric+effect%22+OR+flexoelectricity+OR+flexoelectric+OR+%22strain-gradient+polarization%22+OR+thermopolarization+OR+%22thermoflexoelectric+effect%22+OR+%22thermo-flexoelectric+effect%22+OR+thermoflexoelectricity%29+AND+%28%22Electrical+work%22+OR+electricity+OR+%22electrical+output%22+OR+%22DC+power%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermal expansion" OR "thermal strain" OR "thermoelastic strain" OR "thermal expansion gradient") AND ("Flexoelectric effect" OR flexoelectricity OR flexoelectric OR "strain-gradient polarization" OR thermopolarization OR "thermoflexoelectric effect" OR "thermo-flexoelectric effect" OR thermoflexoelectricity) AND ("Electrical work" OR electricity OR "electrical output" OR "DC power")
+        type: article|review|book-chapter
+      result_count_reported: 0
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      query_key: whole-chain
+      note: pass 27 rerun with the thermoflexoelectric aliases (Wei 2024) in the flexoelectric bundle; every work returned was already in the pass-24 bundle — the field's own name appears in abstracts that lack the thermal-expansion terms, so the M1 AND M2 form cannot reach Wei 2024 by that name
+    - id: search:2026-09-21-p-a093d7ecc5/oa-dp-rerun
+      engine: openalex
+      query_form: route-demonstration-precision
+      query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermal expansion" OR "thermal strain" OR "thermoelastic strain" OR "thermal expansion gradient") AND ("Flexoelectric effect" OR flexoelectricity OR flexoelectric OR "strain-gradient polarization" OR thermopolarization OR "thermoflexoelectric effect" OR "thermo-flexoelectric effect" OR thermoflexoelectricity) AND ("Electrical work" OR electricity OR "electrical output" OR "DC power") AND (experiment OR experimental OR measured OR device OR prototype)
+      executed_at: 2026-09-21T00:17:49.704Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermal+expansion%22+OR+%22thermal+strain%22+OR+%22thermoelastic+strain%22+OR+%22thermal+expansion+gradient%22%29+AND+%28%22Flexoelectric+effect%22+OR+flexoelectricity+OR+flexoelectric+OR+%22strain-gradient+polarization%22+OR+thermopolarization+OR+%22thermoflexoelectric+effect%22+OR+%22thermo-flexoelectric+effect%22+OR+thermoflexoelectricity%29+AND+%28%22Electrical+work%22+OR+electricity+OR+%22electrical+output%22+OR+%22DC+power%22%29+AND+%28experiment+OR+experimental+OR+measured+OR+device+OR+prototype%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Thermal expansion" OR "thermal strain" OR "thermoelastic strain" OR "thermal expansion gradient") AND ("Flexoelectric effect" OR flexoelectricity OR flexoelectric OR "strain-gradient polarization" OR thermopolarization OR "thermoflexoelectric effect" OR "thermo-flexoelectric effect" OR thermoflexoelectricity) AND ("Electrical work" OR electricity OR "electrical output" OR "DC power") AND (experiment OR experimental OR measured OR device OR prototype)
+        type: article|review|book-chapter
+      result_count_reported: 0
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      query_key: demonstration-precision
+      note: pass 27 rerun with the thermoflexoelectric aliases (Wei 2024) in the flexoelectric bundle; every work returned was already in the pass-24 bundle — the field's own name appears in abstracts that lack the thermal-expansion terms, so the M1 AND M2 form cannot reach Wei 2024 by that name
   screening:
     records_retrieved: 161
     unique_records: 161
@@ -275,9 +365,11 @@
     - the preprint is not peer-reviewed and reports no output power; its signal magnitudes (second-harmonic displacement currents at 1 kHz heater drive) are not recorded as measurements
     - "the term bundle lacked the field's name for the composition — the thermoflexoelectric effect (Wei et al. 2024) — when the OpenAlex runs were made; the aliases thermoflexoelectric effect / thermo-flexoelectric effect / thermoflexoelectricity were added after the second reader's review and the driver-mechanism and mechanism-pair forms are to be rerun with them (OpenAlex's shared anonymous daily budget was exhausted on 21/09; rerun pending)"
     - Han et al. 2026 is paywalled; its thermal-mode driver and any load measurement are unverified pending an owner read
+    - "the thermoflexoelectric rerun (pass 27, 21/09 10:17 am Sydney): the same 158 works, none new — a term that names the composition without the thermal-expansion vocabulary (Wei 2024 writes 'inhomogeneous strains') is unreachable by a driver-AND-mechanism or mechanism-pair form; a name-only form (the composite term alone) is not in route-search-v1 and would need the reviewer's ruling"
   conclusion: "The exact composition has been observed but not converted: Iwakiri, Miyata & Mori 2026 impose a temperature gradient whose thermal expansion produces a strain gradient whose flexoelectric polarization is detected (voltage and displacement current) in eight centrosymmetric insulators, scaling with the expansion coefficient — every mechanism in order, no electrical work delivered. Nothing in the OpenAlex runs or the two chases puts a load on such a device; the thermal-flexoelectric literature otherwise concerns the converse effect, bending-imposed gradients, uniform-temperature conduction effects and flexo-induced pyroelectricity. Inconclusive as a route search until the Scholar and Semantic Scholar runs exist; the open question is now narrow: has anyone extracted work. After the second reader's review (pass 24) the composition is recorded as the observed pathway pathway:thermal-expansion-flexoelectric-response — status observed, observed_through the flexoelectric charge step, the final conversion to work unsupported — and the route reads observed · output not delivered while its class stays candidate. The reviewer's nearest additional hit, Han et al. 2026 (a heat-driven flexoelectric nanogenerator whose differential thermal deformation supplies the strain gradient; current response only in the accessible record), stays insufficient-information pending its full text."
   source_run_ids:
     - search:2026-09-20-p-a093d7ecc5
+    - search:2026-09-21-p-a093d7ecc5
   follow_up:
     canonical_claim_review: completed
     canonical_pathway_review: completed

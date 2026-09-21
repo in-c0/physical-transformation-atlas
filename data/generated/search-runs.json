@@ -8982,5 +8982,3832 @@
   "screening_status": "not-reviewed",
   "result": "inconclusive",
   "notes": "Automated route-search-v1 index queries from data/canonical/searches/plans/p-a093d7ecc5.yaml; the result list is frozen for a reviewer and nothing here has been read for a qualifying demonstration. Planned runs NOT run in this bundle (engine unavailable): search:2026-09-21-p-a093d7ecc5/s2-dm1 (semantic-scholar); search:2026-09-21-p-a093d7ecc5/s2-mp12 (semantic-scholar); search:2026-09-21-p-a093d7ecc5/s2-wc (semantic-scholar); search:2026-09-21-p-a093d7ecc5/s2-dp (semantic-scholar)."
+ },
+ {
+  "id": "search:2026-09-21-p-231472e45e",
+  "target": {
+   "kind": "path",
+   "path": "p-231472e45e",
+   "claims": [
+    "claim:thermoacoustic-drives",
+    "claim:thermoacoustic-produces-travelling-sound",
+    "claim:acoustic-wave-drives-acoustoelectric",
+    "claim:acoustoelectric-produces",
+    "claim:charge-carriers-convert-electricity"
+   ]
+  },
+  "dataset_hash": "12f9f0b568ca",
+  "driver_terms": [
+   "temperature gradient",
+   "temperature difference",
+   "thermal gradient",
+   "ΔT",
+   "waste heat",
+   "heat input"
+  ],
+  "family_terms": [],
+  "phenomenon_terms": {
+   "phenomenon:thermoacoustic-effect": [
+    "thermoacoustic",
+    "thermoacoustic effect",
+    "thermoacoustic engine",
+    "thermoacoustic prime mover",
+    "thermoacoustic heat engine",
+    "Rijke tube",
+    "Sondhauss tube"
+   ],
+   "phenomenon:acoustoelectric-effect": [
+    "acoustoelectric effect",
+    "acoustoelectric current",
+    "acousto-electric effect",
+    "acoustoelectric voltage",
+    "acoustoelectric drag",
+    "Weinreich relation"
+   ]
+  },
+  "runs": [
+   {
+    "id": "search:2026-09-21-p-231472e45e/oa-dm1",
+    "engine": "openalex",
+    "query_form": "route-driver-mechanism",
+    "query": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\" OR \"heat input\") AND (thermoacoustic OR \"thermoacoustic effect\" OR \"thermoacoustic engine\" OR \"thermoacoustic prime mover\" OR \"thermoacoustic heat engine\" OR \"Rijke tube\" OR \"Sondhauss tube\")",
+    "executed_at": "2026-09-21T00:07:44.281Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22+OR+%22heat+input%22%29+AND+%28thermoacoustic+OR+%22thermoacoustic+effect%22+OR+%22thermoacoustic+engine%22+OR+%22thermoacoustic+prime+mover%22+OR+%22thermoacoustic+heat+engine%22+OR+%22Rijke+tube%22+OR+%22Sondhauss+tube%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\" OR \"heat input\") AND (thermoacoustic OR \"thermoacoustic effect\" OR \"thermoacoustic engine\" OR \"thermoacoustic prime mover\" OR \"thermoacoustic heat engine\" OR \"Rijke tube\" OR \"Sondhauss tube\")",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 751,
+    "records_retrieved": 100,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "driver-mechanism:1"
+   },
+   {
+    "id": "search:2026-09-21-p-231472e45e/oa-dm1-newest",
+    "engine": "openalex",
+    "query_form": "route-driver-mechanism",
+    "query": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\" OR \"heat input\") AND (thermoacoustic OR \"thermoacoustic effect\" OR \"thermoacoustic engine\" OR \"thermoacoustic prime mover\" OR \"thermoacoustic heat engine\" OR \"Rijke tube\" OR \"Sondhauss tube\")",
+    "executed_at": "2026-09-21T00:07:48.462Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22+OR+%22heat+input%22%29+AND+%28thermoacoustic+OR+%22thermoacoustic+effect%22+OR+%22thermoacoustic+engine%22+OR+%22thermoacoustic+prime+mover%22+OR+%22thermoacoustic+heat+engine%22+OR+%22Rijke+tube%22+OR+%22Sondhauss+tube%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=50&sort=publication_date%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "publication_date:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\" OR \"heat input\") AND (thermoacoustic OR \"thermoacoustic effect\" OR \"thermoacoustic engine\" OR \"thermoacoustic prime mover\" OR \"thermoacoustic heat engine\" OR \"Rijke tube\" OR \"Sondhauss tube\")",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 751,
+    "records_retrieved": 50,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "driver-mechanism:1"
+   },
+   {
+    "id": "search:2026-09-21-p-231472e45e/oa-mp12",
+    "engine": "openalex",
+    "query_form": "route-mechanism-pair",
+    "query": "(thermoacoustic OR \"thermoacoustic effect\" OR \"thermoacoustic engine\" OR \"thermoacoustic prime mover\" OR \"thermoacoustic heat engine\" OR \"Rijke tube\" OR \"Sondhauss tube\") AND (\"Acoustoelectric effect\" OR \"acoustoelectric current\" OR \"acousto-electric effect\" OR \"acoustoelectric voltage\" OR \"acoustoelectric drag\" OR \"Weinreich relation\")",
+    "executed_at": "2026-09-21T00:10:52.826Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28thermoacoustic+OR+%22thermoacoustic+effect%22+OR+%22thermoacoustic+engine%22+OR+%22thermoacoustic+prime+mover%22+OR+%22thermoacoustic+heat+engine%22+OR+%22Rijke+tube%22+OR+%22Sondhauss+tube%22%29+AND+%28%22Acoustoelectric+effect%22+OR+%22acoustoelectric+current%22+OR+%22acousto-electric+effect%22+OR+%22acoustoelectric+voltage%22+OR+%22acoustoelectric+drag%22+OR+%22Weinreich+relation%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(thermoacoustic OR \"thermoacoustic effect\" OR \"thermoacoustic engine\" OR \"thermoacoustic prime mover\" OR \"thermoacoustic heat engine\" OR \"Rijke tube\" OR \"Sondhauss tube\") AND (\"Acoustoelectric effect\" OR \"acoustoelectric current\" OR \"acousto-electric effect\" OR \"acoustoelectric voltage\" OR \"acoustoelectric drag\" OR \"Weinreich relation\")",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 1,
+    "records_retrieved": 1,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "mechanism-pair:1-2"
+   },
+   {
+    "id": "search:2026-09-21-p-231472e45e/oa-wc",
+    "engine": "openalex",
+    "query_form": "route-whole-chain",
+    "query": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\" OR \"heat input\") AND (thermoacoustic OR \"thermoacoustic effect\" OR \"thermoacoustic engine\" OR \"thermoacoustic prime mover\" OR \"thermoacoustic heat engine\" OR \"Rijke tube\" OR \"Sondhauss tube\") AND (\"Acoustoelectric effect\" OR \"acoustoelectric current\" OR \"acousto-electric effect\" OR \"acoustoelectric voltage\" OR \"acoustoelectric drag\" OR \"Weinreich relation\") AND (\"Electrical work\" OR electricity OR \"electrical output\" OR \"DC power\" OR \"direct current\")",
+    "executed_at": "2026-09-21T00:16:57.769Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22+OR+%22heat+input%22%29+AND+%28thermoacoustic+OR+%22thermoacoustic+effect%22+OR+%22thermoacoustic+engine%22+OR+%22thermoacoustic+prime+mover%22+OR+%22thermoacoustic+heat+engine%22+OR+%22Rijke+tube%22+OR+%22Sondhauss+tube%22%29+AND+%28%22Acoustoelectric+effect%22+OR+%22acoustoelectric+current%22+OR+%22acousto-electric+effect%22+OR+%22acoustoelectric+voltage%22+OR+%22acoustoelectric+drag%22+OR+%22Weinreich+relation%22%29+AND+%28%22Electrical+work%22+OR+electricity+OR+%22electrical+output%22+OR+%22DC+power%22+OR+%22direct+current%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\" OR \"heat input\") AND (thermoacoustic OR \"thermoacoustic effect\" OR \"thermoacoustic engine\" OR \"thermoacoustic prime mover\" OR \"thermoacoustic heat engine\" OR \"Rijke tube\" OR \"Sondhauss tube\") AND (\"Acoustoelectric effect\" OR \"acoustoelectric current\" OR \"acousto-electric effect\" OR \"acoustoelectric voltage\" OR \"acoustoelectric drag\" OR \"Weinreich relation\") AND (\"Electrical work\" OR electricity OR \"electrical output\" OR \"DC power\" OR \"direct current\")",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 0,
+    "records_retrieved": 0,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "whole-chain"
+   },
+   {
+    "id": "search:2026-09-21-p-231472e45e/oa-dp",
+    "engine": "openalex",
+    "query_form": "route-demonstration-precision",
+    "query": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\" OR \"heat input\") AND (thermoacoustic OR \"thermoacoustic effect\" OR \"thermoacoustic engine\" OR \"thermoacoustic prime mover\" OR \"thermoacoustic heat engine\" OR \"Rijke tube\" OR \"Sondhauss tube\") AND (\"Acoustoelectric effect\" OR \"acoustoelectric current\" OR \"acousto-electric effect\" OR \"acoustoelectric voltage\" OR \"acoustoelectric drag\" OR \"Weinreich relation\") AND (\"Electrical work\" OR electricity OR \"electrical output\" OR \"DC power\" OR \"direct current\") AND (experiment OR experimental OR measured OR device OR prototype)",
+    "executed_at": "2026-09-21T00:17:02.022Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22+OR+%22heat+input%22%29+AND+%28thermoacoustic+OR+%22thermoacoustic+effect%22+OR+%22thermoacoustic+engine%22+OR+%22thermoacoustic+prime+mover%22+OR+%22thermoacoustic+heat+engine%22+OR+%22Rijke+tube%22+OR+%22Sondhauss+tube%22%29+AND+%28%22Acoustoelectric+effect%22+OR+%22acoustoelectric+current%22+OR+%22acousto-electric+effect%22+OR+%22acoustoelectric+voltage%22+OR+%22acoustoelectric+drag%22+OR+%22Weinreich+relation%22%29+AND+%28%22Electrical+work%22+OR+electricity+OR+%22electrical+output%22+OR+%22DC+power%22+OR+%22direct+current%22%29+AND+%28experiment+OR+experimental+OR+measured+OR+device+OR+prototype%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\" OR \"heat input\") AND (thermoacoustic OR \"thermoacoustic effect\" OR \"thermoacoustic engine\" OR \"thermoacoustic prime mover\" OR \"thermoacoustic heat engine\" OR \"Rijke tube\" OR \"Sondhauss tube\") AND (\"Acoustoelectric effect\" OR \"acoustoelectric current\" OR \"acousto-electric effect\" OR \"acoustoelectric voltage\" OR \"acoustoelectric drag\" OR \"Weinreich relation\") AND (\"Electrical work\" OR electricity OR \"electrical output\" OR \"DC power\" OR \"direct current\") AND (experiment OR experimental OR measured OR device OR prototype)",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 0,
+    "records_retrieved": 0,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "demonstration-precision"
+   },
+   {
+    "id": "search:2026-09-21-p-231472e45e/oa-dp-r",
+    "engine": "openalex",
+    "query_form": "route-demonstration-precision",
+    "query": "thermoacoustic AND (\"acoustoelectric current\" OR \"acousto-electric effect\") AND (semiconductor OR graphene) AND experiment",
+    "executed_at": "2026-09-21T00:17:06.230Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3Athermoacoustic+AND+%28%22acoustoelectric+current%22+OR+%22acousto-electric+effect%22%29+AND+%28semiconductor+OR+graphene%29+AND+experiment%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "thermoacoustic AND (\"acoustoelectric current\" OR \"acousto-electric effect\") AND (semiconductor OR graphene) AND experiment",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 0,
+    "records_retrieved": 0,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "demonstration-precision"
+   }
+  ],
+  "works": [
+   {
+    "openalex_id": "W1995137168",
+    "doi": "10.1121/1.403896",
+    "title": "Analysis and performance of a large thermoacoustic engine",
+    "year": 1992,
+    "type": "article",
+    "cited_by_count": 285,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2080599496",
+    "doi": "10.1121/1.389624",
+    "title": "An intrinsically irreversible thermoacoustic heat engine",
+    "year": 1983,
+    "type": "article",
+    "cited_by_count": 179,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2052757131",
+    "doi": "10.1016/s0022-460x(02)01217-8",
+    "title": "A study of the transition to instability in a Rijke tube with axial temperature gradient",
+    "year": 2003,
+    "type": "article",
+    "cited_by_count": 117,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2744961207",
+    "doi": "10.1038/s41598-017-08124-5",
+    "title": "Low temperature difference thermoacoustic prime mover with asymmetric multi-stage loop configuration",
+    "year": 2017,
+    "type": "article",
+    "cited_by_count": 55,
+    "open_access_url": "https://www.nature.com/articles/s41598-017-08124-5.pdf",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2146632007",
+    "doi": "10.1016/j.applthermaleng.2014.01.042",
+    "title": "Design of a thermoacoustic heat engine for low temperature waste heat recovery in food manufacturing",
+    "year": 2014,
+    "type": "article",
+    "cited_by_count": 62,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2060932966",
+    "doi": "10.1006/jsvi.1999.2296",
+    "title": "NUMERICAL SIMULATION OF SELF-EXCITED THERMOACOUSTIC INSTABILITIES IN A RIJKE TUBE",
+    "year": 1999,
+    "type": "article",
+    "cited_by_count": 112,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1988182548",
+    "doi": "10.1016/j.mejo.2003.09.017",
+    "title": "Design and development of high-frequency thermoacoustic engines for thermal management in microelectronics",
+    "year": 2003,
+    "type": "article",
+    "cited_by_count": 113,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1988168801",
+    "doi": "10.1121/1.402535",
+    "title": "Study of a thermoacoustic prime mover below onset of self-oscillation",
+    "year": 1992,
+    "type": "article",
+    "cited_by_count": 53,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2067257172",
+    "doi": "10.1006/jsvi.1995.0100",
+    "title": "The calculation of thermoacoustic oscillations",
+    "year": 1995,
+    "type": "article",
+    "cited_by_count": 449,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1974722967",
+    "doi": "10.1121/1.408554",
+    "title": "Analysis of the initial buildup of oscillations in a thermoacoustic prime mover",
+    "year": 1994,
+    "type": "article",
+    "cited_by_count": 43,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2006261454",
+    "doi": "10.1016/s0011-2275(99)00099-5",
+    "title": "Experimental investigation on the onset and damping behavior of the oscillation in a thermoacoustic prime mover",
+    "year": 1999,
+    "type": "article",
+    "cited_by_count": 52,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2507841891",
+    "doi": "10.1016/j.apenergy.2016.08.182",
+    "title": "Phase adjustment analysis and performance of a looped thermoacoustic prime mover with compliance/resistance tube",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 54,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2102140201",
+    "doi": "10.1017/jfm.2014.745",
+    "title": "Linear and nonlinear modelling of a theoretical travelling-wave thermoacoustic heat engine",
+    "year": 2015,
+    "type": "article",
+    "cited_by_count": 62,
+    "open_access_url": "https://arxiv.org/pdf/1408.4176",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4382020760",
+    "doi": "10.1016/j.apenergy.2023.121447",
+    "title": "Generalized thermoacoustic heat engines with unconventional working substances: A review",
+    "year": 2023,
+    "type": "article",
+    "cited_by_count": 51,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2043228775",
+    "doi": "10.1016/j.apacoust.2012.05.003",
+    "title": "Influence of stack geometry and resonator length on the performance of thermoacoustic engine",
+    "year": 2012,
+    "type": "article",
+    "cited_by_count": 81,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1994102493",
+    "doi": "10.1016/j.ijrefrig.2013.04.017",
+    "title": "Experimental investigation of a thermoacoustic refrigerator driven by a standing wave twin thermoacoustic prime mover",
+    "year": 2013,
+    "type": "article",
+    "cited_by_count": 38,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2118800157",
+    "doi": "10.1121/1.2035567",
+    "title": "Simulation of a traveling-wave thermoacoustic engine using computational fluid dynamics",
+    "year": 2005,
+    "type": "article",
+    "cited_by_count": 85,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4206934608",
+    "doi": "10.1007/s11630-022-1572-2",
+    "title": "Temperature Difference and Stack Plate Spacing Effects on Thermodynamic Performances of Standing-Wave Thermoacoustic Engines Driven by Cryogenic Liquids and Waste Heat",
+    "year": 2022,
+    "type": "article",
+    "cited_by_count": 36,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2016177260",
+    "doi": "10.1016/j.applthermaleng.2011.04.017",
+    "title": "Thermoacoustic heat engine modeling and design optimization",
+    "year": 2011,
+    "type": "article",
+    "cited_by_count": 33,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3030819414",
+    "doi": "10.1016/j.ijheatmasstransfer.2020.119951",
+    "title": "Bistability and triggering in a thermoacoustic engine: A numerical study",
+    "year": 2020,
+    "type": "article",
+    "cited_by_count": 49,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2016845780",
+    "doi": "10.1121/1.410486",
+    "title": "Stability analysis of a helium-filled thermoacoustic engine",
+    "year": 1994,
+    "type": "article",
+    "cited_by_count": 44,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3025644047",
+    "doi": "10.1016/j.enconman.2020.112912",
+    "title": "Thermoacoustic engine as waste heat recovery system on extended range hybrid electric vehicles",
+    "year": 2020,
+    "type": "article",
+    "cited_by_count": 37,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1967591742",
+    "doi": "10.1631/jzus.2007.a0205",
+    "title": "Experimental observation on a small-scale thermoacoustic prime mover",
+    "year": 2007,
+    "type": "article",
+    "cited_by_count": 22,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2156412621",
+    "doi": "10.1063/1.4932036",
+    "title": "Abrupt reduction of the critical temperature difference of a thermoacoustic engine by adding water",
+    "year": 2015,
+    "type": "article",
+    "cited_by_count": 29,
+    "open_access_url": "https://pubs.aip.org/aip/adv/article-pdf/doi/10.1063/1.4932036/12903205/097173_1_online.pdf",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1990216277",
+    "doi": "10.1121/1.2184267",
+    "title": "Detailed study of a traveling wave thermoacoustic refrigerator driven by a traveling wave thermoacoustic engine",
+    "year": 2006,
+    "type": "article",
+    "cited_by_count": 51,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2128561412",
+    "doi": "10.1080/08916152.2013.871605",
+    "title": "Studies on Performance of Thermoacoustic Prime Mover",
+    "year": 2014,
+    "type": "article",
+    "cited_by_count": 14,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3042025002",
+    "doi": "10.1016/j.apenergy.2020.115458",
+    "title": "Large eddy simulation of thermally induced oscillatory flow in a thermoacoustic engine",
+    "year": 2020,
+    "type": "article",
+    "cited_by_count": 55,
+    "open_access_url": "https://eprints.gla.ac.uk/219206/7/219206.pdf",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2008447860",
+    "doi": "10.1063/1.3700244",
+    "title": "How to build a loaded thermoacoustic engine",
+    "year": 2012,
+    "type": "article",
+    "cited_by_count": 34,
+    "open_access_url": "https://aue.repo.nii.ac.jp/record/4858/files/yazakit004.pdf",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2041584321",
+    "doi": "10.1016/j.matdes.2010.06.012",
+    "title": "Selection and experimental evaluation of low-cost porous materials for regenerator applications in thermoacoustic engines",
+    "year": 2010,
+    "type": "article",
+    "cited_by_count": 64,
+    "open_access_url": "https://zenodo.org/record/914",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2044568587",
+    "doi": "10.1016/j.cryogenics.2005.06.007",
+    "title": "Experimental investigation on a thermoacoustic engine having a looped tube and resonator",
+    "year": 2005,
+    "type": "article",
+    "cited_by_count": 43,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2106720870",
+    "doi": "10.1016/j.ijheatmasstransfer.2013.05.045",
+    "title": "Influence of operational and geometrical parameters on the performance of twin thermoacoustic prime mover",
+    "year": 2013,
+    "type": "article",
+    "cited_by_count": 21,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2604675721",
+    "doi": "10.1016/j.apenergy.2017.04.004",
+    "title": "Critical temperature of traveling- and standing-wave thermoacoustic engines using a wet regenerator",
+    "year": 2017,
+    "type": "article",
+    "cited_by_count": 51,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2955494933",
+    "doi": "10.1016/j.applthermaleng.2019.114086",
+    "title": "Onset and damping characteristics of a closed two-phase thermoacoustic engine",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 42,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2973208704",
+    "doi": "10.1016/j.jsv.2019.114946",
+    "title": "Numerical analysis on thermoacoustic prime mover",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 11,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2282740248",
+    "doi": "10.1016/j.enconman.2016.02.035",
+    "title": "A multi-stage travelling wave thermoacoustic engine driven refrigerator and operation features for utilizing low grade energy",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 67,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2290696220",
+    "doi": "10.1016/j.applthermaleng.2016.02.115",
+    "title": "Thermodynamic characteristics during the onset and damping processes in a looped thermoacoustic prime mover",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 20,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2063626805",
+    "doi": "10.1016/j.enconman.2015.02.027",
+    "title": "Effect of regenerator positioning on thermoacoustic effect in a looped tube traveling wave thermoacoustic engine",
+    "year": 2015,
+    "type": "article",
+    "cited_by_count": 15,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2044030553",
+    "doi": "10.1121/1.426881",
+    "title": "Experimental study of a radial mode thermoacoustic prime mover",
+    "year": 1999,
+    "type": "article",
+    "cited_by_count": 12,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2015273974",
+    "doi": "10.1243/09544062jmes1594",
+    "title": "Study of a small-scale standing-wave thermoacoustic engine",
+    "year": 2009,
+    "type": "article",
+    "cited_by_count": 30,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1967129327",
+    "doi": "10.1103/physreve.72.016625",
+    "title": "Experimental and theoretical study of processes leading to steady-state sound in annular thermoacoustic engines",
+    "year": 2005,
+    "type": "article",
+    "cited_by_count": 43,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2201167537",
+    "doi": "10.1016/j.apenergy.2015.12.034",
+    "title": "Development of a 5 kW traveling-wave thermoacoustic electric generator",
+    "year": 2015,
+    "type": "article",
+    "cited_by_count": 147,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2018344432",
+    "doi": "10.1016/j.energy.2014.09.023",
+    "title": "Travelling-wave thermoacoustic high-temperature heat pump for industrial waste heat recovery",
+    "year": 2014,
+    "type": "article",
+    "cited_by_count": 66,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2005453147",
+    "doi": "10.11113/jt.v40.398",
+    "title": "Thermoacoustic Heat Engine",
+    "year": 2012,
+    "type": "article",
+    "cited_by_count": 9,
+    "open_access_url": "https://journals.utm.my/jurnalteknologi/article/download/398/388",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2046864973",
+    "doi": "10.1121/1.404167",
+    "title": "Specific acoustic impedance measurements of an air-filled thermoacoustic prime mover",
+    "year": 1992,
+    "type": "article",
+    "cited_by_count": 11,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2051732012",
+    "doi": "10.1016/j.applthermaleng.2013.04.031",
+    "title": "Explanations on the onset and damping behaviors in a standing-wave thermoacoustic engine",
+    "year": 2013,
+    "type": "article",
+    "cited_by_count": 28,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1990297512",
+    "doi": "10.1121/1.4796131",
+    "title": "Measurements of the impedance matrix of a thermoacoustic core: Applications to the design of thermoacoustic engines",
+    "year": 2013,
+    "type": "article",
+    "cited_by_count": 23,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3002391784",
+    "doi": "10.1016/j.apenergy.2019.114377",
+    "title": "Theoretical performance characteristics of a travelling-wave phase-change thermoacoustic engine for low-grade heat recovery",
+    "year": 2020,
+    "type": "article",
+    "cited_by_count": 43,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4399487902",
+    "doi": "10.1016/j.enconman.2024.118662",
+    "title": "Efficient cascade waste heat utilization using thermoacoustic engine with variable temperature heat sources",
+    "year": 2024,
+    "type": "article",
+    "cited_by_count": 18,
+    "open_access_url": "https://doi.org/10.1016/j.enconman.2024.118662",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3136351592",
+    "doi": "10.1016/j.energy.2021.120341",
+    "title": "A thermoacoustic combined cooling, heating, and power (CCHP) system for waste heat and LNG cold energy recovery",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 73,
+    "open_access_url": "https://www.repository.cam.ac.uk/handle/1810/318674",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2048003874",
+    "doi": "10.1016/j.compfluid.2013.01.019",
+    "title": "Effect of resonator length and working fluid on the performance of twin thermoacoustic heat engine – Experimental and simulation studies",
+    "year": 2013,
+    "type": "article",
+    "cited_by_count": 24,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2161339925",
+    "doi": "10.2478/meceng-2014-0006",
+    "title": "Stack Parameters Effect on the Performance of Anharmonic Resonator Thermoacoustic Heat Engine",
+    "year": 2014,
+    "type": "article",
+    "cited_by_count": 17,
+    "open_access_url": "http://journals.pan.pl/Content/84846/PDF/06_paper.pdf",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2914096234",
+    "doi": "10.1016/j.renene.2019.02.059",
+    "title": "Numerical studies of co-axial travelling-wave thermoacoustic cooler powered by standing-wave thermoacoustic engine",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 28,
+    "open_access_url": "https://www.sciencedirect.com/science/article/pii/S0960148119302137/pdf",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2057965131",
+    "doi": "10.1016/j.cryogenics.2006.07.002",
+    "title": "A high frequency cascade thermoacoustic engine",
+    "year": 2006,
+    "type": "article",
+    "cited_by_count": 17,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1992112933",
+    "doi": "10.1016/0735-1933(96)00018-8",
+    "title": "Optimisation of heat exchanger design in a thermoacoustic engine using a second law analysis",
+    "year": 1996,
+    "type": "article",
+    "cited_by_count": 30,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2603788471",
+    "doi": "10.1016/j.energy.2017.03.124",
+    "title": "Thermoacoustic Stirling power generation from LNG cold energy and low-temperature waste heat",
+    "year": 2017,
+    "type": "article",
+    "cited_by_count": 60,
+    "open_access_url": "http://hdl.handle.net/10044/1/63066",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4320882919",
+    "doi": "10.1016/j.tsep.2023.101725",
+    "title": "Synthetic jet flow driven by a standing-wave thermoacoustic heat engine",
+    "year": 2023,
+    "type": "article",
+    "cited_by_count": 14,
+    "open_access_url": "https://doi.org/10.1016/j.tsep.2023.101725",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2327790256",
+    "doi": "10.1299/kikaib.70.292",
+    "title": "Performance of a Thermoacoustic Sound Wave Generator driven with Waste Heat of Automobile Gasoline Engine.",
+    "year": 2004,
+    "type": "article",
+    "cited_by_count": 55,
+    "open_access_url": "https://www.jstage.jst.go.jp/article/kikaib1979/70/689/70_689_292/_pdf",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2004396140",
+    "doi": "10.1016/j.enconman.2008.07.002",
+    "title": "Design and optimization of thermoacoustic devices",
+    "year": 2008,
+    "type": "article",
+    "cited_by_count": 100,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3112561944",
+    "doi": "10.1063/5.0022315",
+    "title": "Flywheel-based traveling-wave thermoacoustic engine",
+    "year": 2020,
+    "type": "article",
+    "cited_by_count": 18,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4396686969",
+    "doi": "10.1063/5.0201800",
+    "title": "Condensation shock induced in wet thermoacoustic prime mover",
+    "year": 2024,
+    "type": "article",
+    "cited_by_count": 8,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2045255199",
+    "doi": "10.1631/jzus.a0820061",
+    "title": "Characteristics study on the oscillation onset and damping of a traveling-wave thermoacoustic prime mover",
+    "year": 2008,
+    "type": "article",
+    "cited_by_count": 10,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2760315641",
+    "doi": "10.1002/er.3897",
+    "title": "Design and experimental evaluation of a travelling-wave thermoacoustic refrigerator driven by a cascade thermoacoustic engine",
+    "year": 2017,
+    "type": "article",
+    "cited_by_count": 19,
+    "open_access_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/er.3897",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2032559061",
+    "doi": "10.1016/j.cryogenics.2004.08.007",
+    "title": "Numerical calculation of the temperature difference between the extremities of a thermoacoustic stack plate",
+    "year": 2004,
+    "type": "article",
+    "cited_by_count": 35,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1990736377",
+    "doi": "10.1121/1.399947",
+    "title": "Acoustically generated temperature gradients in short plates",
+    "year": 1990,
+    "type": "article",
+    "cited_by_count": 60,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2910642200",
+    "doi": "10.1016/j.applthermaleng.2019.01.025",
+    "title": "Modelling and analysis of a thermoacoustic-piezoelectric energy harvester",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 86,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2099361993",
+    "doi": "10.1016/j.apenergy.2012.04.046",
+    "title": "Travelling-wave thermoacoustic electricity generator using an ultra-compliant alternator for utilization of low-grade thermal energy",
+    "year": 2012,
+    "type": "article",
+    "cited_by_count": 182,
+    "open_access_url": "https://www.sciencedirect.com/science/article/pii/S0306261912003455/pdf",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4285500724",
+    "doi": "10.1016/j.energy.2022.124665",
+    "title": "A standing-wave, phase-change thermoacoustic engine: Experiments and model projections",
+    "year": 2022,
+    "type": "article",
+    "cited_by_count": 19,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2361941407",
+    "doi": "10.1007/s11434-012-5214-z",
+    "title": "Characteristics of onset and damping in a standing-wave thermoacoustic engine driven by liquid nitrogen",
+    "year": 2013,
+    "type": "article",
+    "cited_by_count": 22,
+    "open_access_url": "https://link.springer.com/content/pdf/10.1007/s11434-012-5214-z.pdf",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4210702788",
+    "doi": "10.1016/j.applthermaleng.2022.118131",
+    "title": "Numerical simulation of nonlinear phenomena in a standing-wave thermoacoustic engine with gas-liquid coupling oscillation",
+    "year": 2022,
+    "type": "article",
+    "cited_by_count": 26,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1980238501",
+    "doi": "10.1016/j.ijrefrig.2013.08.001",
+    "title": "Experimental and simulation studies on the performance of standing wave thermoacoustic prime mover for pulse tube refrigerator",
+    "year": 2013,
+    "type": "article",
+    "cited_by_count": 10,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2891169702",
+    "doi": "10.1007/s00231-018-2469-1",
+    "title": "Experimental investigation of an adjustable standing wave thermoacoustic engine",
+    "year": 2018,
+    "type": "article",
+    "cited_by_count": 15,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1568898467",
+    "doi": "10.1080/10789669.2012.672914",
+    "title": "Experimental and theoretical investigation of thermoacoustic prime mover",
+    "year": 2012,
+    "type": "article",
+    "cited_by_count": 5,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2807545148",
+    "doi": "10.1016/j.ijheatmasstransfer.2018.05.027",
+    "title": "Experimental and theoretical study of density fluctuations near the stack ends of a thermoacoustic prime mover",
+    "year": 2018,
+    "type": "article",
+    "cited_by_count": 8,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2599691938",
+    "doi": "10.1016/j.enconman.2017.03.023",
+    "title": "Numerical analysis on a four-stage looped thermoacoustic Stirling power generator for low temperature waste heat",
+    "year": 2017,
+    "type": "article",
+    "cited_by_count": 45,
+    "open_access_url": "https://www.sciencedirect.com/science/article/pii/S0196890417302261",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2960063648",
+    "doi": "10.1016/j.applthermaleng.2019.114096",
+    "title": "Comprehensive performance improvement of standing wave thermoacoustic engine with converging stack: Thermodynamic analysis and optimization",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 24,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2040968955",
+    "doi": "10.1063/1.2176855",
+    "title": "Thermoacoustically driven refrigerator with double thermoacoustic-Stirling cycles",
+    "year": 2006,
+    "type": "article",
+    "cited_by_count": 65,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2007090460",
+    "doi": "10.4236/eng.2012.412113",
+    "title": "Development and Assessment of Thermoacoustic Generators Operating by Waste Heat from Cooking Stove",
+    "year": 2012,
+    "type": "article",
+    "cited_by_count": 34,
+    "open_access_url": "http://www.scirp.org/journal/PaperDownload.aspx?paperID=25859",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2610732681",
+    "doi": "10.1016/j.energy.2017.05.029",
+    "title": "Thermoacoustic micro-electricity generator for rural dwellings in developing countries driven by waste heat from cooking activities",
+    "year": 2017,
+    "type": "article",
+    "cited_by_count": 36,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2036653934",
+    "doi": "10.1016/j.enconman.2009.08.016",
+    "title": "A thermoacoustic engine capable of utilizing multi-temperature heat sources",
+    "year": 2009,
+    "type": "article",
+    "cited_by_count": 15,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4312072104",
+    "doi": "10.1016/j.seta.2022.102971",
+    "title": "Research on thermoacoustic refrigeration system driven by waste heat of industrial buildings",
+    "year": 2022,
+    "type": "article",
+    "cited_by_count": 26,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1630099452",
+    "doi": "10.1016/j.cryogenics.2010.02.011",
+    "title": "CFD simulation of a 300Hz thermoacoustic standing wave engine",
+    "year": 2010,
+    "type": "article",
+    "cited_by_count": 68,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1972935099",
+    "doi": "10.1063/1.4712630",
+    "title": "Energy harvesting from a standing wave thermoacoustic-piezoelectric resonator",
+    "year": 2012,
+    "type": "article",
+    "cited_by_count": 105,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4380743023",
+    "doi": "10.1016/j.applthermaleng.2023.120845",
+    "title": "Thermoacoustic engines with near-critical working fluids",
+    "year": 2023,
+    "type": "article",
+    "cited_by_count": 11,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2249511319",
+    "doi": "10.4028/www.scientific.net/kem.660.311",
+    "title": "Determination Performance of Thermoacoustic Heat Engine Simulation by Delta EC Software",
+    "year": 2015,
+    "type": "article",
+    "cited_by_count": 10,
+    "open_access_url": "https://doi.org/10.4028/www.scientific.net/kem.660.311",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1967387845",
+    "doi": "10.1016/j.apacoust.2009.09.002",
+    "title": "An open-air infrasonic thermoacoustic engine",
+    "year": 2009,
+    "type": "article",
+    "cited_by_count": 9,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2027367359",
+    "doi": "10.1121/1.1394739",
+    "title": "Acoustic streaming in closed thermoacoustic devices",
+    "year": 2001,
+    "type": "article",
+    "cited_by_count": 82,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2055677826",
+    "doi": "10.1017/s0022112010001540",
+    "title": "Thermoacoustic-wave equations for gas in a channel and a tube subject to temperature gradient",
+    "year": 2010,
+    "type": "article",
+    "cited_by_count": 26,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2125396333",
+    "doi": "10.1098/rspa.1998.0251",
+    "title": "Measurement of sound generation in thermoacoustic oscillations",
+    "year": 1998,
+    "type": "article",
+    "cited_by_count": 57,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3036631325",
+    "doi": "10.1063/5.0009599",
+    "title": "Effect of gas mixture on temperature and mass streaming in a phase-change thermoacoustic engine",
+    "year": 2020,
+    "type": "article",
+    "cited_by_count": 16,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2990174691",
+    "doi": "10.1016/j.enconman.2019.112231",
+    "title": "Numerical investigation of dual thermoacoustic engine",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 8,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2040544312",
+    "doi": "10.1016/j.ijheatmasstransfer.2012.07.083",
+    "title": "Visualization investigation of the flow and heat transfer in thermoacoustic engine driven by loudspeaker",
+    "year": 2012,
+    "type": "article",
+    "cited_by_count": 14,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3029128510",
+    "doi": "10.1016/j.apenergy.2020.115167",
+    "title": "Study on a heat-driven thermoacoustic refrigerator for low-grade heat recovery",
+    "year": 2020,
+    "type": "article",
+    "cited_by_count": 101,
+    "open_access_url": "https://doi.org/10.17863/cam.52429",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W964831191",
+    "doi": "10.1016/j.phpro.2015.06.058",
+    "title": "Theoretical Study on Standing Wave Thermoacoustic Engine",
+    "year": 2015,
+    "type": "article",
+    "cited_by_count": 9,
+    "open_access_url": "https://www.sciencedirect.com/science/article/pii/S1875389215004393/pdf",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3008644614",
+    "doi": "10.1016/j.energy.2020.117228",
+    "title": "Characteristics of thermoacoustic conversion and coupling effect at different temperature gradients",
+    "year": 2020,
+    "type": "article",
+    "cited_by_count": 16,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1963604108",
+    "doi": "10.1103/physreve.69.066304",
+    "title": "Experimental demonstration of thermoacoustic energy conversion in a resonator",
+    "year": 2004,
+    "type": "article",
+    "cited_by_count": 82,
+    "open_access_url": "https://tohoku.repo.nii.ac.jp/records/26852",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2004967809",
+    "doi": "10.1121/1.1904503",
+    "title": "Thermodynamic cycles executed in a looped-tube thermoacoustic engine (L)",
+    "year": 2005,
+    "type": "article",
+    "cited_by_count": 11,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2033954093",
+    "doi": "10.1121/1.427086",
+    "title": "Thermoacoustics in a single pore with an applied temperature gradient",
+    "year": 1999,
+    "type": "article",
+    "cited_by_count": 15,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4386400610",
+    "doi": "10.1016/j.applthermaleng.2023.121457",
+    "title": "Effect of channel size on the performance of a PCHE-based supercritical CO 2 thermoacoustic engine",
+    "year": 2023,
+    "type": "article",
+    "cited_by_count": 15,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2157094910",
+    "doi": "10.1016/j.rser.2015.10.018",
+    "title": "Performance analysis of the standing wave thermoacoustic refrigerator: A review",
+    "year": 2015,
+    "type": "article",
+    "cited_by_count": 90,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3119724036",
+    "doi": "10.1115/1.4049528",
+    "title": "A Traveling Wave Thermoacoustic Engine—Design and Test",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 6,
+    "open_access_url": "https://asmedigitalcollection.asme.org/lettersdynsys/article-pdf/1/3/031006/6624001/aldsc_1_3_031006.pdf",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W7211988808",
+    "doi": "10.5281/zenodo.22675169",
+    "title": "Project Genesis: The META VR/AR Mark Zuckerberg Gen X Engineering Manifesto: Inverting the Spatial Computing Paradigm",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.5281/zenodo.22675169",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7212003262",
+    "doi": "10.5281/zenodo.22675168",
+    "title": "Project Genesis: The META VR/AR Mark Zuckerberg Gen X Engineering Manifesto: Inverting the Spatial Computing Paradigm",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.5281/zenodo.22675168",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7207531208",
+    "doi": "10.32620/aktt.2026.4sup1.14",
+    "title": "РЕГАЗИФІКАЦІЯ КРІОГЕННИХ ПАЛИВ У СУДНОВИХ ГІБРИДНИХ ЕНЕРГЕТИЧНИХ УСТАНОВКАХ ІЗ ПРОТОНООБМІННИМИ ПАЛИВНИМИ КОМІРКАМИ",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://nti.khai.edu/ojs/index.php/aktt/article/download/aktt.2026.4sup1.14/3234",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7207620152",
+    "doi": "10.32620/10.32620/aktt.2026.4sup1.14",
+    "title": "РЕГАЗИФІКАЦІЯ КРІОГЕННИХ ПАЛИВ У СУДНОВИХ ГІБРИДНИХ ЕНЕРГЕТИЧНИХ УСТАНОВКАХ ІЗ ПРОТОНООБМІННИМИ ПАЛИВНИМИ КОМІРКАМИ",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.32620/10.32620/aktt.2026.4sup1.14",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7204865226",
+    "doi": "10.1016/j.cryogenics.2026.104467",
+    "title": "Three-stage cascaded loop-type thermoacoustic cooler for deep waste heat recovery: Achieving 77 K cooling with 45.8% recovery efficiency",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7203946004",
+    "doi": "10.1016/j.ijhydene.2026.157190",
+    "title": "Hydrogen enrichment effects on combustion, emission, thermoacoustic behavior, and exergy performance of a swirl-stabilized annular combustor",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7203688854",
+    "doi": "10.1063/5.0340030",
+    "title": "Abrupt amplification of self-excited acoustic oscillations in a thermoacoustic engine with non-zero mean flow",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7203695983",
+    "doi": "10.1016/j.jsv.2026.120076",
+    "title": "Fluid-resonant oscillations in a cavity flow including a parallel-plate stack with temperature gradient",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://www.sciencedirect.com/science/article/pii/S0022460X26004372/pdf",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7204091580",
+    "doi": "10.1121/10.0044897",
+    "title": "Thermodynamic prediction and experimental validation of load characteristics in a liquid-piston Stirling engine",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.1121/10.0044897",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7171429551",
+    "doi": "10.1016/j.applthermaleng.2026.132529",
+    "title": "A numerical analysis of a single-stage looped heat-driven thermoacoustic refrigerator using compliant segments for acoustic field adjustment",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.1016/j.applthermaleng.2026.132529",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7168180462",
+    "doi": "10.1016/j.cnsns.2026.110554",
+    "title": "Analytical solutions for wall-driven acoustic streaming and numerical cross-validation",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7167910790",
+    "doi": "10.3390/nano16140848",
+    "title": "Performance Enhancement of an Acoustic Energy Harvester with a Flexible Polyvinylidene Fluoride-Based Piezoelectric Nanogenerator via the Thermoacoustic Effect",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.3390/nano16140848",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7167742774",
+    "doi": "10.1016/j.rser.2026.117255",
+    "title": "Machine learning-assisted design and optimization of thermoacoustic devices: Progress and perspectives",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7166862309",
+    "doi": "10.1063/5.0332653",
+    "title": "Amplitude modulation of acoustic oscillations inside an acoustic resonator via the thermoacoustic effect: An experimental study",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7203868309",
+    "doi": "10.3103/s1068798x26701133",
+    "title": "A Study of a Mathematical Model of the Process of Gas Self-Oscillations in Thermoacoustic Engines and Methane Pyrolysis Reactors",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7165128297",
+    "doi": "10.3390/cryo2020007",
+    "title": "Experimenting with Catalytic Stacks for Ortho-Parahydrogen Conversion in a Thermoacoustic Standing-Wave Engine",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://www.mdpi.com/3042-4860/2/2/7/pdf?version=1781762203",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7164993424",
+    "doi": "10.1016/j.flowmeasinst.2026.103450",
+    "title": "Theoretical and experimental study on differential pressure flow meters for oscillating flow measurement",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7164922658",
+    "doi": "10.32996/ijbpcs.2026.8.2.1",
+    "title": "Experimental Performance Enhancement of a Standing-Wave Thermoacoustic Cooler Using a Random Stainless-Steel Stack and a Water-Cooled Auxiliary Heat Exchanger",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://al-kindipublisher.com/index.php/ijbpcs/article/download/12895/11604",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7164843983",
+    "doi": "10.1016/j.icheatmasstransfer.2026.111758",
+    "title": "Thermally-tunable acoustic power amplification and efficiency enhancement in thermoacoustic amplifier",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.1016/j.icheatmasstransfer.2026.111758",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7163529426",
+    "doi": "10.5281/zenodo.20534776",
+    "title": "Sovereign Dragonfly Phonon Rocket: A Non-Nuclear H2O Propulsion System with Entropy Harvesting and Active Acoustic Control",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.5281/zenodo.20534776",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7163587356",
+    "doi": "10.5281/zenodo.20534775",
+    "title": "Sovereign Dragonfly Phonon Rocket: A Non-Nuclear H2O Propulsion System with Entropy Harvesting and Active Acoustic Control",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.5281/zenodo.20534775",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7163375225",
+    "doi": "10.1016/j.nanoen.2026.112082",
+    "title": "High-temperature energy harvesting via thermoacoustic-triboelectric hybridization: Design, modelling, and application demonstration",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7163078062",
+    "doi": "10.1016/j.applthermaleng.2026.131695",
+    "title": "Output characteristics and performance comparison on a heat-driven direct-coupled thermoacoustic refrigerator with a single piston",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7162782353",
+    "doi": "10.1016/j.ijheatmasstransfer.2026.129006",
+    "title": "Design and optimization of piezo-thermoelectric hybrid power generation in a small-scale thermoacoustic engine prototype",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.1016/j.ijheatmasstransfer.2026.129006",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7162846091",
+    "doi": "10.1016/j.energy.2026.141501",
+    "title": "Operation characteristics of a travelling-wave thermoacoustic engine with supercritical carbon dioxide as working fluid",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7160248074",
+    "doi": "10.31349/revmexfis.72.030601",
+    "title": "Experimental and numerical determination of the optimal stack position maximizing cooling efficiency in a thermoacoustic refrigerator",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.31349/revmexfis.72.030601",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7155379822",
+    "doi": "10.3390/en19092046",
+    "title": "A Large-Swept-Volume Linear Alternator Designed for Standing-Wave Acoustic Field",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.3390/en19092046",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7155068805",
+    "doi": "10.55041/ijsrem60685",
+    "title": "Experimental Investigation of a Thermoacoustic Refrigeration System",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7151211922",
+    "doi": "10.1103/jhkv-lqlz",
+    "title": "Temporal evolution of thermoacoustic streaming around a spatially confined temperature gradient",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.1103/jhkv-lqlz",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7149607038",
+    "doi": "10.1016/j.enconman.2026.121405",
+    "title": "Data-driven optimization using generative adversarial networks and performance analysis of a heat-driven thermoacoustic refrigerator",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 4,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7118192722",
+    "doi": "10.1016/j.ijheatmasstransfer.2025.128323",
+    "title": "Fluid-resonant oscillations in a cavity flow with a honeycomb stack",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.1016/j.ijheatmasstransfer.2025.128323",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7133598778",
+    "doi": "10.2298/tsci251028019f",
+    "title": "Effect of flow channel radius on the energy conversion of thermoacoustic machine for different ambient temperature",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "http://www.doiserbia.nb.rs/ft.aspx?id=0354-98362600019F",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7167606776",
+    "doi": "10.1016/j.proci.2026.106167",
+    "title": "Identification method of flame transfer function based on acoustic measurements",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7117355159",
+    "doi": "10.1016/j.rineng.2025.108684",
+    "title": "Operating characteristics of a standing-wave, liquid-piston thermoacoustic engine with phase-change",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 1,
+    "open_access_url": "https://doi.org/10.1016/j.rineng.2025.108684",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4417116279",
+    "doi": "10.1121/10.0041779",
+    "title": "High-order Wentzel–Kramers–Brillouin analysis of acoustic fields in ducts with axial temperature gradients and mean flow",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4416787423",
+    "doi": "10.15377/2409-5826.2025.12.4",
+    "title": "Research on the Characteristics of Fire Detection and Alarm Devices Based on the Thermoacoustic Effect",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://avantipublishers.com/index.php/jatsr/article/download/1699/1154",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4416585980",
+    "doi": "10.1016/j.ijheatmasstransfer.2025.128132",
+    "title": "Investigation of thermoacoustic heat dissipation characteristics with various gases in a self-excited travelling-standing wave acoustic field",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4416426311",
+    "doi": "10.1016/j.rineng.2025.108231",
+    "title": "Instability of fluid and gas flows during heat input and energy conversion",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 1,
+    "open_access_url": "https://doi.org/10.1016/j.rineng.2025.108231",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4415972631",
+    "doi": "10.1016/j.rineng.2025.108099",
+    "title": "Analysis of heat transfer coefficient on plate stack surface in standing-wave thermoacoustic refrigeration machine",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 1,
+    "open_access_url": "https://doi.org/10.1016/j.rineng.2025.108099",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4415766169",
+    "doi": "10.1016/j.applthermaleng.2025.128906",
+    "title": "Thermoacoustic Wave-Actuation of a Synthetic Jet: Effect of Thermoacoustic Parameters on the Jet Performance",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 1,
+    "open_access_url": "https://doi.org/10.1016/j.applthermaleng.2025.128906",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4415683373",
+    "doi": "10.1016/j.ijheatmasstransfer.2025.128019",
+    "title": "Experimental investigation of the oscillating flow characteristics at the exit of a thermally stratified porous medium for thermoacoustic applications",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 1,
+    "open_access_url": "https://hal.science/hal-05371247",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4415204948",
+    "doi": "10.1201/9781003725053-61",
+    "title": "Development and Methodology of a Piezoelectric-Driven Thermoacoustic Refrigerator Utilizing Lead Zirconate Titanate",
+    "year": 2025,
+    "type": "book-chapter",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4414861231",
+    "doi": "10.1063/5.0292379",
+    "title": "A ultra-high-temperature free-piston thermoacoustic Stirling heat pump capable of achieving above 200 °C",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 3,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4414223697",
+    "doi": "10.1016/j.energy.2025.138454",
+    "title": "Numerical and experimental study of a novel four-stage thermoacoustic engine with multi-looped structure",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4413761754",
+    "doi": "10.32620/aktt.2025.4sup1.03",
+    "title": "CFD моделювання розвитку термоконвекційних течій на процеси запуску низькотемпературних термоакустичних двигунів",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "http://nti.khai.edu/ojs/index.php/aktt/article/download/aktt.2025.4sup1.03/2782",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4413446929",
+    "doi": "10.1016/j.enganabound.2025.106419",
+    "title": "Twofold application of the dual reciprocity boundary element method to thermoacoustic analysis in two-dimensional space",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4413355895",
+    "doi": "10.3390/sym17081361",
+    "title": "Numerical Investigation on Thermally Induced Self-Excited Thermoacoustic Oscillations in the Pipelines of Cryogenic Storage Systems",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://www.mdpi.com/2073-8994/17/8/1361/pdf?version=1755676952",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4412854891",
+    "doi": "10.1016/j.energy.2025.137745",
+    "title": "Time-domain modeling and experimental validation of an integrated thermoacoustic-liquid metal triboelectric nanogenerator",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 6,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4412932295",
+    "doi": "10.3390/en18154114",
+    "title": "Study of Taconis-Based Cryogenic Thermoacoustic Engine with Hydrogen and Helium",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 2,
+    "open_access_url": "https://www.mdpi.com/1996-1073/18/15/4114/pdf?version=1754137305",
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4412786891",
+    "doi": "10.1016/j.seta.2025.104491",
+    "title": "Waste heat-driven loop thermoacoustic system for air-conditioning and electrical power generation",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4293068867",
+    "doi": "10.1088/1674-1056/ac7453",
+    "title": "Wideband frequency-dependent dielectric properties of rat tissues exposed to low-intensity focused ultrasound in the microwave frequency range",
+    "year": 2022,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-231472e45e/oa-mp12"
+    ]
+   }
+  ],
+  "screening_status": "not-reviewed",
+  "result": "inconclusive",
+  "notes": "Automated route-search-v1 index queries from data/canonical/searches/plans/p-231472e45e.yaml; the result list is frozen for a reviewer and nothing here has been read for a qualifying demonstration. Planned runs NOT run in this bundle (engine unavailable): search:2026-09-21-p-231472e45e/s2-dm1 (semantic-scholar); search:2026-09-21-p-231472e45e/s2-mp12 (semantic-scholar); search:2026-09-21-p-231472e45e/s2-wc (semantic-scholar); search:2026-09-21-p-231472e45e/s2-dp (semantic-scholar)."
+ },
+ {
+  "id": "search:2026-09-21-p-a093d7ecc5",
+  "target": {
+   "kind": "path",
+   "path": "p-a093d7ecc5",
+   "claims": [
+    "claim:thermal-expansion-drives",
+    "claim:thermal-expansion-produces-stress",
+    "claim:flexo-drives",
+    "claim:flexo-produces-charge",
+    "claim:surface-charge-converts-electricity"
+   ]
+  },
+  "dataset_hash": "12f9f0b568ca",
+  "driver_terms": [
+   "temperature gradient",
+   "temperature difference",
+   "thermal gradient",
+   "ΔT",
+   "waste heat"
+  ],
+  "family_terms": [],
+  "phenomenon_terms": {
+   "phenomenon:thermal-expansion": [
+    "thermal expansion",
+    "thermal strain",
+    "thermoelastic strain",
+    "thermal expansion gradient"
+   ],
+   "phenomenon:flexoelectric-effect": [
+    "flexoelectric effect",
+    "flexoelectricity",
+    "flexoelectric",
+    "strain-gradient polarization",
+    "thermopolarization",
+    "thermoflexoelectric effect",
+    "thermo-flexoelectric effect",
+    "thermoflexoelectricity"
+   ]
+  },
+  "runs": [
+   {
+    "id": "search:2026-09-21-p-a093d7ecc5/oa-dm1",
+    "engine": "openalex",
+    "query_form": "route-driver-mechanism",
+    "query": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermal expansion\" OR \"thermal strain\" OR \"thermoelastic strain\" OR \"thermal expansion gradient\")",
+    "executed_at": "2026-09-21T00:17:28.241Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermal+expansion%22+OR+%22thermal+strain%22+OR+%22thermoelastic+strain%22+OR+%22thermal+expansion+gradient%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermal expansion\" OR \"thermal strain\" OR \"thermoelastic strain\" OR \"thermal expansion gradient\")",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 2185,
+    "records_retrieved": 100,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "driver-mechanism:1"
+   },
+   {
+    "id": "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest",
+    "engine": "openalex",
+    "query_form": "route-driver-mechanism",
+    "query": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermal expansion\" OR \"thermal strain\" OR \"thermoelastic strain\" OR \"thermal expansion gradient\")",
+    "executed_at": "2026-09-21T00:17:34.633Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermal+expansion%22+OR+%22thermal+strain%22+OR+%22thermoelastic+strain%22+OR+%22thermal+expansion+gradient%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=50&sort=publication_date%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "publication_date:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermal expansion\" OR \"thermal strain\" OR \"thermoelastic strain\" OR \"thermal expansion gradient\")",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 2185,
+    "records_retrieved": 50,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "driver-mechanism:1"
+   },
+   {
+    "id": "search:2026-09-21-p-a093d7ecc5/oa-mp12",
+    "engine": "openalex",
+    "query_form": "route-mechanism-pair",
+    "query": "(\"Thermal expansion\" OR \"thermal strain\" OR \"thermoelastic strain\" OR \"thermal expansion gradient\") AND (\"Flexoelectric effect\" OR flexoelectricity OR flexoelectric OR \"strain-gradient polarization\" OR thermopolarization OR \"thermoflexoelectric effect\" OR \"thermo-flexoelectric effect\" OR thermoflexoelectricity)",
+    "executed_at": "2026-09-21T00:17:39.638Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Thermal+expansion%22+OR+%22thermal+strain%22+OR+%22thermoelastic+strain%22+OR+%22thermal+expansion+gradient%22%29+AND+%28%22Flexoelectric+effect%22+OR+flexoelectricity+OR+flexoelectric+OR+%22strain-gradient+polarization%22+OR+thermopolarization+OR+%22thermoflexoelectric+effect%22+OR+%22thermo-flexoelectric+effect%22+OR+thermoflexoelectricity%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Thermal expansion\" OR \"thermal strain\" OR \"thermoelastic strain\" OR \"thermal expansion gradient\") AND (\"Flexoelectric effect\" OR flexoelectricity OR flexoelectric OR \"strain-gradient polarization\" OR thermopolarization OR \"thermoflexoelectric effect\" OR \"thermo-flexoelectric effect\" OR thermoflexoelectricity)",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 8,
+    "records_retrieved": 8,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "mechanism-pair:1-2"
+   },
+   {
+    "id": "search:2026-09-21-p-a093d7ecc5/oa-wc",
+    "engine": "openalex",
+    "query_form": "route-whole-chain",
+    "query": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermal expansion\" OR \"thermal strain\" OR \"thermoelastic strain\" OR \"thermal expansion gradient\") AND (\"Flexoelectric effect\" OR flexoelectricity OR flexoelectric OR \"strain-gradient polarization\" OR thermopolarization OR \"thermoflexoelectric effect\" OR \"thermo-flexoelectric effect\" OR thermoflexoelectricity) AND (\"Electrical work\" OR electricity OR \"electrical output\" OR \"DC power\")",
+    "executed_at": "2026-09-21T00:17:44.997Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermal+expansion%22+OR+%22thermal+strain%22+OR+%22thermoelastic+strain%22+OR+%22thermal+expansion+gradient%22%29+AND+%28%22Flexoelectric+effect%22+OR+flexoelectricity+OR+flexoelectric+OR+%22strain-gradient+polarization%22+OR+thermopolarization+OR+%22thermoflexoelectric+effect%22+OR+%22thermo-flexoelectric+effect%22+OR+thermoflexoelectricity%29+AND+%28%22Electrical+work%22+OR+electricity+OR+%22electrical+output%22+OR+%22DC+power%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermal expansion\" OR \"thermal strain\" OR \"thermoelastic strain\" OR \"thermal expansion gradient\") AND (\"Flexoelectric effect\" OR flexoelectricity OR flexoelectric OR \"strain-gradient polarization\" OR thermopolarization OR \"thermoflexoelectric effect\" OR \"thermo-flexoelectric effect\" OR thermoflexoelectricity) AND (\"Electrical work\" OR electricity OR \"electrical output\" OR \"DC power\")",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 0,
+    "records_retrieved": 0,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "whole-chain"
+   },
+   {
+    "id": "search:2026-09-21-p-a093d7ecc5/oa-dp",
+    "engine": "openalex",
+    "query_form": "route-demonstration-precision",
+    "query": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermal expansion\" OR \"thermal strain\" OR \"thermoelastic strain\" OR \"thermal expansion gradient\") AND (\"Flexoelectric effect\" OR flexoelectricity OR flexoelectric OR \"strain-gradient polarization\" OR thermopolarization OR \"thermoflexoelectric effect\" OR \"thermo-flexoelectric effect\" OR thermoflexoelectricity) AND (\"Electrical work\" OR electricity OR \"electrical output\" OR \"DC power\") AND (experiment OR experimental OR measured OR device OR prototype)",
+    "executed_at": "2026-09-21T00:17:49.704Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Thermal+expansion%22+OR+%22thermal+strain%22+OR+%22thermoelastic+strain%22+OR+%22thermal+expansion+gradient%22%29+AND+%28%22Flexoelectric+effect%22+OR+flexoelectricity+OR+flexoelectric+OR+%22strain-gradient+polarization%22+OR+thermopolarization+OR+%22thermoflexoelectric+effect%22+OR+%22thermo-flexoelectric+effect%22+OR+thermoflexoelectricity%29+AND+%28%22Electrical+work%22+OR+electricity+OR+%22electrical+output%22+OR+%22DC+power%22%29+AND+%28experiment+OR+experimental+OR+measured+OR+device+OR+prototype%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"ΔT\" OR \"waste heat\") AND (\"Thermal expansion\" OR \"thermal strain\" OR \"thermoelastic strain\" OR \"thermal expansion gradient\") AND (\"Flexoelectric effect\" OR flexoelectricity OR flexoelectric OR \"strain-gradient polarization\" OR thermopolarization OR \"thermoflexoelectric effect\" OR \"thermo-flexoelectric effect\" OR thermoflexoelectricity) AND (\"Electrical work\" OR electricity OR \"electrical output\" OR \"DC power\") AND (experiment OR experimental OR measured OR device OR prototype)",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 0,
+    "records_retrieved": 0,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "demonstration-precision"
+   }
+  ],
+  "works": [
+   {
+    "openalex_id": "W2012605786",
+    "doi": "10.1063/1.2147726",
+    "title": "Giant negative thermal expansion in Ge-doped anti-perovskite manganese nitrides",
+    "year": 2005,
+    "type": "article",
+    "cited_by_count": 632,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2082930608",
+    "doi": "10.1016/0011-7471(73)90063-6",
+    "title": "New polynomials for thermal expansion, adiabatic temperature gradient and potential temperature of sea water",
+    "year": 1973,
+    "type": "article",
+    "cited_by_count": 149,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1980757002",
+    "doi": "10.1029/jb095ib13p21731",
+    "title": "Melting, thermal expansion, and phase transitions of iron at high pressures",
+    "year": 1990,
+    "type": "article",
+    "cited_by_count": 272,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2075378929",
+    "doi": "10.1029/jb084ib12p06849",
+    "title": "Compressional wave velocities in rocks at high temperatures and pressures, critical thermal gradients, and crustal low‐velocity zones",
+    "year": 1979,
+    "type": "article",
+    "cited_by_count": 334,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2008574391",
+    "doi": "10.1016/j.ijsolstr.2009.01.023",
+    "title": "Tailorable thermal expansion hybrid structures",
+    "year": 2009,
+    "type": "article",
+    "cited_by_count": 127,
+    "open_access_url": "https://www.sciencedirect.com/science/article/pii/S0020768309000493/pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2104917585",
+    "doi": "10.1109/lgrs.2011.2119463",
+    "title": "The Thermal Expansion Component of Persistent Scatterer Interferometry Observations",
+    "year": 2011,
+    "type": "article",
+    "cited_by_count": 153,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2077800826",
+    "doi": "10.1016/0040-1951(79)90143-4",
+    "title": "Thermal expansion of rocks: some measurements at high pressure",
+    "year": 1979,
+    "type": "article",
+    "cited_by_count": 144,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2146040761",
+    "doi": "10.1016/0043-1648(67)90087-7",
+    "title": "The influence of thermal expansion on the friction and wear process",
+    "year": 1967,
+    "type": "article",
+    "cited_by_count": 115,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2014770827",
+    "doi": "10.1063/1.2970998",
+    "title": "Low-temperature negative thermal expansion of the antiperovskite manganese nitride Mn3CuN codoped with Ge and Si",
+    "year": 2008,
+    "type": "article",
+    "cited_by_count": 152,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2534934237",
+    "doi": "10.12989/sem.2016.60.2.313",
+    "title": "On thermal stability of plates with functionally graded coefficient of thermal expansion",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 117,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2098028265",
+    "doi": "10.1111/j.1151-2916.1987.tb05720.x",
+    "title": "Grain‐Boundary Microcracking Due to Thermal Expansion Anisotropy in Aluminum Titanate Ceramics",
+    "year": 1987,
+    "type": "article",
+    "cited_by_count": 121,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2095266797",
+    "doi": "10.1016/j.geomorph.2005.12.013",
+    "title": "Surface temperature differences between minerals in crystalline rocks: Implications for granular disaggregation of granites through thermal fatigue",
+    "year": 2006,
+    "type": "article",
+    "cited_by_count": 177,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1964744222",
+    "doi": "10.1115/1.3169150",
+    "title": "Thermal Expansion Coefficients and Thermal Stresses in an Aligned Short Fiber Composite With Application to a Short Carbon Fiber/Aluminum",
+    "year": 1985,
+    "type": "article",
+    "cited_by_count": 148,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2103436206",
+    "doi": "10.1016/j.cemconres.2013.05.016",
+    "title": "Moisture dependence of thermal expansion in cement-based materials at early ages",
+    "year": 2013,
+    "type": "article",
+    "cited_by_count": 84,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2114116867",
+    "doi": "10.1016/s0921-5093(99)00781-9",
+    "title": "Mechanical and thermal expansion behavior of laser deposited metal matrix composites of Invar and TiC",
+    "year": 2000,
+    "type": "article",
+    "cited_by_count": 102,
+    "open_access_url": "https://doi.org/10.1016/s0921-5093(99)00781-9",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2096212634",
+    "doi": "10.1002/2014je004729",
+    "title": "Grain‐scale thermoelastic stresses and spatiotemporal temperature gradients on airless bodies, implications for rock breakdown",
+    "year": 2015,
+    "type": "article",
+    "cited_by_count": 111,
+    "open_access_url": "https://arxiv.org/pdf/1501.05389",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2009128177",
+    "doi": "10.1111/j.1551-2916.2005.00214.x",
+    "title": "Thermal Expansion Kinetics: Method to Measure Permeability of Cementitious Materials, IV. Effect of Thermal Gradients and Viscoelasticity",
+    "year": 2005,
+    "type": "article",
+    "cited_by_count": 25,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1969907941",
+    "doi": "10.1089/cpt.2007.9994",
+    "title": "The Effect of Temperature Gradients on Stress Development during Cryopreservation via Vitrification",
+    "year": 2007,
+    "type": "article",
+    "cited_by_count": 84,
+    "open_access_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/2180391",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2024806736",
+    "doi": "10.1007/s11664-012-2083-9",
+    "title": "Thermal Fatigue and Waste Heat Recovery via Thermoelectrics",
+    "year": 2012,
+    "type": "article",
+    "cited_by_count": 61,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2014045160",
+    "doi": "10.1002/polb.21480",
+    "title": "Effect of thermal expansion on shape memory behavior of polyurethane and its nanocomposites",
+    "year": 2008,
+    "type": "article",
+    "cited_by_count": 74,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1616056858",
+    "doi": "10.1029/2004jb003094",
+    "title": "Thermal expansion of Mg2SiO4 ringwoodite at high pressures",
+    "year": 2004,
+    "type": "article",
+    "cited_by_count": 54,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2089357072",
+    "doi": "10.1179/096797802225003956",
+    "title": "Thermal stresses in planar solid oxide fuel cells due to thermal expansion differences",
+    "year": 2002,
+    "type": "article",
+    "cited_by_count": 81,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4362577635",
+    "doi": "10.1002/lpor.202200884",
+    "title": "Eu 3+ ‐Activated Single‐Band Ratiometric Nanothermometry by Lattice Negative Thermal Expansion",
+    "year": 2023,
+    "type": "article",
+    "cited_by_count": 79,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2606486169",
+    "doi": "10.1016/j.actamat.2017.03.081",
+    "title": "Response of molten silicate infiltrated Gd2Zr2O7 thermal barrier coatings to temperature gradients",
+    "year": 2017,
+    "type": "article",
+    "cited_by_count": 62,
+    "open_access_url": "https://doi.org/10.1016/j.actamat.2017.03.081",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2023861058",
+    "doi": "10.1016/j.cemconcomp.2006.09.002",
+    "title": "Numerical tests of thermal cracking induced by temperature gradient in cement-based composites under thermal loads",
+    "year": 2006,
+    "type": "article",
+    "cited_by_count": 74,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2083224586",
+    "doi": "10.1007/s002490050087",
+    "title": "Vibrational frequency shifts as a probe of hydrogen bonds: thermal expansion and glass transition of myoglobin in mixed solvents",
+    "year": 1997,
+    "type": "article",
+    "cited_by_count": 93,
+    "open_access_url": "https://stars.library.ucf.edu/facultybib1990/3074",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3128963018",
+    "doi": "10.1016/j.compositesb.2021.108678",
+    "title": "Near-zero thermal expansion of ZrW2O8/Al–Si composites with three dimensional interpenetrating network structure",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 84,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4310022664",
+    "doi": "10.1002/adma.202208562",
+    "title": "Lightweight 3D Graphene Metamaterials with Tunable Negative Thermal Expansion",
+    "year": 2022,
+    "type": "article",
+    "cited_by_count": 55,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3032167753",
+    "doi": "10.1016/j.matchar.2020.110409",
+    "title": "Microstructures and unique low thermal expansion of Invar 36 alloy fabricated by selective laser melting",
+    "year": 2020,
+    "type": "article",
+    "cited_by_count": 76,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2072843488",
+    "doi": "10.1016/j.marstruc.2004.12.002",
+    "title": "Thermal expansion of pipe-in-pipe systems",
+    "year": 2004,
+    "type": "article",
+    "cited_by_count": 35,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2953037853",
+    "doi": "10.1063/1.4932067",
+    "title": "Giant negative thermal expansion covering room temperature in nanocrystalline GaNxMn3",
+    "year": 2015,
+    "type": "article",
+    "cited_by_count": 48,
+    "open_access_url": "https://arxiv.org/pdf/1508.01063",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2964461490",
+    "doi": "10.1016/j.compositesb.2019.107224",
+    "title": "Lattice structures as thermoelastic strain gradient metamaterials: Evidence from full-field simulations and applications to functionally step-wise-graded beams",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 61,
+    "open_access_url": "https://research.aalto.fi/en/publications/3636f404-3ea5-4b41-af07-fa7d6db8d339",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2001899688",
+    "doi": "10.1361/10599630420380",
+    "title": "The Effect of a High Thermal Gradient on Sintering and Stiffening in the Top Coat of a Thermal Barrier Coating System",
+    "year": 2004,
+    "type": "article",
+    "cited_by_count": 67,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2090130467",
+    "doi": "10.1029/gl017i006p00689",
+    "title": "Thermal expansion of mantle minerals at high pressures—A theoretical study",
+    "year": 1990,
+    "type": "article",
+    "cited_by_count": 41,
+    "open_access_url": "https://discovery.ucl.ac.uk/99140/1/GL017i006p00689.pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2136432322",
+    "doi": "10.1109/61.4309",
+    "title": "Theoretical model for temperature gradients within bare overhead conductors",
+    "year": 1988,
+    "type": "article",
+    "cited_by_count": 41,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2014689319",
+    "doi": "10.1063/1.93880",
+    "title": "Time-resolved x-ray diffraction measurement of the temperature and temperature gradients in silicon during pulsed laser annealing",
+    "year": 1983,
+    "type": "article",
+    "cited_by_count": 76,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2157950397",
+    "doi": "10.1016/j.pepi.2003.12.016",
+    "title": "Temperature gradients and evaluation of thermoelastic properties in the synchrotron-based laser-heated diamond cell",
+    "year": 2004,
+    "type": "article",
+    "cited_by_count": 55,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2087743007",
+    "doi": "10.1007/bf00357864",
+    "title": "Measurement of crack volume due to thermal expansion anisotropy in aluminium titanate ceramics",
+    "year": 1996,
+    "type": "article",
+    "cited_by_count": 52,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2024908865",
+    "doi": "10.1016/0011-2275(64)90002-5",
+    "title": "Application of a variable transformer to the study of low temperature thermal expansion",
+    "year": 1964,
+    "type": "article",
+    "cited_by_count": 42,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1986700621",
+    "doi": "10.1063/1.1789629",
+    "title": "Effect of temperature gradient on simultaneously experimental determination of thermal expansion coefficients and elastic modulus of thin film materials",
+    "year": 2004,
+    "type": "article",
+    "cited_by_count": 17,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2009911482",
+    "doi": "10.1134/s1063783410010294",
+    "title": "Investigation of thermal expansion, phase diagrams, and barocaloric effect in the (NH4)2WO2F4 and (NH4)2MoO2F4 oxyfluorides",
+    "year": 2010,
+    "type": "article",
+    "cited_by_count": 55,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2563925505",
+    "doi": "10.1063/1.4972234",
+    "title": "Colossal negative thermal expansion with an extended temperature interval covering room temperature in fine-powdered Mn0.98CoGe",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 58,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2113366365",
+    "doi": "10.1016/j.dental.2012.09.004",
+    "title": "Simultaneous determination of polymerization shrinkage, exotherm and thermal expansion coefficient for dental resin-composites",
+    "year": 2012,
+    "type": "article",
+    "cited_by_count": 52,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2051478071",
+    "doi": "10.1016/j.compscitech.2008.09.032",
+    "title": "ZrW2O8-containing composites with near-zero coefficient of thermal expansion fabricated by various methods: Comparison and optimization",
+    "year": 2008,
+    "type": "article",
+    "cited_by_count": 59,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1963586416",
+    "doi": "10.1063/1.2988111",
+    "title": "Micron-scale measurements of the coefficient of thermal expansion by time-domain probe beam deflection",
+    "year": 2008,
+    "type": "article",
+    "cited_by_count": 51,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1985560410",
+    "doi": "10.1007/bf00578804",
+    "title": "Temperature gradients at the core-mantle interface",
+    "year": 1973,
+    "type": "article",
+    "cited_by_count": 27,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1985465185",
+    "doi": "10.1088/0957-0233/9/9/025",
+    "title": "Measurement of thermal expansion coefficients using an in-fibre Bragg-grating sensor",
+    "year": 1998,
+    "type": "article",
+    "cited_by_count": 35,
+    "open_access_url": "https://iopscience.iop.org/article/10.1088/0957-0233/9/9/025/pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4405780327",
+    "doi": "10.1016/j.est.2024.114982",
+    "title": "Selection of phase change material under uncertainty for waste heat recovery in diesel engine generator",
+    "year": 2024,
+    "type": "article",
+    "cited_by_count": 55,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2068076796",
+    "doi": "10.1063/1.3157199",
+    "title": "On the estimation of thermal strains developed during oxide growth",
+    "year": 2009,
+    "type": "article",
+    "cited_by_count": 30,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2019175318",
+    "doi": "10.1007/s10853-013-7421-7",
+    "title": "The thermal expansion coefficient as a key design parameter for thermoelectric materials and its relationship to processing-dependent bloating",
+    "year": 2013,
+    "type": "article",
+    "cited_by_count": 53,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2077083908",
+    "doi": "10.1115/1.3171855",
+    "title": "Stresses and Deformations in Composite Tubes Due to a Circumferential Temperature Gradient",
+    "year": 1986,
+    "type": "article",
+    "cited_by_count": 33,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2056835233",
+    "doi": "10.1016/s0379-7112(00)00024-2",
+    "title": "Structural behaviour in fire compartment under different heating regimes — Part 1 (slab thermal gradients)",
+    "year": 2000,
+    "type": "article",
+    "cited_by_count": 38,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2145674580",
+    "doi": "10.1016/j.compstruct.2012.08.045",
+    "title": "An assessment of a higher order theory for composite laminates subjected to thermal gradient",
+    "year": 2012,
+    "type": "article",
+    "cited_by_count": 33,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1979197755",
+    "doi": "10.1016/j.pepi.2008.08.002",
+    "title": "Thermal expansion of forsterite at high pressures determined by in situ X-ray diffraction: The adiabatic geotherm in the upper mantle",
+    "year": 2008,
+    "type": "article",
+    "cited_by_count": 52,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1969100179",
+    "doi": "10.1063/1.1149706",
+    "title": "Thermally actuated interferometric sensors based on the thermal expansion of transparent elastomeric media",
+    "year": 1999,
+    "type": "article",
+    "cited_by_count": 38,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1995995582",
+    "doi": "10.1007/s10765-012-1248-3",
+    "title": "Piezoelectric Behavior of an Inhomogeneous Hollow Cylinder with Thermal Gradient",
+    "year": 2012,
+    "type": "article",
+    "cited_by_count": 24,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3162767318",
+    "doi": "10.1038/s41535-021-00348-z",
+    "title": "Negative thermal expansion in YbMn2Ge2 induced by the dual effect of magnetism and valence transition",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 34,
+    "open_access_url": "https://www.nature.com/articles/s41535-021-00348-z.pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1989113071",
+    "doi": "10.1111/j.1151-2916.1982.tb10398.x",
+    "title": "Crack Propagation in Irradiated B 4 C Induced by Swelling and Thermal Gradients",
+    "year": 1982,
+    "type": "article",
+    "cited_by_count": 24,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1993766894",
+    "doi": "10.1016/0010-4361(95)90913-k",
+    "title": "Effect of matrix cracking and interface sliding on the thermal expansion of fibre-reinforced composites",
+    "year": 1995,
+    "type": "article",
+    "cited_by_count": 34,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4293769378",
+    "doi": "10.3390/molecules27165078",
+    "title": "Anisotropic Thermal Expansion and Electronic Structure of LiInSe2",
+    "year": 2022,
+    "type": "article",
+    "cited_by_count": 22,
+    "open_access_url": "https://www.mdpi.com/1420-3049/27/16/5078/pdf?version=1660125391",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2045138851",
+    "doi": "10.1063/1.1542477",
+    "title": "Low-temperature thermal expansion of pure and inert-gas-doped fullerite C60",
+    "year": 2003,
+    "type": "article",
+    "cited_by_count": 33,
+    "open_access_url": "https://arxiv.org/pdf/cond-mat/0212578",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3132202115",
+    "doi": "10.1016/j.matdes.2021.109591",
+    "title": "Design of negative/nearly zero thermal expansion behavior over a wide temperature range by multi-phase composite",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 44,
+    "open_access_url": "https://www.sciencedirect.com/science/article/pii/S0264127521001441/pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2884360897",
+    "doi": "10.1063/1.5038860",
+    "title": "Giant negative thermal expansion in Fe-Mn-Ga magnetic shape memory alloys",
+    "year": 2018,
+    "type": "article",
+    "cited_by_count": 34,
+    "open_access_url": "https://www.osti.gov/servlets/purl/1480852",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4399806285",
+    "doi": "10.1002/lpor.202400151",
+    "title": "Thermal Enhancement of Er3+ NIR‐II Luminescence by Ho3+‐Mediated Energy‐Trapping in Negative Thermal Expansion Nanocrystals",
+    "year": 2024,
+    "type": "article",
+    "cited_by_count": 47,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2049429680",
+    "doi": "10.1016/s0020-7683(96)00207-7",
+    "title": "Failure criterion for moisture-sensitive plastic packages of integrated circuit (IC) devices: Application of von Kármán's equations with consideration of thermoelastic strains",
+    "year": 1997,
+    "type": "article",
+    "cited_by_count": 30,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2141291567",
+    "doi": "10.1039/c4cp05064a",
+    "title": "Abnormal thermal expansion properties of cubic NaZn 13 -type La(Fe,Al) 13 compounds",
+    "year": 2015,
+    "type": "article",
+    "cited_by_count": 41,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2009851303",
+    "doi": "10.1016/j.engstruct.2010.01.024",
+    "title": "Generic modelling of composite steel–concrete slabs subjected to shrinkage, creep and thermal strains including partial interaction",
+    "year": 2010,
+    "type": "article",
+    "cited_by_count": 51,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2083297862",
+    "doi": "10.1016/s0167-7012(03)00138-6",
+    "title": "A high-pressure thermal gradient block for investigating microbial activity in multiple deep-sea samples",
+    "year": 2003,
+    "type": "article",
+    "cited_by_count": 36,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3020325151",
+    "doi": "10.1107/s160057672000415x",
+    "title": "A thermal-gradient approach to variable-temperature measurements resolved in space",
+    "year": 2020,
+    "type": "article",
+    "cited_by_count": 25,
+    "open_access_url": "https://journals.iucr.org/j/issues/2020/03/00/te5056/te5056.pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1769968489",
+    "doi": "10.1007/s11666-015-0254-y",
+    "title": "Cycling Performance of a Columnar-Structured Complex Perovskite in a Temperature Gradient Test",
+    "year": 2015,
+    "type": "article",
+    "cited_by_count": 29,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2127307517",
+    "doi": "10.1111/jace.12580",
+    "title": "Temperature Gradient Introduced Ferroelectric Self‐Poling in BiFeO 3 Ceramics",
+    "year": 2013,
+    "type": "article",
+    "cited_by_count": 28,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3039639294",
+    "doi": "10.1007/s10704-020-00461-3",
+    "title": "Crack channelling mechanisms in brittle coating systems under moisture or temperature gradients",
+    "year": 2020,
+    "type": "article",
+    "cited_by_count": 32,
+    "open_access_url": "https://link.springer.com/content/pdf/10.1007/s10704-020-00461-3.pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2152824401",
+    "doi": "10.1119/1.1987125",
+    "title": "Thermal Expansion Corrections when ΔT Is Not Small",
+    "year": 1973,
+    "type": "article",
+    "cited_by_count": 3,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2325337542",
+    "doi": "10.1016/j.jngse.2016.03.091",
+    "title": "Sealed annulus thermal expansion pressure mechanical calculation method and application among multiple packers in HPHT gas wells",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 47,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2084016873",
+    "doi": "10.1063/1.1879072",
+    "title": "Quantitative analysis of damage in an octahydro-1,3,5,7-tetranitro-1,3,5,7-tetrazonic-based composite explosive subjected to a linear thermal gradient",
+    "year": 2005,
+    "type": "article",
+    "cited_by_count": 35,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2963745415",
+    "doi": "10.1016/j.compositesb.2019.107217",
+    "title": "The influence of temperature gradient thermal shock cycles on the interlaminar shear strength of fibre metal laminate composite determined by the short beam test",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 50,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2060797290",
+    "doi": "10.1063/1.2227524",
+    "title": "Bidirectional thermal expansion measurement for evaluating Poisson’s ratio of thin films",
+    "year": 2006,
+    "type": "article",
+    "cited_by_count": 18,
+    "open_access_url": "https://tohoku.repo.nii.ac.jp/record/43572/files/ApplPhysLett_89_031913.pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1973752861",
+    "doi": "10.1063/1.3186057",
+    "title": "Influence of thermal strains on the electrocaloric and dielectric properties of ferroelectric nanoshells",
+    "year": 2009,
+    "type": "article",
+    "cited_by_count": 20,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1894834307",
+    "doi": "10.1016/j.jpowsour.2015.04.104",
+    "title": "Investigating the effect of thermal gradients on stress in solid oxide fuel cell anodes using combined synchrotron radiation and thermal imaging",
+    "year": 2015,
+    "type": "article",
+    "cited_by_count": 41,
+    "open_access_url": "https://doi.org/10.1016/j.jpowsour.2015.04.104",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2808762476",
+    "doi": "10.3168/jds.2017-14283",
+    "title": "Strategic application of convective cooling to maximize the thermal gradient and reduce heat stress response in dairy cows",
+    "year": 2018,
+    "type": "article",
+    "cited_by_count": 36,
+    "open_access_url": "http://www.journalofdairyscience.org/article/S0022030218305903/pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2979547235",
+    "doi": "10.1063/1.5094443",
+    "title": "Measuring nanoscale thermal gradients in suspended MoS2 with STEM-EELS",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 17,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3183724227",
+    "doi": "10.31635/ccschem.021.202101125",
+    "title": "Bionic Thermosensation Inspired Temperature Gradient Sensor Based on Covalent Organic Framework Nanofluidic Membrane with Ultrahigh Sensitivity",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 38,
+    "open_access_url": "https://doi.org/10.31635/ccschem.021.202101125",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3099601621",
+    "title": "Low-temperature thermal expansion of pure and inert gas-doped fullerite C₆₀",
+    "year": 2003,
+    "type": "article",
+    "cited_by_count": 25,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1980402964",
+    "doi": "10.1063/1.1658596",
+    "title": "Sensitive Dilatometer for Low Temperatures and the Thermal Expansion of Copper below 10 K",
+    "year": 1970,
+    "type": "article",
+    "cited_by_count": 25,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2090393458",
+    "doi": "10.1179/1066785712z.00000000094",
+    "title": "Development of low thermal expansion Sc2(WO4)3containing composites",
+    "year": 2012,
+    "type": "article",
+    "cited_by_count": 20,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2045852611",
+    "doi": "10.1016/j.actamat.2013.03.031",
+    "title": "New p- and n-type skutterudites with ZT>1 and nearly identical thermal expansion and mechanical properties",
+    "year": 2013,
+    "type": "article",
+    "cited_by_count": 31,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2147255001",
+    "doi": "10.1111/j.1551-2916.2011.04447.x",
+    "title": "Optimization of Thermal Protection Systems Utilizing Sandwich Structures with Low Coefficient of Thermal Expansion Lattice Hot Faces",
+    "year": 2011,
+    "type": "article",
+    "cited_by_count": 33,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1213495560",
+    "doi": "10.60910/g7wm-shgr",
+    "title": "Determination of thermal expansion of green wood and the accuracy of tree stem diameter variation measurements",
+    "year": 2024,
+    "type": "article",
+    "cited_by_count": 26,
+    "open_access_url": "http://hdl.handle.net/10138/578298",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2127833649",
+    "doi": "10.1088/0953-2048/28/7/075012",
+    "title": "Dendritic flux avalanches and the accompanied thermal strain in type-II superconducting films: effect of magnetic field ramp rate",
+    "year": 2015,
+    "type": "article",
+    "cited_by_count": 39,
+    "open_access_url": "https://iopscience.iop.org/article/10.1088/0953-2048/28/7/075012/pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3152120936",
+    "doi": "10.1016/j.epsl.2021.116884",
+    "title": "Thermal expansion of liquid Fe-S alloy at high pressure",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 18,
+    "open_access_url": "https://uca.hal.science/hal-03184365v1/document",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4380887016",
+    "doi": "10.1002/nme.7304",
+    "title": "Topology optimization of thermo‐elastic structures with temperature‐dependent material properties under large temperature gradient",
+    "year": 2023,
+    "type": "article",
+    "cited_by_count": 29,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2020864402",
+    "doi": "10.1016/j.ijmecsci.2008.04.004",
+    "title": "Thermoelastic lateral-torsional buckling of fixed slender beams under linear temperature gradient",
+    "year": 2008,
+    "type": "article",
+    "cited_by_count": 24,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2892192184",
+    "doi": "10.1088/1361-6528/aae368",
+    "title": "Modeling nanoscale temperature gradients and conductivity evolution in pulsed light sintering of silver nanowire networks",
+    "year": 2018,
+    "type": "article",
+    "cited_by_count": 26,
+    "open_access_url": "https://iopscience.iop.org/article/10.1088/1361-6528/aae368/pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4361297880",
+    "doi": "10.1016/j.optlastec.2023.109386",
+    "title": "Control of thermal strain and residual stress in pulsed-wave direct laser deposition",
+    "year": 2023,
+    "type": "article",
+    "cited_by_count": 21,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2056285461",
+    "doi": "10.1140/epjd/e2013-30458-2",
+    "title": "Design of an optical reference cavity with low thermal noise limit and flexible thermal expansion properties",
+    "year": 2013,
+    "type": "article",
+    "cited_by_count": 24,
+    "open_access_url": "https://arxiv.org/pdf/1204.1209",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2894680271",
+    "doi": "10.1021/acs.jctc.8b00460",
+    "title": "Thermal Gradient Approach for the Quasi-harmonic Approximation and Its Application to Improved Treatment of Anisotropic Expansion",
+    "year": 2018,
+    "type": "article",
+    "cited_by_count": 23,
+    "open_access_url": "https://arxiv.org/pdf/1712.00936",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2409834122",
+    "title": "Can thermal expansion differences between cryopreserved tissue and cryoprotective agents alone cause cracking?",
+    "year": 2010,
+    "type": "article",
+    "cited_by_count": 21,
+    "open_access_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/3377493",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4225162089",
+    "doi": "10.1016/j.ijsolstr.2022.111657",
+    "title": "Biot’s Variational Method to determine the thermal strain in layered glazings",
+    "year": 2022,
+    "type": "article",
+    "cited_by_count": 17,
+    "open_access_url": "https://doi.org/10.1016/j.ijsolstr.2022.111657",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2062227984",
+    "doi": "10.1016/j.vacuum.2013.10.018",
+    "title": "Influence of heat treatment temperature on microstructure and thermal expansion properties of 2D carbon/carbon composites",
+    "year": 2013,
+    "type": "article",
+    "cited_by_count": 21,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2069623182",
+    "doi": "10.1063/1.339162",
+    "title": "Elastic calculation of the thermal strains and stresses of the multilayered plate",
+    "year": 1987,
+    "type": "article",
+    "cited_by_count": 12,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W7213563522",
+    "doi": "10.1016/j.cemconres.2026.108410",
+    "title": "Deformation of cement-based materials under drying with thermal cycling: Mechanisms governed by C-S-H solid-moisture interactions",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.1016/j.cemconres.2026.108410",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7213459225",
+    "doi": "10.1016/j.conbuildmat.2026.148205",
+    "title": "Cooling-induced thermal stress evolution in exothermic-curing anchoring adhesives: Experimental characterization and numerical simulation",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.1016/j.conbuildmat.2026.148205",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7213469587",
+    "doi": "10.1080/15376494.2026.2717649",
+    "title": "The effect of the triple periodic minimum surface materials on the thermomechanical buckling of sandwich plates with hybrid face layers",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.6084/m9.figshare.33899536",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7212305818",
+    "doi": "10.1088/1402-4896/aea64d",
+    "title": "Mechanistic insights into thermomechanical stress amplification in heterogeneous dielectric nanopillar metasurfaces under pulsed laser excitation",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.1088/1402-4896/aea64d",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7211953966",
+    "doi": "10.3390/ma19183817",
+    "title": "Thermal Stress and Temperature Analysis of Integrated Protection-Thermal Control Multilayer Films Under Laser Irradiation in Alternating High and Low Temperatures",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.3390/ma19183817",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7208809860",
+    "doi": "10.5281/zenodo.22380346",
+    "title": "Oscillating Earth Geodynamics: How LLSVP-Driven Thermoelectric Cycles Can Solve Tectonic and Geomagnetic Problems",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.5281/zenodo.22380346",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7208820853",
+    "doi": "10.5281/zenodo.22380345",
+    "title": "Oscillating Earth Geodynamics: How LLSVP-Driven Thermoelectric Cycles Can Solve Tectonic and Geomagnetic Problems",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.5281/zenodo.22380345",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7207694573",
+    "doi": "10.1177/09544062261484691",
+    "title": "A phase field model for thermoelastic fracture in hyperelastic solids under finite deformation",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7210288381",
+    "doi": "10.1016/j.mtphys.2026.102221",
+    "title": "Full-temperature-range thermoelectric materials for sustainable waste-heat recovery: Temperature matching, transport engineering and device integration",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7211907776",
+    "doi": "10.1016/j.jallcom.2026.190949",
+    "title": "The key role of PAN-derived carbon-rich regions in achieving near zero expansion of 3D printed SiOC metamaterials",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7212996557",
+    "doi": "10.1063/5.0352637",
+    "title": "Research on in situ temperature measurement and thermal stress simulation of proton exchange membrane fuel cell (PEMFC) based on thin-film thermocouples",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7204758508",
+    "doi": "10.1117/1.jatis.12.3.035003",
+    "title": "Opto-mechanical design and analysis of the mirror assembly for the EUV imager onboard the solar polar-orbit observatory",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7204783553",
+    "doi": "10.3390/pr14172813",
+    "title": "Fluid–Thermal Characteristics and Thermo-Mechanical Response of a Wide-Temperature-Range Gas-Mixing System for a High-Altitude Test Chamber",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.3390/pr14172813",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7204529223",
+    "doi": "10.1016/j.est.2026.124350",
+    "title": "Thermo-mechanical behavior of stainless-clad bimetallic steel-concrete thermal energy storage unit during initial charging",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.1016/j.est.2026.124350",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7204554348",
+    "doi": "10.1007/s00170-026-18972-z",
+    "title": "Experimental, statistical, and numerical investigation and comparison of bending angle and longitudinal distortion in AA6061 and magnesium M1A alloy sheets using Box-Behnken design in multi-scan laser bending process",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7204454673",
+    "doi": "10.1007/s00484-026-03307-0",
+    "title": "Heat stress responses and thermoregulatory dynamics in Murrah buffalo calves assessed by infrared thermography",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7204235323",
+    "doi": "10.1016/j.jmst.2026.08.033",
+    "title": "Constructing a cross-scale structure via self-doping for high-performance n-type PbTe thermoelectrics",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7204143769",
+    "doi": "10.1016/j.ijheatmasstransfer.2026.129467",
+    "title": "Performance evaluation of a multifunctional flexible composite for synergistic thermo-mechanical-vibrational management in battery modules",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7204107703",
+    "doi": "10.1177/09544062261477241",
+    "title": "Nonlinear isogeometric formulation for coupled thermo-mechanical behavior of multilayer cylindrical shell junctions",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7203747866",
+    "doi": "10.20517/microstructures.2026.53",
+    "title": "Residual stress mapping of additively manufactured Inconel 718 via synchrotron X-ray diffraction",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.20517/microstructures.2026.53",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7203748935",
+    "doi": "10.1016/j.cemconcomp.2026.106811",
+    "title": "Impact of testing methods on the evaluation of load-induced thermal strain in concrete at elevated temperatures",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7203683765",
+    "doi": "10.1002/admt.71180",
+    "title": "Lacrimal Gland‐Inspired Active Replenishing Slippery Surface for Robust Anti‐Pollution Optical Windows",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7203454023",
+    "doi": "10.1016/j.icheatmasstransfer.2026.112273",
+    "title": "Theoretical analysis method of fluid-thermal-structural coupling and its influence mechanism analysis for double wall turbine blade",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7202355920",
+    "doi": "10.20291/2079-0392-2026-2-63-68",
+    "title": "Математическая модель расслоения изоляции ТЭД локомотивов",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7202379884",
+    "doi": "10.1007/s00603-026-05821-4",
+    "title": "A Multi-mechanism Coupled Framework for Thermal Spalling in Coal: Thermal Fracture Mechanisms and Physicochemical–Structural–Mechanical Interactions",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7202292446",
+    "doi": "10.1186/s40069-026-00957-7",
+    "title": "Field Performance of Emerging Concrete Technologies: CNT-Based Cementitious Strain Sensors and PCM Covers for Reducing Early-Age Cracking Potential",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://link.springer.com/content/pdf/10.1186/s40069-026-00957-7.pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7202083828",
+    "doi": "10.1063/5.0335266",
+    "title": "Electro-thermal and mechanical simulations of laser annealing perovskite films",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://hal.science/hal-05741442",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7172539069",
+    "doi": "10.1016/j.geoen.2026.214722",
+    "title": "Study on the evolution of microscopic damage in the cement sheath under thermal-mechanical cyclic stress",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7172555822",
+    "doi": "10.1016/j.xphs.2026.104453",
+    "title": "Understanding vial strain during freezing of aqueous solutions–Part I: A combined approach of experimental strain gauge measurements and computer simulations",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7172385594",
+    "doi": "10.3390/en19153657",
+    "title": "Scaling Laws and Thermodynamic Limits of Modular Thermoelastic Energy Harvesting from Low-Grade Heat",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://www.mdpi.com/1996-1073/19/15/3657/pdf?version=1785836042",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7172387425",
+    "doi": "10.5281/zenodo.21791556",
+    "title": "Steady-State Thermal Analysis and Structural Stress Evaluation of IC Engine Piston for Five Engineering Materials Using ANSYS Finite Element Analysis: Temperature Distribution, Thermal Stress, and Design Optimisation",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.5281/zenodo.21791556",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7172412191",
+    "doi": "10.5281/zenodo.21791557",
+    "title": "Steady-State Thermal Analysis and Structural Stress Evaluation of IC Engine Piston for Five Engineering Materials Using ANSYS Finite Element Analysis: Temperature Distribution, Thermal Stress, and Design Optimisation",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.5281/zenodo.21791557",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7172419778",
+    "doi": "10.1016/j.ast.2026.113381",
+    "title": "Thermal control with digital twins for dimensional stability in CubeSat payloads",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.1016/j.ast.2026.113381",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7172287620",
+    "doi": "10.1016/j.net.2026.104627",
+    "title": "Analysis of low-level alarm for a lubricating oil tank based on flow characteristics and temperature in a nuclear power plant",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.1016/j.net.2026.104627",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7172299104",
+    "doi": "10.2355/isijinternational.isijint-2026-166",
+    "title": "Estimation of Melt Flow Properties from Thermal Analysis Data Using Data Assimilation",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://www.jstage.jst.go.jp/article/isijinternational/advpub/0/advpub_ISIJINT-2026-166/_pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4416912428",
+    "doi": "10.1007/s12633-026-03773-6",
+    "title": "Machine Learning Approach Toward Near-Homogeneous Properties of Eutectic Aluminum Silicon Alloy Fabricated by a Wire Arc Direct Energy Deposition",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://www.researchsquare.com/article/rs-7655300/latest.pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7196970968",
+    "doi": "10.1007/s12206-026-0718-7",
+    "title": "Design of discretely assembled octahedral metamaterials with tunable unidirectional coefficient of thermal expansion",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7212229155",
+    "doi": "10.13225/j.cnki.jccs.ge26.0673",
+    "title": "Characteristics and controlling factors of seepage and heat transfer of carbonate thermal reservoir water/supercritical CO2 under temperature and pressure conditions",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7171977803",
+    "doi": "10.1051/0004-6361/202660790",
+    "title": "PALEOS: Multiphase equations of state and mass–radius relations for exoplanet interiors",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.1051/0004-6361/202660790",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7171377670",
+    "doi": "10.1007/s11440-026-03172-6",
+    "title": "Path-dependent thermoplastic solution for wellbore stress analysis",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://link.springer.com/content/pdf/10.1007/s11440-026-03172-6.pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7171420291",
+    "doi": "10.3389/fchem.2026.1888564",
+    "title": "Thermal-field coupling toward efficient water electrolysis",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://www.frontiersin.org/journals/chemistry/articles/10.3389/fchem.2026.1888564/pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7170548359",
+    "doi": "10.5281/zenodo.21523720",
+    "title": "Lunar Regolith Cement Mixer (LRCM) A Governed ISRU Construction-Material Processor for Lunar and Martian Surface Operations V10",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.5281/zenodo.21523720",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7170617262",
+    "doi": "10.1186/s41313-026-00084-6",
+    "title": "E Transient coupled thermomechanical analysis of the crack initiation mechanism in core-bonding multiphase materials during cooling",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://link.springer.com/content/pdf/10.1186/s41313-026-00084-6.pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7170724689",
+    "doi": "10.1007/s12541-026-01581-x",
+    "title": "Minimizing Residual Stresses and Deformation in the Circumferential Welds of Large-Capacity Offshore Wind Turbine Tower Flanges: Control of Heat Input Parameters",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7169773445",
+    "doi": "10.1016/j.optlastec.2026.115992",
+    "title": "Synergistic strengthening of laser pre-melted Y2O3 and electroplated Ni on microstructure and properties of TC4/304 laser-welded joint",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7168250358",
+    "doi": "10.1016/j.compositesa.2026.110089",
+    "title": "Influence of processing conditions on internal stresses, crack formation, and cure kinetics in frontally polymerized composites",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://www.sciencedirect.com/science/article/pii/S1359835X26005361/pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7168265324",
+    "doi": "10.1007/s11665-026-14512-8",
+    "title": "Numerical Validation of Thermal Expansivity of Al6061 Based Hybrid Nano Metal Matrix Composite Filled with Nanoparticles of Ni and Cr",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7168297907",
+    "doi": "10.1029/2026gl123409",
+    "title": "Latitudinal Discrepancy Between Thermospheric Density and Temperature Associated With Neutral Composition Effect",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.1029/2026gl123409",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7168126264",
+    "doi": "10.1016/j.icheatmasstransfer.2026.111967",
+    "title": "Thermo–mechanical response and key parameter sensitivity of skin tissue under pulsed laser irradiation: A numerical study based on the Dual-Phase-Lag model",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7168127220",
+    "doi": "10.54254/2755-2721/2026.ad35186",
+    "title": "Thermal-Mechanical Analysis of Residual Stress and Deformation in 6082 Aluminum Alloy Welded Joints",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://ace.ewapub.com/article/view/35186.pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W4389089495",
+    "doi": "10.1007/s43207-023-00326-0",
+    "title": "Enhancement of thermal-electrical like response by flexoelectric effect in sodium bismuth titanate bilayer ceramics with compositional inhomogeneity",
+    "year": 2023,
+    "type": "article",
+    "cited_by_count": 4,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-mp12"
+    ]
+   },
+   {
+    "openalex_id": "W2472271340",
+    "doi": "10.1039/c6cp03082c",
+    "title": "The rich phase behavior of the thermopolarization of water: from a reversal in the polarization, to enhancement near criticality conditions",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 27,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-mp12"
+    ]
+   },
+   {
+    "openalex_id": "W3007580565",
+    "doi": "10.1002/adfm.201910371",
+    "title": "Thermally Induced Flexo‐Type Effects in Nanopatterned Multiferroic Layers",
+    "year": 2020,
+    "type": "article",
+    "cited_by_count": 18,
+    "open_access_url": "http://hdl.handle.net/2078.1/230149",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-mp12"
+    ]
+   },
+   {
+    "openalex_id": "W7204247376",
+    "doi": "10.1063/5.0334544",
+    "title": "Flexoelectricity in ripple-engineered monolayer MoS2",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.1063/5.0334544",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-mp12"
+    ]
+   },
+   {
+    "openalex_id": "W7152680520",
+    "doi": "10.1038/s41528-026-00575-z",
+    "title": "Flexoelectricity enables piezoelectric single crystals to be self-poled",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://www.nature.com/articles/s41528-026-00575-z_reference.pdf",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-mp12"
+    ]
+   },
+   {
+    "openalex_id": "W2536169408",
+    "doi": "10.1002/pssb.201600226",
+    "title": "Static flexural modes and piezoelectricity in 2D and layered crystals",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 7,
+    "open_access_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/pssb.201600226",
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-mp12"
+    ]
+   },
+   {
+    "openalex_id": "W4401953500",
+    "doi": "10.1002/smll.202405197",
+    "title": "Harvesting Magneto‐Acoustic Waves Using Magnetic 2D Chromium Telluride (CrTe 3 )",
+    "year": 2024,
+    "type": "article",
+    "cited_by_count": 3,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-mp12"
+    ]
+   },
+   {
+    "openalex_id": "W2979881411",
+    "doi": "10.1115/1.4044680",
+    "title": "Special Issue: Architectured Materials Mechanics",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-a093d7ecc5/oa-mp12"
+    ]
+   }
+  ],
+  "screening_status": "not-reviewed",
+  "result": "inconclusive",
+  "notes": "Automated route-search-v1 index queries from data/canonical/searches/plans/p-a093d7ecc5.yaml; the result list is frozen for a reviewer and nothing here has been read for a qualifying demonstration. Planned runs NOT run in this bundle (engine unavailable): search:2026-09-21-p-a093d7ecc5/s2-dm1 (semantic-scholar); search:2026-09-21-p-a093d7ecc5/s2-mp12 (semantic-scholar); search:2026-09-21-p-a093d7ecc5/s2-wc (semantic-scholar); search:2026-09-21-p-a093d7ecc5/s2-dp (semantic-scholar)."
  }
 ]
