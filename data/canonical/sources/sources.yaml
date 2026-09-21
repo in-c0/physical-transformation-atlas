@@ -1576,3 +1576,28 @@
   venue: "physica status solidi (a) 163, 263–270"
   doi: 10.1002/1521-396X(199709)163:1<263::AID-PSSA263>3.0.CO;2-T
   notes: "Metadata verified on Crossref; abstract read on OpenAlex. The contribution of the thermopolarization effect (P ∝ ∇T) to the signal of the laser intensity modulation method was studied theoretically, shown to be large enough to observe, and compared with the pyroelectric signal. Theory by the effect's first theorist — not an experiment in polymer films."
+# Loop-3 pass 33: the open primaries of the measurement sweep, read in full.
+- id: source:lu-2024-otec-platform
+  type: paper
+  title: "Design and Experimental Study of 50 kW Ocean Thermal Energy Conversion Test Platform Based on Organic Rankine Cycle"
+  authors: [B. Lu, Y. Liu, X. Zhai, L. Zhang, Y. Chen]
+  year: 2024
+  venue: "Journal of Marine Science and Engineering 12, 463"
+  doi: 10.3390/jmse12030463
+  notes: "Metadata verified on Crossref; full text read (open access). A land-based 50 kW R134a organic-Rankine OTEC test platform at Shandong University with a heat-pump unit simulating the warm and cold seawater. Design (engineering-calibration) point: 28 °C heat source, 4 °C cold source, thermal efficiency 2.63 %, turbine output 50.3 kW (Table 2 check values: warm seawater 191.49 kg/s, cold 183.93 kg/s, working fluid 7.648 kg/s, evaporator 1608.56 kW, condenser 1545.68 kW; Table 1 state points ≈ 24.6 °C / 645.8 kPa evaporation, ≈ 8 °C / 387.6 kPa condensation). Experiment: the conclusion states the simulation system ran the heat source at 24–28 °C and the cold source at 4–8 °C, Figure 11 shows the warm water at ≈ 27.5–30.5 °C and the cold water at ≈ 4.5–7 °C over the 6000 s run with the flows stepped from ≈ 530 to ≈ 740 m³/h; the maximum grid-connected power is 47.4 kW (47.5 kW in the abstract) and the actual thermal efficiency 2.46 % (Figure 12). The paper prints no temperature pair for the operating point of the experimental efficiency."
+- id: source:shaheed-2023-al-mosyab
+  type: paper
+  title: "Evaluation Performance of the Steam Power Plant in Iraq Based on Energy and Exergy Analysis"
+  authors: [H. R. Shaheed, H. N. Mohammed, R. M. Radhi]
+  year: 2023
+  venue: "International Journal of Heat and Technology 41, 253–258"
+  doi: 10.18280/ijht.410128
+  notes: "Metadata verified on Crossref; full text read (open PDF). Energy and exergy analysis of Unit 3 of the Al-Mosyab thermal power station (Iraq, completed 1990, four 300 MW units, running at ≈ 65 % of rated capacity) at 225 MW load, solved in Engineering Equation Solver from the unit's readings — Table 1: main steam 168 kg/s at 152 bar and 539 °C, crude-oil fuel 14.68 kg/s at NCV 10,074 kcal/kg, condenser 0.1 bar, cooling water 24 °C, 3000 rpm (design, Table 2: 300 MW, 170 bar, 538 °C, 0.0653 bar, 23 °C; the model reproduces the design point within 1.33 %). Results (Table 4): cycle thermal efficiency 39.3 %, second-law efficiency 34.91 %, exergy destruction 412.68 MW, boiler thermal efficiency 94 %; the text quotes 39.91 % and Figure 2's condenser-pressure sweep runs from 39.39 % at 0.06 bar to 37.97 % at 0.24 bar. The efficiency is a first-law computation of the readings, not a metered figure."
+- id: source:al-mhanna-2024-isccs
+  type: paper
+  title: "Simulation and Energy Analysis of Integrated Solar Combined Cycle Systems (ISCCS) Using Aspen Plus"
+  authors: [N. M. Al Mhanna, I. Al Hadidi, S. Al Maskari]
+  year: 2024
+  venue: "Energies 17, 3986"
+  doi: 10.3390/en17163986
+  notes: "Metadata verified on Crossref; full text read (open access). An Aspen Plus model of one gas-turbine train of a 678 MW combined-cycle station in Oman (three gas turbines, two steam turbines), validated against the plant's data before a parabolic-trough integration is simulated. Table 2 (plant inputs): air 505.36 kg/s at 26.6 °C and 0.9981 bar, compressor discharge 9.4 bar (isentropic efficiency 0.883), natural-gas fuel 9.2 kg/s at 22.8 bar and 15.6 °C (LHV 43,662 kJ/kg; 92.5 % methane), turbine discharge 1 bar (isentropic efficiency 0.85), HRSG feed 235,400 + 40,000 kg/h. Table 3 (local plant data vs simulation): gas-turbine work output 127 MW (126.45), steam-turbine work output 61.5 MW (59.47), gas-turbine inlet 1050 °C (1010.46), exhaust 540.7 °C (556.93), efficiency 46.93 % (46.28) — the efficiency is the combined cycle's: (127 + 61.5) MW over 9.2 kg/s × 43,662 kJ/kg = 401.7 MW reproduces 46.93 % exactly."
