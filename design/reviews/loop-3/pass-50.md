@@ -95,3 +95,19 @@ consistent · live.
   evidence-single-source 4 · search-incomplete 13 · source-read-pending 9 · pathway-observed-not-delivered 1
   · measurement-boundary-unresolved 1 · measurement-definition-unresolved 1); the collection, the endpoint,
   the report and the /methods numbers regenerated from source; regressions added. 93/93.
+
+## Signed (12:37–12:43 am 22/09; ChatGPT High; PASS — 10 findings)
+
+The reviewer signed the immutable loop-3 closure snapshot at revision bfbfcbb70e57: the two defects
+resolved (the thermopolarization records "say what the atlas actually knows"; the photostriction
+classification "genuinely gone", the phenomenon kept); leaving the two Spanier-backed photostriction
+process claims at reported with single-source residuals "does not block closure — their sourcing is now
+exposed rather than disguised", their re-sourcing from the photostriction literature being the natural
+first item of a future loop's ontology-semantics theme; the residual taxonomy coherent ("materially
+different epistemic situations rather than compressing every uncertainty into unknown"); the closure
+criterion met — "remaining uncertainty is not being converted into negative evidence, constituent
+evidence is not being promoted into composition evidence, stage performance is not masquerading as route
+performance, parameterized models are not universal limits, ranges are not scalarized, variants do not
+inflate route coverage, and blocked searches do not become completed negatives"; and the 36 residuals
+"are not failures of closure. They are the scientifically correct closing state of an atlas whose
+evidence is incomplete." Loop 3 is closed.
