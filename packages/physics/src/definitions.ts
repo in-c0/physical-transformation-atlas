@@ -139,7 +139,7 @@ export const CHECK_DEFINITIONS: CheckDefinition[] = [
     fail_when: "a structured datum is malformed: a conversion efficiency or power coefficient outside [0, 1]",
     unresolved_when: "only summary figures or prose are recorded",
     unknown_when: "no performance record exists for this composition (the honest state of an undemonstrated route)",
-    reads: ["pathway.performance.measurements", "pathway.performance.efficiency_record / power_density"],
+    reads: ["pathway.performance.measurements", "pathway.performance.efficiency_record / theoretical_limitity"],
     core: false,
     implementation: "packages/physics/src/checks.ts#checkPracticalMagnitude",
   },

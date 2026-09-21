@@ -184,6 +184,8 @@ export const BOUND_METRICS = [
   "conversion-efficiency-at-maximum-power",
   "power-coefficient",
   "power-density",
+  /** An absolute power (W) — a measured output with no normalisation; never called a density (pass 37). */
+  "power",
   "current-density",
   "work-per-volume",
   "work",
@@ -605,7 +607,7 @@ const PathwayBase = z.object({
       // efficiency_typical was removed in loop-3 pass 35: a typical needs an explicit population rule over curated measurements, never a stored number.
       efficiency_record: z.number().min(0).max(1).optional(),
       theoretical_limit: z.string().optional(),
-      power_density: z.string().optional(),
+      // power_density was removed in loop-3 pass 37: a power density lives only as a structured measurement with its denominator and basis.
       notes: z.string().optional(),
       /** Auditable data: one record per number, with what was measured, under what regime, and where. */
       measurements: z.array(Measurement).default([]),

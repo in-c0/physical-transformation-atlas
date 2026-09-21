@@ -12,7 +12,7 @@
     # pass 35: efficiency_typical 0.05 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     # pass 35: efficiency_record 0.12 removed — exactly the structured Zhang 2017 datum below (the positive control); the display derives it
     theoretical_limit: "η = η_Carnot · (√(1+ZT) − 1)/(√(1+ZT) + T_c/T_h), the ideal-module relation for a constant-property leg pair, evaluated from a datum's own ZT and temperatures"
-    power_density: "≈ 1 W/cm² of module at ΔT = 200 K"
+    # pass 37: power_density "≈ 1 W/cm² of module at ΔT = 200 K" removed — a summary power density stays only as a structured measurement with its denominator and basis (the reviewer's ruling); the value stays in the audit record
     measurements:
       - quantity: module conversion efficiency
         value: "12.0%"
@@ -95,7 +95,7 @@
   performance:
     # pass 35: efficiency_typical 0.01 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     theoretical_limit: "Carnot for the temperature swing; Olsen cycles reach a few per cent of Carnot"
-    power_density: "µW–mW/cm² under thermal cycling at ~1 Hz"
+    # pass 37: power_density "µW–mW/cm² under thermal cycling at ~1 Hz" removed — a summary power density stays only as a structured measurement with its denominator and basis (the reviewer's ruling); the value stays in the audit record
   environment: [state-solid, transient-only]
   summary: A polar film cycled in temperature releases surface charge into a load.
 
@@ -109,7 +109,7 @@
   performance:
     # pass 35: efficiency_typical 0.005 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     theoretical_limit: "Carnot; relative efficiency (η/η_Carnot) of a few per cent reported"
-    power_density: "≈ 1–10 W/m² of electrode"
+    # pass 37: power_density "≈ 1–10 W/m² of electrode" removed — a summary power density stays only as a structured measurement with its denominator and basis (the reviewer's ruling); the value stays in the audit record
   environment: [env-aqueous, temp-gradient-required]
   summary: Two identical electrodes at different temperatures in one redox electrolyte.
 
@@ -184,8 +184,19 @@
   knowledge_level: K7
   performance:
     theoretical_limit: "Carnot between emitter and cell; > 50% projected with better photon recycling"
-    power_density: "≈ 2 W/cm² at a 2400 °C emitter"
     measurements:
+      # pass 37: the legacy power_density migrated to LaPotin et al. 2022's own figure (abstract read)
+      - quantity: electrical power density
+        value: "2.39 W/cm²"
+        value_numeric: 2.39
+        unit: W/cm²
+        metric: power-density
+        basis: "electrical output per unit cell area at the maximum-efficiency operating point"
+        parameters: { T_emitter_K: 2673.15 }
+        scope: device
+        conditions: "the 1.4/1.2 eV two-junction III–V cell at (41.1 ± 1) % efficiency with a 2400 °C emitter"
+        sources: [source:lapotin-2022]
+        year: 2022
       # pass 35: the legacy record 0.40 migrated to LaPotin et al. 2022's own figures (abstract read)
       - quantity: thermophotovoltaic cell efficiency
         value: "41.1 ± 1 %"
@@ -355,7 +366,7 @@
   status: demonstrated
   knowledge_level: K4
   performance:
-    power_density: "25 mW/m² measured; ≈ 0.5 W/m² projected"
+    # pass 37: power_density "25 mW/m² measured; ≈ 0.5 W/m² projected" removed — a summary power density stays only as a structured measurement with its denominator and basis (the reviewer's ruling); the value stays in the audit record
     theoretical_limit: "Carnot across a few kelvin; radiative cooling power ≲ 100 W/m²"
   environment: [temp-gradient-required]
   summary: A sky-facing emitter cools the cold side of a thermoelectric module below ambient at night.
@@ -370,7 +381,7 @@
   performance:
     # pass 35: efficiency_typical 0.1 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     theoretical_limit: "k² of the stored strain energy per cycle (k² ≈ 0.1–0.5 for PZT)"
-    power_density: "10–100 µW/cm³ at ambient vibration levels"
+    # pass 37: power_density "10–100 µW/cm³ at ambient vibration levels" removed — a summary power density stays only as a structured measurement with its denominator and basis (the reviewer's ruling); the value stays in the audit record
   environment: [state-solid]
   summary: A tuned cantilever bends a piezoelectric layer; charge flows each half cycle.
 
@@ -382,7 +393,7 @@
   status: demonstrated
   knowledge_level: K6
   performance:
-    power_density: "up to ≈ 500 W/m² instantaneous in contact–separation mode; average far lower"
+    # pass 37: power_density "up to ≈ 500 W/m² instantaneous in contact–separation mode; average far lower" removed — a summary power density stays only as a structured measurement with its denominator and basis (the reviewer's ruling); the value stays in the audit record
     theoretical_limit: "set by surface charge density and dielectric breakdown"
   environment: [state-solid, medium-dielectric]
   summary: Two polymer films contact and separate; induced charge cycles through the load.
@@ -394,8 +405,8 @@
   evidence: [source:roundy-2003]
   status: demonstrated
   knowledge_level: K6
-  performance:
-    power_density: "≈ 10–100 µW/cm³"
+  # pass 37: performance emptied — its last summary field was removed; the values stay in the audit records
+    # pass 37: power_density "≈ 10–100 µW/cm³" removed — a summary power density stays only as a structured measurement with its denominator and basis (the reviewer's ruling); the value stays in the audit record
   environment: [state-solid, field-electric-required]
   summary: A MEMS variable capacitor with an electret bias.
 
@@ -407,7 +418,19 @@
   status: commercial
   knowledge_level: K8
   performance:
-    power_density: "≈ 50–500 µW/cm³ at 50–100 Hz"
+    measurements:
+      # pass 37: the generic range replaced by the cited device (Beeby et al. 2007, abstract read on OpenAlex)
+      - quantity: electrical power into a resistive load
+        value: "46 µW"
+        value_numeric: 0.000046
+        unit: W
+        metric: power
+        basis: "power delivered into a 4 kΩ resistive load at the generator's resonance"
+        scope: device
+        conditions: "four magnets on an etched cantilever with a 2300-turn wound coil, component volume 0.1 cm³ and practical volume 0.15 cm³, driven at 0.59 m/s² acceleration at its 52 Hz resonance; 428 mV rms; 30 % of the power supplied from the environment delivered to the load"
+        sources: [source:beeby-2007]
+        year: 2007
+        note: "46 µW over the 0.15 cm³ practical volume is ≈ 307 µW/cm³ — a derivation from two abstract figures, not the paper's stated density"
   environment: [state-solid]
   summary: A sprung magnet moves through a coil.
 
@@ -418,8 +441,8 @@
   evidence: [source:wang-yuan-2008]
   status: demonstrated
   knowledge_level: K6
-  performance:
-    power_density: "≈ 0.2 mW/cm³ reported for Galfenol at 58 Hz"
+  # pass 37: performance emptied — its last summary field was removed; the values stay in the audit records
+    # pass 37: power_density "≈ 0.2 mW/cm³ reported for Galfenol at 58 Hz" removed — a summary power density stays only as a structured measurement with its denominator and basis (the reviewer's ruling); the value stays in the audit record
   environment: [state-solid, medium-ferromagnet]
   summary: Cyclic stress changes the magnetisation of a Galfenol rod inside a pickup coil.
 
@@ -430,8 +453,8 @@
   evidence: [source:nan-2008]
   status: demonstrated
   knowledge_level: K6
-  performance:
-    power_density: "mW-scale from 50/60 Hz stray fields of a few oersted"
+  # pass 37: performance emptied — its last summary field was removed; the values stay in the audit records
+    # pass 37: power_density "mW-scale from 50/60 Hz stray fields of a few oersted" removed — a summary power density stays only as a structured measurement with its denominator and basis (the reviewer's ruling); the value stays in the audit record
   environment: [state-solid]
   summary: An AC field strains the magnetostrictive layer, which stresses the bonded piezoelectric layer.
 
@@ -473,7 +496,7 @@
   performance:
     # pass 35: efficiency_typical 0.3 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     theoretical_limit: "free energy of mixing, ≈ 0.8 kWh per m³ of river water"
-    power_density: "≈ 1–2 W/m² of membrane"
+    # pass 37: power_density "≈ 1–2 W/m² of membrane" removed — a summary power density stays only as a structured measurement with its denominator and basis (the reviewer's ruling); the value stays in the audit record
   environment: [env-aqueous, medium-membrane]
   summary: Ion-selective membranes turn the mixing of river and sea water into a stack voltage.
 
@@ -485,7 +508,7 @@
   status: prototype
   knowledge_level: K7
   performance:
-    power_density: "≈ 1–5 W/m² of membrane; 5 W/m² is the usual economic threshold"
+    # pass 37: power_density "≈ 1–5 W/m² of membrane; 5 W/m² is the usual economic threshold" removed — a summary power density stays only as a structured measurement with its denominator and basis (the reviewer's ruling); the value stays in the audit record
     theoretical_limit: "free energy of mixing, ≈ 0.8 kWh per m³ of river water"
   environment: [env-aqueous, medium-membrane]
   summary: Fresh water permeates into pressurised seawater; the extra volume drives a turbine.
@@ -501,7 +524,7 @@
   performance:
     # pass 35: efficiency_typical 0.22 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     theoretical_limit: "Shockley–Queisser 33.7% for one junction; Landsberg 93.3% overall"
-    power_density: "≈ 200 W/m² at 1000 W/m² irradiance"
+    # pass 37: power_density "≈ 200 W/m² at 1000 W/m² irradiance" removed — a summary power density stays only as a structured measurement with its denominator and basis (the reviewer's ruling); the value stays in the audit record
     measurements:
       # pass 35: the legacy record 0.27 was the single-junction silicon cell record rounded up (26.8 ± 0.4 %, LONGi HJT, Table 1 of Version 63); a module pathway records the module table
       - quantity: confirmed module efficiency (crystalline silicon)
@@ -564,7 +587,7 @@
   performance:
     # pass 35: efficiency_typical 0.02 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
     efficiency_record: 0.06
-    power_density: "µW/cm² for tritium and Ni-63 sources; decades of life"
+    # pass 37: power_density "µW/cm² for tritium and Ni-63 sources; decades of life" removed — a summary power density stays only as a structured measurement with its denominator and basis (the reviewer's ruling); the value stays in the audit record
   environment: [state-solid, radioisotope-required]
   summary: Beta particles make carrier pairs in a junction for as long as the isotope lasts.
 
@@ -575,9 +598,9 @@
   evidence: [source:prelas-2014, source:rowe-2006]
   status: commercial
   knowledge_level: K8
-  performance:
+  # pass 37: performance emptied — its last summary field was removed; the values stay in the audit records
     # pass 35: efficiency_typical 0.06 removed — a typical needs a population source whose page has been read (the reviewer's ruling); the value stays in the audit record
-    power_density: "≈ 5 W(e) per kg for Pu-238 units"
+    # pass 37: power_density "≈ 5 W(e) per kg for Pu-238 units" removed — a summary power density stays only as a structured measurement with its denominator and basis (the reviewer's ruling); the value stays in the audit record
   environment: [state-solid, radioisotope-required]
   summary: Decay heat across thermoelectric couples; powers deep-space probes.
 
@@ -589,7 +612,7 @@
   status: demonstrated
   knowledge_level: K4
   performance:
-    power_density: "nW–µW/cm² in laboratory films; far below thermoelectrics"
+    # pass 37: power_density "nW–µW/cm² in laboratory films; far below thermoelectrics" removed — a summary power density stays only as a structured measurement with its denominator and basis (the reviewer's ruling); the value stays in the audit record
     theoretical_limit: "Carnot; practical limit set by spin-mixing conductance and spin Hall angle"
   environment: [state-solid, temp-gradient-required]
   summary: Heat drives magnons in YIG; the Pt strip converts the pumped spin current to a voltage.
@@ -615,8 +638,8 @@
   evidence: [source:xue-2017-hydrovoltaic]
   status: demonstrated
   knowledge_level: K4
-  performance:
-    power_density: "≈ 10–100 µW/cm² sustained by evaporation"
+  # pass 37: performance emptied — its last summary field was removed; the values stay in the audit records
+    # pass 37: power_density "≈ 10–100 µW/cm² sustained by evaporation" removed — a summary power density stays only as a structured measurement with its denominator and basis (the reviewer's ruling); the value stays in the audit record
   environment: [env-aqueous, humidity-required]
   summary: Evaporation pulls water through a carbon film and streams ions with it.
 
@@ -628,7 +651,18 @@
   status: demonstrated
   knowledge_level: K4
   performance:
-    power_density: "50.1 W/m² instantaneous peak at a 332 kΩ load in the reported droplet-impact experiment"
+    measurements:
+      # pass 37: the legacy field migrated — Xu et al. 2020 read on its Nature page (Extended Data Fig. 2c)
+      - quantity: peak output power density (instantaneous)
+        value: "50.1 W/m²"
+        value_numeric: 50.1
+        unit: W/m²
+        metric: power-density
+        basis: "instantaneous peak output power per unit device area at the optimal load; a per-impact peak, not a time-averaged density"
+        scope: device
+        conditions: "PTFE film on an ITO substrate with an aluminium electrode; impinging water droplets bridge the components into a closed loop; load resistance 332.0 kΩ (in a sweep from 1 kΩ to 100 MΩ the output current fell from 250.0 µA to 2.0 µA)"
+        sources: [source:xu-2020-droplet]
+        year: 2020
   environment: [state-liquid]
   summary: A falling droplet bridges a charged PTFE surface to an electrode and discharges it through the load.
 

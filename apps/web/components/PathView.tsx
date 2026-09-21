@@ -38,6 +38,13 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
   // so a pathway needs no legacy efficiency_record for the page to say what has been measured.
   const PHYSICAL = new Set(["laboratory", "device", "module", "system", "plant", "field"]);
   const best = measurements.filter((m) => m.metric === "conversion-efficiency" && m.value_numeric !== undefined && PHYSICAL.has(m.scope)).sort((a, b) => b.value_numeric! - a.value_numeric!)[0];
+  // Pass 37: the best recorded power density, per unit (densities in different units are not comparable), physical scopes only.
+  const bestDensity = [
+    ...measurements
+      .filter((m) => m.metric === "power-density" && m.value_numeric !== undefined && m.unit && PHYSICAL.has(m.scope))
+      .reduce((acc, m) => (acc.has(m.unit!) && acc.get(m.unit!)!.value_numeric! >= m.value_numeric! ? acc : acc.set(m.unit!, m)), new Map<string, (typeof measurements)[number]>())
+      .values(),
+  ];
 
   return (
     <article className={styles.article}>
@@ -282,6 +289,15 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
                 <dd>{(named.performance.efficiency_record * 100).toFixed(1)}%</dd>
               </>
             )}
+            {bestDensity.map((m) => (
+              <div key={m.unit} style={{ display: "contents" }}>
+                <dt>best recorded power density (derived)</dt>
+                <dd>
+                  {m.value} — {m.quantity}, {m.scope}
+                  {m.year ? `, ${m.year}` : ""}; {m.basis}
+                </dd>
+              </div>
+            ))}
             {best && (
               <>
                 <dt>best recorded efficiency (derived)</dt>
@@ -289,12 +305,6 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
                   {(best.value_numeric! * 100).toFixed(1)}% — {best.quantity}, {best.scope}
                   {best.year ? `, ${best.year}` : ""}; derived from the structured data above, not a stored number
                 </dd>
-              </>
-            )}
-            {named.performance.power_density && (
-              <>
-                <dt>power density (summary)</dt>
-                <dd>{named.performance.power_density}</dd>
               </>
             )}
             {named.performance.notes && (

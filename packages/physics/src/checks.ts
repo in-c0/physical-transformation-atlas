@@ -534,7 +534,6 @@ export function checkPracticalMagnitude(pathway?: Pathway): CheckResult {
   }
   const parts: string[] = [];
   if (p.efficiency_record !== undefined) parts.push(`record ${(p.efficiency_record * 100).toFixed(1)}%`);
-  if (p.power_density) parts.push(`power density ${p.power_density}`);
   if (structured.length)
     return {
       id: "practical-magnitude",

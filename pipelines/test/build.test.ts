@@ -244,6 +244,34 @@ test("the legacy performance audit's regression controls (loop-3 pass 35)", () =
   assert.ok(graph.systems.some((s) => (s.performance?.measurements ?? []).some((m) => m.value_numeric === 0.4693)));
 });
 
+test("the power_density sweep (loop-3 pass 37): no mixed or naked summary survives, a power is never a density, the key is gone", () => {
+  assert.equal(graph.pathways.filter((p) => "power_density" in (p.performance ?? {})).length, 0, "power_density is gone from every pathway");
+  const all = graph.pathways.flatMap((p) => (p.performance?.measurements ?? []).map((m) => ({ p: p.id, ...m })));
+  for (const m of all.filter((m) => m.metric === "power-density")) {
+    assert.match(m.unit ?? "", /\/|⁻/, `${m.p}: a power-density unit states its normalisation`);
+    assert.ok(m.basis, `${m.p}: a power-density datum states its basis`);
+  }
+  for (const m of all.filter((m) => m.metric === "power")) assert.doesNotMatch(m.unit ?? "", /\//, `${m.p}: a power is not a density`);
+  // no model-scope projection can be the derived "best recorded" — the only power-density data are physical
+  assert.equal(all.filter((m) => m.metric === "power-density" && m.scope === "model").length, 0);
+  // the migrated data are there with their bases
+  const rc = graph.pathways.find((p) => p.id === "pathway:passive-radiative-cooler")!.performance!.measurements.find((m) => m.value_numeric === 40.1);
+  assert.ok(rc && rc.unit === "W/m²" && /ambient air temperature/.test(rc.basis ?? ""));
+  const evap = graph.pathways.find((p) => p.id === "pathway:evaporation-driven-engine")!.performance!.measurements;
+  assert.ok(
+    evap.some((m) => m.metric === "power" && m.value_numeric === 0.06) && evap.every((m) => m.metric !== "power-density"),
+    "the evaporation engine's 60 mW is a power, not a density per kilogram",
+  );
+  // the loader refuses a bare power under the power-density metric
+  assert.throws(() => Measurement.parse({ quantity: "x", value: "1 mW", value_numeric: 0.001, unit: "W", metric: "power-densityy", scope: "device", conditions: "", sources: ["source:s"] }), /metric/);
+  const gate = spawnSync(process.execPath, [join(root, "tools", "audit-performance.mjs"), "--pass", "37", "--check"], { encoding: "utf8" });
+  assert.equal(gate.status, 0, gate.stderr || gate.stdout);
+  assert.equal(
+    graph.systems.every((s) => !("efficiency_record" in (s.performance ?? {}))),
+    true,
+  );
+});
+
 test("the gas-turbine / expansion-carrier closure (loop-3 pass 36): the pressure regime is required by the expansion step, supplied only through an explained auxiliary, and never by the carrier or by combustion", () => {
   const route = (id: string) => graph.paths.find((p) => p.pathway === id)!;
   const regime = (p: (typeof graph.paths)[number]) => p.checks.find((k) => k.id === "driver-regime-sufficiency")!;

@@ -123,16 +123,24 @@
   status: prototype
   knowledge_level: K5
   performance:
-    power_density: "1.43 mW cm⁻³ at the maximum peak power"
+    # pass 37: power_density "1.43 mW cm⁻³ at the maximum peak power" removed — a summary power density stays only as a structured measurement with its denominator and basis (the reviewer's ruling); the value stays in the audit record
     measurements:
       - quantity: peak power
         value: "140 μW at 1500 kΩ"
+        value_numeric: 0.00014
+        unit: W
+        metric: power
+        basis: "peak electrical power into the optimal 1500 kΩ load during a pressure excursion"
         scope: device
         conditions: "air pressure varying from 0 to 0.5 MPa on a sealed piezoelectric harvester connected to a pneumatic branch pipe; transient, alternating output"
         sources: [source:yang-2022-pneumatic-piezo-harvester]
         year: 2022
       - quantity: power density
         value: "1.43 mW cm⁻³"
+        value_numeric: 1.43
+        unit: mW/cm³
+        metric: power-density
+        basis: "peak power per unit volume of the harvester (the authors' volumetric normalisation), at the maximum peak power"
         scope: device
         conditions: "same excursion and load"
         sources: [source:yang-2022-pneumatic-piezo-harvester]

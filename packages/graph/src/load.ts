@@ -308,6 +308,22 @@ export function loadCanon(root: string): Canon {
         );
       if (!c.regime_requires.includes(t)) problems.push(`${c.id}: regime_external ${t} is not among its regime_requires`);
     }
+  // Pass 37: a density metric needs a per-unit — a bare power (W, mW, µW) can never satisfy power-density; it is the
+  // `power` metric. Every measurement with a density metric must state its normalisation in the unit and its basis.
+  const DENSITY_METRICS = new Set(["power-density", "mechanical-power-density", "current-density", "work-per-volume"]);
+  const perUnit = (u: string | undefined) => !!u && (/\//.test(u) || /⁻|\^-|per /.test(u));
+  const checkDensity = (owner: string, ms: { metric?: string; unit?: string; basis?: string; quantity: string }[]) => {
+    for (const m of ms) {
+      if (!m.metric || !DENSITY_METRICS.has(m.metric)) continue;
+      if (!perUnit(m.unit))
+        problems.push(
+          `${owner}: "${m.quantity}" carries the ${m.metric} metric but its unit "${m.unit ?? ""}" states no normalisation (per area, volume, mass …) — a bare power is the power metric, not a density`,
+        );
+      if (!m.basis) problems.push(`${owner}: "${m.quantity}" carries the ${m.metric} metric without a basis stating what the number is normalised to`);
+    }
+  };
+  for (const p of pathways) checkDensity(p.id, p.performance?.measurements ?? []);
+  for (const s of systems) checkDensity(s.id, s.performance?.measurements ?? []);
   // Pass 36: a pathway may supply a token whose registry entry says a provider needs explaining only when a
   // preceding step of its route supplies that token or an auxiliary requirement establishes it — otherwise a
   // pathway-level provider is unexplained self-certification (the gas turbine's pressure ratio comes from a
