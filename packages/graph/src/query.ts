@@ -2,7 +2,7 @@
  * Browser-safe queries over a compiled Graph. No node imports here: the web app
  * loads graph.json once and builds this index on the client.
  */
-import type { Claim, CompiledPath, Entity, Graph, MatrixCell, Pathway, Source } from "@pta/schema";
+import type { Claim, CompiledPath, CompiledSystemPathway, Entity, Graph, MatrixCell, Pathway, Source } from "@pta/schema";
 
 const STOP = new Set([
   "the",
@@ -57,6 +57,8 @@ export class AtlasIndex {
   readonly source: Map<string, Source>;
   readonly path: Map<string, CompiledPath>;
   readonly pathway: Map<string, Pathway>;
+  /** The system layer (pass 34). */
+  readonly system: Map<string, CompiledSystemPathway>;
   readonly cell: Map<string, MatrixCell>;
   readonly cellByAddress: Map<string, MatrixCell>;
   private bySubject = new Map<string, Claim[]>();
@@ -78,12 +80,18 @@ export class AtlasIndex {
     routeId?: string;
   }[];
 
+  /** The systems a named pathway is a member of (pass 34). */
+  systemsOfPathway(pathwayId: string): CompiledSystemPathway[] {
+    return [...this.system.values()].filter((s) => s.members.some((m) => m.pathway === pathwayId));
+  }
+
   constructor(public readonly graph: Graph) {
     this.entity = new Map(graph.entities.map((e) => [e.id, e]));
     this.claim = new Map(graph.claims.map((c) => [c.id, c]));
     this.source = new Map(graph.sources.map((s) => [s.id, s]));
     this.path = new Map(graph.paths.map((p) => [p.id, p]));
     this.pathway = new Map(graph.pathways.map((p) => [p.id, p]));
+    this.system = new Map((graph.systems ?? []).map((s) => [s.id, s]));
     this.cell = new Map(graph.matrix.cells.map((c) => [`${c.row}|${c.col}`, c]));
     this.cellByAddress = new Map(graph.matrix.cells.map((c) => [c.address, c]));
     for (const c of graph.claims) {

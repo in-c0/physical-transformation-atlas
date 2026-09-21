@@ -177,6 +177,10 @@ export default function CoveragePage() {
           </dd>
           <dt>named pathways</dt>
           <dd>{c.pathways_named} recorded named pathways</dd>
+          <dt>systems</dt>
+          <dd>
+            {c.systems_named ?? 0} recorded <Link href="/system">multi-route systems</Link> (pass 34: linear pathways joined by documented handoffs)
+          </dd>
           <dt>routes</dt>
           <dd>
             {c.routes_enumerated} routes enumerated from the current claim graph · {c.routes_with_recorded_composition_demonstration} with a recorded complete-composition demonstration ·{" "}

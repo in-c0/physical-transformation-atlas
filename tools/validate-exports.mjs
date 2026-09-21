@@ -16,7 +16,7 @@ const ajv = new Ajv2020({ strict: false, allErrors: true });
 addFormats(ajv);
 ajv.addSchema(schema, schema.$id);
 
-const files = ["stats.json", "graph.json", "entities.json", "claims.json", "sources.json", "pathways.json", "paths.json", "matrix.json", "coverage.json", "checks.json", "vocabulary.json"];
+const files = ["stats.json", "graph.json", "entities.json", "claims.json", "sources.json", "pathways.json", "systems.json", "paths.json", "matrix.json", "coverage.json", "checks.json", "vocabulary.json"];
 let bad = 0;
 for (const f of files) {
   const doc = JSON.parse(await read(f));

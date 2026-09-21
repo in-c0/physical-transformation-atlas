@@ -465,7 +465,9 @@ export const MEASUREMENT_PARAMETERS = {
 } as const;
 export type MeasurementParameter = keyof typeof MEASUREMENT_PARAMETERS;
 const MeasurementParameters = z.record(z.string(), z.number()).superRefine((p, ctx) => {
-  for (const k of Object.keys(p)) if (!(k in MEASUREMENT_PARAMETERS)) ctx.addIssue({ code: z.ZodIssueCode.custom, path: [k], message: `unknown measurement parameter "${k}"; the registry (MEASUREMENT_PARAMETERS) lists the allowed names, units in the name` });
+  for (const k of Object.keys(p))
+    if (!(k in MEASUREMENT_PARAMETERS))
+      ctx.addIssue({ code: z.ZodIssueCode.custom, path: [k], message: `unknown measurement parameter "${k}"; the registry (MEASUREMENT_PARAMETERS) lists the allowed names, units in the name` });
 });
 
 export const Measurement = z.object({
@@ -559,10 +561,7 @@ export type InterfaceKind = (typeof INTERFACE_KINDS)[number];
 export const INTERFACE_STATUSES = ["demonstrated", "theoretical", "proposed"] as const;
 export type InterfaceStatus = (typeof INTERFACE_STATUSES)[number];
 export const InterfaceId = z.string().regex(/^interface:[a-z0-9]+(?:-[a-z0-9]+)*$/);
-export const InterfaceLocation = z.union([
-  z.object({ between_claims: z.object({ from_claim: ClaimId, to_claim: ClaimId }) }).strict(),
-  z.object({ within_claim: ClaimId }).strict(),
-]);
+export const InterfaceLocation = z.union([z.object({ between_claims: z.object({ from_claim: ClaimId, to_claim: ClaimId }) }).strict(), z.object({ within_claim: ClaimId }).strict()]);
 export type InterfaceLocation = z.infer<typeof InterfaceLocation>;
 export const Interface = z.object({
   id: InterfaceId,
@@ -590,14 +589,121 @@ export type InterfaceRef = z.infer<typeof InterfaceRef>;
 
 export const Pathway = PathwayBase.superRefine((p, ctx) => {
   if (p.status === "observed") {
-    if (!p.observed_through) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["observed_through"], message: "an observed pathway must name observed_through, the last step its evidence physically established" });
+    if (!p.observed_through)
+      ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["observed_through"], message: "an observed pathway must name observed_through, the last step its evidence physically established" });
     else if (!p.steps.includes(p.observed_through)) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["observed_through"], message: "observed_through must be one of the pathway's steps" });
-    else if (p.observed_through === p.steps[p.steps.length - 1]) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["observed_through"], message: "observed_through cannot be the final step: a final step established is a demonstration, not an observation" });
+    else if (p.observed_through === p.steps[p.steps.length - 1])
+      ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["observed_through"], message: "observed_through cannot be the final step: a final step established is a demonstration, not an observation" });
   } else if (p.observed_through) {
     ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["observed_through"], message: "observed_through is only recorded on a pathway with status observed" });
   }
 });
 export type Pathway = z.infer<typeof Pathway>;
+
+/**
+ * The system layer (loop-3 pass 34). A Route and a Pathway are one linear causal chain from one source
+ * to one terminal output, and stay so. A SystemPathway joins two or more independently valid pathways
+ * through documented residual streams — a topping gas turbine delivers electrical work AND hands its
+ * exhaust enthalpy to a bottoming steam cycle, which a linear route cannot express. Members reference
+ * whole pathways by role (descriptive, not a closed list: topping-cycle, bottoming-cycle first); a
+ * SystemHandoff records the stream from one member to the disequilibrium that sources the next; outputs
+ * say which members deliver the system's outputs and whether they add. A handoff is never a route claim,
+ * so system topology never contaminates linear enumeration. The eight route checks are not run over a
+ * system: it exposes its members' route check results, its handoffs' status and its own performance,
+ * and it is not core-pass merely because both members pass — the handoff must also be demonstrated.
+ */
+export const SYSTEM_PATHWAY_STATUSES = ["demonstrated", "prototype", "commercial", "proposed"] as const;
+export type SystemPathwayStatus = (typeof SYSTEM_PATHWAY_STATUSES)[number];
+export const SYSTEM_HANDOFF_KINDS = ["residual-energy", "recovered-heat", "mechanical-coupling", "electrical-coupling", "material-flow"] as const;
+export type SystemHandoffKind = (typeof SYSTEM_HANDOFF_KINDS)[number];
+export const SYSTEM_HANDOFF_STATUSES = ["demonstrated", "theoretical", "proposed"] as const;
+export type SystemHandoffStatus = (typeof SYSTEM_HANDOFF_STATUSES)[number];
+export const SYSTEM_OUTPUT_AGGREGATIONS = ["sum", "separate"] as const;
+export type SystemOutputAggregation = (typeof SYSTEM_OUTPUT_AGGREGATIONS)[number];
+export const SystemPathwayId = z.string().regex(/^system-pathway:[a-z0-9]+(?:-[a-z0-9]+)*$/);
+export const SystemMember = z.object({
+  /** A short slug local to the system (topping, bottoming …), the name handoffs and outputs use. */
+  id: Slug,
+  pathway: PathwayId,
+  /** Descriptive role, not yet a closed vocabulary: topping-cycle, bottoming-cycle, … */
+  role: z.string().min(1),
+});
+export type SystemMember = z.infer<typeof SystemMember>;
+export const SystemHandoff = z.object({
+  from_member: Slug,
+  to_member: Slug,
+  from_energy_form: z.enum(ENERGY_FORMS),
+  /** The disequilibrium the receiving member's route starts from, which this stream establishes. */
+  to_source: EntityId,
+  /** The carrier that physically crosses, if one does. */
+  carrier: EntityId.nullable().default(null),
+  kind: z.enum(SYSTEM_HANDOFF_KINDS),
+  conditions: z.array(z.string()).default([]),
+  evidence: z.array(SourceId).default([]),
+  status: z.enum(SYSTEM_HANDOFF_STATUSES),
+  note: z.string().nullable().default(null),
+});
+export type SystemHandoff = z.infer<typeof SystemHandoff>;
+export const SystemOutput = z.object({ member: Slug, output: EntityId, aggregation: z.enum(SYSTEM_OUTPUT_AGGREGATIONS) });
+export type SystemOutput = z.infer<typeof SystemOutput>;
+const SystemPathwayBase = z.object({
+  id: SystemPathwayId,
+  name: z.string(),
+  members: z.array(SystemMember).min(2),
+  handoffs: z.array(SystemHandoff).min(1),
+  outputs: z.array(SystemOutput).min(1),
+  evidence: z.array(SourceId).default([]),
+  status: z.enum(SYSTEM_PATHWAY_STATUSES),
+  knowledge_level: z.enum(KNOWLEDGE_LEVELS),
+  performance: z
+    .object({
+      efficiency_typical: z.number().min(0).max(1).optional(),
+      efficiency_record: z.number().min(0).max(1).optional(),
+      theoretical_limit: z.string().optional(),
+      notes: z.string().optional(),
+      measurements: z.array(Measurement).default([]),
+    })
+    .optional(),
+  summary: z.string(),
+  review: ReviewMeta.default({ canonical: true, last_reviewed: null }),
+});
+export const SystemPathway = SystemPathwayBase.superRefine((s, ctx) => {
+  const ids = new Set<string>();
+  s.members.forEach((m, i) => {
+    if (ids.has(m.id)) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["members", i, "id"], message: `duplicate member id ${m.id}` });
+    ids.add(m.id);
+  });
+  s.handoffs.forEach((h, i) => {
+    if (!ids.has(h.from_member)) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["handoffs", i, "from_member"], message: `unknown member ${h.from_member}` });
+    if (!ids.has(h.to_member)) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["handoffs", i, "to_member"], message: `unknown member ${h.to_member}` });
+    if (h.from_member === h.to_member) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["handoffs", i], message: "a handoff joins two different members" });
+    if (h.status === "demonstrated" && h.evidence.length === 0) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["handoffs", i, "evidence"], message: "a demonstrated handoff must cite evidence" });
+  });
+  s.outputs.forEach((o, i) => {
+    if (!ids.has(o.member)) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["outputs", i, "member"], message: `unknown member ${o.member}` });
+  });
+  if (s.status !== "proposed" && s.evidence.length === 0)
+    ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["evidence"], message: "a demonstrated, prototype or commercial system must cite evidence" });
+});
+export type SystemPathway = z.infer<typeof SystemPathway>;
+/** A compiled member: the member as recorded plus its pathway's exact route and that route's check results. */
+export const CompiledSystemMember = SystemMember.extend({
+  pathway_name: z.string(),
+  pathway_status: z.enum(PATHWAY_STATUSES),
+  route_id: z.string().nullable(),
+  /** The eight route checks of the member's exact route, id → result. */
+  route_checks: z.record(z.string(), z.enum(["pass", "fail", "unresolved", "unknown"])),
+  core_unresolved_count: z.number().int().nullable(),
+});
+export type CompiledSystemMember = z.infer<typeof CompiledSystemMember>;
+export const CompiledSystemPathway = SystemPathwayBase.omit({ members: true }).extend({
+  members: z.array(CompiledSystemMember),
+  /** demonstrated when every handoff is demonstrated; else the weakest handoff status. */
+  handoff_status: z.enum(SYSTEM_HANDOFF_STATUSES),
+  /** True only when every member route has no unresolved core check AND every handoff is demonstrated. */
+  members_core_clear: z.boolean(),
+});
+export type CompiledSystemPathway = z.infer<typeof CompiledSystemPathway>;
 
 // ---------------------------------------------------------------------------
 // Search records — the only thing allowed to say "no demonstration found"
@@ -988,6 +1094,8 @@ export type Graph = {
       claims: number;
       sources: number;
       pathways_named: number;
+      /** Recorded system pathways (pass 34). */
+      systems_named: number;
       paths_examined: number;
       paths_demonstrated: number;
       paths_no_demonstration_found: number;
@@ -1031,6 +1139,8 @@ export type Graph = {
   search_runs: AutomatedSearchRun[];
   /** Interface records (pass 26). */
   interfaces: Interface[];
+  /** The system layer (pass 34): multi-route systems joined by documented handoffs, with their members' route check results. */
+  systems: CompiledSystemPathway[];
   paths: CompiledPath[];
   matrix: { rows: MatrixAxis[]; cols: MatrixAxis[]; cells: MatrixCell[] };
   coverage: CoverageEntry[];

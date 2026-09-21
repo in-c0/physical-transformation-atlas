@@ -683,3 +683,11 @@
   knowledge_level: K7
   summary: "Superelastic NiTi plates cycled through their transformation in an active regenerator pump heat up a water-side temperature span of 15.3 K with specific heating power up to 800 W kg⁻¹ and COP up to 7 (Tušek et al. 2016)."
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 31 (abstract read on the publisher's page)" }
+# Loop-3 pass 34: the gas-turbine plant as its own transducer — the pathway had pointed at the Rankine plant.
+- id: transducer:gas-turbine-generator
+  type: transducer
+  name: Gas-turbine generator
+  aliases: [gas turbine plant, open-cycle gas turbine, simple-cycle gas turbine, combustion turbine]
+  knowledge_level: K8
+  summary: "Compressor, combustor and turbine on one shaft driving an alternator; the hot combustion gas expands through the turbine (Brayton cycle). Open cycle on its own; the topping member of a combined cycle when its exhaust raises steam."
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 34 (the second reader's finding 22; Dixon & Hall 2014, Al Mhanna 2024)" }

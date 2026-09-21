@@ -71,6 +71,40 @@ Used in: `paths[].search_status`, `searches[].status`
 - `experiment-tested` — reserved; not produced by the current compiler (no review queue exists in this release)
 - `demonstrated` — a recorded pathway with a demonstrated status (demonstrated, prototype or commercial) has exactly this claim sequence, or a reviewed search of the whole composition found a demonstration
 
+## `system-pathway.status`
+
+Used in: `systems[].status`
+
+- `demonstrated` — the multi-route system has run as one physical plant or device with every member pathway and every handoff in place
+- `prototype` — demonstrated and built as an engineering prototype
+- `commercial` — demonstrated and sold or operated as a product or plant
+- `proposed` — a design, calculation or simulation of the system in the literature
+
+## `system-handoff.kind`
+
+Used in: `systems[].handoffs[].kind`
+
+- `residual-energy` — a member's residual energy stream (exhaust, waste heat, spent flow) sources the next member
+- `recovered-heat` — heat recovered from one member establishes the temperature difference the next member's route starts from
+- `mechanical-coupling` — shaft or linkage work of one member drives the next
+- `electrical-coupling` — electrical output of one member powers or biases the next
+- `material-flow` — a material stream (fuel, working fluid, product) of one member feeds the next
+
+## `system-handoff.status`
+
+Used in: `systems[].handoffs[].status`
+
+- `demonstrated` — the stream has physically joined the two members in a running system, with evidence
+- `theoretical` — the stream's transfer is calculated or modelled but not shown in a running system
+- `proposed` — the stream is proposed without a calculation or a demonstration
+
+## `system-output.aggregation`
+
+Used in: `systems[].outputs[].aggregation`
+
+- `sum` — the member outputs add into one system output (two generators on one grid)
+- `separate` — the member outputs are delivered separately (electricity and useful heat)
+
 ## `pathway.status`
 
 Used in: `pathways[].status`

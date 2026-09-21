@@ -207,14 +207,14 @@
 - id: pathway:combustion-gas-turbine
   name: Combustion gas-turbine plant
   steps: [claim:combustion-drives, claim:combustion-produces-hot-gas, claim:hot-gas-drives-expansion, claim:expansion-produces-motion, claim:motion-drives-generator, claim:generator-produces-carriers, claim:charge-carriers-convert-electricity]
-  demonstrated_with: [transducer:rankine-cycle-plant]
+  demonstrated_with: [transducer:gas-turbine-generator]  # pass 34: had pointed at the Rankine plant transducer
   evidence: [source:bejan-2016, source:dixon-hall-2014, source:al-mhanna-2024-isccs]
   status: commercial
   knowledge_level: K8
   performance:
     efficiency_typical: 0.40
-    efficiency_record: 0.64
-    theoretical_limit: "Carnot at the turbine inlet temperature (≈ 1900 K → 84%); combined cycles reach 64%"
+    # pass 34: efficiency_record 0.64 removed — it was the combined cycle's figure, which lives on system-pathway:natural-gas-combined-cycle
+    theoretical_limit: "Carnot between a hot and a cold reservoir a source defines — none recorded: the turbine inlet temperature is an operating state, not a reservoir (pass 31); the ideal Brayton cycle's own limit is 1 − r_p^((1−γ)/γ) at pressure ratio r_p"
     measurements:
       # Loop-3 pass 33: Al Mhanna, Al Hadidi & Al Maskari 2024 read in full — the plant's gas-turbine figures only (findings 18–20).
       - quantity: gas-turbine work output

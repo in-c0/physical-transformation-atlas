@@ -1,4 +1,16 @@
-import type { CheckResult, EvidenceStatus, FrontierClass, InterfaceKind, KnowledgeLevel, MatrixCellStatus, PathwayStatus, SearchStatus, StructuralKind } from "@pta/schema";
+import type {
+  CheckResult,
+  EvidenceStatus,
+  FrontierClass,
+  InterfaceKind,
+  KnowledgeLevel,
+  MatrixCellStatus,
+  PathwayStatus,
+  SearchStatus,
+  StructuralKind,
+  SystemHandoffKind,
+  SystemPathwayStatus,
+} from "@pta/schema";
 import { KNOWLEDGE_LEVEL_LABEL } from "@pta/schema";
 
 export const CELL_STATUS_LABEL: Record<MatrixCellStatus, string> = {
@@ -87,6 +99,21 @@ export const PATHWAY_STATUS_LABEL: Record<PathwayStatus, string> = {
   commercial: "commercial",
   proposed: "proposed in the literature, not demonstrated",
   observed: "observed · output not delivered",
+};
+
+/** Pass 34: the system layer's labels. */
+export const SYSTEM_STATUS_LABEL: Record<SystemPathwayStatus, string> = {
+  demonstrated: "demonstrated",
+  prototype: "prototype",
+  commercial: "commercial",
+  proposed: "proposed in the literature, not demonstrated",
+};
+export const SYSTEM_HANDOFF_KIND_LABEL: Record<SystemHandoffKind, string> = {
+  "residual-energy": "residual energy stream",
+  "recovered-heat": "recovered heat",
+  "mechanical-coupling": "mechanical coupling",
+  "electrical-coupling": "electrical coupling",
+  "material-flow": "material flow",
 };
 
 export const FRONTIER_LABEL: Record<FrontierClass, string> = {

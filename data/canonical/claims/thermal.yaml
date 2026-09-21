@@ -1118,3 +1118,11 @@
   evidence: [source:tusek-2016]
   status: demonstrated
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 31 (the regenerative heat pump's heating output; abstract read)" }
+# Loop-3 pass 34: the gas turbine implements working-fluid expansion in its own right.
+- id: claim:expansion-implemented-gas-turbine
+  subject: phenomenon:working-fluid-expansion
+  predicate: implemented_by
+  object: transducer:gas-turbine-generator
+  evidence: [source:dixon-hall-2014, source:al-mhanna-2024-isccs]
+  status: established
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 34 (the gas-turbine transducer the pathway now names)" }

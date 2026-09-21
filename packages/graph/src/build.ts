@@ -25,6 +25,7 @@ import {
   type AutomatedSearchRun,
   searchDate,
   type SearchStatus,
+  type CompiledSystemPathway,
 } from "@pta/schema";
 import { CORE_CHECK_IDS, UnitTable, boundaryReport, relationRequirement, runAllChecks, type PhysicsContext } from "@pta/physics";
 import type { Canon } from "./load.js";
@@ -92,8 +93,7 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
   // Pass 26: a step's scoped requirements are its own condition_requirements, or its flat tags expanded
   // with each tag's default scope on region "active". Entity tags are descriptive and never inherited.
   const scopeOf = new Map(canon.conditionTags.map((t) => [t.id, t.default_scope]));
-  const requirementsOf = (c: Claim) =>
-    c.condition_requirements.length ? c.condition_requirements : c.condition_tags.map((tag) => ({ tag, scope: scopeOf.get(tag) ?? "medium", region: "active" }));
+  const requirementsOf = (c: Claim) => (c.condition_requirements.length ? c.condition_requirements : c.condition_tags.map((tag) => ({ tag, scope: scopeOf.get(tag) ?? "medium", region: "active" })));
   const ctx: PhysicsContext = {
     entity: (id) => entity.get(id),
     units,
@@ -395,15 +395,19 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
       // A model can show an assumed operating point is self-consistent; it cannot make a physical route's core check pass.
       if (m.scope === "model") continue;
       const q = m.parameters ?? {};
-      const hot = q.T_h_K, cold = q.T_c_K;
+      const hot = q.T_h_K,
+        cold = q.T_c_K;
       // A material-scope datum may establish a material-local transition, never a whole device cycle.
       if (m.scope === "material") {
-        if (hot !== undefined && cold !== undefined && q.T_transition_K !== undefined && Math.min(hot, cold) < q.T_transition_K && q.T_transition_K < Math.max(hot, cold)) out.add("thermal:transition-temperature-straddled");
+        if (hot !== undefined && cold !== undefined && q.T_transition_K !== undefined && Math.min(hot, cold) < q.T_transition_K && q.T_transition_K < Math.max(hot, cold))
+          out.add("thermal:transition-temperature-straddled");
         continue;
       }
       if (hot !== undefined && cold !== undefined && hot !== cold) out.add("thermal:spatial-temperature-gradient");
-      if ((q.dT_dt_K_s !== undefined && q.dT_dt_K_s !== 0) || (q.T_initial_K !== undefined && q.T_final_K !== undefined && q.T_initial_K !== q.T_final_K)) out.add("thermal:temporal-temperature-change");
-      if (hot !== undefined && cold !== undefined && q.T_transition_K !== undefined && Math.min(hot, cold) < q.T_transition_K && q.T_transition_K < Math.max(hot, cold)) out.add("thermal:transition-temperature-straddled");
+      if ((q.dT_dt_K_s !== undefined && q.dT_dt_K_s !== 0) || (q.T_initial_K !== undefined && q.T_final_K !== undefined && q.T_initial_K !== q.T_final_K))
+        out.add("thermal:temporal-temperature-change");
+      if (hot !== undefined && cold !== undefined && q.T_transition_K !== undefined && Math.min(hot, cold) < q.T_transition_K && q.T_transition_K < Math.max(hot, cold))
+        out.add("thermal:transition-temperature-straddled");
       if (q.cycle_frequency_Hz !== undefined && q.cycle_frequency_Hz > 0 && hot !== undefined && cold !== undefined) out.add("thermal:cyclic-hot-cold-exposure");
     }
     return [...out];
@@ -496,7 +500,11 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
     const conversion = claims.filter((c) => (PROCESS_PREDICATES as readonly string[]).includes(c.predicate) && entity.get(c.object)?.type !== "output" && relationRequirement(c) !== "not-applicable");
     const without = conversion.find((c) => !c.relation);
     if (!without && conversion.length)
-      return { status: "relation-complete", bottleneck_claim: null, detail: `${conversion.length}/${conversion.length} relation-required conversion steps carry constitutive relations; no numerical route magnitude has been evaluated` };
+      return {
+        status: "relation-complete",
+        bottleneck_claim: null,
+        detail: `${conversion.length}/${conversion.length} relation-required conversion steps carry constitutive relations; no numerical route magnitude has been evaluated`,
+      };
     return {
       status: "missing",
       bottleneck_claim: without?.id ?? null,
@@ -678,6 +686,33 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
     return Object.fromEntries(Object.entries(m).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])));
   };
   const searchDates = allSearches.map(dateOf).filter(Boolean).sort();
+  // Pass 34: the system layer. Each member is joined to its pathway's exact route and that route's check
+  // results; the system itself is never run through the eight checks. handoff_status is the weakest
+  // handoff's; members_core_clear is true only when every member route has no unresolved core check and
+  // every handoff is demonstrated — a system is not core-clear merely because its members are.
+  const routeOfPathway = new Map(paths.filter((p) => p.pathway).map((p) => [p.pathway!, p]));
+  const HANDOFF_RANK = { demonstrated: 0, theoretical: 1, proposed: 2 } as const;
+  const systems: CompiledSystemPathway[] = canon.systems.map((s) => {
+    const members = s.members.map((m) => {
+      const pw = pathwayById.get(m.pathway)!;
+      const route = routeOfPathway.get(m.pathway);
+      return {
+        ...m,
+        pathway_name: pw.name,
+        pathway_status: pw.status,
+        route_id: route?.id ?? null,
+        route_checks: Object.fromEntries((route?.checks ?? []).map((k) => [k.id, k.result])),
+        core_unresolved_count: route?.core_unresolved_count ?? null,
+      };
+    });
+    const weakest = [...s.handoffs].sort((a, b) => HANDOFF_RANK[b.status] - HANDOFF_RANK[a.status])[0];
+    return {
+      ...s,
+      members,
+      handoff_status: weakest?.status ?? "proposed",
+      members_core_clear: members.every((m) => m.core_unresolved_count === 0) && s.handoffs.every((h) => h.status === "demonstrated"),
+    };
+  });
   // Route ids are ten hex characters of a SHA-1 over the ordered claim ids; a collision between two
   // different claim sequences would silently merge two routes, so it is a build failure.
   const seenIds = new Map<string, string>();
@@ -705,6 +740,7 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
         claims: canon.claims.length,
         sources: canon.sources.length,
         pathways_named: canon.pathways.length,
+        systems_named: systems.length,
         paths_examined: paths.length,
         paths_demonstrated: paths.filter((p) => p.search_status === "demonstrated").length,
         paths_no_demonstration_found: paths.filter((p) => p.search_status === "searched-no-demonstration-found").length,
@@ -738,6 +774,7 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
     pathways: canon.pathways,
     searches: canon.searches.map((x) => ({ ...x, reviewed: true })),
     interfaces: canon.interfaces,
+    systems,
     search_runs: canon.searchRuns,
     paths,
     matrix: { rows, cols, cells },

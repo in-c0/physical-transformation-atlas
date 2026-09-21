@@ -14,6 +14,8 @@ data/canonical/      reviewed knowledge, YAML, the only thing that is edited by 
   claims/            subject —predicate→ object, conditions, energy ledger, relation, evidence, status
   sources/           references; DOIs are verified against Crossref
   pathways/          named, reviewed compositions with measured performance
+  interfaces/        physical boundaries between two regions of a device (pass 26)
+  systems/           multi-route systems joined by documented handoffs — a topping cycle sourcing a bottoming cycle (pass 34)
   searches/          reviewed literature searches (the only records allowed to say "no demonstration found")
   ontology/          units (for dimensional analysis), domains (for coverage), condition tags and conflicts
 data/generated/      compiled graph, Crossref verification, automated OpenAlex index queries
@@ -21,7 +23,7 @@ packages/schema      zod schemas and the vocabulary
 packages/physics     dimensional analysis and the eight route checks
 packages/graph       loader with referential validation, compiler, browser-safe query index
 pipelines/           validate · build-graph · verify-sources · literature-search · inspect · tests
-apps/web             Next.js static site: /, /atlas, /matrix, /path/[id], /phenomenon/[id], /frontier, /coverage, /methods, /api/*.json
+apps/web             Next.js static site: /, /atlas, /matrix, /path/[id], /system/[id], /phenomenon/[id], /frontier, /coverage, /methods, /api/*.json
 worker/              Cloudflare Worker serving the static export
 design/              brief, design system, review transcripts, current screenshots
 docs/                ontology, evidence model, status model (derivation and precedence), candidate generation, worked example, generated vocabulary

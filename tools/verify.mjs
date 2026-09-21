@@ -38,6 +38,8 @@ const PAGES = [
   "/path/87c18f5e4c",
   "/claim/seebeck-drives",
   "/source/seebeck-1826",
+  "/system",
+  "/system/natural-gas-combined-cycle",
 ];
 const VIEWPORTS = [
   { name: "desktop", width: 1440, height: 900, mobile: false },

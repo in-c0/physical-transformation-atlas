@@ -1,8 +1,10 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { resolve } from "node:path";
+import { join, resolve } from "node:path";
+import { cpSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
 import { loadCanon, buildGraph, ValidationError } from "@pta/graph";
-import { Claim, Measurement, isDemonstratedPathway } from "@pta/schema";
+import { Claim, Measurement, SystemPathway, isDemonstratedPathway } from "@pta/schema";
 
 const root = resolve(import.meta.dirname, "..", "..");
 const canon = loadCanon(root);
@@ -174,8 +176,56 @@ test("a pathway's structured temperatures supply regimes to its exact route only
   // the TEG's 850/300 K fixture would supply the spatial gradient even without the source's own token; a sibling route through the same claim gets nothing from it
   assert.match(regime.detail, /thermal:spatial-temperature-gradient/);
   // the derivation reaches only the exact pathway: a synthetic pathway with T_h ≠ T_c supplies the gradient to a source that does not
-  const canon2 = { ...canon, pathways: canon.pathways.map((pw) => (pw.id === "pathway:thermogalvanic-cell" ? { ...pw, performance: { measurements: [{ quantity: "conversion efficiency", value: "0.01", value_numeric: 0.01, scope: "laboratory" as const, conditions: "x", sources: pw.evidence, parameters: { T_h_K: 320, T_c_K: 300 } }] } } : pw)) };
+  const canon2 = {
+    ...canon,
+    pathways: canon.pathways.map((pw) =>
+      pw.id === "pathway:thermogalvanic-cell"
+        ? {
+            ...pw,
+            performance: {
+              measurements: [
+                { quantity: "conversion efficiency", value: "0.01", value_numeric: 0.01, scope: "laboratory" as const, conditions: "x", sources: pw.evidence, parameters: { T_h_K: 320, T_c_K: 300 } },
+              ],
+            },
+          }
+        : pw,
+    ),
+  };
   const g2 = buildGraph(canon2, { builtAt: "2026-01-01T00:00:00.000Z" });
   const tgc = g2.paths.find((p) => p.pathway === "pathway:thermogalvanic-cell")!;
   assert.equal(tgc.checks.find((c) => c.id === "driver-regime-sufficiency")!.result, "pass");
+});
+
+test("the system layer (loop-3 pass 34): a system joins whole pathways by handoffs, its members carry their exact routes and check results, and its efficiency lives on no member", () => {
+  assert.ok(graph.systems.length >= 1, "at least one system is recorded");
+  assert.equal(graph.meta.counts.systems_named, graph.systems.length);
+  const cc = graph.systems.find((s) => s.id === "system-pathway:natural-gas-combined-cycle");
+  assert.ok(cc, "the natural-gas combined cycle is recorded");
+  for (const m of cc.members) {
+    assert.ok(m.route_id, `${m.id} has a compiled route`);
+    const route = graph.paths.find((p) => p.id === m.route_id);
+    assert.equal(route?.pathway, m.pathway);
+    assert.equal(Object.keys(m.route_checks).length, route?.checks.length, "every route check is exposed");
+  }
+  assert.equal(cc.handoff_status, "demonstrated");
+  // The combined cycle's 46.93 % appears on the system and on no pathway, route or claim.
+  const on = (x: unknown) => JSON.stringify(x).includes("0.4693");
+  assert.ok(on(cc), "the system carries the combined-cycle efficiency");
+  assert.equal(graph.pathways.filter(on).length, 0, "no pathway carries it");
+  assert.equal(graph.paths.filter(on).length, 0, "no route carries it");
+  assert.equal(graph.pathways.find((p) => p.id === "pathway:combustion-gas-turbine")?.performance?.efficiency_record, undefined, "the gas-turbine pathway no longer carries a combined-cycle record");
+  assert.deepEqual(graph.pathways.find((p) => p.id === "pathway:combustion-gas-turbine")?.demonstrated_with, ["transducer:gas-turbine-generator"]);
+  // A system never enters route enumeration or the frontier: no route is enumerated from a handoff.
+  assert.equal(graph.paths.filter((p) => p.frontier_class === "candidate" && p.claims.some((c) => c.includes("system"))).length, 0);
+});
+
+test("the system layer's loader gate (loop-3 pass 34): a handoff must name the disequilibrium its receiving member's route starts from; the schema refuses unknown members", () => {
+  assert.throws(() => SystemPathway.parse({ ...canon.systems[0], handoffs: [{ ...canon.systems[0].handoffs[0], to_member: "nowhere" }] }), /unknown member nowhere/);
+  // The loader gate: a copy of the canonical data with the handoff pointed at the wrong disequilibrium fails to load.
+  const tmp = mkdtempSync(join(tmpdir(), "pta-systems-"));
+  cpSync(join(root, "data", "canonical"), join(tmp, "data", "canonical"), { recursive: true });
+  const file = join(tmp, "data", "canonical", "systems", "systems.yaml");
+  writeFileSync(file, readFileSync(file, "utf8").replace("to_source: disequilibrium:temperature-gradient", "to_source: disequilibrium:chemical-potential-difference"));
+  assert.throws(() => loadCanon(tmp), /names to_source disequilibrium:chemical-potential-difference but that member's route starts from disequilibrium:temperature-gradient/);
+  rmSync(tmp, { recursive: true, force: true });
 });

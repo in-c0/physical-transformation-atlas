@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
-import { EXPORTS, ExportMeta, ClaimRecord, PathRecord, MatrixCellRecord, exportJsonSchema } from "@pta/schema/export-schema";
+import { EXPORTS, ExportMeta, ClaimRecord, PathRecord, MatrixCellRecord, SystemRecord, exportJsonSchema } from "@pta/schema/export-schema";
 import { Entity, Source, Pathway, CoverageEntry } from "@pta/schema";
 
 const root = resolve(import.meta.dirname, "..", "..");
@@ -14,7 +14,7 @@ const url = (kind: string, id: string) => `${site}/${kind}/${id.split(":")[1] ??
 test("the JSON Schema generates with a $defs entry per export and per record type", () => {
   const js = exportJsonSchema("0.4.0", site);
   for (const name of Object.keys(EXPORTS)) assert.ok(js.$defs[name], `missing $defs.${name}`);
-  for (const name of ["Entity", "Claim", "Source", "Pathway", "CompiledPath", "MatrixCell", "CoverageEntry", "CheckDefinition", "ExportMeta"]) assert.ok(js.$defs[name], `missing $defs.${name}`);
+  for (const name of ["Entity", "Claim", "Source", "Pathway", "SystemPathway", "CompiledPath", "MatrixCell", "CoverageEntry", "CheckDefinition", "ExportMeta"]) assert.ok(js.$defs[name], `missing $defs.${name}`);
   assert.equal(js.$id, `${site}/api/schema/v0.4.0.json`);
 });
 
@@ -22,6 +22,7 @@ test("every compiled record validates against the export record schema it will b
   for (const e of graph.entities) Entity.parse(e);
   for (const s of graph.sources) Source.parse(s);
   for (const p of graph.pathways) Pathway.parse(p);
+  for (const s of graph.systems) SystemRecord.parse({ ...s, canonical_url: url("system", s.id) });
   for (const c of graph.coverage) CoverageEntry.parse(c);
   for (const c of graph.claims) ClaimRecord.parse({ ...c, canonical_url: url("claim", c.id) });
   for (const p of paths) PathRecord.parse({ ...p, canonical_url: `${site}/path/${p.id.slice(2)}` });

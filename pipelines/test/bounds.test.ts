@@ -186,9 +186,7 @@ const pathwayWith = (eff: number, params?: Record<string, number>, scope: "devic
     environment: [],
     summary: "",
     performance: {
-      measurements: [
-        { quantity: "efficiency", value: `${eff}`, value_numeric: eff, unit: "1", metric: "conversion-efficiency", parameters: params, scope, conditions: "", sources: ["source:s"] },
-      ],
+      measurements: [{ quantity: "efficiency", value: `${eff}`, value_numeric: eff, unit: "1", metric: "conversion-efficiency", parameters: params, scope, conditions: "", sources: ["source:s"] }],
     },
   }) as unknown as Pathway;
 

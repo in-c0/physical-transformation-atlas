@@ -24,6 +24,10 @@ import {
   SEARCH_ENGINES,
   SEARCH_STATUSES,
   STRUCTURAL_KINDS,
+  SYSTEM_HANDOFF_KINDS,
+  SYSTEM_HANDOFF_STATUSES,
+  SYSTEM_OUTPUT_AGGREGATIONS,
+  SYSTEM_PATHWAY_STATUSES,
 } from "@pta/schema";
 
 export interface VocabularyTerm {
@@ -109,7 +113,46 @@ export const VOCABULARY: VocabularyEnum[] = [
       "under-review": "reserved; not produced by the current compiler (no review queue exists in this release)",
       "experiment-proposed": "reserved; not produced by the current compiler (no review queue exists in this release)",
       "experiment-tested": "reserved; not produced by the current compiler (no review queue exists in this release)",
-      demonstrated: "a recorded pathway with a demonstrated status (demonstrated, prototype or commercial) has exactly this claim sequence, or a reviewed search of the whole composition found a demonstration",
+      demonstrated:
+        "a recorded pathway with a demonstrated status (demonstrated, prototype or commercial) has exactly this claim sequence, or a reviewed search of the whole composition found a demonstration",
+    }),
+  },
+  {
+    name: "system-pathway.status",
+    used_in: ["systems[].status"],
+    terms: define(SYSTEM_PATHWAY_STATUSES, {
+      demonstrated: "the multi-route system has run as one physical plant or device with every member pathway and every handoff in place",
+      prototype: "demonstrated and built as an engineering prototype",
+      commercial: "demonstrated and sold or operated as a product or plant",
+      proposed: "a design, calculation or simulation of the system in the literature",
+    }),
+  },
+  {
+    name: "system-handoff.kind",
+    used_in: ["systems[].handoffs[].kind"],
+    terms: define(SYSTEM_HANDOFF_KINDS, {
+      "residual-energy": "a member's residual energy stream (exhaust, waste heat, spent flow) sources the next member",
+      "recovered-heat": "heat recovered from one member establishes the temperature difference the next member's route starts from",
+      "mechanical-coupling": "shaft or linkage work of one member drives the next",
+      "electrical-coupling": "electrical output of one member powers or biases the next",
+      "material-flow": "a material stream (fuel, working fluid, product) of one member feeds the next",
+    }),
+  },
+  {
+    name: "system-handoff.status",
+    used_in: ["systems[].handoffs[].status"],
+    terms: define(SYSTEM_HANDOFF_STATUSES, {
+      demonstrated: "the stream has physically joined the two members in a running system, with evidence",
+      theoretical: "the stream's transfer is calculated or modelled but not shown in a running system",
+      proposed: "the stream is proposed without a calculation or a demonstration",
+    }),
+  },
+  {
+    name: "system-output.aggregation",
+    used_in: ["systems[].outputs[].aggregation"],
+    terms: define(SYSTEM_OUTPUT_AGGREGATIONS, {
+      sum: "the member outputs add into one system output (two generators on one grid)",
+      separate: "the member outputs are delivered separately (electricity and useful heat)",
     }),
   },
   {
@@ -119,7 +162,8 @@ export const VOCABULARY: VocabularyEnum[] = [
       demonstrated: "the composition has been shown end to end in at least one physical experiment or device that delivered the route's recorded output",
       prototype: "demonstrated and built as an engineering prototype",
       commercial: "demonstrated and sold or operated as a product or plant",
-      proposed: "a design, calculation or simulation in the literature; attached to its exact route and shown as a proposal, never a demonstration; ignored when other routes are classified as derived",
+      proposed:
+        "a design, calculation or simulation in the literature; attached to its exact route and shown as a proposal, never a demonstration; ignored when other routes are classified as derived",
       observed:
         "one physical experiment or device has traversed every recorded conversion phenomenon and every inter-phenomenon handoff in order, but the route's terminal output criterion has not been met: a voltage, current, charge, displacement, force, flow or other terminal response may be measured, but the pathway has not delivered the work or output represented by the route's sink; observed_through names the last step its evidence established; an observed pathway does not make a route demonstrated and is ignored when classifying other routes as derived from demonstrated pathways",
     }),
@@ -128,7 +172,8 @@ export const VOCABULARY: VocabularyEnum[] = [
     name: "condition.scope",
     used_in: ["claims[].condition_requirements[].scope", "interfaces[].condition_requirements[].scope", "ontology.condition_tags[].default_scope", "ontology.exclusive_groups[].scope"],
     terms: define(CONDITION_SCOPES, {
-      medium: "a condition of the matter in which the phenomenon acts, on a named region of the device (active by default); the only scope in which an adjacent-step change of state is a region transition",
+      medium:
+        "a condition of the matter in which the phenomenon acts, on a named region of the device (active by default); the only scope in which an adjacent-step change of state is a region transition",
       boundary: "a condition of a physical surface, contact or gap the step crosses or uses; checked against interface records, never treated as an active-medium state",
       environment: "an external field, radiation, atmosphere, vacuum or other surrounding or source condition; compared route-wide on the same region, not only between neighbours",
     }),
@@ -167,7 +212,11 @@ export const VOCABULARY: VocabularyEnum[] = [
     used_in: ["paths[].magnitude_screen.status"],
     terms: [
       { id: "quantified", definition: "a reviewed whole-composition measurement exists" },
-      { id: "relation-complete", definition: "every relation-required conversion step (drives, couples_to, or relation_requirement required) carries a dimensionally valid constitutive relation; no route magnitude is thereby asserted (renamed from bounded in loop-3 pass 26)" },
+      {
+        id: "relation-complete",
+        definition:
+          "every relation-required conversion step (drives, couples_to, or relation_requirement required) carries a dimensionally valid constitutive relation; no route magnitude is thereby asserted (renamed from bounded in loop-3 pass 26)",
+      },
       { id: "missing", definition: "at least one relation-required conversion step lacks a relation; bottleneck_claim names the first" },
       { id: "incompatible", definition: "a recorded quantitative contradiction makes the composition physically inconsistent; never inferred from absence" },
     ],

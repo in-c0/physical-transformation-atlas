@@ -18,6 +18,7 @@ export const CANONICAL_URL_RULES = {
   source: `${SITE}/source/{slug}`,
   path: `${SITE}/path/{ten hex characters of the route id after "p-"}`,
   pathway: "the canonical_url of the compiled route whose pathway field names it",
+  system: `${SITE}/system/{slug}`,
   matrix_cell: `${SITE}/matrix?cell={row address}:{column address}`,
 };
 
@@ -25,12 +26,13 @@ export const claimUrl = (id: string) => `${SITE}/claim/${id.split(":")[1]}`;
 export const pathUrl = (id: string) => `${SITE}/path/${id.slice(2)}`;
 export const cellUrl = (address: string) => `${SITE}/matrix?cell=${address}`;
 export const sourceUrl = (id: string) => `${SITE}/source/${id.split(":")[1]}`;
+export const systemUrl = (id: string) => `${SITE}/system/${id.split(":")[1]}`;
 export const entityUrl = (id: string) => {
   const [type, slug] = id.split(":");
   return type === "phenomenon" ? `${SITE}/phenomenon/${slug}` : `${SITE}/e/${type}/${slug}`;
 };
 
-export type ExportName = "stats" | "graph" | "entities" | "claims" | "sources" | "pathways" | "paths" | "matrix" | "coverage" | "checks" | "vocabulary" | "schema";
+export type ExportName = "stats" | "graph" | "entities" | "claims" | "sources" | "pathways" | "systems" | "paths" | "matrix" | "coverage" | "checks" | "vocabulary" | "schema";
 
 export const ENDPOINTS = [
   "/api/stats.json",
@@ -41,6 +43,7 @@ export const ENDPOINTS = [
   "/api/claims.csv",
   "/api/sources.json",
   "/api/pathways.json",
+  "/api/systems.json",
   "/api/paths.json",
   "/api/matrix.json",
   "/api/coverage.json",
@@ -57,6 +60,7 @@ export function defName(endpoint: ExportName): string {
     claims: "ClaimsExport",
     sources: "SourcesExport",
     pathways: "PathwaysExport",
+    systems: "SystemsExport",
     paths: "PathsExport",
     matrix: "MatrixExport",
     coverage: "CoverageExport",

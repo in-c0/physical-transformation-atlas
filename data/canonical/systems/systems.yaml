@@ -1,0 +1,43 @@
+# The system layer (loop-3 pass 34): multi-route systems joined by documented handoffs. A route and a pathway stay one
+# linear chain; a system references whole pathways by role and records the residual stream that sources the next
+# member. The eight route checks are not run over a system — it shows its members' route checks, its handoffs'
+# status and its own performance.
+- id: system-pathway:natural-gas-combined-cycle
+  name: Natural-gas combined-cycle plant
+  members:
+    - { id: topping, pathway: pathway:combustion-gas-turbine, role: topping-cycle }
+    - { id: bottoming, pathway: pathway:rankine-steam-plant, role: bottoming-cycle }
+  handoffs:
+    - from_member: topping
+      to_member: bottoming
+      from_energy_form: thermal
+      to_source: disequilibrium:temperature-gradient
+      carrier: carrier:hot-gas
+      kind: recovered-heat
+      conditions:
+        - "gas-turbine exhaust transfers residual enthalpy through a heat-recovery steam generator to establish the bottoming steam-cycle hot-side temperature relative to its condenser"
+      evidence: [source:al-mhanna-2024-isccs]
+      status: demonstrated
+      note: "Al Mhanna 2024's local plant: 540.7 °C gas-turbine exhaust into two-pressure heat-recovery steam generators (HP 235,400 kg/h and LP 40,000 kg/h feed; HP superheater exhaust 471.48 °C), the steam turbine delivering 61.5 MW"
+  outputs:
+    - { member: topping, output: output:electricity, aggregation: sum }
+    - { member: bottoming, output: output:electricity, aggregation: sum }
+  evidence: [source:al-mhanna-2024-isccs, source:bejan-2016]
+  status: commercial
+  knowledge_level: K8
+  performance:
+    measurements:
+      - quantity: combined-cycle thermal efficiency
+        value: "46.93%"
+        value_numeric: 0.4693
+        unit: "1"
+        metric: conversion-efficiency
+        basis: "net gas-turbine plus steam-turbine power divided by natural-gas LHV input"
+        scope: plant
+        conditions: "local plant baseline (a 678 MW combined-cycle station in Oman, one gas-turbine train); natural gas 9.2 kg/s at LHV 43,662 kJ/kg; gas turbine ≈ 127 MW, steam turbine ≈ 61.5 MW; gas-turbine inlet 1050 °C, exhaust 540.7 °C"
+        sources: [source:al-mhanna-2024-isccs]
+        year: 2024
+        note: "the plant's own figure (Table 3, local plant data); (127 + 61.5) MW over 9.2 kg/s × 43,662 kJ/kg = 401.7 MW reproduces it exactly — a verification, not a second measurement; the paper's Aspen Plus simulation gives 46.28 %"
+    theoretical_limit: "Carnot between the flame-side hot reservoir and the condenser's cold reservoir a source defines; none recorded on the system"
+  summary: A topping gas turbine delivers electrical work and hands its exhaust enthalpy through heat-recovery steam generators to a bottoming steam Rankine cycle that delivers more; the two generators' outputs add. The combined cycle's efficiency belongs here and to neither member — 46.93 % at the Omani plant Al Mhanna et al. 2024 model — while each member keeps its own linear route and checks.
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 34 (the second reader's first system record; Al Mhanna 2024 read in full, the 46.93 % moved off the gas-turbine pathway)" }

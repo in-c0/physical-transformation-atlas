@@ -17,6 +17,7 @@ import {
   SearchRecord,
   AutomatedSearchRun,
   Source,
+  CompiledSystemPathway,
   CheckResult,
   DOMAINS,
   ENTITY_TYPES,
@@ -41,6 +42,7 @@ export const Counts = z.object({
   claims: z.number().int(),
   sources: z.number().int(),
   pathways_named: z.number().int(),
+  systems_named: z.number().int().optional(),
   paths_examined: z.number().int(),
   paths_demonstrated: z.number().int(),
   paths_no_demonstration_found: z.number().int(),
@@ -120,6 +122,8 @@ export const ClaimLine = ClaimRecord.extend({ kind: z.literal("claim"), data_has
 export const EntityRecord = withUrl(Entity);
 export const SourceRecord = withUrl(Source);
 export const PathwayRecord = withNullableUrl(Pathway);
+/** A system pathway (pass 34) with the page that renders it. */
+export const SystemRecord = withUrl(CompiledSystemPathway);
 export const PathRecord = withUrl(CompiledPath);
 export const MatrixCellRecord = withUrl(MatrixCell);
 
@@ -137,6 +141,8 @@ export const GraphCoreExport = z.object({
     coverage: z.array(CoverageEntry),
     source_verification: Verification,
     interfaces: z.array(Interface),
+    /** The system layer (pass 34): multi-route systems joined by documented handoffs. */
+    systems: z.array(CompiledSystemPathway),
     ontology: z.object({
       condition_tags: z.array(z.object({ id: z.string(), label: z.string(), description: z.string(), default_scope: z.enum(CONDITION_SCOPES) })),
       exclusive_groups: z.array(ExclusiveGroup),
@@ -148,6 +154,7 @@ export const EntitiesExport = z.object({ meta: ExportMeta, data: z.array(EntityR
 export const ClaimsExport = z.object({ meta: ExportMeta, data: z.array(ClaimRecord) });
 export const SourcesExport = z.object({ meta: ExportMeta, data: z.array(SourceRecord), verification: Verification });
 export const PathwaysExport = z.object({ meta: ExportMeta, data: z.array(PathwayRecord) });
+export const SystemsExport = z.object({ meta: ExportMeta, data: z.array(SystemRecord) });
 export const PathsExport = z.object({ meta: ExportMeta, data: z.array(PathRecord) });
 export const MatrixExport = z.object({ meta: ExportMeta, data: z.object({ rows: z.array(MatrixAxis), cols: z.array(MatrixAxis), cells: z.array(MatrixCellRecord) }) });
 export const CoverageExport = z.object({ meta: ExportMeta, data: z.array(CoverageEntry) });
@@ -161,6 +168,7 @@ export const EXPORTS = {
   ClaimsExport,
   SourcesExport,
   PathwaysExport,
+  SystemsExport,
   PathsExport,
   MatrixExport,
   CoverageExport,
@@ -183,6 +191,7 @@ export function exportJsonSchema(version: string, siteUrl: string) {
   add("ClaimLine", ClaimLine);
   add("Source", SourceRecord);
   add("Pathway", PathwayRecord);
+  add("SystemPathway", SystemRecord);
   add("SearchRecord", SearchRecord);
   add("AutomatedSearchRun", AutomatedSearchRun);
   add("CompiledPath", PathRecord);

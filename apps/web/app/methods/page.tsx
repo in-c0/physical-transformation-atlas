@@ -197,6 +197,20 @@ export default function MethodsPage() {
       </section>
 
       <section className={styles.section} id="checks">
+        <h2 className="t-section">2b. Systems: when one route is not enough</h2>
+        <div className="prose">
+          <p>
+            A route and a pathway are one linear causal chain from one source to one terminal output. A combined-cycle plant is not: its topping gas turbine delivers electrical work
+            and hands its exhaust enthalpy to a bottoming steam cycle — one step with two outputs. Since loop-3 pass 34 the atlas records such architectures as{" "}
+            <Link href="/system">systems</Link>: members reference whole pathways by role, a handoff records the residual stream from one member to the disequilibrium the next
+            member&apos;s route starts from (the loader checks it is that route&apos;s actual source), and outputs say which members deliver what and whether they add. A handoff is never a
+            route claim, so system topology never enters route enumeration or the candidate frontier; the eight checks are not run over a system — it shows its members&apos; route
+            results and its handoffs&apos; status, and a system is not clear merely because its members are. A system&apos;s efficiency lives on the system and on no member: the 46.93 % of
+            the Omani combined-cycle station belongs to the natural-gas combined cycle, not to the gas-turbine pathway that had been carrying a combined-cycle record figure until this pass.
+            Served as <Link href="/api/systems.json">/api/systems.json</Link>.
+          </p>
+        </div>
+
         <h2 className="t-section">3. The eight checks</h2>
         <div className="prose">
           <p>

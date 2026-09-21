@@ -22,6 +22,7 @@ import {
   AutomatedSearchRun,
   AutomatedSearchRun,
   Source,
+  SystemPathway,
   UnitDef,
   type Claim as ClaimT,
   type ConditionConflict as ConflictT,
@@ -36,6 +37,7 @@ import {
   type AutomatedSearchRun as RunT,
   type AutomatedSearchRun as RunT,
   type Source as SourceT,
+  type SystemPathway as SystemT,
   type UnitDef as UnitT,
 } from "@pta/schema";
 
@@ -48,6 +50,8 @@ export interface Canon {
   searches: SearchT[];
   /** Interface records (pass 26), data/canonical/interfaces. */
   interfaces: InterfaceT[];
+  /** System pathways (pass 34), data/canonical/systems: multi-route systems joined by handoffs. */
+  systems: SystemT[];
   units: UnitT[];
   domains: DomainT[];
   conditionTags: { id: string; description: string; label?: string; default_scope: ConditionScope }[];
@@ -111,6 +115,8 @@ export function loadCanon(root: string): Canon {
   const searches = yamlFiles(join(canonical, "searches")).flatMap((f) => readList(SearchRecord, f, root, problems, files));
   const interfacesDir = join(canonical, "interfaces");
   const interfaces = existsSync(interfacesDir) ? yamlFiles(interfacesDir).flatMap((f) => readList(Interface, f, root, problems, files)) : [];
+  const systemsDir = join(canonical, "systems");
+  const systems = existsSync(systemsDir) ? yamlFiles(systemsDir).flatMap((f) => readList(SystemPathway, f, root, problems, files)) : [];
   const units = readList(UnitDef, join(canonical, "ontology", "units.yaml"), root, problems, files);
   const domains = readList(DomainDef, join(canonical, "ontology", "domains.yaml"), root, problems, files);
 
@@ -131,7 +137,8 @@ export function loadCanon(root: string): Canon {
   });
   // Every tag carries a default scope (pass 26); a claim may override it per requirement.
   const conditionTags = (condRaw.tags ?? []).map((t) => {
-    if (!t.default_scope || !(CONDITION_SCOPES as readonly string[]).includes(t.default_scope)) problems.push(`ontology/conditions.yaml tag ${t.id}: default_scope must be one of ${CONDITION_SCOPES.join(", ")}`);
+    if (!t.default_scope || !(CONDITION_SCOPES as readonly string[]).includes(t.default_scope))
+      problems.push(`ontology/conditions.yaml tag ${t.id}: default_scope must be one of ${CONDITION_SCOPES.join(", ")}`);
     return { ...t, default_scope: (t.default_scope ?? "medium") as ConditionScope };
   });
 
@@ -294,7 +301,10 @@ export function loadCanon(root: string): Canon {
       const ns = t.split(":")[0];
       const subject = entityById.get(c.subject);
       const form = subject?.energy_form;
-      if (form && (regimeKind[ns] ?? []).includes(form)) problems.push(`${c.id}: regime_external ${t} is a property of the step's own ${form} subject and cannot be self-certified; a reviewed pathway's regime_provides is the place for an established operating regime`);
+      if (form && (regimeKind[ns] ?? []).includes(form))
+        problems.push(
+          `${c.id}: regime_external ${t} is a property of the step's own ${form} subject and cannot be self-certified; a reviewed pathway's regime_provides is the place for an established operating regime`,
+        );
       if (!c.regime_requires.includes(t)) problems.push(`${c.id}: regime_external ${t} is not among its regime_requires`);
     }
   const interfaceIds = new Set<string>();
@@ -316,8 +326,39 @@ export function loadCanon(root: string): Canon {
     }
     if (f.status === "demonstrated" && f.evidence.length === 0) problems.push(`${f.id}: a demonstrated interface must cite evidence`);
   }
+  // Pass 34: the system layer references whole pathways, disequilibria, carriers, outputs and sources; a handoff's
+  // to_source must be the disequilibrium the receiving member's route actually starts from.
+  const pathwayById = new Map(pathways.map((p) => [p.id, p]));
+  const systemIds = new Set<string>();
+  for (const s of systems) {
+    if (systemIds.has(s.id)) problems.push(`duplicate system id ${s.id}`);
+    systemIds.add(s.id);
+    const memberPathway = new Map(s.members.map((m) => [m.id, m.pathway]));
+    for (const m of s.members) if (!pathwayById.has(m.pathway)) problems.push(`${s.id}: member ${m.id} names unknown pathway ${m.pathway}`);
+    for (const h of s.handoffs) {
+      const to = entityById.get(h.to_source);
+      if (!to) problems.push(`${s.id}: handoff ${h.from_member} → ${h.to_member} names unknown to_source ${h.to_source}`);
+      else if (to.type !== "disequilibrium") problems.push(`${s.id}: handoff to_source ${h.to_source} is not a disequilibrium`);
+      const receiving = pathwayById.get(memberPathway.get(h.to_member) ?? "");
+      const firstClaim = receiving ? claims.find((c) => c.id === receiving.steps[0]) : undefined;
+      if (firstClaim && firstClaim.subject !== h.to_source)
+        problems.push(`${s.id}: handoff to ${h.to_member} names to_source ${h.to_source} but that member's route starts from ${firstClaim.subject}`);
+      if (h.carrier && !entityIds.has(h.carrier)) problems.push(`${s.id}: unknown handoff carrier ${h.carrier}`);
+      for (const src of h.evidence) if (!sourceIds.has(src)) problems.push(`${s.id}: unknown handoff source ${src}`);
+    }
+    for (const o of s.outputs) {
+      const out = entityById.get(o.output);
+      if (!out) problems.push(`${s.id}: output names unknown entity ${o.output}`);
+      else if (out.type !== "output") problems.push(`${s.id}: ${o.output} is not an output entity`);
+      const member = pathwayById.get(memberPathway.get(o.member) ?? "");
+      const lastClaim = member ? claims.find((c) => c.id === member.steps[member.steps.length - 1]) : undefined;
+      if (lastClaim && lastClaim.object !== o.output) problems.push(`${s.id}: output of member ${o.member} is ${o.output} but that member's route ends at ${lastClaim.object}`);
+    }
+    for (const src of s.evidence) if (!sourceIds.has(src)) problems.push(`${s.id}: unknown source ${src}`);
+    for (const m of s.performance?.measurements ?? []) for (const src of m.sources) if (!sourceIds.has(src)) problems.push(`${s.id}: measurement cites unknown source ${src}`);
+  }
 
   if (problems.length) throw new ValidationError(problems);
 
-  return { root, entities, claims, sources, pathways, searches, interfaces, units, domains, conditionTags, conflicts, exclusiveGroups, searchRuns, sourceVerification, files };
+  return { root, entities, claims, sources, pathways, searches, interfaces, systems, units, domains, conditionTags, conflicts, exclusiveGroups, searchRuns, sourceVerification, files };
 }

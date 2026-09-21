@@ -33,6 +33,7 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
   const overlapPathway = overlap ? index.pathway.get(overlap.pathway) : undefined;
   const overlapPath = overlapPathway ? index.graph.paths.find((p) => p.pathway === overlapPathway.id) : undefined;
   const measurements = named?.performance?.measurements ?? [];
+  const systems = named ? index.systemsOfPathway(named.id) : [];
 
   return (
     <article className={styles.article}>
@@ -49,6 +50,18 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
           ))}
         </p>
         {named && <p className={styles.summary}>{named.summary}</p>}
+        {systems.length > 0 && (
+          <p className="t-ui secondary" style={{ marginTop: 8, fontWeight: 400 }}>
+            Member of{" "}
+            {systems.map((s, i) => (
+              <span key={s.id}>
+                {i > 0 ? ", " : ""}
+                <Link href={`/system/${s.id.split(":")[1]}`}>{s.name}</Link> as its {s.members.find((m) => m.pathway === named!.id)?.role}
+              </span>
+            ))}
+            {" "}— a system whose other members and handoffs carry what this route alone cannot.
+          </p>
+        )}
 
         <h2 className="label" style={{ marginTop: 16 }}>
           Epistemic state of the route
