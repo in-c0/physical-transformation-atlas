@@ -141,6 +141,92 @@
       records_screened: 0
       records_read: 0
       query_key: demonstration-precision
+    - id: search:2026-09-21-p-231472e45e/s2-attempt-1-driver-mechanism-1
+      engine: semantic-scholar
+      query_form: route-driver-mechanism
+      query_key: "driver-mechanism:1"
+      query: "Temperature gradient temperature difference thermal gradient waste heat heat input thermoacoustic thermoacoustic effect thermoacoustic engine thermoacoustic prime mover thermoacoustic heat engine Rijke tube Sondhauss tube"
+      executed_at: 2026-09-21T13:24:25.888Z
+      request_url: "https://api.semanticscholar.org/graph/v1/paper/search?query=Temperature%20gradient%20temperature%20difference%20thermal%20gradient%20waste%20heat%20heat%20input%20thermoacoustic%20thermoacoustic%20effect%20thermoacoustic%20engine%20thermoacoustic%20prime%20mover%20thermoacoustic%20heat%20engine%20Rijke%20tube%20Sondhauss%20tube&limit=100&fields=title%2Cyear%2CexternalIds"
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      filters:
+        limit: 100
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "HTTP 429 from Semantic Scholar's anonymous pool at the first request (no Retry-After header); no result list obtained; an attempt, never a result — the API key is an owner decision (exception e953)"
+    - id: search:2026-09-21-p-231472e45e/s2-attempt-2-mechanism-pair-1-2
+      engine: semantic-scholar
+      query_form: route-mechanism-pair
+      query_key: "mechanism-pair:1-2"
+      query: "thermoacoustic thermoacoustic effect thermoacoustic engine thermoacoustic prime mover thermoacoustic heat engine Rijke tube Sondhauss tube Acoustoelectric effect acoustoelectric current acousto-electric effect acoustoelectric voltage acoustoelectric drag Weinreich relation"
+      executed_at: 2026-09-21T13:24:30.080Z
+      request_url: "https://api.semanticscholar.org/graph/v1/paper/search?query=thermoacoustic%20thermoacoustic%20effect%20thermoacoustic%20engine%20thermoacoustic%20prime%20mover%20thermoacoustic%20heat%20engine%20Rijke%20tube%20Sondhauss%20tube%20Acoustoelectric%20effect%20acoustoelectric%20current%20acousto-electric%20effect%20acoustoelectric%20voltage%20acoustoelectric%20drag%20Weinreich%20relation&limit=100&fields=title%2Cyear%2CexternalIds"
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      filters:
+        limit: 100
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "HTTP 429 from Semantic Scholar's anonymous pool at the first request (no Retry-After header); no result list obtained; an attempt, never a result — the API key is an owner decision (exception e953)"
+    - id: search:2026-09-21-p-231472e45e/s2-attempt-3-whole-chain
+      engine: semantic-scholar
+      query_form: route-whole-chain
+      query_key: "whole-chain"
+      query: "Temperature gradient temperature difference thermal gradient waste heat heat input thermoacoustic thermoacoustic effect thermoacoustic engine thermoacoustic prime mover thermoacoustic heat engine Rijke tube Sondhauss tube Acoustoelectric effect acoustoelectric current acousto-electric effect acoustoelectric voltage acoustoelectric drag Weinreich relation Electrical work electricity electrical output DC power direct current"
+      executed_at: 2026-09-21T13:24:34.538Z
+      request_url: "https://api.semanticscholar.org/graph/v1/paper/search?query=Temperature%20gradient%20temperature%20difference%20thermal%20gradient%20waste%20heat%20heat%20input%20thermoacoustic%20thermoacoustic%20effect%20thermoacoustic%20engine%20thermoacoustic%20prime%20mover%20thermoacoustic%20heat%20engine%20Rijke%20tube%20Sondhauss%20tube%20Acoustoelectric%20effect%20acoustoelectric%20current%20acousto-electric%20effect%20acoustoelectric%20voltage%20acoustoelectric%20drag%20Weinreich%20relation%20Electrical%20work%20electricity%20electrical%20output%20DC%20power%20direct%20current&limit=100&fields=title%2Cyear%2CexternalIds"
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      filters:
+        limit: 100
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "HTTP 429 from Semantic Scholar's anonymous pool at the first request (no Retry-After header); no result list obtained; an attempt, never a result — the API key is an owner decision (exception e953)"
+    - id: search:2026-09-21-p-231472e45e/s2-4-demonstration-precision
+      engine: semantic-scholar
+      query_form: route-demonstration-precision
+      query_key: "demonstration-precision"
+      query: "Temperature gradient temperature difference thermal gradient waste heat heat input thermoacoustic thermoacoustic effect thermoacoustic engine thermoacoustic prime mover thermoacoustic heat engine Rijke tube Sondhauss tube Acoustoelectric effect acoustoelectric current acousto-electric effect acoustoelectric voltage acoustoelectric drag Weinreich relation Electrical work electricity electrical output DC power direct current experiment experimental measured device prototype"
+      executed_at: 2026-09-21T13:24:38.988Z
+      request_url: "https://api.semanticscholar.org/graph/v1/paper/search?query=Temperature%20gradient%20temperature%20difference%20thermal%20gradient%20waste%20heat%20heat%20input%20thermoacoustic%20thermoacoustic%20effect%20thermoacoustic%20engine%20thermoacoustic%20prime%20mover%20thermoacoustic%20heat%20engine%20Rijke%20tube%20Sondhauss%20tube%20Acoustoelectric%20effect%20acoustoelectric%20current%20acousto-electric%20effect%20acoustoelectric%20voltage%20acoustoelectric%20drag%20Weinreich%20relation%20Electrical%20work%20electricity%20electrical%20output%20DC%20power%20direct%20current%20experiment%20experimental%20measured%20device%20prototype&limit=100&fields=title%2Cyear%2CexternalIds"
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      filters:
+        limit: 100
+      result_count_reported: 0
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      note: "pass 49 (21/09 11:29 pm Sydney): the anonymous pool answered this one query — a completed run with an empty result list (total 0), nothing to screen; every other planned Semantic Scholar query was throttled the same minute"
+    - id: search:2026-09-21-p-231472e45e/gs-attempt-dm1
+      engine: google-scholar
+      query_form: route-driver-mechanism
+      query_key: "driver-mechanism:1"
+      query: "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"waste heat\") AND (\"thermoacoustic effect\" OR \"thermoacoustic engine\" OR \"thermoacoustic prime mover\")"
+      executed_at: 2026-09-21T13:29:19.609Z
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "pass 49 (21/09 11:29 pm Sydney): Google Scholar served its bot check (form#gs_captcha_f, 'Please show you're not a robot') at the first page load of this compact form; the page header carried 'About 3,280 results' but served no positions, so no count is recorded; the lane never completes a bot check — the run stops here under the continuation rule with nothing screened"
   screening:
     records_retrieved: 156
     unique_records: 156
@@ -243,6 +329,7 @@
     - "OpenAlex ran on 21/09 at 10:07 am Sydney once the shared anonymous pool reopened (six forms; 751 works reported for the driver-mechanism form, the first 100 by relevance and the first 50 newest screened at title level, the rest unscreened; the mechanism-pair, whole-chain, precision and the reviewer's own precision query returned 1, 0, 0 and 0); Semantic Scholar still answers 429 keyless (owner exception e953) and Google Scholar still answers every query with a captcha — both mandatory for a negative, neither run"
     - the driver-mechanism list is thermoacoustic-engine engineering (regenerators, looped tubes, alternators, piezoelectric and triboelectric converters); no title names carrier drag, a semiconductor or graphene
     - "Weinreich, Sanders & White 1959 and the two travelling-wave engine papers were verified at metadata level only; their roles are constituent, so nothing about the composition rests on their full texts"
+    - "pass 49 (21/09 ~11:29 pm Sydney): every planned Semantic Scholar query was attempted once through the anonymous pool — 3 of 4 answered HTTP 429 at the first request, 1 completed with an empty result list (the runs above, each with its literal query, key and time); Google Scholar served its bot check at the first load of the driver-mechanism form (recorded as an attempt with nothing screened). Both engines are mandatory for a negative under route-search-v1, so the record stays partial and inconclusive: the outstanding obligations are the Semantic Scholar runs for every mandatory key except demonstration-precision and the Google Scholar runs to the protocol depth; OpenAlex's forms are complete. A blocked request is evidence that an engine was attempted, never that its query returned nothing."
   conclusion: "No demonstration known: the second reader's web search found no experiment in which a thermoacoustic engine, Rijke tube or Sondhauss tube drove classical Weinreich carrier drag, and each of its five nearest works fails the composition for a stated reason — the thermoacoustic-to-electric device that exists (Zheng 2022) is piezoelectric, and the acoustoelectric currents that exist (Weinreich 1959, Atashbar 2026) come from electrically launched waves. The physics review changed the route's spelling: Weinreich drag needs a travelling wave, so the candidate is now the travelling-wave spelling (handoff token acoustic:travelling-wave) and the generic-sound spelling is incomplete-handoff. Both conversion steps now carry a constitutive relation (Swift's critical gradient; the Weinreich relation), so the route is the atlas's first bounded candidate; the second reader's order-of-magnitude estimate — of order 10⁻³ of a 700 W engine's acoustic power crossing a bare helium–germanium interface, nanoamp-to-microamp acoustoelectric currents, femtowatt-to-sub-picowatt matched-load power — lives in the pass log, not here. Inconclusive as a route search until the engine runs exist. OpenAlex (pass 27) adds nothing that qualifies: the mechanism-pair form's single hit is the biomedical acoustoelectric effect, the whole-chain and precision forms return nothing, and the driver-mechanism list is thermoacoustic-engine engineering whose electrical converters are alternators, piezoelectric membranes (Smoker 2012 the earliest) or triboelectric generators — never Weinreich drag. Scholar and Semantic Scholar remain outstanding."
   source_run_ids:
     - search:2026-09-21-p-231472e45e

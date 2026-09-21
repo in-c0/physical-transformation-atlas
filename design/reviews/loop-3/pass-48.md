@@ -49,3 +49,37 @@ field for a waveform (findings 3, 5, 14: typed structure only where a downstream
 Result: revision 02f726b52b7e — 353 entities · 524 claims · 235 sources · 93 pathways (92 + 1 variant) ·
 2 systems · 771 routes · 86 demonstrated · 88/88 · axe clean · exports valid · six audit gates
 consistent · live.
+
+## Reviewed (sent 11:13 pm; ChatGPT High, ~7 min, with web search; PASS — 24 findings)
+
+1. Pass 48 closes cleanly (findings 1–4): waveform is descriptive metadata, not a causal requirement
+   anywhere in the atlas; the terminal-boundary treatment is right; the measurement-boundary categories
+   stay a permanent audit and are never collapsed into scope or datum_kind — the μTPV's converter sits
+   inside its efficiency boundary without the route acquiring a DC–DC phenomenon.
+2. Rozzi (finding 5): acceptable under the evidence rule with one caveat kept in the presentation —
+   Rozzi is secondary evidence pointing to Fountaine; "established" means established under the
+   review-supported rule, not independently reproduced by a second modelling group.
+3. Pass 49 rulings (findings 6–21): route-search-v1 is not relaxed — an engine that answers 429 or a
+   captcha before the required depth leaves the route partial/blocked and inconclusive; OpenAlex +
+   Crossref + chases never acquire protocol-complete-negative; no dated exception either (that would be a
+   versioned route-search-v2 with a replacement-engine rule, not pass 49's business); Crossref is no
+   substitute engine; a blocked request is evidence of an attempt, never of an empty result — record
+   engine, literal query / key, time, blocker and positions screened, and never result_count 0 for a
+   captcha page; Scholar continuation as written (de-duplicated positions across sittings complete a
+   run; a captcha interrupts, never waives); composite-name is not applicable, never missing, when no
+   source-backed composition term exists — and never a concatenation of route labels; a negative's
+   obligations must be recomputed from the frozen plan at load (mandatory engines, decomposed keys, the
+   conditional composite-name key, depth, chase count), never trusted from a stored label; monotonicity —
+   extra OpenAlex runs or Scholar segments never turn partial into complete while a mandatory engine or
+   key is incomplete; no stronger public label for partials (search-incomplete already says what the
+   atlas knows; the site may show the date and the named limitation).
+4. Pass 50 (findings 22–24): the whole-atlas closure audit treats incomplete searches as legitimate
+   unresolved items — report the ten frontier searches by state with each partial's outstanding engine /
+   key, plus Lu 2024's 2.46 % boundary, the shape-memory engine's heat-input definition, the deferred
+   Planck fraction, every single-source reported constraint or claim, and every open source-read
+   exception; the closure criterion is that uncertainty is typed, sourced and exposed, not eliminated.
+
+## Closed (11:20 pm–12:05 am; finding 5 applied in pass 49, live at r7719df505447 with pass 49)
+
+- The two ideal-limit claims' review lines and the Rozzi source note now say what "established" means
+  here: a review that restates Fountaine's calculation citing it, not an independent replication.

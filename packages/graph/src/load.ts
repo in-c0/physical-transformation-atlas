@@ -159,12 +159,29 @@ export function loadCanon(root: string): Canon {
   const MANDATORY_FORMS = ["driver-family", "driver-phenomenon", "demonstration-precision"];
   const claimById = new Map(claims.map((c) => [c.id, c]));
   const entityType = new Map(entities.map((e) => [e.id, e.type]));
+  // Pass 49 (the reviewer's pass-48 findings 10–11, 19–20): a run that obtained no result list — an engine that answered HTTP 429, a
+  // captcha before the first position — is an ATTEMPT, recorded with `interruption` and nothing screened; it never counts toward an
+  // engine's or a key's coverage, and it may never carry result_count_reported 0 (a blocked page is not an empty result). Segments of
+  // one mandatory run (the same engine and key over several sittings) add their screened positions together.
+  const obtained = (r: Canon["searches"][number]["runs"][number]) => !(r.interruption && r.records_screened === 0 && r.records_retrieved === 0);
+  const positionsOf = (r: Canon["searches"][number]["runs"][number]): Set<number> | null => {
+    if (!r.positions_screened) return null;
+    const out = new Set<number>();
+    for (const part of r.positions_screened.split(/[,;]/)) {
+      const m = part.trim().match(/^(\d+)\s*[-–]\s*(\d+)$/);
+      if (!m) return null;
+      for (let i = Number(m[1]); i <= Number(m[2]); i++) out.add(i);
+    }
+    return out;
+  };
   for (const s of searches) {
     const qualifies = s.hits.some((h) => h.decision === "qualifies");
     if (s.result === "demonstration-found" && !qualifies) problems.push(`${s.id}: demonstration-found without a hit whose decision is "qualifies"`);
+    for (const r of s.runs)
+      if (!obtained(r) && r.result_count_reported === 0) problems.push(`${s.id}: run ${r.id} was interrupted before any result was obtained but records result_count_reported 0 — a blocked request is an attempt, never an empty result`);
     if (s.result === "no-demonstration-found") {
-      const engines = new Set(s.runs.map((r) => r.engine));
-      const forms = new Set(s.runs.map((r) => r.query_form));
+      const engines = new Set(s.runs.filter(obtained).map((r) => r.engine));
+      const forms = new Set(s.runs.filter(obtained).map((r) => r.query_form));
       const missingE = MANDATORY_ENGINES.filter((e) => !engines.has(e as never));
       const missingF = MANDATORY_FORMS.filter((f) => !forms.has(f as never));
       if (s.completeness !== "protocol-complete-negative") problems.push(`${s.id}: no-demonstration-found requires completeness protocol-complete-negative (got ${s.completeness})`);
@@ -190,14 +207,23 @@ export function loadCanon(root: string): Canon {
           // Pass 27: once a composition term is frozen, the composite-name form is mandatory on every engine too.
           if (s.composition_terms.length > 0) required.push("composite-name");
           for (const engine of MANDATORY_ENGINES) {
-            const keys = new Set(s.runs.filter((r) => r.engine === engine).map((r) => r.query_key));
+            const keys = new Set(s.runs.filter((r) => r.engine === engine && obtained(r)).map((r) => r.query_key));
             const missing = required.filter((key) => !keys.has(key));
             if (missing.length) problems.push(`${s.id}: no-demonstration-found requires ${engine} runs for ${missing.join(", ")}`);
           }
+          // Screening depth per engine × key, summed over the segments of one mandatory run (continuation, pass 23): the union of
+          // their screened positions when every segment states them, else the sum of their counts.
+          const groups = new Map<string, Canon["searches"][number]["runs"]>();
           for (const r of s.runs) {
-            if (!r.query_key || !required.includes(r.query_key)) continue;
-            const due = Math.min(100, r.result_count_reported ?? r.records_retrieved);
-            if (r.records_screened < due) problems.push(`${s.id}: run ${r.id} screened ${r.records_screened} of the ${due} the protocol requires`);
+            if (!r.query_key || !required.includes(r.query_key) || !obtained(r)) continue;
+            const g = `${r.engine}|${r.query_key}`;
+            groups.set(g, [...(groups.get(g) ?? []), r]);
+          }
+          for (const [g, rs] of groups) {
+            const due = Math.min(100, Math.max(...rs.map((r) => r.result_count_reported ?? r.records_retrieved)));
+            const sets = rs.map(positionsOf);
+            const screened = sets.every((x) => x) ? new Set(sets.flatMap((x) => [...x!])).size : rs.reduce((n, r) => n + r.records_screened, 0);
+            if (screened < due) problems.push(`${s.id}: run ${rs.map((r) => r.id).join(" + ")} screened ${screened} of the ${due} the protocol requires (${g})`);
           }
           if (s.runs.filter((r) => r.query_form === "citation-chase").length < 2) problems.push(`${s.id}: a route negative requires citation-chase runs for two seed papers`);
         }

@@ -131,6 +131,111 @@
       records_read: 0
       query_key: composite-name
       note: "the composite-name form (pass 29): 34 works, 33 new — the nuclear-MHD concept literature of 1965–2006 (gas-core reactor MHD plants, nuclear-MHD power systems, closed-cycle meetings and reviews), screened at title level; the four composition terms were frozen with verified sources after the second reader's ruling"
+    - id: search:2026-09-21-p-ccef4f212b/s2-attempt-1-composite-name
+      engine: semantic-scholar
+      query_form: route-composite-name
+      query_key: "composite-name"
+      query: "gas core reactor MHD gaseous core reactor MHD generator NFR/MHD nuclear MHD power generation"
+      executed_at: 2026-09-21T13:26:02.186Z
+      request_url: "https://api.semanticscholar.org/graph/v1/paper/search?query=gas%20core%20reactor%20MHD%20gaseous%20core%20reactor%20MHD%20generator%20NFR%2FMHD%20nuclear%20MHD%20power%20generation&limit=100&fields=title%2Cyear%2CexternalIds"
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      filters:
+        limit: 100
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "HTTP 429 from Semantic Scholar's anonymous pool at the first request (no Retry-After header); no result list obtained; an attempt, never a result — the API key is an owner decision (exception e953)"
+    - id: search:2026-09-21-p-ccef4f212b/s2-attempt-2-driver-mechanism-1
+      engine: semantic-scholar
+      query_form: route-driver-mechanism
+      query_key: "driver-mechanism:1"
+      query: "Nuclear binding-energy difference radioactive decay fissile configuration nuclear fuel fissile fuel Nuclear fission fission reactor nuclear reactor reactor core fissioning plasma"
+      executed_at: 2026-09-21T13:26:06.643Z
+      request_url: "https://api.semanticscholar.org/graph/v1/paper/search?query=Nuclear%20binding-energy%20difference%20radioactive%20decay%20fissile%20configuration%20nuclear%20fuel%20fissile%20fuel%20Nuclear%20fission%20fission%20reactor%20nuclear%20reactor%20reactor%20core%20fissioning%20plasma&limit=100&fields=title%2Cyear%2CexternalIds"
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      filters:
+        limit: 100
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "HTTP 429 from Semantic Scholar's anonymous pool at the first request (no Retry-After header); no result list obtained; an attempt, never a result — the API key is an owner decision (exception e953)"
+    - id: search:2026-09-21-p-ccef4f212b/s2-attempt-3-mechanism-pair-1-2
+      engine: semantic-scholar
+      query_form: route-mechanism-pair
+      query_key: "mechanism-pair:1-2"
+      query: "Nuclear fission fission reactor nuclear reactor reactor core fissioning plasma Magnetohydrodynamic generation MHD effect Faraday MHD generator MHD generator magnetohydrodynamic generator MHD power generation"
+      executed_at: 2026-09-21T13:26:10.817Z
+      request_url: "https://api.semanticscholar.org/graph/v1/paper/search?query=Nuclear%20fission%20fission%20reactor%20nuclear%20reactor%20reactor%20core%20fissioning%20plasma%20Magnetohydrodynamic%20generation%20MHD%20effect%20Faraday%20MHD%20generator%20MHD%20generator%20magnetohydrodynamic%20generator%20MHD%20power%20generation&limit=100&fields=title%2Cyear%2CexternalIds"
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      filters:
+        limit: 100
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "HTTP 429 from Semantic Scholar's anonymous pool at the first request (no Retry-After header); no result list obtained; an attempt, never a result — the API key is an owner decision (exception e953)"
+    - id: search:2026-09-21-p-ccef4f212b/s2-attempt-4-whole-chain
+      engine: semantic-scholar
+      query_form: route-whole-chain
+      query_key: "whole-chain"
+      query: "Nuclear binding-energy difference radioactive decay fissile configuration nuclear fuel fissile fuel Nuclear fission fission reactor nuclear reactor reactor core fissioning plasma Magnetohydrodynamic generation MHD effect Faraday MHD generator MHD generator magnetohydrodynamic generator MHD power generation Electrical work electricity electrical output DC power"
+      executed_at: 2026-09-21T13:26:15.002Z
+      request_url: "https://api.semanticscholar.org/graph/v1/paper/search?query=Nuclear%20binding-energy%20difference%20radioactive%20decay%20fissile%20configuration%20nuclear%20fuel%20fissile%20fuel%20Nuclear%20fission%20fission%20reactor%20nuclear%20reactor%20reactor%20core%20fissioning%20plasma%20Magnetohydrodynamic%20generation%20MHD%20effect%20Faraday%20MHD%20generator%20MHD%20generator%20magnetohydrodynamic%20generator%20MHD%20power%20generation%20Electrical%20work%20electricity%20electrical%20output%20DC%20power&limit=100&fields=title%2Cyear%2CexternalIds"
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      filters:
+        limit: 100
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "HTTP 429 from Semantic Scholar's anonymous pool at the first request (no Retry-After header); no result list obtained; an attempt, never a result — the API key is an owner decision (exception e953)"
+    - id: search:2026-09-21-p-ccef4f212b/s2-attempt-5-demonstration-precision
+      engine: semantic-scholar
+      query_form: route-demonstration-precision
+      query_key: "demonstration-precision"
+      query: "Nuclear binding-energy difference radioactive decay fissile configuration nuclear fuel fissile fuel Nuclear fission fission reactor nuclear reactor reactor core fissioning plasma Magnetohydrodynamic generation MHD effect Faraday MHD generator MHD generator magnetohydrodynamic generator MHD power generation Electrical work electricity electrical output DC power experiment experimental measured device prototype"
+      executed_at: 2026-09-21T13:26:19.454Z
+      request_url: "https://api.semanticscholar.org/graph/v1/paper/search?query=Nuclear%20binding-energy%20difference%20radioactive%20decay%20fissile%20configuration%20nuclear%20fuel%20fissile%20fuel%20Nuclear%20fission%20fission%20reactor%20nuclear%20reactor%20reactor%20core%20fissioning%20plasma%20Magnetohydrodynamic%20generation%20MHD%20effect%20Faraday%20MHD%20generator%20MHD%20generator%20magnetohydrodynamic%20generator%20MHD%20power%20generation%20Electrical%20work%20electricity%20electrical%20output%20DC%20power%20experiment%20experimental%20measured%20device%20prototype&limit=100&fields=title%2Cyear%2CexternalIds"
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      filters:
+        limit: 100
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "HTTP 429 from Semantic Scholar's anonymous pool at the first request (no Retry-After header); no result list obtained; an attempt, never a result — the API key is an owner decision (exception e953)"
+    - id: search:2026-09-21-p-ccef4f212b/gs-attempt-dm1
+      engine: google-scholar
+      query_form: route-driver-mechanism
+      query_key: "driver-mechanism:1"
+      query: "(\"nuclear fission\" OR fission OR \"fission reactor\") AND (magnetohydrodynamic OR MHD) AND generator"
+      executed_at: 2026-09-21T13:30:50.820Z
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "pass 49 (21/09 11:29 pm Sydney): Google Scholar served its bot check (form#gs_captcha_f, 'Please show you're not a robot') at the first page load of this compact form; the page header carried 'About 9,680 results' but served no positions, so no count is recorded; the lane never completes a bot check — the run stops here under the continuation rule with nothing screened"
   screening:
     records_retrieved: 247
     unique_records: 247
@@ -266,6 +371,7 @@
     - "OpenAlex only (21/09, 11:17 am Sydney): driver-mechanism 2,909 works reported (the reactor literature), the first 100 by relevance and the first 50 newest screened at title level, the rest unscreened; mechanism-pair 65 (the nuclear-MHD concept literature of 1962–2011 among boundary-layer and nanofluid papers matched on 'MHD effect'); whole-chain 1; demonstration-precision 0; Semantic Scholar answers 429 keyless (owner exception e953) and Google Scholar a captcha — both mandatory for a negative, neither run"
     - "the composite-name form (21/09, 11:32 am Sydney): four terms frozen on the second reader's ruling (fission-fragment-ionized plasma MHD deliberately excluded as a sibling mechanism); 34 works, screened at title level only — the 1968 Japanese review and the 1970 Jülich report are the places a reactor-heated test would be reported and are unread; Semantic Scholar and Google Scholar owe the form"
     - two hits without abstracts (Hattori 1970; Pavshuk & Panchenko 2008) are insufficient-information until read
+    - "pass 49 (21/09 ~11:29 pm Sydney): every planned Semantic Scholar query was attempted once through the anonymous pool — 5 of 5 answered HTTP 429 at the first request (the runs above, each with its literal query, key and time); Google Scholar served its bot check at the first load of the driver-mechanism form (recorded as an attempt with nothing screened). Both engines are mandatory for a negative under route-search-v1, so the record stays partial and inconclusive: the outstanding obligations are the Semantic Scholar runs for every mandatory key and the Google Scholar runs to the protocol depth; OpenAlex's forms are complete. A blocked request is evidence that an engine was attempted, never that its query returned nothing."
   conclusion: "No demonstration found: the fission → MHD literature OpenAlex returns is conceptual — gas-core and vapor-core reactor designs feeding disk or vortex MHD channels (1962–1993), closed-cycle nonequilibrium-plasma system studies (2011), numerical fissioning-gas flows (1995) and conductivity models (1992) — with one measured constituent (a neutron-induced helium plasma, 1966) and no report of a fission-heated gas delivering MHD power to a load; the composite-name form adds the whole nuclear-MHD concept literature (1965–2006) and still no such run, and the second reader's own search agrees: Rosa's 10 kW machine ran on an arc furnace and NASA Lewis's closed-loop facility on its own heater, with reactors as the intended future source. One Japanese report (Hattori 1970) remains to be read. Inconclusive as a route search until the Scholar and Semantic Scholar runs exist."
   source_run_ids:
     - search:2026-09-21-p-ccef4f212b

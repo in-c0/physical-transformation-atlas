@@ -494,6 +494,49 @@ test("theoretical_limit retired into the typed constraint graph (loop-3 pass 42)
   rmSync(tmp2, { recursive: true, force: true });
 });
 
+test("the frontier search-state audit (loop-3 pass 49): every default-frontier candidate's obligations recomputed from its target; blocked attempts recorded as attempts, never coverage; all ten honestly partial with the outstanding engine and key named", () => {
+  const gate = spawnSync(process.execPath, [join(root, "tools", "audit-frontier-searches.mjs"), "--check"], { encoding: "utf8" });
+  assert.equal(gate.status, 0, gate.stderr || gate.stdout);
+  const report = readFileSync(join(root, "design", "reviews", "loop-3", "pass-49-frontier-search-audit.md"), "utf8");
+  assert.match(report, /States over the default frontier: demonstration-found 0 · protocol-complete-negative 0 · partial\/blocked 10\./);
+  const frontier = graph.paths.filter((p) => p.frontier_class === "candidate" && p.structural_kind === "composition");
+  assert.equal(frontier.length, 10);
+  const obtained = (r: { interruption?: string; records_screened: number; records_retrieved: number }) => !(r.interruption && r.records_screened === 0 && r.records_retrieved === 0);
+  for (const p of frontier) {
+    const rec = graph.searches.find((s) => s.target.kind === "path" && s.target.path === p.id)!;
+    assert.ok(rec, `${p.id} has a reviewed record`);
+    assert.equal(rec.result, "inconclusive");
+    assert.equal(rec.completeness, "partial");
+    // tonight's attempts: every planned Semantic Scholar key attempted once (blocked), one Scholar load (the bot check at the first page)
+    const s2Blocked = rec.runs.filter((r) => r.engine === "semantic-scholar" && !obtained(r));
+    assert.ok(s2Blocked.length >= 3, `${p.id}: ${s2Blocked.length} blocked Semantic Scholar attempts`);
+    for (const r of s2Blocked) {
+      assert.equal(r.result_count_reported, null, `${r.id}: a blocked attempt never records a count`);
+      assert.match(r.interruption!, /HTTP 429/);
+      assert.ok(r.query_key && r.query.length > 10, `${r.id} keeps its literal query and key`);
+    }
+    const gs = rec.runs.find((r) => r.id === `search:2026-09-21-${p.id}/gs-attempt-dm1`)!;
+    assert.ok(gs, `${p.id}: the Scholar attempt is on record`);
+    assert.equal(gs.result_count_reported, null);
+    assert.match(gs.interruption!, /bot check/);
+    // the limitation names the outstanding mandatory engines, and the report names the outstanding keys
+    assert.ok(rec.limitations.some((l) => /pass 49/.test(l) && /Semantic Scholar/.test(l) && /Google Scholar/.test(l)), `${p.id}: the pass-49 limitation`);
+    assert.match(report, new RegExp(`\\| ${p.id} \\|[^\\n]*partial/blocked[^\\n]*semantic-scholar: driver-mechanism:1 \\(attempted, blocked\\)`));
+  }
+  // the one Semantic Scholar query the pool answered is a completed run with an empty list — obtained, zero, no interruption
+  const answered = graph.searches.find((s) => s.id === "search:2026-09-21-p-231472e45e-partial")!.runs.find((r) => r.engine === "semantic-scholar" && obtained(r))!;
+  assert.ok(answered);
+  assert.equal(answered.result_count_reported, 0);
+  assert.equal(answered.query_key, "demonstration-precision");
+  assert.equal(answered.interruption, undefined);
+  // the composite-name form is not applicable where no source-backed term is frozen, mandatory where one is (the report says which)
+  assert.match(report, /\| p-62809bc294 \|[^\n]*not applicable \(no source-backed term\)/);
+  assert.match(report, /\| p-ccef4f212b \|[^\n]*mandatory \(4 term\(s\)\)[^\n]*semantic-scholar: composite-name \(attempted, blocked\)/);
+  // depth shortfalls the audit surfaced from the recorded numbers (never hidden by a stored label)
+  assert.match(report, /\| p-41cb505083 \|[^\n]*google-scholar: whole-chain screened 59 of 68/);
+  assert.match(report, /\| p-1043a15e01 \|[^\n]*google-scholar: driver-mechanism:1 screened 10 of 100/);
+});
+
 test("the electrical output-form / terminal-boundary audit (loop-3 pass 48): a gated report — no claim requires a waveform, the antenna route is complete as electrical work, the rectenna narrows to DC after rectification, generators and PV need no current form, and every electrical datum keeps its boundary", () => {
   const gate = spawnSync(process.execPath, [join(root, "tools", "audit-electrical-form.mjs"), "--check"], { encoding: "utf8" });
   assert.equal(gate.status, 0, gate.stderr || gate.stdout);

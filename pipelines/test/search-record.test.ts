@@ -184,3 +184,58 @@ test("negative control: a route record whose target.path is not the hash of targ
     problems.join("\n"),
   );
 });
+
+// Loop-3 pass 49: blocked attempts, segments and the conditional composite-name form (the reviewer's pass-48 findings 10–11, 14, 19–20).
+const blockedRun = (id: string, engine: string, form: string, key: string) =>
+  `    - { id: ${id}, engine: ${engine}, query_form: ${form}, query_key: "${key}", query: q, executed_at: "2026-09-21T23:30:00+10:00", result_count_reported: null, records_retrieved: 0, records_screened: 0, records_read: 0, positions_screened: none, interruption: "HTTP 429 from the anonymous pool; no result list obtained" }`;
+const segmentRun = (id: string, key: string, segment: number, positions: string, screened: number) =>
+  `    - { id: ${id}, engine: google-scholar, query_form: route-driver-mechanism, query_key: "${key}", query: q, executed_at: "2026-09-21T10:00:00+10:00", result_count_reported: 100, records_retrieved: 100, records_screened: ${screened}, records_read: 0, segment: ${segment}, positions_screened: "${positions}", interruption: "${segment === 1 ? "captcha after position 40" : "completed"}" }`;
+
+test("blocked attempts never count (pass 49): an engine that answered 429 on every key is an attempt, not coverage — a negative over OpenAlex + Scholar + blocked S2 is refused, however many OpenAlex runs were added; and a blocked run may never record an empty result", () => {
+  const runs = [
+    routeRunsFor("openalex", "oa"),
+    routeRunsFor("openalex", "oa-again"),
+    [blockedRun("s2-dm", "semantic-scholar", "route-driver-mechanism", "driver-mechanism:1"), blockedRun("s2-mp", "semantic-scholar", "route-mechanism-pair", "mechanism-pair:1-2"), blockedRun("s2-wc", "semantic-scholar", "route-whole-chain", "whole-chain"), blockedRun("s2-dp", "semantic-scholar", "route-demonstration-precision", "demonstration-precision")].join("\n"),
+    routeRunsFor("google-scholar", "gs"),
+    routeRun("cc1", "manual", "citation-chase", "citation-chase:seed-1"),
+    routeRun("cc2", "manual", "citation-chase", "citation-chase:seed-2"),
+  ].join("\n");
+  const problems = loadWith(routeNegative(runs));
+  assert.ok(problems.some((p) => p.includes("requires every discovery engine; missing semantic-scholar")), problems.join("\n"));
+  assert.ok(problems.some((p) => p.includes("requires semantic-scholar runs for driver-mechanism:1, mechanism-pair:1-2, whole-chain, demonstration-precision")), problems.join("\n"));
+  // the same record with the blocked runs claiming an empty result list is refused on that ground too
+  const zeroed = loadWith(routeNegative(runs.replace(/result_count_reported: null, records_retrieved: 0/g, "result_count_reported: 0, records_retrieved: 0")));
+  assert.ok(zeroed.some((p) => p.includes("a blocked request is an attempt, never an empty result")), zeroed.join("\n"));
+});
+
+test("segments add up (pass 49): two Scholar sittings screening positions 1–40 and 41–100 complete one mandatory run; a repeated segment does not", () => {
+  const complete = [
+    routeRunsFor("openalex", "oa"),
+    routeRunsFor("semantic-scholar", "s2"),
+    segmentRun("gs-dm-1", "driver-mechanism:1", 1, "1–40", 40),
+    segmentRun("gs-dm-2", "driver-mechanism:1", 2, "41–100", 60),
+    routeRun("gs-mp", "google-scholar", "route-mechanism-pair", "mechanism-pair:1-2"),
+    routeRun("gs-wc", "google-scholar", "route-whole-chain", "whole-chain"),
+    routeRun("gs-dp", "google-scholar", "route-demonstration-precision", "demonstration-precision"),
+    routeRun("cc1", "manual", "citation-chase", "citation-chase:seed-1"),
+    routeRun("cc2", "manual", "citation-chase", "citation-chase:seed-2"),
+  ].join("\n");
+  assert.deepEqual(loadWith(routeNegative(complete)).filter((p) => p.includes("search:2026-09-21")), []);
+  const repeated = complete.replace('positions_screened: "41–100", interruption: "completed"', 'positions_screened: "1–40", interruption: "completed"').replace("records_screened: 60", "records_screened: 40");
+  const problems = loadWith(routeNegative(repeated));
+  assert.ok(problems.some((p) => p.includes("gs-dm-1 + gs-dm-2 screened 40 of the 100")), problems.join("\n"));
+});
+
+test("the composite-name form is conditional (pass 49): no frozen composition term means the form is not applicable, never missing; one frozen term makes it mandatory on every discovery engine", () => {
+  const base = [
+    routeRunsFor("openalex", "oa"),
+    routeRunsFor("semantic-scholar", "s2"),
+    routeRunsFor("google-scholar", "gs"),
+    routeRun("cc1", "manual", "citation-chase", "citation-chase:seed-1"),
+    routeRun("cc2", "manual", "citation-chase", "citation-chase:seed-2"),
+  ].join("\n");
+  assert.deepEqual(loadWith(routeNegative(base)).filter((p) => p.includes("search:2026-09-21")), [], "an empty composition_terms array requires no composite-name run");
+  const frozen = loadWith(routeNegative(base, "  composition_terms: [{ term: \"thermocapillary electrokinetic generator\", evidence: [source:seebeck-1826] }]\n"));
+  assert.ok(frozen.some((p) => p.includes("requires openalex runs for composite-name")), frozen.join("\n"));
+  assert.ok(frozen.some((p) => p.includes("requires google-scholar runs for composite-name")), frozen.join("\n"));
+});

@@ -4,7 +4,10 @@ import styles from "./Drawer.module.css";
 
 const ENGINE_SHORT: Record<string, string> = { openalex: "OpenAlex", "semantic-scholar": "Semantic Scholar", "google-scholar": "Google Scholar", crossref: "Crossref", manual: "manual web search" };
 const ENGINE_ABBR: Record<string, string> = { openalex: "OA", "semantic-scholar": "S2", "google-scholar": "Scholar", crossref: "CR", manual: "web" };
-export const enginesOf = (r: SearchRecord) => [...new Set(r.runs.map((x) => x.engine))];
+/** Pass 49: a run that obtained no result list (a throttle or a bot check before the first position) is an attempt, never coverage. */
+export const obtainedRun = (x: SearchRecord["runs"][number]) => !(x.interruption && x.records_screened === 0 && x.records_retrieved === 0);
+export const enginesOf = (r: SearchRecord) => [...new Set(r.runs.filter(obtainedRun).map((x) => x.engine))];
+export const blockedAttempts = (r: SearchRecord) => r.runs.filter((x) => !obtainedRun(x));
 export const engineList = (r: SearchRecord, abbr = false) =>
   enginesOf(r)
     .map((e) => (abbr ? ENGINE_ABBR[e] : ENGINE_SHORT[e]) ?? e)
@@ -65,8 +68,11 @@ export function SearchRecordView({ record }: { record: SearchRecord }) {
         </p>
       )}
       <div className="t-micro secondary" style={{ marginTop: 4 }}>
-        {record.runs.length} run{record.runs.length === 1 ? "" : "s"} · {record.screening.unique_records} unique records · {record.screening.full_text_read} read in full · reviewed by{" "}
-        {record.reviewed_by.split(" (")[0]} · protocol {record.protocol_version}
+        {record.runs.filter(obtainedRun).length} run{record.runs.filter(obtainedRun).length === 1 ? "" : "s"}
+        {blockedAttempts(record).length > 0
+          ? ` · ${blockedAttempts(record).length} attempt${blockedAttempts(record).length === 1 ? "" : "s"} blocked before any result (${[...new Set(blockedAttempts(record).map((x) => ENGINE_SHORT[x.engine] ?? x.engine))].join(", ")}) — attempted, never counted`
+          : ""}{" "}
+        · {record.screening.unique_records} unique records · {record.screening.full_text_read} read in full · reviewed by {record.reviewed_by.split(" (")[0]} · protocol {record.protocol_version}
       </div>
       {rejected.length > 0 && (
         <ul className={styles.conditions}>

@@ -267,6 +267,111 @@
       records_read: 9
       query_key: composite-name
       note: "the first composite-name run (pass 27): 45 works, 44 not in any earlier bundle — the thermopolarization literature of Kholkin, Trepakov, Tagantsev and successors (1982–2026), invisible to every decomposed form because its abstracts never say thermal expansion"
+    - id: search:2026-09-21-p-a093d7ecc5/s2-attempt-1-composite-name
+      engine: semantic-scholar
+      query_form: route-composite-name
+      query_key: "composite-name"
+      query: "thermoflexoelectric effect thermo-flexoelectric effect thermoflexoelectricity thermopolarization"
+      executed_at: 2026-09-21T13:24:43.355Z
+      request_url: "https://api.semanticscholar.org/graph/v1/paper/search?query=thermoflexoelectric%20effect%20thermo-flexoelectric%20effect%20thermoflexoelectricity%20thermopolarization&limit=100&fields=title%2Cyear%2CexternalIds"
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      filters:
+        limit: 100
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "HTTP 429 from Semantic Scholar's anonymous pool at the first request (no Retry-After header); no result list obtained; an attempt, never a result — the API key is an owner decision (exception e953)"
+    - id: search:2026-09-21-p-a093d7ecc5/s2-attempt-2-driver-mechanism-1
+      engine: semantic-scholar
+      query_form: route-driver-mechanism
+      query_key: "driver-mechanism:1"
+      query: "Temperature gradient temperature difference thermal gradient waste heat Thermal expansion thermal strain thermoelastic strain thermal expansion gradient"
+      executed_at: 2026-09-21T13:24:47.874Z
+      request_url: "https://api.semanticscholar.org/graph/v1/paper/search?query=Temperature%20gradient%20temperature%20difference%20thermal%20gradient%20waste%20heat%20Thermal%20expansion%20thermal%20strain%20thermoelastic%20strain%20thermal%20expansion%20gradient&limit=100&fields=title%2Cyear%2CexternalIds"
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      filters:
+        limit: 100
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "HTTP 429 from Semantic Scholar's anonymous pool at the first request (no Retry-After header); no result list obtained; an attempt, never a result — the API key is an owner decision (exception e953)"
+    - id: search:2026-09-21-p-a093d7ecc5/s2-attempt-3-mechanism-pair-1-2
+      engine: semantic-scholar
+      query_form: route-mechanism-pair
+      query_key: "mechanism-pair:1-2"
+      query: "Thermal expansion thermal strain thermoelastic strain thermal expansion gradient Flexoelectric effect flexoelectricity flexoelectric strain-gradient polarization thermoflexoelectric effect thermo-flexoelectric effect thermoflexoelectricity"
+      executed_at: 2026-09-21T13:24:52.384Z
+      request_url: "https://api.semanticscholar.org/graph/v1/paper/search?query=Thermal%20expansion%20thermal%20strain%20thermoelastic%20strain%20thermal%20expansion%20gradient%20Flexoelectric%20effect%20flexoelectricity%20flexoelectric%20strain-gradient%20polarization%20thermoflexoelectric%20effect%20thermo-flexoelectric%20effect%20thermoflexoelectricity&limit=100&fields=title%2Cyear%2CexternalIds"
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      filters:
+        limit: 100
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "HTTP 429 from Semantic Scholar's anonymous pool at the first request (no Retry-After header); no result list obtained; an attempt, never a result — the API key is an owner decision (exception e953)"
+    - id: search:2026-09-21-p-a093d7ecc5/s2-attempt-4-whole-chain
+      engine: semantic-scholar
+      query_form: route-whole-chain
+      query_key: "whole-chain"
+      query: "Temperature gradient temperature difference thermal gradient waste heat Thermal expansion thermal strain thermoelastic strain thermal expansion gradient Flexoelectric effect flexoelectricity flexoelectric strain-gradient polarization thermoflexoelectric effect thermo-flexoelectric effect thermoflexoelectricity Electrical work electricity electrical output DC power"
+      executed_at: 2026-09-21T13:24:56.842Z
+      request_url: "https://api.semanticscholar.org/graph/v1/paper/search?query=Temperature%20gradient%20temperature%20difference%20thermal%20gradient%20waste%20heat%20Thermal%20expansion%20thermal%20strain%20thermoelastic%20strain%20thermal%20expansion%20gradient%20Flexoelectric%20effect%20flexoelectricity%20flexoelectric%20strain-gradient%20polarization%20thermoflexoelectric%20effect%20thermo-flexoelectric%20effect%20thermoflexoelectricity%20Electrical%20work%20electricity%20electrical%20output%20DC%20power&limit=100&fields=title%2Cyear%2CexternalIds"
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      filters:
+        limit: 100
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "HTTP 429 from Semantic Scholar's anonymous pool at the first request (no Retry-After header); no result list obtained; an attempt, never a result — the API key is an owner decision (exception e953)"
+    - id: search:2026-09-21-p-a093d7ecc5/s2-attempt-5-demonstration-precision
+      engine: semantic-scholar
+      query_form: route-demonstration-precision
+      query_key: "demonstration-precision"
+      query: "Temperature gradient temperature difference thermal gradient waste heat Thermal expansion thermal strain thermoelastic strain thermal expansion gradient Flexoelectric effect flexoelectricity flexoelectric strain-gradient polarization thermoflexoelectric effect thermo-flexoelectric effect thermoflexoelectricity Electrical work electricity electrical output DC power experiment experimental measured device prototype"
+      executed_at: 2026-09-21T13:25:01.041Z
+      request_url: "https://api.semanticscholar.org/graph/v1/paper/search?query=Temperature%20gradient%20temperature%20difference%20thermal%20gradient%20waste%20heat%20Thermal%20expansion%20thermal%20strain%20thermoelastic%20strain%20thermal%20expansion%20gradient%20Flexoelectric%20effect%20flexoelectricity%20flexoelectric%20strain-gradient%20polarization%20thermoflexoelectric%20effect%20thermo-flexoelectric%20effect%20thermoflexoelectricity%20Electrical%20work%20electricity%20electrical%20output%20DC%20power%20experiment%20experimental%20measured%20device%20prototype&limit=100&fields=title%2Cyear%2CexternalIds"
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      filters:
+        limit: 100
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "HTTP 429 from Semantic Scholar's anonymous pool at the first request (no Retry-After header); no result list obtained; an attempt, never a result — the API key is an owner decision (exception e953)"
+    - id: search:2026-09-21-p-a093d7ecc5/gs-attempt-dm1
+      engine: google-scholar
+      query_form: route-driver-mechanism
+      query_key: "driver-mechanism:1"
+      query: "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"waste heat\") AND (\"thermal expansion\" OR \"thermal strain\") AND flexoelectric"
+      executed_at: 2026-09-21T13:29:23.609Z
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "pass 49 (21/09 11:29 pm Sydney): Google Scholar served its bot check (form#gs_captcha_f, 'Please show you're not a robot') at the first page load of this compact form; the page header carried 'About 461 results' but served no positions, so no count is recorded; the lane never completes a bot check — the run stops here under the continuation rule with nothing screened"
   screening:
     records_retrieved: 205
     unique_records: 205
@@ -461,6 +566,7 @@
     - Han et al. 2026 is paywalled; its thermal-mode driver and any load measurement are unverified pending an owner read
     - "the thermoflexoelectric rerun (pass 27, 21/09 10:17 am Sydney): the same 158 works, none new — a term that names the composition without the thermal-expansion vocabulary (Wei 2024 writes 'inhomogeneous strains') is unreachable by a driver-AND-mechanism or mechanism-pair form; the reviewer's ruling that day added the composite-name form to route-search-v1"
     - "the composite-name form (OpenAlex, 21/09 10:40 am Sydney): 45 works, 44 new — screened at title level, nine abstracts read; the thermopolarization measurements of the 1980s–1990s (Kholkin, Trepakov, Tagantsev, Rafikov) are recorded insufficient-information until the second reader rules whether their 'proper' thermopolarization is a distinct coupling the atlas lacks or the route's own flexoelectric mechanism; Semantic Scholar and Google Scholar still owe this form"
+    - "pass 49 (21/09 ~11:29 pm Sydney): every planned Semantic Scholar query was attempted once through the anonymous pool — 5 of 5 answered HTTP 429 at the first request (the runs above, each with its literal query, key and time); Google Scholar served its bot check at the first load of the driver-mechanism form (recorded as an attempt with nothing screened). Both engines are mandatory for a negative under route-search-v1, so the record stays partial and inconclusive: the outstanding obligations are the Semantic Scholar runs for every mandatory key and the Google Scholar runs to the protocol depth; OpenAlex's forms are complete. A blocked request is evidence that an engine was attempted, never that its query returned nothing."
   conclusion: "The exact composition has been observed but not converted: Iwakiri, Miyata & Mori 2026 impose a temperature gradient whose thermal expansion produces a strain gradient whose flexoelectric polarization is detected (voltage and displacement current) in eight centrosymmetric insulators, scaling with the expansion coefficient — every mechanism in order, no electrical work delivered. Nothing in the OpenAlex runs or the two chases puts a load on such a device; the thermal-flexoelectric literature otherwise concerns the converse effect, bending-imposed gradients, uniform-temperature conduction effects and flexo-induced pyroelectricity. Inconclusive as a route search until the Scholar and Semantic Scholar runs exist; the open question is now narrow: has anyone extracted work. After the second reader's review (pass 24) the composition is recorded as the observed pathway pathway:thermal-expansion-flexoelectric-response — status observed, observed_through the flexoelectric charge step, the final conversion to work unsupported — and the route reads observed · output not delivered while its class stays candidate. The reviewer's nearest additional hit, Han et al. 2026 (a heat-driven flexoelectric nanogenerator whose differential thermal deformation supplies the strain gradient; current response only in the accessible record), stays insufficient-information pending its full text. The composite-name form (pass 27) then surfaced what the decomposed forms could not: thermopolarization currents measured in dielectrics from 1982 (Kholkin, Trepakov & Smolenskii), in SrTiO₃, KTaO₃ and KH₂PO₄ by 1989 (Trepakov, Nurieva & Tagantsev, who separated a 'proper' non-flexoelectric thermopolarization from the flexoelectric 'tertiary pyroeffect'), and dynamically in relaxor paraelectrics by 1994 — polarization observed under a temperature gradient decades before the 2026 preprint, still with no load; the second reader's ruling (pass 28) made the direct effect its own phenomenon and coupling family, so those measurements are evidence for it and wrong-coupling here; Iwakiri's α-scaling supports attributing their dominant measured component to the flexoelectric chain without excluding a direct residual."
   source_run_ids:
     - search:2026-09-20-p-a093d7ecc5

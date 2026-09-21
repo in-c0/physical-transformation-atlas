@@ -611,7 +611,7 @@
   conditions: ["photoelectrochemical water splitting with a single absorber; a datum states the basis 'PEC water splitting, single-junction absorber, AM1.5G'"]
   evidence: [source:fountaine-2016-pec-limits, source:rozzi-2020-green-synthetic-fuels]
   status: established
-  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 46" }
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 46; pass 47 close: established under the atlas's review-supported evidence rule — Rozzi et al. 2020 restates Fountaine's calculation citing it, and is not an independent replication by a second modelling group" }
 - id: claim:pec-bounded-dual-junction-ideal
   subject: phenomenon:photoelectrochemical-effect
   predicate: bounded_by
@@ -619,7 +619,7 @@
   conditions: ["photoelectrochemical water splitting with two absorbers in series; a datum states the basis 'PEC water splitting, dual-junction absorber, AM1.5G'"]
   evidence: [source:fountaine-2016-pec-limits, source:rozzi-2020-green-synthetic-fuels]
   status: established
-  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 46" }
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 46; pass 47 close: established under the atlas's review-supported evidence rule — Rozzi et al. 2020 restates Fountaine's calculation citing it, and is not an independent replication by a second modelling group" }
 - id: claim:pec-benchmarked-realistic-high-performance
   subject: phenomenon:photoelectrochemical-effect
   predicate: governed_by

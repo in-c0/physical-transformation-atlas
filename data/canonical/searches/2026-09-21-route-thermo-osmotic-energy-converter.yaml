@@ -170,6 +170,93 @@
       records_screened: 46
       records_read: 0
       note: additional chase on the longer-chain demonstration's reference list, looking for an earlier direct turbine run; it is how the MemPower paper was found
+    - id: search:2026-09-21-p-8fba925ce8/s2-attempt-1-driver-mechanism-1
+      engine: semantic-scholar
+      query_form: route-driver-mechanism
+      query_key: "driver-mechanism:1"
+      query: "Temperature gradient temperature difference thermal gradient ΔT waste heat thermo-osmosis thermal osmosis thermo-osmotic flow thermoosmosis thermo-osmotic energy conversion vapor pressure-driven osmosis VPDO pressure-retarded membrane distillation PRMD"
+      executed_at: 2026-09-21T13:23:51.558Z
+      request_url: "https://api.semanticscholar.org/graph/v1/paper/search?query=Temperature%20gradient%20temperature%20difference%20thermal%20gradient%20%CE%94T%20waste%20heat%20thermo-osmosis%20thermal%20osmosis%20thermo-osmotic%20flow%20thermoosmosis%20thermo-osmotic%20energy%20conversion%20vapor%20pressure-driven%20osmosis%20VPDO%20pressure-retarded%20membrane%20distillation%20PRMD&limit=100&fields=title%2Cyear%2CexternalIds"
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      filters:
+        limit: 100
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "HTTP 429 from Semantic Scholar's anonymous pool at the first request (no Retry-After header); no result list obtained; an attempt, never a result — the API key is an owner decision (exception e953)"
+    - id: search:2026-09-21-p-8fba925ce8/s2-attempt-2-mechanism-pair-1-2
+      engine: semantic-scholar
+      query_form: route-mechanism-pair
+      query_key: "mechanism-pair:1-2"
+      query: "thermo-osmosis thermal osmosis thermo-osmotic flow thermoosmosis thermo-osmotic energy conversion vapor pressure-driven osmosis VPDO pressure-retarded membrane distillation PRMD rotor torque blade lift turbine action hydraulic turbine turbine"
+      executed_at: 2026-09-21T13:23:56.024Z
+      request_url: "https://api.semanticscholar.org/graph/v1/paper/search?query=thermo-osmosis%20thermal%20osmosis%20thermo-osmotic%20flow%20thermoosmosis%20thermo-osmotic%20energy%20conversion%20vapor%20pressure-driven%20osmosis%20VPDO%20pressure-retarded%20membrane%20distillation%20PRMD%20rotor%20torque%20blade%20lift%20turbine%20action%20hydraulic%20turbine%20turbine&limit=100&fields=title%2Cyear%2CexternalIds"
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      filters:
+        limit: 100
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "HTTP 429 from Semantic Scholar's anonymous pool at the first request (no Retry-After header); no result list obtained; an attempt, never a result — the API key is an owner decision (exception e953)"
+    - id: search:2026-09-21-p-8fba925ce8/s2-attempt-3-whole-chain
+      engine: semantic-scholar
+      query_form: route-whole-chain
+      query_key: "whole-chain"
+      query: "Temperature gradient thermal gradient ΔT waste heat thermo-osmosis thermal osmosis thermo-osmotic flow thermoosmosis thermo-osmotic energy conversion vapor pressure-driven osmosis VPDO pressure-retarded membrane distillation PRMD hydraulic turbine turbine mechanical work shaft work torque motion"
+      executed_at: 2026-09-21T13:24:00.482Z
+      request_url: "https://api.semanticscholar.org/graph/v1/paper/search?query=Temperature%20gradient%20thermal%20gradient%20%CE%94T%20waste%20heat%20thermo-osmosis%20thermal%20osmosis%20thermo-osmotic%20flow%20thermoosmosis%20thermo-osmotic%20energy%20conversion%20vapor%20pressure-driven%20osmosis%20VPDO%20pressure-retarded%20membrane%20distillation%20PRMD%20hydraulic%20turbine%20turbine%20mechanical%20work%20shaft%20work%20torque%20motion&limit=100&fields=title%2Cyear%2CexternalIds"
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      filters:
+        limit: 100
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "HTTP 429 from Semantic Scholar's anonymous pool at the first request (no Retry-After header); no result list obtained; an attempt, never a result — the API key is an owner decision (exception e953)"
+    - id: search:2026-09-21-p-8fba925ce8/s2-attempt-4-demonstration-precision
+      engine: semantic-scholar
+      query_form: route-demonstration-precision
+      query_key: "demonstration-precision"
+      query: "Temperature gradient thermal gradient ΔT waste heat thermo-osmosis thermal osmosis thermo-osmotic flow thermoosmosis thermo-osmotic energy conversion vapor pressure-driven osmosis VPDO pressure-retarded membrane distillation PRMD hydraulic turbine turbine mechanical work shaft work torque motion experiment experimental measured device prototype"
+      executed_at: 2026-09-21T13:24:04.658Z
+      request_url: "https://api.semanticscholar.org/graph/v1/paper/search?query=Temperature%20gradient%20thermal%20gradient%20%CE%94T%20waste%20heat%20thermo-osmosis%20thermal%20osmosis%20thermo-osmotic%20flow%20thermoosmosis%20thermo-osmotic%20energy%20conversion%20vapor%20pressure-driven%20osmosis%20VPDO%20pressure-retarded%20membrane%20distillation%20PRMD%20hydraulic%20turbine%20turbine%20mechanical%20work%20shaft%20work%20torque%20motion%20experiment%20experimental%20measured%20device%20prototype&limit=100&fields=title%2Cyear%2CexternalIds"
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      filters:
+        limit: 100
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "HTTP 429 from Semantic Scholar's anonymous pool at the first request (no Retry-After header); no result list obtained; an attempt, never a result — the API key is an owner decision (exception e953)"
+    - id: search:2026-09-21-p-8fba925ce8/gs-attempt-dm1
+      engine: google-scholar
+      query_form: route-driver-mechanism
+      query_key: "driver-mechanism:1"
+      query: "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"waste heat\") AND (\"thermo-osmosis\" OR thermoosmosis OR \"thermal osmosis\")"
+      executed_at: 2026-09-21T13:29:11.611Z
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "pass 49 (21/09 11:29 pm Sydney): Google Scholar served its bot check (form#gs_captcha_f, 'Please show you're not a robot') at the first page load of this compact form; the page header carried 'About 1,720 results' but served no positions, so no count is recorded; the lane never completes a bot check — the run stops here under the continuation rule with nothing screened"
   screening:
     records_retrieved: 156
     unique_records: 139
@@ -391,6 +478,7 @@
     - "citation chase on OpenAlex's reference lists and citing works only (Straub 2016: 47 of 48 references, 313 citers; Straub 2017: 56, 112; Luo 2024: 32, 7; Xiao 2024: 41 of 42, 5), screened at title level with a turbine / hydro / power-generation vocabulary filter; no full-text chase"
     - one plausible hit remains unread (Luo et al. 2024, Desalination 579:117485, paywalled) and could be a direct turbine run
     - the mechanism-pair, whole-chain and demonstration-precision queries returned 5, 1 and 0 works; the whole-chain hit is the 2017 theory paper
+    - "pass 49 (21/09 ~11:29 pm Sydney): every planned Semantic Scholar query was attempted once through the anonymous pool — 4 of 4 answered HTTP 429 at the first request (the runs above, each with its literal query, key and time); Google Scholar served its bot check at the first load of the driver-mechanism form (recorded as an attempt with nothing screened). Both engines are mandatory for a negative under route-search-v1, so the record stays partial and inconclusive: the outstanding obligations are the Semantic Scholar runs for every mandatory key and the Google Scholar runs to the protocol depth; OpenAlex's forms are complete. A blocked request is evidence that an engine was attempted, never that its query returned nothing."
   conclusion: No physical experiment couples a turbine directly to a thermo-osmotic pressurised flow in the OpenAlex protocol runs or the four citation chases. The pressurised flow itself has been produced and its pressure × flux reported since 2014 (MemPower, Straub 2016, stack TOEC 2021, PRMD); the one hydro-turbine run (Xiao et al. 2024, a 2 W-rated bulb lit) stores the permeate in an elevated tank first and is recorded as longer-chain; the same driver and stage have been closed through electrokinetic and electrodialytic sinks instead (Huang 2021, Luo 2023, Ma 2025). Inconclusive until Luo 2024 is read and the Semantic Scholar and Google Scholar runs exist.
   source_run_ids:
     - search:2026-09-20-p-8fba925ce8

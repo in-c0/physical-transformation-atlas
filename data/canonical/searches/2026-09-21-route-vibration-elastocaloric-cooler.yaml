@@ -125,6 +125,93 @@
       records_screened: 2
       records_read: 1
       query_key: demonstration-precision
+    - id: search:2026-09-21-p-4d6800fa81/s2-attempt-1-driver-mechanism-1
+      engine: semantic-scholar
+      query_form: route-driver-mechanism
+      query_key: "driver-mechanism:1"
+      query: "Mechanical vibration oscillation ambient vibration kinetic motion vibration-driven base excitation Elastic deformation Hooke's law response strain energy storage"
+      executed_at: 2026-09-21T13:25:05.507Z
+      request_url: "https://api.semanticscholar.org/graph/v1/paper/search?query=Mechanical%20vibration%20oscillation%20ambient%20vibration%20kinetic%20motion%20vibration-driven%20base%20excitation%20Elastic%20deformation%20Hooke's%20law%20response%20strain%20energy%20storage&limit=100&fields=title%2Cyear%2CexternalIds"
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      filters:
+        limit: 100
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "HTTP 429 from Semantic Scholar's anonymous pool at the first request (no Retry-After header); no result list obtained; an attempt, never a result — the API key is an owner decision (exception e953)"
+    - id: search:2026-09-21-p-4d6800fa81/s2-attempt-2-mechanism-pair-1-2
+      engine: semantic-scholar
+      query_form: route-mechanism-pair
+      query_key: "mechanism-pair:1-2"
+      query: "Elastic deformation Hooke's law response strain energy storage Elastocaloric effect mechanocaloric effect stress-induced caloric effect elastocaloric cooling elastocaloric mechanocaloric"
+      executed_at: 2026-09-21T13:25:09.691Z
+      request_url: "https://api.semanticscholar.org/graph/v1/paper/search?query=Elastic%20deformation%20Hooke's%20law%20response%20strain%20energy%20storage%20Elastocaloric%20effect%20mechanocaloric%20effect%20stress-induced%20caloric%20effect%20elastocaloric%20cooling%20elastocaloric%20mechanocaloric&limit=100&fields=title%2Cyear%2CexternalIds"
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      filters:
+        limit: 100
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "HTTP 429 from Semantic Scholar's anonymous pool at the first request (no Retry-After header); no result list obtained; an attempt, never a result — the API key is an owner decision (exception e953)"
+    - id: search:2026-09-21-p-4d6800fa81/s2-attempt-3-whole-chain
+      engine: semantic-scholar
+      query_form: route-whole-chain
+      query_key: "whole-chain"
+      query: "Mechanical vibration oscillation ambient vibration kinetic motion vibration-driven base excitation Elastic deformation Hooke's law response strain energy storage Elastocaloric effect mechanocaloric effect stress-induced caloric effect elastocaloric cooling elastocaloric mechanocaloric cooling refrigeration heat pumping temperature lift"
+      executed_at: 2026-09-21T13:25:14.149Z
+      request_url: "https://api.semanticscholar.org/graph/v1/paper/search?query=Mechanical%20vibration%20oscillation%20ambient%20vibration%20kinetic%20motion%20vibration-driven%20base%20excitation%20Elastic%20deformation%20Hooke's%20law%20response%20strain%20energy%20storage%20Elastocaloric%20effect%20mechanocaloric%20effect%20stress-induced%20caloric%20effect%20elastocaloric%20cooling%20elastocaloric%20mechanocaloric%20cooling%20refrigeration%20heat%20pumping%20temperature%20lift&limit=100&fields=title%2Cyear%2CexternalIds"
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      filters:
+        limit: 100
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "HTTP 429 from Semantic Scholar's anonymous pool at the first request (no Retry-After header); no result list obtained; an attempt, never a result — the API key is an owner decision (exception e953)"
+    - id: search:2026-09-21-p-4d6800fa81/s2-attempt-4-demonstration-precision
+      engine: semantic-scholar
+      query_form: route-demonstration-precision
+      query_key: "demonstration-precision"
+      query: "Mechanical vibration oscillation ambient vibration kinetic motion vibration-driven base excitation Elastic deformation Hooke's law response strain energy storage Elastocaloric effect mechanocaloric effect stress-induced caloric effect elastocaloric cooling elastocaloric mechanocaloric cooling refrigeration heat pumping temperature lift experiment experimental measured device prototype"
+      executed_at: 2026-09-21T13:25:18.609Z
+      request_url: "https://api.semanticscholar.org/graph/v1/paper/search?query=Mechanical%20vibration%20oscillation%20ambient%20vibration%20kinetic%20motion%20vibration-driven%20base%20excitation%20Elastic%20deformation%20Hooke's%20law%20response%20strain%20energy%20storage%20Elastocaloric%20effect%20mechanocaloric%20effect%20stress-induced%20caloric%20effect%20elastocaloric%20cooling%20elastocaloric%20mechanocaloric%20cooling%20refrigeration%20heat%20pumping%20temperature%20lift%20experiment%20experimental%20measured%20device%20prototype&limit=100&fields=title%2Cyear%2CexternalIds"
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      filters:
+        limit: 100
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "HTTP 429 from Semantic Scholar's anonymous pool at the first request (no Retry-After header); no result list obtained; an attempt, never a result — the API key is an owner decision (exception e953)"
+    - id: search:2026-09-21-p-4d6800fa81/gs-attempt-dm1
+      engine: google-scholar
+      query_form: route-driver-mechanism
+      query_key: "driver-mechanism:1"
+      query: "(\"mechanical vibration\" OR vibration OR oscillation) AND (\"elastic deformation\" OR strain) AND elastocaloric"
+      executed_at: 2026-09-21T13:29:26.605Z
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "pass 49 (21/09 11:29 pm Sydney): Google Scholar served its bot check (form#gs_captcha_f, 'Please show you're not a robot') at the first page load of this compact form; the page header carried 'About 898 results' but served no positions, so no count is recorded; the lane never completes a bot check — the run stops here under the continuation rule with nothing screened"
   screening:
     records_retrieved: 153
     unique_records: 153
@@ -202,6 +289,7 @@
   limitations:
     - "OpenAlex only (21/09, 11:15 am Sydney): driver-mechanism 364 works reported, the first 100 by relevance and the first 50 newest screened at title level (protocol depth), the rest unscreened — generic elastic-deformation mechanics with no elastocaloric element; mechanism-pair 6 (elastocaloric materials under test-machine loading); whole-chain 0; demonstration-precision 0; the reviewer's precision query 2, one of them the recorded Kumar 2019 proposal; Semantic Scholar answers 429 keyless (owner exception e953) and Google Scholar a captcha — both mandatory for a negative, neither run"
     - no composition term is frozen; if the literature names a "vibration-driven elastocaloric cooler" as a device the composite-name form becomes mandatory once the term is added with its source
+    - "pass 49 (21/09 ~11:29 pm Sydney): every planned Semantic Scholar query was attempted once through the anonymous pool — 4 of 4 answered HTTP 429 at the first request (the runs above, each with its literal query, key and time); Google Scholar served its bot check at the first load of the driver-mechanism form (recorded as an attempt with nothing screened). Both engines are mandatory for a negative under route-search-v1, so the record stays partial and inconclusive: the outstanding obligations are the Semantic Scholar runs for every mandatory key and the Google Scholar runs to the protocol depth; OpenAlex's forms are complete. A blocked request is evidence that an engine was attempted, never that its query returned nothing."
   conclusion: "No demonstration known and none found: the only work that joins ambient vibration to elastocaloric cooling is the Kumar 2019 finite-element proposal the atlas already records as a proposed pathway; every elastocaloric experiment the forms return is loaded by a test machine or a designed actuator. Inconclusive as a route search until the Scholar and Semantic Scholar runs exist."
   source_run_ids:
     - search:2026-09-21-p-4d6800fa81

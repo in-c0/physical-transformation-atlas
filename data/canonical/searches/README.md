@@ -141,6 +141,17 @@ result positions. The mandatory form is complete only when the protocol's requir
 has been reached; until then the search remains `partial`. Engine throttling never makes a
 mandatory query form optional and does not count as a negative result.
 
+Blocked attempts (recorded semantics, 21/09/2026, loop-3 pass 49 — the mandatory engines and forms
+are unchanged). An engine that answers a throttle (HTTP 429) or a bot check before the first result
+position is recorded as an attempt: a run with the literal intended query and `query_key`, the
+execution time, `result_count_reported: null`, nothing retrieved or screened, `positions_screened:
+none` and an `interruption` naming the blocker. Such a run counts toward nothing — not the engine's
+coverage, not the key's, not the depth — and it may never carry `result_count_reported: 0`: a
+blocked page is evidence that the engine was attempted, never that its query returned nothing.
+Segments of one mandatory run (the same engine and key over several sittings) add their screened
+positions together. The loader enforces both, and a negative's obligations are recomputed from
+its target at load time rather than read from its stored completeness label.
+
 ### 3. What qualifies as a route demonstration
 
 A hit `qualifies` only when all of these are true:

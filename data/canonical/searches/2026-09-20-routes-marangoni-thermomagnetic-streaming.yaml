@@ -204,6 +204,93 @@
       note: "Run by hand in the owner's Chrome (no captcha). Google Scholar silently returns nothing for a query beyond about 32 words, so the form was submitted as a compact string drawn from the record's frozen bundles: the driver bundle without ΔT, the mechanism bundle without the two-word phrases (surface-tension-driven flow, thermocapillary flow, solutocapillary flow), the output bundle reduced to electricity. Scholar indexes full text, so it matches phrases anywhere in a paper. About 79 results, 69 delivered, all screened; a subset of the whole-chain list."
       query_compacted: true
       expanded_query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Marangoni effect" OR "surface-tension-driven flow" OR "thermocapillary flow" OR "solutocapillary flow" OR thermocapillary OR solutocapillary OR destillocapillarity) AND ("Streaming potential" OR "streaming current" OR "electrokinetic effect" OR "electrokinetic streaming") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power") AND (experiment OR experimental OR measured OR device OR prototype)
+    - id: search:2026-09-21-p-423a19acdd/s2-attempt-1-driver-mechanism-1
+      engine: semantic-scholar
+      query_form: route-driver-mechanism
+      query_key: "driver-mechanism:1"
+      query: "Temperature gradient temperature difference thermal gradient ΔT waste heat Marangoni effect surface tension driven flow thermocapillary flow solutocapillary flow thermocapillary solutocapillary destillocapillarity"
+      executed_at: 2026-09-21T13:23:33.964Z
+      request_url: "https://api.semanticscholar.org/graph/v1/paper/search?query=Temperature%20gradient%20temperature%20difference%20thermal%20gradient%20%CE%94T%20waste%20heat%20Marangoni%20effect%20surface%20tension%20driven%20flow%20thermocapillary%20flow%20solutocapillary%20flow%20thermocapillary%20solutocapillary%20destillocapillarity&limit=100&fields=title%2Cyear%2CexternalIds"
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      filters:
+        limit: 100
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "HTTP 429 from Semantic Scholar's anonymous pool at the first request (no Retry-After header); no result list obtained; an attempt, never a result — the API key is an owner decision (exception e953)"
+    - id: search:2026-09-21-p-423a19acdd/s2-attempt-2-mechanism-pair-1-2
+      engine: semantic-scholar
+      query_form: route-mechanism-pair
+      query_key: "mechanism-pair:1-2"
+      query: "Marangoni effect thermocapillary solutocapillary destillocapillarity streaming potential streaming current electrokinetic effect electrokinetic streaming"
+      executed_at: 2026-09-21T13:23:38.165Z
+      request_url: "https://api.semanticscholar.org/graph/v1/paper/search?query=Marangoni%20effect%20thermocapillary%20solutocapillary%20destillocapillarity%20streaming%20potential%20streaming%20current%20electrokinetic%20effect%20electrokinetic%20streaming&limit=100&fields=title%2Cyear%2CexternalIds"
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      filters:
+        limit: 100
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "HTTP 429 from Semantic Scholar's anonymous pool at the first request (no Retry-After header); no result list obtained; an attempt, never a result — the API key is an owner decision (exception e953)"
+    - id: search:2026-09-21-p-423a19acdd/s2-attempt-3-whole-chain
+      engine: semantic-scholar
+      query_form: route-whole-chain
+      query_key: "whole-chain"
+      query: "Temperature gradient thermocapillary destillocapillarity Marangoni effect streaming potential streaming current electrokinetic streaming Electrical work electricity electrical output DC power"
+      executed_at: 2026-09-21T13:23:42.624Z
+      request_url: "https://api.semanticscholar.org/graph/v1/paper/search?query=Temperature%20gradient%20thermocapillary%20destillocapillarity%20Marangoni%20effect%20streaming%20potential%20streaming%20current%20electrokinetic%20streaming%20Electrical%20work%20electricity%20electrical%20output%20DC%20power&limit=100&fields=title%2Cyear%2CexternalIds"
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      filters:
+        limit: 100
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "HTTP 429 from Semantic Scholar's anonymous pool at the first request (no Retry-After header); no result list obtained; an attempt, never a result — the API key is an owner decision (exception e953)"
+    - id: search:2026-09-21-p-423a19acdd/s2-attempt-4-demonstration-precision
+      engine: semantic-scholar
+      query_form: route-demonstration-precision
+      query_key: "demonstration-precision"
+      query: "Temperature gradient thermocapillary destillocapillarity Marangoni effect streaming potential streaming current electrokinetic streaming Electrical work electricity electrical output DC power experiment experimental measured device prototype"
+      executed_at: 2026-09-21T13:23:47.096Z
+      request_url: "https://api.semanticscholar.org/graph/v1/paper/search?query=Temperature%20gradient%20thermocapillary%20destillocapillarity%20Marangoni%20effect%20streaming%20potential%20streaming%20current%20electrokinetic%20streaming%20Electrical%20work%20electricity%20electrical%20output%20DC%20power%20experiment%20experimental%20measured%20device%20prototype&limit=100&fields=title%2Cyear%2CexternalIds"
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      filters:
+        limit: 100
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "HTTP 429 from Semantic Scholar's anonymous pool at the first request (no Retry-After header); no result list obtained; an attempt, never a result — the API key is an owner decision (exception e953)"
+    - id: search:2026-09-21-p-423a19acdd/gs-attempt-dm1
+      engine: google-scholar
+      query_form: route-driver-mechanism
+      query_key: "driver-mechanism:1"
+      query: "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"waste heat\") AND (\"Marangoni effect\" OR thermocapillary OR solutocapillary)"
+      executed_at: 2026-09-21T13:29:08.612Z
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "pass 49 (21/09 11:29 pm Sydney): Google Scholar served its bot check (form#gs_captcha_f, 'Please show you're not a robot') at the first page load of this compact form; the page header carried 'About 19,600 results' but served no positions, so no count is recorded; the lane never completes a bot check — the run stops here under the continuation rule with nothing screened; this literal differs from the compact string of the earlier sitting, so it is an attempt, not a continuation segment of that run"
   screening:
     records_retrieved: 516
     unique_records: 161
@@ -345,6 +432,7 @@
     - the mechanism-pair, whole-chain and demonstration-precision queries returned 2, 0 and 0 works
     - "Google Scholar: the driver-mechanism form reports about 19,200 works, of which the first 100 by relevance were screened at title level (protocol depth); the mechanism-pair form 282, the first 100 screened; Scholar's full-text index surfaces papers that only mention the mechanisms in passing, so its lists are noisier than OpenAlex's"
     - the two Elsevier chase hits (Ruckenstein 1981; Pal et al. 2011) remain unread
+    - "pass 49 (21/09 ~11:29 pm Sydney): every planned Semantic Scholar query was attempted once through the anonymous pool — 4 of 4 answered HTTP 429 at the first request (the runs above, each with its literal query, key and time); Google Scholar served its bot check at the first load of the driver-mechanism form (recorded as an attempt with nothing screened). Both engines are mandatory for a negative under route-search-v1, so the record stays partial and inconclusive: the outstanding obligations are the Semantic Scholar runs for every mandatory key and the Google Scholar runs to the protocol depth; OpenAlex's forms are complete. A blocked request is evidence that an engine was attempted, never that its query returned nothing."
   conclusion: "No physical demonstration of temperature gradient → Marangoni flow → streaming potential → electrical output was found in the OpenAlex protocol runs, the two citation chases or the four Google Scholar forms run by hand on 21/09/2026 (Scholar's full-text index screened at the protocol depth). The route's only literature is the Pini 2015 theoretical proposal and its 2011 precursor; the solar-evaporator hydrovoltaic papers that invoke a thermal Marangoni flow use it as a co-driver or enhancer of an evaporation-driven streaming output and never isolate its contribution (parallel-driver rule: driver-only-modifies); the thermocapillary micro heat engine converts the droplet motion through a piezoelectric membrane, a different second mechanism. Inconclusive until the Semantic Scholar runs exist and the two unread chase hits are read."
   source_run_ids:
     - search:2026-09-20-p-423a19acdd
@@ -550,6 +638,93 @@
       records_screened: 44
       records_read: 0
       note: Run by hand in the owner's Chrome. Google Scholar silently returns nothing for a query beyond about 32 words, so the form was submitted as a compact string drawn from the record's frozen bundles (route-search-v1 §2 query-length exception); the unabridged form is in expanded_query. Scholar indexes full text, so it matches phrases anywhere in a paper. About 53 results, 44 delivered, all screened; a subset of the whole-chain list.
+    - id: search:2026-09-21-p-41cb505083/s2-attempt-1-driver-mechanism-1
+      engine: semantic-scholar
+      query_form: route-driver-mechanism
+      query_key: "driver-mechanism:1"
+      query: "Surface energy difference surface tension gradient interfacial tension gradient Marangoni stress Marangoni effect surface tension driven flow thermocapillary flow solutocapillary flow thermocapillary solutocapillary destillocapillarity"
+      executed_at: 2026-09-21T13:25:22.788Z
+      request_url: "https://api.semanticscholar.org/graph/v1/paper/search?query=Surface%20energy%20difference%20surface%20tension%20gradient%20interfacial%20tension%20gradient%20Marangoni%20stress%20Marangoni%20effect%20surface%20tension%20driven%20flow%20thermocapillary%20flow%20solutocapillary%20flow%20thermocapillary%20solutocapillary%20destillocapillarity&limit=100&fields=title%2Cyear%2CexternalIds"
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      filters:
+        limit: 100
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "HTTP 429 from Semantic Scholar's anonymous pool at the first request (no Retry-After header); no result list obtained; an attempt, never a result — the API key is an owner decision (exception e953)"
+    - id: search:2026-09-21-p-41cb505083/s2-attempt-2-mechanism-pair-1-2
+      engine: semantic-scholar
+      query_form: route-mechanism-pair
+      query_key: "mechanism-pair:1-2"
+      query: "Marangoni effect thermocapillary solutocapillary destillocapillarity streaming potential streaming current electrokinetic effect electrokinetic streaming"
+      executed_at: 2026-09-21T13:25:27.321Z
+      request_url: "https://api.semanticscholar.org/graph/v1/paper/search?query=Marangoni%20effect%20thermocapillary%20solutocapillary%20destillocapillarity%20streaming%20potential%20streaming%20current%20electrokinetic%20effect%20electrokinetic%20streaming&limit=100&fields=title%2Cyear%2CexternalIds"
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      filters:
+        limit: 100
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "HTTP 429 from Semantic Scholar's anonymous pool at the first request (no Retry-After header); no result list obtained; an attempt, never a result — the API key is an owner decision (exception e953)"
+    - id: search:2026-09-21-p-41cb505083/s2-attempt-3-whole-chain
+      engine: semantic-scholar
+      query_form: route-whole-chain
+      query_key: "whole-chain"
+      query: "Surface energy difference surface tension gradient interfacial tension gradient Marangoni stress Marangoni effect thermocapillary solutocapillary destillocapillarity streaming potential streaming current electrokinetic effect electrokinetic streaming Electrical work electricity electrical output DC power"
+      executed_at: 2026-09-21T13:25:31.788Z
+      request_url: "https://api.semanticscholar.org/graph/v1/paper/search?query=Surface%20energy%20difference%20surface%20tension%20gradient%20interfacial%20tension%20gradient%20Marangoni%20stress%20Marangoni%20effect%20thermocapillary%20solutocapillary%20destillocapillarity%20streaming%20potential%20streaming%20current%20electrokinetic%20effect%20electrokinetic%20streaming%20Electrical%20work%20electricity%20electrical%20output%20DC%20power&limit=100&fields=title%2Cyear%2CexternalIds"
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      filters:
+        limit: 100
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "HTTP 429 from Semantic Scholar's anonymous pool at the first request (no Retry-After header); no result list obtained; an attempt, never a result — the API key is an owner decision (exception e953)"
+    - id: search:2026-09-21-p-41cb505083/s2-attempt-4-demonstration-precision
+      engine: semantic-scholar
+      query_form: route-demonstration-precision
+      query_key: "demonstration-precision"
+      query: "Surface energy difference surface tension gradient interfacial tension gradient Marangoni stress Marangoni effect thermocapillary solutocapillary destillocapillarity streaming potential streaming current electrokinetic effect electrokinetic streaming Electrical work electricity electrical output DC power experiment experimental measured device prototype"
+      executed_at: 2026-09-21T13:25:36.252Z
+      request_url: "https://api.semanticscholar.org/graph/v1/paper/search?query=Surface%20energy%20difference%20surface%20tension%20gradient%20interfacial%20tension%20gradient%20Marangoni%20stress%20Marangoni%20effect%20thermocapillary%20solutocapillary%20destillocapillarity%20streaming%20potential%20streaming%20current%20electrokinetic%20effect%20electrokinetic%20streaming%20Electrical%20work%20electricity%20electrical%20output%20DC%20power%20experiment%20experimental%20measured%20device%20prototype&limit=100&fields=title%2Cyear%2CexternalIds"
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      filters:
+        limit: 100
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "HTTP 429 from Semantic Scholar's anonymous pool at the first request (no Retry-After header); no result list obtained; an attempt, never a result — the API key is an owner decision (exception e953)"
+    - id: search:2026-09-21-p-41cb505083/gs-attempt-dm1
+      engine: google-scholar
+      query_form: route-driver-mechanism
+      query_key: "driver-mechanism:1"
+      query: "(\"surface tension gradient\" OR \"surface energy\" OR \"interfacial tension\") AND (\"Marangoni effect\" OR solutocapillary)"
+      executed_at: 2026-09-21T13:29:29.615Z
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "pass 49 (21/09 11:29 pm Sydney): Google Scholar served its bot check (form#gs_captcha_f, 'Please show you're not a robot') at the first page load of this compact form; the page header carried 'About 14,100 results' but served no positions, so no count is recorded; the lane never completes a bot check — the run stops here under the continuation rule with nothing screened; this literal differs from the compact string of the earlier sitting, so it is an attempt, not a continuation segment of that run"
   screening:
     records_retrieved: 455
     unique_records: 156
@@ -659,6 +834,7 @@
     - the mechanism-pair, whole-chain and demonstration-precision queries returned 2, 0 and 0 works
     - the Zhang 2026 co-driver device was first found by the thermal sibling's Scholar runs and appears in this route's own whole-chain and precision runs
     - "Google Scholar: the driver-mechanism form reports about 11,800 works, the first 100 by relevance screened at title level (protocol depth); the mechanism-pair form 261, the first 100 screened"
+    - "pass 49 (21/09 ~11:29 pm Sydney): every planned Semantic Scholar query was attempted once through the anonymous pool — 4 of 4 answered HTTP 429 at the first request (the runs above, each with its literal query, key and time); Google Scholar served its bot check at the first load of the driver-mechanism form (recorded as an attempt with nothing screened). Both engines are mandatory for a negative under route-search-v1, so the record stays partial and inconclusive: the outstanding obligations are the Semantic Scholar runs for every mandatory key and the Google Scholar runs to the protocol depth; OpenAlex's forms are complete. A blocked request is evidence that an engine was attempted, never that its query returned nothing."
   conclusion: "No physical demonstration of a surface-energy difference → Marangoni flow → streaming potential → electrical output was found in the OpenAlex protocol runs, the two citation chases or the four Google Scholar forms run by hand on 21/09/2026. The route's literature is the Pini 2015 theoretical proposal and one physical device in which a programmed surface-tension gradient sustains Marangoni microcirculation as a co-driver beside capillary flow in a hydrovoltaic evaporator (Zhang et al. 2026: driver-only-modifies under the parallel-driver rule, since the Marangoni branch's electrical contribution is not isolated). Inconclusive until the Semantic Scholar runs exist and the unread chase hits are read."
   source_run_ids:
     - search:2026-09-20-p-41cb505083
@@ -867,6 +1043,93 @@
       records_screened: 1
       records_read: 0
       note: Run by hand in the owner's Chrome. Google Scholar silently returns nothing for a query beyond about 32 words, so the form was submitted as a compact string drawn from the record's frozen bundles (route-search-v1 §2 query-length exception); the unabridged form is in expanded_query. Scholar indexes full text, so it matches phrases anywhere in a paper. 1 result (the same thesis), screened.
+    - id: search:2026-09-21-p-1043a15e01/s2-attempt-1-driver-mechanism-1
+      engine: semantic-scholar
+      query_form: route-driver-mechanism
+      query_key: "driver-mechanism:1"
+      query: "Temperature gradient temperature difference thermal gradient ΔT waste heat Thermomagnetic convection ferrofluid convection magnetocaloric pumping in ferrofluids thermomagnetic pumping thermomagnetic pump"
+      executed_at: 2026-09-21T13:24:08.871Z
+      request_url: "https://api.semanticscholar.org/graph/v1/paper/search?query=Temperature%20gradient%20temperature%20difference%20thermal%20gradient%20%CE%94T%20waste%20heat%20Thermomagnetic%20convection%20ferrofluid%20convection%20magnetocaloric%20pumping%20in%20ferrofluids%20thermomagnetic%20pumping%20thermomagnetic%20pump&limit=100&fields=title%2Cyear%2CexternalIds"
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      filters:
+        limit: 100
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "HTTP 429 from Semantic Scholar's anonymous pool at the first request (no Retry-After header); no result list obtained; an attempt, never a result — the API key is an owner decision (exception e953)"
+    - id: search:2026-09-21-p-1043a15e01/s2-attempt-2-mechanism-pair-1-2
+      engine: semantic-scholar
+      query_form: route-mechanism-pair
+      query_key: "mechanism-pair:1-2"
+      query: "Thermomagnetic convection ferrofluid convection thermomagnetic pumping thermomagnetic pump streaming potential streaming current electrokinetic effect electrokinetic streaming"
+      executed_at: 2026-09-21T13:24:13.057Z
+      request_url: "https://api.semanticscholar.org/graph/v1/paper/search?query=Thermomagnetic%20convection%20ferrofluid%20convection%20thermomagnetic%20pumping%20thermomagnetic%20pump%20streaming%20potential%20streaming%20current%20electrokinetic%20effect%20electrokinetic%20streaming&limit=100&fields=title%2Cyear%2CexternalIds"
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      filters:
+        limit: 100
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "HTTP 429 from Semantic Scholar's anonymous pool at the first request (no Retry-After header); no result list obtained; an attempt, never a result — the API key is an owner decision (exception e953)"
+    - id: search:2026-09-21-p-1043a15e01/s2-attempt-3-whole-chain
+      engine: semantic-scholar
+      query_form: route-whole-chain
+      query_key: "whole-chain"
+      query: "Temperature gradient thermal gradient ΔT waste heat Thermomagnetic convection ferrofluid convection thermomagnetic pumping thermomagnetic pump streaming potential streaming current electrokinetic effect electrokinetic streaming Electrical work electricity electrical output DC power"
+      executed_at: 2026-09-21T13:24:17.245Z
+      request_url: "https://api.semanticscholar.org/graph/v1/paper/search?query=Temperature%20gradient%20thermal%20gradient%20%CE%94T%20waste%20heat%20Thermomagnetic%20convection%20ferrofluid%20convection%20thermomagnetic%20pumping%20thermomagnetic%20pump%20streaming%20potential%20streaming%20current%20electrokinetic%20effect%20electrokinetic%20streaming%20Electrical%20work%20electricity%20electrical%20output%20DC%20power&limit=100&fields=title%2Cyear%2CexternalIds"
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      filters:
+        limit: 100
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "HTTP 429 from Semantic Scholar's anonymous pool at the first request (no Retry-After header); no result list obtained; an attempt, never a result — the API key is an owner decision (exception e953)"
+    - id: search:2026-09-21-p-1043a15e01/s2-attempt-4-demonstration-precision
+      engine: semantic-scholar
+      query_form: route-demonstration-precision
+      query_key: "demonstration-precision"
+      query: "Temperature gradient thermal gradient ΔT waste heat Thermomagnetic convection ferrofluid convection thermomagnetic pumping thermomagnetic pump streaming potential streaming current electrokinetic effect electrokinetic streaming Electrical work electricity electrical output DC power experiment experimental measured device prototype"
+      executed_at: 2026-09-21T13:24:21.416Z
+      request_url: "https://api.semanticscholar.org/graph/v1/paper/search?query=Temperature%20gradient%20thermal%20gradient%20%CE%94T%20waste%20heat%20Thermomagnetic%20convection%20ferrofluid%20convection%20thermomagnetic%20pumping%20thermomagnetic%20pump%20streaming%20potential%20streaming%20current%20electrokinetic%20effect%20electrokinetic%20streaming%20Electrical%20work%20electricity%20electrical%20output%20DC%20power%20experiment%20experimental%20measured%20device%20prototype&limit=100&fields=title%2Cyear%2CexternalIds"
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      filters:
+        limit: 100
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "HTTP 429 from Semantic Scholar's anonymous pool at the first request (no Retry-After header); no result list obtained; an attempt, never a result — the API key is an owner decision (exception e953)"
+    - id: search:2026-09-21-p-1043a15e01/gs-attempt-dm1
+      engine: google-scholar
+      query_form: route-driver-mechanism
+      query_key: "driver-mechanism:1"
+      query: "(\"Temperature gradient\" OR \"temperature difference\" OR \"thermal gradient\" OR \"waste heat\") AND (\"thermomagnetic convection\" OR \"ferrofluid convection\")"
+      executed_at: 2026-09-21T13:29:15.616Z
+      engine_version: null
+      index_snapshot: null
+      sort: relevance
+      result_count_reported: null
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      positions_screened: none
+      interruption: "pass 49 (21/09 11:29 pm Sydney): Google Scholar served its bot check (form#gs_captcha_f, 'Please show you're not a robot') at the first page load of this compact form; the page header carried 'About 1,120 results' but served no positions, so no count is recorded; the lane never completes a bot check — the run stops here under the continuation rule with nothing screened; this literal differs from the compact string of the earlier sitting, so it is an attempt, not a continuation segment of that run"
   screening:
     records_retrieved: 94
     unique_records: 47
@@ -937,6 +1200,7 @@
     - "citation chase on OpenAlex reference lists and citing works only (Pal et al. 2011: 27 of 28 references, 61 of 62 citers; Nguyen 2012: 96 references, 390 citers), title-level with a vocabulary filter; two chase hits could not be read"
     - the mechanism-pair, whole-chain and demonstration-precision queries returned 0 works
     - "Google Scholar driver-mechanism form incomplete: 10 of the protocol's 100 screened (captcha after about 110 page loads in one sitting)"
+    - "pass 49 (21/09 ~11:29 pm Sydney): every planned Semantic Scholar query was attempted once through the anonymous pool — 4 of 4 answered HTTP 429 at the first request (the runs above, each with its literal query, key and time); Google Scholar served its bot check at the first load of the driver-mechanism form (recorded as an attempt with nothing screened). Both engines are mandatory for a negative under route-search-v1, so the record stays partial and inconclusive: the outstanding obligations are the Semantic Scholar runs for every mandatory key and the Google Scholar runs to the protocol depth; OpenAlex's forms are complete. A blocked request is evidence that an engine was attempted, never that its query returned nothing."
   conclusion: No physical demonstration of temperature gradient → thermomagnetic convection → streaming potential → electrical output was found, and no retrieved title combines a thermomagnetic flow with an electrokinetic response. Inconclusive until the Semantic Scholar and Google Scholar runs exist and the two unread chase hits are read.
   source_run_ids:
     - search:2026-09-20-p-1043a15e01
