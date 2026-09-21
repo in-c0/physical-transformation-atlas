@@ -162,8 +162,9 @@ starts from and the loader refuses any other; `kind` ∈ `residual-energy | reco
 mechanical-coupling | electrical-coupling | material-flow`; `status` ∈ `demonstrated | theoretical |
 proposed`, a demonstrated handoff citing evidence), `outputs[]` (`{ member, output, aggregation: sum |
 separate }` — the output must be the member route's terminal output), `evidence`, `status`
-(`demonstrated | prototype | commercial | proposed`), `knowledge_level`, `performance` (the same
-measurement records as a Pathway; a system's efficiency lives here and on no member), `summary`,
+(`demonstrated | prototype | commercial | proposed`), `knowledge_level`, `performance` (`{ measurements[], notes? }` — measurements only: a system
+never carries `efficiency_typical`, `efficiency_record`, `theoretical_limit` or `power_density`, the
+schema refuses them; a system's efficiency lives here as a structured datum and on no member), `summary`,
 `review`. Compiled (generated) fields: each member gains `pathway_name`, `pathway_status`, `route_id`,
 `route_checks` (the eight checks of its exact route, id → result) and `core_unresolved_count`; the
 system gains `handoff_status` (its weakest handoff's) and `members_core_clear` (true only when every

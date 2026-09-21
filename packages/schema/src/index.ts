@@ -646,6 +646,8 @@ export const SystemHandoff = z.object({
 export type SystemHandoff = z.infer<typeof SystemHandoff>;
 export const SystemOutput = z.object({ member: Slug, output: EntityId, aggregation: z.enum(SYSTEM_OUTPUT_AGGREGATIONS) });
 export type SystemOutput = z.infer<typeof SystemOutput>;
+export const SystemPerformance = z.object({ measurements: z.array(Measurement).default([]), notes: z.string().optional() }).strict();
+export type SystemPerformance = z.infer<typeof SystemPerformance>;
 const SystemPathwayBase = z.object({
   id: SystemPathwayId,
   name: z.string(),
@@ -655,15 +657,13 @@ const SystemPathwayBase = z.object({
   evidence: z.array(SourceId).default([]),
   status: z.enum(SYSTEM_PATHWAY_STATUSES),
   knowledge_level: z.enum(KNOWLEDGE_LEVELS),
-  performance: z
-    .object({
-      efficiency_typical: z.number().min(0).max(1).optional(),
-      efficiency_record: z.number().min(0).max(1).optional(),
-      theoretical_limit: z.string().optional(),
-      notes: z.string().optional(),
-      measurements: z.array(Measurement).default([]),
-    })
-    .optional(),
+  /**
+   * Measurements only (pass 34): a system never carries efficiency_typical, efficiency_record,
+   * theoretical_limit or power_density — a naked number loses architecture, basis, regime, gross/net
+   * definition, fuel basis and provenance, which is the defect pass 35 sweeps from the pathways. Any
+   * summary a page needs is derived from the structured physical measurements at build time.
+   */
+  performance: SystemPerformance.optional(),
   summary: z.string(),
   review: ReviewMeta.default({ canonical: true, last_reviewed: null }),
 });

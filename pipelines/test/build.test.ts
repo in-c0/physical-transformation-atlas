@@ -221,6 +221,17 @@ test("the system layer (loop-3 pass 34): a system joins whole pathways by handof
 
 test("the system layer's loader gate (loop-3 pass 34): a handoff must name the disequilibrium its receiving member's route starts from; the schema refuses unknown members", () => {
   assert.throws(() => SystemPathway.parse({ ...canon.systems[0], handoffs: [{ ...canon.systems[0].handoffs[0], to_member: "nowhere" }] }), /unknown member nowhere/);
+  // Measurements only: a legacy summary field on a system is refused (pass 34, the reviewer's invariant).
+  for (const key of ["efficiency_record", "efficiency_typical", "theoretical_limit", "power_density"])
+    assert.throws(
+      () => SystemPathway.parse({ ...canon.systems[0], performance: { ...canon.systems[0].performance, [key]: key === "theoretical_limit" || key === "power_density" ? "x" : 0.5 } }),
+      new RegExp(key),
+      `${key} must be refused`,
+    );
+  // The Rankine member reads regime pass since its drives claim records the requirement its source provides; the gas-turbine member stays unknown on purpose.
+  const cc = graph.systems.find((s) => s.id === "system-pathway:natural-gas-combined-cycle")!;
+  assert.equal(cc.members.find((m) => m.id === "bottoming")!.route_checks["driver-regime-sufficiency"], "pass");
+  assert.equal(cc.members.find((m) => m.id === "topping")!.route_checks["driver-regime-sufficiency"], "unknown");
   // The loader gate: a copy of the canonical data with the handoff pointed at the wrong disequilibrium fails to load.
   const tmp = mkdtempSync(join(tmpdir(), "pta-systems-"));
   cpSync(join(root, "data", "canonical"), join(tmp, "data", "canonical"), { recursive: true });

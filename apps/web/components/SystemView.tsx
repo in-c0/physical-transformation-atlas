@@ -50,9 +50,18 @@ export function SystemView({ index, system }: { index: AtlasIndex; system: Compi
           </dd>
           <dt>members&apos; core checks</dt>
           <dd>
-            {system.members_core_clear
-              ? "every member route has no unresolved core check and every handoff is demonstrated"
-              : "at least one member route carries an unresolved core check, or a handoff is not demonstrated"}
+            {system.members.map((m, i) => (
+              <span key={m.id}>
+                {i > 0 ? " · " : ""}
+                {m.pathway_name}:{" "}
+                {m.core_unresolved_count === null
+                  ? "no compiled route"
+                  : m.core_unresolved_count === 0
+                    ? "core checks clear"
+                    : `${m.core_unresolved_count} core check${m.core_unresolved_count === 1 ? "" : "s"} unresolved`}
+              </span>
+            ))}{" "}
+            — unresolved describes the atlas&apos;s evidence coverage of a member route, never a doubt about a plant that runs.
           </dd>
           <dt>knowledge level</dt>
           <dd>{kLabel(system.knowledge_level)}</dd>
@@ -169,10 +178,10 @@ export function SystemView({ index, system }: { index: AtlasIndex; system: Compi
               ))}
             </ol>
           )}
-          {system.performance.theoretical_limit && (
+          {system.performance.notes && (
             <dl className={styles.facts} style={{ marginTop: 12 }}>
-              <dt>theoretical limit</dt>
-              <dd className={styles.limit}>{system.performance.theoretical_limit}</dd>
+              <dt>notes</dt>
+              <dd className={styles.limit}>{system.performance.notes}</dd>
             </dl>
           )}
         </section>

@@ -38,6 +38,5 @@
         sources: [source:al-mhanna-2024-isccs]
         year: 2024
         note: "the plant's own figure (Table 3, local plant data); (127 + 61.5) MW over 9.2 kg/s × 43,662 kJ/kg = 401.7 MW reproduces it exactly — a verification, not a second measurement; the paper's Aspen Plus simulation gives 46.28 %"
-    theoretical_limit: "Carnot between the flame-side hot reservoir and the condenser's cold reservoir a source defines; none recorded on the system"
   summary: A topping gas turbine delivers electrical work and hands its exhaust enthalpy through heat-recovery steam generators to a bottoming steam Rankine cycle that delivers more; the two generators' outputs add. The combined cycle's efficiency belongs here and to neither member — 46.93 % at the Omani plant Al Mhanna et al. 2024 model — while each member keeps its own linear route and checks.
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 34 (the second reader's first system record; Al Mhanna 2024 read in full, the 46.93 % moved off the gas-turbine pathway)" }

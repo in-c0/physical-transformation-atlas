@@ -782,6 +782,7 @@
   object: phenomenon:working-fluid-expansion
   conditions: [a hot reservoir to heat the working fluid and a cold reservoir to condense or cool it]
   condition_tags: [temp-gradient-required]
+  regime_requires: [thermal:spatial-temperature-gradient]  # pass 34: the cycle genuinely depends on a hot/cold thermal disequilibrium; the gas-turbine expansion step (hot-gas-drives-expansion) is deliberately not given this token — it expands through a pressure ratio
   energy: { input: thermal, output: mechanical, dissipation: thermal }
   evidence: [source:bejan-2016, source:walker-1980-stirling]
   status: established
