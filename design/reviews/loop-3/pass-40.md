@@ -58,3 +58,32 @@ combined cycle did not need.
 
 Result: revision 80239c794368 — 343 entities · 510 claims · 221 sources · 91 pathways · 2 systems ·
 761 routes · 85 demonstrated · 78/78 · live.
+
+## Reviewed (sent 6:05 pm; ChatGPT High, ~8 min, with web search; PIVOT — 33 findings)
+
+1. The architecture accepted (finding 1): two complete members, a non-residual transferred-heat
+   handoff through the steam generator, the primary's heat consumed internally, electricity
+   exported only from the secondary.
+2. The defect it exposed (findings 2–13): the advective claim records the thermal disequilibrium
+   but not the bulk fluid motion advection requires. Ruling: a seventeenth regime token
+   `flow:bulk-fluid-motion` ("nonzero bulk motion of the heat-carrying fluid through the region
+   over which thermal enthalpy is transported", provider needs explanation); the claim requires
+   both the spatial gradient and the flow token, never as `regime_external`; the PWR's coolant-pump
+   auxiliary establishes the flow token so the primary member passes for the right reason; the
+   other advective routes go unresolved on the flow token unless a provider exists; the
+   `flow-required` condition stays (the condition layer says the region must contain flowing fluid,
+   the regime layer that the route has recorded how); the phenomenon summary tightened so a
+   temperature difference is never read as the cause of forced flow.
+3. The advective suffix (findings 14–23): to be recorded as `pathway:forced-circulation-heat-
+   delivery` ("Forced-circulation heat-delivery loop", commercial, K8) with a mechanical
+   circulation-pump auxiliary establishing the flow token, on DOE-HDBK-1012/2-92 (forced
+   convection defined; the pumped heat exchanger as the canonical example) and the NRC PWR page;
+   no new transducer; "circular" is not "unphysical"; conduction and advection stay distinct
+   mechanisms, never collapsed.
+4. Pass 41 set (findings 24–33): this forced-advection / external-flow closure in the reviewer's
+   order, with a negative control (gradient → advection → useful heat with no provider unresolved
+   on the flow token), two positive controls, the provider-needs-explanation regression, and the
+   route count expected to stay 761; pass 42 the retirement of `theoretical_limit` into the typed
+   constraint graph; source restoration only where it creates structured value.
+
+No data changed in this closing — the rulings are pass 41's build.
