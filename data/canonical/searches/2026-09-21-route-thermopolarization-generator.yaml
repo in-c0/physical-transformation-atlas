@@ -153,9 +153,9 @@
       doi: "10.1002/1521-396x(199709)163:1<263::aid-pssa263>3.0.co;2-t"
       found_by:
         - search:2026-09-21-p-b820ec885f/oa-dm1
-      access: metadata-only
-      decision: insufficient-information
-      reason: "Marvan & Fähnrich 1997 (phys. stat. sol. (a) 163, 263–270; no abstract on record): by title, thermal-gradient-induced polarization in the laser-intensity-modulation method — possibly an experimental observation of the effect in polymer films, possibly its treatment as an artefact; the one paper on this list to read, and by the effect's first theorist."
+      access: abstract
+      decision: theory-only
+      reason: "Marvan & Fähnrich 1997 (phys. stat. sol. (a) 163, 263–270; abstract read on OpenAlex in the pass-32 review): the contribution of the thermopolarization effect (P ∝ ∇T) to the laser-intensity-modulation-method signal studied theoretically, shown large enough to observe, and compared with the pyroelectric signal — a prediction of a measurement method, not an experiment in polymer films; ruled insufficient-information on the title alone before the abstract was found."
     - title: "The rich phase behavior of the thermopolarization of water: from a reversal in the polarization, to enhancement near criticality conditions"
       year: 2016
       doi: "10.1039/c6cp03082c"
@@ -198,13 +198,13 @@
       reason: "Nasu & Hayami 2022 (Phys. Rev. B 105, 245125): theory of the tensor's antisymmetric part."
   result: inconclusive
   completeness: partial
-  reviewed_by: Ava Kim's loop-3 lane (Claude Opus 5); titles screened, five abstracts read on Crossref and OpenAlex
+  reviewed_by: Ava Kim's loop-3 lane (Claude Opus 5); titles screened, six abstracts read on Crossref and OpenAlex
   reviewed_on: 2026-09-21
   limitations:
     - "OpenAlex only (21/09, 12:53 pm Sydney): driver-mechanism 17 works (all screened, the thermopolarization theory and the thermally polarised-liquid simulations); whole-chain 0; demonstration-precision 0; the reviewer's precision query 2 (both false positives); the composite-name form 43 works, every one already in the flexoelectric route's composite-name bundle (screened there in pass 27 and here again at title level); Semantic Scholar answers 429 keyless (owner exception e953) and Google Scholar a captcha — both mandatory for a negative, neither run"
     - the constituent observations (Kholkin 1982, read in full; Trepakov 1989 and Rafikov 1994 at abstract level) are sink-variant by construction — a polarization current with no load — and are not repeated as hits here; the claims stay reported until Trepakov 1989 is read (owner exception e9d8)
-    - Marvan & Fähnrich 1997 is unread and is the one title on the list that may report an experiment
-  conclusion: "No demonstration found: nothing OpenAlex returns puts a load on a thermopolarised dielectric or reports output power from the direct effect. The literature that names the composition is the 1982–1994 measurement lineage (currents, no load), its theory (Marvan 1969, Tagantsev 1987 and 1991, Nasu 2022, Onishi 2025), its converse (1995), and a separate simulation literature on the thermal polarization of polar liquids (Bresme and co-workers, 2013–2025) that the atlas does not yet spell. Inconclusive as a route search until the Scholar and Semantic Scholar runs exist and Marvan & Fähnrich 1997 is read."
+    - "Marvan & Fähnrich 1997, the one title that might have reported an experiment, is theory by its abstract (found after the record was first written); no hit on the list is an experiment"
+  conclusion: "No demonstration found: nothing OpenAlex returns puts a load on a thermopolarised dielectric or reports output power from the direct effect. The literature that names the composition is the 1982–1994 measurement lineage (currents, no load), its theory (Marvan 1969, Tagantsev 1987 and 1991, Marvan & Fähnrich 1997, Nasu 2022, Onishi 2025), its converse (1995), and a separate simulation literature on the thermal polarization of polar liquids (Bresme and co-workers, 2008–2025), spelled since pass 32 as a second, theoretically-predicted claim into the same phenomenon. Inconclusive as a route search until the Scholar and Semantic Scholar runs exist."
   source_run_ids:
     - search:2026-09-21-p-b820ec885f
   follow_up:

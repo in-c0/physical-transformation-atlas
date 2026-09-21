@@ -711,12 +711,14 @@
   predicate: drives
   object: phenomenon:thermopolarization-effect
   conditions:
-    - a spatial temperature gradient is applied across an insulating dielectric
+    - a spatial temperature gradient is applied across an insulating solid dielectric
     - "this claim represents the direct thermopolarization contribution; a signal established to arise through thermal expansion → strain gradient → flexoelectricity belongs to that longer pathway instead"
+    - "the solid spelling; the polar-liquid spelling is claim:temperature-drives-liquid-thermopolarization, with its own (simulation) evidence"
   condition_requirements:
     - { tag: state-solid, scope: medium, region: dielectric }
     - { tag: medium-dielectric, scope: medium, region: dielectric }
     - { tag: temp-gradient-required, scope: medium, region: dielectric }
+  regime_requires: [thermal:spatial-temperature-gradient]
   energy: { input: thermal, output: electrical }
   relation:
     formula: "P_i = γ_ij ∇_j T"
@@ -734,10 +736,38 @@
   object: carrier:surface-charge
   conditions:
     - "the induced bulk polarization terminates at a surface or electrode as bound / screening charge; modulating the gradient produces a displacement / polarization current"
+    - "the solid, electroded dielectric of the 1982–1994 measurements; the polar-liquid spelling has no charge-collection evidence (the simulations report bulk polarization and electrostatic potential) and does not inherit this sink"
+  condition_requirements:
+    - { tag: state-solid, scope: medium, region: dielectric }
+    - { tag: medium-dielectric, scope: medium, region: dielectric }
   energy: { input: electrical, output: electrical }
   evidence: [source:kholkin-1982-thermopolarization-current, source:trepakov-1989-proper-thermopolarization, source:rafikov-1994-dynamic-thermopolarization]
   status: reported
-  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 28 (Kholkin 1982 read in full: the current in the external circuit follows d(ΔT)/dt and reverses with ∇T)" }
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 32 (scoped to the solid dielectric so the liquid spelling cannot inherit it); pass 28 (Kholkin 1982 read in full: the current in the external circuit follows d(ΔT)/dt and reverses with ∇T)" }
+- id: claim:temperature-drives-liquid-thermopolarization
+  subject: disequilibrium:temperature-gradient
+  predicate: drives
+  object: phenomenon:thermopolarization-effect
+  conditions:
+    - a polar molecular liquid is maintained under a spatial temperature gradient
+    - "the response is the non-equilibrium polarization / electrostatic field of the liquid itself, not ionic thermodiffusion and not the pyroelectric response of an already ordered ferroelectric fluid (Máthé et al. 2022's ferroelectric-nematic thermomotor is that other coupling)"
+    - "simulation only: no experiment has measured the polarization of an ordinary polar liquid under a temperature gradient (pass 32 web search, not a route-search-v1 negative)"
+  condition_requirements:
+    - { tag: state-liquid, scope: medium, region: dielectric }
+    - { tag: medium-dielectric, scope: medium, region: dielectric }
+    - { tag: temp-gradient-required, scope: medium, region: dielectric }
+  regime_requires: [thermal:spatial-temperature-gradient]
+  energy: { input: thermal, output: electrical }
+  relation:
+    formula: "E_∥ = S_TP ∇T"
+    input: quantity:temperature-gradient
+    output: quantity:electric-field
+    coefficient_unit: "V/K"
+    coefficient_name: liquid thermopolarization coefficient S_TP
+    conventions: "the field along the gradient; Gittus, Albella & Bresme 2020 give S_TP ≈ −0.6 mV/K for acetonitrile near standard conditions and Bresme et al. 2008 fields of order 10⁶ V/m for water at 10⁸ K/m, both from non-equilibrium molecular dynamics; the sign reverses with temperature in water (Armstrong & Bresme 2015)"
+  evidence: [source:bresme-2008-water-polarization, source:armstrong-bresme-2015-thermal-polarization-inversion, source:gittus-2020-acetonitrile-thermal-polarization]
+  status: theoretically-predicted
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 32 (the second reader's spelling: the same phenomenon, a second claim on the same medium region so the solid sink claim conflicts with it; abstracts read; Máthé 2022 ruled wrong-coupling)" }
 - id: claim:thermopolarization-member
   subject: phenomenon:thermopolarization-effect
   predicate: member_of

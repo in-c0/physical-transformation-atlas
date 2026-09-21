@@ -1534,3 +1534,45 @@
   venue: "Nuclear Technology 22, 306–314"
   doi: 10.13182/NT74-A31415
   notes: "Metadata verified on Crossref; title-level. A fissioning uranium plasma physically produced to approximate gas-core reactor conditions; provenance for the broad composition term fissioning uranium plasma."
+# Loop-3 pass 32: the polar-liquid thermopolarization lineage (simulation), the nearest physical liquid experiment, and
+# the LIMM theory paper — abstracts read on OpenAlex, metadata verified on Crossref.
+- id: source:bresme-2008-water-polarization
+  type: paper
+  title: "Water Polarization under Thermal Gradients"
+  authors: [F. Bresme, A. Lervik, D. Bedeaux, S. Kjelstrup]
+  year: 2008
+  venue: "Physical Review Letters 101, 020602"
+  doi: 10.1103/PhysRevLett.101.020602
+  notes: "Metadata verified on Crossref; abstract read on OpenAlex. Non-equilibrium molecular dynamics of bulk liquid water under a temperature gradient: the gradient polarizes the water along itself through molecular reorientation, giving an electrostatic field whose dependence on the gradient agrees with non-equilibrium thermodynamics; gradients of order 10⁸ K/m are estimated to give fields of order 10⁶ V/m. Simulation, no experiment — the first evidence of the liquid spelling."
+- id: source:armstrong-bresme-2015-thermal-polarization-inversion
+  type: paper
+  title: "Temperature inversion of the thermal polarization of water"
+  authors: [J. Armstrong, F. Bresme]
+  year: 2015
+  venue: "Physical Review E 92, 060103"
+  doi: 10.1103/PhysRevE.92.060103
+  notes: "Metadata verified on Crossref; abstract read on OpenAlex. NEMD: the thermal polarization of water depends strongly on temperature and reverses sign at a specific temperature, the balance of dipolar and quadrupolar contributions with the quadrupolar term set by thermal expansion. Simulation."
+- id: source:gittus-2020-acetonitrile-thermal-polarization
+  type: paper
+  title: "Polarization of acetonitrile under thermal fields via non-equilibrium molecular dynamics simulations"
+  authors: [O. R. Gittus, P. Albella, F. Bresme]
+  year: 2020
+  venue: "The Journal of Chemical Physics 153, 204503"
+  doi: 10.1063/5.0025148
+  notes: "Metadata verified on Crossref; abstract read on OpenAlex. NEMD: thermal gradients polarize liquid and supercritical acetonitrile, a stationary electrostatic potential building up between hot and cold regions; near standard conditions the thermal polarization coefficient is ≈ −0.6 mV/K, so gradients of ≈ 1 K/µm give fields of ≈ 10³ V/m; the heat–polarization coupling lowers the thermal conductivity by ≈ 2–5 %. Simulation, a second polar liquid."
+- id: source:mathe-2022-ferroelectric-nematic-thermomotor
+  type: paper
+  title: "Ferroelectric nematic liquid crystal thermomotor"
+  authors: [M. T. Máthé, Á. Buka, A. Jákli, P. Salamon]
+  year: 2022
+  venue: "Physical Review E 105, L052701"
+  doi: 10.1103/PhysRevE.105.L052701
+  notes: "Metadata verified on Crossref; abstract read on OpenAlex. A physical experiment: tracer particles on ferroelectric-nematic sessile drops circulate under a vertical thermal gradient; the authors' model drives the rotation with the tangential ferroelectric polarization, the vertical gradient and the pyroelectricity of the fluid, the particles charging in the fluid. The nearest physical liquid experiment found in pass 32 — the temperature dependence of an already ordered polarization (pyroelectricity), not the gradient-induced polarization of a polar liquid: wrong coupling for the liquid thermopolarization claim."
+- id: source:marvan-fahnrich-1997-limm-thermopolarization
+  type: paper
+  title: "Laser Intensity Modulation Method and Thermal Gradient Induced Polarization"
+  authors: [M. Marvan, J. Fähnrich]
+  year: 1997
+  venue: "physica status solidi (a) 163, 263–270"
+  doi: 10.1002/1521-396X(199709)163:1<263::AID-PSSA263>3.0.CO;2-T
+  notes: "Metadata verified on Crossref; abstract read on OpenAlex. The contribution of the thermopolarization effect (P ∝ ∇T) to the signal of the laser intensity modulation method was studied theoretically, shown to be large enough to observe, and compared with the pyroelectric signal. Theory by the effect's first theorist — not an experiment in polymer films."
