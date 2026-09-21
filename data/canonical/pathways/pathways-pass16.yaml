@@ -465,16 +465,21 @@
         sources: [source:asim-2022-pico-waterwheel]
         year: 2022
         note: the connected load the generator ran, as the paper lists it; the generator's measured electrical output is not quoted here
-      - quantity: waterwheel efficiency
-        value: "72–77 % (undershot), best at a 45° conduit"
-        value_range: [0.72, 0.77]
+      # pass 45 close: the "72–77 % (undershot)" range the atlas had carried as Asim 2022's measurement was the paper's Introduction citing
+      # prior literature (its references 13–14: overshot 85 %, undershot 72–77 %) — never its own result; removed, not re-sourced. The
+      # paper's own efficiency is below.
+      - quantity: overall efficiency of the waterwheel-generator system
+        value: "66.42%"
+        value_numeric: 0.6642
         unit: "1"
-        metric: device-stage-efficiency
-        basis: "the waterwheel stage alone: wheel shaft power over the stream power available at the wheel, from the braked-torque tests — before the generator the pathway ends in, whose electrical output the paper does not quote; a range over blade shapes and conduit angles, never a scalar (pass 45)"
+        metric: conversion-efficiency
+        basis: "generator electrical output P_out = v_g·i_g over P_in, as Equation 12 defines the overall efficiency of the system (Section 4.9); the paper does not state P_in's formula at that point — Equation 11's power coefficient uses the power available in the stream, but Section 4.9 does not say Equation 12's P_in is the same denominator"
         scope: laboratory
-        conditions: "C-shape blade at a tip-speed ratio of 0.88; efficiency rose 4.87 % with the conduit inclined at 45°"
+        datum_kind: measured
+        conditions: "the C-shape-blade experimental turbine at a fully immersed depth of 4 inches, connected to a 3 kW electric generator, at full load, voltage and current of the circuit measured"
         sources: [source:asim-2022-pico-waterwheel]
         year: 2022
+        note: "the number the paper itself measured; the 66.42 % is an electrical-output figure for the wheel plus generator, the pathway's own boundary"
   environment: [state-liquid]
   summary: Water falling through a small head turns an undershot waterwheel whose shaft directly turns an electrical generator — the oldest hydroelectric spelling, distinct from the turbine's blade lift, recorded on the direct waterwheel-to-induction route with a pico-hydro rig that ran household loads.
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 23 (triage of the released candidates; Asim 2022 read on the publisher's page)" }

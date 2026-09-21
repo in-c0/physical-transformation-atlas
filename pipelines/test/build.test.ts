@@ -493,12 +493,17 @@ test("the stage-versus-route measurement audit (loop-3 pass 45): every efficienc
   assert.equal(gate.status, 0, gate.stderr || gate.stdout);
   const pw = (slug: string) => graph.pathways.find((p) => p.id === `pathway:${slug}`)!;
   const data = (slug: string) => pw(slug).performance?.measurements ?? [];
-  // the waterwheel's 72–77 % is the wheel stage's range; the pathway has no route conversion-efficiency datum
-  const wheel = data("waterwheel-electric-generator").find((m) => m.value_range !== undefined)!;
-  assert.deepEqual(wheel.value_range, [0.72, 0.77]);
-  assert.equal(wheel.metric, "device-stage-efficiency");
-  assert.equal(wheel.value_numeric, undefined);
-  assert.ok(!data("waterwheel-electric-generator").some((m) => m.metric === "conversion-efficiency"));
+  // pass 45 close: a number a paper repeats from its literature review is never a measurement sourced to that paper — Asim 2022's
+  // 72–77 % was its Introduction's citation of references 13–14; the paper's own result is the 66.42 % overall system efficiency
+  const wheelData = data("waterwheel-electric-generator");
+  assert.ok(!wheelData.some((m) => m.value_range !== undefined || m.value_numeric === 0.77 || /72/.test(m.value)), "the mis-sourced 72–77 % is gone");
+  const wheel = wheelData.find((m) => m.value_numeric === 0.6642)!;
+  assert.equal(wheel.metric, "conversion-efficiency");
+  assert.match(wheel.basis!, /generator electrical output/);
+  assert.match(wheel.basis!, /does not state/);
+  assert.equal(wheel.datum_kind, "measured");
+  const wheelSource = canon.sources.find((s) => s.id === "source:asim-2022-pico-waterwheel")!;
+  assert.match(wheelSource.notes ?? "", /prior literature/);
   // the TEG pathway keeps the Zhang 2017 module datum and nothing from a handbook or another route
   const teg = data("thermoelectric-generator");
   assert.deepEqual(teg.filter((m) => m.metric === "conversion-efficiency").map((m) => m.value_numeric), [0.12]);

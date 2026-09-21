@@ -46,3 +46,42 @@ read in its source — never by its scope label.
 
 Result: revision ab3198e8bf56 — 348 entities · 520 claims · 233 sources · 92 pathways · 2 systems ·
 771 routes · 86 demonstrated · 85/85 · axe clean · exports valid · four audit gates consistent · live.
+
+## Reviewed (sent 9:31 pm; ChatGPT High, ~8 min, with web search; PIVOT — 14 findings)
+
+1. One substantive correction (findings 1–4): the Asim 2022 disposition was mis-sourced — the
+   72–77 % undershot range is the paper's Introduction citing prior literature (its references
+   13–14), not its measurement; the paper's own result, missed by the audit, is Section 4.9's
+   overall efficiency of the system, 66.42 %: the C-shape wheel on a 3 kW generator at full load,
+   η_overall = P_out / P_in with P_out = v_g·i_g (Equations 12–13). Remove the range entirely (never
+   re-source it to Asim); record 0.6642 as the route's conversion-efficiency with a source-literal
+   basis (P_in's formula is not stated in Section 4.9; Equation 11's power coefficient is a
+   separate definition); regressions: a number a paper repeats from its literature review is never a
+   measurement sourced to that paper.
+2. The rest of pass 45 accepted (findings 5–7): the μTPV is a fuel-LHV-to-electric system result
+   (the full text converts propane flow to watts by the lower heating value); LaPotin's η_TPV =
+   P_out / (P_inc − P_ref) is the cell–emitter pair's figure, a route figure only because this
+   pathway begins at the emitter's net radiative delivery — never to be reused as a heat-source-to-
+   electric system efficiency; the OTEC 2.46 % conservatively unresolved.
+3. Pass 46 set (findings 8–14): a narrow named pathway for Cheng 2018's exact architecture (an
+   identifier carrying the 1.78 / 1.26 eV pair), the 19.3 % (acidic; 18.5 % neutral preserved as a
+   condition) moved onto it, its 22.8 % as that pathway's `bounds[]` entry; the generic PEC pathway
+   keeps no gap-pair ceiling; Fountaine's ideal 30.6 % / 40.0 % as class-level upper bounds whose
+   `requires_basis` includes "PEC water splitting" (they bound water splitting, not every
+   manifestation of the photoelectrochemical effect); the realistic cases (15.1 % / 28.3 %
+   high-performance, 5.4 % / 16.2 % Earth-abundant) as benchmark constraints carrying their
+   parameter bundles (absorption fraction, external radiative efficiency, catalytic exchange
+   current densities, series and shunt resistance — Table 1's ideal / real1 / real2), in the
+   source's words "realistic limiting efficiencies", never decisive.
+
+## Closed (9:41–9:46 pm; findings 1–4 applied, live at rc9485dd7d33d)
+
+- Verified on the MDPI XML: "the undershot design efficiency was recorded from 72 to 77%" sits in
+  the Introduction after "[13,14]"; Section 4.9 reads "The turbine achieved an overall efficiency of
+  66.42%" with Equations 12–13 as the reviewer quoted. The range is gone from the pathway and from
+  the source note (which now says what the 72–77 % was); the 66.42 % is recorded as the route's
+  conversion-efficiency (laboratory, measured) with the source-literal basis and the P_in caveat;
+  the audit rows are now 27 (the mis-sourced row removed with its reason, the new row route /
+  kept); the regression asserts the range is gone, the 66.42 % names the generator's electrical
+  output and its unstated denominator, and the source note records the provenance. The waterwheel
+  pathway's derived best efficiency is 66.4 %. 85/85, gates consistent.
