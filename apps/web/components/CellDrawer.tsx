@@ -201,7 +201,7 @@ export function CellDrawer({
         {excluded > 0 && (
           <p className={s.stateSecondary} style={{ marginBottom: 6 }}>
             {bridges.length} qualifying composition
-            {bridges.length === 1 ? "" : "s"} · {excluded} additional structural route{excluded === 1 ? "" : "s"} (one effect plus bookkeeping, carrier-expanded copies or energy round trips) excluded
+            {bridges.length === 1 ? "" : "s"} · {excluded} additional structural route{excluded === 1 ? "" : "s"} (one effect plus bookkeeping, carrier-expanded copies or routes whose source and sink share an energy form) excluded
             from candidate status; see the frontier&apos;s Structure toggles.
           </p>
         )}

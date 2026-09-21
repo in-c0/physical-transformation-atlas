@@ -46,7 +46,9 @@ current compiler never assigns them; there is no review queue in this release.
 
 1. `forbidden` — at least one of the eight checks returns `fail`;
 2. `demonstrated` — search status is `demonstrated`;
-3. `circular` — the source disequilibrium and the sink carry the same energy form;
+3. `same-form` — the source disequilibrium and the sink carry the same energy form (a statement about
+   the two ends only: nothing about matter, energy or state returning to a starting condition; renamed
+   from `circular` in loop-3 pass 41);
 4. if every constituent claim is at least `demonstrated`:
    - `incomplete-handoff` when a consuming step declares a carrier requirement
      (`handoff.requires_all` / `requires_any`) that no earlier step provides
@@ -98,7 +100,9 @@ route becomes `source-preparation` (`dominated_by` names the suffix); two compos
 same source, ordered coupling families (phenomena with no family, such as pure transport, are
 transparent) and sink form collapse to one representative — a recorded pathway when the group has one,
 chosen by shared cited sources, otherwise the shortest spelling. A route that exactly matches a recorded
-pathway is always shown as `composition` and is never marked as dominated. The rules are spelled out in
+pathway is never marked as dominated; it is shown as `composition` unless it carries a single conversion
+phenomenon, in which case it stays `atomic` — its evidence lives in `frontier_class` and `search_status`,
+not in its structure (loop-3 pass 41). The rules are spelled out in
 [candidate-generation.md](candidate-generation.md).
 
 ## Matrix cell status, in precedence order

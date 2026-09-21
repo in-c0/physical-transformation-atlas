@@ -1657,3 +1657,19 @@
   venue: "DOE-HDBK-1012/2-92, June 1992"
   url: https://www.energy.gov/sites/default/files/2026-04/DOE-HDBK-1012-92_VOL2.pdf
   notes: "Read (open PDF on energy.gov, loop-3 pass 41). 'Convection involves the transfer of heat by the motion and mixing of macroscopic portions of a fluid … The term natural convection is used if this motion and mixing is caused by density variations resulting from temperature differences within the fluid. The term forced convection is used if this motion and mixing is caused by an outside force, such as a pump. … The transfer of heat from the surface of a heat exchanger to the bulk of a fluid being pumped through the heat exchanger is an example of forced convection.'"
+# Loop-3 pass 41 close: open NASA descriptions of MHD generation, both read in full.
+- id: source:nasa-lewis-mhd-tech-preview
+  type: report
+  title: "Lewis Tech Preview: Research Nonequilibrium MHD Power Generator Facility"
+  authors: [NASA Lewis Research Center, Electromagnetic Propulsion Division]
+  venue: "NASA Lewis Research Center tech preview N-422 67/11-39 (one page; the date is not printed beyond that document code)"
+  url: https://www1.grc.nasa.gov/wp-content/uploads/MHD-Power-Generator-Facility-Tech-Preview.pdf
+  notes: "Read (open PDF on grc.nasa.gov, loop-3 pass 41 close). 'In an MHD generator a hot high-speed conducting gas flows through a magnetic field. As a result of this motion, a voltage is induced. This voltage drives a current through a load and generates electric power.' The closed-loop nonequilibrium facility ran at 1.8 kg/s, 2100 K stagnation temperature, 4 atm, Mach 0.3–0.5; plasma and electrode shorting limited the initial generated power."
+- id: source:smith-1979-nasa-tm-79135
+  type: report
+  title: "Preliminary results in the NASA Lewis H2-O2 combustion MHD experiment"
+  authors: [J. Marlin Smith]
+  year: 1979
+  venue: "NASA Technical Memorandum 79135 (E-9983); prepared for the 18th Symposium on the Engineering Aspects of Magnetohydrodynamics, Butte, Montana, June 18–20, 1979"
+  url: https://ntrs.nasa.gov/citations/19790014726
+  notes: "Read (open NTRS PDF, loop-3 pass 41 close). Cesium-seeded H₂–O₂ combustion MHD generator in a neon-cooled cryomagnet (fields above 5 T; peak used 5 T): the combustion chamber and nozzle are water-cooled copper, 'the nozzle is designed for Mach 2 at the 4.96 cm diameter exit', stagnation pressures 5–20 atm, feeding 'a diverging circular cross section duct having an inlet Mach number of 2' of 42 copper electrodes in a Hall configuration; power output proportional to the square of the B-field; 8.74 kW (run 407) rising to 11.7 kW (run 413) when the front power takeoff moved downstream. The channel velocity is the combustor's own gas-dynamic expansion — no separate pump or compressor supplies it."

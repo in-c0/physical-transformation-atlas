@@ -336,8 +336,10 @@ test("driver / regime sufficiency on real routes (loop-3 pass 30): the reviewer'
   for (const p of paths) assert.notEqual(regime(p).result, "fail", p.id);
   // Pass 36: the nuclear steam plant is left unresolved on purpose — the hot-gas → expansion step now requires the expansion pressure drop,
   // and that pathway's steam-generation / pressure architecture has not been source-reviewed; commercial status never substitutes.
-  // Pass 38 re-spelled the nuclear plant through the temperature gradient, so the pass-36 exception is gone: no demonstrated route is unresolved.
-  const deliberatelyUnresolved = new Set<string>();
+  // Pass 38 re-spelled the nuclear plant through the temperature gradient, so the pass-36 exception is gone.
+  // Pass 41 close: the combustion MHD generator is unresolved on purpose — its channel velocity comes from its own combustor nozzle
+  // (NASA TM-79135), an implementation-internal provider the schema cannot yet record; an invented auxiliary would be a lie.
+  const deliberatelyUnresolved = new Set<string>(["pathway:mhd-generator"]);
   for (const p of paths.filter((q) => q.search_status === "demonstrated" && !deliberatelyUnresolved.has(q.pathway ?? "")))
     assert.notEqual(regime(p).result, "unresolved", `${p.pathway}: ${regime(p).detail}`);
   assert.equal(regime(byPathway("pathway:nuclear-steam-plant")).result, "pass");

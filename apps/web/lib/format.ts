@@ -124,7 +124,7 @@ export const FRONTIER_LABEL: Record<FrontierClass, string> = {
   "incomplete-handoff": "unresolved handoff",
   weak: "weakly supported",
   forbidden: "fails a check",
-  circular: "round trip",
+  "same-form": "same energy form",
 };
 
 /**

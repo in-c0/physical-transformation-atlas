@@ -111,6 +111,10 @@ export const REGIME_TOKENS = {
   "field:magnetic-field-change": { definition: "the magnetic field experienced by the active material changes in time between distinct field states", provider_needs_explanation: false },
   "field:magnetic-field-cycling": { definition: "the magnetic field experienced by the active material is repeatedly cycled through distinct field states", provider_needs_explanation: false },
   "field:nonuniform-magnetic-field": { definition: "a magnetic field with a spatial gradient across the active medium", provider_needs_explanation: false },
+  "field:transverse-magnetic-field": {
+    definition: "a nonzero magnetic-field component transverse to the electrically conducting fluid velocity in the active MHD region",
+    provider_needs_explanation: false,
+  },
   "mechanical:stress-change": {
     definition: "the stress state of the active material changes in time, whether the loading is imposed under stress or strain control",
     provider_needs_explanation: false,
@@ -1037,7 +1041,7 @@ export const CheckResult = z.object({
 });
 export type CheckResult = z.infer<typeof CheckResult>;
 
-export const FRONTIER_CLASSES = ["demonstrated", "candidate", "derived", "incomplete-handoff", "weak", "forbidden", "circular"] as const;
+export const FRONTIER_CLASSES = ["demonstrated", "candidate", "derived", "incomplete-handoff", "weak", "forbidden", "same-form"] as const;
 export type FrontierClass = (typeof FRONTIER_CLASSES)[number];
 
 export const CompiledPath = z.object({
@@ -1050,7 +1054,7 @@ export const CompiledPath = z.object({
   evidence_status: z.enum(EVIDENCE_STATUSES),
   established_steps: z.number().int(),
   search_status: z.enum(SEARCH_STATUSES),
-  /** demonstrated · candidate (all constituents at least demonstrated, no fail, no recorded-pathway overlap) · derived (candidate that extends or truncates a recorded pathway) · weak (a constituent is theoretical or worse) · forbidden (a check fails) · circular (source and sink share an energy form) */
+  /** demonstrated · candidate (all constituents at least demonstrated, no fail, no recorded-pathway overlap) · derived (candidate that extends or truncates a recorded pathway) · weak (a constituent is theoretical or worse) · forbidden (a check fails) · same-form (source and sink carry the same energy form — nothing about whether anything returns to its starting condition; pass 41 renamed it from "circular") */
   frontier_class: z.enum(FRONTIER_CLASSES),
   knowledge_level: z.enum(KNOWLEDGE_LEVELS),
   pathway: PathwayId.optional(),

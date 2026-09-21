@@ -393,7 +393,8 @@ export const VOCABULARY: VocabularyEnum[] = [
         "otherwise candidate-quality, but a consuming step declares a carrier requirement (handoff.requires_all / requires_any) that no earlier step on the route provides; the composition is not research-ready until the interface is recorded",
       weak: "at least one constituent claim is below demonstrated (reported, theoretical, hypothesised, disputed …)",
       forbidden: "at least one physics check fails",
-      circular: "the source disequilibrium and the sink carry the same energy form",
+      "same-form":
+        "the source disequilibrium and the sink carry the same energy form; this says nothing about whether matter, energy or state returns to its starting condition (a pumped loop delivering heat is thermal → thermal and not a round trip) — renamed from circular in loop-3 pass 41",
     }),
   },
   {

@@ -160,6 +160,7 @@ Used in: `claims[].regime_requires / regime_provides / regime_external`, `entiti
 - `field:magnetic-field-change` — the magnetic field experienced by the active material changes in time between distinct field states
 - `field:magnetic-field-cycling` — the magnetic field experienced by the active material is repeatedly cycled through distinct field states
 - `field:nonuniform-magnetic-field` — a magnetic field with a spatial gradient across the active medium
+- `field:transverse-magnetic-field` — a nonzero magnetic-field component transverse to the electrically conducting fluid velocity in the active MHD region
 - `mechanical:stress-change` — the stress state of the active material changes in time, whether the loading is imposed under stress or strain control
 - `mechanical:stress-crosses-transformation-threshold` — the applied stress crosses the material's stress-induced transformation threshold
 - `mechanical:stress-cycling` — the active material's stress state is repeatedly loaded and unloaded through a mechanical cycle
@@ -354,7 +355,7 @@ Used in: `paths[].frontier_class`
 - `incomplete-handoff` — otherwise candidate-quality, but a consuming step declares a carrier requirement (handoff.requires_all / requires_any) that no earlier step on the route provides; the composition is not research-ready until the interface is recorded
 - `weak` — at least one constituent claim is below demonstrated (reported, theoretical, hypothesised, disputed …)
 - `forbidden` — at least one physics check fails
-- `circular` — the source disequilibrium and the sink carry the same energy form
+- `same-form` — the source disequilibrium and the sink carry the same energy form; this says nothing about whether matter, energy or state returns to its starting condition (a pumped loop delivering heat is thermal → thermal and not a round trip) — renamed from circular in loop-3 pass 41
 
 ## `search.engine`
 

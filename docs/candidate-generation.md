@@ -69,7 +69,7 @@ Reviewers do not need to agree that a candidate route is promising. They need to
 - Claim — subject, predicate, object, conditions, evidence, status. The unit of knowledge here.
 - Route / path — an ordered chain of process claims from a disequilibrium to an output. "Pathway" is reserved for a named, reviewed route.
 - Composition — a route considered as a whole, as distinct from its constituent claims.
-- Candidate composition — an atlas classification, not a novelty claim: a route with no failed check, every constituent at least demonstrated, no energy-form round trip and no derivation from a sufficiently similar recorded pathway (`status-model.md`). It may be not searched, search-incomplete, or covered by a completed negative search.
+- Candidate composition — an atlas classification, not a novelty claim: a route with no failed check, every constituent at least demonstrated, source and sink of different energy forms (`same-form` otherwise) and no derivation from a sufficiently similar recorded pathway (`status-model.md`). It may be not searched, search-incomplete, or covered by a completed negative search.
 - Bridge — a route from a matrix row that passes through a phenomenon of a matrix column's family, when no direct claim links them.
 - Search record — what was looked for, where, when, by whom, with what result.
 - Dataset revision — the hash of the canonical files shown as `r…` in the status rail.

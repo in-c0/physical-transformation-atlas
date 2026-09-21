@@ -278,7 +278,7 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
     let frontier_class: FrontierClass;
     if (failed) frontier_class = "forbidden";
     else if (search_status === "demonstrated") frontier_class = "demonstrated";
-    else if (srcForm && sinkForm && srcForm === sinkForm) frontier_class = "circular";
+    else if (srcForm && sinkForm && srcForm === sinkForm) frontier_class = "same-form";
     else if (EVIDENCE_RANK[weakest] >= EVIDENCE_RANK.demonstrated) {
       // A declared carrier requirement nothing upstream provides: the composition is not research-ready
       // (loop-3 pass 16). Derived: extends or truncates a demonstrated pathway by claim overlap that spans
@@ -557,7 +557,9 @@ export function buildGraph(canon: Canon, opts: { builtAt?: string; version?: str
   for (const p of paths) if (p.pathway) sigToPathway.set(p.representation_signature, p.pathway);
   for (const p of paths) {
     const k = kinds.get(p.id)!;
-    p.structural_kind = p.pathway ? "composition" : k.kind;
+    // A recorded pathway is never a variant of another spelling, but its structure is still its own: one conversion
+    // phenomenon is atomic (one effect plus bookkeeping) whatever its evidence says (loop-3 pass 41).
+    p.structural_kind = p.pathway ? (k.kind === "atomic" ? "atomic" : "composition") : k.kind;
     p.semantic_overlap = k.semanticOverlap ? (sigToPathway.get(p.representation_signature) ?? null) : null;
     // A recorded pathway is its own representative: it is never shown as dominated by another spelling.
     p.dominated_by = p.pathway ? null : k.dominatedBy;

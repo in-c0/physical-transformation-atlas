@@ -119,6 +119,7 @@
   domain: fluid-mechanics
   quantity: quantity:velocity
   exergy: positive
+  regime_provides: [flow:bulk-fluid-motion]  # pass 41 close: the source whose physical content IS bulk fluid motion — an explicit ontology assertion, never an inference from the word "flow"
   condition_tags: [flow-required]
   summary: Moving air or water. Its kinetic energy can be intercepted by a rotor bounded by the Betz limit, or by electrokinetic and flow-induced effects at small scale.
 - id: disequilibrium:radiation-flux

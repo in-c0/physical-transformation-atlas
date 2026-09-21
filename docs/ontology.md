@@ -18,7 +18,7 @@ Ids are `<type>:<slug>`. The slug is kebab-case ASCII.
 ## Fields worth knowing
 
 - `disequilibrium.exergy`: `positive`, `conditional` or `none`. A source with `none` fails the conservation check and makes its matrix row *forbidden* when a `bounded_by constraint:second-law` claim records why.
-- `disequilibrium.energy_form`, `carrier.energy_form`, `output.energy_form`: used by the energy-form continuity check and to detect *round trip* routes (source and sink share a form).
+- `disequilibrium.energy_form`, `carrier.energy_form`, `output.energy_form`: used by the energy-form continuity check and to detect *same-form* routes (source and sink share a form — a statement about the two ends, not a round trip).
 - `quantity.dimension`: exponents over M L T I Θ N J. Needed by every `relation` that names the quantity.
 - `condition_tags` on entities and claims: `env-*`, `temp-*`, `state-*`, `field-*`, `medium-*`. Declared in `ontology/conditions.yaml` with the pairs that conflict.
 - `transducer.knowledge_level`: K0–K8 (see `status-model.md`).

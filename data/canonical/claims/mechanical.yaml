@@ -879,8 +879,10 @@
   object: phenomenon:magnetohydrodynamic-effect
   conditions: [an electrically conducting fluid — seeded combustion plasma or liquid metal — crossing a strong magnetic field between electrodes]
   condition_tags: [flow-required, field-magnetic-required]
+  regime_requires: [field:transverse-magnetic-field]  # pass 41 close: the flow is the subject itself (disequilibrium:fluid-flow provides flow:bulk-fluid-motion); fluid motion alone is not an MHD generator
+  regime_external: [field:transverse-magnetic-field]  # the magnet is an independent externally imposed degree of freedom relative to the fluid source (the ferrofluid pattern)
   energy: { input: kinetic, output: electrical, dissipation: thermal }
-  evidence: [source:rosa-1961-mhd, source:landau-lifshitz-ecm]
+  evidence: [source:rosa-1961-mhd, source:landau-lifshitz-ecm, source:nasa-lewis-mhd-tech-preview]
   status: established
   knowledge_level: K7
 - id: claim:hot-gas-drives-mhd
@@ -889,8 +891,10 @@
   object: phenomenon:magnetohydrodynamic-effect
   conditions: [combustion gas above ~2500 K seeded with potassium to make it conducting]
   condition_tags: [state-plasma, temp-high, field-magnetic-required, flow-required]
+  regime_requires: [flow:bulk-fluid-motion, field:transverse-magnetic-field]  # pass 41 close: a hot gas is not a moving gas (carrier:hot-gas implies no motion or pressure since pass 36) — the implementation must record how the channel velocity is created
+  regime_external: [field:transverse-magnetic-field]
   energy: { input: thermal, output: electrical, dissipation: thermal }
-  evidence: [source:rosa-1961-mhd]
+  evidence: [source:rosa-1961-mhd, source:nasa-lewis-mhd-tech-preview]
   status: demonstrated
   knowledge_level: K7
 - id: claim:mhd-produces

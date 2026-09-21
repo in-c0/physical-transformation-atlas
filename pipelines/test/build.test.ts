@@ -437,9 +437,35 @@ test("the forced-advection closure (loop-3 pass 41): advection requires bulk flu
   assert.equal(pwrAux.energy_form, "electrical");
   assert.equal(loopAux.energy_form, "mechanical");
   assert.ok(pwrAux.establishes.includes("flow:bulk-fluid-motion") && loopAux.establishes.includes("flow:bulk-fluid-motion"));
-  // the flow token comes from nowhere but a recorded provider: no disequilibrium, carrier or claim provides it by name
-  assert.equal(canon.entities.filter((e) => (e.regime_provides ?? []).includes("flow:bulk-fluid-motion")).length, 0);
+  // the flow token comes from nowhere but a recorded provider: no entity other than disequilibrium:fluid-flow — the source whose
+  // physical content is bulk fluid motion — provides it, and no carrier, condition tag or claim supplies it implicitly (pass 41 close)
+  assert.deepEqual(
+    canon.entities.filter((e) => (e.regime_provides ?? []).includes("flow:bulk-fluid-motion")).map((e) => e.id),
+    ["disequilibrium:fluid-flow"],
+  );
   assert.equal(canon.claims.filter((c) => c.regime_provides.includes("flow:bulk-fluid-motion") || c.regime_external.includes("flow:bulk-fluid-motion")).length, 0);
+  // the exact forced-circulation route: atomic in structure (one transport phenomenon), demonstrated in evidence — never "circular"
+  assert.equal(loop.structural_kind, "atomic");
+  assert.equal(loop.search_status, "demonstrated");
+  assert.equal(loop.frontier_class, "demonstrated");
+  assert.ok(!graph.paths.some((p) => (p.frontier_class as string) === "circular"), "the class was renamed same-form");
+  assert.ok(graph.paths.some((p) => p.frontier_class === "same-form" && !p.pathway), "unrecorded same-form routes keep the honest class");
+  assert.ok(!graph.paths.some((p) => p.frontier_class === "same-form" && p.search_status === "demonstrated"), "a demonstrated route is never classed same-form");
+  // the MHD pair: the flow-driven claim needs only the transverse field (its subject provides the flow); the hot-gas claim needs both,
+  // and the combustion generator reads unresolved on the flow it obtains from its own nozzle until the schema can record that provider
+  const flowMhd = canon.claims.find((c) => c.id === "claim:flow-drives-mhd")!;
+  const hotMhd = canon.claims.find((c) => c.id === "claim:hot-gas-drives-mhd")!;
+  assert.deepEqual(flowMhd.regime_requires, ["field:transverse-magnetic-field"]);
+  assert.deepEqual([...hotMhd.regime_requires].sort(), ["field:transverse-magnetic-field", "flow:bulk-fluid-motion"]);
+  assert.deepEqual(hotMhd.regime_external, ["field:transverse-magnetic-field"]);
+  const mhdGen = graph.paths.find((p) => p.pathway === "pathway:mhd-generator")!;
+  assert.equal(regime(mhdGen).result, "unresolved");
+  assert.match(regime(mhdGen).detail, /requires flow:bulk-fluid-motion/);
+  assert.doesNotMatch(regime(mhdGen).detail, /requires field:transverse-magnetic-field/, "the external field is supplied");
+  assert.equal(canon.pathways.find((p) => p.id === "pathway:mhd-generator")!.auxiliary_requirements.length, 0, "no invented auxiliary");
+  const flowMhdRoutes = graph.paths.filter((p) => p.claims.includes("claim:flow-drives-mhd"));
+  assert.ok(flowMhdRoutes.length > 0);
+  for (const p of flowMhdRoutes) assert.equal(regime(p).result, "pass", p.id);
   // conduction and advection stay distinct mechanisms on the same source and sink
   const cond = graph.paths.find((p) => p.pathway === "pathway:heat-exchanger")!;
   assert.notEqual(cond.id, loop.id);

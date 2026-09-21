@@ -295,7 +295,7 @@ export function loadCanon(root: string): Canon {
   for (const c of claims) for (const r of c.condition_requirements) if (!tagIds.has(r.tag)) problems.push(`${c.id}: unknown condition tag ${r.tag} in condition_requirements`);
   // Pass 30: a regime_external token must be an independent exogenous degree of freedom — never the kind of
   // regime the step's own subject carries (a thermal token on a thermally driven step cannot self-certify).
-  const regimeKind: Record<string, string[]> = { thermal: ["thermal"], field: ["electrical", "magnetic"], mechanical: ["mechanical"], light: ["radiative"] };
+  const regimeKind: Record<string, string[]> = { thermal: ["thermal"], field: ["electrical", "magnetic"], mechanical: ["mechanical"], light: ["radiative"], flow: ["kinetic"] };
   const entityById = new Map(entities.map((e) => [e.id, e]));
   for (const c of claims)
     for (const t of c.regime_external) {
