@@ -346,6 +346,69 @@ test("the steam / nuclear architecture audit (loop-3 pass 38): the direct-carrie
     assert.equal(p.checks.find((k) => k.id === "driver-regime-sufficiency")!.result, "unresolved", `${p.id}: no pathway, no provider`);
 });
 
+test("the pressurised-water reactor as a system (loop-3 pass 40): advective transport, a transferred-heat handoff through the steam generator, only the secondary's electricity exported", () => {
+  const primary = canon.pathways.find((p) => p.id === "pathway:pwr-primary-heat-delivery")!;
+  assert.ok(
+    primary.steps.includes("claim:temperature-drives-advective-heat-transport") && !primary.steps.some((s) => s.includes("heat-conduction")),
+    "the primary loop is advective transport, not conduction",
+  );
+  const fourier = canon.claims.find((c) => c.id === "claim:heat-conduction-drives")!;
+  assert.equal(fourier.relation?.formula, "q = −κ · ∇T", "Fourier conduction keeps its relation and its name");
+  assert.equal(canon.claims.find((c) => c.id === "claim:temperature-drives-advective-heat-transport")!.relation, undefined, "no fake Fourier relation on advection");
+  assert.equal(primary.status, "commercial");
+  assert.ok(primary.auxiliary_requirements.some((a) => a.kind === "external-input" && /coolant pump/.test(a.purpose) && a.establishes.length === 0));
+  const pwr = graph.systems.find((s) => s.id === "system-pathway:pressurized-water-reactor-steam-plant")!;
+  assert.ok(pwr, "the PWR system compiles");
+  assert.equal(pwr.status, "commercial");
+  assert.equal(pwr.handoffs.length, 1);
+  const h = pwr.handoffs[0];
+  assert.equal(h.kind, "transferred-heat");
+  assert.equal(h.carrier, null);
+  assert.equal(h.through, "transducer:pwr-steam-generator");
+  assert.equal(h.status, "demonstrated");
+  assert.equal(pwr.handoff_status, "demonstrated");
+  // primary useful heat is consumed internally and absent from the exported outputs; secondary electricity is the system output
+  assert.deepEqual(
+    pwr.outputs.map((o) => `${o.member}:${o.output}`),
+    ["secondary:output:electricity"],
+  );
+  assert.ok(
+    pwr.members.every((m) => m.route_id),
+    "both members carry compiled routes",
+  );
+  // the BWR stays a distinct one-loop direct-steam pathway; the generic nuclear pathway stays architecture-neutral
+  assert.ok(canon.pathways.find((p) => p.id === "pathway:boiling-water-reactor-direct-steam-plant")!.steps.includes("claim:fission-produces-hot-gas"));
+  assert.ok(canon.pathways.find((p) => p.id === "pathway:nuclear-steam-plant")!.steps.includes("claim:fission-produces-gradient"));
+  // the loader refuses a forgotten member output and a handoff whose energy form is not the sender's terminal form
+  const tmp = mkdtempSync(join(tmpdir(), "pta-pwr-"));
+  cpSync(join(root, "data", "canonical"), join(tmp, "data", "canonical"), { recursive: true });
+  const file = join(tmp, "data", "canonical", "systems", "systems.yaml");
+  cpSync(join(root, "data", "generated"), join(tmp, "data", "generated"), { recursive: true });
+  writeFileSync(
+    file,
+    readFileSync(file, "utf8")
+      .replace(
+        "from_energy_form: thermal\n      to_source: disequilibrium:temperature-gradient\n      carrier: null\n      through: transducer:pwr-steam-generator",
+        "from_energy_form: mechanical\n      to_source: disequilibrium:temperature-gradient\n      carrier: null\n      through: transducer:pwr-steam-generator",
+      )
+      .replace(
+        "from_energy_form: thermal\r\n      to_source: disequilibrium:temperature-gradient\r\n      carrier: null\r\n      through: transducer:pwr-steam-generator",
+        "from_energy_form: mechanical\r\n      to_source: disequilibrium:temperature-gradient\r\n      carrier: null\r\n      through: transducer:pwr-steam-generator",
+      ),
+  );
+  assert.throws(() => loadCanon(tmp), /carries thermal energy but that member's terminal output|neither exported/);
+  rmSync(tmp, { recursive: true, force: true });
+  // the route-count delta is enumerated, not suppressed: the ten routes through advective transport
+  const adv = graph.paths.filter((p) => p.claims.includes("claim:temperature-drives-advective-heat-transport"));
+  assert.equal(adv.length, 10, "ten routes run through advective heat transport");
+  assert.equal(adv.filter((p) => p.pathway === "pathway:pwr-primary-heat-delivery").length, 1);
+  assert.equal(
+    adv.filter((p) => p.frontier_class === "candidate" && p.structural_kind === "composition").length,
+    0,
+    "none of them is a fresh candidate composition — each is dominated by, prepares, or is derived from a heat-delivery spelling the atlas already records",
+  );
+});
+
 test("the gas-turbine / expansion-carrier closure (loop-3 pass 36): the pressure regime is required by the expansion step, supplied only through an explained auxiliary, and never by the carrier or by combustion", () => {
   const route = (id: string) => graph.paths.find((p) => p.pathway === id)!;
   const regime = (p: (typeof graph.paths)[number]) => p.checks.find((k) => k.id === "driver-regime-sufficiency")!;

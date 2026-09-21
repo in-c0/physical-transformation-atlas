@@ -119,7 +119,14 @@ export function SystemView({ index, system }: { index: AtlasIndex; system: Compi
                       as <Link href={hrefFor(h.carrier)}>{index.entity.get(h.carrier)?.name ?? h.carrier}</Link>
                     </>
                   ) : null}{" "}
-                  and establishes <Link href={hrefFor(h.to_source)}>{index.entity.get(h.to_source)?.name ?? h.to_source}</Link>, the disequilibrium the second member&apos;s route starts from.
+                  and establishes <Link href={hrefFor(h.to_source)}>{index.entity.get(h.to_source)?.name ?? h.to_source}</Link>, the disequilibrium the second member&apos;s route starts from
+                  {h.through ? (
+                    <>
+                      {" "}
+                      — through <Link href={hrefFor(h.through)}>{index.entity.get(h.through)?.name ?? h.through}</Link>
+                    </>
+                  ) : null}
+                  .
                 </div>
                 {h.conditions.length > 0 && (
                   <ul className={styles.conditions}>

@@ -40,3 +40,30 @@
         note: "the plant's own figure (Table 3, local plant data); (127 + 61.5) MW over 9.2 kg/s × 43,662 kJ/kg = 401.7 MW reproduces it exactly — a verification, not a second measurement; the paper's Aspen Plus simulation gives 46.28 %"
   summary: A topping gas turbine delivers electrical work and hands its exhaust enthalpy through heat-recovery steam generators to a bottoming steam Rankine cycle that delivers more; the two generators' outputs add. The combined cycle's efficiency belongs here and to neither member — 46.93 % at the Omani plant Al Mhanna et al. 2024 model — while each member keeps its own linear route and checks.
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 34 (the second reader's first system record; Al Mhanna 2024 read in full, the 46.93 % moved off the gas-turbine pathway)" }
+# Loop-3 pass 40: the pressurised-water reactor as a two-loop system — the primary member delivers heat, the steam generator
+# hands it across an isolating boundary, the secondary Rankine cycle exports the electricity.
+- id: system-pathway:pressurized-water-reactor-steam-plant
+  name: Pressurised-water reactor steam plant
+  members:
+    - { id: primary, pathway: pathway:pwr-primary-heat-delivery, role: primary-heat-loop }
+    - { id: secondary, pathway: pathway:rankine-steam-plant, role: secondary-steam-cycle }
+  handoffs:
+    - from_member: primary
+      to_member: secondary
+      from_energy_form: thermal
+      to_source: disequilibrium:temperature-gradient
+      carrier: null
+      through: transducer:pwr-steam-generator
+      kind: transferred-heat
+      conditions:
+        - "pressurised water in the primary coolant loop carries the heat to the steam generator; inside the steam generator, heat from the primary loop vaporises the water in a separate secondary loop, producing the steam the steamline directs to the main turbine"
+      evidence: [source:nrc-pressurized-water-reactors]
+      status: demonstrated
+      note: "carrier null on purpose: the primary coolant never crosses the boundary — energy crosses the steam generator's tube walls while the two fluids stay isolated"
+  outputs:
+    - { member: secondary, output: output:electricity, aggregation: sum }
+  evidence: [source:nrc-pressurized-water-reactors]
+  status: commercial
+  knowledge_level: K8
+  summary: A commercial pressurised-water reactor — fission heats pressurised primary water, a steam generator transfers that heat into a separate secondary circuit whose steam drives the turbine-generator; the primary member's useful heat is consumed internally and only the secondary's electricity leaves the system.
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 40 (the second reader's findings 30–38; the NRC's PWR description read in full)" }

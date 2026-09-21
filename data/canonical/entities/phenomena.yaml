@@ -638,3 +638,12 @@
   year_first_reported: 1881
   condition_tags: [state-liquid, temp-gradient-required]
   summary: Warm surface seawater boils a low-boiling working fluid (or itself under vacuum) that is condensed by cold deep water; a Rankine cycle across a 20 K difference.
+# Loop-3 pass 40: bulk transport of heat by a moving fluid — the primary loop of a pressurised-water reactor is neither
+# conduction nor a conversion; it carries enthalpy from the core to the steam generator.
+- id: phenomenon:advective-heat-transport
+  type: phenomenon
+  name: Advective heat transport
+  aliases: [thermal advection, bulk convective heat transport, sensible-heat transport by fluid flow]
+  domain: fluid-mechanics
+  summary: "Bulk motion of a fluid transports enthalpy from a hotter region to a colder region. In a forced loop the fluid motion may be maintained by a pump; the thermal energy transported remains heat."
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 40 (the second reader's spelling for the PWR primary loop)" }

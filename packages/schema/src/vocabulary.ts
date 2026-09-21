@@ -138,6 +138,8 @@ export const VOCABULARY: VocabularyEnum[] = [
     terms: define(SYSTEM_HANDOFF_KINDS, {
       "residual-energy": "a member's residual energy stream (exhaust, waste heat, spent flow) sources the next member",
       "recovered-heat": "heat recovered from one member establishes the temperature difference the next member's route starts from",
+      "transferred-heat":
+        "intentional transfer of thermal energy from one member into the thermal source of another; unlike recovered-heat, the transferred heat is the upstream member's intended delivered output rather than a residual stream after another useful conversion (pass 40)",
       "mechanical-coupling": "shaft or linkage work of one member drives the next",
       "electrical-coupling": "electrical output of one member powers or biases the next",
       "material-flow": "a material stream (fuel, working fluid, product) of one member feeds the next",

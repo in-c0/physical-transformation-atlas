@@ -737,7 +737,7 @@ export type Pathway = z.infer<typeof Pathway>;
  */
 export const SYSTEM_PATHWAY_STATUSES = ["demonstrated", "prototype", "commercial", "proposed"] as const;
 export type SystemPathwayStatus = (typeof SYSTEM_PATHWAY_STATUSES)[number];
-export const SYSTEM_HANDOFF_KINDS = ["residual-energy", "recovered-heat", "mechanical-coupling", "electrical-coupling", "material-flow"] as const;
+export const SYSTEM_HANDOFF_KINDS = ["residual-energy", "recovered-heat", "transferred-heat", "mechanical-coupling", "electrical-coupling", "material-flow"] as const;
 export type SystemHandoffKind = (typeof SYSTEM_HANDOFF_KINDS)[number];
 export const SYSTEM_HANDOFF_STATUSES = ["demonstrated", "theoretical", "proposed"] as const;
 export type SystemHandoffStatus = (typeof SYSTEM_HANDOFF_STATUSES)[number];
@@ -760,6 +760,8 @@ export const SystemHandoff = z.object({
   to_source: EntityId,
   /** The carrier that physically crosses, if one does. */
   carrier: EntityId.nullable().default(null),
+  /** Pass 40: the physical device the handoff crosses through, when one defines the architecture (a PWR's steam generator); a transducer entity. */
+  through: EntityId.nullable().default(null),
   kind: z.enum(SYSTEM_HANDOFF_KINDS),
   conditions: z.array(z.string()).default([]),
   evidence: z.array(SourceId).default([]),

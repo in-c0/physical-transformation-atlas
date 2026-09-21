@@ -16,9 +16,9 @@
 - id: output:useful-heat
   type: output
   name: Useful heat
-  aliases: [process heat, space heating, hot water]
+  aliases: [process heat, space heating, hot water, delivered heat]
   energy_form: thermal
-  summary: Heat delivered at a temperature where it is wanted.
+  summary: "Thermal energy deliberately delivered across a boundary at a temperature useful to a downstream process or end use — process heat, hot water, and heat intentionally supplied to another conversion stage (pass 40), without pretending the heat is necessarily the system's final exported service."
 - id: output:cooling
   type: output
   name: Cooling
@@ -699,3 +699,11 @@
   knowledge_level: K8
   summary: "A light-water reactor whose coolant boils in the reactor vessel: the steam–water mixture leaves the core, passes two stages of moisture separation and goes by steamline to the main turbine-generator; the exhaust is condensed and pumped back to the vessel. The same circuit is reactor coolant and turbine working fluid — the defining distinction from a pressurised-water reactor, whose steam generator makes a separate secondary steam."
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 38 (the second reader's spelling; the NRC's BWR description read in full)" }
+# Loop-3 pass 40: the device that defines the PWR's two-loop architecture.
+- id: transducer:pwr-steam-generator
+  type: transducer
+  name: PWR steam generator
+  aliases: [steam generator, primary-to-secondary heat exchanger]
+  knowledge_level: K8
+  summary: "A heat exchanger whose tubes separate pressurised primary reactor coolant from secondary water while transferring heat that boils the secondary water into turbine steam; the primary coolant never crosses into the secondary circuit."
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 40 (the second reader's finding 32; the NRC's PWR description read in full)" }

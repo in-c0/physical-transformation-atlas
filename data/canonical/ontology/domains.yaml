@@ -249,6 +249,7 @@
     - stratified-flow-mixing
     - droplet-impact
     - film-flow-drainage
+    - advective-heat-transport
 - id: optics-photonics
   name: Optics and photonics
   summary: Absorption, emission, photovoltaics, thermophotovoltaics and radiative exchange.

@@ -111,6 +111,7 @@ export const SYSTEM_STATUS_LABEL: Record<SystemPathwayStatus, string> = {
 export const SYSTEM_HANDOFF_KIND_LABEL: Record<SystemHandoffKind, string> = {
   "residual-energy": "residual energy stream",
   "recovered-heat": "recovered heat",
+  "transferred-heat": "transferred heat",
   "mechanical-coupling": "mechanical coupling",
   "electrical-coupling": "electrical coupling",
   "material-flow": "material flow",

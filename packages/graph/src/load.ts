@@ -400,6 +400,34 @@ export function loadCanon(root: string): Canon {
       if (h.carrier && !entityIds.has(h.carrier)) problems.push(`${s.id}: unknown handoff carrier ${h.carrier}`);
       for (const src of h.evidence) if (!sourceIds.has(src)) problems.push(`${s.id}: unknown handoff source ${src}`);
     }
+    // Pass 40: the device a handoff crosses through is a transducer; the energy form it carries is the sending member's
+    // terminal output's energy form; and a member whose terminal output is absent from outputs[] must be the from_member
+    // of a handoff of that energy form — an intentionally consumed internal output, never a forgotten system output.
+    const RESIDUAL_KINDS = new Set(["residual-energy", "recovered-heat"]);
+    const terminalOutputOf = (memberId: string) => {
+      const pw = pathwayById.get(memberPathway.get(memberId) ?? "");
+      const last = pw ? claimById.get(pw.steps[pw.steps.length - 1]) : undefined;
+      return last ? entityById.get(last.object) : undefined;
+    };
+    for (const h of s.handoffs) {
+      if (h.through) {
+        const dev = entityById.get(h.through);
+        if (!dev) problems.push(`${s.id}: handoff through unknown entity ${h.through}`);
+        else if (dev.type !== "transducer") problems.push(`${s.id}: handoff through ${h.through} is not a transducer`);
+      }
+      // A residual stream (residual-energy, recovered-heat) is by definition not the sending member's terminal output, so
+      // the energy-form invariant binds only the kinds that hand the member's intended output onward.
+      const out = terminalOutputOf(h.from_member);
+      if (!RESIDUAL_KINDS.has(h.kind) && out?.energy_form && out.energy_form !== h.from_energy_form)
+        problems.push(`${s.id}: handoff from ${h.from_member} carries ${h.from_energy_form} energy but that member's terminal output ${out.id} is ${out.energy_form}`);
+    }
+    for (const m of s.members) {
+      const out = terminalOutputOf(m.id);
+      if (!out) continue;
+      const exported = s.outputs.some((o) => o.member === m.id);
+      const consumed = s.handoffs.some((h) => h.from_member === m.id && !RESIDUAL_KINDS.has(h.kind) && (!out.energy_form || h.from_energy_form === out.energy_form));
+      if (!exported && !consumed) problems.push(`${s.id}: member ${m.id}'s terminal output ${out.id} is neither exported in outputs[] nor consumed by a handoff of its energy form`);
+    }
     for (const o of s.outputs) {
       const out = entityById.get(o.output);
       if (!out) problems.push(`${s.id}: output names unknown entity ${o.output}`);

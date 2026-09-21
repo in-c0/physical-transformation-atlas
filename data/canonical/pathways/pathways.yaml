@@ -823,3 +823,23 @@
   environment: [temp-high]
   summary: The reactor coolant itself boils in the vessel and its steam drives the main turbine-generator — the direct-cycle topology, distinct from the generic nuclear steam plant (fission establishes a temperature gradient a heat-engine cycle converts) and from the pressurised-water reactor, whose steam generator belongs to the system layer.
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 38 (the second reader's finding 2: the BWR recorded on the direct-steam route p-dc7d860e03; the NRC description read in full)" }
+# Loop-3 pass 40: the pressurised-water reactor's primary loop — a heat-delivery pathway whose output the PWR system consumes
+# internally at the steam generator.
+- id: pathway:pwr-primary-heat-delivery
+  name: PWR primary heat delivery
+  steps: [claim:binding-drives-fission, claim:fission-produces-gradient, claim:temperature-drives-advective-heat-transport, claim:advective-heat-transport-produces-heat-flow, claim:heat-flow-converts-useful-heat]
+  demonstrated_with: [transducer:nuclear-reactor-plant]
+  evidence: [source:nrc-pressurized-water-reactors]
+  status: commercial
+  knowledge_level: K8
+  auxiliary_requirements:
+    - kind: external-input
+      energy_form: electrical
+      purpose: reactor coolant pumps
+      establishes: []
+      conditions:
+        - "electrically powered reactor coolant pumps circulate the pressurised primary water through the core and the steam generator; the loop's heat transport is forced, not buoyant"
+      evidence: [source:nrc-pressurized-water-reactors]
+  environment: [temp-high, state-liquid]
+  summary: Fission heats pressurised primary water that reactor coolant pumps circulate to the steam generator, where its heat is delivered across the tube walls to the secondary circuit — thermal energy delivered at a useful temperature, consumed inside the PWR system rather than exported.
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 40 (the second reader's spelling with advective transport, not conduction; the NRC's PWR description read in full)" }
