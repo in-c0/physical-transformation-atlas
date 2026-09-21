@@ -1,0 +1,71 @@
+# route-search-v1 query plan — p-62809bc294
+# Temperature gradient → Marangoni effect → Mechanical motion → Rotating-machine generator action → Charge carriers → Electrical work
+# D = Temperature gradient; M_1 = Marangoni effect; M_2 = Rotating-machine generator action; O = Electrical work (k = 2).
+# Written in loop-3 pass 28 (the reviewer's P3 candidate: a thermal Marangoni rotor turning a generator) from the recorded
+# names and aliases. The Marangoni bundle is the thermal half of the phenomenon's aliases (thermocapillary, thermal
+# Marangoni); the generator bundle adds "electric generator" and "rotating generator" to the recorded alternator / dynamo.
+# The reviewer's first query is the driver-mechanism form; its high-information precision query is the extra run oa-dp-r.
+# No composition term is frozen: no recorded source names a "thermocapillary generator" as a device spanning both
+# mechanisms (rule: a composition term needs a source, never a synthesised phrase). Google Scholar runs are performed by
+# hand and recorded in the reviewed record, not here.
+protocol_version: route-search-v1
+route: p-62809bc294
+claims: [claim:temperature-drives-marangoni, claim:marangoni-produces-motion, claim:motion-drives-generator, claim:generator-produces-carriers, claim:charge-carriers-convert-electricity]
+driver_terms: [temperature gradient, temperature difference, thermal gradient, ΔT, waste heat]
+phenomenon_terms:
+  phenomenon:marangoni-effect: [Marangoni effect, thermocapillary, thermocapillary flow, thermal Marangoni, thermal Marangoni effect]
+  phenomenon:generator-action: [generator action, alternator, dynamo, electric generator, rotating generator]
+output_terms: [electrical work, electricity, electrical output, DC power]
+runs:
+  - id: search:2026-09-21-p-62809bc294/oa-dm1
+    engine: openalex
+    form: route-driver-mechanism
+    key: driver-mechanism:1
+    query: '("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Marangoni effect" OR thermocapillary OR "thermocapillary flow" OR "thermal Marangoni" OR "thermal Marangoni effect")'
+  - id: search:2026-09-21-p-62809bc294/oa-dm1-newest
+    engine: openalex
+    form: route-driver-mechanism
+    key: driver-mechanism:1
+    sort: newest
+    per_page: 50
+    query: '("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Marangoni effect" OR thermocapillary OR "thermocapillary flow" OR "thermal Marangoni" OR "thermal Marangoni effect")'
+  - id: search:2026-09-21-p-62809bc294/oa-mp12
+    engine: openalex
+    form: route-mechanism-pair
+    key: mechanism-pair:1-2
+    query: '("Marangoni effect" OR thermocapillary OR "thermocapillary flow" OR "thermal Marangoni" OR "thermal Marangoni effect") AND ("generator action" OR alternator OR dynamo OR "electric generator" OR "rotating generator")'
+  - id: search:2026-09-21-p-62809bc294/oa-wc
+    engine: openalex
+    form: route-whole-chain
+    key: whole-chain
+    query: '("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Marangoni effect" OR thermocapillary OR "thermocapillary flow" OR "thermal Marangoni" OR "thermal Marangoni effect") AND ("generator action" OR alternator OR dynamo OR "electric generator" OR "rotating generator") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power")'
+  - id: search:2026-09-21-p-62809bc294/oa-dp
+    engine: openalex
+    form: route-demonstration-precision
+    key: demonstration-precision
+    query: '("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Marangoni effect" OR thermocapillary OR "thermocapillary flow" OR "thermal Marangoni" OR "thermal Marangoni effect") AND ("generator action" OR alternator OR dynamo OR "electric generator" OR "rotating generator") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power") AND (experiment OR experimental OR measured OR device OR prototype)'
+  - id: search:2026-09-21-p-62809bc294/oa-dp-r
+    engine: openalex
+    form: route-demonstration-precision
+    key: demonstration-precision
+    query: '(thermocapillary OR "thermal Marangoni") AND ("generator action" OR alternator OR dynamo) AND (electricity OR "electrical output") AND (experiment OR experimental OR measured OR device OR prototype)'
+  - id: search:2026-09-21-p-62809bc294/s2-dm1
+    engine: semantic-scholar
+    form: route-driver-mechanism
+    key: driver-mechanism:1
+    query: Temperature gradient temperature difference thermal gradient waste heat Marangoni effect thermocapillary thermocapillary flow thermal Marangoni thermal Marangoni effect
+  - id: search:2026-09-21-p-62809bc294/s2-mp12
+    engine: semantic-scholar
+    form: route-mechanism-pair
+    key: mechanism-pair:1-2
+    query: Marangoni effect thermocapillary thermocapillary flow thermal Marangoni thermal Marangoni effect generator action alternator dynamo electric generator rotating generator
+  - id: search:2026-09-21-p-62809bc294/s2-wc
+    engine: semantic-scholar
+    form: route-whole-chain
+    key: whole-chain
+    query: Temperature gradient temperature difference thermal gradient waste heat Marangoni effect thermocapillary thermocapillary flow thermal Marangoni thermal Marangoni effect generator action alternator dynamo electric generator rotating generator Electrical work electricity electrical output DC power
+  - id: search:2026-09-21-p-62809bc294/s2-dp
+    engine: semantic-scholar
+    form: route-demonstration-precision
+    key: demonstration-precision
+    query: Temperature gradient temperature difference thermal gradient waste heat Marangoni effect thermocapillary thermocapillary flow thermal Marangoni thermal Marangoni effect generator action alternator dynamo electric generator rotating generator Electrical work electricity electrical output DC power experiment experimental measured device prototype

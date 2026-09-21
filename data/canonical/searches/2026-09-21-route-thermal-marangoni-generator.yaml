@@ -1,0 +1,189 @@
+# Loop-3 pass 28: the reviewed ROUTE search for temperature gradient → Marangoni effect → mechanical motion →
+# rotating-machine generator action → electrical work (p-62809bc294), the second reader's P3 candidate: a thermal
+# Marangoni rotor turning a generator. Pass 16 established the two halves separately (thermal Marangoni drives
+# rotation; a Marangoni rotor drives a generator under a different source); this record asks whether anyone has
+# closed the chain. OpenAlex's six forms ran on 21/09; Semantic Scholar and Google Scholar are outstanding.
+- id: search:2026-09-21-p-62809bc294-partial
+  target:
+    kind: path
+    path: p-62809bc294
+    claims:
+      - claim:temperature-drives-marangoni
+      - claim:marangoni-produces-motion
+      - claim:motion-drives-generator
+      - claim:generator-produces-carriers
+      - claim:charge-carriers-convert-electricity
+  protocol_version: route-search-v1
+  started_at: 2026-09-21T10:48:00+10:00
+  completed_at: 2026-09-21T10:52:00+10:00
+  objective: exact-composition
+  inclusion_criteria:
+    - a physical experiment or device in which an imposed temperature gradient's thermocapillary (thermal Marangoni) forces move a free body — a rotor, a floater, a gear — whose motion turns a rotating electrical generator that delivers electrical work to a load (route-search-v1 §3, output Electrical work)
+  exclusion_criteria:
+    - theory, simulation or proposals (recorded as such, never as demonstrations)
+    - thermocapillary flow, convection or heat transfer with no free body and no generator (constituent-only or simulation-only)
+    - Marangoni motors, swimmers or robots driven by a surfactant, a fuel or an electric field rather than a temperature gradient (wrong-driver), and photothermal micromotors whose light-made temperature difference moves the body with no generator (constituent-only)
+    - a Marangoni rotor turning a generator under a solutal or chemical source (source-variant; the pass-16 device)
+  runs:
+    - id: search:2026-09-21-p-62809bc294/oa-dm1
+      engine: openalex
+      query_form: route-driver-mechanism
+      query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Marangoni effect" OR thermocapillary OR "thermocapillary flow" OR "thermal Marangoni" OR "thermal Marangoni effect")
+      executed_at: 2026-09-21T00:49:25.263Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Marangoni+effect%22+OR+thermocapillary+OR+%22thermocapillary+flow%22+OR+%22thermal+Marangoni%22+OR+%22thermal+Marangoni+effect%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Marangoni effect" OR thermocapillary OR "thermocapillary flow" OR "thermal Marangoni" OR "thermal Marangoni effect")
+        type: article|review|book-chapter
+      result_count_reported: 1424
+      records_retrieved: 100
+      records_screened: 100
+      records_read: 3
+      query_key: driver-mechanism:1
+    - id: search:2026-09-21-p-62809bc294/oa-dm1-newest
+      engine: openalex
+      query_form: route-driver-mechanism
+      query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Marangoni effect" OR thermocapillary OR "thermocapillary flow" OR "thermal Marangoni" OR "thermal Marangoni effect")
+      executed_at: 2026-09-21T00:49:30.194Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Marangoni+effect%22+OR+thermocapillary+OR+%22thermocapillary+flow%22+OR+%22thermal+Marangoni%22+OR+%22thermal+Marangoni+effect%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=50&sort=publication_date%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: publication_date:desc
+      filters:
+        title_and_abstract.search: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Marangoni effect" OR thermocapillary OR "thermocapillary flow" OR "thermal Marangoni" OR "thermal Marangoni effect")
+        type: article|review|book-chapter
+      result_count_reported: 1424
+      records_retrieved: 50
+      records_screened: 50
+      records_read: 3
+      query_key: driver-mechanism:1
+    - id: search:2026-09-21-p-62809bc294/oa-mp12
+      engine: openalex
+      query_form: route-mechanism-pair
+      query: ("Marangoni effect" OR thermocapillary OR "thermocapillary flow" OR "thermal Marangoni" OR "thermal Marangoni effect") AND ("generator action" OR alternator OR dynamo OR "electric generator" OR "rotating generator")
+      executed_at: 2026-09-21T00:49:35.548Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Marangoni+effect%22+OR+thermocapillary+OR+%22thermocapillary+flow%22+OR+%22thermal+Marangoni%22+OR+%22thermal+Marangoni+effect%22%29+AND+%28%22generator+action%22+OR+alternator+OR+dynamo+OR+%22electric+generator%22+OR+%22rotating+generator%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Marangoni effect" OR thermocapillary OR "thermocapillary flow" OR "thermal Marangoni" OR "thermal Marangoni effect") AND ("generator action" OR alternator OR dynamo OR "electric generator" OR "rotating generator")
+        type: article|review|book-chapter
+      result_count_reported: 1
+      records_retrieved: 1
+      records_screened: 1
+      records_read: 1
+      query_key: mechanism-pair:1-2
+    - id: search:2026-09-21-p-62809bc294/oa-wc
+      engine: openalex
+      query_form: route-whole-chain
+      query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Marangoni effect" OR thermocapillary OR "thermocapillary flow" OR "thermal Marangoni" OR "thermal Marangoni effect") AND ("generator action" OR alternator OR dynamo OR "electric generator" OR "rotating generator") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power")
+      executed_at: 2026-09-21T00:49:40.593Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Marangoni+effect%22+OR+thermocapillary+OR+%22thermocapillary+flow%22+OR+%22thermal+Marangoni%22+OR+%22thermal+Marangoni+effect%22%29+AND+%28%22generator+action%22+OR+alternator+OR+dynamo+OR+%22electric+generator%22+OR+%22rotating+generator%22%29+AND+%28%22Electrical+work%22+OR+electricity+OR+%22electrical+output%22+OR+%22DC+power%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Marangoni effect" OR thermocapillary OR "thermocapillary flow" OR "thermal Marangoni" OR "thermal Marangoni effect") AND ("generator action" OR alternator OR dynamo OR "electric generator" OR "rotating generator") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power")
+        type: article|review|book-chapter
+      result_count_reported: 0
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      query_key: whole-chain
+    - id: search:2026-09-21-p-62809bc294/oa-dp
+      engine: openalex
+      query_form: route-demonstration-precision
+      query: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Marangoni effect" OR thermocapillary OR "thermocapillary flow" OR "thermal Marangoni" OR "thermal Marangoni effect") AND ("generator action" OR alternator OR dynamo OR "electric generator" OR "rotating generator") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power") AND (experiment OR experimental OR measured OR device OR prototype)
+      executed_at: 2026-09-21T00:49:45.905Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Temperature+gradient%22+OR+%22temperature+difference%22+OR+%22thermal+gradient%22+OR+%22%CE%94T%22+OR+%22waste+heat%22%29+AND+%28%22Marangoni+effect%22+OR+thermocapillary+OR+%22thermocapillary+flow%22+OR+%22thermal+Marangoni%22+OR+%22thermal+Marangoni+effect%22%29+AND+%28%22generator+action%22+OR+alternator+OR+dynamo+OR+%22electric+generator%22+OR+%22rotating+generator%22%29+AND+%28%22Electrical+work%22+OR+electricity+OR+%22electrical+output%22+OR+%22DC+power%22%29+AND+%28experiment+OR+experimental+OR+measured+OR+device+OR+prototype%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("Temperature gradient" OR "temperature difference" OR "thermal gradient" OR "ΔT" OR "waste heat") AND ("Marangoni effect" OR thermocapillary OR "thermocapillary flow" OR "thermal Marangoni" OR "thermal Marangoni effect") AND ("generator action" OR alternator OR dynamo OR "electric generator" OR "rotating generator") AND ("Electrical work" OR electricity OR "electrical output" OR "DC power") AND (experiment OR experimental OR measured OR device OR prototype)
+        type: article|review|book-chapter
+      result_count_reported: 0
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      query_key: demonstration-precision
+    - id: search:2026-09-21-p-62809bc294/oa-dp-r
+      engine: openalex
+      query_form: route-demonstration-precision
+      query: (thermocapillary OR "thermal Marangoni") AND ("generator action" OR alternator OR dynamo) AND (electricity OR "electrical output") AND (experiment OR experimental OR measured OR device OR prototype)
+      executed_at: 2026-09-21T00:49:50.361Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28thermocapillary+OR+%22thermal+Marangoni%22%29+AND+%28%22generator+action%22+OR+alternator+OR+dynamo%29+AND+%28electricity+OR+%22electrical+output%22%29+AND+%28experiment+OR+experimental+OR+measured+OR+device+OR+prototype%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: (thermocapillary OR "thermal Marangoni") AND ("generator action" OR alternator OR dynamo) AND (electricity OR "electrical output") AND (experiment OR experimental OR measured OR device OR prototype)
+        type: article|review|book-chapter
+      result_count_reported: 0
+      records_retrieved: 0
+      records_screened: 0
+      records_read: 0
+      query_key: demonstration-precision
+  screening:
+    records_retrieved: 150
+    unique_records: 150
+    title_abstract_screened: 150
+    full_text_read: 0
+  hits:
+    - title: Striking features of fluid flows in taylor cones related to electrosprays
+      year: 1994
+      doi: 10.1016/0021-8502(94)90201-1
+      found_by:
+        - search:2026-09-21-p-62809bc294/oa-mp12
+      access: metadata-only
+      decision: wrong-coupling
+      reason: "Shtern & Barrero 1994 (J. Aerosol Sci. 25, 1049–1063): the mechanism-pair form's only hit, an electrospray Taylor-cone flow paper that matches a generator term incidentally; no rotating generator, no thermal Marangoni rotor."
+    - title: Collective Oscillations of Photothermal Micromotors under Static Illumination
+      year: 2026
+      doi: 10.1021/acs.langmuir.6c02095
+      found_by:
+        - search:2026-09-21-p-62809bc294/oa-dm1-newest
+      access: abstract
+      decision: constituent-only
+      reason: "Wang et al. 2026 (Langmuir 42, 21207–21216): photothermal micromotors whose light-made temperature difference moves them by self-thermophoresis and thermocapillary forces (≈ 70 μm/s) and by thermal convection (≈ 2422 μm/s) in an oscillating collective — the thermal Marangoni → motion half, no generator."
+    - title: Racing-car-inspired electrical/chemical dual-driven actuators for swimming Marangoni robots based on carbon nanotube composites
+      year: 2026
+      doi: 10.26599/nr.2026.94908831
+      found_by:
+        - search:2026-09-21-p-62809bc294/oa-dm1-newest
+      access: metadata-only
+      decision: wrong-driver
+      reason: "Nano Research 2026: swimming Marangoni robots driven electrically and chemically, by title; not a temperature gradient, no generator."
+    - title: A Tunable Island-Structured Bioinspired Interfacial Evaporator for Efficient Seawater Desalination and Energy Harvesting
+      year: 2026
+      doi: 10.1002/adfm.75319
+      found_by:
+        - search:2026-09-21-p-62809bc294/oa-dm1-newest
+      access: abstract
+      decision: wrong-coupling
+      reason: "Mu et al. 2026 (Adv. Funct. Mater. 36, e75319): a solar interfacial evaporator whose salt tolerance relies on solutal and thermal Marangoni convection, with a thermal module harvesting the evaporation's waste heat at up to 1.083 W m⁻² — the harvesting is thermoelectric, the Marangoni flow moves salt, not a rotor."
+    - title: Magnetohydrodynamics Thermocapillary Marangoni Convection Heat Transfer of Power-Law Fluids Driven by Temperature Gradient
+      year: 2013
+      doi: 10.1115/1.4023394
+      found_by:
+        - search:2026-09-21-p-62809bc294/oa-dm1
+      access: abstract
+      decision: simulation-only
+      reason: "Lin, Zheng & Zhang 2013 (J. Heat Transfer 135, 051702): numerical solutions for MHD thermocapillary convection of a power-law fluid under a temperature gradient — heat transfer, no body, no generator."
+  result: inconclusive
+  completeness: partial
+  reviewed_by: Ava Kim's loop-3 lane (Claude Opus 5); titles screened and four abstracts read on Crossref
+  reviewed_on: 2026-09-21
+  limitations:
+    - "OpenAlex only (21/09, 10:49 am Sydney): driver-mechanism 1,424 works reported, the first 100 by relevance and the first 50 newest screened at title level (protocol depth), the rest unscreened; mechanism-pair 1, whole-chain 0, demonstration-precision 0, the reviewer's precision query 0; Semantic Scholar answers 429 keyless (owner exception e953) and Google Scholar a captcha — both mandatory for a negative, neither run"
+    - no composition term is frozen because no recorded source names a thermocapillary generator as a device; if the literature holds such a name the composite-name form becomes mandatory once it is added with its source
+    - the driver-mechanism list is thermocapillary convection and heat transfer (crystal growth, welding pools, films), Marangoni micromotors and robots, and evaporators; nothing on it turns a rotor or a generator with a temperature gradient
+  conclusion: "No demonstration known and none found: nothing OpenAlex returned closes the chain from a temperature gradient through a thermocapillary-driven body to a rotating generator. The two halves the atlas already records stand on their own evidence (thermal Marangoni gears and floaters that move; a Marangoni rotor turning a generator under a solutal source), and the literature between them is convection, heat transfer and micromotors. Inconclusive as a route search until the Scholar and Semantic Scholar runs exist."
+  source_run_ids:
+    - search:2026-09-21-p-62809bc294
+  follow_up:
+    canonical_claim_review: not-applicable
+    canonical_pathway_review: not-applicable
