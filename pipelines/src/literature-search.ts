@@ -116,7 +116,7 @@ async function openalex(query: string, runId: string, opts: { sort?: "relevance"
     openalex_id: w.id.replace(/^https?:\/\/openalex\.org\//, ""),
     doi: w.doi ? w.doi.replace(/^https?:\/\/doi\.org\//, "") : undefined,
     title: w.title ?? "(untitled)",
-    year: w.publication_year,
+    year: w.publication_year ?? undefined,
     type: w.type,
     cited_by_count: w.cited_by_count,
     open_access_url: w.open_access?.oa_url ?? undefined,

@@ -13,7 +13,24 @@ phenomenon_terms:
   phenomenon:nuclear-fission: [nuclear fission, fission reactor, nuclear reactor, reactor core, fissioning plasma]
   phenomenon:magnetohydrodynamic-effect: [magnetohydrodynamic generation, MHD effect, Faraday MHD generator, MHD generator, magnetohydrodynamic generator, MHD power generation]
 output_terms: [electrical work, electricity, electrical output, DC power]
+# Composition terms (route-search-v1 composite-name form): the field's names for a fission reactor coupled to an MHD generator.
+# 'fission-fragment-ionized plasma MHD' is deliberately not frozen — it names a sibling mechanism (fragments supplying the ionization).
+composition_terms:
+  - { term: gas core reactor MHD, evidence: [source:williams-1971-gas-core-reactor-mhd] }
+  - { term: gaseous core reactor with MHD generator, evidence: [source:anghaie-2002-gaseous-core-reactor-mhd] }
+  - { term: NFR/MHD power generation, evidence: [source:kien-harada-2006-nfr-mhd] }
+  - { term: nuclear MHD power generation, evidence: [source:kien-harada-2006-nfr-mhd], broad: true }
 runs:
+  - id: search:2026-09-21-p-ccef4f212b/oa-cn
+    engine: openalex
+    form: route-composite-name
+    key: composite-name
+    query: '("gas core reactor" AND MHD) OR ("gaseous core reactor" AND MHD) OR "NFR/MHD" OR "nuclear MHD power generation" OR "nuclear MHD"'
+  - id: search:2026-09-21-p-ccef4f212b/s2-cn
+    engine: semantic-scholar
+    form: route-composite-name
+    key: composite-name
+    query: gas core reactor MHD gaseous core reactor MHD generator NFR/MHD nuclear MHD power generation
   - id: search:2026-09-21-p-ccef4f212b/oa-dm1
     engine: openalex
     form: route-driver-mechanism

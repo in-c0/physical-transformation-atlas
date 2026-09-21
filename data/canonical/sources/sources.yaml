@@ -1485,3 +1485,52 @@
   venue: "Physical Review B 105, 245125"
   doi: 10.1103/PhysRevB.105.245125
   notes: "Metadata verified on Crossref. A modern theory in which the thermopolarization tensor acquires an antisymmetric part from electric toroidicity — the thermopolarization tensor as an active independent concept."
+# Loop-3 pass 29: sources that name the fission → MHD and fission → light compositions (composition terms).
+- id: source:williams-1971-gas-core-reactor-mhd
+  type: paper
+  title: "An evaluation of gas core reactors with MHD conversion for clean, economical power generation"
+  authors: [J. R. Williams]
+  year: 1971
+  venue: "AIAA paper 71-1510, Joint Conference on Sensing of Environmental Pollutants"
+  doi: 10.2514/6.1971-1510
+  notes: "Metadata verified on Crossref; title-level. Names the coupled concept — a gas-core reactor with MHD conversion — as one device; provenance for the composition term."
+- id: source:kien-harada-2006-nfr-mhd
+  type: paper
+  title: "Studies on Low Specific Mass NFR/MHD Power Generation System for Space Applications"
+  authors: [L. C. Kien, N. Harada]
+  year: 2006
+  venue: "Transactions of the Japan Society for Aeronautical and Space Sciences 49, 109–116"
+  doi: 10.2322/tjsass.49.109
+  notes: "Metadata verified on Crossref; title-level. A nuclear-fission-reactor / MHD power-generation system study; provenance for the composition term NFR/MHD power generation."
+- id: source:anghaie-2002-gaseous-core-reactor-mhd
+  type: report
+  title: "Direct Energy Conversion Fission Reactor, Gaseous Core Reactor with Magnetohydrodynamic (MHD) Generator; Final Report - Part I and Part II"
+  authors: [S. Anghaie, B. Smith, T. Knight]
+  year: 2002
+  venue: "US DOE (OSTI 850575)"
+  doi: 10.2172/850575
+  notes: "Metadata verified on Crossref; title-level. A DOE final report on the gaseous-core reactor with an MHD generator as a direct-energy-conversion fission reactor; provenance for the composition term."
+- id: source:latham-rodgers-1972-nuclear-light-bulb
+  type: paper
+  title: "Small nuclear light bulb engines with cold beryllium reflectors"
+  authors: [T. S. Latham, R. J. Rodgers]
+  year: 1972
+  venue: "AIAA paper 72-1093, 8th Joint Propulsion Specialist Conference"
+  doi: 10.2514/6.1972-1093
+  notes: "Metadata verified on Crossref; title-level. Uses the field's name for the gaseous-fissioning-uranium radiant source behind a transparent wall; provenance for the composition term nuclear light bulb (the second reader also points to Kendall & Stoeffler 1972, NASA CR-129298)."
+- id: source:schneider-thom-1975-fissioning-uranium-plasmas
+  type: review
+  title: "Fissioning Uranium Plasmas and Nuclear-Pumped Lasers"
+  authors: [R. T. Schneider, K. Thom]
+  year: 1975
+  venue: "Nuclear Technology 27, 34–50"
+  doi: 10.13182/NT75-A15934
+  notes: "Metadata verified on Crossref; title-level. The NASA uranium-plasma programme's review: fissioning uranium plasma as a radiant source and pump for lasers; provenance for the broad composition terms gas-core / gaseous-core / plasma-core reactor."
+- id: source:lee-1974-fissioning-uranium-plasma
+  type: paper
+  title: "Production of Fissioning Uranium Plasma to Approximate Gas-Core Reactor Conditions"
+  authors: [J. H. Lee, D. R. McFarland, F. Hohl, K. Kim]
+  year: 1974
+  venue: "Nuclear Technology 22, 306–314"
+  doi: 10.13182/NT74-A31415
+  notes: "Metadata verified on Crossref; title-level. A fissioning uranium plasma physically produced to approximate gas-core reactor conditions; provenance for the broad composition term fissioning uranium plasma."

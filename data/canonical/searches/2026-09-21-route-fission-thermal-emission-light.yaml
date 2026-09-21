@@ -16,6 +16,12 @@
   started_at: 2026-09-21T11:17:00+10:00
   completed_at: 2026-09-21T11:30:00+10:00
   objective: exact-composition
+  composition_terms:
+    - { term: nuclear light bulb, evidence: [source:latham-rodgers-1972-nuclear-light-bulb] }
+    - { term: gas-core reactor, evidence: [source:schneider-thom-1975-fissioning-uranium-plasmas], broad: true }
+    - { term: gaseous-core reactor, evidence: [source:schneider-thom-1975-fissioning-uranium-plasmas], broad: true }
+    - { term: plasma-core reactor, evidence: [source:schneider-thom-1975-fissioning-uranium-plasmas], broad: true }
+    - { term: fissioning uranium plasma, evidence: [source:lee-1974-fissioning-uranium-plasma], broad: true }
   inclusion_criteria:
     - a physical experiment in which a fissioning gas or plasma, heated by its own fission, emits measured thermal radiation delivered as light (route-search-v1 §3, output Light)
   exclusion_criteria:
@@ -108,20 +114,101 @@
       records_screened: 0
       records_read: 0
       query_key: demonstration-precision
+    - id: search:2026-09-21-p-8200d7ab7e/oa-cn
+      engine: openalex
+      query_form: route-composite-name
+      query: ("nuclear light bulb" OR "gas-core reactor" OR "gaseous-core reactor" OR "plasma-core reactor" OR "fissioning uranium plasma")
+      executed_at: 2026-09-21T01:33:32.880Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22nuclear+light+bulb%22+OR+%22gas-core+reactor%22+OR+%22gaseous-core+reactor%22+OR+%22plasma-core+reactor%22+OR+%22fissioning+uranium+plasma%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("nuclear light bulb" OR "gas-core reactor" OR "gaseous-core reactor" OR "plasma-core reactor" OR "fissioning uranium plasma")
+        type: article|review|book-chapter
+      result_count_reported: 222
+      records_retrieved: 100
+      records_screened: 100
+      records_read: 0
+      query_key: composite-name
+      note: "the composite-name form (pass 29): 222 works reported, the first 100 by relevance screened at title level — the United Aircraft nuclear light bulb programme of 1967–1972 (analytical spectral and start-up studies, RF- and DC-arc radiant-environment simulations, transparent-wall tests, in-reactor test designs) and the NASA uranium-plasma work of the 1970s; the five composition terms were frozen with verified sources after the second reader's ruling"
   screening:
-    records_retrieved: 165
-    unique_records: 165
-    title_abstract_screened: 165
+    records_retrieved: 265
+    unique_records: 265
+    title_abstract_screened: 265
     full_text_read: 0
-  hits: []
+  hits:
+    - title: "Analytical study of the spectral radiant flux emitted from the fuel region of a nuclear light bulb engine"
+      year: 1970
+      found_by:
+        - search:2026-09-21-p-8200d7ab7e/oa-cn
+      access: metadata-only
+      decision: theory-only
+      reason: "United Aircraft 1970: the spectral radiant flux of the fuel region computed, by title — analysis."
+    - title: "Theoretical investigation of the radiant emission spectrum from the fuel region of a nuclear light bulb engine"
+      year: 1969
+      found_by:
+        - search:2026-09-21-p-8200d7ab7e/oa-cn
+      access: metadata-only
+      decision: theory-only
+      reason: "United Aircraft 1969: the fuel region's emission spectrum computed, by title — theory."
+    - title: "Initial radio-frequency gas heating experiments to simulate the thermal environment in a nuclear light bulb reactor"
+      year: 1969
+      found_by:
+        - search:2026-09-21-p-8200d7ab7e/oa-cn
+      access: metadata-only
+      decision: wrong-driver
+      reason: "United Aircraft 1969: RF-heated gas standing in for the fissioning fuel — the radiant thermal environment reproduced without fission (the second reader: not a source-variant, since the conversion's driver is absent)."
+    - title: "Results of experiments to simulate radiant heating of propellant in a nuclear light bulb engine using a D-C arc radiant energy source"
+      year: 1970
+      found_by:
+        - search:2026-09-21-p-8200d7ab7e/oa-cn
+      access: metadata-only
+      decision: wrong-driver
+      reason: "United Aircraft 1970: a DC-arc radiant source heating propellant in place of the fissioning fuel, by title — the radiant handoff demonstrated with a non-fission source."
+    - title: "Development of a high intensity RF radiant energy source for simulating the thermal environment of the nuclear light bulb reactor"
+      year: 1971
+      found_by:
+        - search:2026-09-21-p-8200d7ab7e/oa-cn
+      access: metadata-only
+      decision: wrong-driver
+      reason: "United Aircraft 1971: an RF radiant source built to simulate the reactor's thermal environment, by title."
+    - title: "Analytical design and performance studies of nuclear furnace tests of small nuclear light bulb models"
+      year: 1972
+      found_by:
+        - search:2026-09-21-p-8200d7ab7e/oa-cn
+      access: metadata-only
+      decision: insufficient-information
+      reason: "United Aircraft 1972: designs for in-reactor (Nuclear Furnace) tests of small light-bulb models — whether any in-reactor test was carried out before the programme ended is the one question that decides this route, unread."
+    - title: "High temperature UF6 RF plasma experiments applicable to uranium plasma core reactors"
+      year: 1979
+      found_by:
+        - search:2026-09-21-p-8200d7ab7e/oa-cn
+      access: metadata-only
+      decision: wrong-driver
+      reason: "NASA-era 1979: UF₆ plasma heated by RF, applicable to plasma-core reactors, by title — the plasma made without fission."
+    - title: "Nuclear characteristics of a fissioning uranium plasma test reactor with light-water cooling"
+      year: 1973
+      found_by:
+        - search:2026-09-21-p-8200d7ab7e/oa-cn
+      access: metadata-only
+      decision: proposal-only
+      reason: "1973: the nuclear characteristics of a proposed fissioning-uranium-plasma test reactor, by title — a design."
+    - title: "Nuclear light bulb"
+      year: 1991
+      found_by:
+        - search:2026-09-21-p-8200d7ab7e/oa-cn
+      access: metadata-only
+      decision: review-only
+      reason: "1991: a nuclear light bulb overview, by title."
   result: inconclusive
   completeness: partial
   reviewed_by: Ava Kim's loop-3 lane (Claude Opus 5); titles screened; the second reader's confirmation pending (pass 30)
   reviewed_on: 2026-09-21
   limitations:
     - "OpenAlex only (21/09, 11:18 am Sydney): driver-mechanism 2,909 works reported, the first 100 by relevance and the first 50 newest screened at title level, the rest unscreened; mechanism-pair 15 — graphite emissivity, gasifier thermometry, TMI-2 thermal interactions and textbook chapters, none a fissioning gas radiating light; whole-chain 0; demonstration-precision 0; Semantic Scholar answers 429 keyless (owner exception e953) and Google Scholar a captcha — both mandatory for a negative, neither run"
-    - the recorded aliases cannot reach the concept's own literature (the 'nuclear light bulb' and gas-core reactor radiant-heat programmes); those names become composition terms once a recorded source uses them — the second reader is asked for one
-  conclusion: "Nothing found and, with these terms, nothing reachable: the composition's literature names itself 'nuclear light bulb' and 'gas-core reactor', neither of which is in the recorded term bundles, so this record establishes only that the decomposed forms do not reach it. Inconclusive; the composite-name form is the next step once a source for the term is recorded."
+    - "the composite-name form (21/09, 11:34 am Sydney): five terms frozen with verified sources on the second reader's ruling; 222 works reported, the first 100 screened at title level, none read in full; the second reader's corrections recorded — the Langley plasma-focus spectral experiment (Jalufka et al.) is constituent-only (the plasma was made by the focus, no spectral effect of the fissions), the RF and DC-arc simulations are wrong-driver not source-variant, and the Walters & Schneider neutron-field discharge (an effect of fissions on an independently driven plasma's radiation, per a later NASA report) would at most be driver-only-modifies — none of these three was returned by the form and none is recorded as a hit until its primary text is located; Semantic Scholar and Google Scholar owe the form"
+  conclusion: "No demonstration found: the composite-name form reaches the nuclear light bulb programme — spectral and start-up analyses, RF and DC-arc radiant-environment simulations, transparent-wall tests and designs for in-reactor tests of small models — and none of it is a fissioning gas radiating light as its product; the fission-plus-plasma experiments the second reader knows (the Langley plasma focus; the Walters & Schneider neutron-field discharge) do not establish the fission → radiation handoff either. Whether any in-reactor light-bulb model test was run before the programme ended is the open question. Inconclusive as a route search until the Scholar and Semantic Scholar runs exist."
   source_run_ids:
     - search:2026-09-21-p-8200d7ab7e
   follow_up:

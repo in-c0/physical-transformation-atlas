@@ -16,6 +16,11 @@
   started_at: 2026-09-21T11:16:00+10:00
   completed_at: 2026-09-21T11:30:00+10:00
   objective: exact-composition
+  composition_terms:
+    - { term: gas core reactor MHD, evidence: [source:williams-1971-gas-core-reactor-mhd] }
+    - { term: gaseous core reactor with MHD generator, evidence: [source:anghaie-2002-gaseous-core-reactor-mhd] }
+    - { term: NFR/MHD power generation, evidence: [source:kien-harada-2006-nfr-mhd] }
+    - { term: nuclear MHD power generation, evidence: [source:kien-harada-2006-nfr-mhd], broad: true }
   inclusion_criteria:
     - a physical experiment or device in which fission heat (a reactor or a fissioning gas) produces a hot conducting gas or plasma that flows through a magnetohydrodynamic channel and delivers electrical work to a load (route-search-v1 §3, output Electrical work)
   exclusion_criteria:
@@ -108,10 +113,28 @@
       records_screened: 0
       records_read: 0
       query_key: demonstration-precision
+    - id: search:2026-09-21-p-ccef4f212b/oa-cn
+      engine: openalex
+      query_form: route-composite-name
+      query: ("gas core reactor" AND MHD) OR ("gaseous core reactor" AND MHD) OR "NFR/MHD" OR "nuclear MHD power generation" OR "nuclear MHD"
+      executed_at: 2026-09-21T01:32:15.288Z
+      request_url: https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22gas+core+reactor%22+AND+MHD%29+OR+%28%22gaseous+core+reactor%22+AND+MHD%29+OR+%22NFR%2FMHD%22+OR+%22nuclear+MHD+power+generation%22+OR+%22nuclear+MHD%22%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access
+      engine_version: null
+      index_snapshot: null
+      sort: relevance_score:desc
+      filters:
+        title_and_abstract.search: ("gas core reactor" AND MHD) OR ("gaseous core reactor" AND MHD) OR "NFR/MHD" OR "nuclear MHD power generation" OR "nuclear MHD"
+        type: article|review|book-chapter
+      result_count_reported: 34
+      records_retrieved: 34
+      records_screened: 34
+      records_read: 0
+      query_key: composite-name
+      note: "the composite-name form (pass 29): 34 works, 33 new — the nuclear-MHD concept literature of 1965–2006 (gas-core reactor MHD plants, nuclear-MHD power systems, closed-cycle meetings and reviews), screened at title level; the four composition terms were frozen with verified sources after the second reader's ruling"
   screening:
-    records_retrieved: 214
-    unique_records: 214
-    title_abstract_screened: 214
+    records_retrieved: 247
+    unique_records: 247
+    title_abstract_screened: 247
     full_text_read: 0
   hits:
     - title: "Ultra-thin 242mAm fuel elements in nuclear reactors"
@@ -187,18 +210,63 @@
       doi: 10.1007/s10512-008-9082-1
       found_by:
         - search:2026-09-21-p-ccef4f212b/oa-mp12
+      access: abstract
+      decision: proposal-only
+      reason: "Pavshuk & Panchenko 2008 (Atomic Energy): an open-cycle multi-megawatt nuclear-MHD space power facility whose 20 MW MHD-generator parameters are calculated and designed, not measured (the second reader read the abstract) — a design."
+    - title: "Gas Core Reactor with Magnetohydrodynamic Power System and Cascading Power Cycle"
+      year: 2004
+      doi: 10.13182/nt04-a3480
+      found_by:
+        - search:2026-09-21-p-ccef4f212b/oa-cn
       access: metadata-only
-      decision: insufficient-information
-      reason: "Pavshuk & Panchenko 2008 (Atomic Energy): by title a Russian open-cycle nuclear-MHD space power facility; no abstract on record — a design study or a test stand, to be read."
+      decision: proposal-only
+      reason: "Nuclear Technology 2004 (with the 2002 conference version): a gas-core reactor coupled to an MHD power system with a cascading cycle, by title — the Florida gas-core programme's design work."
+    - title: "Potential of Nuclear MHD Electric Power Systems"
+      year: 1972
+      doi: 10.2514/3.61680
+      found_by:
+        - search:2026-09-21-p-ccef4f212b/oa-cn
+      access: metadata-only
+      decision: review-only
+      reason: "Journal of Spacecraft and Rockets 1972: the potential of nuclear-MHD electric power systems, by title — an assessment."
+    - title: "A Review of Basic Studies on MHD Power Generation for Nuclear Applications"
+      year: 1968
+      doi: 10.3327/jaesj.10.390
+      found_by:
+        - search:2026-09-21-p-ccef4f212b/oa-cn
+      access: metadata-only
+      decision: review-only
+      reason: "Journal of the Atomic Energy Society of Japan 1968: a review of the basic studies (nonequilibrium ionization, inert-gas generators) for nuclear applications, by title — to be read for any reactor-heated test it may report."
+    - title: "Closed-cycle MHD meeting (Report on the international closed-cycle MHD specialists meeting, Jülich, Federal Republic of Germany, 12 - 14 MAY 1970)"
+      year: 1970
+      doi: 10.1088/0029-5515/10/4/012
+      found_by:
+        - search:2026-09-21-p-ccef4f212b/oa-cn
+      access: metadata-only
+      decision: review-only
+      reason: "Nuclear Fusion 1970: the Jülich closed-cycle MHD specialists' meeting report, by title — the programmes that aimed at reactor heat sources, none of which is a fission-heated generator run."
+    - title: "GASEOUS CORE REACTOR WITH MHD CONVERSION FOR ELECTRICAL POWER GENERATION."
+      year: 1971
+      found_by:
+        - search:2026-09-21-p-ccef4f212b/oa-cn
+      access: metadata-only
+      decision: proposal-only
+      reason: "1971 (OSTI): a gaseous-core reactor with MHD conversion, by title — a concept."
+    - title: "Experimental Plans for Subsystems of a Shock Wave Driven Gas Core Reactor"
+      found_by:
+        - search:2026-09-21-p-ccef4f212b/oa-cn
+      access: metadata-only
+      decision: proposal-only
+      reason: "Undated report: experimental plans for a shock-wave-driven gas-core reactor's subsystems, by title — plans."
   result: inconclusive
   completeness: partial
   reviewed_by: Ava Kim's loop-3 lane (Claude Opus 5); titles screened and ten abstracts read on OpenAlex; the second reader's confirmation pending (pass 30)
   reviewed_on: 2026-09-21
   limitations:
     - "OpenAlex only (21/09, 11:17 am Sydney): driver-mechanism 2,909 works reported (the reactor literature), the first 100 by relevance and the first 50 newest screened at title level, the rest unscreened; mechanism-pair 65 (the nuclear-MHD concept literature of 1962–2011 among boundary-layer and nanofluid papers matched on 'MHD effect'); whole-chain 1; demonstration-precision 0; Semantic Scholar answers 429 keyless (owner exception e953) and Google Scholar a captcha — both mandatory for a negative, neither run"
-    - no composition term is frozen; the field's names for the composition (nuclear MHD, gas-core reactor MHD, fission-fragment-ionized MHD) may qualify once a recorded source uses them — the second reader is asked
+    - "the composite-name form (21/09, 11:32 am Sydney): four terms frozen on the second reader's ruling (fission-fragment-ionized plasma MHD deliberately excluded as a sibling mechanism); 34 works, screened at title level only — the 1968 Japanese review and the 1970 Jülich report are the places a reactor-heated test would be reported and are unread; Semantic Scholar and Google Scholar owe the form"
     - two hits without abstracts (Hattori 1970; Pavshuk & Panchenko 2008) are insufficient-information until read
-  conclusion: "No demonstration found: the fission → MHD literature OpenAlex returns is conceptual — gas-core and vapor-core reactor designs feeding disk or vortex MHD channels (1962–1993), closed-cycle nonequilibrium-plasma system studies (2011), numerical fissioning-gas flows (1995) and conductivity models (1992) — with one measured constituent (a neutron-induced helium plasma, 1966) and no report of a fission-heated gas delivering MHD power to a load; two Japanese and Russian reports remain to be read. Inconclusive as a route search until the Scholar and Semantic Scholar runs exist."
+  conclusion: "No demonstration found: the fission → MHD literature OpenAlex returns is conceptual — gas-core and vapor-core reactor designs feeding disk or vortex MHD channels (1962–1993), closed-cycle nonequilibrium-plasma system studies (2011), numerical fissioning-gas flows (1995) and conductivity models (1992) — with one measured constituent (a neutron-induced helium plasma, 1966) and no report of a fission-heated gas delivering MHD power to a load; the composite-name form adds the whole nuclear-MHD concept literature (1965–2006) and still no such run, and the second reader's own search agrees: Rosa's 10 kW machine ran on an arc furnace and NASA Lewis's closed-loop facility on its own heater, with reactors as the intended future source. One Japanese report (Hattori 1970) remains to be read. Inconclusive as a route search until the Scholar and Semantic Scholar runs exist."
   source_run_ids:
     - search:2026-09-21-p-ccef4f212b
   follow_up:

@@ -16644,6 +16644,3131 @@
   "notes": "Automated route-search-v1 index queries from data/canonical/searches/plans/p-8200d7ab7e.yaml; the result list is frozen for a reviewer and nothing here has been read for a qualifying demonstration. Planned runs NOT run in this bundle (engine unavailable): search:2026-09-21-p-8200d7ab7e/s2-dm1 (semantic-scholar); search:2026-09-21-p-8200d7ab7e/s2-mp12 (semantic-scholar); search:2026-09-21-p-8200d7ab7e/s2-wc (semantic-scholar); search:2026-09-21-p-8200d7ab7e/s2-dp (semantic-scholar)."
  },
  {
+  "id": "search:2026-09-21-p-8200d7ab7e",
+  "target": {
+   "kind": "path",
+   "path": "p-8200d7ab7e",
+   "claims": [
+    "claim:binding-drives-fission",
+    "claim:fission-produces-hot-gas",
+    "claim:hot-gas-drives-thermal-emission",
+    "claim:thermal-emission-converts-light"
+   ]
+  },
+  "dataset_hash": "32a2aa78f3d3",
+  "driver_terms": [
+   "nuclear binding-energy difference",
+   "radioactive decay",
+   "fissile configuration",
+   "nuclear fuel",
+   "fissile fuel"
+  ],
+  "family_terms": [],
+  "phenomenon_terms": {
+   "phenomenon:nuclear-fission": [
+    "nuclear fission",
+    "fission reactor",
+    "nuclear reactor",
+    "reactor core",
+    "fissioning plasma"
+   ],
+   "phenomenon:thermal-emission": [
+    "thermal emission",
+    "blackbody radiation",
+    "incandescence",
+    "Planck radiation"
+   ]
+  },
+  "composition_terms": [
+   {
+    "term": "nuclear light bulb",
+    "evidence": [
+     "source:latham-rodgers-1972-nuclear-light-bulb"
+    ]
+   },
+   {
+    "term": "gas-core reactor",
+    "evidence": [
+     "source:schneider-thom-1975-fissioning-uranium-plasmas"
+    ],
+    "broad": true
+   },
+   {
+    "term": "gaseous-core reactor",
+    "evidence": [
+     "source:schneider-thom-1975-fissioning-uranium-plasmas"
+    ],
+    "broad": true
+   },
+   {
+    "term": "plasma-core reactor",
+    "evidence": [
+     "source:schneider-thom-1975-fissioning-uranium-plasmas"
+    ],
+    "broad": true
+   },
+   {
+    "term": "fissioning uranium plasma",
+    "evidence": [
+     "source:lee-1974-fissioning-uranium-plasma"
+    ],
+    "broad": true
+   }
+  ],
+  "runs": [
+   {
+    "id": "search:2026-09-21-p-8200d7ab7e/oa-cn",
+    "engine": "openalex",
+    "query_form": "route-composite-name",
+    "query": "(\"nuclear light bulb\" OR \"gas-core reactor\" OR \"gaseous-core reactor\" OR \"plasma-core reactor\" OR \"fissioning uranium plasma\")",
+    "executed_at": "2026-09-21T01:33:32.880Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22nuclear+light+bulb%22+OR+%22gas-core+reactor%22+OR+%22gaseous-core+reactor%22+OR+%22plasma-core+reactor%22+OR+%22fissioning+uranium+plasma%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"nuclear light bulb\" OR \"gas-core reactor\" OR \"gaseous-core reactor\" OR \"plasma-core reactor\" OR \"fissioning uranium plasma\")",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 222,
+    "records_retrieved": 100,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "composite-name"
+   },
+   {
+    "id": "search:2026-09-21-p-8200d7ab7e/oa-dm1",
+    "engine": "openalex",
+    "query_form": "route-driver-mechanism",
+    "query": "(\"Nuclear binding-energy difference\" OR \"radioactive decay\" OR \"fissile configuration\" OR \"nuclear fuel\" OR \"fissile fuel\") AND (\"Nuclear fission\" OR \"fission reactor\" OR \"nuclear reactor\" OR \"reactor core\" OR \"fissioning plasma\")",
+    "executed_at": "2026-09-21T01:33:37.587Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Nuclear+binding-energy+difference%22+OR+%22radioactive+decay%22+OR+%22fissile+configuration%22+OR+%22nuclear+fuel%22+OR+%22fissile+fuel%22%29+AND+%28%22Nuclear+fission%22+OR+%22fission+reactor%22+OR+%22nuclear+reactor%22+OR+%22reactor+core%22+OR+%22fissioning+plasma%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Nuclear binding-energy difference\" OR \"radioactive decay\" OR \"fissile configuration\" OR \"nuclear fuel\" OR \"fissile fuel\") AND (\"Nuclear fission\" OR \"fission reactor\" OR \"nuclear reactor\" OR \"reactor core\" OR \"fissioning plasma\")",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 2909,
+    "records_retrieved": 100,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "driver-mechanism:1"
+   },
+   {
+    "id": "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest",
+    "engine": "openalex",
+    "query_form": "route-driver-mechanism",
+    "query": "(\"Nuclear binding-energy difference\" OR \"radioactive decay\" OR \"fissile configuration\" OR \"nuclear fuel\" OR \"fissile fuel\") AND (\"Nuclear fission\" OR \"fission reactor\" OR \"nuclear reactor\" OR \"reactor core\" OR \"fissioning plasma\")",
+    "executed_at": "2026-09-21T01:33:43.267Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Nuclear+binding-energy+difference%22+OR+%22radioactive+decay%22+OR+%22fissile+configuration%22+OR+%22nuclear+fuel%22+OR+%22fissile+fuel%22%29+AND+%28%22Nuclear+fission%22+OR+%22fission+reactor%22+OR+%22nuclear+reactor%22+OR+%22reactor+core%22+OR+%22fissioning+plasma%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=50&sort=publication_date%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "publication_date:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Nuclear binding-energy difference\" OR \"radioactive decay\" OR \"fissile configuration\" OR \"nuclear fuel\" OR \"fissile fuel\") AND (\"Nuclear fission\" OR \"fission reactor\" OR \"nuclear reactor\" OR \"reactor core\" OR \"fissioning plasma\")",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 2909,
+    "records_retrieved": 50,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "driver-mechanism:1"
+   },
+   {
+    "id": "search:2026-09-21-p-8200d7ab7e/oa-mp12",
+    "engine": "openalex",
+    "query_form": "route-mechanism-pair",
+    "query": "(\"Nuclear fission\" OR \"fission reactor\" OR \"nuclear reactor\" OR \"reactor core\" OR \"fissioning plasma\") AND (\"Thermal emission\" OR \"blackbody radiation\" OR incandescence OR \"Planck radiation\")",
+    "executed_at": "2026-09-21T01:33:48.602Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Nuclear+fission%22+OR+%22fission+reactor%22+OR+%22nuclear+reactor%22+OR+%22reactor+core%22+OR+%22fissioning+plasma%22%29+AND+%28%22Thermal+emission%22+OR+%22blackbody+radiation%22+OR+incandescence+OR+%22Planck+radiation%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Nuclear fission\" OR \"fission reactor\" OR \"nuclear reactor\" OR \"reactor core\" OR \"fissioning plasma\") AND (\"Thermal emission\" OR \"blackbody radiation\" OR incandescence OR \"Planck radiation\")",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 15,
+    "records_retrieved": 15,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "mechanism-pair:1-2"
+   },
+   {
+    "id": "search:2026-09-21-p-8200d7ab7e/oa-wc",
+    "engine": "openalex",
+    "query_form": "route-whole-chain",
+    "query": "(\"Nuclear binding-energy difference\" OR \"radioactive decay\" OR \"fissile configuration\" OR \"nuclear fuel\" OR \"fissile fuel\") AND (\"Nuclear fission\" OR \"fission reactor\" OR \"nuclear reactor\" OR \"reactor core\" OR \"fissioning plasma\") AND (\"Thermal emission\" OR \"blackbody radiation\" OR incandescence OR \"Planck radiation\") AND (light OR illumination OR \"radiant output\" OR luminous)",
+    "executed_at": "2026-09-21T01:33:53.066Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Nuclear+binding-energy+difference%22+OR+%22radioactive+decay%22+OR+%22fissile+configuration%22+OR+%22nuclear+fuel%22+OR+%22fissile+fuel%22%29+AND+%28%22Nuclear+fission%22+OR+%22fission+reactor%22+OR+%22nuclear+reactor%22+OR+%22reactor+core%22+OR+%22fissioning+plasma%22%29+AND+%28%22Thermal+emission%22+OR+%22blackbody+radiation%22+OR+incandescence+OR+%22Planck+radiation%22%29+AND+%28light+OR+illumination+OR+%22radiant+output%22+OR+luminous%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Nuclear binding-energy difference\" OR \"radioactive decay\" OR \"fissile configuration\" OR \"nuclear fuel\" OR \"fissile fuel\") AND (\"Nuclear fission\" OR \"fission reactor\" OR \"nuclear reactor\" OR \"reactor core\" OR \"fissioning plasma\") AND (\"Thermal emission\" OR \"blackbody radiation\" OR incandescence OR \"Planck radiation\") AND (light OR illumination OR \"radiant output\" OR luminous)",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 0,
+    "records_retrieved": 0,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "whole-chain"
+   },
+   {
+    "id": "search:2026-09-21-p-8200d7ab7e/oa-dp",
+    "engine": "openalex",
+    "query_form": "route-demonstration-precision",
+    "query": "(\"Nuclear binding-energy difference\" OR \"radioactive decay\" OR \"fissile configuration\" OR \"nuclear fuel\" OR \"fissile fuel\") AND (\"Nuclear fission\" OR \"fission reactor\" OR \"nuclear reactor\" OR \"reactor core\" OR \"fissioning plasma\") AND (\"Thermal emission\" OR \"blackbody radiation\" OR incandescence OR \"Planck radiation\") AND (light OR illumination OR \"radiant output\" OR luminous) AND (experiment OR experimental OR measured OR device OR prototype)",
+    "executed_at": "2026-09-21T01:33:58.239Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Nuclear+binding-energy+difference%22+OR+%22radioactive+decay%22+OR+%22fissile+configuration%22+OR+%22nuclear+fuel%22+OR+%22fissile+fuel%22%29+AND+%28%22Nuclear+fission%22+OR+%22fission+reactor%22+OR+%22nuclear+reactor%22+OR+%22reactor+core%22+OR+%22fissioning+plasma%22%29+AND+%28%22Thermal+emission%22+OR+%22blackbody+radiation%22+OR+incandescence+OR+%22Planck+radiation%22%29+AND+%28light+OR+illumination+OR+%22radiant+output%22+OR+luminous%29+AND+%28experiment+OR+experimental+OR+measured+OR+device+OR+prototype%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"Nuclear binding-energy difference\" OR \"radioactive decay\" OR \"fissile configuration\" OR \"nuclear fuel\" OR \"fissile fuel\") AND (\"Nuclear fission\" OR \"fission reactor\" OR \"nuclear reactor\" OR \"reactor core\" OR \"fissioning plasma\") AND (\"Thermal emission\" OR \"blackbody radiation\" OR incandescence OR \"Planck radiation\") AND (light OR illumination OR \"radiant output\" OR luminous) AND (experiment OR experimental OR measured OR device OR prototype)",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 0,
+    "records_retrieved": 0,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "demonstration-precision"
+   }
+  ],
+  "works": [
+   {
+    "openalex_id": "W163512110",
+    "doi": "10.13182/nt75-a15934",
+    "title": "Fissioning Uranium Plasmas and Nuclear-Pumped Lasers",
+    "year": 1975,
+    "type": "article",
+    "cited_by_count": 13,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W123366980",
+    "doi": "10.13182/nt83-a33265",
+    "title": "Physics of a Gaseous Core Reactor",
+    "year": 1983,
+    "type": "article",
+    "cited_by_count": 12,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W20412487",
+    "title": "GAS-CORE REACTOR TECHNOLOGY.",
+    "year": 1970,
+    "type": "article",
+    "cited_by_count": 15,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W1606842487",
+    "doi": "10.13182/nt74-a31415",
+    "title": "Production of Fissioning Uranium Plasma to Approximate Gas-Core Reactor Conditions",
+    "year": 1974,
+    "type": "article",
+    "cited_by_count": 2,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W37927440",
+    "title": "Analytical design and performance studies of the nuclear light bulb engine",
+    "year": 1972,
+    "type": "article",
+    "cited_by_count": 10,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2005980143",
+    "title": "Wheel-flow gaseous-core reactor concept",
+    "year": 1965,
+    "type": "article",
+    "cited_by_count": 7,
+    "open_access_url": "http://hdl.handle.net/2060/19660001458",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W278379196",
+    "title": "Studies of specific nuclear light bulb and open-cycle vortex stabilized gaseous nuclear rocket engines",
+    "year": 1968,
+    "type": "article",
+    "cited_by_count": 15,
+    "open_access_url": "http://hdl.handle.net/2060/19680012569",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W156943859",
+    "title": "High specific impulse gas-core reactors",
+    "year": 1971,
+    "type": "article",
+    "cited_by_count": 9,
+    "open_access_url": "http://hdl.handle.net/2060/19710010425",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W1529469539",
+    "title": "Investigation of applications for high-power, self-critical fissioning uranium plasma reactors",
+    "year": 1976,
+    "type": "article",
+    "cited_by_count": 8,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W4378832491",
+    "doi": "10.1016/j.jandt.2023.05.001",
+    "title": "Advanced nuclear power engine: A brief overview of gas core reactor for space exploration",
+    "year": 2023,
+    "type": "article",
+    "cited_by_count": 13,
+    "open_access_url": "https://doi.org/10.1016/j.jandt.2023.05.001",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2024645418",
+    "title": "Status of open-cycle gas-core reactor project through 1970",
+    "year": 1971,
+    "type": "article",
+    "cited_by_count": 12,
+    "open_access_url": "http://hdl.handle.net/2060/19710010820",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W1543349194",
+    "title": "Gaseous core reactors",
+    "year": 1963,
+    "type": "article",
+    "cited_by_count": 2,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W768789366",
+    "title": "Nuclear light bulb",
+    "year": 1991,
+    "type": "article",
+    "cited_by_count": 3,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W1632152909",
+    "title": "Nuclear waste disposal utilizing a gaseous core reactor",
+    "type": "article",
+    "cited_by_count": 5,
+    "open_access_url": "http://hdl.handle.net/2060/19760010552",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W1566463967",
+    "title": "Conceptual design studies and experiments related to cavity exhaust systems for nuclear light bulb configurations",
+    "year": 1972,
+    "type": "article",
+    "cited_by_count": 7,
+    "open_access_url": "https://ntrs.nasa.gov/api/citations/19730003968/downloads/19730003968.pdf",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W41713267",
+    "title": "STUDIES OF NUCLEAR LIGHT BULB START-UP CONDITIONS AND ENGINE DYNAMICS.",
+    "year": 1969,
+    "type": "article",
+    "cited_by_count": 6,
+    "open_access_url": "http://hdl.handle.net/2060/19700002919",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2066378290",
+    "title": "RELATIONSHIP BETWEEN ENGINE PARAMETERS AND THE FUEL MASS CONTAINED IN AN OPEN-CYCLE GAS-CORE REACTOR.",
+    "year": 1971,
+    "type": "article",
+    "cited_by_count": 12,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W200719977",
+    "title": "Nuclear studies of the nuclear light bulb rocket engine",
+    "year": 1969,
+    "type": "article",
+    "cited_by_count": 4,
+    "open_access_url": "https://ntrs.nasa.gov/api/citations/19690014077/downloads/19690014077.pdf",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W1565378322",
+    "doi": "10.13182/nt04-a3480",
+    "title": "Gas Core Reactor with Magnetohydrodynamic Power System and Cascading Power Cycle",
+    "year": 2004,
+    "type": "article",
+    "cited_by_count": 7,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W3200216259",
+    "title": "Nuclear piston engine and pulsed gaseous core reactor power systems",
+    "year": 1976,
+    "type": "article",
+    "cited_by_count": 5,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2027625066",
+    "doi": "10.2514/3.29778",
+    "title": "Criticality studies of a nuclear light bulb engine",
+    "year": 1969,
+    "type": "article",
+    "cited_by_count": 3,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2005380546",
+    "doi": "10.1016/0306-4549(88)90029-1",
+    "title": "Neutron kinetics of a pumped gaseous-core reactor",
+    "year": 1988,
+    "type": "article",
+    "cited_by_count": 3,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W1978821259",
+    "doi": "10.13182/nt70-a28628",
+    "title": "A Flow Experiment on a Curved-Porous-Wall Gas-Core Reactor Geometry",
+    "year": 1970,
+    "type": "article",
+    "cited_by_count": 7,
+    "open_access_url": "https://ntrs.nasa.gov/api/citations/19690022839/downloads/19690022839.pdf",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2044009465",
+    "doi": "10.2514/3.29728",
+    "title": "Radio-frequency plasma simulation of gas-core reactor.",
+    "year": 1969,
+    "type": "article",
+    "cited_by_count": 5,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W970387233",
+    "doi": "10.13182/nt70-a28662",
+    "title": "A Gaseous-Core Reactor Concept for Electrical Power Generation",
+    "year": 1970,
+    "type": "article",
+    "cited_by_count": 3,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W775960642",
+    "title": "Thermal and Criticality Analysis of the Plasma Core Reactor",
+    "year": 1962,
+    "type": "article",
+    "cited_by_count": 4,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W36898973",
+    "title": "Heterogeneous gas core reactor power plants",
+    "year": 1977,
+    "type": "article",
+    "cited_by_count": 4,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W34107781",
+    "title": "NUCLEAR ANALYSIS OF GASEOUS CORE REACTORS",
+    "year": 1963,
+    "type": "article",
+    "cited_by_count": 2,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W267222094",
+    "title": "Analytical study of the spectral radiant flux emitted from the fuel region of a nuclear light bulb engine",
+    "year": 1970,
+    "type": "article",
+    "cited_by_count": 6,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W15992069",
+    "title": "Nonproliferation features of the gas core reactor",
+    "year": 1977,
+    "type": "article",
+    "cited_by_count": 3,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W148634237",
+    "title": "SUMMARY OF RESEARCH ON THE NUCLEAR LIGHT BULB REACTOR.",
+    "year": 1971,
+    "type": "article",
+    "cited_by_count": 2,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2042755156",
+    "doi": "10.1109/tns.1965.4323510",
+    "title": "Liquid/Gas Core Reactors for High Acceleration Propulsion",
+    "year": 1965,
+    "type": "article",
+    "cited_by_count": 3,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W806633956",
+    "title": "Summary of fluid mechanics and engine characteristics research on the nuclear light bulb engine concept",
+    "year": 1970,
+    "type": "article",
+    "cited_by_count": 4,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W1585281093",
+    "doi": "10.13182/nt85-a33627",
+    "title": "Thermophysical Properties of UF6-He Mixtures Relevant to Circulating Gas Core Reactor Systems",
+    "year": 1985,
+    "type": "article",
+    "cited_by_count": 6,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W1516835548",
+    "title": "Gas core reactors for MHD power systems",
+    "year": 1971,
+    "type": "article",
+    "cited_by_count": 3,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W3133557945",
+    "title": "Gas core reactors for direct nuclear propulsion",
+    "year": 1990,
+    "type": "book-chapter",
+    "cited_by_count": 3,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W180691669",
+    "title": "Gas core reactors: neutronics, SNM proliferation, and resource utilization",
+    "year": 1977,
+    "type": "article",
+    "cited_by_count": 4,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W1524771346",
+    "title": "Investigation of nuclear light bulb startup and engine dynamics",
+    "year": 1971,
+    "type": "article",
+    "cited_by_count": 2,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W18786588",
+    "title": "Neutronics analysis of an open-cycle high-impulse gas core reactor concept",
+    "year": 1972,
+    "type": "article",
+    "cited_by_count": 5,
+    "open_access_url": "http://hdl.handle.net/2060/19720013996",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W1601615326",
+    "doi": "10.13182/nt85-a33625",
+    "title": "Gas Core Reactor Neutronics–Theoretical Modeling and Experimental Verification",
+    "year": 1985,
+    "type": "article",
+    "cited_by_count": 3,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W1672339145",
+    "title": "High temperature UF6 RF plasma experiments applicable to uranium plasma core reactors",
+    "year": 1979,
+    "type": "article",
+    "cited_by_count": 4,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W130754233",
+    "title": "FLOW MIXING, REACTIVITY EFFECTS IN THE GAS CORE REACTOR.",
+    "year": 1971,
+    "type": "article",
+    "cited_by_count": 3,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W127568670",
+    "title": "Initial radio-frequency gas heating experiments to simulate the thermal environment in a nuclear light bulb reactor",
+    "year": 1969,
+    "type": "article",
+    "cited_by_count": 4,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W4078360",
+    "title": "Analytical studies of start-up and dynamic response characteristics of the nuclear light bulb engine",
+    "year": 1970,
+    "type": "article",
+    "cited_by_count": 3,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W154627939",
+    "title": "Applications of direct nuclear-pumped lasers and gaseous core reactors",
+    "year": 1977,
+    "type": "article",
+    "cited_by_count": 2,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W975757154",
+    "title": "Experiments for simulating the absorption of thermal radiation in the propellant duct of a nuclear light bulb reactor",
+    "year": 1971,
+    "type": "article",
+    "cited_by_count": 3,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W906281497",
+    "title": "Core Physics and Kinetics Calculations for the Fissioning Plasma Core Reactor",
+    "year": 2007,
+    "type": "article",
+    "cited_by_count": 3,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W198989401",
+    "title": "Gas Core Reactor-MHD Power System with Cascading Power Cycle",
+    "year": 2002,
+    "type": "article",
+    "cited_by_count": 3,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W224800892",
+    "title": "Analytical design and performance studies of nuclear furnace tests of small nuclear light bulb models",
+    "year": 1972,
+    "type": "article",
+    "cited_by_count": 3,
+    "open_access_url": "http://hdl.handle.net/2060/19730003970",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W780418280",
+    "title": "Gas core reactors",
+    "year": 1965,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W268547894",
+    "title": "EXPERIMENTAL INVESTIGATIONS TO SIMULATE THE THERMAL ENVIRONMENT, TRANSPARENT WALLS, AND PROPELLANT HEATING IN A NUCLEAR LIGHT BULB ENGINE.",
+    "year": 1969,
+    "type": "article",
+    "cited_by_count": 3,
+    "open_access_url": "https://ntrs.nasa.gov/api/citations/19700002925/downloads/19700002925.pdf",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2277133645",
+    "doi": "10.13182/nt93-a34831",
+    "title": "Reactor Dynamics and Stability Analysis of a Burst-Mode Gas Core Reactor, Brayton Cycle Space Power System",
+    "year": 1993,
+    "type": "article",
+    "cited_by_count": 4,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2182718571",
+    "title": "OPTIMUM UTILIZATION OF FISSION POWER WITH GAS CORE REACTORS",
+    "year": 2004,
+    "type": "article",
+    "cited_by_count": 2,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W281411069",
+    "title": "Induction plasma heating - System performance, hydrogen operation and gas core reactor simulator development",
+    "year": 1968,
+    "type": "article",
+    "cited_by_count": 4,
+    "open_access_url": "http://hdl.handle.net/2060/19680020416",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W3200131488",
+    "title": "Heterogeneous gas core reactor",
+    "year": 1977,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W1977947099",
+    "doi": "10.2514/3.5446",
+    "title": "Plasma-dynamic stabilization in a coaxial-jet, gas-core reactor.",
+    "year": 1969,
+    "type": "article",
+    "cited_by_count": 2,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W276378262",
+    "title": "Theoretical investigation of the radiant emission spectrum from the fuel region of a nuclear light bulb engine",
+    "year": 1969,
+    "type": "article",
+    "cited_by_count": 2,
+    "open_access_url": "https://ntrs.nasa.gov/api/citations/19700002921/downloads/19700002921.pdf",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W1484216929",
+    "title": "Investigation of high-temperature materials for uranium-fluoride-based gas core reactor systems",
+    "year": 1988,
+    "type": "article",
+    "cited_by_count": 3,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W315186569",
+    "title": "Development and tests of small fused silica models of transparent walls for the nuclear light bulb engine",
+    "year": 1970,
+    "type": "article",
+    "cited_by_count": 2,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W51715006",
+    "doi": "10.1016/b978-0-08-021053-7.50006-9",
+    "title": "LASERS FROM FISSION (GASEOUS CORE REACTORS AND NUCLEAR PUMPED LASERS FOR SPACE POWER GENERATION AND TRANSMISSION)",
+    "year": 1977,
+    "type": "book-chapter",
+    "cited_by_count": 2,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W320279509",
+    "title": "Nuclear criticality studies of specific nuclear light bulb and open-cycle gaseous nuclear rocket engines",
+    "year": 1967,
+    "type": "article",
+    "cited_by_count": 2,
+    "open_access_url": "https://ntrs.nasa.gov/api/citations/19680001463/downloads/19680001463.pdf",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2063327674",
+    "doi": "10.1109/tns2.1962.4315911",
+    "title": "Observations on the Kinetics and Control of Gas Core Reactors",
+    "year": 1962,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2741726228",
+    "title": "Development of RF plasma simulations of in-reactor tests of small models of the nuclear light bulb fuel region",
+    "year": 1972,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W1678564815",
+    "title": "Gas core reactors for actinide transmutation and breeder applications",
+    "year": 1978,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W110506222",
+    "title": "Feasibility study of direct flow gas core reactor system",
+    "year": 1966,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W327343117",
+    "title": "Development of a model and test equipment for cold flow tests at 500 atm of small nuclear light bulb configurations",
+    "year": 1972,
+    "type": "article",
+    "cited_by_count": 1,
+    "open_access_url": "http://hdl.handle.net/2060/19730003967",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W165890249",
+    "title": "MONTE CARLO RADIANT HEAT TRANSFER ANALYSIS OF GAS CORE REACTORS.",
+    "year": 1970,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W758580609",
+    "title": "Development of a high intensity RF radiant energy source for simulating the thermal environment of the nuclear light bulb reactor",
+    "year": 1971,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W1598158460",
+    "title": "Heterogeneous gas core reactor and dual fluid closed cycle power conversion system",
+    "year": 1977,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W237588819",
+    "title": "Results of experiments to simulate radiant heating of propellant in a nuclear light bulb engine using a D-C arc radiant energy source",
+    "year": 1970,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W1572528936",
+    "doi": "10.13182/nt93-a34839",
+    "title": "Static and Dynamic Neutronic Analysis of a Burst-Mode, Multiple-Cavity Gas Core Reactor, Rankine Cycle Space Power System",
+    "year": 1993,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2025935373",
+    "title": "TO MARS IN 30 DAYS BY GAS-CORE NUCLEAR ROCKET.",
+    "year": 1972,
+    "type": "article",
+    "cited_by_count": 18,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W299260641",
+    "title": "Developments in gaseous core reactor technology. [Mixed-Flow Gaseous Core Reactor (MFGCR), Heterogeneous Gas Core Reactor (HGCR)]",
+    "year": 1979,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2053780474",
+    "doi": "10.1016/0094-5765(76)90157-0",
+    "title": "Physics and potentials of fissioning plasmas for space power and propulsion",
+    "year": 1976,
+    "type": "article",
+    "cited_by_count": 13,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W155767113",
+    "title": "Production of a fissioning uranium plasma",
+    "year": 1973,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W768225013",
+    "title": "Argon/UF6 plasma exhaust gas reconstitution experiments using preheated fluorine and on-line diagnostics. [fissioning uranium plasma core reactor design",
+    "year": 1979,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W96986532",
+    "title": "Cyclic gaseous core reactors",
+    "year": 1980,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W1614330892",
+    "title": "Plasma Core Reactor Applications",
+    "year": 1976,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://www.osti.gov/servlets/purl/5459912",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2741000796",
+    "title": "HEAT TRANSFER IN A FISSIONING URANIUM PLASMA REACTOR CAVITY",
+    "year": 1973,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W785822379",
+    "title": "Heat transfer in a fissioning uranium plasma reactor cavity",
+    "year": 1973,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://ntrs.nasa.gov/api/citations/19730023874/downloads/19730023874.pdf",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W3192681775",
+    "title": "Gas Core Reactor",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2502194634",
+    "doi": "10.13182/nse98-a2012",
+    "title": "A Computational Fluid Dynamics and Heat Transfer Model for Gaseous Core and Very High Temperature Gas-Cooled Reactors",
+    "year": 1998,
+    "type": "article",
+    "cited_by_count": 13,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W158495454",
+    "title": "Pulsed-gaseous-core reactor power plants",
+    "year": 1974,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2491661904",
+    "doi": "10.1007/978-3-7091-4687-3_17",
+    "title": "The “Glow-Plug” Nuclear Gaseous-Core Reactor for Space Missions",
+    "year": 1964,
+    "type": "book-chapter",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W768208624",
+    "title": "Fissioning Plasma Core Reactor",
+    "year": 2002,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W41782073",
+    "title": "Radiative temperature of uranium plasmas for gaseous core reactor",
+    "year": 1977,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W57122015",
+    "title": "A TRANSPORT-THEORY ANALYSIS OF A GASEOUS-CORE REACTOR CONCEPT",
+    "year": 1964,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W1608609133",
+    "title": "Heat transfer evaluation in a plasma core reactor",
+    "year": 1976,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W834889546",
+    "title": "Dynamic analysis of gas-core reactor system",
+    "year": 1973,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "http://hdl.handle.net/2060/19730018854",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W3034859035",
+    "title": "NUCLEAR CRITICALITY CALCULATIONS ON A SPHERICALLY SYMMETRIC GASEOUS-CORE REACTOR.",
+    "year": 1964,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W817347499",
+    "title": "FLUX DEPRESSION AND FISSION-FRAGMENT ESCAPE IN A GASEOUS CORE REACTOR",
+    "year": 1962,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W1515742290",
+    "title": "GASEOUS CORE REACTOR WITH MHD CONVERSION FOR ELECTRICAL POWER GENERATION.",
+    "year": 1971,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W83766169",
+    "title": "NEUTRON KINETICS OF THE NUCLEAR LIGHT-BULB GASEOUS-CORE ROCKET.",
+    "year": 1969,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W1631184930",
+    "title": "Gas core reactors for actinide transmutation",
+    "year": 1979,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W29723721",
+    "title": "Actinide Production in Gas Core Reactors",
+    "year": 2004,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W1661314161",
+    "title": "Gas core reactors for coal gasification",
+    "year": 1976,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W212464191",
+    "title": "Nuclear characteristics of a fissioning uranium plasma test reactor with light-water cooling",
+    "year": 1973,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "http://hdl.handle.net/2060/19730019930",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2056337804",
+    "doi": "10.2514/8.6249",
+    "title": "Magnetohydrodynamic Generators and Nuclear Propulsion",
+    "year": 1962,
+    "type": "article",
+    "cited_by_count": 24,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2156675688",
+    "doi": "10.1111/j.1749-6632.1971.tb34960.x",
+    "title": "ON THE DUST‐CURTAIN MODEL OF A RADIATION SHIELD IN A GASEOUS‐CORE REACTOR FOR SPACECRAFT",
+    "year": 1971,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://hdl.handle.net/2027.42/71400",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2745880042",
+    "title": "U-235 resonance cross sections and gaseous core reactor calculations",
+    "year": 1965,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "http://hdl.handle.net/2060/19660006993",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2171611687",
+    "doi": "10.1016/j.engfailanal.2011.06.010",
+    "title": "Selection of fuel cladding material for nuclear fission reactors",
+    "year": 2011,
+    "type": "article",
+    "cited_by_count": 352,
+    "open_access_url": "http://www.sciencedirect.com/science/article/pii/S1350630711001531",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2010871116",
+    "doi": "10.1126/science.1211285",
+    "title": "Nuclear Fuel in a Reactor Accident",
+    "year": 2012,
+    "type": "article",
+    "cited_by_count": 544,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2889951280",
+    "doi": "10.1016/j.rser.2018.08.019",
+    "title": "Viability of thorium-based nuclear fuel cycle for the next generation nuclear reactor: Issues and prospects",
+    "year": 2018,
+    "type": "article",
+    "cited_by_count": 205,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2087303625",
+    "doi": "10.1016/s1369-7021(10)70221-2",
+    "title": "The high burn-up structure in nuclear fuel",
+    "year": 2010,
+    "type": "article",
+    "cited_by_count": 326,
+    "open_access_url": "https://doi.org/10.1016/s1369-7021(10)70221-2",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2263439983",
+    "doi": "10.1016/j.rser.2016.01.116",
+    "title": "Modeling and control of nuclear reactor cores for electricity generation: A review of advanced technologies",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 98,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2291475132",
+    "doi": "10.1016/j.jcp.2016.02.012",
+    "title": "An assessment of coupling algorithms for nuclear reactor core physics simulations",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 57,
+    "open_access_url": "https://doi.org/10.1016/j.jcp.2016.02.012",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1981476758",
+    "doi": "10.1080/00337578208222984",
+    "title": "Radiation damage in crystalline insulators, oxides and ceramic nuclear fuels",
+    "year": 1982,
+    "type": "article",
+    "cited_by_count": 224,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2117497888",
+    "title": "Reactor: an expert system for diagnosis and treatment of nuclear reactor accidents",
+    "year": 1982,
+    "type": "article",
+    "cited_by_count": 142,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2026769253",
+    "doi": "10.1016/j.enpol.2013.04.062",
+    "title": "Abundant thorium as an alternative nuclear fuel",
+    "year": 2013,
+    "type": "article",
+    "cited_by_count": 98,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2105011060",
+    "doi": "10.13182/nt95-a35149",
+    "title": "Nuclear Fuel Management Optimization Using Genetic Algorithms",
+    "year": 1995,
+    "type": "article",
+    "cited_by_count": 103,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1996976239",
+    "doi": "10.1016/s0022-3115(96)00345-5",
+    "title": "Uraninite and UO2 in spent nuclear fuel: a comparison",
+    "year": 1996,
+    "type": "article",
+    "cited_by_count": 94,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1967798675",
+    "doi": "10.1016/0306-4549(76)90025-6",
+    "title": "Fissile fuel breeding potential with paired fusion-fission reactors",
+    "year": 1976,
+    "type": "article",
+    "cited_by_count": 14,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3131339441",
+    "doi": "10.1016/j.jallcom.2021.159235",
+    "title": "Corrosion of FeCrAl alloys used as fuel cladding in nuclear reactors",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 101,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2607149722",
+    "doi": "10.1016/j.anucene.2017.03.005",
+    "title": "Mechanistic materials modeling for nuclear fuel performance",
+    "year": 2017,
+    "type": "article",
+    "cited_by_count": 81,
+    "open_access_url": "https://doi.org/10.1016/j.anucene.2017.03.005",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2047697951",
+    "doi": "10.1007/s10967-005-0627-7",
+    "title": "Analysis of high burnup spent nuclear fuel by ICP-MS",
+    "year": 2005,
+    "type": "article",
+    "cited_by_count": 75,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3140168595",
+    "doi": "10.13182/nt95-2",
+    "title": "Nuclear Fuel Management Optimization Using Genetic Algorithms",
+    "year": 1995,
+    "type": "article",
+    "cited_by_count": 54,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2056293724",
+    "doi": "10.1016/j.jnucmat.2014.11.117",
+    "title": "Fabrication and measurement of hoop strength of SiC triplex tube for nuclear fuel cladding applications",
+    "year": 2014,
+    "type": "article",
+    "cited_by_count": 95,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2062197875",
+    "doi": "10.1007/bf02745341",
+    "title": "Nuclear fuels and development of nuclear fuel elements",
+    "year": 1989,
+    "type": "article",
+    "cited_by_count": 26,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1978121664",
+    "doi": "10.1016/j.jenvrad.2011.11.018",
+    "title": "Atmospheric radionuclides from the Fukushima Dai-ichi nuclear reactor accident observed in Vietnam",
+    "year": 2011,
+    "type": "article",
+    "cited_by_count": 79,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1997289916",
+    "doi": "10.1016/j.jnucmat.2009.03.035",
+    "title": "Three dimensional coupled simulation of thermomechanics, heat, and oxygen diffusion in nuclear fuel rods",
+    "year": 2009,
+    "type": "article",
+    "cited_by_count": 82,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3123991168",
+    "doi": "10.1016/j.matre.2021.01.002",
+    "title": "Current state and prospect on the development of advanced nuclear fuel system materials: A review",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 75,
+    "open_access_url": "https://www.sciencedirect.com/science/article/pii/S2666935821000021/pdf",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2220805808",
+    "title": "A CLASSIFICATION OF UNIQUELY DIFFERENT TYPES OF NUCLEAR FISSION GAS BEHAVIOR",
+    "year": 2005,
+    "type": "article",
+    "cited_by_count": 45,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2121804106",
+    "doi": "10.1016/s0022-3115(99)00264-0",
+    "title": "Near-field behavior of 99Tc during the oxidative alteration of spent nuclear fuel",
+    "year": 2000,
+    "type": "article",
+    "cited_by_count": 74,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2032830593",
+    "doi": "10.1016/j.wear.2014.02.016",
+    "title": "A multi-stage wear model for grid-to-rod fretting of nuclear fuel rods",
+    "year": 2014,
+    "type": "article",
+    "cited_by_count": 76,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3037340022",
+    "doi": "10.1016/b978-0-12-818483-7.00001-9",
+    "title": "Fundamentals of nuclear reactors",
+    "year": 2020,
+    "type": "book-chapter",
+    "cited_by_count": 26,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2280754402",
+    "doi": "10.1134/s1063778815100117",
+    "title": "Hybrid fusion–fission reactor with a thorium blanket: Its potential in the fuel cycle of nuclear reactors",
+    "year": 2015,
+    "type": "article",
+    "cited_by_count": 13,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2048179215",
+    "doi": "10.1051/epn:2007007",
+    "title": "Revisiting the thorium-uranium nuclear fuel cycle",
+    "year": 2007,
+    "type": "article",
+    "cited_by_count": 46,
+    "open_access_url": "https://www.europhysicsnews.org/articles/epn/pdf/2007/02/epn07204.pdf",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1998834223",
+    "doi": "10.1016/j.nucengdes.2011.12.010",
+    "title": "Thermal hydraulic performance assessment of dual-cooled annular nuclear fuel for OPR-1000",
+    "year": 2012,
+    "type": "article",
+    "cited_by_count": 75,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2034916157",
+    "doi": "10.1016/j.nima.2003.07.059",
+    "title": "Non-destructive analysis of nuclear fuel by means of thermal and cold neutrons",
+    "year": 2003,
+    "type": "article",
+    "cited_by_count": 62,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4309475453",
+    "doi": "10.1016/j.pnucene.2022.104493",
+    "title": "Prospects for additive manufacturing of nuclear fuel forms",
+    "year": 2022,
+    "type": "article",
+    "cited_by_count": 45,
+    "open_access_url": "https://doi.org/10.1016/j.pnucene.2022.104493",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4412940939",
+    "doi": "10.3390/en18154080",
+    "title": "Advanced Nuclear Reactors—Challenges Related to the Reprocessing of Spent Nuclear Fuel",
+    "year": 2025,
+    "type": "article",
+    "cited_by_count": 13,
+    "open_access_url": "https://www.mdpi.com/1996-1073/18/15/4080/pdf?version=1754040602",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2051133384",
+    "doi": "10.1016/0029-5493(71)90076-8",
+    "title": "Plutonium and plutonium alloys as nuclear fuel materials",
+    "year": 1971,
+    "type": "article",
+    "cited_by_count": 43,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2337367180",
+    "doi": "10.13182/nt81-a32759",
+    "title": "Quenching and Rewetting of Nuclear Fuel Rods",
+    "year": 1981,
+    "type": "article",
+    "cited_by_count": 36,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2811015521",
+    "doi": "10.1016/j.wear.2018.06.011",
+    "title": "Investigating grid-to-rod fretting wear of nuclear fuel claddings using a unique autoclave fretting rig",
+    "year": 2018,
+    "type": "article",
+    "cited_by_count": 64,
+    "open_access_url": "https://doi.org/10.1016/j.wear.2018.06.011",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2213177185",
+    "doi": "10.13182/nt80-a17693",
+    "title": "Hybrids for Direct Enrichment and Self-Protected Fissile Fuel Production",
+    "year": 1980,
+    "type": "article",
+    "cited_by_count": 20,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1985318351",
+    "doi": "10.1180/minmag.2011.075.4.2359",
+    "title": "Actinides and radiation effects: impact on the back-end of the nuclear fuel cycle",
+    "year": 2011,
+    "type": "article",
+    "cited_by_count": 52,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2023742746",
+    "doi": "10.1016/j.gca.2004.07.013",
+    "title": "Uraninite recrystallization and Pb loss in the Oklo and Bangombé natural fission reactors, Gabon",
+    "year": 2005,
+    "type": "article",
+    "cited_by_count": 39,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4293773740",
+    "doi": "10.1016/j.nucengdes.2022.111950",
+    "title": "A review on optimization methods for nuclear reactor fuel reloading analysis",
+    "year": 2022,
+    "type": "article",
+    "cited_by_count": 40,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2077231532",
+    "doi": "10.1016/s0306-4549(02)00092-0",
+    "title": "Nuclear fuel loading pattern optimisation using a neural network",
+    "year": 2002,
+    "type": "article",
+    "cited_by_count": 46,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3107287099",
+    "doi": "10.3390/microorganisms8121857",
+    "title": "Direct Meta-Analyses Reveal Unexpected Microbial Life in the Highly Radioactive Water of an Operating Nuclear Reactor Core",
+    "year": 2020,
+    "type": "article",
+    "cited_by_count": 17,
+    "open_access_url": "https://www.mdpi.com/2076-2607/8/12/1857/pdf?version=1606377219",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2014944719",
+    "doi": "10.1016/j.anucene.2008.09.004",
+    "title": "Calculation of the power peaking factor in a nuclear reactor using support vector regression models",
+    "year": 2008,
+    "type": "article",
+    "cited_by_count": 46,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1985524242",
+    "doi": "10.1016/j.pnucene.2007.11.041",
+    "title": "Micro-structured nuclear fuel and novel nuclear reactor concepts for advanced power production",
+    "year": 2007,
+    "type": "article",
+    "cited_by_count": 13,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2902975086",
+    "doi": "10.1016/j.anucene.2018.11.050",
+    "title": "Micro heat pipe nuclear reactor concepts: Analysis of fuel cycle performance and environmental impacts",
+    "year": 2018,
+    "type": "article",
+    "cited_by_count": 62,
+    "open_access_url": "https://doi.org/10.1016/j.anucene.2018.11.050",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1988573786",
+    "doi": "10.1016/j.wear.2013.01.067",
+    "title": "Fretting wear behavior of a nuclear fuel rod under a simulated primary coolant condition",
+    "year": 2013,
+    "type": "article",
+    "cited_by_count": 60,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2086548010",
+    "doi": "10.1016/j.jnucmat.2012.05.001",
+    "title": "TiN-based coatings on fuel cladding tubes for advanced nuclear reactors",
+    "year": 2012,
+    "type": "article",
+    "cited_by_count": 44,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W136036148",
+    "doi": "10.13182/nt07-a3809",
+    "title": "Proliferation Resistance Assessment Methodology for Nuclear Fuel Cycles",
+    "year": 2007,
+    "type": "article",
+    "cited_by_count": 39,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2044098005",
+    "doi": "10.1016/0301-4215(75)90050-6",
+    "title": "Strategies for a transition from fossil to nuclear fuels",
+    "year": 1975,
+    "type": "article",
+    "cited_by_count": 32,
+    "open_access_url": "http://pure.iiasa.ac.at/id/eprint/87/1/RR-74-07.pdf",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2059090549",
+    "doi": "10.1016/j.jenvrad.2011.11.007",
+    "title": "Analysis of data from sensitive U.S. monitoring stations for the Fukushima Dai-ichi nuclear reactor accident",
+    "year": 2011,
+    "type": "article",
+    "cited_by_count": 61,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2057852286",
+    "doi": "10.1557/proc-465-1209",
+    "title": "Uraninite: a 2 Ga Spent Nuclear Fuel from the Natural Fission Reactor at Bangombé in Gabon, West Africa",
+    "year": 1996,
+    "type": "article",
+    "cited_by_count": 13,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2745632721",
+    "doi": "10.1016/j.nucet.2017.07.002",
+    "title": "Genetic algorithms for nuclear reactor fuel load and reload optimization problems",
+    "year": 2017,
+    "type": "article",
+    "cited_by_count": 34,
+    "open_access_url": "https://www.sciencedirect.com/science/article/pii/S2452303817300602/pdf",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2040813126",
+    "doi": "10.1016/j.applthermaleng.2014.04.005",
+    "title": "Thermal analysis of the melting process in a nuclear fuel rod",
+    "year": 2014,
+    "type": "article",
+    "cited_by_count": 37,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3129536400",
+    "doi": "10.1021/acs.inorgchem.0c03390",
+    "title": "Progress in Uranium Chemistry: Driving Advances in Front-End Nuclear Fuel Cycle Forensics",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 55,
+    "open_access_url": "https://www.osti.gov/servlets/purl/1780574",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1997720302",
+    "doi": "10.1016/j.jnucmat.2015.03.001",
+    "title": "Nanostructure of metallic particles in light water reactor used nuclear fuel",
+    "year": 2015,
+    "type": "article",
+    "cited_by_count": 45,
+    "open_access_url": "https://doi.org/10.1016/j.jnucmat.2015.03.001",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2147904323",
+    "doi": "10.1098/rspa.1975.0067",
+    "title": "The morphology of interlinked porosity in nuclear fuels",
+    "year": 1975,
+    "type": "article",
+    "cited_by_count": 29,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3187223244",
+    "doi": "10.1016/j.nucengdes.2021.111364",
+    "title": "High-energy surface processing of zirconium alloys for fuel claddings of water-cooled nuclear reactors",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 53,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2971806216",
+    "doi": "10.1038/s41598-019-48619-x",
+    "title": "Closing the Nuclear Fuel Cycle with a Simplified Minor Actinide Lanthanide Separation Process (ALSEP) and Additive Manufacturing",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 63,
+    "open_access_url": "https://www.nature.com/articles/s41598-019-48619-x.pdf",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2133673521",
+    "doi": "10.1016/j.enconman.2009.12.044",
+    "title": "Criticality and burn up evolutions of the Fixed Bed Nuclear Reactor with alternative fuels",
+    "year": 2010,
+    "type": "article",
+    "cited_by_count": 45,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3118851130",
+    "doi": "10.1002/er.6371",
+    "title": "Advance in and prospect of moderator materials for space nuclear reactors",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 31,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2749259779",
+    "doi": "10.1002/er.3854",
+    "title": "The breed and burn nuclear reactor: A chronological, conceptual, and technological review",
+    "year": 2017,
+    "type": "article",
+    "cited_by_count": 28,
+    "open_access_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/er.3854",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2081725420",
+    "doi": "10.1016/0029-5493(85)90303-6",
+    "title": "Vibrations of nuclear fuel assemblies: A simplified model",
+    "year": 1985,
+    "type": "article",
+    "cited_by_count": 22,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1984395367",
+    "doi": "10.1016/j.nucengdes.2013.06.007",
+    "title": "Large-eddy simulations of turbulent flow for grid-to-rod fretting in nuclear reactors",
+    "year": 2013,
+    "type": "article",
+    "cited_by_count": 41,
+    "open_access_url": "https://arxiv.org/pdf/1307.4660",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1985951509",
+    "doi": "10.1016/j.jmatprotec.2014.05.009",
+    "title": "Nanosized polycrystalline diamond cladding for surface protection of zirconium nuclear fuel tubes",
+    "year": 2014,
+    "type": "article",
+    "cited_by_count": 40,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1979889772",
+    "doi": "10.1016/j.crte.2010.09.003",
+    "title": "Safe management of actinides in the nuclear fuel cycle: Role of mineralogy",
+    "year": 2010,
+    "type": "article",
+    "cited_by_count": 33,
+    "open_access_url": "https://www.sciencedirect.com/science/article/pii/S1631071310002117/pdf",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2522875312",
+    "doi": "10.1088/1748-0221/11/09/p09008",
+    "title": "Muon trackers for imaging a nuclear reactor",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 22,
+    "open_access_url": "https://iopscience.iop.org/article/10.1088/1748-0221/11/09/P09008/pdf",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1988137771",
+    "doi": "10.1016/j.measurement.2013.07.003",
+    "title": "Benchmarking of deformation and vibration measurement techniques for nuclear fuel pins",
+    "year": 2013,
+    "type": "article",
+    "cited_by_count": 26,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2027672605",
+    "doi": "10.1016/j.ijhydene.2015.01.093",
+    "title": "Life cycle assessment of hydrogen production from a high temperature electrolysis process coupled to a high temperature gas nuclear reactor",
+    "year": 2015,
+    "type": "article",
+    "cited_by_count": 65,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2070473887",
+    "doi": "10.1007/bf03354517",
+    "title": "Type 304 Stainless Steel With 0.5% Boron for Storage of Spent Nuclear Fuel",
+    "year": 1980,
+    "type": "article",
+    "cited_by_count": 42,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1964680803",
+    "doi": "10.4236/epe.2014.65009",
+    "title": "Comparison of Small Modular Reactor and Large Nuclear Reactor Fuel Cost",
+    "year": 2014,
+    "type": "article",
+    "cited_by_count": 35,
+    "open_access_url": "https://content.scirp.org/pdf/epe_2014050616474305.pdf",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2041092968",
+    "doi": "10.1016/s0168-9002(00)00506-4",
+    "title": "Ultra-thin 242mAm fuel elements in nuclear reactors",
+    "year": 2000,
+    "type": "article",
+    "cited_by_count": 26,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2513834537",
+    "doi": "10.1016/j.pnucene.2016.08.004",
+    "title": "Could spent nuclear fuel be considered as a non-conventional mine of critical raw materials?",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 46,
+    "open_access_url": "https://www.sciencedirect.com/science/article/pii/S014919701630172X/pdf",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1996759718",
+    "doi": "10.1016/j.jfluchem.2008.07.006",
+    "title": "New reprocessing system for spent nuclear reactor fuel using fluoride volatility method",
+    "year": 2008,
+    "type": "article",
+    "cited_by_count": 39,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2056253001",
+    "doi": "10.1016/j.nucengdes.2014.11.040",
+    "title": "Operational modal analysis of flow-induced vibration of nuclear fuel rods in a turbulent axial flow",
+    "year": 2015,
+    "type": "article",
+    "cited_by_count": 35,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2762771307",
+    "doi": "10.1016/j.ress.2017.09.029",
+    "title": "Kriging-based inverse uncertainty quantification of nuclear fuel performance code BISON fission gas release model using time series measurement data",
+    "year": 2017,
+    "type": "article",
+    "cited_by_count": 79,
+    "open_access_url": "https://doi.org/10.1016/j.ress.2017.09.029",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2034957968",
+    "doi": "10.1524/ract.2006.94.9-11.749",
+    "title": "The fate of the epsilon phase (Mo-Ru-Pd-Tc-Rh) in the UO 2 of the Oklo natural fission reactors",
+    "year": 2006,
+    "type": "article",
+    "cited_by_count": 37,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3019627638",
+    "doi": "10.1093/ptep/ptaa027",
+    "title": "Investigation of the Unit-1 nuclear reactor of Fukushima Daiichi by cosmic muon radiography",
+    "year": 2020,
+    "type": "article",
+    "cited_by_count": 32,
+    "open_access_url": "https://academic.oup.com/ptep/article-pdf/2020/4/043C02/33129810/ptaa027.pdf",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1995415894",
+    "doi": "10.1016/j.anucene.2013.01.048",
+    "title": "Heat conduction in nuclear fuel by the Kirchhoff transformation",
+    "year": 2013,
+    "type": "article",
+    "cited_by_count": 24,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2325463557",
+    "doi": "10.1007/s10512-016-0074-2",
+    "title": "Advances in Structural Materials for Fast-Reactor Cores",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 24,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W188233734",
+    "doi": "10.13182/nt82-a32880",
+    "title": "The Role of Plutonium-238 in Nuclear Fuel Cycles",
+    "year": 1982,
+    "type": "article",
+    "cited_by_count": 25,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1992429407",
+    "doi": "10.1007/s00158-002-0210-6",
+    "title": "Optimization of nuclear fuel reloading by the homogenization method",
+    "year": 2002,
+    "type": "article",
+    "cited_by_count": 19,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2075598059",
+    "doi": "10.1021/ed086p316",
+    "title": "Uranium to Electricity: The Chemistry of the Nuclear Fuel Cycle",
+    "year": 2009,
+    "type": "article",
+    "cited_by_count": 23,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2024332751",
+    "doi": "10.1007/s11837-008-0004-4",
+    "title": "The development of metallic nuclear fuels for transmutation applications: Materials challenges",
+    "year": 2008,
+    "type": "article",
+    "cited_by_count": 28,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2316277010",
+    "doi": "10.2113/gselements.8.3.213",
+    "title": "Interactions between Nuclear Fuel and Water at the Fukushima Daiichi Reactors",
+    "year": 2012,
+    "type": "article",
+    "cited_by_count": 27,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2254707654",
+    "doi": "10.1016/j.ijhydene.2016.01.102",
+    "title": "Reactor core and actinide production evaluation based on different loading material of recyled spent nuclear fuel of LWR in FBR",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 13,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2969936273",
+    "doi": "10.1007/978-3-319-30651-3",
+    "title": "Energy from Nuclear Fission An Introduction",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 12,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1484285833",
+    "doi": "10.1088/1674-1137/36/1/001",
+    "title": "A study of antineutrino spectra from spent nuclear fuel at Daya Bay",
+    "year": 2012,
+    "type": "article",
+    "cited_by_count": 25,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2116580797",
+    "doi": "10.1016/j.anucene.2009.06.003",
+    "title": "Criticality investigations for the fixed bed nuclear reactor using thorium fuel mixed with plutonium or minor actinides",
+    "year": 2009,
+    "type": "article",
+    "cited_by_count": 40,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2041615471",
+    "doi": "10.1016/j.jnucmat.2012.01.016",
+    "title": "Thermodynamics of the Zr–H binary system related to nuclear fuel sheathing and pressure tube hydriding",
+    "year": 2012,
+    "type": "article",
+    "cited_by_count": 37,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2302709311",
+    "doi": "10.1016/j.net.2016.02.019",
+    "title": "Design of an Organic Simplified Nuclear Reactor",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 17,
+    "open_access_url": "https://www.sciencedirect.com/science/article/pii/S1738573316300031/pdf",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2026174217",
+    "doi": "10.1111/1574-6968.12562",
+    "title": "Isolation and identification of cobalt- and caesium-resistant bacteria from a nuclear fuel storage pond",
+    "year": 2014,
+    "type": "article",
+    "cited_by_count": 34,
+    "open_access_url": "https://academic.oup.com/femsle/article-pdf/359/1/81/19130131/359-1-81.pdf",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1913848701",
+    "doi": "10.1103/physrevlett.116.122503",
+    "title": "Neutron Capture and the Antineutrino Yield from Nuclear Reactors",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 21,
+    "open_access_url": "https://arxiv.org/pdf/1510.08948",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2088161230",
+    "doi": "10.1088/0029-5515/18/7/002",
+    "title": "Symbiotic system of a fusion and a fission reactor with very simple fuel reprocessing",
+    "year": 1978,
+    "type": "article",
+    "cited_by_count": 18,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2320142621",
+    "doi": "10.3390/s16040571",
+    "title": "Vibration Monitoring Using Fiber Optic Sensors in a Lead-Bismuth Eutectic Cooled Nuclear Fuel Assembly",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 34,
+    "open_access_url": "https://www.mdpi.com/1424-8220/16/4/571/pdf?version=1461231134",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W154583735",
+    "doi": "10.13182/nse73-a23256",
+    "title": "Evaluation of Lumped Parameter Heat Transfer Techniques for Nuclear Reactor Applications",
+    "year": 1973,
+    "type": "article",
+    "cited_by_count": 25,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2565853856",
+    "doi": "10.1016/j.powtec.2017.01.008",
+    "title": "Spouted bed design considerations for coated nuclear fuel particles",
+    "year": 2017,
+    "type": "article",
+    "cited_by_count": 26,
+    "open_access_url": "https://www.osti.gov/servlets/purl/1367510",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2975420874",
+    "doi": "10.3897/nucet.5.38117",
+    "title": "The technological challenge for current generation nuclear reactors",
+    "year": 2019,
+    "type": "article",
+    "cited_by_count": 18,
+    "open_access_url": "https://nucet.pensoft.net/article/38117/download/pdf/",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4321438372",
+    "doi": "10.1016/j.matdes.2023.111784",
+    "title": "In situ high-temperature 3D imaging of the damage evolution in a SiC nuclear fuel cladding material",
+    "year": 2023,
+    "type": "article",
+    "cited_by_count": 36,
+    "open_access_url": "https://doi.org/10.1016/j.matdes.2023.111784",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2278379208",
+    "doi": "10.1080/00223131.2015.1120245",
+    "title": "Interaction of ruthenium tetroxide with surfaces of nuclear reactor containment building",
+    "year": 2016,
+    "type": "article",
+    "cited_by_count": 22,
+    "open_access_url": "https://www.tandfonline.com/doi/pdf/10.1080/00223131.2015.1120245?download=true",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4281252434",
+    "doi": "10.1016/j.molliq.2022.119426",
+    "title": "Structure-property relationships in actinide containing molten salts – A review: Understanding and modelling the chemistry of nuclear fuel salts",
+    "year": 2022,
+    "type": "article",
+    "cited_by_count": 28,
+    "open_access_url": "https://www.sciencedirect.com/science/article/pii/S0167732222009643/pdf",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W4210968790",
+    "doi": "10.1007/978-94-007-0211-0_34",
+    "title": "Nuclear Fuels",
+    "year": 2010,
+    "type": "book-chapter",
+    "cited_by_count": 10,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W1996366986",
+    "doi": "10.1088/0029-5515/47/3/008",
+    "title": "Tokamak D–T fusion neutron source requirements for closing the nuclear fuel cycle",
+    "year": 2007,
+    "type": "article",
+    "cited_by_count": 28,
+    "open_access_url": "https://iopscience.iop.org/article/10.1088/0029-5515/47/3/008/pdf",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W7213519125",
+    "doi": "10.1177/21680256261484008",
+    "title": "The Dawn of Lunar Reactors and the Quest for a New Space Nuclear Law",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7213315888",
+    "doi": "10.1007/s10967-026-11113-6",
+    "title": "Development of Pu/Np separation on TEVA resin for rapid purification of key radionuclides from uranium fission samples",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://link.springer.com/content/pdf/10.1007/s10967-026-11113-6.pdf",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7212652317",
+    "doi": "10.66233/innp-027-30261",
+    "title": "Coating development for fuel claddings in advanced nuclear reactors",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://www.innovationnewsnetwork.com/wp-content/uploads/2026/06/PURD01-30261-pro.pdf",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7213064986",
+    "doi": "10.1016/j.anucene.2026.112841",
+    "title": "Bayesian Optimization-Based Machine Learning Inversion of 237NpTransmutation Depletion in ADS",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.1016/j.anucene.2026.112841",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7204871098",
+    "doi": "10.3390/su18178919",
+    "title": "Sustainability of Nuclear Energy—A Critical Review of Closed Fuel Cycle Options",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.3390/su18178919",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7204625363",
+    "doi": "10.5281/zenodo.22159441",
+    "title": "Time-Accelerated Geology for Radioactive Waste Immobilization: A Nature-Inspired, Gate-Driven 3-7-12 Systems Framework for Wasteform Research, Validation and Translation",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.5281/zenodo.22159441",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7204633740",
+    "doi": "10.5281/zenodo.22159442",
+    "title": "Time-Accelerated Geology for Radioactive Waste Immobilization: A Nature-Inspired, Gate-Driven 3-7-12 Systems Framework for Wasteform Research, Validation and Translation",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.5281/zenodo.22159442",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7204248250",
+    "doi": "10.5281/zenodo.22114021",
+    "title": "A Comparative Analysis of Advanced Nuclear Fuel and structural Design in Advanced Fission Reactor",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.5281/zenodo.22114021",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7204257321",
+    "doi": "10.5281/zenodo.22114022",
+    "title": "A Comparative Analysis of Advanced Nuclear Fuel and structural Design in Advanced Fission Reactor",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.5281/zenodo.22114022",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7204480374",
+    "doi": "10.47191/ijcsrr/v9-i8-46",
+    "title": "A Comparative Analysis of Advanced Nuclear Fuel and structural Design in Advanced Fission Reactor",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.47191/ijcsrr/v9-i8-46",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7204518721",
+    "doi": "10.46813/2026-164-174",
+    "title": "PRELIMINARY THERMAL AND NEUTRON-PHYSICAL CALCULATIONS OF THE WWER-1000 REACTOR USING THREE-STRUCTURE ISOTROPIC NUCLEAR FUEL",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.46813/2026-164-174",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7172420575",
+    "doi": "10.1016/j.actamat.2026.122608",
+    "title": "Interatomic potential investigation of the structural and thermodynamic properties of mixed plutonium–americium oxides",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.1016/j.actamat.2026.122608",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7204753159",
+    "doi": "10.11868/j.issn.1001-4381.2025.000413",
+    "title": "Characteristics of nuclear-grade Ni-Cr-P brazing paste and microstructure and mechanical properties of its brazed joint of stainless steel",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7213643226",
+    "doi": "10.7538/yzk.2025.youxian.0718",
+    "title": "Appearance Defect Detection Method for Nuclear Fuel Rod Based on Hierarchical Adaptive Feature Interaction",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7171956472",
+    "doi": "10.5281/zenodo.21722739",
+    "title": "Nuclear Fuel Materials: How Radiation Transforms UO₂ Fuel During Reactor Operation",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.5281/zenodo.21722739",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7171957455",
+    "doi": "10.5604/01.3001.0055.7414",
+    "title": "The development of nuclear technology globally: from the discovery of radioactivity to contemporary and future reactor concepts",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7172004492",
+    "doi": "10.5281/zenodo.21722740",
+    "title": "Nuclear Fuel Materials: How Radiation Transforms UO₂ Fuel During Reactor Operation",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.5281/zenodo.21722740",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7171312119",
+    "doi": "10.5281/zenodo.21584137",
+    "title": "Why do advanced reactor developers choose such different reactor designs?",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.5281/zenodo.21584137",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7171315765",
+    "doi": "10.5281/zenodo.21584136",
+    "title": "Why do advanced reactor developers choose such different reactor designs?",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.5281/zenodo.21584136",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7170068831",
+    "doi": "10.1515/kern-2026-0025",
+    "title": "Refractive index fitting method and measurement device for particle image velocimetry applications in nuclear fuel bundle experiments",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.1515/kern-2026-0025",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7169826757",
+    "doi": "10.1177/13835416261470934",
+    "title": "A microfabricated ECT probe featuring internal distance standards for micro-level oxide film thickness measurement",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7169880859",
+    "doi": "10.1016/j.jeurceramsoc.2026.118708",
+    "title": "Mo-interlayer-mediated, constrained expansion-induced stress-driven pressureless joining of SiC ceramics: A pathway toward Gen-IV nuclear fuel cladding",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7168264703",
+    "doi": "10.5281/zenodo.21352718",
+    "title": "OUXSPACE 100MW Integrate Marine Fusion Nuclear Reactor",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.5281/zenodo.21352718",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7168267087",
+    "doi": "10.5281/zenodo.21352719",
+    "title": "OUXSPACE 100MW Integrate Marine Fusion Nuclear Reactor",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.5281/zenodo.21352719",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7167802388",
+    "doi": "10.1016/j.nucengdes.2026.115080",
+    "title": "Contributions of Mexican research to the development and application of artificial intelligence techniques in in-Core nuclear fuel management",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7167783677",
+    "doi": "10.1002/adfm.76976",
+    "title": "A Novel Biomass Photothermal Adsorbent for Simultaneous High‐Purity Thorium Recovery and Clean Water Production From Acidic Wastewater",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7167830469",
+    "doi": "10.1080/00295450.2026.2676380",
+    "title": "A Test Bed for Method Development and Validation for Reactor Fuel Loading Optimization",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7166847478",
+    "doi": "10.1016/j.anucene.2026.112607",
+    "title": "Thermal Performance Assessment of Fins with Various Geometries for Heat Removal from a Fuel Rod",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7171408318",
+    "doi": "10.1093/mam/ozag053.015",
+    "title": "Mapping the Heterogeneous Charge Transport During Oxidation of Metals Containing Nanoscale Metal Inclusions with 4D-STEM and APT",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7171444966",
+    "doi": "10.1093/mam/ozag053.638",
+    "title": "Observation of Microstructure and Phase Transformations in Neutron-Irradiated U-10Zr Fuel by In Situ Heated TEM",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7171663617",
+    "doi": "10.3724/j.0253-3219.2026.hjs.49.250436",
+    "title": "Thermal-hydraulic characteristic analysis of porous prismatic CERMET fuel assembly",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.3724/j.0253-3219.2026.hjs.49.250436",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7213648238",
+    "doi": "10.7538/yzk.2025.youxian.0621",
+    "title": "Numerical Simulation Study on Boiling Heat Transfer Characteristics of Annular Fuel",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7166092818",
+    "doi": "10.5281/zenodo.20936061",
+    "title": "Nuclear Materials Under Extreme Environments",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.5281/zenodo.20936061",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7166152302",
+    "doi": "10.5281/zenodo.20936060",
+    "title": "Nuclear Materials Under Extreme Environments",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.5281/zenodo.20936060",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7165798237",
+    "doi": "10.1016/j.jhazmat.2026.142805",
+    "title": "Tuning of gaseous and aqueous iodine sequestration in triazine-linked covalent organic frameworks via ligand engineering",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7165670397",
+    "doi": "10.1038/s41598-026-56593-4",
+    "title": "DFT study of irradiation damage-defect correlations with mechanical properties in uranium nitride",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 1,
+    "open_access_url": "https://www.nature.com/articles/s41598-026-56593-4_reference.pdf",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7164893876",
+    "doi": "10.1016/j.anucene.2026.112558",
+    "title": "Concept design, simulation and image reconstruction of gamma-ray emission computed tomography (GECT) for non-destructive inspection of nuclear fuel assemblies",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7164863609",
+    "doi": "10.1016/j.anucene.2026.112478",
+    "title": "Thermal analysis of radiative-convective heat transfer in fuel rods during coolant channel blockage accidents",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7164163802",
+    "doi": "10.1016/j.anucene.2026.112554",
+    "title": "Flamingo search algorithm for the multi-objective fuel arrangement optimization of reactor core",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7164521828",
+    "doi": "10.2478/bhee-2026-0027",
+    "title": "Modern Light Water Nuclear Reactors of Generation III+ and Small Modular Reactors: Challenges and Solutions in the Field of Nuclear Fuel and Management",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://reference-global.com/download/article/10.2478/bhee-2026-0027.pdf",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7163015648",
+    "doi": "10.1103/dr26-j19g",
+    "title": "First Measurement of Neutrino Emissions from Spent Nuclear Fuel by the Double Chooz Experiment",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 1,
+    "open_access_url": "https://doi.org/10.1103/dr26-j19g",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7167344031",
+    "doi": "10.3724/j.0253-3219.2026.hjs.49.250358",
+    "title": "Non-destructive testing technique of helium pressure in fuel rods based on the heat transfer method",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://www.sciengine.com/doi/pdf/B967D4133D1E453EA6F52EC8F3914115",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7162766645",
+    "doi": "10.5281/zenodo.20451230",
+    "title": "Stevenson-Flux Information Theory (SFIT) v2: Resonant Informational Flux Framework – Extension to Nuclear Science with Wave Function as Informational Carrier, Resonant Binding Energy, and Tuned Nuclear Processes",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.5281/zenodo.20451230",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7162873560",
+    "doi": "10.5281/zenodo.20459889",
+    "title": "Stevenson-Flux Information Theory (SFIT) v2: Resonant Informational Flux Framework – Extension to Nuclear Science with Wave Function as Informational Carrier, Resonant Binding Energy, and Tuned Nuclear Processes",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.5281/zenodo.20459889",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7162949307",
+    "doi": "10.5281/zenodo.20475620",
+    "title": "Stevenson-Flux Information Theory (SFIT) v2: Resonant Informational Flux Framework – Extension to Nuclear Science with Wave Function as Informational Carrier, Resonant Binding Energy, and Tuned Nuclear Processes",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.5281/zenodo.20475620",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7162628647",
+    "doi": "10.5281/zenodo.20430576",
+    "title": "Stevenson-Flux Information Theory (SFIT) v2: Resonant Informational Flux Framework – Extension to Nuclear Science with Wave Function as Informational Carrier, Resonant Binding Energy, and Tuned Nuclear Processes",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.5281/zenodo.20430576",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7162675937",
+    "doi": "10.5281/zenodo.20430771",
+    "title": "Stevenson-Flux Information Theory (SFIT) v2: Resonant Informational Flux Framework – Extension to Nuclear Science with Wave Function as Informational Carrier, Resonant Binding Energy, and Tuned Nuclear Processes",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.5281/zenodo.20430771",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7162547624",
+    "doi": "10.1016/j.energy.2026.141475",
+    "title": "Key determinants of nuclear fission competitiveness and implications of its potential restart for the Italian power system",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.1016/j.energy.2026.141475",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7162416838",
+    "doi": "10.5281/zenodo.20402421",
+    "title": "Stevenson-Flux Information Theory (SFIT) v2: Resonant Informational Flux Framework – Extension to Nuclear Science with Wave Function as Informational Carrier, Resonant Binding Energy, and Tuned Nuclear Processes",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://doi.org/10.5281/zenodo.20402421",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W7162204739",
+    "doi": "10.1038/s43246-026-01201-1",
+    "title": "Oxidation of zirconium alloys for nuclear fuel cladding",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 2,
+    "open_access_url": "https://www.nature.com/articles/s43246-026-01201-1.pdf",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-dm1-newest"
+    ]
+   },
+   {
+    "openalex_id": "W2316123571",
+    "doi": "10.3365/kjmm.2011.49.7.557",
+    "title": "Effects of Surface Roughness on the Thermal Emissivity of IG-11 Graphite for Nuclear Reactor",
+    "year": 2011,
+    "type": "article",
+    "cited_by_count": 5,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-mp12"
+    ]
+   },
+   {
+    "openalex_id": "W2065939966",
+    "doi": "10.1016/j.proci.2012.05.018",
+    "title": "TDL absorption sensors for gas temperature and concentrations in a high-pressure entrained-flow coal gasifier",
+    "year": 2012,
+    "type": "article",
+    "cited_by_count": 96,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-mp12"
+    ]
+   },
+   {
+    "openalex_id": "W3127272917",
+    "doi": "10.1016/j.ijheatmasstransfer.2021.120989",
+    "title": "Measurement of High-temperature Thermophysical Properties of Bulk and Coatings Using Modulated Photothermal Radiometry",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 33,
+    "open_access_url": "https://doi.org/10.1016/j.ijheatmasstransfer.2021.120989",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-mp12"
+    ]
+   },
+   {
+    "openalex_id": "W1254259511",
+    "doi": "10.13182/nt89-a27690",
+    "title": "Thermal Interactions during the Three Mile Island Unit 2 2-B Coolant Pump Transient",
+    "year": 1989,
+    "type": "article",
+    "cited_by_count": 5,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-mp12"
+    ]
+   },
+   {
+    "openalex_id": "W2050104676",
+    "doi": "10.3740/mrsk.2008.18.12.645",
+    "title": "Correlation Between the Porosity and the Thermal Emissivity as a Function of Oxidation Degrees on Nuclear Graphite IG-11",
+    "year": 2008,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "http://koreascience.or.kr:80/article/JAKO200801249838408.pdf",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-mp12"
+    ]
+   },
+   {
+    "openalex_id": "W2027673138",
+    "doi": "10.1016/0013-7944(89)90118-5",
+    "title": "Fracture-resistant ultralloys for space-power systems: Nuclear-thermionic-conversion implications of W,27Re",
+    "year": 1989,
+    "type": "article",
+    "cited_by_count": 5,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-mp12"
+    ]
+   },
+   {
+    "openalex_id": "W619307358",
+    "title": "New Projects and Lines of Research in Nuclear Physics : proceedings of the International Symposium, Messina, Italy 24-26 October 2002, in honour of Yuri Oganessian for his laurea honoris causa conferred by the University of Messina, to celebrate Giorgio Giardina's 60th birthday",
+    "year": 2003,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-mp12"
+    ]
+   },
+   {
+    "openalex_id": "W1486874029",
+    "title": "Turbulent natural convection in an enclosure formed by an array of vertical cylinders",
+    "year": 1992,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-mp12"
+    ]
+   },
+   {
+    "openalex_id": "W4405391020",
+    "doi": "10.1016/j.ijhydene.2024.11.467",
+    "title": "Energy storage system at NPP based on cryogenic hydrogen tank and a thermal storage functioning on phase change materials",
+    "year": 2024,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-mp12"
+    ]
+   },
+   {
+    "openalex_id": "W3019330964",
+    "doi": "10.1093/oso/9780198851547.003.0004",
+    "title": "The Atom: discovery",
+    "year": 2020,
+    "type": "book-chapter",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-mp12"
+    ]
+   },
+   {
+    "openalex_id": "W7164337832",
+    "doi": "10.24425/mms.2026.158370",
+    "title": "Interference due to thermal radiation in loss measurements during fire tests of optical fiber cables",
+    "year": 2026,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://wydawnictwo.pan.pl/index.php/mms/article/download/1043/852",
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-mp12"
+    ]
+   },
+   {
+    "openalex_id": "W4254086751",
+    "doi": "10.1007/978-3-540-71933-5_1",
+    "title": "Historical and Experimental Foundations",
+    "year": 2007,
+    "type": "book-chapter",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-mp12"
+    ]
+   },
+   {
+    "openalex_id": "W1780210351",
+    "doi": "10.1007/978-3-662-02703-5_1",
+    "title": "Historical and Experimental Foundations",
+    "year": 1992,
+    "type": "book-chapter",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-mp12"
+    ]
+   },
+   {
+    "openalex_id": "W4246264874",
+    "doi": "10.1007/978-3-662-03170-4_1",
+    "title": "Historical and Experimental Foundations",
+    "year": 1995,
+    "type": "book-chapter",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-mp12"
+    ]
+   },
+   {
+    "openalex_id": "W83260404",
+    "title": "Thermal interactions during the TMI-2 2-B coolant pump transient",
+    "year": 1988,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-8200d7ab7e/oa-mp12"
+    ]
+   }
+  ],
+  "screening_status": "not-reviewed",
+  "result": "inconclusive",
+  "notes": "Automated route-search-v1 index queries from data/canonical/searches/plans/p-8200d7ab7e.yaml; the result list is frozen for a reviewer and nothing here has been read for a qualifying demonstration. Planned runs NOT run in this bundle (engine unavailable): search:2026-09-21-p-8200d7ab7e/s2-cn (semantic-scholar); search:2026-09-21-p-8200d7ab7e/s2-dm1 (semantic-scholar); search:2026-09-21-p-8200d7ab7e/s2-mp12 (semantic-scholar); search:2026-09-21-p-8200d7ab7e/s2-wc (semantic-scholar); search:2026-09-21-p-8200d7ab7e/s2-dp (semantic-scholar)."
+ },
+ {
   "id": "search:2026-09-21-p-a093d7ecc5",
   "target": {
    "kind": "path",
@@ -19146,7 +22271,7 @@
     "claim:charge-carriers-convert-electricity"
    ]
   },
-  "dataset_hash": "7fa8f31facb6",
+  "dataset_hash": "32a2aa78f3d3",
   "driver_terms": [
    "nuclear binding-energy difference",
    "radioactive decay",
@@ -19172,14 +22297,60 @@
     "MHD power generation"
    ]
   },
-  "composition_terms": [],
+  "composition_terms": [
+   {
+    "term": "gas core reactor MHD",
+    "evidence": [
+     "source:williams-1971-gas-core-reactor-mhd"
+    ]
+   },
+   {
+    "term": "gaseous core reactor with MHD generator",
+    "evidence": [
+     "source:anghaie-2002-gaseous-core-reactor-mhd"
+    ]
+   },
+   {
+    "term": "NFR/MHD power generation",
+    "evidence": [
+     "source:kien-harada-2006-nfr-mhd"
+    ]
+   },
+   {
+    "term": "nuclear MHD power generation",
+    "evidence": [
+     "source:kien-harada-2006-nfr-mhd"
+    ],
+    "broad": true
+   }
+  ],
   "runs": [
+   {
+    "id": "search:2026-09-21-p-ccef4f212b/oa-cn",
+    "engine": "openalex",
+    "query_form": "route-composite-name",
+    "query": "(\"gas core reactor\" AND MHD) OR (\"gaseous core reactor\" AND MHD) OR \"NFR/MHD\" OR \"nuclear MHD power generation\" OR \"nuclear MHD\"",
+    "executed_at": "2026-09-21T01:32:15.288Z",
+    "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22gas+core+reactor%22+AND+MHD%29+OR+%28%22gaseous+core+reactor%22+AND+MHD%29+OR+%22NFR%2FMHD%22+OR+%22nuclear+MHD+power+generation%22+OR+%22nuclear+MHD%22%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
+    "engine_version": null,
+    "index_snapshot": null,
+    "sort": "relevance_score:desc",
+    "filters": {
+     "title_and_abstract.search": "(\"gas core reactor\" AND MHD) OR (\"gaseous core reactor\" AND MHD) OR \"NFR/MHD\" OR \"nuclear MHD power generation\" OR \"nuclear MHD\"",
+     "type": "article|review|book-chapter"
+    },
+    "result_count_reported": 34,
+    "records_retrieved": 34,
+    "records_screened": 0,
+    "records_read": 0,
+    "query_key": "composite-name"
+   },
    {
     "id": "search:2026-09-21-p-ccef4f212b/oa-dm1",
     "engine": "openalex",
     "query_form": "route-driver-mechanism",
     "query": "(\"Nuclear binding-energy difference\" OR \"radioactive decay\" OR \"fissile configuration\" OR \"nuclear fuel\" OR \"fissile fuel\") AND (\"Nuclear fission\" OR \"fission reactor\" OR \"nuclear reactor\" OR \"reactor core\" OR \"fissioning plasma\")",
-    "executed_at": "2026-09-21T01:17:43.943Z",
+    "executed_at": "2026-09-21T01:32:20.669Z",
     "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Nuclear+binding-energy+difference%22+OR+%22radioactive+decay%22+OR+%22fissile+configuration%22+OR+%22nuclear+fuel%22+OR+%22fissile+fuel%22%29+AND+%28%22Nuclear+fission%22+OR+%22fission+reactor%22+OR+%22nuclear+reactor%22+OR+%22reactor+core%22+OR+%22fissioning+plasma%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
     "engine_version": null,
     "index_snapshot": null,
@@ -19199,7 +22370,7 @@
     "engine": "openalex",
     "query_form": "route-driver-mechanism",
     "query": "(\"Nuclear binding-energy difference\" OR \"radioactive decay\" OR \"fissile configuration\" OR \"nuclear fuel\" OR \"fissile fuel\") AND (\"Nuclear fission\" OR \"fission reactor\" OR \"nuclear reactor\" OR \"reactor core\" OR \"fissioning plasma\")",
-    "executed_at": "2026-09-21T01:17:48.823Z",
+    "executed_at": "2026-09-21T01:32:26.349Z",
     "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Nuclear+binding-energy+difference%22+OR+%22radioactive+decay%22+OR+%22fissile+configuration%22+OR+%22nuclear+fuel%22+OR+%22fissile+fuel%22%29+AND+%28%22Nuclear+fission%22+OR+%22fission+reactor%22+OR+%22nuclear+reactor%22+OR+%22reactor+core%22+OR+%22fissioning+plasma%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=50&sort=publication_date%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
     "engine_version": null,
     "index_snapshot": null,
@@ -19219,7 +22390,7 @@
     "engine": "openalex",
     "query_form": "route-mechanism-pair",
     "query": "(\"Nuclear fission\" OR \"fission reactor\" OR \"nuclear reactor\" OR \"reactor core\" OR \"fissioning plasma\") AND (\"Magnetohydrodynamic generation\" OR \"MHD effect\" OR \"Faraday MHD generator\" OR \"MHD generator\" OR \"magnetohydrodynamic generator\" OR \"MHD power generation\")",
-    "executed_at": "2026-09-21T01:17:54.118Z",
+    "executed_at": "2026-09-21T01:32:31.787Z",
     "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Nuclear+fission%22+OR+%22fission+reactor%22+OR+%22nuclear+reactor%22+OR+%22reactor+core%22+OR+%22fissioning+plasma%22%29+AND+%28%22Magnetohydrodynamic+generation%22+OR+%22MHD+effect%22+OR+%22Faraday+MHD+generator%22+OR+%22MHD+generator%22+OR+%22magnetohydrodynamic+generator%22+OR+%22MHD+power+generation%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
     "engine_version": null,
     "index_snapshot": null,
@@ -19239,7 +22410,7 @@
     "engine": "openalex",
     "query_form": "route-whole-chain",
     "query": "(\"Nuclear binding-energy difference\" OR \"radioactive decay\" OR \"fissile configuration\" OR \"nuclear fuel\" OR \"fissile fuel\") AND (\"Nuclear fission\" OR \"fission reactor\" OR \"nuclear reactor\" OR \"reactor core\" OR \"fissioning plasma\") AND (\"Magnetohydrodynamic generation\" OR \"MHD effect\" OR \"Faraday MHD generator\" OR \"MHD generator\" OR \"magnetohydrodynamic generator\" OR \"MHD power generation\") AND (\"Electrical work\" OR electricity OR \"electrical output\" OR \"DC power\")",
-    "executed_at": "2026-09-21T01:17:59.392Z",
+    "executed_at": "2026-09-21T01:32:36.457Z",
     "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Nuclear+binding-energy+difference%22+OR+%22radioactive+decay%22+OR+%22fissile+configuration%22+OR+%22nuclear+fuel%22+OR+%22fissile+fuel%22%29+AND+%28%22Nuclear+fission%22+OR+%22fission+reactor%22+OR+%22nuclear+reactor%22+OR+%22reactor+core%22+OR+%22fissioning+plasma%22%29+AND+%28%22Magnetohydrodynamic+generation%22+OR+%22MHD+effect%22+OR+%22Faraday+MHD+generator%22+OR+%22MHD+generator%22+OR+%22magnetohydrodynamic+generator%22+OR+%22MHD+power+generation%22%29+AND+%28%22Electrical+work%22+OR+electricity+OR+%22electrical+output%22+OR+%22DC+power%22%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
     "engine_version": null,
     "index_snapshot": null,
@@ -19259,7 +22430,7 @@
     "engine": "openalex",
     "query_form": "route-demonstration-precision",
     "query": "(\"Nuclear binding-energy difference\" OR \"radioactive decay\" OR \"fissile configuration\" OR \"nuclear fuel\" OR \"fissile fuel\") AND (\"Nuclear fission\" OR \"fission reactor\" OR \"nuclear reactor\" OR \"reactor core\" OR \"fissioning plasma\") AND (\"Magnetohydrodynamic generation\" OR \"MHD effect\" OR \"Faraday MHD generator\" OR \"MHD generator\" OR \"magnetohydrodynamic generator\" OR \"MHD power generation\") AND (\"Electrical work\" OR electricity OR \"electrical output\" OR \"DC power\") AND (experiment OR experimental OR measured OR device OR prototype)",
-    "executed_at": "2026-09-21T01:18:04.536Z",
+    "executed_at": "2026-09-21T01:32:41.625Z",
     "request_url": "https://api.openalex.org/works?filter=title_and_abstract.search%3A%28%22Nuclear+binding-energy+difference%22+OR+%22radioactive+decay%22+OR+%22fissile+configuration%22+OR+%22nuclear+fuel%22+OR+%22fissile+fuel%22%29+AND+%28%22Nuclear+fission%22+OR+%22fission+reactor%22+OR+%22nuclear+reactor%22+OR+%22reactor+core%22+OR+%22fissioning+plasma%22%29+AND+%28%22Magnetohydrodynamic+generation%22+OR+%22MHD+effect%22+OR+%22Faraday+MHD+generator%22+OR+%22MHD+generator%22+OR+%22magnetohydrodynamic+generator%22+OR+%22MHD+power+generation%22%29+AND+%28%22Electrical+work%22+OR+electricity+OR+%22electrical+output%22+OR+%22DC+power%22%29+AND+%28experiment+OR+experimental+OR+measured+OR+device+OR+prototype%29%2Ctype%3Aarticle%7Creview%7Cbook-chapter&per-page=100&sort=relevance_score%3Adesc&select=id%2Ctitle%2Cpublication_year%2Cdoi%2Ctype%2Ccited_by_count%2Copen_access",
     "engine_version": null,
     "index_snapshot": null,
@@ -19276,6 +22447,359 @@
    }
   ],
   "works": [
+   {
+    "openalex_id": "W198989401",
+    "title": "Gas Core Reactor-MHD Power System with Cascading Power Cycle",
+    "year": 2002,
+    "type": "article",
+    "cited_by_count": 3,
+    "found_by": [
+     "search:2026-09-21-p-ccef4f212b/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W1516835548",
+    "title": "Gas core reactors for MHD power systems",
+    "year": 1971,
+    "type": "article",
+    "cited_by_count": 3,
+    "found_by": [
+     "search:2026-09-21-p-ccef4f212b/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W1565378322",
+    "doi": "10.13182/nt04-a3480",
+    "title": "Gas Core Reactor with Magnetohydrodynamic Power System and Cascading Power Cycle",
+    "year": 2004,
+    "type": "article",
+    "cited_by_count": 7,
+    "found_by": [
+     "search:2026-09-21-p-ccef4f212b/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2141322592",
+    "doi": "10.2514/3.61680",
+    "title": "Potential of Nuclear MHD Electric Power Systems",
+    "year": 1972,
+    "type": "article",
+    "cited_by_count": 10,
+    "found_by": [
+     "search:2026-09-21-p-ccef4f212b/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W1678564815",
+    "title": "Gas core reactors for actinide transmutation and breeder applications",
+    "year": 1978,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-ccef4f212b/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W3128945554",
+    "title": "Fundamental analysis of space nuclear-MHD generator for gigawatt-level power",
+    "year": 1987,
+    "type": "article",
+    "cited_by_count": 2,
+    "found_by": [
+     "search:2026-09-21-p-ccef4f212b/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W106027433",
+    "title": "ASPECTS OF ESSENTIAL COMPONENTS OF NUCLEAR MHD POWER PLANTS.",
+    "year": 1970,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-ccef4f212b/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W1563987753",
+    "title": "NON-EQUILIBRIUM IONIZATION BY METASTABLE EXCITED SPECIES IN NUCLEAR MHD CYCLES.",
+    "year": 1967,
+    "type": "article",
+    "cited_by_count": 1,
+    "found_by": [
+     "search:2026-09-21-p-ccef4f212b/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W1515742290",
+    "title": "GASEOUS CORE REACTOR WITH MHD CONVERSION FOR ELECTRICAL POWER GENERATION.",
+    "year": 1971,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-ccef4f212b/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2297933918",
+    "title": "Study of a gas core reactor: MHD power plant concept",
+    "year": 1970,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-ccef4f212b/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2989933685",
+    "title": "Burst power gas core reactor with MHD power generation",
+    "year": 1988,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-ccef4f212b/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W162847537",
+    "title": "Nuclear analysis of gas core reactor configurations for MHD power generation",
+    "year": 1973,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-ccef4f212b/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W54928596",
+    "title": "PARAMETRIC SURVEY OF GAS CORE REACTOR: MHD POWER PLANT CONCEPTS.",
+    "year": 1970,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-ccef4f212b/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W807375514",
+    "title": "Gas Core Reactor Numerical Simulation Using a Coupled MHD-MCNP Model",
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://ntrs.nasa.gov/api/citations/20080025730/downloads/20080025730.pdf",
+    "found_by": [
+     "search:2026-09-21-p-ccef4f212b/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W3010481191",
+    "title": "Acoustical gas core reactor with MHD power generation for burst power in a bimodal system",
+    "year": 1987,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-ccef4f212b/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2025935373",
+    "title": "TO MARS IN 30 DAYS BY GAS-CORE NUCLEAR ROCKET.",
+    "year": 1972,
+    "type": "article",
+    "cited_by_count": 18,
+    "found_by": [
+     "search:2026-09-21-p-ccef4f212b/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W29723721",
+    "title": "Actinide Production in Gas Core Reactors",
+    "year": 2004,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-ccef4f212b/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W1990738822",
+    "title": "GAS-CORE REACTOR POWER TRANSIENT ANALYSIS.",
+    "year": 1972,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "http://hdl.handle.net/2060/19720020073",
+    "found_by": [
+     "search:2026-09-21-p-ccef4f212b/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W1492520226",
+    "title": "Satellite nuclear power station: An engineering analysis",
+    "year": 1973,
+    "type": "article",
+    "cited_by_count": 4,
+    "found_by": [
+     "search:2026-09-21-p-ccef4f212b/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W313729743",
+    "title": "Energetic closed-cycle gas core reactors for orbit raising",
+    "year": 1983,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-ccef4f212b/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2035065150",
+    "doi": "10.2322/tjsass.49.109",
+    "title": "Studies on Low Specific Mass NFR/MHD Power Generation System for Space Applications",
+    "year": 2006,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://www.jstage.jst.go.jp/article/tjsass/49/164/49_164_109/_pdf",
+    "found_by": [
+     "search:2026-09-21-p-ccef4f212b/oa-cn",
+     "search:2026-09-21-p-ccef4f212b/oa-mp12"
+    ]
+   },
+   {
+    "openalex_id": "W792083210",
+    "title": "Experimental Plans for Subsystems of a Shock Wave Driven Gas Core Reactor",
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "http://hdl.handle.net/2060/20110008062",
+    "found_by": [
+     "search:2026-09-21-p-ccef4f212b/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2298077806",
+    "title": "POTENTIAL OF NUCLEAR-MHD: CLEAN, CHEAP, ABUNDANT POWER.",
+    "year": 1972,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-ccef4f212b/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W153017042",
+    "title": "ENGINEERING PROBLEMS OF TURBOMACHINERY AND HEAT TRANSFER EQUIPMENT FOR NUCLEAR MHD POWER PLANTS.",
+    "year": 1968,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-ccef4f212b/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W51909537",
+    "title": "Computer-based on-line pulsed ionization chamber plasma diagnostic system",
+    "year": 1988,
+    "type": "article",
+    "cited_by_count": 2,
+    "found_by": [
+     "search:2026-09-21-p-ccef4f212b/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2067367306",
+    "title": "Mini gas-core propulsion concept",
+    "year": 1971,
+    "type": "article",
+    "cited_by_count": 2,
+    "open_access_url": "http://hdl.handle.net/2060/19720004951",
+    "found_by": [
+     "search:2026-09-21-p-ccef4f212b/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2088129665",
+    "doi": "10.1115/1.3678547",
+    "title": "The Prospects for Nuclear Reactor-MHD Commercial Power Production",
+    "year": 1966,
+    "type": "article",
+    "cited_by_count": 3,
+    "found_by": [
+     "search:2026-09-21-p-ccef4f212b/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2499336711",
+    "doi": "10.1016/b978-0-85461-076-1.50050-0",
+    "title": "The Third Millenium",
+    "year": 1993,
+    "type": "book-chapter",
+    "cited_by_count": 2,
+    "found_by": [
+     "search:2026-09-21-p-ccef4f212b/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2035723233",
+    "doi": "10.1016/0365-1789(65)90018-4",
+    "title": "Scaling laws and the envelope of allowable operating conditions for an MHD generator using inert gases",
+    "year": 1965,
+    "type": "article",
+    "cited_by_count": 2,
+    "found_by": [
+     "search:2026-09-21-p-ccef4f212b/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W4248455031",
+    "doi": "10.3327/jaesj.10.390",
+    "title": "A Review of Basic Studies on MHD Power Generation for Nuclear Applications",
+    "year": 1968,
+    "type": "article",
+    "cited_by_count": 0,
+    "open_access_url": "https://www.jstage.jst.go.jp/article/jaesj1959/10/7/10_7_390/_pdf",
+    "found_by": [
+     "search:2026-09-21-p-ccef4f212b/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W48388603",
+    "title": "Generation of numerical grids for COMMIX-1B calculation of GCR thermal and flow fields",
+    "year": 1988,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-ccef4f212b/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W764131622",
+    "title": "A high pressure potassium vapor diode study",
+    "year": 1970,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-ccef4f212b/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W66018924",
+    "title": "Power Plant Systems Analysis",
+    "year": 1973,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-ccef4f212b/oa-cn"
+    ]
+   },
+   {
+    "openalex_id": "W2088318057",
+    "doi": "10.1088/0029-5515/10/4/012",
+    "title": "Closed-cycle MHD meeting (Report on the international closed-cycle MHD specialists meeting, Jülich, Federal Republic of Germany, 12 - 14 MAY 1970)",
+    "year": 1970,
+    "type": "article",
+    "cited_by_count": 0,
+    "found_by": [
+     "search:2026-09-21-p-ccef4f212b/oa-cn"
+    ]
+   },
    {
     "openalex_id": "W2171611687",
     "doi": "10.1016/j.engfailanal.2011.06.010",
@@ -19849,18 +23373,6 @@
     ]
    },
    {
-    "openalex_id": "W3129536400",
-    "doi": "10.1021/acs.inorgchem.0c03390",
-    "title": "Progress in Uranium Chemistry: Driving Advances in Front-End Nuclear Fuel Cycle Forensics",
-    "year": 2021,
-    "type": "article",
-    "cited_by_count": 55,
-    "open_access_url": "https://www.osti.gov/servlets/purl/1780574",
-    "found_by": [
-     "search:2026-09-21-p-ccef4f212b/oa-dm1"
-    ]
-   },
-   {
     "openalex_id": "W1997720302",
     "doi": "10.1016/j.jnucmat.2015.03.001",
     "title": "Nanostructure of metallic particles in light water reactor used nuclear fuel",
@@ -19868,6 +23380,18 @@
     "type": "article",
     "cited_by_count": 45,
     "open_access_url": "https://doi.org/10.1016/j.jnucmat.2015.03.001",
+    "found_by": [
+     "search:2026-09-21-p-ccef4f212b/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W3129536400",
+    "doi": "10.1021/acs.inorgchem.0c03390",
+    "title": "Progress in Uranium Chemistry: Driving Advances in Front-End Nuclear Fuel Cycle Forensics",
+    "year": 2021,
+    "type": "article",
+    "cited_by_count": 55,
+    "open_access_url": "https://www.osti.gov/servlets/purl/1780574",
     "found_by": [
      "search:2026-09-21-p-ccef4f212b/oa-dm1"
     ]
@@ -20126,10 +23650,10 @@
     ]
    },
    {
-    "openalex_id": "W1995415894",
-    "doi": "10.1016/j.anucene.2013.01.048",
-    "title": "Heat conduction in nuclear fuel by the Kirchhoff transformation",
-    "year": 2013,
+    "openalex_id": "W2325463557",
+    "doi": "10.1007/s10512-016-0074-2",
+    "title": "Advances in Structural Materials for Fast-Reactor Cores",
+    "year": 2016,
     "type": "article",
     "cited_by_count": 24,
     "found_by": [
@@ -20137,10 +23661,10 @@
     ]
    },
    {
-    "openalex_id": "W2325463557",
-    "doi": "10.1007/s10512-016-0074-2",
-    "title": "Advances in Structural Materials for Fast-Reactor Cores",
-    "year": 2016,
+    "openalex_id": "W1995415894",
+    "doi": "10.1016/j.anucene.2013.01.048",
+    "title": "Heat conduction in nuclear fuel by the Kirchhoff transformation",
+    "year": 2013,
     "type": "article",
     "cited_by_count": 24,
     "found_by": [
@@ -20328,18 +23852,6 @@
     ]
    },
    {
-    "openalex_id": "W2565853856",
-    "doi": "10.1016/j.powtec.2017.01.008",
-    "title": "Spouted bed design considerations for coated nuclear fuel particles",
-    "year": 2017,
-    "type": "article",
-    "cited_by_count": 26,
-    "open_access_url": "https://www.osti.gov/servlets/purl/1367510",
-    "found_by": [
-     "search:2026-09-21-p-ccef4f212b/oa-dm1"
-    ]
-   },
-   {
     "openalex_id": "W2975420874",
     "doi": "10.3897/nucet.5.38117",
     "title": "The technological challenge for current generation nuclear reactors",
@@ -20347,6 +23859,18 @@
     "type": "article",
     "cited_by_count": 18,
     "open_access_url": "https://nucet.pensoft.net/article/38117/download/pdf/",
+    "found_by": [
+     "search:2026-09-21-p-ccef4f212b/oa-dm1"
+    ]
+   },
+   {
+    "openalex_id": "W2565853856",
+    "doi": "10.1016/j.powtec.2017.01.008",
+    "title": "Spouted bed design considerations for coated nuclear fuel particles",
+    "year": 2017,
+    "type": "article",
+    "cited_by_count": 26,
+    "open_access_url": "https://www.osti.gov/servlets/purl/1367510",
     "found_by": [
      "search:2026-09-21-p-ccef4f212b/oa-dm1"
     ]
@@ -21111,18 +24635,6 @@
     ]
    },
    {
-    "openalex_id": "W2035065150",
-    "doi": "10.2322/tjsass.49.109",
-    "title": "Studies on Low Specific Mass NFR/MHD Power Generation System for Space Applications",
-    "year": 2006,
-    "type": "article",
-    "cited_by_count": 0,
-    "open_access_url": "https://www.jstage.jst.go.jp/article/tjsass/49/164/49_164_109/_pdf",
-    "found_by": [
-     "search:2026-09-21-p-ccef4f212b/oa-mp12"
-    ]
-   },
-   {
     "openalex_id": "W4388304142",
     "doi": "10.1016/j.csite.2023.103712",
     "title": "Magnetite/engine oil Casson nanofluid flow over a Riga plate with Atangana–Baleanu fractional derivative",
@@ -21692,6 +25204,6 @@
   ],
   "screening_status": "not-reviewed",
   "result": "inconclusive",
-  "notes": "Automated route-search-v1 index queries from data/canonical/searches/plans/p-ccef4f212b.yaml; the result list is frozen for a reviewer and nothing here has been read for a qualifying demonstration. Planned runs NOT run in this bundle (engine unavailable): search:2026-09-21-p-ccef4f212b/s2-dm1 (semantic-scholar); search:2026-09-21-p-ccef4f212b/s2-mp12 (semantic-scholar); search:2026-09-21-p-ccef4f212b/s2-wc (semantic-scholar); search:2026-09-21-p-ccef4f212b/s2-dp (semantic-scholar)."
+  "notes": "Automated route-search-v1 index queries from data/canonical/searches/plans/p-ccef4f212b.yaml; the result list is frozen for a reviewer and nothing here has been read for a qualifying demonstration. Planned runs NOT run in this bundle (engine unavailable): search:2026-09-21-p-ccef4f212b/s2-cn (semantic-scholar); search:2026-09-21-p-ccef4f212b/s2-dm1 (semantic-scholar); search:2026-09-21-p-ccef4f212b/s2-mp12 (semantic-scholar); search:2026-09-21-p-ccef4f212b/s2-wc (semantic-scholar); search:2026-09-21-p-ccef4f212b/s2-dp (semantic-scholar)."
  }
 ]

@@ -12,7 +12,24 @@ phenomenon_terms:
   phenomenon:nuclear-fission: [nuclear fission, fission reactor, nuclear reactor, reactor core, fissioning plasma]
   phenomenon:thermal-emission: [thermal emission, blackbody radiation, incandescence, Planck radiation]
 output_terms: [light, illumination, radiant output, luminous]
+# Composition terms (route-search-v1 composite-name form): the field's own names for a fissioning gas as a radiant source.
+composition_terms:
+  - { term: nuclear light bulb, evidence: [source:latham-rodgers-1972-nuclear-light-bulb] }
+  - { term: gas-core reactor, evidence: [source:schneider-thom-1975-fissioning-uranium-plasmas], broad: true }
+  - { term: gaseous-core reactor, evidence: [source:schneider-thom-1975-fissioning-uranium-plasmas], broad: true }
+  - { term: plasma-core reactor, evidence: [source:schneider-thom-1975-fissioning-uranium-plasmas], broad: true }
+  - { term: fissioning uranium plasma, evidence: [source:lee-1974-fissioning-uranium-plasma], broad: true }
 runs:
+  - id: search:2026-09-21-p-8200d7ab7e/oa-cn
+    engine: openalex
+    form: route-composite-name
+    key: composite-name
+    query: '("nuclear light bulb" OR "gas-core reactor" OR "gaseous-core reactor" OR "plasma-core reactor" OR "fissioning uranium plasma")'
+  - id: search:2026-09-21-p-8200d7ab7e/s2-cn
+    engine: semantic-scholar
+    form: route-composite-name
+    key: composite-name
+    query: nuclear light bulb gas-core reactor gaseous-core reactor plasma-core reactor fissioning uranium plasma
   - id: search:2026-09-21-p-8200d7ab7e/oa-dm1
     engine: openalex
     form: route-driver-mechanism
