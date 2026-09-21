@@ -569,12 +569,10 @@
   energy: { input: mechanical, output: mechanical }
   evidence: [source:spanier-2016]
   status: reported
-- id: claim:photostriction-member
-  subject: phenomenon:photostriction
-  predicate: member_of
-  object: coupling:photovoltaic
-  evidence: [source:spanier-2016]
-  status: hypothesised
+# Pass 50 close: claim:photostriction-member (photostriction member_of coupling:photovoltaic, hypothesised on Spanier 2016) removed on the
+# reviewer's finding — Spanier 2016 is a bulk-photovoltaic paper that classifies nothing, and photostriction is light-induced strain by
+# several mechanisms (one of them photovoltaic charge separation followed by converse piezoelectric strain, a composition, not a family).
+# The phenomenon and its drives / produces claims stay; a mechanism-specific spelling would be a claim sequence, never global taxonomy.
 # Loop-3 pass 42: the solar-to-fuel and photosynthesis bounds that lived only in theoretical_limit prose.
 - id: claim:pec-bounded-landsberg
   subject: phenomenon:photoelectrochemical-effect

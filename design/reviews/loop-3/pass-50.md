@@ -59,3 +59,39 @@ live endpoint, and a report that names what the atlas does not know instead of e
 Result: revision 2c5212e271e9 — 353 entities · 524 claims · 235 sources · 93 pathways (92 + 1 variant) · 2 systems ·
 771 routes · 86 demonstrated · 37 residuals · 93/93 · axe clean · exports valid · eight audit gates
 consistent · live.
+
+## Reviewed (sent 12:16 am; ChatGPT High, ~7 min, with web search; PIVOT — 22 findings)
+
+1. The loop is close to a clean close and passes 1–49 are not reopened (findings 1, 15–16, 19–21): the
+   invariants, the residual model and the CURRENT / DEFERRED distinction stand; Planck rightly out of the
+   live collection; the architectural change of loop 3 named — a graph edge, a constituent paper, a
+   performance number, a bound, a search failure and an ontology guess are no longer interchangeable
+   evidence, and the machinery can refuse claims it cannot justify; the weakest remaining layer is
+   ontology semantics (a member_of classification can satisfy every structural rule and still be wrong).
+2. Two corrections before the snapshot is signed (findings 2–14, 17–18, 22): (a) the two thermopolarization
+   residuals are not single-source — the claims cite five and three sources from distinct groups (Marvan,
+   Tagantsev, Trepakov, Onishi, Kholkin; Kholkin, Trepakov, Rafikov); they are reported because the
+   separation from the flexoelectric contribution has not been read in a primary — a new kind
+   evidence-interpretation-pending, the status unchanged; (b) claim:photostriction-member (photostriction
+   member_of coupling:photovoltaic, hypothesised on Spanier 2016 — a bulk-photovoltaic paper that
+   classifies nothing; photostriction is light-induced strain by several mechanisms, one of them a
+   photovoltaic-then-converse-piezoelectric composition) removed, with a narrow rule that a residual on a
+   member_of claim closes on classification evidence, never on "an experiment observing the effect"; do
+   not preserve 37 as a target.
+
+## Closed (12:25–12:45 am; both corrections applied, regenerated from source, live at rbfbfcbb70e57)
+
+- Verified on the records: claim:temperature-drives-thermopolarization cites marvan-1969, tagantsev-1987,
+  trepakov-1989, onishi-2025 and kholkin-1982; claim:thermopolarization-produces-charge cites kholkin-1982,
+  trepakov-1989 and rafikov-1994; both carry the pass-28 review reason ("reported until the separation from
+  the flexoelectric contribution is read in a primary text"). The closure audit now derives
+  evidence-interpretation-pending for a reported claim with two or more author groups (statement: reported
+  although N sources from M groups cite it; why: the record's own reason; closure: the curated Trepakov
+  read), keeps evidence-single-source for exactly one group (gated), and gives a member_of claim's residual
+  a classification closure (gated). claim:photostriction-member removed from radiative-spin.yaml with the
+  reason recorded; the phenomenon and its drives / produces claims stay (both reported on Spanier 2016,
+  unread — put to the reviewer as the next loop's first ontology question, not changed here).
+- 523 claims; 36 residuals (evidence-interpretation-pending 2 · evidence-not-observed 5 ·
+  evidence-single-source 4 · search-incomplete 13 · source-read-pending 9 · pathway-observed-not-delivered 1
+  · measurement-boundary-unresolved 1 · measurement-definition-unresolved 1); the collection, the endpoint,
+  the report and the /methods numbers regenerated from source; regressions added. 93/93.

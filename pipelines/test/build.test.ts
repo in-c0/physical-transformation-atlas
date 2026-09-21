@@ -514,6 +514,21 @@ test("the closure audit (loop-3 pass 50): every invariant regenerated, one resid
   assert.ok(collection.residuals.some((r) => r.kind === "measurement-boundary-unresolved" && r.record_id === "pathway:otec-plant · actual system thermal efficiency"));
   assert.ok(collection.residuals.some((r) => r.kind === "measurement-definition-unresolved" && r.record_id === "pathway:shape-memory-heat-engine · thermal-to-electrical efficiency"));
   for (const r of collection.residuals) assert.ok(r.closure_condition.length > 20, `${r.id}: a closure condition`);
+  // pass 50 close (the reviewer's PIVOT): a reported claim several groups cite is interpretation-pending, never "a single paper"; a
+  // single-source residual sits on exactly one group; the unsupported member_of classification is gone and no residual says an
+  // experiment observing a phenomenon would settle a classification
+  const firstAuthor = (id: string) => (canon.sources.find((x) => x.id === id)?.authors[0] ?? id).split(",")[0].trim().toLowerCase();
+  for (const id of ["claim:temperature-drives-thermopolarization", "claim:thermopolarization-produces-charge"]) {
+    const r = collection.residuals.find((x) => x.record_id === id)!;
+    assert.equal(r.kind, "evidence-interpretation-pending", id);
+    assert.doesNotMatch(JSON.stringify(r), /single paper|one group/);
+    assert.ok(new Set(canon.claims.find((c) => c.id === id)!.evidence.map(firstAuthor)).size >= 2);
+  }
+  for (const r of collection.residuals.filter((x) => x.kind === "evidence-single-source")) assert.equal(new Set(canon.claims.find((c) => c.id === r.record_id)!.evidence.map(firstAuthor)).size, 1, r.id);
+  assert.equal(canon.claims.some((c) => c.id === "claim:photostriction-member"), false, "the unsupported classification is removed");
+  assert.ok(!collection.residuals.some((r) => r.record_id === "claim:photostriction-member"));
+  for (const r of collection.residuals.filter((x) => x.record_type === "claim" && canon.claims.find((c) => c.id === x.record_id)?.predicate === "member_of")) assert.match(r.closure_condition, /classif|family/i, r.id);
+  assert.ok(canon.entities.some((e) => e.id === "phenomenon:photostriction"), "the phenomenon itself stays");
   // public residuals name the scientific limitation, never the owner machinery
   for (const r of collection.residuals) assert.doesNotMatch(JSON.stringify(r), /exception|API key|owner/i, `${r.id} carries no operational wording`);
   assert.match(report, /Maintainer notes \(never served\)/);

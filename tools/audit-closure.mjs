@@ -324,21 +324,42 @@ for (const s of graph.searches)
       frontier: s.target.kind === "path" && frontierIds.has(s.target.path),
     });
   }
-// 2c. claims whose evidence is a single source or theory only
+// 2c. claims whose status says the evidence is not yet enough: reported on one group (single-source); reported although several
+// groups cite it, because an interpretation the primary text must settle is pending (the reviewer's pass-50 finding 3–6); or
+// theory-only. A descriptive predicate (member_of) is a classification, so its closure is classification evidence, never "an
+// experiment observing the effect" (finding 14).
+const firstAuthorOf = (id) => (sourceById.get(id)?.authors?.[0] ?? id).split(",")[0].trim().toLowerCase();
 for (const c of graph.claims) {
   if (!["reported", "theoretically-predicted", "hypothesised"].includes(c.status)) continue;
-  const single = c.status === "reported";
+  const groups = new Set(c.evidence.map(firstAuthorOf));
+  const kind = c.status === "reported" ? (groups.size >= 2 ? "evidence-interpretation-pending" : "evidence-single-source") : "evidence-not-observed";
+  const taxonomy = c.predicate === "member_of";
   const subject = entityById.get(c.subject)?.name ?? c.subject;
   const object = entityById.get(c.object)?.name ?? c.object;
+  const reviewNote = c.review?.reviewer ?? "";
+  const statement =
+    kind === "evidence-single-source" ? `${subject} —${c.predicate.replace(/_/g, " ")}→ ${object} is reported: a single paper reports it and no independent confirmation is recorded.`
+    : kind === "evidence-interpretation-pending" ? `${subject} —${c.predicate.replace(/_/g, " ")}→ ${object} is reported although ${c.evidence.length} sources from ${groups.size} groups cite it: an interpretation the primary text must settle is still pending, so the atlas does not read the claim as demonstrated.`
+    : `${subject} —${c.predicate.replace(/_/g, " ")}→ ${object} is ${c.status}: ${c.status === "theoretically-predicted" ? "predicted by theory, not yet observed" : taxonomy ? "a classification proposed without classifying evidence" : "proposed without a supporting calculation"}.`;
+  const why =
+    kind === "evidence-single-source" ? `Evidence: ${c.evidence.join(", ")} — one group, no review or book.`
+    : kind === "evidence-interpretation-pending" ? `Evidence: ${c.evidence.join(", ")}. ${reviewNote ? `The record's own reason: ${reviewNote}.` : "The record states the interpretation it waits on."}`
+    : `Evidence: ${c.evidence.join(", ") || "none"}.`;
+  const closure =
+    curated.claim_closure_notes?.[c.id]
+    ?? (taxonomy ? "A source that classifies the phenomenon's mechanism under this family (or a respelling of the relation as a mechanism-specific composition), or the claim's removal — never an experiment merely observing the phenomenon."
+      : kind === "evidence-single-source" ? "Add a qualifying independent source, or a review or book, under the atlas's evidence rule — or change the claim if contrary evidence is found."
+      : kind === "evidence-interpretation-pending" ? "Read the primary text the record names and settle the interpretation; then the claim's status follows the evidence rule."
+      : "An experiment observing the effect, reviewed and cited on the claim.");
   push({
-    id: `residual:${single ? "evidence-single-source" : "evidence-not-observed"}:${c.id.replace("claim:", "")}`,
-    kind: single ? "evidence-single-source" : "evidence-not-observed",
+    id: `residual:${kind}:${c.id.replace("claim:", "")}`,
+    kind,
     record_type: "claim",
     record_id: c.id,
-    statement: `${subject} —${c.predicate.replace(/_/g, " ")}→ ${object} is ${c.status}: ${single ? "a single paper reports it and no independent confirmation is recorded" : c.status === "theoretically-predicted" ? "predicted by theory, not yet observed" : "proposed without a supporting calculation"}.`,
-    why: single ? `Evidence: ${c.evidence.join(", ")} — one group, no review or book.` : `Evidence: ${c.evidence.join(", ") || "none"}.`,
-    exists: `Status ${c.status}${c.knowledge_level ? `, maturity ${c.knowledge_level}` : ""}; routes through this claim inherit it as their weakest constituent.`,
-    closure: curated.claim_closure_notes?.[c.id] ?? (single ? "Add a qualifying independent source, or a review or book, under the atlas's evidence rule — or change the claim if contrary evidence is found." : "An experiment observing the effect, reviewed and cited on the claim."),
+    statement,
+    why,
+    exists: `Status ${c.status}${c.knowledge_level ? `, maturity ${c.knowledge_level}` : ""}; ${taxonomy ? "a descriptive relation that files the phenomenon under a family in the matrix" : "routes through this claim inherit it as their weakest constituent"}.`,
+    closure,
     related: c.evidence,
     url: `${SITE}/claim/${c.id.split(":")[1]}`,
   });
@@ -386,6 +407,8 @@ residuals.sort((a, b) => a.id.localeCompare(b.id));
     if (ids.has(r.id)) problems.push(`duplicate residual id ${r.id}`);
     ids.add(r.id);
     if (!r.closure_condition) problems.push(`${r.id}: empty closure condition`);
+    if (r.record_type === "claim" && claimById.get(r.record_id)?.predicate === "member_of" && !/classif|family/i.test(r.closure_condition)) problems.push(`${r.id}: a classification claim's closure must concern classification evidence, not observation`);
+    if (r.kind === "evidence-single-source" && new Set(claimById.get(r.record_id)?.evidence.map(firstAuthorOf)).size !== 1) problems.push(`${r.id}: single-source residual on a claim with more than one group`);
     const exists =
       r.record_type === "search" ? graph.searches.some((s) => s.id === r.record_id)
       : r.record_type === "search-hit" ? graph.searches.some((s) => r.record_id.startsWith(s.id + " · "))
@@ -415,6 +438,7 @@ const collection = {
       "search-incomplete": "a reviewed literature search whose protocol obligations are not all met: the atlas may not say that no demonstration was found",
       "source-read-pending": "a search hit that could not be decided for want of its text",
       "evidence-single-source": "a claim one paper reports, with no independent confirmation recorded",
+      "evidence-interpretation-pending": "a claim several groups cite that stays reported because an interpretation the primary text must settle is pending",
       "evidence-not-observed": "a claim predicted by theory or proposed, not yet observed",
       "pathway-observed-not-delivered": "a composition traversed in one experiment whose output was not delivered to a load",
       "measurement-boundary-unresolved": "a recorded figure whose numerator's boundary the source does not state",

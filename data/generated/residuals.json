@@ -4,12 +4,13 @@
     "endpoint": "residuals",
     "kind": "projection",
     "note": "Every open uncertainty in a current atlas record — derived from the compiled atlas and its audits by tools/audit-closure.mjs; a live view that may shrink, grow or change after later work, outside the v0.5.0 export contract; the immutable closure snapshot is design/reviews/loop-3/pass-50-closure.md.",
-    "atlas_revision": "2c5212e271e9",
-    "generated_at": "2026-09-21T14:03:07.926Z",
-    "residual_count": 37,
+    "atlas_revision": "bfbfcbb70e57",
+    "generated_at": "2026-09-21T14:26:28.263Z",
+    "residual_count": 36,
     "counts_by_kind": {
-      "evidence-not-observed": 6,
-      "evidence-single-source": 6,
+      "evidence-interpretation-pending": 2,
+      "evidence-not-observed": 5,
+      "evidence-single-source": 4,
       "measurement-boundary-unresolved": 1,
       "measurement-definition-unresolved": 1,
       "pathway-observed-not-delivered": 1,
@@ -22,7 +23,7 @@
       "disequilibria": 25,
       "couplings": 40,
       "transducers": 67,
-      "claims": 524,
+      "claims": 523,
       "sources": 235,
       "pathways_named": 93,
       "systems_named": 2,
@@ -48,13 +49,12 @@
         "demonstrated": 111,
         "replicated": 17,
         "reported": 6,
-        "theoretically-predicted": 5,
-        "hypothesised": 1
+        "theoretically-predicted": 5
       },
       "claims_by_predicate": {
         "drives": 128,
         "produces": 110,
-        "member_of": 93,
+        "member_of": 92,
         "implemented_by": 85,
         "bounded_by": 45,
         "converts_into": 19,
@@ -113,6 +113,7 @@
       "search-incomplete": "a reviewed literature search whose protocol obligations are not all met: the atlas may not say that no demonstration was found",
       "source-read-pending": "a search hit that could not be decided for want of its text",
       "evidence-single-source": "a claim one paper reports, with no independent confirmation recorded",
+      "evidence-interpretation-pending": "a claim several groups cite that stays reported because an interpretation the primary text must settle is pending",
       "evidence-not-observed": "a claim predicted by theory or proposed, not yet observed",
       "pathway-observed-not-delivered": "a composition traversed in one experiment whose output was not delivered to a load",
       "measurement-boundary-unresolved": "a recorded figure whose numerator's boundary the source does not state",
@@ -121,6 +122,42 @@
     "snapshot": "https://github.com/in-c0/physical-transformation-atlas/blob/main/design/reviews/loop-3/pass-50-closure.md"
   },
   "residuals": [
+    {
+      "id": "residual:evidence-interpretation-pending:temperature-drives-thermopolarization",
+      "kind": "evidence-interpretation-pending",
+      "record_type": "claim",
+      "record_id": "claim:temperature-drives-thermopolarization",
+      "statement": "Temperature gradient —drives→ Thermopolarization effect is reported although 5 sources from 5 groups cite it: an interpretation the primary text must settle is still pending, so the atlas does not read the claim as demonstrated.",
+      "why_unresolved": "Evidence: source:marvan-1969-thermopolarization, source:tagantsev-1987-thermal-polarization, source:trepakov-1989-proper-thermopolarization, source:onishi-2025-thermopolarization, source:kholkin-1982-thermopolarization-current. The record's own reason: loop-3 pass 28 (the second reader's spelling; reported until the separation from the flexoelectric contribution is read in a primary text).",
+      "what_exists": "Status reported; routes through this claim inherit it as their weakest constituent.",
+      "closure_condition": "A full read of Trepakov, Nurieva & Tagantsev 1989 (Ferroelectrics 94, 377–381; paywalled) deciding whether a load was driven would move the claim from reported toward demonstrated.",
+      "related_ids": [
+        "source:marvan-1969-thermopolarization",
+        "source:tagantsev-1987-thermal-polarization",
+        "source:trepakov-1989-proper-thermopolarization",
+        "source:onishi-2025-thermopolarization",
+        "source:kholkin-1982-thermopolarization-current"
+      ],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/claim/temperature-drives-thermopolarization",
+      "on_default_frontier": false
+    },
+    {
+      "id": "residual:evidence-interpretation-pending:thermopolarization-produces-charge",
+      "kind": "evidence-interpretation-pending",
+      "record_type": "claim",
+      "record_id": "claim:thermopolarization-produces-charge",
+      "statement": "Thermopolarization effect —produces→ Separated surface charge is reported although 3 sources from 3 groups cite it: an interpretation the primary text must settle is still pending, so the atlas does not read the claim as demonstrated.",
+      "why_unresolved": "Evidence: source:kholkin-1982-thermopolarization-current, source:trepakov-1989-proper-thermopolarization, source:rafikov-1994-dynamic-thermopolarization. The record's own reason: loop-3 pass 32 (scoped to the solid dielectric so the liquid spelling cannot inherit it); pass 28 (Kholkin 1982 read in full: the current in the external circuit follows d(ΔT)/dt and reverses with ∇T).",
+      "what_exists": "Status reported; routes through this claim inherit it as their weakest constituent.",
+      "closure_condition": "The same read as claim:temperature-drives-thermopolarization.",
+      "related_ids": [
+        "source:kholkin-1982-thermopolarization-current",
+        "source:trepakov-1989-proper-thermopolarization",
+        "source:rafikov-1994-dynamic-thermopolarization"
+      ],
+      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/claim/thermopolarization-produces-charge",
+      "on_default_frontier": false
+    },
     {
       "id": "residual:evidence-not-observed:elastocaloric-implemented-vibration-cooler",
       "kind": "evidence-not-observed",
@@ -150,21 +187,6 @@
         "source:odukoya-naterer-2013-thermocapillary-mhe"
       ],
       "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/claim/marangoni-produces-pressure",
-      "on_default_frontier": false
-    },
-    {
-      "id": "residual:evidence-not-observed:photostriction-member",
-      "kind": "evidence-not-observed",
-      "record_type": "claim",
-      "record_id": "claim:photostriction-member",
-      "statement": "Photostriction —member of→ Photovoltaic is hypothesised: proposed without a supporting calculation.",
-      "why_unresolved": "Evidence: source:spanier-2016.",
-      "what_exists": "Status hypothesised; routes through this claim inherit it as their weakest constituent.",
-      "closure_condition": "An experiment observing the effect, reviewed and cited on the claim.",
-      "related_ids": [
-        "source:spanier-2016"
-      ],
-      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/claim/photostriction-member",
       "on_default_frontier": false
     },
     {
@@ -272,42 +294,6 @@
         "source:spanier-2016"
       ],
       "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/claim/photostriction-produces",
-      "on_default_frontier": false
-    },
-    {
-      "id": "residual:evidence-single-source:temperature-drives-thermopolarization",
-      "kind": "evidence-single-source",
-      "record_type": "claim",
-      "record_id": "claim:temperature-drives-thermopolarization",
-      "statement": "Temperature gradient —drives→ Thermopolarization effect is reported: a single paper reports it and no independent confirmation is recorded.",
-      "why_unresolved": "Evidence: source:marvan-1969-thermopolarization, source:tagantsev-1987-thermal-polarization, source:trepakov-1989-proper-thermopolarization, source:onishi-2025-thermopolarization, source:kholkin-1982-thermopolarization-current — one group, no review or book.",
-      "what_exists": "Status reported; routes through this claim inherit it as their weakest constituent.",
-      "closure_condition": "A full read of Trepakov, Nurieva & Tagantsev 1989 (Ferroelectrics 94, 377–381; paywalled) deciding whether a load was driven would move the claim from reported toward demonstrated.",
-      "related_ids": [
-        "source:marvan-1969-thermopolarization",
-        "source:tagantsev-1987-thermal-polarization",
-        "source:trepakov-1989-proper-thermopolarization",
-        "source:onishi-2025-thermopolarization",
-        "source:kholkin-1982-thermopolarization-current"
-      ],
-      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/claim/temperature-drives-thermopolarization",
-      "on_default_frontier": false
-    },
-    {
-      "id": "residual:evidence-single-source:thermopolarization-produces-charge",
-      "kind": "evidence-single-source",
-      "record_type": "claim",
-      "record_id": "claim:thermopolarization-produces-charge",
-      "statement": "Thermopolarization effect —produces→ Separated surface charge is reported: a single paper reports it and no independent confirmation is recorded.",
-      "why_unresolved": "Evidence: source:kholkin-1982-thermopolarization-current, source:trepakov-1989-proper-thermopolarization, source:rafikov-1994-dynamic-thermopolarization — one group, no review or book.",
-      "what_exists": "Status reported; routes through this claim inherit it as their weakest constituent.",
-      "closure_condition": "The same read as claim:temperature-drives-thermopolarization.",
-      "related_ids": [
-        "source:kholkin-1982-thermopolarization-current",
-        "source:trepakov-1989-proper-thermopolarization",
-        "source:rafikov-1994-dynamic-thermopolarization"
-      ],
-      "public_url": "https://physical-transformation-atlas.wldud5192.workers.dev/claim/thermopolarization-produces-charge",
       "on_default_frontier": false
     },
     {
