@@ -5,6 +5,7 @@ import { EVIDENCE_LABEL, FRONTIER_LABEL, INTERFACE_KIND_LABEL, OVERLAP_LABEL, PA
 import { Checksum } from "./Checksum";
 import { EvidenceList } from "./EvidenceList";
 import { CiteBlock } from "./CiteBlock";
+import { variantHref } from "./VariantView";
 import { ConditionTags, Explore, MatrixLegendLine } from "./Pieces";
 import { AutomatedRunView, SearchRecordView, searchRouteSentence } from "./SearchRecordView";
 import styles from "./PathView.module.css";
@@ -387,7 +388,7 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
             return (
               <div key={v.pathway} style={{ marginTop: 10 }}>
                 <p className="t-ui" style={{ fontWeight: 600 }}>
-                  {vp.name} <span className="t-data secondary">· {PATHWAY_STATUS_LABEL[vp.status]} · {vp.id}</span>
+                  <Link href={variantHref(vp.id)}>{vp.name}</Link> <span className="t-data secondary">· {PATHWAY_STATUS_LABEL[vp.status]} · {vp.id} · its own page carries the complete record</span>
                 </p>
                 <p className="secondary" style={{ maxWidth: "72ch" }}>{vp.summary}</p>
                 {(vp.performance?.measurements ?? []).length > 0 && (

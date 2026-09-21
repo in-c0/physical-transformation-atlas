@@ -65,7 +65,12 @@ current compiler never assigns them; there is no review queue in this release.
      entity, the same first and last phenomena, its ordered phenomena a proper subsequence of the
      pathway's, and the omitted segment supplying a regime or handoff token the shortened route leaves
      unresolved — the compact combustion → hot gas → MHD spelling against the nozzle route; a
-     demonstration of the shortened route still outranks it; one matching end never counts), or when the
+     demonstration of the shortened route still outranks it; one matching end never counts — the wider
+     proper-subsequence relation is only audited, never classified: `tools/audit-stage-omission.mjs`
+     writes design/reviews/loop-3/pass-47-stage-omission-audit.md with every shorter spelling of a
+     recorded pathway, each omitted stage's contribution decomposed by channel and whether the route
+     leaves the requirement unresolved, replaces the provider elsewhere or represents none, gated on
+     three controls; nothing it finds is served on the site), or when the
      route overlaps a **demonstrated** pathway (status `demonstrated`,
      `prototype` or `commercial`) in one of two ways: by claims — at least two ordered claims shared
      (`known_pathway_overlap`) such that (a) the route contains the pathway's complete ordered

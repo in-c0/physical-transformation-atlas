@@ -36,6 +36,8 @@ const PAGES = [
   "/e/disequilibrium/temperature-gradient",
   "/path/d4b83f7f17",
   "/path/87c18f5e4c",
+  "/path/65bd8cfaf8",
+  "/pathway/tandem-pec-gainp-gainas-1p78-1p26ev",
   "/claim/seebeck-drives",
   "/source/seebeck-1826",
   "/system",

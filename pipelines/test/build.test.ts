@@ -494,6 +494,36 @@ test("theoretical_limit retired into the typed constraint graph (loop-3 pass 42)
   rmSync(tmp2, { recursive: true, force: true });
 });
 
+test("the generalised stage-omission audit (loop-3 pass 47): a generated, gated report — the three controls hold, the compiler's stage-omission routes are found with their tokens, and nothing on the default frontier is a shorter spelling of a recorded pathway", () => {
+  const gate = spawnSync(process.execPath, [join(root, "tools", "audit-stage-omission.mjs"), "--check"], { encoding: "utf8" });
+  assert.equal(gate.status, 0, gate.stderr || gate.stdout);
+  const report = readFileSync(join(root, "design", "reviews", "loop-3", "pass-47-stage-omission-audit.md"), "utf8");
+  // the pass-43 case: the omitted nozzle stage supplies the bulk-fluid-motion token the compact MHD route leaves unresolved
+  assert.match(report, /p-d7374879fd ← pathway:mhd-generator/);
+  assert.match(report, /flow:bulk-fluid-motion from claim:gas-dynamic-expansion-produces-flow: consumers downstream claim:hot-gas-drives-mhd \(in the route\) → unresolved/);
+  assert.match(report, /p-d7374879fd[^\n]*omission creates an unresolved requirement \| derived by stage-omission/);
+  // a provider replaced elsewhere is never an unresolved omission: the waterwheel-motion claim hands the generator the same token
+  assert.match(report, /motion:relative-flux-change from claim:lift-produces-motion: [^\n]*→ replaced: claim:motion-drives-generator requires it; the route supplies it through claim:descent-produces-waterwheel-motion \(handoff provides\)/);
+  assert.match(report, /p-dfe0c609d9[^\n]*the omitted provider is replaced elsewhere in the route \| not derived/);
+  // a hit whose omitted stage records nothing stays an audit hit, with both compositions' conditions retained
+  assert.match(report, /p-f64f7f0a7b[^\n]*no recorded contribution[^\n]*not-represented[^\n]*no relevant requirement is represented \| not derived/);
+  assert.match(report, /claim:antenna-produces \(phenomenon:antenna-reception → carrier:charge-carriers; conditions: an oscillating current at the wave frequency/);
+  assert.match(report, /claim:rectification-produces \| phenomenon:rectification → carrier:charge-carriers \| omitted \| direct current out of the diode/);
+  // the reviewer's population is clean, and the audit is a report: nothing it finds reaches a served class
+  assert.match(report, /## 1\. The default frontier \(class candidate, kind composition\)\n\n10 routes in scope · 0 hit\(s\)/);
+  for (const id of ["p-dfe0c609d9", "p-f64f7f0a7b"]) assert.equal(graph.paths.find((p) => p.id === id)!.frontier_class, "candidate", `${id} stays a candidate`);
+  assert.equal(graph.paths.filter((p) => p.known_pathway_overlap?.relation === "stage-omission").length, 1);
+  // pass 46 close (the reviewer's provenance guard): Fountaine alone evidences the four generic PEC constraint claims; Cheng stays on
+  // its own architecture; the pair-specific limit keeps the two assumption bundles distinct
+  for (const id of ["claim:pec-bounded-single-junction-ideal", "claim:pec-bounded-dual-junction-ideal", "claim:pec-benchmarked-realistic-high-performance", "claim:pec-benchmarked-realistic-earth-abundant"])
+    assert.deepEqual(canon.claims.find((c) => c.id === id)!.evidence, ["source:fountaine-2016-pec-limits"], id), assert.equal(canon.claims.find((c) => c.id === id)!.status, "reported", `${id}: one primary source is reported, never established`);
+  const pair = canon.entities.find((e) => e.id === "constraint:pec-tandem-gainp-gainas-1p78-1p26ev-limit")!;
+  assert.match(pair.summary, /two assumption bundles that are not the same model/);
+  assert.match(pair.summary, /20\.5 %/);
+  const variant = canon.pathways.find((p) => p.id === "pathway:tandem-pec-gainp-gainas-1p78-1p26ev")!;
+  assert.ok(variant.bounds[0].evidence.includes("source:cheng-2018-pec-19-percent") && variant.bounds[0].evidence.includes("source:fountaine-2016-pec-limits"));
+});
+
 test("the PEC architecture bounds (loop-3 pass 46): water-splitting-scoped ideal limits, realistic-case benchmarks, and Cheng 2018's gap-pair limit on a variant pathway that never touches the generic route", () => {
   const generic = graph.paths.find((p) => p.pathway === "pathway:photoelectrochemical-water-splitting")!;
   const bound = (checks: (typeof generic)["checks"]) => checks.find((k) => k.id === "thermodynamic-bound")!;

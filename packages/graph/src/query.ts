@@ -234,7 +234,7 @@ export class AtlasIndex {
     const hits: (SearchHit & { full: boolean })[] = [];
     const toHit = (d: (typeof this.searchDocs)[number], score: number, full: boolean): SearchHit & { full: boolean } =>
       d.kind === "pathway"
-        ? { kind: "pathway", id: d.id, name: this.pathway.get(d.id)!.name, type: "pathway", href: d.routeId ? `/path/${d.routeId.slice(2)}` : "/frontier", score, full }
+        ? { kind: "pathway", id: d.id, name: this.pathway.get(d.id)!.name, type: "pathway", href: this.pathway.get(d.id)!.variant_of ? `/pathway/${d.id.split(":")[1]}` : d.routeId ? `/path/${d.routeId.slice(2)}` : "/frontier", score, full }
         : { kind: "entity", id: d.id, name: this.entity.get(d.id)!.name, type: d.type, href: entityHref(d.id), entity: this.entity.get(d.id)!, score, full };
     // A symbol query ("ΔT", "∇p", "Δμ") is shorter than a word token; match it whole.
     if (tokens.length === 0) {

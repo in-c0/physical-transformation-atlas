@@ -1,0 +1,24 @@
+# Loop-3 pass 47: the controls the stage-omission audit's gate asserts (the reviewer's pass-46 finding 15). One existing hit per
+# class — an omission that creates an unresolved requirement (the pass-43 case, which the compiler derives), an omitted provider
+# replaced elsewhere in the route (never an unresolved omission), and a hit with no represented requirement (an audit hit only).
+# Route ids are content hashes of claim sequences; a control that stops matching is a data change to review, not to paper over.
+- route: p-d7374879fd
+  pathway: pathway:mhd-generator
+  expect: unresolved-requirement
+  token: flow:bulk-fluid-motion
+  omitted: phenomenon:gas-dynamic-expansion
+  compiler: stage-omission
+  note: "combustion → magnetohydrodynamic generation without the nozzle: the omitted gas-dynamic expansion supplies the bulk fluid motion the MHD step requires"
+- route: p-dfe0c609d9
+  pathway: pathway:hydroelectric-plant
+  expect: replaced-elsewhere
+  token: motion:relative-flux-change
+  replaced_by: claim:descent-produces-waterwheel-motion
+  compiler: none
+  note: "gravitational descent → rotating-machine generator action without the turbine's lift: the waterwheel-motion claim hands the generator the same relative-flux-change token the lift step would"
+- route: p-f64f7f0a7b
+  pathway: pathway:rectenna-microwave
+  expect: not-represented
+  omitted: phenomenon:rectification
+  compiler: none
+  note: "antenna reception → electricity without rectification: the omitted stage records no token, so the atlas holds no machine-readable reason to require it (an RF current at the wave frequency against an output entity whose aliases include DC power)"

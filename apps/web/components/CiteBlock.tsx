@@ -13,8 +13,10 @@ export function CiteBlock({
   title,
   revision,
   href,
-}: { kind: "claim" | "source" | "route" | "system"; id: string; title: string; revision: string; href?: string } | { kind: "entity"; id: string; title: string; revision: string; href: string }) {
-  const path = href ?? (kind === "claim" ? `/claim/${id.split(":")[1]}` : kind === "source" ? `/source/${id.split(":")[1]}` : kind === "system" ? `/system/${id.split(":")[1]}` : `/path/${id.slice(2)}`);
+}: { kind: "claim" | "source" | "route" | "system" | "pathway"; id: string; title: string; revision: string; href?: string } | { kind: "entity"; id: string; title: string; revision: string; href: string }) {
+  const path =
+    href ??
+    (kind === "claim" ? `/claim/${id.split(":")[1]}` : kind === "source" ? `/source/${id.split(":")[1]}` : kind === "system" ? `/system/${id.split(":")[1]}` : kind === "pathway" ? `/pathway/${id.split(":")[1]}` : `/path/${id.slice(2)}`);
   const url = `${SITE}${path}`;
   const year = new Date().getUTCFullYear();
   return (

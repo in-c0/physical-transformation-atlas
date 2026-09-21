@@ -17,7 +17,7 @@ export const CANONICAL_URL_RULES = {
   claim: `${SITE}/claim/{slug}`,
   source: `${SITE}/source/{slug}`,
   path: `${SITE}/path/{ten hex characters of the route id after "p-"}`,
-  pathway: "the canonical_url of the compiled route whose pathway field names it",
+  pathway: `the canonical_url of the compiled route whose pathway field names it; a variant (variant_of set) at ${SITE}/pathway/{slug}, its route_id its parent's route`,
   system: `${SITE}/system/{slug}`,
   matrix_cell: `${SITE}/matrix?cell={row address}:{column address}`,
 };
@@ -27,6 +27,8 @@ export const pathUrl = (id: string) => `${SITE}/path/${id.slice(2)}`;
 export const cellUrl = (address: string) => `${SITE}/matrix?cell=${address}`;
 export const sourceUrl = (id: string) => `${SITE}/source/${id.split(":")[1]}`;
 export const systemUrl = (id: string) => `${SITE}/system/${id.split(":")[1]}`;
+/** Pass 47: a variant pathway's own page (its parent keeps the route page). */
+export const variantUrl = (id: string) => `${SITE}/pathway/${id.split(":")[1]}`;
 export const entityUrl = (id: string) => {
   const [type, slug] = id.split(":");
   return type === "phenomenon" ? `${SITE}/phenomenon/${slug}` : `${SITE}/e/${type}/${slug}`;

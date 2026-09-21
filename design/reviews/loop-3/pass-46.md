@@ -52,3 +52,45 @@ own — on the same route as the generic photoelectrochemical pathway, which kee
 Result: revision d38bbf3a35e1 — 353 entities · 524 claims · 234 sources · 93 pathways (92 + 1
 variant) · 2 systems · 771 routes · 86 demonstrated · 86/86 · axe clean · exports valid · four audit
 gates consistent · live.
+
+## Reviewed (sent 10:07 pm; ChatGPT High, ~8 min, with web search; PASS — 17 findings)
+
+1. The PEC structure accepted (findings 1–7): Fountaine treats water splitting as an architecture- and
+   parameter-conditioned limiting-efficiency problem, which is exactly the split between the
+   phenomenon-reachable class limits and the pair-specific bound; `variant_of` is the shape the reviewer
+   meant — Cheng's tandem adds no causal phenomenon, so a synthetic "tandem PEC" phenomenon would have made
+   the ontology less faithful; the 19.3 % / 18.5 % data belong on the variant with electrolyte and "initial"
+   in their conditions; variants stay invisible to the route count, the matrix, the frontier and the
+   overlap machinery.
+2. Two provenance guards (findings 4–5, 9): keep Cheng's SQwater bundle and Fountaine's nine-assumption
+   Ideal case distinguishable — Cheng retains finite catalytic exchange-current densities, so 22.8 % is
+   "for this exact gap pair under the stated Cheng/Fountaine theoretical conditions", never "Cheng uses
+   all of Fountaine's ideal assumptions"; and Fountaine alone evidences the four generic constraint claims
+   (30.6 %, 40.0 %, Real1, Real2) — Cheng supports only its architecture, measurements and comparison, so
+   it leaves the generic claims.
+3. Variants should be independently addressable (finding 8, "does not block acceptance"): their own
+   pathway-detail URL rendering the complete record, linked both ways with the parent's route, nested
+   beneath the parent on any future pathway index — never an independent matrix or frontier identity.
+4. Pass 47 set (findings 10–16): shape (a) only — the generalised stage-omission audit as a generated,
+   gated, non-public report; no per-row frontier notes; the output richer than a sentence list: for each
+   hit the candidate and pathway ids, both phenomenon sequences, the exact omitted step positions and
+   claim / phenomenon ids, relation = proper-subsequence, and each omitted step's contribution decomposed
+   mechanically (regime_provides, an establishment, a handoff, an auxiliary / external relationship, and
+   the downstream requirement that consumes it), with candidate_without_omitted_stage = resolved /
+   unresolved / not-represented; the alternative-provider check (an omitted provider replaced elsewhere is
+   never the pass-43 case); the exact claims, carriers, handoffs and conditions of both compositions
+   retained; at least three gate controls (the MHD case supplying its token; a hit with no consumed token
+   staying a hit; a replaced provider never labelled unresolved). Eventual public copy, if pass 48 wants
+   any, must say "no supplying relation is recorded", never "supplies nothing".
+
+## Closed (10:15–10:41 pm; findings 4–5 and 9 applied, live at r7d644689086f with pass 47)
+
+- Verified on the Fountaine full text (Nature Communications 7, 13706, p. 8): "The ideal (real1)
+  efficiency limits for the bandgap combinations in … the May device, 1.26 and 1.78 eV, are … 22.8 %
+  (20.5 %)". The pair constraint's summary now names both bundles as two models that reach the same
+  number — Cheng's SQwater (finite j0,cat) and Fountaine's Ideal (j0,cat → ∞), with Fountaine's Real1
+  20.5 % — and the four generic claims cite Fountaine alone. One primary source is status `reported`
+  under the atlas's own evidence model (established needs two independent groups or a review; the bound
+  check reads the constraint, not the status), so the four claims read `reported` — the regression asserts
+  the evidence, the status and the summary's wording.
+- Finding 8 built in pass 47: every variant pathway has its own page.
