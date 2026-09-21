@@ -179,6 +179,24 @@ export function PathView({ index, path }: { index: AtlasIndex; path: CompiledPat
               </dd>
             </>
           )}
+          {named && named.regime_establishments.length > 0 && (
+            <>
+              <dt>regimes the implementation establishes</dt>
+              <dd>
+                <ul className={styles.conditions}>
+                  {named.regime_establishments.map((e, i) => (
+                    <li key={i}>
+                      {e.token} · {e.kind.replace(/-/g, " ")}
+                      {e.component ? ` · ${e.component}` : ""}: {e.explanation} · refs {e.evidence.map(refNo).filter((n) => n > 0).map((n) => `[${n}]`).join(" ")}
+                    </li>
+                  ))}
+                </ul>
+                <span className="t-micro secondary">
+                  A physical process inside the named implementation that establishes a regime its route requires (pass 43) — never an off-route load and never a conversion stage the route should carry.
+                </span>
+              </dd>
+            </>
+          )}
           <dt>route-level evidence</dt>
           <dd>
             {compositionSources.length} source{compositionSources.length === 1 ? "" : "s"} for the complete composition · {constituentSources.length} cited by the constituent steps

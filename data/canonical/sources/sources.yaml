@@ -1690,3 +1690,12 @@
   venue: "Annual Review of Plant Biology 61, 235–261"
   doi: 10.1146/annurev-arplant-042809-112206
   notes: "DOI verified on Crossref and the abstract read (loop-3 pass 42); cited as reference 7 of Blankenship et al. 2011 (read in full) for the physiology-limited maxima of 4.6 % (C3) and 6.0 % (C4) after known losses in light harvesting, overpotentials and respiration — the review's own pages are not yet read."
+# Loop-3 pass 43: the open thermodynamics source for nozzle expansion.
+- id: source:nasa-grc-nozzle-design
+  type: web
+  title: "Nozzle Design (Beginner's Guide to Aeronautics)"
+  authors: [NASA Glenn Research Center]
+  year: 2024
+  venue: "NASA Glenn Research Center, Beginner's Guide to Aeronautics; page dated 2021-08-06, modified 2024-09-12"
+  url: https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/nozzle-design/
+  notes: "Read (loop-3 pass 43). 'A nozzle is a relatively simple device, just a specially shaped tube through which hot gases flow … In a CD nozzle, the hot exhaust leaves the combustion chamber and converges down to the minimum area, or throat, of the nozzle. The throat size is chosen to choke the flow and set the mass flow rate through the system. The flow in the throat is sonic … Downstream of the throat, the geometry diverges, and the flow is isentropically expanded to a supersonic Mach number that depends on the area ratio of the exit to the throat. Expansion of a supersonic flow causes the static pressure and temperature to decrease from the throat to the exit'; the derivation (1 − M²) dV/V = −dA/A from mass and momentum conservation with the isentropic relation."

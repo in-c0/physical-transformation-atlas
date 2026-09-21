@@ -26,6 +26,7 @@ import {
   STRUCTURAL_KINDS,
   REGIME_TOKENS,
   AUXILIARY_KINDS,
+  REGIME_ESTABLISHMENT_KINDS,
   NORMALIZATION_KINDS,
   NORMALIZATION_BASES,
   DATUM_KINDS,
@@ -223,6 +224,14 @@ export const VOCABULARY: VocabularyEnum[] = [
         t.definition +
         (t.provider_needs_explanation ? " — a pathway may supply it only with a preceding providing step or an auxiliary requirement explaining how its implementation establishes it" : ""),
     })),
+  },
+  {
+    name: "pathway.regime_establishment.kind",
+    used_in: ["pathways[].regime_establishments[].kind"],
+    terms: define(REGIME_ESTABLISHMENT_KINDS, {
+      "implementation-process":
+        "a physical process or operating arrangement inside the named implementation that establishes a required regime but is not an off-route load/input and is not itself omitted when it constitutes a distinct source→sink conversion stage",
+    }),
   },
   {
     name: "pathway.auxiliary_requirement.kind",

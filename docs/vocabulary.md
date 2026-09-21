@@ -169,6 +169,12 @@ Used in: `claims[].regime_requires / regime_provides / regime_external`, `entiti
 - `flow:bulk-fluid-motion` — nonzero bulk motion of the heat-carrying fluid through the region over which thermal enthalpy is transported — a pathway may supply it only with a preceding providing step or an auxiliary requirement explaining how its implementation establishes it
 - `thermodynamic:expansion-pressure-drop` — an upstream pressure state and downstream lower-pressure state sufficient for the working fluid to perform expansion work — a pathway may supply it only with a preceding providing step or an auxiliary requirement explaining how its implementation establishes it
 
+## `pathway.regime_establishment.kind`
+
+Used in: `pathways[].regime_establishments[].kind`
+
+- `implementation-process` — a physical process or operating arrangement inside the named implementation that establishes a required regime but is not an off-route load/input and is not itself omitted when it constitutes a distinct source→sink conversion stage
+
 ## `pathway.auxiliary_requirement.kind`
 
 Used in: `pathways[].auxiliary_requirements[].kind`

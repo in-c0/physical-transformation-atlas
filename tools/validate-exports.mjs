@@ -11,7 +11,7 @@ const origin = process.argv[2];
 const out = join(here, "..", "apps", "web", "out", "api");
 const read = async (p) => (origin ? await (await fetch(`${origin}/api/${p}`)).text() : readFileSync(join(out, p), "utf8"));
 
-const schema = JSON.parse(await read("schema/v0.4.0.json"));
+const schema = JSON.parse(await read("schema/v0.5.0.json"));
 const ajv = new Ajv2020({ strict: false, allErrors: true });
 addFormats(ajv);
 ajv.addSchema(schema, schema.$id);

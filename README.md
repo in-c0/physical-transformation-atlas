@@ -30,7 +30,7 @@ docs/                ontology, evidence model, status model (derivation and prec
 tools/               static server and headless verification (screenshots, keyboard model, axe-core)
 ```
 
-Dataset contract: [docs/data-api.md](docs/data-api.md) · machine schema: `/api/schema/v0.4.0.json` · revision history: [docs/dataset-changelog.md](docs/dataset-changelog.md) · reuse terms: [docs/licensing.md](docs/licensing.md) (none declared yet) · how to cite: [CITATION.cff](CITATION.cff).
+Dataset contract: [docs/data-api.md](docs/data-api.md) · machine schema: `/api/schema/v0.5.0.json` (v0.4.0, v0.3.0 and v0.2.0 frozen; migration: [docs/migration-v0.4-to-v0.5.md](docs/migration-v0.4-to-v0.5.md)) · revision history: [docs/dataset-changelog.md](docs/dataset-changelog.md) · reuse terms: [docs/licensing.md](docs/licensing.md) (none declared yet) · how to cite: [CITATION.cff](CITATION.cff).
 
 ## Run it
 

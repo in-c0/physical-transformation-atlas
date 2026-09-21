@@ -647,3 +647,12 @@
   domain: fluid-mechanics
   summary: "Bulk motion of a fluid carries its enthalpy between regions. The thermal energy transported belongs to the fluid's thermal state; the fluid motion itself must be established separately by an upstream flow process, buoyancy or an external circulation device such as a pump."
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 40 (the second reader's spelling for the PWR primary loop)" }
+# Loop-3 pass 43: the nozzle stage the combustion MHD generator was hiding — a conversion, not an annotation (the reviewer's pass-42 findings 2–5).
+- id: phenomenon:gas-dynamic-expansion
+  type: phenomenon
+  name: Gas-dynamic expansion
+  aliases: [nozzle expansion, compressible-flow expansion, gas acceleration through a nozzle]
+  domain: thermodynamics
+  condition_tags: [state-gas]
+  summary: A pressurised gas expands through a nozzle or duct, converting part of its enthalpy and pressure availability into directed bulk kinetic flow. Not the working-fluid expansion of a heat-engine cycle, whose output is shaft work against a piston or turbine — the output here is a moving gas.
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 43 (NASA Glenn's nozzle-design page and Smith's NASA TM-79135 read)" }

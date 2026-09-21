@@ -21,6 +21,7 @@
     - heat-conduction
     - diffusion
     - working-fluid-expansion
+    - gas-dynamic-expansion
     - ocean-thermal-gradient-conversion
     - joule-thomson-expansion
     - latent-heat-phase-change

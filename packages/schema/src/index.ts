@@ -628,6 +628,26 @@ export const AuxiliaryRequirement = z.object({
 export type AuxiliaryRequirement = z.infer<typeof AuxiliaryRequirement>;
 
 /**
+ * A regime establishment (loop-3 pass 43): how the named implementation establishes a required regime through a physical
+ * process or operating arrangement inside itself — the combustor / nozzle hardware that sets the pressure state a
+ * combustion MHD generator's expansion needs. Not an off-route load or input (that is an auxiliary requirement) and never
+ * a substitute for a route step: a distinct source → sink conversion stage (the expansion itself, producing the flow) is
+ * a claim on the route, not an establishment. The loader admits it only for a token whose registry entry says a provider
+ * needs explaining, only when the token is in the pathway's regime_provides and required on its route, and never beside
+ * a preceding route provider or an auxiliary that already establishes the same token.
+ */
+export const REGIME_ESTABLISHMENT_KINDS = ["implementation-process"] as const;
+export type RegimeEstablishmentKind = (typeof REGIME_ESTABLISHMENT_KINDS)[number];
+export const RegimeEstablishment = z.object({
+  token: RegimeTokenId,
+  kind: z.enum(REGIME_ESTABLISHMENT_KINDS),
+  component: z.string().optional(),
+  explanation: z.string().min(1),
+  evidence: z.array(SourceId).min(1),
+});
+export type RegimeEstablishment = z.infer<typeof RegimeEstablishment>;
+
+/**
  * A pathway-specific bound (loop-3 pass 42): a typed constraint that holds for this exact reviewed architecture and
  * would overgeneralise if attached to any constituent phenomenon. An escape hatch, never a second place to restate a
  * generic bound: the loader refuses a constraint already reachable through the route's bounded_by claims, and only an
@@ -672,6 +692,8 @@ const PathwayBase = z.object({
    * and no preceding step supplies it.
    */
   auxiliary_requirements: z.array(AuxiliaryRequirement).default([]),
+  /** Pass 43: regimes the implementation establishes through its own internal processes (see RegimeEstablishment). */
+  regime_establishments: z.array(RegimeEstablishment).default([]),
   /** Pass 42: bounds valid only for this exact architecture (see PathwayBound); generic bounds live on phenomena as bounded_by claims. */
   bounds: z.array(PathwayBound).default([]),
   knowledge_level: z.enum(KNOWLEDGE_LEVELS),

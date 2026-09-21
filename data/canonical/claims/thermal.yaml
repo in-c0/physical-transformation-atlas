@@ -1162,3 +1162,32 @@
   evidence: [source:bejan-2016]
   status: established
   review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 42 (theoretical_limit retired into the typed constraint graph)" }
+# Loop-3 pass 43: the combustion MHD generator's nozzle as a route stage — hot pressurised gas → directed kinetic flow (the reviewer's pass-42 findings 6–7).
+- id: claim:hot-gas-drives-gas-dynamic-expansion
+  subject: carrier:hot-gas
+  predicate: drives
+  object: phenomenon:gas-dynamic-expansion
+  conditions: ["the gas has an upstream pressure state above the downstream nozzle or duct pressure"]
+  condition_tags: [state-gas]
+  regime_requires: [thermodynamic:expansion-pressure-drop]  # a hot gas implies no pressure state (pass 36): the implementation must say how the drop is established
+  energy: { input: thermal, output: kinetic, dissipation: thermal }
+  evidence: [source:nasa-grc-nozzle-design, source:smith-1979-nasa-tm-79135]
+  status: established
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 43 (NASA Glenn's nozzle page and NASA TM-79135 read)" }
+- id: claim:gas-dynamic-expansion-produces-flow
+  subject: phenomenon:gas-dynamic-expansion
+  predicate: produces
+  object: disequilibrium:fluid-flow
+  conditions: ["a directed high-speed gas stream leaves the nozzle — the disequilibrium whose content is bulk fluid motion"]
+  energy: { input: kinetic, output: kinetic }
+  evidence: [source:smith-1979-nasa-tm-79135, source:nasa-grc-nozzle-design]
+  status: established
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 43" }
+- id: claim:gas-dynamic-expansion-member
+  subject: phenomenon:gas-dynamic-expansion
+  predicate: member_of
+  object: coupling:heat-engine
+  conditions: ["the thermomechanical family: enthalpy and pressure availability to directed kinetic energy, with no cycle and no shaft"]
+  evidence: [source:nasa-grc-nozzle-design, source:smith-1979-nasa-tm-79135]
+  status: established
+  review: { canonical: true, last_reviewed: "2026-09-21", reviewer: "loop-3 pass 43" }

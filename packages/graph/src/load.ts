@@ -355,10 +355,26 @@ export function loadCanon(root: string): Canon {
       if (requiringIndex === -1) continue;
       const precedingProvider = steps.slice(0, requiringIndex).some((c) => c.regime_provides.includes(t));
       const auxiliary = p.auxiliary_requirements.some((a) => a.establishes.includes(t));
-      if (!precedingProvider && !auxiliary)
+      const establishment = p.regime_establishments.some((e) => e.token === t);
+      if (!precedingProvider && !auxiliary && !establishment)
         problems.push(
-          `${p.id}: supplies ${t} but no preceding step of its route provides it and no auxiliary_requirements entry establishes it — record how the implementation establishes the regime (its compressor, pump …) or drop the provider`,
+          `${p.id}: supplies ${t} but no preceding step of its route provides it, no auxiliary_requirements entry establishes it and no regime_establishments entry explains it — record how the implementation establishes the regime (its compressor, pump, nozzle …) or drop the provider`,
         );
+    }
+    // Pass 43: a regime establishment explains a provider the pathway declares, for a token that needs explaining and is required
+    // on its route, with known evidence, and never doubles a preceding route provider or an auxiliary's establishes.
+    for (const e of p.regime_establishments) {
+      if (!p.regime_provides.includes(e.token)) problems.push(`${p.id}: regime_establishments names ${e.token}, which is not in its regime_provides`);
+      if (!(REGIME_TOKENS as Record<string, { provider_needs_explanation: boolean }>)[e.token]?.provider_needs_explanation)
+        problems.push(`${p.id}: regime_establishments names ${e.token}, whose registry entry says a provider needs no explanation — an establishment record is for tokens that do`);
+      const steps = p.steps.map((id) => claimByIdForRegimes.get(id)).filter((c): c is ClaimT => !!c);
+      const requiringIndex = steps.findIndex((c) => c.regime_requires.includes(e.token));
+      if (requiringIndex === -1) problems.push(`${p.id}: regime_establishments names ${e.token}, which no step of its route requires`);
+      else if (steps.slice(0, requiringIndex).some((c) => c.regime_provides.includes(e.token)))
+        problems.push(`${p.id}: regime_establishments names ${e.token}, which a preceding route step already provides — the establishment would double it`);
+      if (p.auxiliary_requirements.some((a) => a.establishes.includes(e.token)))
+        problems.push(`${p.id}: regime_establishments names ${e.token}, which an auxiliary_requirements entry already establishes — one explanation per token`);
+      for (const s of e.evidence) if (!sourceIds.has(s)) problems.push(`${p.id}: regime_establishments evidence names unknown source ${s}`);
     }
   }
   // Pass 42: a pathway bound names an existing hard constraint (upper-bound | formula-bound) with evidence, and never one the

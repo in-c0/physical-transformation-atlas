@@ -727,20 +727,26 @@
 
 - id: pathway:mhd-generator
   name: Combustion MHD generator
-  steps: [claim:combustion-drives, claim:combustion-produces-hot-gas, claim:hot-gas-drives-mhd, claim:mhd-produces, claim:charge-carriers-convert-electricity]
+  # pass 43: re-spelled through the nozzle stage the pass-41 spelling hid — the pressurised combustion products expand gas-dynamically into
+  # directed flow (disequilibrium:fluid-flow, which provides flow:bulk-fluid-motion) before the MHD channel; the compact
+  # claim:hot-gas-drives-mhd stays in the atlas as the generic spelling that omits how flow is established and reads unresolved on it.
+  steps: [claim:combustion-drives, claim:combustion-produces-hot-gas, claim:hot-gas-drives-gas-dynamic-expansion, claim:gas-dynamic-expansion-produces-flow, claim:flow-drives-mhd, claim:mhd-produces, claim:charge-carriers-convert-electricity]
   demonstrated_with: [transducer:mhd-generator]
   evidence: [source:rosa-1961-mhd, source:smith-1979-nasa-tm-79135]
   status: prototype
   knowledge_level: K7
-  # pass 41 close: no regime_provides for flow:bulk-fluid-motion and no auxiliary — the channel velocity is created by the generator's own
-  # combustor nozzle (NASA TM-79135: a nozzle designed for Mach 2 feeding a duct with inlet Mach 2), an implementation-internal
-  # gas-dynamic provider that is neither a preceding route step nor an external auxiliary; until the schema can record that
-  # explanation truthfully the route reads regime UNRESOLVED on the flow token rather than carrying an invented auxiliary.
+  regime_provides: [thermodynamic:expansion-pressure-drop]  # established by the implementation's own combustor / nozzle (below), never an auxiliary
+  regime_establishments:
+    - token: thermodynamic:expansion-pressure-drop
+      kind: implementation-process
+      component: combustor / nozzle / generator inlet
+      explanation: "the pressurised seeded combustion products expand through the nozzle to the generator inlet; Smith 1979 reports the nozzle designed for Mach 2 and Mach 2 flow entering the MHD duct"
+      evidence: [source:smith-1979-nasa-tm-79135]
   # performance: (no structured record yet — pass 42 emptied the last prose field; the lines below are the audit trail)
     # pass 35: efficiency_typical 0.2 removed — one 1961 paper is not a population source; the topping-cycle projection belongs to the system layer
     # pass 42: theoretical_limit retired (already-typed, removed) — a limit lives in the typed constraint graph or nowhere; the text and its reason stay in design/reviews/loop-3/pass-42-dispositions.yaml
   environment: [state-plasma, temp-high, field-magnetic-required]
-  summary: Seeded combustion plasma crosses a magnet; electrodes collect the transverse current. The plasma's channel velocity comes from the combustor's own nozzle expansion (NASA Lewis ran cesium-seeded H₂–O₂ combustion products at Mach 2 into a diverging duct in a 5 T cryomagnet), not from a separate input — a provider the atlas cannot yet record, so the route stays unresolved on bulk fluid motion.
+  summary: Seeded combustion products expand through the combustor's nozzle into a directed supersonic stream that crosses a magnet; electrodes collect the transverse current. NASA Lewis ran cesium-seeded H₂–O₂ combustion products at Mach 2 into a diverging duct of 42 electrodes in a 5 T cryomagnet — the nozzle, not a separate input, makes the flow.
 
 - id: pathway:amtec
   name: AMTEC cell

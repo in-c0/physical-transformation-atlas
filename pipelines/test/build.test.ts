@@ -535,14 +535,56 @@ test("the forced-advection closure (loop-3 pass 41): advection requires bulk flu
   assert.deepEqual(flowMhd.regime_requires, ["field:transverse-magnetic-field"]);
   assert.deepEqual([...hotMhd.regime_requires].sort(), ["field:transverse-magnetic-field", "flow:bulk-fluid-motion"]);
   assert.deepEqual(hotMhd.regime_external, ["field:transverse-magnetic-field"]);
+  // pass 43: the named generator is re-spelled through the nozzle stage — pressure drop from its implementation-process
+  // establishment, bulk flow from the gas-dynamic-expansion-produced fluid-flow, the transverse field external — and PASSES;
+  // the compact hot-gas → MHD spelling stays unresolved on flow, and an unrecorded route through the nozzle stays unresolved on the drop
+  const mhdPathway = canon.pathways.find((p) => p.id === "pathway:mhd-generator")!;
+  assert.deepEqual(mhdPathway.steps, [
+    "claim:combustion-drives",
+    "claim:combustion-produces-hot-gas",
+    "claim:hot-gas-drives-gas-dynamic-expansion",
+    "claim:gas-dynamic-expansion-produces-flow",
+    "claim:flow-drives-mhd",
+    "claim:mhd-produces",
+    "claim:charge-carriers-convert-electricity",
+  ]);
+  assert.equal(mhdPathway.auxiliary_requirements.length, 0, "no invented auxiliary");
+  assert.deepEqual(mhdPathway.regime_establishments.map((e) => [e.token, e.kind]), [["thermodynamic:expansion-pressure-drop", "implementation-process"]]);
   const mhdGen = graph.paths.find((p) => p.pathway === "pathway:mhd-generator")!;
-  assert.equal(regime(mhdGen).result, "unresolved");
-  assert.match(regime(mhdGen).detail, /requires flow:bulk-fluid-motion/);
-  assert.doesNotMatch(regime(mhdGen).detail, /requires field:transverse-magnetic-field/, "the external field is supplied");
-  assert.equal(canon.pathways.find((p) => p.id === "pathway:mhd-generator")!.auxiliary_requirements.length, 0, "no invented auxiliary");
-  const flowMhdRoutes = graph.paths.filter((p) => p.claims.includes("claim:flow-drives-mhd"));
-  assert.ok(flowMhdRoutes.length > 0);
-  for (const p of flowMhdRoutes) assert.equal(regime(p).result, "pass", p.id);
+  assert.equal(regime(mhdGen).result, "pass", regime(mhdGen).detail);
+  assert.match(regime(mhdGen).detail, /claim:hot-gas-drives-gas-dynamic-expansion: thermodynamic:expansion-pressure-drop/);
+  assert.match(regime(mhdGen).detail, /claim:flow-drives-mhd: field:transverse-magnetic-field/);
+  const compact = graph.paths.filter((p) => p.claims.includes("claim:hot-gas-drives-mhd"));
+  assert.ok(compact.length > 0, "the compact spelling is kept");
+  for (const p of compact) {
+    assert.equal(regime(p).result, "unresolved", p.id);
+    assert.match(regime(p).detail, /requires flow:bulk-fluid-motion/);
+    assert.equal(p.pathway, undefined, "no recorded pathway sits on the compact spelling any more");
+  }
+  const flowSourced = graph.paths.filter((p) => p.claims.includes("claim:flow-drives-mhd") && p.nodes[0] === "disequilibrium:fluid-flow");
+  assert.ok(flowSourced.length > 0);
+  for (const p of flowSourced) assert.equal(regime(p).result, "pass", p.id);
+  const nozzleUnrecorded = graph.paths.filter((p) => p.claims.includes("claim:hot-gas-drives-gas-dynamic-expansion") && !p.pathway);
+  assert.ok(nozzleUnrecorded.length > 0);
+  for (const p of nozzleUnrecorded) {
+    assert.equal(regime(p).result, "unresolved", p.id);
+    assert.match(regime(p).detail, /requires thermodynamic:expansion-pressure-drop/);
+  }
+  // the establishment is an explanation, never a hiding place: it is refused for a token no step requires, for one an auxiliary
+  // already establishes, and for one whose registry entry needs no explanation (temp copies of the data)
+  const tmpE = mkdtempSync(join(tmpdir(), "pta-estab-"));
+  cpSync(join(root, "data", "canonical"), join(tmpE, "data", "canonical"), { recursive: true });
+  cpSync(join(root, "data", "generated"), join(tmpE, "data", "generated"), { recursive: true });
+  const pfE = join(tmpE, "data", "canonical", "pathways", "pathways.yaml");
+  const ptE = readFileSync(pfE, "utf8");
+  const gtAt = ptE.indexOf("  auxiliary_requirements:", ptE.indexOf("- id: pathway:combustion-gas-turbine"));
+  assert.ok(gtAt > 0);
+  const estab = (token: string) => `  regime_establishments:\n    - { token: ${token}, kind: implementation-process, explanation: x, evidence: [source:smith-1979-nasa-tm-79135] }\n`;
+  writeFileSync(pfE, ptE.slice(0, gtAt) + estab("thermodynamic:expansion-pressure-drop") + ptE.slice(gtAt));
+  assert.throws(() => loadCanon(tmpE), /an auxiliary_requirements entry already establishes/);
+  writeFileSync(pfE, ptE.slice(0, gtAt) + estab("flow:bulk-fluid-motion") + ptE.slice(gtAt));
+  assert.throws(() => loadCanon(tmpE), /not in its regime_provides/);
+  rmSync(tmpE, { recursive: true, force: true });
   // conduction and advection stay distinct mechanisms on the same source and sink
   const cond = graph.paths.find((p) => p.pathway === "pathway:heat-exchanger")!;
   assert.notEqual(cond.id, loop.id);
@@ -557,10 +599,12 @@ test("the forced-advection closure (loop-3 pass 41): advection requires bulk flu
   const end = text.indexOf("  environment:", start);
   assert.ok(start > 0 && end > start);
   writeFileSync(file, text.slice(0, start) + text.slice(end));
-  assert.throws(() => loadCanon(tmp), /supplies flow:bulk-fluid-motion but no preceding step of its route provides it and no auxiliary_requirements entry establishes it/);
+  assert.throws(() => loadCanon(tmp), /supplies flow:bulk-fluid-motion but no preceding step of its route provides it, no auxiliary_requirements entry establishes it and no regime_establishments entry explains it/);
   rmSync(tmp, { recursive: true, force: true });
-  // the route count did not move: this pass added no process edge
-  assert.equal(graph.paths.length, 761);
+  // pass 41 added no process edge (761); pass 43 added the nozzle stage — two process claims and one phenomenon — and the ten
+  // routes it generates are enumerated and classified in design/reviews/loop-3/pass-43.md
+  assert.equal(graph.paths.length, 771);
+  assert.equal(graph.paths.filter((p) => p.nodes.includes("phenomenon:gas-dynamic-expansion")).length, 10);
 });
 
 test("the gas-turbine / expansion-carrier closure (loop-3 pass 36): the pressure regime is required by the expansion step, supplied only through an explained auxiliary, and never by the carrier or by combustion", () => {
@@ -598,7 +642,7 @@ test("the gas-turbine / expansion-carrier closure (loop-3 pass 36): the pressure
   const end = text.indexOf("  performance:", start);
   assert.ok(start > 0 && end > start, "the gas-turbine auxiliary block is where the test expects it");
   writeFileSync(file, text.slice(0, start) + text.slice(end));
-  assert.throws(() => loadCanon(tmp), /supplies thermodynamic:expansion-pressure-drop but no preceding step of its route provides it and no auxiliary_requirements entry establishes it/);
+  assert.throws(() => loadCanon(tmp), /supplies thermodynamic:expansion-pressure-drop but no preceding step of its route provides it, no auxiliary_requirements entry establishes it and no regime_establishments entry explains it/);
   rmSync(tmp, { recursive: true, force: true });
 });
 

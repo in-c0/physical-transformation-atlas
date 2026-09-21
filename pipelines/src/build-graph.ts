@@ -19,7 +19,7 @@ const sourceCommit = (() => {
 })();
 try {
   const canon = loadCanon(root);
-  const graph = buildGraph(canon, { version: "0.4.0", sourceCommit });
+  const graph = buildGraph(canon, { version: "0.5.0", sourceCommit });
   const outDir = join(root, "data", "generated");
   mkdirSync(outDir, { recursive: true });
   // Two files: the core graph (entities, claims, sources, pathways, matrix, coverage)
